@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+Sitemap: https://www.chanakacademy.org/sitemap.xml

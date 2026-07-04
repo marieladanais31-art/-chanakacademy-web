@@ -84,6 +84,30 @@ salen de Hostinger. Dos opciones, en orden de preferencia:
 
 **Plan B** documentado en el PHP: Web3Forms (sin backend propio).
 
+## SEO y medición (Fase 4)
+
+Incluido en el paquete: titles/descriptions únicos por página, canonical en
+todas, hreflang en la home, Open Graph + Twitter Cards (imagen 1200×630 en
+`assets/og-image.jpg`), JSON-LD (`EducationalOrganization` + `FAQPage` en la
+home, `Course` en las dos landings, `Product` 50€ en diagnóstico),
+`sitemap.xml`, `robots.txt`, 301 desde los dossiers antiguos, forzado
+https+www, gzip y caché de assets.
+
+La landing `/diagnostico/` ya trae Google Ads (AW-18109980849) y Meta Pixel
+(1697477548238291) activos — no tocar.
+
+### 3 pasos post-lanzamiento (manuales)
+
+1. **GA4**: crear la propiedad en analytics.google.com, copiar el ID `G-XXXX`
+   y descomentar el bloque GA4 del `<head>` de `index.html` pegando el ID.
+   Para el Pixel de la home: descomentar el bloque Meta Pixel (el ID real ya
+   está anotado en el comentario, es el mismo de la landing de diagnóstico).
+2. **Google Search Console**: verificar `www.chanakacademy.org` (mejor por
+   DNS) y enviar `https://www.chanakacademy.org/sitemap.xml`.
+3. **Google Business Profile**: crear el perfil de Chanak International
+   Academy (categoría: escuela privada / educación online) con la dirección
+   de Florida, el teléfono/WhatsApp y enlace a la web.
+
 ### Prueba obligatoria antes de dar por bueno el deploy
 
 - [ ] Enviar el formulario de la home con cada opción (Off-Campus, Dual,

@@ -97,3 +97,20 @@ Rama de trabajo: `mejoras-venta`. Producción (= rama `main` + auto-deploy Hosti
 - ¿Buzón propio para diagnóstico?
 - Crear API key de Brevo y subir /_private/brevo-key.php (o pedirme instrucciones).
 - Añadir SPF al DNS del dominio.
+
+## 2026-07-04 — FASE 4: SEO y medición
+
+- Diagnóstico confirmado → offcampus@ (anotado en el PHP).
+- Home: title/description orientados a búsqueda ("colegio americano online en español"), OG + Twitter Cards (og-image redimensionada a 1200×630 con sips), JSON-LD EducationalOrganization (dirección Florida + sameAs IG/FB) y FAQPage con las 10 preguntas aprobadas.
+- Off-Campus: title/desc propios + canonical + OG + JSON-LD Course. Dual Diploma: ídem (antes compartían title genérico y Dual no tenía description).
+- Diagnóstico: canonical + OG + JSON-LD Product 50€. OJO: esa landing ya traía Google Ads AW-18109980849 y Meta Pixel 1697477548238291 activos — NO tocados.
+- Panamá: description + canonical + OG añadidos. Legales: canonical añadido a privacidad/cookies/aviso-legal.
+- sitemap.xml (9 URLs) + robots.txt (bloquea /_private/ y el endpoint PHP; declara sitemap).
+- .htaccess: forzado https+www (301), 301 dossier-offcampus.html→/off-campus/ y dossier-dualdiploma.html→/dual-diploma/, gzip (mod_deflate), caché de assets (mod_expires, HTML sin caché).
+- Medición: bloques GA4 y Meta Pixel COMENTADOS en el head de la home (el Pixel con el ID real de diagnóstico anotado; activar idealmente con consentimiento). gtag('event','generate_lead') + fbq('track','Lead') en el éxito del formulario, protegidos con typeof.
+- Rendimiento: loading="lazy" decoding="async" en 6 imágenes bajo el pliegue; hero video con preload="metadata"; peso home ≈1,46MB sin video (<1,5MB objetivo).
+- README: 3 pasos post-lanzamiento (GA4, Search Console + sitemap, Google Business Profile).
+
+### Verificación Fase 4
+- node --check JS home: OK. JSON-LD parseados como JSON válido en las 4 páginas (5 bloques).
+- Pendiente Mariela: TXT SPF en DNS (en curso), crear GA4 y descomentar bloques.
