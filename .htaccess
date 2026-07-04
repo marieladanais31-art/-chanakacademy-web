@@ -1,0 +1,14 @@
+Options -Indexes
+
+# Bloquear acceso publico a documentacion interna del repositorio.
+<FilesMatch "\.(md|lock|yml|yaml)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^\.(git|htaccess|gitignore)">
+  Require all denied
+</FilesMatch>
+
+RewriteEngine On
+
+# Compatibilidad con formularios que antes dependian de endpoints Vercel/Next.
+RewriteRule ^api/(brevo-lead|send-enrollment|send-info-request)/?$ /enviar-formulario.php [L,QSA]
