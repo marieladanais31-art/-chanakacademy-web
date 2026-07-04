@@ -30,15 +30,20 @@ $CONFIG = [
     'whatsapp_link'    => 'https://wa.me/34624703272',
     'whatsapp_display' => '+34 624 70 32 72',
     // Enrutamiento por producto. 'to' admite varios buzones.
+    // 'brevo_list' = ID de la lista de contactos en Brevo para ese producto.
     'routes' => [
-        'offcampus'   => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'OFF-CAMPUS',          'landing' => '/off-campus/'],
-        'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/'],
+        'offcampus'   => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'OFF-CAMPUS',          'landing' => '/off-campus/',  'brevo_list' => 3],
+        'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'brevo_list' => 4],
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
-        'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/'],
-        'general'     => ['to' => ['offcampus@chanakacademy.org', 'dualdiploma@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/'],
+        'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
+        'general'     => ['to' => ['offcampus@chanakacademy.org', 'dualdiploma@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
-        'hub'         => ['to' => ['rededucativa@asociacioneducafe.org'], 'label' => 'ALIANZAS 2027', 'landing' => '/alianzas/'],
+        // Sin lista propia en Brevo: va a la lista General (6).
+        'hub'         => ['to' => ['rededucativa@asociacioneducafe.org'], 'label' => 'ALIANZAS 2027', 'landing' => '/alianzas/', 'brevo_list' => 6],
     ],
+    // Lista Brevo "Chanak | Newsletter": se añade ADEMÁS de la lista del
+    // producto cuando el formulario trae opt-in de newsletter.
+    'brevo_newsletter_list' => 7,
 ];
 
 /* Autorespuesta al solicitante, por producto. Placeholders: {nombre},
@@ -186,6 +191,87 @@ function brevo_key(): string
         }
     }
     return '';
+}
+
+function log_brevo(string $message): void
+{
+    $line = '[' . date('Y-m-d H:i:s T') . '] ' . $message . "\n";
+    @file_put_contents(private_dir() . '/brevo.log', $line, FILE_APPEND | LOCK_EX);
+}
+
+/**
+ * Crea o actualiza el contacto en Brevo y lo suscribe a las listas indicadas.
+ * No bloquea el flujo: el lead ya está en leads.csv; cualquier fallo queda
+ * en /_private/brevo.log. Si el teléfono no es válido para Brevo (HTTP 400),
+ * se reintenta sin el atributo SMS para no perder el contacto.
+ */
+function brevo_add_contact(string $email, string $name, string $phone, array $listIds): bool
+{
+    $key = brevo_key();
+    if ($key === '' || !function_exists('curl_init') || !$listIds) {
+        return false;
+    }
+
+    $attributes = [];
+    if ($name !== '') {
+        $attributes['FIRSTNAME'] = $name;
+    }
+    $sms = preg_replace('/[^0-9+]/', '', $phone) ?? '';
+    if ($sms !== '' && preg_match('/^\+?[0-9]{9,15}$/', $sms)) {
+        $attributes['SMS'] = $sms[0] === '+' ? $sms : '+34' . $sms;
+    }
+
+    $post = function (array $payload) use ($key): array {
+        $ch = curl_init('https://api.brevo.com/v3/contacts');
+        curl_setopt_array($ch, [
+            CURLOPT_POST           => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 12,
+            CURLOPT_HTTPHEADER     => [
+                'accept: application/json',
+                'api-key: ' . $key,
+                'content-type: application/json',
+            ],
+            CURLOPT_POSTFIELDS     => json_encode($payload, JSON_UNESCAPED_UNICODE),
+        ]);
+        $body   = (string) curl_exec($ch);
+        $status = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+        $err    = curl_error($ch);
+        curl_close($ch);
+        return [$status, $body, $err];
+    };
+
+    $payload = [
+        'email'         => $email,
+        'listIds'       => array_values(array_unique($listIds)),
+        'updateEnabled' => true,
+    ];
+    if ($attributes) {
+        $payload['attributes'] = $attributes;
+    }
+
+    [$status, $body, $err] = $post($payload);
+    if ($status >= 200 && $status < 300) {
+        return true;
+    }
+
+    // Reintento sin SMS: Brevo rechaza la petición entera si el teléfono
+    // no pasa su validación, y preferimos el contacto sin teléfono a nada.
+    if ($status === 400 && isset($payload['attributes']['SMS'])) {
+        unset($payload['attributes']['SMS']);
+        if (!$payload['attributes']) {
+            unset($payload['attributes']);
+        }
+        [$status, $body, $err] = $post($payload);
+        if ($status >= 200 && $status < 300) {
+            log_brevo('Contacto ' . $email . ' añadido sin SMS (telefono rechazado por Brevo)');
+            return true;
+        }
+    }
+
+    log_brevo('FALLO contacto ' . $email . ' listas=' . implode(',', $listIds)
+        . ' HTTP ' . $status . ' ' . $err . ' ' . substr($body, 0, 300));
+    return false;
 }
 
 /**
@@ -356,6 +442,14 @@ if ($fh) {
 if (!$leadSaved) {
     log_mail_error('AVISO: no se pudo escribir el lead en leads.csv (' . $email . ' / ' . $label . ')');
 }
+
+/* ── 1b) CONTACTO EN BREVO (lista del producto + newsletter si hay opt-in) ── */
+$brevoLists = [$routeCfg['brevo_list']];
+$newsletterOptIn = strtolower(first_value($data, ['newsletter', 'boletin', 'suscripcion', 'subscribe']));
+if (in_array($newsletterOptIn, ['si', 'sí', 'yes', 'on', 'true', '1'], true)) {
+    $brevoLists[] = $CONFIG['brevo_newsletter_list'];
+}
+brevo_add_contact($email, $name, $phone, $brevoLists);
 
 /* ── 2) CORREO INTERNO al equipo ── */
 $subjectInterno = 'Solicitud web [' . $label . '] — ' . ($name !== '' ? $name : $email) . ($country !== '' ? ' (' . $country . ')' : '');
