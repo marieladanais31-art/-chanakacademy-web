@@ -1,5 +1,8 @@
 Options -Indexes
 
+# Charset explicito: evita acentos rotos si el navegador no encuentra el <meta charset>.
+AddDefaultCharset UTF-8
+
 # Bloquear acceso publico a documentacion interna del repositorio.
 <FilesMatch "\.(md|lock|yml|yaml)$">
   Require all denied

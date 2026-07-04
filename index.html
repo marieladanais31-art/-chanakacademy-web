@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Colegio Americano Online en Español K-12 | Chanak International Academy</title>
+<title>Colegio Americano Online Homeschool K-12 en Español | Chanak International Academy</title>
 <meta content="Colegio americano cristiano online en español. Off-Campus para familias homeschool desde 70€/mes y Dual Diploma sin cambiar de colegio desde 110€/mes. Diploma de High School Americano con certificado apostillado. FLDOE #134620." name="description"/>
 <meta content="Colegio Americano Online en Español K-12 | Chanak International Academy" property="og:title"/>
 <meta content="Off-Campus para familias homeschool y Dual Diploma sin cambiar de colegio. Diploma de High School Americano con certificado apostillado. FLDOE #134620." property="og:description"/>
@@ -68,13 +68,15 @@
   ]
 }
 </script>
-<!-- GA4: descomentar y pegar ID de medición (G-XXXXXXXXXX) tras crear la propiedad
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google tag: mismo contenedor que /dual-diploma/ y /off-campus/ (GT-NSSXS5N6 + AW-18109980849).
+     Consent Mode: denegado por defecto; se activa al aceptar cookies (ver acceptCookies/saveCkPrefs).
+     PENDIENTE: MARIELA — si creas una propiedad GA4 separada (G-XXXXXXXX), añadir aquí su gtag('config'). -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
-gtag('js',new Date());gtag('config','G-XXXXXXXXXX');
+gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+gtag('js',new Date());gtag('config','AW-18109980849');gtag('config','GT-NSSXS5N6');
 </script>
--->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18109980849"></script>
 <!-- Meta Pixel: descomentar para activar. El ID 1697477548238291 es el mismo
      que ya usa /diagnostico/. Idealmente activarlo solo con consentimiento de
      cookies de marketing (ver politica de cookies).
@@ -524,7 +526,10 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 .testi{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;box-shadow:var(--sh)}
 .testi-q{font-size:.95rem;line-height:1.75;color:var(--text);font-style:italic;margin-bottom:1.25rem}
 .testi-a{display:flex;align-items:center;gap:.75rem}
-.testi-av{width:42px;height:42px;border-radius:50%;background:var(--off);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.testi-av{width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:700;font-family:'Playfair Display',serif}
+.testi-stars{color:var(--gold);font-size:.85rem;letter-spacing:3px;margin-bottom:.7rem}
+.testi-wa{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;color:#1f9e4f;font-weight:600;margin-top:.9rem;padding-top:.75rem;border-top:1px dashed var(--border);width:100%}
+.testi-wa svg{width:15px;height:15px;flex-shrink:0}
 .testi-n{font-weight:700;color:var(--navy);font-size:.9rem}
 .testi-r{font-size:.78rem;color:var(--muted)}
 
@@ -590,12 +595,12 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 </div>
 <div class="nav-r">
 <div class="lang-w">
-<button class="lang-b" id="langBtn" onclick="toggleLang()">🌐 ES ▾</button>
+<button class="lang-b" id="langBtn" onclick="toggleLang()">ES ▾</button>
 <div class="lang-dd" id="langDd">
-<div class="lang-opt act" onclick="setLang('es')">🇪🇸 Español</div>
-<div class="lang-opt" onclick="setLang('en')">🇬🇧 English</div>
+<div class="lang-opt act" onclick="setLang('es')">Español</div>
+<div class="lang-opt" onclick="setLang('en')">English</div>
 <div class="lang-opt" onclick="setLang('ca')">CA Català</div>
-<div class="lang-opt" onclick="setLang('fr')">🇫🇷 Français</div>
+<div class="lang-opt" onclick="setLang('fr')">Français</div>
 </div>
 </div>
 <a class="nav-portal" href="https://portal.chanakacademy.org" rel="noopener noreferrer" target="_blank" title="Portal Chanak" aria-label="Portal Chanak">
@@ -613,16 +618,16 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <a href="#faq">FAQ</a>
 <a data-i18n="n_contact" href="#dossier">Contacto</a>
 <div class="mob-langs">
-<span class="mob-lang act" onclick="setLang('es')">🇪🇸 ES</span>
-<span class="mob-lang" onclick="setLang('en')">🇬🇧 EN</span>
+<span class="mob-lang act" onclick="setLang('es')">ES</span>
+<span class="mob-lang" onclick="setLang('en')">EN</span>
 <span class="mob-lang" onclick="setLang('ca')">CA</span>
-<span class="mob-lang" onclick="setLang('fr')">🇫🇷 FR</span>
+<span class="mob-lang" onclick="setLang('fr')">FR</span>
 </div>
 </div>
 <!-- HERO -->
 <section class="hero" id="inicio">
 <div class="hero-bg">
-<video aria-hidden="true" autoplay loop muted playsinline poster="/assets/video/hero-poster.jpg" preload="metadata" class="hero-vid" id="heroVid" onerror="this.style.display='none'">
+<video aria-hidden="true" autoplay loop muted playsinline poster="/assets/img/hero-home.webp" preload="none" class="hero-vid" id="heroVid" onerror="this.style.display='none'">
 <source src="/assets/video/hero.mp4" type="video/mp4"/>
 </video>
 </div>
@@ -640,13 +645,13 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <a class="btn btn-o" data-i18n="h_cta1" href="#dossier" style="font-size:1rem;padding:.95rem 2.25rem">Solicitar información</a>
 </div>
 <div class="trust-bar">
-<span class="trust-item">✝️ <span data-i18n="t_1">Cristocéntrico</span></span>
+<span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1em;height:1em"><path d="M12 4v16M7 9h10"/></svg> <span data-i18n="t_1">Cristocéntrico</span></span>
 <span class="trust-sep"> | </span>
-<span class="trust-item">🎓 FLDOE #134620</span>
+<span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1em;height:1em"><path d="m2 9.5 10-5 10 5-10 5-10-5z"/><path d="M6.5 12v4.2c0 1.6 2.5 2.8 5.5 2.8s5.5-1.2 5.5-2.8V12M21 10v5"/></svg> FLDOE #134620</span>
 <span class="trust-sep"> | </span>
-<span class="trust-item">🌍 K-12 · <span data-i18n="t_2">Internacional</span></span>
+<span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1em;height:1em"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13.4 13.4 0 0 1 0 18M12 3a13.4 13.4 0 0 0 0 18"/></svg> K-12 · <span data-i18n="t_2">Internacional</span></span>
 <span class="trust-sep"> | </span>
-<span class="trust-item">📋 MSA-CESS Candidate for Accreditation</span>
+<span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1em;height:1em"><rect x="6" y="4.5" width="12" height="16.5" rx="2"/><path d="M9.5 4.5a2.5 2.5 0 0 1 5 0"/><path d="M9 11h6M9 15h6"/></svg> MSA-CESS Candidate for Accreditation</span>
 </div>
 </div>
 </div>
@@ -672,7 +677,7 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 </div>
 <div class="aud-cards fi">
 <div class="aud-card" onclick="window.location.href='/off-campus/'">
-<div class="aud-img" style="background:url('assets/hogar.png') center/cover"></div>
+<div class="aud-img" style="background:url('/assets/img/hero-offcampus.webp') center/cover"></div>
 <div class="aud-body">
 <div class="aud-tags"><span class="badge badge-t" data-i18n="aud1_b1">OFF-CAMPUS</span><span class="badge badge-g" data-i18n="aud1_b2">Desde 70€/mes*</span></div>
 <div class="aud-ttl" data-i18n="aud1_t">Para familias homeschool</div>
@@ -682,7 +687,7 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="aud-arr">→</div>
 </div>
 <div class="aud-card" onclick="window.location.href='/dual-diploma/'">
-<div class="aud-img" style="background:url('assets/dual.png') center/cover"></div>
+<div class="aud-img" style="background:url('/assets/img/hero-dualdiploma.webp') center/cover"></div>
 <div class="aud-body">
 <div class="aud-tags"><span class="badge badge-t">DUAL DIPLOMA</span><span class="badge badge-gold" data-i18n="aud2_b2">Desde 110€/mes*</span></div>
 <div class="aud-ttl" data-i18n="aud2_t">Sin cambiar de colegio</div>
@@ -692,7 +697,7 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="aud-arr">→</div>
 </div>
 <div class="aud-card diag" onclick="window.location.href='/diagnostico/'">
-<div class="aud-img" style="background:url('assets/extra.png') center/cover"></div>
+<div class="aud-img" style="background:url('/assets/img/hero-diagnostico.webp') center/cover"></div>
 <div class="aud-body">
 <div class="aud-tags"><span class="badge" data-i18n="aud3_b1">¿NO SABES CUÁL ELEGIR?</span></div>
 <div class="aud-ttl" data-i18n="aud3_t">Empieza por el Diagnóstico Académico — 50€</div>
@@ -718,12 +723,13 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <a class="btn btn-t" data-i18n="id_cta" href="#dossier">Solicitar información →</a>
 </div>
 <div class="fi d1">
+<img loading="lazy" decoding="async" src="/assets/img/quienes-somos.webp" alt="Madre acompañando a su hijo en su educación en casa" style="width:100%;border-radius:var(--r);box-shadow:var(--sh);margin-bottom:1.5rem;aspect-ratio:16/9;object-fit:cover"/>
 <div class="lbl" data-i18n="pillars_lbl">Los cuatro pilares</div>
 <div class="pillars-g">
-<div class="pc"><div class="pc-ico">✝️</div><div class="pc-t" data-i18n="p1_t">Cristocéntrico</div><div class="pc-s" data-i18n="p1_s">Cosmovisión bíblica en cada asignatura como fundamento, no como añadido.</div></div>
-<div class="pc"><div class="pc-ico">🎯</div><div class="pc-t" data-i18n="p2_t">Aprendizaje por Dominio</div><div class="pc-s" data-i18n="p2_s">Cada alumno avanza cuando domina. Sin lagunas. Sin prisa.</div></div>
-<div class="pc"><div class="pc-ico">🌟</div><div class="pc-t" data-i18n="p3_t">Formación de Carácter</div><div class="pc-s" data-i18n="p3_s">Liderazgo, integridad y servicio. Valores que perduran.</div></div>
-<div class="pc"><div class="pc-ico">🌍</div><div class="pc-t" data-i18n="p4_t">Estructura Internacional</div><div class="pc-s" data-i18n="p4_s">Diploma estadounidense emitido por colegio registrado en Florida, utilizable en procesos académicos internacionales según los requisitos de cada institución.</div></div>
+<div class="pc"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><path d="M12 4v16M7 9h10"/></svg></div><div class="pc-t" data-i18n="p1_t">Cristocéntrico</div><div class="pc-s" data-i18n="p1_s">Cosmovisión bíblica en cada asignatura como fundamento, no como añadido.</div></div>
+<div class="pc"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8"/></svg></div><div class="pc-t" data-i18n="p2_t">Aprendizaje por Dominio</div><div class="pc-s" data-i18n="p2_s">Cada alumno avanza cuando domina. Sin lagunas. Sin prisa.</div></div>
+<div class="pc"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><path d="m12 3.5 2.5 5.2 5.7.8-4.1 4 1 5.7L12 16.5l-5.1 2.7 1-5.7-4.1-4 5.7-.8L12 3.5z"/></svg></div><div class="pc-t" data-i18n="p3_t">Formación de Carácter</div><div class="pc-s" data-i18n="p3_s">Liderazgo, integridad y servicio. Valores que perduran.</div></div>
+<div class="pc"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13.4 13.4 0 0 1 0 18M12 3a13.4 13.4 0 0 0 0 18"/></svg></div><div class="pc-t" data-i18n="p4_t">Estructura Internacional</div><div class="pc-s" data-i18n="p4_s">Diploma estadounidense emitido por colegio registrado en Florida, utilizable en procesos académicos internacionales según los requisitos de cada institución.</div></div>
 </div>
 </div>
 </div></div>
@@ -741,10 +747,10 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div style="flex-shrink:0"><img loading="lazy" decoding="async" alt="FLDOE" src="assets/fldoe-logo.png" style="height:52px;width:auto;object-fit:contain;border-radius:6px;background:#fff;padding:3px"/></div>
 <div><div class="tcard-t" style="font-size:1rem;color:var(--teal)">FLDOE #134620</div><div class="tcard-s" data-i18n="tc1_s">Colegio privado americano registrado en el Departamento de Educación de Florida, EE.UU.</div></div>
 </div>
-<div class="tcard fi d1"><div class="tcard-ico" style="background:rgba(106,176,76,.1)">⚖️</div><div><div class="tcard-t">IRS 501(c)(3)</div><div class="tcard-s" data-i18n="tc2_s">Organización sin ánimo de lucro en EE.UU. EIN 36-5154011. Las donaciones desde EE.UU. son deducibles fiscalmente.</div></div></div>
+<div class="tcard fi d1"><div class="tcard-ico" style="background:rgba(106,176,76,.1);color:#4a8a30"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.4em;height:1.4em"><path d="M12 4v16M8.5 20h7M4.5 7.5 12 5.5l7.5 2"/><path d="m4.5 7.5-2.3 5.2a2.9 2.9 0 0 0 4.7 0L4.5 7.5zM19.5 7.5l-2.3 5.2a2.9 2.9 0 0 0 4.7 0l-2.4-5.2z"/></svg></div><div><div class="tcard-t">IRS 501(c)(3)</div><div class="tcard-s" data-i18n="tc2_s">Organización sin ánimo de lucro en EE.UU. EIN 36-5154011. Las donaciones desde EE.UU. son deducibles fiscalmente.</div></div></div>
 <div class="tcard fi d2"><div style="flex-shrink:0"><img loading="lazy" decoding="async" alt="MSA" src="assets/msa-dark.png" style="height:44px;width:auto;object-fit:contain;border-radius:6px;background:var(--navy);padding:4px"/></div><div><div class="tcard-t" data-i18n="tc3_t">MSA-CESS Candidate for Accreditation</div><div class="tcard-s" data-i18n="tc3_s">En proceso de candidatura MSA (Middle States Association). No acreditado aún por MSA. Evaluación prevista para 2026.</div></div></div>
-<div class="tcard fi d3"><div class="tcard-ico" style="background:rgba(232,160,32,.12);font-size:1.5rem">📊</div><div><div class="tcard-t" data-i18n="tc4_t">Sistema SIS propio</div><div class="tcard-s" data-i18n="tc4_s">Seguimiento académico en tiempo real para padres y mentoras. Transparencia total en el proceso educativo.</div></div></div>
-<div class="tcard fi"><div class="tcard-ico" style="background:rgba(106,176,76,.1)">✝️</div><div><div class="tcard-t" data-i18n="tc6_t">Cosmovisión Cristiana</div><div class="tcard-s" data-i18n="tc6_s">Currículo con base bíblica integrada. Formación académica y formación de carácter como una sola visión educativa.</div></div></div>
+<div class="tcard fi d3"><div class="tcard-ico" style="background:rgba(232,160,32,.12);color:#a07010"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.4em;height:1.4em"><path d="M3.5 20.5h17"/><path d="M6.5 20v-6M11 20V8.5M15.5 20v-9M20 20V5.5"/></svg></div><div><div class="tcard-t" data-i18n="tc4_t">Sistema SIS propio</div><div class="tcard-s" data-i18n="tc4_s">Seguimiento académico en tiempo real para padres y mentoras. Transparencia total en el proceso educativo.</div></div></div>
+<div class="tcard fi"><div class="tcard-ico" style="background:rgba(106,176,76,.1);color:#4a8a30"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.4em;height:1.4em"><path d="M12 4v16M7 9h10"/></svg></div><div><div class="tcard-t" data-i18n="tc6_t">Cosmovisión Cristiana</div><div class="tcard-s" data-i18n="tc6_s">Currículo con base bíblica integrada. Formación académica y formación de carácter como una sola visión educativa.</div></div></div>
 </div>
 </div>
 </section>
@@ -767,20 +773,20 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="prc fi" onclick="window.open('/off-campus/','_blank')">
 <div class="prc-h">
 <div class="prc-badge"><span class="badge badge-t" data-i18n="prog_msa">MSA Candidacy 2026</span></div>
-<div class="prc-ico">🏠</div>
+<div class="prc-ico" style="color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.6em;height:1.6em"><path d="m3 11 9-7.5L21 11"/><path d="M5.5 9.5V20h13V9.5"/></svg></div>
 <div class="prc-t" data-i18n="oc_t">Off-Campus · Educación Familiar Supervisada</div>
 <p class="prc-s" data-i18n="oc_s">Para familias que buscan estructura académica internacional con acompañamiento, currículo individualizado y registro oficial estadounidense. La familia supervisa; Chanak provee currículo, mentoría y diploma.</p>
 </div>
-<div class="prc-f"><div><span class="prc-mode">🏠 Casa</span><span class="prc-mode">💻 Online</span></div><span class="prc-cta" data-i18n="ver_prog">Más información →</span></div>
+<div class="prc-f"><div><span class="prc-mode">Casa</span><span class="prc-mode">Online</span></div><span class="prc-cta" data-i18n="ver_prog">Más información →</span></div>
 </div>
 <div class="prc fi d1" onclick="window.open('/dual-diploma/','_blank')">
 <div class="prc-h">
 <div class="prc-badge"><span class="badge badge-gold" data-i18n="dd_lbl">Programa Complementario · Destacado</span></div>
-<div class="prc-ico">🎓</div>
+<div class="prc-ico" style="color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.6em;height:1.6em"><path d="m2 9.5 10-5 10 5-10 5-10-5z"/><path d="M6.5 12v4.2c0 1.6 2.5 2.8 5.5 2.8s5.5-1.2 5.5-2.8V12M21 10v5"/></svg></div>
 <div class="prc-t" data-i18n="dd_ttl_short">Dual Diploma</div>
 <p class="prc-s" data-i18n="dd_card_s">Para estudiantes que desean fortalecer su perfil internacional sin cambiar de colegio. Ruta complementaria con seguimiento académico y acceso a la landing de matrícula.</p>
 </div>
-<div class="prc-f"><div><span class="prc-mode">💻 Online</span><span class="prc-mode">🎓 Complementario</span></div><span class="prc-cta" data-i18n="ver_landing">Más información →</span></div>
+<div class="prc-f"><div><span class="prc-mode">Online</span><span class="prc-mode">Complementario</span></div><span class="prc-cta" data-i18n="ver_landing">Más información →</span></div>
 </div>
 </div>
 </div>
@@ -808,14 +814,14 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="fi d1">
 <div class="lbl" data-i18n="dd_mod_lbl">Dos modalidades</div>
 <div style="margin-top:.875rem">
-<div class="ddmode"><div class="ddmode-t" data-i18n="ddm1_t">📡 Modalidad Distancia</div><p class="ddmode-s" data-i18n="ddm1_s">Programas complementarios 100% online con mentora certificada. Horario flexible.</p></div>
-<div class="ddmode"><div class="ddmode-t" data-i18n="ddm2_t">🧭 Acompañamiento personalizado</div><p class="ddmode-s" data-i18n="ddm2_s">Seguimiento académico, orientación de ruta y comunicación con la familia o el centro según el programa elegido.</p></div>
+<div class="ddmode"><div class="ddmode-t" data-i18n="ddm1_t">Modalidad Distancia</div><p class="ddmode-s" data-i18n="ddm1_s">Programas complementarios 100% online con mentora certificada. Horario flexible.</p></div>
+<div class="ddmode"><div class="ddmode-t" data-i18n="ddm2_t">Acompañamiento personalizado</div><p class="ddmode-s" data-i18n="ddm2_s">Seguimiento académico, orientación de ruta y comunicación con la familia o el centro según el programa elegido.</p></div>
 </div>
 <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:var(--r);padding:1.875rem;margin-top:1.5rem">
 <div data-i18n="dd_price_lbl" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:.45rem">Inversión mensual orientativa</div>
 <div data-i18n="dd_price" style="font-family:'Playfair Display',serif;font-size:2rem;color:#fff">Desde 110€/mes*</div>
 <div data-i18n="dd_price_note" style="font-size:.78rem;color:rgba(255,255,255,.52);margin-bottom:1.2rem">*Según nivel y acompañamiento. No incluye materiales ni apostilla.</div>
-<a class="btn btn-g" href="/dual-diploma/" rel="noopener noreferrer" style="width:100%;justify-content:center" target="_blank">Matricularme ahora →</a>
+<a class="btn btn-g" style="width:100%;justify-content:center" href="/matricula/?programa=dual-diploma&src=home-dd">Matricularme ahora →</a>
 </div>
 </div>
 </div>
@@ -837,15 +843,15 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="wrap">
 <div class="fi"><div class="lbl" data-i18n="enr_lbl">Servicios de Enriquecimiento Educativo</div><h2 class="ttl" data-i18n="enr_ttl">Servicios educativos complementarios</h2><p class="sub" data-i18n="enr_sub">Programas de apoyo académico y enriquecimiento que fortalecen la ruta educativa actual del estudiante sin sustituirla.</p></div>
 <div class="enr-ban fi">
-<div style="font-size:2rem;flex-shrink:0">✨</div>
+<div style="flex-shrink:0;color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:2rem;height:2rem"><path d="M12 2.5 14 9.9l7.5 2.1L14 14.1 12 21.5 10 14.1 2.5 12 10 9.9 12 2.5z"/></svg></div>
 <div><h3 data-i18n="enr_ban_t">¿Cómo se integran estos servicios?</h3><p data-i18n="enr_ban_s">Estos servicios se integran como apoyo complementario a la formación actual del estudiante, sin reemplazar necesariamente su colegio o ruta educativa principal.</p></div>
 </div>
 <div class="enr-g">
-<div class="ecard fi" onclick="oModal('dual')"><div class="ecard-ico">📜</div><div class="ecard-t" data-i18n="e1_t">Dual Diploma</div><p class="ecard-s" data-i18n="e1_s">Diploma FLDOE añadido al colegio actual. Reconocimiento académico hasta el 75%. Solo 5h semanales.</p><div><span class="ecard-mode">📡 Distancia</span><span class="ecard-mode">🧭 Acompañamiento</span></div></div>
-<div class="ecard fi d1" onclick="oModal('lifeskills')"><div class="ecard-ico">🌟</div><div class="ecard-t" data-i18n="e2_t">Life Skills</div><p class="ecard-s" data-i18n="e2_s">Formación integral con perfil de liderazgo. Proyectos reales desde cero.</p><div><span class="ecard-mode">📡 Distancia</span><span class="ecard-mode">🧭 Acompañamiento</span></div></div>
-<div class="ecard fi d2" onclick="oModal('kinder')"><div class="ecard-ico">🧒</div><div class="ecard-t" data-i18n="e3_t">ABC Kindergarten</div><p class="ecard-s" data-i18n="e3_s">Base sólida desde los primeros años. Inglés, valores y Aprendizaje por Dominio para 4–6 años.</p><div><span class="ecard-mode">📡 Distancia</span><span class="ecard-mode">🧭 Acompañamiento</span></div></div>
-<div class="ecard fi d3" onclick="oModal('ingles')"><div class="ecard-ico">🇺🇸</div><div class="ecard-t" data-i18n="e4_t">Refuerzo de Inglés</div><p class="ecard-s" data-i18n="e4_s">Inglés académico con metodología de dominio y perspectiva cristiana.</p><div><span class="ecard-mode">📡 Distancia</span><span class="ecard-mode">🧭 Acompañamiento</span></div></div>
-<div class="ecard fi d4" onclick="window.location.href='/diagnostico/'"><div class="ecard-ico">🔍</div><div class="ecard-t" data-i18n="e5_t">Diagnóstico y Nivelación</div><p class="ecard-s" data-i18n="e5_s">Evaluación del nivel real, identificación de brechas y plan personalizado de nivelación.</p><div><span class="ecard-mode">📡 Distancia</span><span class="ecard-mode">🧭 Acompañamiento</span></div></div>
+<div class="ecard fi" onclick="oModal('dual')"><div class="ecard-ico" style="color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><circle cx="12" cy="9" r="5.5"/><path d="m9.3 13.8-1.6 6.7 4.3-2.4 4.3 2.4-1.6-6.7"/></svg></div><div class="ecard-t" data-i18n="e1_t">Dual Diploma</div><p class="ecard-s" data-i18n="e1_s">Diploma FLDOE añadido al colegio actual. Reconocimiento académico hasta el 75%. Solo 5h semanales.</p><div><span class="ecard-mode">Distancia</span><span class="ecard-mode">Acompañamiento</span></div></div>
+<div class="ecard fi d1" onclick="oModal('lifeskills')"><div class="ecard-ico" style="color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><path d="m12 3.5 2.5 5.2 5.7.8-4.1 4 1 5.7L12 16.5l-5.1 2.7 1-5.7-4.1-4 5.7-.8L12 3.5z"/></svg></div><div class="ecard-t" data-i18n="e2_t">Life Skills</div><p class="ecard-s" data-i18n="e2_s">Formación integral con perfil de liderazgo. Proyectos reales desde cero.</p><div><span class="ecard-mode">Distancia</span><span class="ecard-mode">Acompañamiento</span></div></div>
+<div class="ecard fi d2" onclick="oModal('kinder')"><div class="ecard-ico" style="color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><circle cx="12" cy="8" r="4"/><path d="M5.5 20.5c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/></svg></div><div class="ecard-t" data-i18n="e3_t">ABC Kindergarten</div><p class="ecard-s" data-i18n="e3_s">Base sólida desde los primeros años. Inglés, valores y Aprendizaje por Dominio para 4–6 años.</p><div><span class="ecard-mode">Distancia</span><span class="ecard-mode">Acompañamiento</span></div></div>
+<div class="ecard fi d3" onclick="oModal('ingles')"><div class="ecard-ico" style="color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><path d="M5.5 21V3.5"/><path d="M5.5 4h12.5l-2.4 4 2.4 4H5.5"/></svg></div><div class="ecard-t" data-i18n="e4_t">Refuerzo de Inglés</div><p class="ecard-s" data-i18n="e4_s">Inglés académico con metodología de dominio y perspectiva cristiana.</p><div><span class="ecard-mode">Distancia</span><span class="ecard-mode">Acompañamiento</span></div></div>
+<div class="ecard fi d4" onclick="window.location.href='/diagnostico/'"><div class="ecard-ico" style="color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.5em;height:1.5em"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.3-4.3"/></svg></div><div class="ecard-t" data-i18n="e5_t">Diagnóstico y Nivelación</div><p class="ecard-s" data-i18n="e5_s">Evaluación del nivel real, identificación de brechas y plan personalizado de nivelación.</p><div><span class="ecard-mode">Distancia</span><span class="ecard-mode">Acompañamiento</span></div></div>
 </div>
 </div>
 </section>
@@ -896,7 +902,7 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="wrap"><div class="stats-g">
 <div class="fi"><div class="sn">K-12</div><div class="sl" data-i18n="st1">Grados completos</div></div>
 <div class="fi d1"><div class="sn">75/25</div><div class="sl" data-i18n="st2">Modelo Dual Diploma</div></div>
-<div class="fi d2"><div class="sn">4🌐</div><div class="sl" data-i18n="st3">Idiomas disponibles</div></div>
+<div class="fi d2"><div class="sn">4</div><div class="sl" data-i18n="st3">Idiomas disponibles</div></div>
 <div class="fi d3"><div class="sn">MSA</div><div class="sl" data-i18n="st4">Candidato 2026</div></div>
 </div></div>
 </section>
@@ -909,8 +915,8 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <p class="sub" style="margin:0 auto">Cada programa tiene una página específica con información, llamada a la acción y acceso directo a matrícula.</p>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
-<article class="tcard fi d1"><div class="ticon">🏠</div><div><h3>Off Campus</h3><p>Educación flexible con respaldo académico internacional para familias homeschool.</p><div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-t" href="/off-campus/" rel="noopener noreferrer" target="_blank">Más información</a><a class="btn btn-out" href="/off-campus/" rel="noopener noreferrer" target="_blank">Solicitar matrícula</a></div></div></article>
-<article class="tcard fi d2"><div class="ticon">📜</div><div><h3>Dual Diploma</h3><p>Bachillerato estadounidense complementario con acompañamiento académico internacional.</p><div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-t" href="/dual-diploma/" rel="noopener noreferrer" target="_blank">Más información</a><a class="btn btn-out" href="/dual-diploma/#solicitud" rel="noopener noreferrer" target="_blank">Solicitar matrícula</a></div></div></article>
+<article class="tcard fi d1"><div class="ticon" style="color:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.6em;height:1.6em"><path d="m3 11 9-7.5L21 11"/><path d="M5.5 9.5V20h13V9.5"/></svg></div><div><h3>Off Campus</h3><p>Educación flexible con respaldo académico internacional para familias homeschool.</p><div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-t" href="/off-campus/" rel="noopener noreferrer" target="_blank">Más información</a><a class="btn btn-nv" href="/matricula/?programa=off-campus&src=home-rutas">Iniciar matrícula</a></div></div></article>
+<article class="tcard fi d2"><div class="ticon" style="color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.6em;height:1.6em"><circle cx="12" cy="9" r="5.5"/><path d="m9.3 13.8-1.6 6.7 4.3-2.4 4.3 2.4-1.6-6.7"/></svg></div><div><h3>Dual Diploma</h3><p>Bachillerato estadounidense complementario con acompañamiento académico internacional.</p><div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-t" href="/dual-diploma/" rel="noopener noreferrer" target="_blank">Más información</a><a class="btn btn-nv" href="/matricula/?programa=dual-diploma&src=home-rutas">Iniciar matrícula</a></div></div></article>
 </div>
 </div>
 </section>
@@ -922,12 +928,10 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <h2 class="ttl" data-i18n="ts_ttl" style="margin:0 auto .625rem">Lo que dicen las familias</h2>
 </div>
 <div class="testi-g fi">
-<!-- REEMPLAZAR: testimonio real -->
-<div class="testi"><p class="testi-q">"[Testimonio real de una familia Off-Campus: qué buscaban, qué encontraron en Chanak y cómo ha cambiado el día a día de su hijo.]"</p><div class="testi-a"><div class="testi-av">👨‍👩‍👧</div><div><div class="testi-n">Nombre Apellido</div><div class="testi-r">Familia Off-Campus · País</div></div></div></div>
-<!-- REEMPLAZAR: testimonio real -->
-<div class="testi"><p class="testi-q">"[Testimonio real de un estudiante o familia Dual Diploma: compatibilidad con su colegio y valor del diploma americano.]"</p><div class="testi-a"><div class="testi-av">🎓</div><div><div class="testi-n">Nombre Apellido</div><div class="testi-r">Dual Diploma · País</div></div></div></div>
-<!-- REEMPLAZAR: testimonio real -->
-<div class="testi"><p class="testi-q">"[Testimonio real de una familia que empezó por el Diagnóstico Académico y descubrió el nivel real de su hijo.]"</p><div class="testi-a"><div class="testi-av">🔍</div><div><div class="testi-n">Nombre Apellido</div><div class="testi-r">Diagnóstico Académico · País</div></div></div></div>
+<!-- Testimonios recibidos por WhatsApp (mismos que /off-campus/). El número nunca se muestra. -->
+<div class="testi"><div class="testi-stars" aria-label="5 estrellas">★★★★★</div><p class="testi-q">"Encontramos una ruta académica más flexible, con acompañamiento y valores claros. Mi hijo avanza a su propio ritmo y con fe."</p><div class="testi-a"><div class="testi-av">R</div><div><div class="testi-n">Familia Rodríguez</div><div class="testi-r">España · Off-Campus</div></div></div><div class="testi-wa"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#25D366" d="M16.04 4C9.42 4 4.05 9.37 4.05 15.99c0 2.11.55 4.17 1.6 5.99L4 28l6.17-1.61a12 12 0 0 0 5.86 1.5h.01c6.62 0 11.99-5.37 11.99-11.99C28.03 9.37 22.66 4 16.04 4zm0 21.9h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.66.96.98-3.57-.24-.37a9.92 9.92 0 0 1-1.52-5.29c0-5.5 4.47-9.97 9.97-9.97a9.9 9.9 0 0 1 7.05 2.92 9.9 9.9 0 0 1 2.92 7.05c0 5.5-4.48 9.86-9.98 9.86zm5.47-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg><span>Testimonio recibido por WhatsApp</span></div></div>
+<div class="testi"><div class="testi-stars" aria-label="5 estrellas">★★★★★</div><p class="testi-q">"No caminas solo. La mentora nos acompañó en cada paso. Por fin tenemos estructura sin perder nuestra identidad."</p><div class="testi-a"><div class="testi-av">M</div><div><div class="testi-n">Familia Martínez</div><div class="testi-r">Panamá · Off-Campus</div></div></div><div class="testi-wa"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#25D366" d="M16.04 4C9.42 4 4.05 9.37 4.05 15.99c0 2.11.55 4.17 1.6 5.99L4 28l6.17-1.61a12 12 0 0 0 5.86 1.5h.01c6.62 0 11.99-5.37 11.99-11.99C28.03 9.37 22.66 4 16.04 4zm0 21.9h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.66.96.98-3.57-.24-.37a9.92 9.92 0 0 1-1.52-5.29c0-5.5 4.47-9.97 9.97-9.97a9.9 9.9 0 0 1 7.05 2.92 9.9 9.9 0 0 1 2.92 7.05c0 5.5-4.48 9.86-9.98 9.86zm5.47-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg><span>Testimonio recibido por WhatsApp</span></div></div>
+<div class="testi"><div class="testi-stars" aria-label="5 estrellas">★★★★★</div><p class="testi-q">"Somos una familia internacional. Chanak nos dio la continuidad académica americana con valores cristianos."</p><div class="testi-a"><div class="testi-av">G</div><div><div class="testi-n">Familia García</div><div class="testi-r">Colombia · Off-Campus</div></div></div><div class="testi-wa"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#25D366" d="M16.04 4C9.42 4 4.05 9.37 4.05 15.99c0 2.11.55 4.17 1.6 5.99L4 28l6.17-1.61a12 12 0 0 0 5.86 1.5h.01c6.62 0 11.99-5.37 11.99-11.99C28.03 9.37 22.66 4 16.04 4zm0 21.9h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.66.96.98-3.57-.24-.37a9.92 9.92 0 0 1-1.52-5.29c0-5.5 4.47-9.97 9.97-9.97a9.9 9.9 0 0 1 7.05 2.92 9.9 9.9 0 0 1 2.92 7.05c0 5.5-4.48 9.86-9.98 9.86zm5.47-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg><span>Testimonio recibido por WhatsApp</span></div></div>
 </div>
 </div>
 </section>
@@ -973,10 +977,10 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="fg">
 <div class="fl" data-i18n="f_need">¿Qué necesitas ahora mismo? *</div>
 <div class="radio-g">
-<label class="radio-l"><input name="necesidad" required="" type="radio" value="offcampus"/>🏠 <span data-i18n="f_n1">Off-Campus</span></label>
-<label class="radio-l"><input name="necesidad" type="radio" value="dual"/>📜 <span data-i18n="f_n2">Dual Diploma</span></label>
-<label class="radio-l"><input name="necesidad" type="radio" value="diagnostico"/>🔍 <span data-i18n="f_n3">Diagnóstico Académico</span></label>
-<label class="radio-l"><input name="necesidad" type="radio" value="info"/>📋 <span data-i18n="f_n4">Información general</span></label>
+<label class="radio-l"><input name="necesidad" required="" type="radio" value="offcampus"/><span data-i18n="f_n1">Off-Campus</span></label>
+<label class="radio-l"><input name="necesidad" type="radio" value="dual"/><span data-i18n="f_n2">Dual Diploma</span></label>
+<label class="radio-l"><input name="necesidad" type="radio" value="diagnostico"/><span data-i18n="f_n3">Diagnóstico Académico</span></label>
+<label class="radio-l"><input name="necesidad" type="radio" value="info"/><span data-i18n="f_n4">Información general</span></label>
 </div>
 </div>
 <div class="fg">
@@ -1021,7 +1025,7 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 </label>
 </div>
 <button class="btn btn-t" data-i18n="f_submit" style="width:100%;justify-content:center;font-size:.95rem;padding:.85rem" type="submit">Solicitar orientación →</button>
-<div class="mini-trust"><span>🎓 FLDOE #134620</span><span>⚖️ IRS 501(c)(3)</span><span>📋 MSA-CESS Candidate</span><span data-i18n="f_verif">Registro FLDOE verificable públicamente</span></div>
+<div class="mini-trust"><span>FLDOE #134620</span><span>IRS 501(c)(3)</span><span>MSA-CESS Candidate</span><span data-i18n="f_verif">Registro FLDOE verificable públicamente</span></div>
 <div class="gdpr-note" data-i18n="f_note">Tus datos serán utilizados únicamente para gestionar tu solicitud y comunicaciones relacionadas con los programas de Chanak International Academy. No se cederán a terceros.</div>
 </form>
 </div>
@@ -1106,8 +1110,8 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 </footer>
 <!-- BANNER MATRICULA (fase automática por fecha) -->
 <div class="mat-banner" id="matBanner" role="region" aria-label="Matrícula 2026-27">
-<p id="matTxt">Matrícula anticipada curso 2026-27 abierta</p>
-<a class="btn btn-gold" href="#dossier" id="matCta" onclick="document.getElementById('matBanner').classList.remove('show')">Solicitar plaza →</a>
+<p id="matTxt">Matrícula 2026-27 abierta · Respuesta en 24h</p>
+<a class="btn btn-gold" href="/matricula/?programa=general&amp;src=sticky" id="matCta">Iniciar matrícula →</a>
 <button aria-label="Cerrar aviso" class="mat-close" onclick="closeMatBanner()">✕</button>
 </div>
 <!-- WHATSAPP FLOTANTE -->
@@ -1224,7 +1228,7 @@ Asunto: "Ejercicio de derechos RGPD". Especifica el derecho que deseas ejercer.<
 // ── TRANSLATIONS ─────────────────────────────────────────
 const T={
 es:{
-  n_home:"Inicio",n_quien:"Quiénes somos",n_prog:"Programas",n_como:"Cómo empezar",n_hubs:"Alianzas 2027",n_contact:"Contacto",n_sis:"🎓 Portal Chanak",
+  n_home:"Inicio",n_quien:"Quiénes somos",n_prog:"Programas",n_como:"Cómo empezar",n_hubs:"Alianzas 2027",n_contact:"Contacto",n_sis:"Portal Chanak",
   ck_text:"Utilizamos cookies propias y de terceros para mejorar la experiencia, analizar el uso de la web y personalizar contenido. Puedes <a onclick='toggleCkPanel()'>configurar tus preferencias</a> o consultar nuestra <a onclick=\"showLegal('cookies')\">Política de Cookies</a>.",
   ck_acc:"Aceptar todas",ck_rej:"Rechazar no esenciales",ck_cfg:"Configurar",
   ck_panel_t:"Configurar preferencias de cookies",ck_save:"Guardar preferencias",ck_cancel:"Cancelar",
@@ -1285,8 +1289,8 @@ es:{
   ddf6:"Mentoría personalizada y seguimiento en el SIS",
   dd_cta:"Recibir información sobre Dual Diploma →",
   dd_mod_lbl:"Dos modalidades",
-  ddm1_t:"📡 Modalidad Distancia",ddm1_s:"Programas complementarios 100% online con mentora certificada. Horario flexible.",
-  ddm2_t:"🧭 Acompañamiento personalizado",ddm2_s:"Seguimiento académico, orientación de ruta y comunicación con la familia o el centro según el programa elegido.",
+  ddm1_t:"Modalidad Distancia",ddm1_s:"Programas complementarios 100% online con mentora certificada. Horario flexible.",
+  ddm2_t:"Acompañamiento personalizado",ddm2_s:"Seguimiento académico, orientación de ruta y comunicación con la familia o el centro según el programa elegido.",
   dd_price_lbl:"Inversión mensual orientativa",dd_price:"Desde 110€/mes*",
   dd_price_note:"*Según nivel y acompañamiento. No incluye materiales ni apostilla.",
   dd_cta2:"Solicitar información →",
@@ -1341,10 +1345,10 @@ es:{
   fc2_h:"Institución",fc2_1:"Alianzas / Hubs 2027",
   fc3_h:"Legal",
   l_priv:"Política de Privacidad",l_cook:"Política de Cookies",l_aviso:"Aviso Legal",l_terms:"Términos y Condiciones",l_datos:"Protección de Datos",
-  bn_early:"Matrícula anticipada curso 2026-27 abierta",
+  bn_early:"Matrícula 2026-27 abierta · Respuesta en 24h",
   bn_late:"Últimas plazas — el curso comienza el 7 de septiembre",
   bn_open:"Incorporación abierta todo el año — el Aprendizaje por Dominio permite empezar cualquier mes",
-  bn_cta:"Solicitar plaza →",
+  bn_cta:"Iniciar matrícula →",
   db_t:'¿No sabes cuál elegir? Empieza por el Diagnóstico Académico — <span class="diag-price">50€</span>',
   db_s:"Descubre el nivel real de tu hijo con una evaluación completa y recibe una propuesta personalizada. Es el primer paso natural: diagnóstico → propuesta → matrícula.",
   db_cta:"Hacer el diagnóstico →",
@@ -1376,7 +1380,7 @@ es:{
   f_copy:"© 2026 Chanak TrainUp Education Inc. Todos los derechos reservados."
 },
 en:{
-  n_home:"Home",n_quien:"About us",n_prog:"Programs",n_como:"How to start",n_hubs:"Alianzas 2027",n_contact:"Contact",n_sis:"🎓 Chanak Portal",
+  n_home:"Home",n_quien:"About us",n_prog:"Programs",n_como:"How to start",n_hubs:"Alianzas 2027",n_contact:"Contact",n_sis:"Chanak Portal",
   ck_text:"We use cookies to improve your experience, analyze web usage and personalize content.",
   ck_acc:"Accept all",ck_rej:"Reject non-essential",ck_cfg:"Settings",
   ck_panel_t:"Cookie preferences",ck_save:"Save preferences",ck_cancel:"Cancel",
@@ -1437,8 +1441,8 @@ en:{
   ddf6:"Personalized mentoring and SIS tracking",
   dd_cta:"Receive Dual Diploma information →",
   dd_mod_lbl:"Two modalities",
-  ddm1_t:"📡 Distance",ddm1_s:"100% online complementary programs with certified mentor. Flexible schedule.",
-  ddm2_t:"🧭 Personalized guidance",ddm2_s:"After-school at a Hub authorized by Chanak, where available.",
+  ddm1_t:"Distance",ddm1_s:"100% online complementary programs with certified mentor. Flexible schedule.",
+  ddm2_t:"Personalized guidance",ddm2_s:"After-school at a Hub authorized by Chanak, where available.",
   dd_price_lbl:"Indicative monthly investment",dd_price:"From €110/month*",
   dd_price_note:"*By level and support. Does not include materials or apostille.",
   dd_cta2:"Request information →",
@@ -1493,10 +1497,10 @@ en:{
   fc2_h:"Institution",fc2_1:"Alliances / Hubs 2027",
   fc3_h:"Legal",
   l_priv:"Privacy Policy",l_cook:"Cookie Policy",l_aviso:"Legal Notice",l_terms:"Terms & Conditions",l_datos:"Data Protection",
-  bn_early:"Early enrollment for the 2026-27 school year is open",
+  bn_early:"2026-27 enrollment open · Reply within 24h",
   bn_late:"Last places — the school year starts September 7",
   bn_open:"Enrollment open all year round — Mastery Learning lets you start any month",
-  bn_cta:"Request a place →",
+  bn_cta:"Start enrollment →",
   db_t:'Not sure which to choose? Start with the Academic Assessment — <span class="diag-price">€50</span>',
   db_s:"Discover your child's real level with a complete evaluation and receive a personalized proposal. It's the natural first step: assessment → proposal → enrollment.",
   db_cta:"Take the assessment →",
@@ -1528,7 +1532,7 @@ en:{
   f_copy:"© 2026 Chanak TrainUp Education Inc. All rights reserved."
 },
 ca:{
-  n_home:"Inici",n_quien:"Qui som",n_prog:"Programes",n_como:"Com començar",n_hubs:"Alianzas 2027",n_contact:"Contacte",n_sis:"🎓 Portal Chanak",
+  n_home:"Inici",n_quien:"Qui som",n_prog:"Programes",n_como:"Com començar",n_hubs:"Alianzas 2027",n_contact:"Contacte",n_sis:"Portal Chanak",
   ck_acc:"Acceptar totes",ck_rej:"Rebutjar no essencials",ck_cfg:"Configurar",ck_save:"Desar preferències",ck_cancel:"Cancel·lar",
   ck_panel_t:"Configurar preferències de cookies",
   ck_nec_t:"Cookies necessàries",ck_nec_s:"Imprescindibles per al funcionament del lloc.",
@@ -1588,8 +1592,8 @@ ca:{
   ddf6:"Mentoria personalitzada i seguiment al SIS",
   dd_cta:"Rebre informació sobre Dual Diploma →",
   dd_mod_lbl:"Dues modalitats",
-  ddm1_t:"📡 Modalitat Distància",ddm1_s:"Programes complementaris 100% online amb mentora certificada.",
-  ddm2_t:"🧭 Acompañamiento personalizado",ddm2_s:"En horari extraescolar en un Hub autoritzat per Chanak.",
+  ddm1_t:"Modalitat Distància",ddm1_s:"Programes complementaris 100% online amb mentora certificada.",
+  ddm2_t:"Acompañamiento personalizado",ddm2_s:"En horari extraescolar en un Hub autoritzat per Chanak.",
   dd_price_lbl:"Inversió mensual orientativa",dd_price:"Des de 110€/mes*",
   dd_price_note:"*Segons nivell i acompanyament. No inclou materials ni apostil·la.",
   dd_cta2:"Sol·licitar informació →",
@@ -1647,7 +1651,7 @@ ca:{
   f_copy:"© 2026 Chanak TrainUp Education Inc. Tots els drets reservats."
 },
 fr:{
-  n_home:"Accueil",n_quien:"Qui suis-je?",n_prog:"Programmes",n_como:"Comment commencer",n_hubs:"Alianzas 2027",n_contact:"Contact",n_sis:"🎓 Portail Chanak",
+  n_home:"Accueil",n_quien:"Qui suis-je?",n_prog:"Programmes",n_como:"Comment commencer",n_hubs:"Alianzas 2027",n_contact:"Contact",n_sis:"Portail Chanak",
   ck_acc:"Tout accepter",ck_rej:"Refuser non essentiels",ck_cfg:"Configurer",ck_save:"Enregistrer",ck_cancel:"Annuler",
   ck_panel_t:"Préférences de cookies",
   ck_nec_t:"Cookies nécessaires",ck_nec_s:"Indispensables au fonctionnement du site.",
@@ -1707,8 +1711,8 @@ fr:{
   ddf6:"Mentorat personnalisé et suivi SIS",
   dd_cta:"Recevoir des informations sur le Double Diplôme →",
   dd_mod_lbl:"Deux modalités",
-  ddm1_t:"📡 À distance",ddm1_s:"Programmes complémentaires 100% en ligne avec mentor certifié.",
-  ddm2_t:"🏛️ Hub périscolaire",ddm2_s:"En dehors des heures scolaires dans un Hub autorisé.",
+  ddm1_t:"À distance",ddm1_s:"Programmes complémentaires 100% en ligne avec mentor certifié.",
+  ddm2_t:"Hub périscolaire",ddm2_s:"En dehors des heures scolaires dans un Hub autorisé.",
   dd_price_lbl:"Investissement mensuel indicatif",dd_price:"Dès 110€/mois*",
   dd_price_note:"*Selon niveau et accompagnement. Ne comprend pas les matériaux.",
   dd_cta2:"Demander des informations →",
@@ -1771,19 +1775,19 @@ fr:{
 const M={
 offcampus:{l:"Plan Académico Completo · Modalidad 1",t:"Off-Campus · Educación Familiar Supervisada",d:"Para familias que buscan estructura académica internacional con acompañamiento y registro oficial estadounidense.",
   b:`<div style="background:rgba(27,159,170,.06);border:1px solid rgba(27,159,170,.18);border-radius:10px;padding:1.1rem;margin-bottom:1.5rem;font-size:.9rem;color:#0c2d48"><strong>Para quién:</strong> Familias que quieren que Chanak sea el proveedor académico principal, con diploma K-12 completo y registro oficial FLDOE.</div>
-<div class="mm2"><div class="mmode"><div class="mmode-t">📍 Desde el hogar</div><p class="mmode-s">La familia supervisa. Chanak provee el currículo individualizado, la mentoría y el diploma.</p></div><div class="mmode"><div class="mmode-t">💻 Mentoría online</div><p class="mmode-s">Videoconferencias regulares con mentora certificada y seguimiento en el SIS.</p></div></div>
+<div class="mm2"><div class="mmode"><div class="mmode-t">Desde el hogar</div><p class="mmode-s">La familia supervisa. Chanak provee el currículo individualizado, la mentoría y el diploma.</p></div><div class="mmode"><div class="mmode-t">Mentoría online</div><p class="mmode-s">Videoconferencias regulares con mentora certificada y seguimiento en el SIS.</p></div></div>
 <ul class="mfeats"><li>Diploma FLDOE #134620 — colegio registrado en Florida</li><li>Currículo K-12 individualizado por nivel, no por edad</li><li>Aprendizaje por Dominio</li><li>Cosmovisión bíblica en todas las asignaturas</li><li>Acceso al SIS para padres y alumnos</li><li>Life Skills incluido (20%)</li><li>Transcripts y diplomas apostillados</li></ul>
 <div style="background:var(--off);border-radius:10px;padding:1.4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
 <div><div style="font-family:'Playfair Display',serif;font-size:1.875rem;color:var(--navy)">Desde 70€/mes*</div><div style="font-size:.78rem;color:var(--muted)">*Orientativo. No incluye materiales, matrícula ni servicios adicionales.</div></div>
 <a href="#dossier" onclick="cModal()" class="btn btn-t">Solicitar información →</a></div>`},
 hub:{l:"Plan Académico Completo · Modalidad 2",t:"Hub Educativo",d:"Donde haya un Hub en desarrollo autorizado por Chanak, los alumnos pueden asistir presencialmente.",
   b:`<div style="background:rgba(232,160,32,.07);border:1px solid rgba(232,160,32,.25);border-radius:10px;padding:1.1rem;margin-bottom:1.5rem;font-size:.9rem;color:#0c2d48"><strong>Disponibilidad:</strong> Esta modalidad está disponible donde Chanak cuenta con un Hub en desarrollo o autorizado. Si no hay uno en tu zona, el programa Off-Campus es la alternativa.</div>
-<div class="mm2"><div class="mmode"><div class="mmode-t">🏛️ Asistencia presencial</div><p class="mmode-s">El alumno asiste al Hub de su comunidad con mentoras certificadas.</p></div><div class="mmode"><div class="mmode-t">🤝 Comunidad de fe</div><p class="mmode-s">Comparte el proceso con otras familias de fe en un entorno presencial real.</p></div></div>
+<div class="mm2"><div class="mmode"><div class="mmode-t">Asistencia presencial</div><p class="mmode-s">El alumno asiste al Hub de su comunidad con mentoras certificadas.</p></div><div class="mmode"><div class="mmode-t">Comunidad de fe</div><p class="mmode-s">Comparte el proceso con otras familias de fe en un entorno presencial real.</p></div></div>
 <ul class="mfeats"><li>Mismo diploma FLDOE que la modalidad Off-Campus</li><li>Mentoras certificadas en el Hub</li><li>Comunidad de familias con los mismos valores</li><li>Transcripts y diplomas apostillados</li></ul>
 <div style="display:flex;gap:.75rem;flex-wrap:wrap"><a href="#dossier" onclick="cModal()" class="btn btn-t">Consultar disponibilidad →</a><a href="/alianzas/" onclick="cModal()" class="btn btn-out">Ver alianzas 2027</a></div>`},
 dual:{l:"Enriquecimiento · Modelo 75/25",t:"Dual Diploma",d:"Tu hijo sigue en su colegio y añade el diploma FLDOE convalidando el 75% del currículo local.",
   b:`<div style="background:rgba(27,159,170,.06);border:1px solid rgba(27,159,170,.18);border-radius:10px;padding:1.1rem;margin-bottom:1.5rem;font-size:.9rem"><strong>Ideal para:</strong> Alumnos de 14–18 años que quieren ampliar su perfil académico sin cambiar de colegio.</div>
-<div class="mm2"><div class="mmode"><div class="mmode-t">📡 Distancia</div><p class="mmode-s">Solo 5h semanales online con mentora certificada.</p></div><div class="mmode"><div class="mmode-t">🏛️ Hub Extraescolar</div><p class="mmode-s">En horario extraescolar en Hub autorizado por Chanak.</p></div></div>
+<div class="mm2"><div class="mmode"><div class="mmode-t">Distancia</div><p class="mmode-s">Solo 5h semanales online con mentora certificada.</p></div><div class="mmode"><div class="mmode-t">Hub Extraescolar</div><p class="mmode-s">En horario extraescolar en Hub autorizado por Chanak.</p></div></div>
 <ul class="mfeats"><li>Diploma FLDOE #134620 + diploma local = dos títulos</li><li>Reconocimiento académico hasta el 75% del currículo local</li><li>Compatible con colegios de España, Latinoamérica y Europa</li><li>Solo 5 horas semanales de programas complementarios</li><li>Transcripts y diplomas apostillados</li></ul>
 <div style="background:var(--off);border-radius:10px;padding:1.4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
 <div><div style="font-family:'Playfair Display',serif;font-size:1.875rem;color:var(--navy)">Desde 110€/mes*</div><div style="font-size:.78rem;color:var(--muted)">*Orientativo. No incluye materiales ni apostilla.</div></div>
@@ -1809,8 +1813,8 @@ let CL=(URL_LANG&&['es','en','ca','fr'].indexOf(URL_LANG)>-1)?URL_LANG:(localSto
 function setLang(l){
   CL=l;localStorage.setItem('chanak_lang',l);
   document.documentElement.lang=l;
-  const F={es:'🇪🇸',en:'🇬🇧',ca:'CA',fr:'🇫🇷'},N={es:'ES',en:'EN',ca:'CA',fr:'FR'};
-  document.getElementById('langBtn').textContent=F[l]+' '+N[l]+' ▾';
+  const N={es:'ES',en:'EN',ca:'CA',fr:'FR'};
+  document.getElementById('langBtn').textContent=N[l]+' ▾';
   document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('act',o.textContent.trim().includes(N[l])));
   document.querySelectorAll('.mob-lang').forEach(o=>o.classList.toggle('act',o.textContent.trim().includes(N[l])));
   document.getElementById('langDd').classList.remove('op');
@@ -1823,14 +1827,43 @@ function toggleLang(){document.getElementById('langDd').classList.toggle('op')}
 document.addEventListener('click',e=>{if(!e.target.closest('.lang-w'))document.getElementById('langDd').classList.remove('op')});
 
 // ── COOKIES ───────────────────────────────────────────────
-function acceptCookies(){localStorage.setItem('chanak_ck','all');document.getElementById('ckBanner').classList.remove('show');document.getElementById('ckPanel').classList.remove('show')}
-function rejectCookies(){localStorage.setItem('chanak_ck','none');document.getElementById('ckBanner').classList.remove('show');document.getElementById('ckPanel').classList.remove('show')}
+function applyConsent(analytics,marketing){
+  if(typeof gtag!=='function')return;
+  gtag('consent','update',{
+    analytics_storage:analytics?'granted':'denied',
+    ad_storage:marketing?'granted':'denied',
+    ad_user_data:marketing?'granted':'denied',
+    ad_personalization:marketing?'granted':'denied'
+  });
+}
+function acceptCookies(){localStorage.setItem('chanak_ck','all');applyConsent(true,true);document.getElementById('ckBanner').classList.remove('show');document.getElementById('ckPanel').classList.remove('show')}
+function rejectCookies(){localStorage.setItem('chanak_ck','none');applyConsent(false,false);document.getElementById('ckBanner').classList.remove('show');document.getElementById('ckPanel').classList.remove('show')}
 function toggleCkPanel(){document.getElementById('ckPanel').classList.toggle('show')}
 function saveCkPrefs(){
   localStorage.setItem('chanak_ck','custom');
-  localStorage.setItem('chanak_ck_prefs',JSON.stringify({a:document.getElementById('ck_a').checked,m:document.getElementById('ck_m').checked,p:document.getElementById('ck_p').checked}));
+  const prefs={a:document.getElementById('ck_a').checked,m:document.getElementById('ck_m').checked,p:document.getElementById('ck_p').checked};
+  localStorage.setItem('chanak_ck_prefs',JSON.stringify(prefs));
+  applyConsent(prefs.a,prefs.m);
   document.getElementById('ckBanner').classList.remove('show');document.getElementById('ckPanel').classList.remove('show');
 }
+// Consentimiento recordado de visitas anteriores
+(function(){
+  try{
+    const c=localStorage.getItem('chanak_ck');
+    if(c==='all')applyConsent(true,true);
+    else if(c==='custom'){const p=JSON.parse(localStorage.getItem('chanak_ck_prefs')||'{}');applyConsent(!!p.a,!!p.m)}
+  }catch(e){}
+})();
+
+// ── EVENTOS DE CONVERSIÓN (WhatsApp, Stripe, matrícula, dossier) ──
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');if(!a||typeof gtag!=='function')return;
+  const h=a.href||'';
+  if(h.indexOf('wa.me')>-1)gtag('event','whatsapp_click',{event_category:'contact',event_label:location.pathname});
+  else if(h.indexOf('buy.stripe.com')>-1)gtag('event','stripe_click',{event_category:'purchase_intent',event_label:location.pathname});
+  else if(h.indexOf('/matricula/')>-1)gtag('event','matricula_click',{event_category:'enrollment',event_label:(h.split('programa=')[1]||'general').split('&')[0]});
+  else if(h.indexOf('drive.google.com')>-1||h.indexOf('/assets/dossiers/')>-1)gtag('event','dossier_download',{event_category:'content',event_label:location.pathname});
+},true);
 
 // ── LEGAL ─────────────────────────────────────────────────
 function showLegal(p){
@@ -1945,14 +1978,14 @@ async function sendEmail(e){
 
     const WA=(window.CHANAK_CONFIG&&CHANAK_CONFIG.whatsappLink)||'https://wa.me/34624703272';
     f.innerHTML=`<div style="text-align:center;padding:2.5rem">
-      <div style="font-size:3rem;margin-bottom:1rem">📬</div>
+      <div style="color:#4a8a30;margin-bottom:1rem;display:flex;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:3rem;height:3rem"><circle cx="12" cy="12" r="9"/><path d="m8.3 12.4 2.6 2.6 4.8-5.4"/></svg></div>
       <h3 style="font-family:'Playfair Display',serif;color:#0c2d48;margin-bottom:.5rem">¡Gracias ${n}!</h3>
       <p style="color:#5b7a91;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">
         Tu solicitud ha sido enviada. Te contactaremos en menos de 24h.${dossierUrl?'<br>Se ha abierto la página de tu programa en una nueva pestaña.':''}
       </p>
       <a href="${WA}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;font-weight:700;border-radius:50px;padding:.7rem 1.5rem;font-size:.9rem;margin-bottom:1.25rem">💬 ¿Quieres hablar ya? Escríbenos por WhatsApp</a>
       ${dossierUrl?`<div style="background:#f0faf5;border:1px solid #c5e8b0;border-radius:10px;padding:1rem;font-size:.84rem;color:#3a6a40;margin-bottom:1.5rem">
-        ✅ Si no se abrió automáticamente,
+        Si no se abrió automáticamente,
         <a href="${dossierUrl}" target="_blank" style="color:#1b9faa;font-weight:700">haz clic aquí para verla →</a>
       </div>`:''}
       <p style="font-size:.78rem;color:#8a9ab0">Si no recibiste respuesta en 24h, escríbenos directamente a <strong>offcampus@chanakacademy.org</strong></p>
