@@ -47,3 +47,49 @@ Documentación interna del proceso: `RECOVERY-LOG.md`, `LINK-AUDIT.md`,
 Prueba tras cada deploy: `/`, `/off-campus/`, `/dual-diploma/`,
 `/dual-diploma-panama/`, `/diagnostico/` y un envío de formulario real
 (`enviar-formulario.php` requiere PHP activo — verificar en producción).
+
+## Formularios y leads (Fase 3)
+
+`enviar-formulario.php` es el receptor único. Por cada envío:
+
+1. **Guarda el lead** en `/_private/leads.csv` (SIEMPRE, antes de enviar nada).
+2. Envía el **correo interno** al buzón del producto:
+   - Off-Campus → `offcampus@chanakacademy.org`
+   - Dual Diploma → `dualdiploma@chanakacademy.org`
+   - Diagnóstico → `offcampus@chanakacademy.org` *(pendiente: ¿buzón propio?)*
+   - Información general → ambos buzones
+3. Envía la **autorespuesta** a la familia (personalizada por producto, con
+   WhatsApp y enlace a su landing). Textos editables al inicio del PHP.
+4. Si un correo falla, el usuario igual ve éxito (el lead ya está guardado)
+   y el fallo queda en `/_private/mail-errors.log`.
+
+`/_private/` está bloqueada al público por `.htaccess` (raíz y propia).
+`leads.csv`, logs y claves NUNCA se suben al repo (.gitignore).
+
+### Entregabilidad (importante)
+
+El correo del dominio vive en **Google Workspace** (MX → Google) y los envíos
+salen de Hostinger. Dos opciones, en orden de preferencia:
+
+1. **Brevo (recomendado)**: crear una API key en Brevo y subir por File Manager
+   un archivo `/_private/brevo-key.php` con:
+   `<?php return 'xkeysib-XXXX';`
+   El PHP la detecta solo y envía por la API de Brevo (remitente ya validado
+   en la cuenta: administration@chanakacademy.org — verificar remitente
+   `offcampus@chanakacademy.org` en Brevo o cambiar `from_email` en el PHP).
+2. **mail() de Hostinger**: funciona sin configurar nada, pero conviene añadir
+   el include de Hostinger al SPF del dominio para no caer en spam:
+   `v=spf1 include:_spf.google.com include:_spf.mail.hostinger.com ~all`
+   *(actualmente el dominio no publica SPF — arreglarlo también mejora Gmail).* 
+
+**Plan B** documentado en el PHP: Web3Forms (sin backend propio).
+
+### Prueba obligatoria antes de dar por bueno el deploy
+
+- [ ] Enviar el formulario de la home con cada opción (Off-Campus, Dual,
+      Diagnóstico, General) y verificar recepción REAL en offcampus@ y
+      dualdiploma@ **incluida la carpeta de spam**.
+- [ ] Verificar que llega la autorespuesta a la dirección del solicitante.
+- [ ] Verificar que `/_private/leads.csv` registra cada envío (File Manager).
+- [ ] Probar un formulario de `/diagnostico/` y otro de `/dual-diploma-panama/matricula/`.
+- [ ] Comprobar que `https://www.chanakacademy.org/_private/leads.csv` devuelve **403**.

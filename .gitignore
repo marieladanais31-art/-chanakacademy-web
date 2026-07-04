@@ -3,3 +3,7 @@ Thumbs.db
 *.log
 node_modules/
 _descartados/
+# Datos privados generados en el servidor: nunca al repo
+_private/leads.csv
+_private/mail-errors.log
+_private/brevo-key.php

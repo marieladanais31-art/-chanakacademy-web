@@ -64,3 +64,36 @@ Rama de trabajo: `mejoras-venta`. Producción (= rama `main` + auto-deploy Hosti
 - El selector de idiomas NO estaba duplicado (falso diagnóstico): se conservó el sistema inline existente en vez de reescribirlo a archivos externos. Se añadió ?lang= + hreflang.
 - Se mantiene localStorage para recordar idioma (ya declarado en la política de cookies como preferencia); ?lang= tiene prioridad.
 - Banner implementado como barra fija inferior para no chocar con el nav sticky.
+
+## 2026-07-04 — Ajuste FAQ (feedback Mariela)
+
+- fq1: reformulada — sin "¿es legal...en España?"; ahora "¿Qué obtiene mi hijo?": diploma High School Americano con certificado apostillado.
+- fq2: sin UNED/UNEDasiss ni España; requisitos y homologación se consultan localmente en cada país.
+- fq3: "sistema educativo de su país" en vez de español; consulta local + acompañamiento documental.
+- Sincronizado en HTML + diccionarios ES y EN.
+
+## 2026-07-04 — FASE 3: Formularios, autorespuesta y registro de leads
+
+### enviar-formulario.php (reescrito sobre la base existente)
+- GARANTÍA NO-PÉRDIDA: lead → /_private/leads.csv (con lock) ANTES de enviar correos; si mail falla, éxito al usuario + registro en /_private/mail-errors.log.
+- Enrutamiento CONFIRMADO por campo `necesidad` (offcampus/dual/diagnostico/info→general) con fallback por texto para las landings compiladas:
+  off-campus→offcampus@; dual→dualdiploma@; diagnostico→offcampus@ (PENDIENTE buzón propio); general→AMBOS; hub (legado)→rededucativa@educafe.
+- Asunto interno: "Solicitud web [PROGRAMA] — nombre (país)". Reply-To = email de la familia.
+- Autorespuesta por producto (textos editables al inicio del PHP): confirmación, qué pasa en 24h, WhatsApp +34 624 70 32 72, enlace a su landing, línea FLDOE #134620 verificable + High School apostillado. General y Diagnóstico invitan al Diagnóstico 50€.
+- Envío: API Brevo si existe /_private/brevo-key.php (subir por File Manager, NUNCA al repo), si no mail() de Hostinger. Plan B Web3Forms documentado en comentario.
+- Buzones destino = Google Workspace (MX verificado → Google). Dominio SIN SPF publicado: recomendación en README (include Google + Hostinger).
+
+### Protecciones
+- /_private/ bloqueada: .htaccess propio (Require all denied) + regla [F] en .htaccess raíz + el PHP la autocrea si no existe.
+- .gitignore: leads.csv, mail-errors.log, brevo-key.php jamás al repo.
+- Honeypot: campo oculto `website` en el formulario de la home (el PHP ya lo filtraba); las landings ya pasaban por el mismo endpoint.
+
+### Verificación
+- JS de la home: node --check OK.
+- PHP: no hay binario php en este Mac — `php -l` y envío real DEBEN probarse en Hostinger (checklist en README). PHP usa arrow fn (requiere PHP ≥7.4; Hostinger usa 8.x).
+
+### Pendiente de Mariela
+- Revisar textos de autorespuesta (inicio de enviar-formulario.php).
+- ¿Buzón propio para diagnóstico?
+- Crear API key de Brevo y subir /_private/brevo-key.php (o pedirme instrucciones).
+- Añadir SPF al DNS del dominio.

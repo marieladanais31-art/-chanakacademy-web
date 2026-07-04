@@ -870,9 +870,9 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <h2 class="ttl" data-i18n="fq_ttl" style="margin:0 auto .625rem">Resolvemos tus dudas</h2>
 </div>
 <div class="faq-list fi">
-<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq1_q">¿Es legal estudiar a distancia en un colegio extranjero viviendo en España?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq1_a">El estudiante se matricula oficialmente en un colegio privado americano registrado en el Departamento de Educación de Florida (FLDOE #134620). Es una matrícula real en un colegio extranjero, no una modalidad del sistema educativo español. Cada familia debe valorar su situación con la orientación adecuada; en la llamada de orientación te explicamos cómo lo gestionan las familias que ya están con nosotros.</p></div></div>
-<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq2_q">¿Podrá mi hijo acceder a la universidad?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq2_a">Sí, existen rutas claras. Con el diploma americano se puede acceder a universidades internacionales, y en España mediante los procesos de homologación del título extranjero o a través de la UNED (UNEDasiss) para estudiantes con bachillerato internacional. Te orientamos según el destino que tenga tu familia en mente.</p></div></div>
-<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq3_q">¿Y si mi hijo necesita volver al sistema educativo español?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq3_a">El expediente académico americano (transcript oficial, apostillable) documenta todo el recorrido del estudiante. El retorno se gestiona mediante la convalidación de estudios extranjeros ante el Ministerio de Educación, un proceso reglado que acompañamos con la documentación necesaria.</p></div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq1_q">¿Qué obtiene mi hijo al estudiar en Chanak?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq1_a">El estudiante se matricula oficialmente en un colegio privado americano registrado en el Departamento de Educación de Florida (FLDOE #134620, verificable públicamente). Al finalizar sus estudios obtiene el diploma de High School Americano con certificado apostillado, junto con los transcripts oficiales de todo su recorrido académico.</p></div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq2_q">¿Podrá mi hijo acceder a la universidad?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq2_a">El diploma de High School Americano con certificado apostillado es la base para procesos de admisión en universidades de EE.UU. e internacionales. Los requisitos varían según el país y la universidad de destino: cada familia debe consultar localmente en su país los requisitos adicionales que debe presentar y los procesos de homologación aplicables. En la llamada de orientación te acompañamos según el destino que tenga tu familia en mente.</p></div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq3_q">¿Y si mi hijo necesita volver al sistema educativo de su país?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq3_a">El expediente académico americano (transcript oficial y diploma con certificado apostillado) documenta todo el recorrido del estudiante. El retorno se gestiona mediante el proceso de convalidación u homologación de estudios extranjeros que establezca cada país; cada familia debe consultar localmente los requisitos, y nosotros la acompañamos con toda la documentación oficial necesaria.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq4_q">¿Cuántas horas semanales requiere cada programa?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq4_a">Off-Campus es el programa académico completo: la jornada lectiva se organiza en casa con flexibilidad, siguiendo el plan individualizado (equivalente a una escolarización a tiempo completo). Dual Diploma añade solo 5 horas semanales al colegio actual del estudiante.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq5_q">¿Los padres necesitan saber inglés?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq5_a">No. El acompañamiento a las familias es en español: la mentoría, el seguimiento en el SIS y la comunicación con Chanak. El estudiante desarrolla el inglés progresivamente dentro del programa con apoyo de su mentora.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq6_q">¿Qué es el Aprendizaje por Dominio?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq6_a">Es la metodología de Chanak: el estudiante avanza cuando domina el contenido, no cuando lo marca el calendario. Se evalúa el nivel real (no la edad), se identifican lagunas y se construye sobre base sólida. Por eso cada alumno tiene un plan individualizado.</p></div></div>
@@ -939,6 +939,11 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="fg">
 <label class="fl" data-i18n="f_msg" for="fmsg">Mensaje</label>
 <textarea class="fi-inp" id="fmsg" name="mensaje" placeholder="Cuéntanos brevemente tu situación..." rows="3"></textarea>
+</div>
+<!-- Honeypot antispam: invisible para personas, los bots lo rellenan -->
+<div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden">
+<label for="fweb">Website</label>
+<input autocomplete="off" id="fweb" name="website" tabindex="-1" type="text" value=""/>
 </div>
 <div class="fg">
 <label class="gdpr-l">
@@ -1279,12 +1284,12 @@ es:{
   f_verif:"Registro FLDOE verificable públicamente",
   wa_card_t:"¿Prefieres hablar directamente?",
   wa_card_s:"Escríbenos por WhatsApp y te orientamos personalmente sobre la matrícula 2026-27.",
-  fq1_q:"¿Es legal estudiar a distancia en un colegio extranjero viviendo en España?",
-  fq1_a:"El estudiante se matricula oficialmente en un colegio privado americano registrado en el Departamento de Educación de Florida (FLDOE #134620). Es una matrícula real en un colegio extranjero, no una modalidad del sistema educativo español. Cada familia debe valorar su situación con la orientación adecuada; en la llamada de orientación te explicamos cómo lo gestionan las familias que ya están con nosotros.",
+  fq1_q:"¿Qué obtiene mi hijo al estudiar en Chanak?",
+  fq1_a:"El estudiante se matricula oficialmente en un colegio privado americano registrado en el Departamento de Educación de Florida (FLDOE #134620, verificable públicamente). Al finalizar sus estudios obtiene el diploma de High School Americano con certificado apostillado, junto con los transcripts oficiales de todo su recorrido académico.",
   fq2_q:"¿Podrá mi hijo acceder a la universidad?",
-  fq2_a:"Sí, existen rutas claras. Con el diploma americano se puede acceder a universidades internacionales, y en España mediante los procesos de homologación del título extranjero o a través de la UNED (UNEDasiss) para estudiantes con bachillerato internacional. Te orientamos según el destino que tenga tu familia en mente.",
-  fq3_q:"¿Y si mi hijo necesita volver al sistema educativo español?",
-  fq3_a:"El expediente académico americano (transcript oficial, apostillable) documenta todo el recorrido del estudiante. El retorno se gestiona mediante la convalidación de estudios extranjeros ante el Ministerio de Educación, un proceso reglado que acompañamos con la documentación necesaria.",
+  fq2_a:"El diploma de High School Americano con certificado apostillado es la base para procesos de admisión en universidades de EE.UU. e internacionales. Los requisitos varían según el país y la universidad de destino: cada familia debe consultar localmente en su país los requisitos adicionales que debe presentar y los procesos de homologación aplicables. En la llamada de orientación te acompañamos según el destino que tenga tu familia en mente.",
+  fq3_q:"¿Y si mi hijo necesita volver al sistema educativo de su país?",
+  fq3_a:"El expediente académico americano (transcript oficial y diploma con certificado apostillado) documenta todo el recorrido del estudiante. El retorno se gestiona mediante el proceso de convalidación u homologación de estudios extranjeros que establezca cada país; cada familia debe consultar localmente los requisitos, y nosotros la acompañamos con toda la documentación oficial necesaria.",
   fq4_q:"¿Cuántas horas semanales requiere cada programa?",
   fq4_a:"Off-Campus es el programa académico completo: la jornada lectiva se organiza en casa con flexibilidad, siguiendo el plan individualizado (equivalente a una escolarización a tiempo completo). Dual Diploma añade solo 5 horas semanales al colegio actual del estudiante.",
   fq5_q:"¿Los padres necesitan saber inglés?",
@@ -1431,12 +1436,12 @@ en:{
   f_verif:"FLDOE registration publicly verifiable",
   wa_card_t:"Prefer to talk directly?",
   wa_card_s:"Message us on WhatsApp and we will personally guide you on 2026-27 enrollment.",
-  fq1_q:"Is it legal to study remotely at a foreign school while living in Spain?",
-  fq1_a:"The student officially enrolls in a private American school registered with the Florida Department of Education (FLDOE #134620). It is a real enrollment in a foreign school, not a modality of the Spanish education system. Each family should assess their situation with proper guidance; in the orientation call we explain how families already with us manage it.",
+  fq1_q:"What does my child obtain by studying at Chanak?",
+  fq1_a:"The student officially enrolls in a private American school registered with the Florida Department of Education (FLDOE #134620, publicly verifiable). Upon completing their studies, they obtain the American High School diploma with an apostilled certificate, together with the official transcripts of their entire academic record.",
   fq2_q:"Will my child be able to access university?",
-  fq2_a:"Yes, there are clear pathways. The American diploma gives access to international universities, and in Spain through the homologation of foreign qualifications or via UNED (UNEDasiss) for students with international diplomas. We guide you according to your family's goals.",
-  fq3_q:"What if my child needs to return to the Spanish school system?",
-  fq3_a:"The American academic record (official, apostillable transcript) documents the student's entire journey. The return is managed through the validation of foreign studies before the Ministry of Education, a regulated process we support with the necessary documentation.",
+  fq2_a:"The American High School diploma with an apostilled certificate is the basis for admission processes at US and international universities. Requirements vary by country and destination university: each family should consult locally in their country the additional requirements and applicable homologation processes. In the orientation call we guide you according to your family's goals.",
+  fq3_q:"What if my child needs to return to their country's school system?",
+  fq3_a:"The American academic record (official transcript and diploma with apostilled certificate) documents the student's entire journey. The return is managed through each country's validation or homologation process for foreign studies; each family should consult the requirements locally, and we support them with all the necessary official documentation.",
   fq4_q:"How many hours per week does each program require?",
   fq4_a:"Off-Campus is the complete academic program: the school day is organized at home with flexibility, following the individualized plan (equivalent to full-time schooling). Dual Diploma adds only 5 hours per week to the student's current school.",
   fq5_q:"Do parents need to know English?",
@@ -1852,6 +1857,7 @@ async function sendEmail(e){
         pais:p,
         edad_grado:ed,
         mensaje:msg,
+        website:f.querySelector('#fweb')?.value||'',
         privacidad:f.querySelector('#gdpr')?.checked===true
       })
     });

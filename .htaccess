@@ -10,5 +10,8 @@ Options -Indexes
 
 RewriteEngine On
 
+# Carpeta privada (leads, logs, claves): nunca accesible desde la web.
+RewriteRule ^_private(/|$) - [F,L]
+
 # Compatibilidad con formularios que antes dependian de endpoints Vercel/Next.
 RewriteRule ^api/(brevo-lead|send-enrollment|send-info-request)/?$ /enviar-formulario.php [L,QSA]
