@@ -34,3 +34,33 @@ Rama de trabajo: `mejoras-venta`. Producción (= rama `main` + auto-deploy Hosti
 4. Portal: ¿sis.chanakacademy.org/login (actual) o portal.chanakacademy.org?
 5. Idiomas: propuesta lanzar ES/EN completos; CA/FR en fase posterior.
 6. Hero: ¿poster v2 o placeholder neutro hasta foto real?
+
+## 2026-07-04 — FASE 2: Home que vende (rama mejoras-venta)
+
+### Hecho en index.html
+- "Elige tu ruta" → 3 tarjetas: Off-Campus (70€/mes → /off-campus/), Dual Diploma (110€/mes → /dual-diploma/), Diagnóstico 50€ para indecisos (→ /diagnostico/, borde dorado). Antes abrían modales.
+- Banda CTA intermedia del Diagnóstico tras la sección de servicios, dirigida al indeciso.
+- Sección Hubs/Alianzas ELIMINADA de la home → nueva página /alianzas/ (enlace solo en footer). El modal antiguo "hub" ahora enlaza /alianzas/.
+- Tarjeta EducaFe eliminada de la sección institucional y de la barra de acreditaciones (EducaFe solo footer).
+- Banner de matrícula: barra fija inferior, 3 fases automáticas por fecha (site-config.js: hasta 31/7 anticipada; 1/8–4/9 últimas plazas; después incorporación todo el año). Cerrable, estado en sessionStorage. Sin "matrícula gratis".
+- FAQ: 10 preguntas en acordeón accesible (aria-expanded), redacción prudente en legalidad/acreditación. PENDIENTE revisión de Mariela.
+- Testimonios: 3 tarjetas placeholder marcadas <!-- REEMPLAZAR: testimonio real -->.
+- WhatsApp: botón flotante verde (aparece a los 3s), tarjeta en sección comunidad, enlace en footer y en mensaje de éxito del formulario. Número +34 624 70 32 72 centralizado en assets/site-config.js (data-config-href).
+- Formulario: opciones = Off-Campus / Dual Diploma / Diagnóstico Académico / Información general (fuera "Alianzas 2027" y token dossier-iglesias). Fila de confianza compacta bajo el botón (FLDOE #134620, 501c3, MSA candidate + "verificable públicamente"). Checkbox RGPD enlaza /privacidad/ real.
+- Éxito del formulario: botón WhatsApp + apertura de landing solo si el producto la tiene.
+- Footer: legales → páginas reales (/privacidad/, /cookies/, /aviso-legal/, /terminos/ nueva); Portal añadido; WhatsApp añadido; Facebook → página oficial.
+- Facebook: eliminado embed de la foto; botones → https://www.facebook.com/profile.php?id=61585911365975.
+- Portal: nav y footer → https://portal.chanakacademy.org (verificado que el subdominio existe).
+- Video hero: <video> con poster /assets/video/hero-poster.jpg (traído del paquete v2), autoplay muted loop playsinline preload=metadata; si no hay hero.mp4 se ve el poster. PENDIENTE: video real y valoración de foto natural definitiva.
+- Idiomas: ?lang= tiene prioridad (hreflang añadidos en head); diccionarios ES y EN completos con todo el contenido nuevo (banner, FAQ, tarjetas, formulario). CA/FR: actualizadas solo las claves de tarjetas y formulario — resto de claves nuevas caen a español. <!-- REVISAR TRADUCCIÓN nativa CA/FR -->.
+- og-image.jpg copiada del paquete v2 a assets/ (se usará en Fase 4).
+
+### Verificación
+- node --check del JS inline: OK.
+- Servidor local: 11 rutas clave responden 200 (incluidas /alianzas/ y /terminos/ nuevas).
+- Sin referencias a la foto de Facebook, sin Vercel en la home, sin enlaces #hubs rotos.
+
+### Decisiones técnicas (desvíos justificados del prompt)
+- El selector de idiomas NO estaba duplicado (falso diagnóstico): se conservó el sistema inline existente en vez de reescribirlo a archivos externos. Se añadió ?lang= + hreflang.
+- Se mantiene localStorage para recordar idioma (ya declarado en la política de cookies como preferencia); ?lang= tiene prioridad.
+- Banner implementado como barra fija inferior para no chocar con el nav sticky.
