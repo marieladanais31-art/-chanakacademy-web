@@ -27,11 +27,15 @@ if ($out['key_file_existe']) {
             CURLOPT_TIMEOUT => 10,
             CURLOPT_HTTPHEADER => ['accept: application/json', 'api-key: ' . trim($key)],
         ]);
-        curl_exec($ch);
+        $body   = (string) curl_exec($ch);
         $status = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         curl_close($ch);
         $out['key_valida_en_brevo'] = ($status === 200);
         $out['brevo_http'] = $status;
+        // Motivo exacto que devuelve Brevo (sin exponer la clave)
+        $decoded = json_decode($body, true);
+        $out['brevo_mensaje'] = is_array($decoded) ? ($decoded['message'] ?? $decoded['code'] ?? null) : substr($body, 0, 120);
+        $out['key_longitud'] = strlen(trim((string) $key));
     }
 }
 
