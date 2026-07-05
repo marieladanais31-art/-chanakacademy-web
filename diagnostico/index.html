@@ -993,6 +993,14 @@ footer a{color:rgba(255,255,255,.42);text-decoration:underline}
 </div>
 
 <!-- ════════════ FOOTER ════════════ -->
+<section style="background:linear-gradient(155deg,#0e1f45,#1e4080);color:#fff;text-align:center;padding:48px 5%">
+  <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,4vw,34px);margin:0 0 10px">¿Listos para comenzar?</h2>
+  <p style="color:#c9d6ef;font-size:15px;max-width:620px;margin:0 auto 22px;line-height:1.6">El primer paso es conocer el nivel real de tu hijo. Evaluación completa + Plan Educativo Individual inicial.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a id="cta-final-wa" href="https://wa.me/34624703272?text=Hola%2C%20quiero%20hacer%20la%20Prueba%20Diagn%C3%B3stica%20de%2050%E2%82%AC" target="_blank" rel="noopener" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;text-decoration:none">Solicitar orientación</a>
+    <a id="cta-final-pagar" href="https://buy.stripe.com/6oU00k5F79pj1F660267S03" target="_blank" rel="noopener" style="background:#d4922a;color:#fff;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;text-decoration:none">Pagar evaluación por 50 €</a>
+  </div>
+</section>
 <footer>
   <img src="logo-chanak.png" alt="Chanak International Academy">
   <p>© 2026 Chanak International Academy · Escuela privada registrada en el estado de Florida, EE. UU. · FLDOE #134620</p>
@@ -1184,6 +1192,21 @@ document.getElementById('pais').addEventListener('change', (e) => {
 });
 
 applyCountryConfig('es');
+
+/* El CTA final replica al boton dinamico de pago (precio y enlace por pais). */
+function syncCtaFinal() {
+  const src = document.getElementById('stripe-payment-btn');
+  const dst = document.getElementById('cta-final-pagar');
+  const wsrc = document.getElementById('whatsapp-btn');
+  const wdst = document.getElementById('cta-final-wa');
+  if (src && dst) { dst.href = src.href; dst.textContent = src.textContent; }
+  if (wsrc && wdst) { wdst.href = wsrc.href; }
+}
+syncCtaFinal();
+countrySelector.addEventListener('change', () => setTimeout(syncCtaFinal, 50));
+document.getElementById('cta-final-pagar')?.addEventListener('click', () => {
+  trackMetaEvent('InitiateCheckout', { value: 50, currency: 'EUR' });
+});
 
 const diagnosticToolUrl = window.CHANAK_SITE_CONFIG?.diagnosticToolUrl;
 const diagnosticToolBtn = document.getElementById('diagnostic-tool-btn');

@@ -66,6 +66,47 @@
     });
   }
 
+  /* Enlaces de pago centralizados en assets/site-config.js (con respaldo). */
+  var STRIPE = (window.CHANAK_CONFIG && CHANAK_CONFIG.stripe) || {
+    offCampus: 'https://buy.stripe.com/aFa7sMgjLcBvfvW2NQ67S0c',
+    dualDiploma: 'https://buy.stripe.com/28E3cw6Jb0SN1F6dsu67S0d',
+    evaluacionDiagnostica: 'https://buy.stripe.com/6oU00k5F79pj1F660267S03',
+    diagnosticoDualDiploma: 'https://buy.stripe.com/eVq28sffHfNHgA0coq67S0g'
+  };
+
+  /* Bloque final de cierre de venta: "¿Listos para comenzar?" */
+  function ctaFinal(programa, extraHtml) {
+    if (document.getElementById('chanakCtaFinal')) return;
+    var box = document.createElement('section');
+    box.id = 'chanakCtaFinal';
+    box.style.cssText = 'background:linear-gradient(155deg,#0c2d48,#1a5f8a);color:#fff;text-align:center;padding:48px 5%;font-family:DM Sans,sans-serif';
+    box.innerHTML =
+      '<h2 style="font-family:Playfair Display,Georgia,serif;font-size:clamp(24px,4vw,34px);margin:0 0 10px">¿Listos para comenzar?</h2>' +
+      '<p style="color:#cfdde9;font-size:15px;max-width:640px;margin:0 auto 22px;line-height:1.6">Matrícula 2026-27 abierta · Respuesta personal en menos de 24h · FLDOE #134620</p>' +
+      '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">' +
+        '<button type="button" id="chanakCtaOrienta" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit">Solicitar orientación</button>' +
+        '<a href="/matricula/?programa=' + programa + '&src=cta-final" style="background:#e8a020;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Iniciar matrícula →</a>' +
+      '</div>' + (extraHtml || '');
+    document.body.appendChild(box);
+    var b = document.getElementById('chanakCtaOrienta');
+    if (b) b.addEventListener('click', function () {
+      var f = document.querySelector('form');
+      if (f) f.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      else location.href = '/#dossier';
+    });
+  }
+
+  /* Eventos de conversión también en las landings (gtag ya cargado por Next). */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (!a || typeof window.gtag !== 'function') return;
+    var h = a.href || '';
+    if (h.indexOf('wa.me') > -1) window.gtag('event', 'whatsapp_click', { event_category: 'contact', event_label: location.pathname });
+    else if (h.indexOf('buy.stripe.com') > -1) window.gtag('event', 'stripe_click', { event_category: 'purchase_intent', event_label: location.pathname });
+    else if (h.indexOf('/matricula/') > -1) window.gtag('event', 'matricula_click', { event_category: 'enrollment', event_label: (h.split('programa=')[1] || 'general').split('&')[0] });
+    else if (h.indexOf('/assets/dossiers/') > -1) window.gtag('event', 'dossier_download', { event_category: 'content', event_label: location.pathname });
+  }, true);
+
   /* Enlazado interno SEO entre landings (footer ligero, fuera del root). */
   function internalLinks(items) {
     if (document.getElementById('chanakXlinks')) return;
@@ -89,6 +130,7 @@
       keepApplying(function () {
         stickyBar('off-campus');
         testimonialBadges();
+        ctaFinal('off-campus');
         internalLinks([
           ['/dual-diploma/', 'Doble titulación: Dual Diploma americano'],
           ['/diagnostico/', 'Test de nivel homeschool (50€)']
@@ -98,6 +140,9 @@
       keepApplying(function () {
         stickyBar('dual-diploma');
         dualDiplomaButtons();
+        ctaFinal('dual-diploma',
+          '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">¿Quieres empezar hoy mismo? ' +
+          '<a href="' + STRIPE.diagnosticoDualDiploma + '" target="_blank" rel="noopener" style="color:#e8a020;font-weight:700;text-decoration:underline">Paga la evaluación diagnóstica (35€) →</a></p>');
         internalLinks([
           ['/off-campus/', 'Colegio americano online homeschool'],
           ['/diagnostico/', 'Evaluación de nivel académico (50€)']

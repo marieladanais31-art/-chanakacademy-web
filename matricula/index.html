@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://www.chanakacademy.org/matricula/"/>
 <meta property="og:image" content="https://www.chanakacademy.org/assets/og-image.jpg"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<script src="/assets/site-config.js"></script>
+<script src="/assets/site-config.js?v=3"></script>
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
@@ -163,6 +163,7 @@ footer a{color:#fff;text-decoration:underline}
 <div class="ok-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:3.2rem;height:3.2rem"><circle cx="12" cy="12" r="9"/><path d="m8.3 12.4 2.6 2.6 4.8-5.4"/></svg></div>
 <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">Recibido. Te contactamos en menos de 24h.</h2>
 <p style="color:var(--muted);font-size:.92rem;margin-bottom:1.4rem">Tu solicitud de matrícula ha sido registrada. El equipo de admisiones te escribirá por email y WhatsApp en días laborables.</p>
+<div id="okPay" hidden style="margin-bottom:1.4rem"></div>
 <a class="wa-btn" id="okWa" href="https://wa.me/34624703272?text=Hola%2C%20acabo%20de%20enviar%20mi%20solicitud%20de%20matr%C3%ADcula%202026-27" target="_blank" rel="noopener">💬 ¿Prefieres hablar ya? WhatsApp +34 624 70 32 72</a>
 </div>
 </div>
@@ -246,6 +247,22 @@ footer a{color:#fff;text-decoration:underline}
     if(typeof gtag==='function')gtag('event','matricula_submit',{event_category:'enrollment',event_label:prog});
     var msgs={'off-campus':'Hola, quiero matricular a mi hijo en Off-Campus 2026-27','dual-diploma':'Hola, quiero información de matrícula Dual Diploma 2026-27','dual-diploma-panama':'Hola, quiero información de matrícula Dual Diploma Panamá 2026-27'};
     if(msgs[prog])document.getElementById('okWa').href='https://wa.me/34624703272?text='+encodeURIComponent(msgs[prog]+' (solicitud ya enviada)');
+    // Siguiente paso: pago con Stripe según programa (enlaces en site-config.js)
+    var S=(window.CHANAK_CONFIG&&CHANAK_CONFIG.stripe)||{};
+    var pay=document.getElementById('okPay');
+    if(pay){
+      if(prog==='off-campus'&&S.offCampus){
+        pay.innerHTML='<a href="'+S.offCampus+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Pagar matrícula ahora →</a>'+
+          '<p class="note" style="margin-top:.6rem">Pago seguro con Stripe. Tu solicitud ya está registrada: puedes pagar ahora o esperar la llamada del equipo.</p>';
+      }else if(prog==='dual-diploma'&&S.diagnosticoDualDiploma){
+        pay.innerHTML='<a href="'+S.diagnosticoDualDiploma+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Pagar evaluación diagnóstica (35€) →</a>'+
+          '<p class="note" style="margin-top:.6rem">Primer paso del Dual Diploma: la evaluación define tu Plan de Ruta. '+(S.dualDiploma?'¿Ya tienes tu Plan de Ruta? <a href="'+S.dualDiploma+'" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:underline">Pagar matrícula</a>.':'')+'</p>';
+      }else if(prog==='no-lo-se'&&S.evaluacionDiagnostica){
+        pay.innerHTML='<a href="'+S.evaluacionDiagnostica+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Empezar con el Diagnóstico Académico (50€) →</a>'+
+          '<p class="note" style="margin-top:.6rem">El mejor primer paso si aún no sabes qué programa encaja: evaluación completa + propuesta personalizada.</p>';
+      }
+      if(pay.innerHTML)pay.hidden=false;
+    }
     form.hidden=true;document.getElementById('navBtns').style.display='none';
     document.getElementById('matOk').hidden=false;
     window.scrollTo({top:0,behavior:'smooth'});

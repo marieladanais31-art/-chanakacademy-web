@@ -9,6 +9,13 @@ window.CHANAK_CONFIG = Object.freeze({
   // Matrícula oficial: página propia con formulario multi-paso.
   // Envía a /enviar-formulario.php (email + leads.csv + lista Brevo del programa). Sin Zapier.
   matriculaUrl: "/matricula/",
+  // Enlaces de pago Stripe (fuente única de verdad — editar aquí).
+  stripe: {
+    offCampus: "https://buy.stripe.com/aFa7sMgjLcBvfvW2NQ67S0c",              // pago matrícula Off-Campus
+    dualDiploma: "https://buy.stripe.com/28E3cw6Jb0SN1F6dsu67S0d",            // pago matrícula Dual Diploma
+    evaluacionDiagnostica: "https://buy.stripe.com/6oU00k5F79pj1F660267S03",  // evaluación diagnóstica 50€ (ES)
+    diagnosticoDualDiploma: "https://buy.stripe.com/eVq28sffHfNHgA0coq67S0g"  // evaluación diagnóstica Dual Diploma 35€
+  },
   sisUrl: "https://sis.chanakacademy.org",
   foundationUrl: "https://foundation.chanakacademy.org",
   // Fases del banner de matrícula (cambio automático por fecha, hora local del visitante)
