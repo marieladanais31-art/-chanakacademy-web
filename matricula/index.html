@@ -175,7 +175,10 @@ footer a{color:#fff;text-decoration:underline}
 
 <script>
 (function(){
-  var ZAPIER_URL=(window.CHANAK_CONFIG&&CHANAK_CONFIG.matriculaWebhook)||'https://hooks.zapier.com/hooks/catch/27757659/4bsxiu9/';
+  /* Envío directo al receptor propio: guarda en leads.csv, avisa a admisiones,
+     manda autorespuesta y registra el contacto en la lista Brevo del programa.
+     Sin Zapier: gratis y sin dependencias externas. */
+  var ENDPOINT='/enviar-formulario.php';
   var steps=[].slice.call(document.querySelectorAll('.fstep'));
   var cur=1,TOTAL=steps.length;
   var bar=document.getElementById('progBar').children;
@@ -213,29 +216,28 @@ footer a{color:#fff;text-decoration:underline}
     var btn=document.getElementById('matSubmit');
     btn.disabled=true;btn.textContent='Enviando...';errBox.style.display='none';
 
-    var data=new URLSearchParams();
-    [].slice.call(form.querySelectorAll('[name]')).forEach(function(el){if(el.name!=='website')data.append(el.name,el.value)});
-    data.append('origen','www.chanakacademy.org/matricula/');
-    data.append('src',q.get('src')||'');
-    data.append('utm_source',q.get('utm_source')||'');
-    data.append('utm_medium',q.get('utm_medium')||'');
-    data.append('utm_campaign',q.get('utm_campaign')||'');
-    data.append('pagina_referrer',document.referrer||'');
-    data.append('fecha',new Date().toISOString());
+    var obj={
+      origen:'www.chanakacademy.org/matricula/',
+      src:q.get('src')||'',
+      utm_source:q.get('utm_source')||'',
+      utm_medium:q.get('utm_medium')||'',
+      utm_campaign:q.get('utm_campaign')||'',
+      pagina_referrer:document.referrer||''
+    };
+    [].slice.call(form.querySelectorAll('[name]')).forEach(function(el){obj[el.name]=el.value});
+    // Alias que el receptor usa para leads.csv, autorespuesta y Brevo
+    obj.nombre=obj.responsable_nombre||'';
+    obj.pais=obj.pais_responsable||obj.estudiante_pais||'';
 
-    fetch(ZAPIER_URL,{method:'POST',body:data})
-      .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);done()})
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)})
+      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){
+        if(!r.ok||j.success===false)throw 0;
+        done();
+      })})
       .catch(function(){
-        // Respaldo: no perder el lead si Zapier no responde
-        var obj={origen:'Matricula (fallback Zapier)',programa:document.getElementById('p_prog').value};
-        [].slice.call(form.querySelectorAll('[name]')).forEach(function(el){obj[el.name]=el.value});
-        fetch('/enviar-formulario.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)})
-          .then(function(r){if(!r.ok)throw 0;done()})
-          .catch(function(){
-            btn.disabled=false;btn.textContent='Enviar solicitud de matrícula →';
-            errBox.textContent='No pudimos enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp al +34 624 70 32 72.';
-            errBox.style.display='block';
-          });
+        btn.disabled=false;btn.textContent='Enviar solicitud de matrícula →';
+        errBox.textContent='No pudimos enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp al +34 624 70 32 72.';
+        errBox.style.display='block';
       });
   });
 

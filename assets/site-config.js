@@ -6,9 +6,9 @@ window.CHANAK_CONFIG = Object.freeze({
   instagramUrl: "https://www.instagram.com/chanakinternationalacademy/",
   facebookUrl: "https://www.facebook.com/profile.php?id=61585911365975",
   portalUrl: "https://portal.chanakacademy.org",
-  // Matrícula oficial: página propia con formulario multi-paso -> webhook Zapier
+  // Matrícula oficial: página propia con formulario multi-paso.
+  // Envía a /enviar-formulario.php (email + leads.csv + lista Brevo del programa). Sin Zapier.
   matriculaUrl: "/matricula/",
-  matriculaWebhook: "https://hooks.zapier.com/hooks/catch/27757659/4bsxiu9/",
   sisUrl: "https://sis.chanakacademy.org",
   foundationUrl: "https://foundation.chanakacademy.org",
   // Fases del banner de matrícula (cambio automático por fecha, hora local del visitante)

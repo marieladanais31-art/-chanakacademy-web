@@ -113,6 +113,21 @@ $AUTOREPLY = [
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy",
     ],
+    // Autorespuesta específica cuando el lead llega desde /matricula/ (alta intención).
+    'matricula' => [
+        'subject' => 'Hemos recibido tu solicitud de matrícula 2026-27 | Chanak Academy',
+        'body' => "Hola {nombre},\n\n"
+            . "¡Gracias por iniciar el proceso de matrícula en Chanak International Academy!\n\n"
+            . "Qué pasará ahora:\n"
+            . "· En menos de 24 horas (días laborables) el equipo de admisiones te contactará por email o WhatsApp.\n"
+            . "· Revisaremos contigo el nivel de entrada del estudiante y confirmaremos la ruta académica y el plan económico final.\n\n"
+            . "Mientras tanto:\n"
+            . "· Información del programa: {landing}\n"
+            . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
+            . "Un saludo,\nEquipo de Admisiones — Chanak International Academy\n\n"
+            . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
+            . "La matrícula se confirma tras la validación del equipo de admisiones.",
+    ],
 ];
 
 /* ══════════════════════════════════════════════════════════════════
@@ -384,9 +399,9 @@ if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     ]);
 }
 
-$name    = first_value($data, ['nombre', 'nombre_padre', 'guardianFullName', 'guardianName', 'name', 'studentFullName']);
+$name    = first_value($data, ['nombre', 'nombre_padre', 'responsable_nombre', 'guardianFullName', 'guardianName', 'name', 'estudiante_nombre', 'studentFullName']);
 $phone   = first_value($data, ['whatsapp', 'telefono', 'phone', 'guardianPhone', 'tel']);
-$country = first_value($data, ['pais', 'country', 'pais_residencia']);
+$country = first_value($data, ['pais', 'country', 'pais_residencia', 'pais_responsable', 'estudiante_pais']);
 
 /* ── Enrutamiento por producto ──
    1º el campo explícito 'necesidad' del formulario de la home;
@@ -419,6 +434,16 @@ if ($route === '') {
 
 $routeCfg = $CONFIG['routes'][$route];
 $label    = $routeCfg['label'];
+/* Lead de MATRÍCULA (viene de /matricula/): alta intención — se marca en el
+   asunto y usa autorespuesta propia. El enrutamiento y la lista Brevo siguen
+   siendo los del programa. */
+$esMatricula = contains_any(strtolower(implode(' ', [
+    first_value($data, ['origen', 'origin']),
+    $_SERVER['HTTP_REFERER'] ?? '',
+])), ['matricula', 'matrícula']);
+if ($esMatricula) {
+    $label = 'MATRICULA · ' . $label;
+}
 $landing  = $CONFIG['site_url'] . $routeCfg['landing'];
 $origin   = first_value($data, ['origen', 'origin']) ?: ($_SERVER['HTTP_REFERER'] ?? ($_SERVER['REQUEST_URI'] ?? ''));
 
@@ -491,7 +516,7 @@ if (!$sentInterno) {
 }
 
 /* ── 3) AUTORESPUESTA a la familia ── */
-$reply = $AUTOREPLY[$route] ?? $AUTOREPLY['general'];
+$reply = $esMatricula ? $AUTOREPLY['matricula'] : ($AUTOREPLY[$route] ?? $AUTOREPLY['general']);
 $replyBody = strtr($reply['body'], [
     '{nombre}'           => $name !== '' ? $name : 'familia',
     '{landing}'          => $landing,
