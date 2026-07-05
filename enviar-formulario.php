@@ -227,13 +227,16 @@ function brevo_add_contact(string $email, string $name, string $phone, array $li
         return false;
     }
 
+    // Atributos según la cuenta Brevo de Chanak (español): NOMBRE / WHATSAPP / SMS.
     $attributes = [];
     if ($name !== '') {
-        $attributes['FIRSTNAME'] = $name;
+        $attributes['NOMBRE'] = $name;
     }
     $sms = preg_replace('/[^0-9+]/', '', $phone) ?? '';
     if ($sms !== '' && preg_match('/^\+?[0-9]{9,15}$/', $sms)) {
-        $attributes['SMS'] = $sms[0] === '+' ? $sms : '+34' . $sms;
+        $tel = $sms[0] === '+' ? $sms : '+34' . $sms;
+        $attributes['SMS']      = $tel;
+        $attributes['WHATSAPP'] = $tel;
     }
 
     $post = function (array $payload) use ($key): array {
@@ -270,10 +273,10 @@ function brevo_add_contact(string $email, string $name, string $phone, array $li
         return true;
     }
 
-    // Reintento sin SMS: Brevo rechaza la petición entera si el teléfono
+    // Reintento sin teléfono: Brevo rechaza la petición entera si el número
     // no pasa su validación, y preferimos el contacto sin teléfono a nada.
     if ($status === 400 && isset($payload['attributes']['SMS'])) {
-        unset($payload['attributes']['SMS']);
+        unset($payload['attributes']['SMS'], $payload['attributes']['WHATSAPP']);
         if (!$payload['attributes']) {
             unset($payload['attributes']);
         }
