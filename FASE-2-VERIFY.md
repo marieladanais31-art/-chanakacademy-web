@@ -1,5 +1,7 @@
 # Fase 2 - Verificacion
 
+Nota 2026-07-07: esta verificacion es historica. Los CTAs de matricula se actualizaron despues para llevar al SIS antes del pago.
+
 ## Comparacion con fuentes reales
 
 | Landing | Fuente real | Integrada en | Resultado |

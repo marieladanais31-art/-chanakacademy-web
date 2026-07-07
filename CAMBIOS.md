@@ -1,22 +1,31 @@
-# CAMBIOS.md — Sprint de conversión (rama `sprint-conversion`, SIN desplegar)
+# CAMBIOS.md — Sprint de conversión + corrección SIS
 
-Fecha: 2026-07-05 · Estado DESPUÉS. El "antes" está en [AUDIT.md](AUDIT.md).
+Fecha original: 2026-07-05. Actualizado: 2026-07-07.
 
-## 1. Matrícula oficial (Zapier) — NUEVO
+## Actualización 2026-07-07 — matrícula oficial por SIS
 
-- **`/matricula/` creada**: formulario multi-paso (4 pasos: estudiante → responsable → programa/objetivo → confirmaciones) con el diseño del sitio, que envía al webhook Zapier `hooks.zapier.com/hooks/catch/27757659/4bsxiu9/` con campo `programa` + UTMs + página de origen. Confirmación "Recibido. Te contactamos en menos de 24h" + botón WhatsApp con mensaje por programa. Honeypot antispam. **Respaldo anti-pérdida**: si Zapier no responde, el lead se reenvía a `enviar-formulario.php` (leads.csv + email).
-- CTAs redirigidos a `/matricula/?programa=...`:
+- La matrícula oficial ya no depende de Zapier ni de pagos directos desde la web principal.
+- Los CTAs de matrícula de Off Campus y Dual Diploma se envían a `https://sis.chanakacademy.org/matricula/` con el programa preseleccionado.
+- Los enlaces directos de matrícula a Stripe se bloquearon/reescribieron en HTML, bundles Next.js exportados, `assets/site-config.js` y `assets/js/chanak-overrides.js`.
+- Stripe queda permitido solo para flujos de evaluación/diagnóstico donde primero se capturan datos o el pago corresponde a la evaluación, no a matrícula directa.
+- El formulario legacy `/matricula/` de esta web redirige al formulario SIS para evitar duplicidad de datos.
+
+El "antes" está en [AUDIT.md](AUDIT.md).
+
+## 1. Matrícula oficial (SIS) — NUEVO
+
+- **Matrícula oficial**: el formulario principal vive en `https://sis.chanakacademy.org/matricula/` para que los datos entren al SIS antes del pago.
+- CTAs redirigidos a `https://sis.chanakacademy.org/matricula/?programa=...`:
   - Home: 2 botones "Solicitar matrícula" → "Iniciar matrícula" (`?programa=off-campus|dual-diploma&src=home-rutas`), "Matricularme ahora" de la sección Dual (`src=home-dd`), y el CTA del banner sticky (`src=sticky`).
-  - Off-Campus: los 3 botones "Ya decidí — matricularme" (reescritos en el bundle JS) → `?programa=off-campus&src=offcampus`. **Verificado con clic real en preview.**
-  - Dual Diploma: se MANTIENE Stripe "Matricularme ahora" y se AÑADE "Formalizar matrícula" junto a cada botón Stripe (`?programa=dual-diploma&src=dd-landing`).
-- El formulario multi-paso fue verificado en navegador: preselección por URL, navegación adelante/atrás, barra de progreso, validación por paso y bloqueo de envío sin consentimientos. **No se envió ningún dato real al webhook.**
-- URL centralizada en `assets/site-config.js`: `matriculaUrl` y `matriculaWebhook`.
+  - Off-Campus: los botones "Ya decidí / matricularme" → SIS con `?programa=off-campus`.
+  - Dual Diploma: los botones de matrícula → SIS con `?programa=dual-diploma`.
+- URL centralizada en `assets/site-config.js`: `matriculaUrl`.
 
 ## 2. Captación → Brevo
 
 - Sin cambios de arquitectura: los formularios de INFORMACIÓN ya alimentan Brevo **directamente por API** vía `enviar-formulario.php` (integración hecha ayer: listas 3/4/5/6 por producto + 7 newsletter, clave en `/_private/brevo-key.php`, log en `/_private/brevo.log`). Envían nombre, email, WhatsApp, país, programa y origen.
 - El formulario de la home ya mostraba confirmación + WhatsApp; verificado.
-- **Zap a crear por Mariela (matrícula)**: webhook → (1) email a admisiones, (2) contacto en Brevo lista según `programa` (off-campus→3, dual-diploma→4), (3) fila en Google Sheets si quieres histórico.
+- **Matrícula**: la automatización debe partir del SIS/Brevo, no de Zapier.
 
 ## 3. Testimonios
 
@@ -55,7 +64,7 @@ Fecha: 2026-07-05 · Estado DESPUÉS. El "antes" está en [AUDIT.md](AUDIT.md).
 ## 7. Medición
 
 - Home y /matricula/: instalado el mismo Google tag de las landings (GT-NSSXS5N6 + AW-18109980849) con **Consent Mode denegado por defecto**; el banner de cookies ahora actualiza el consentimiento real (`acceptCookies`/`saveCkPrefs` → `gtag consent update`), incluida la preferencia recordada de visitas anteriores.
-- Eventos de conversión (home + matricula): `whatsapp_click`, `stripe_click`, `matricula_click`, `dossier_download`, `matricula_submit`, más el `generate_lead` existente del formulario de orientación.
+- Eventos de conversión (home + matrícula): `whatsapp_click`, `matricula_click`, `dossier_download`, `matricula_submit`, más el `generate_lead` existente del formulario de orientación.
 - Embudo rastreable con parámetro `src=` en cada CTA (home-rutas, home-dd, sticky, offcampus, dd-landing…) — llega al webhook/PHP con cada lead. No se usaron `utm_` internos para no romper la atribución de sesiones de GA4/Google Ads.
 
 ## Arquitectura (importante para futuros cambios)
@@ -69,7 +78,7 @@ Las landings /off-campus/, /dual-diploma/ y /dual-diploma-panama/ son exports Ne
 ## PENDIENTES (acción de Mariela)
 
 1. **Dossier Off-Campus**: el PDF de Drive da 404 (también en la web actual). Súbeme el PDF y lo coloco en `/assets/dossiers/` (mientras tanto, ese botón pide el dossier por WhatsApp).
-2. **Zap del webhook de matrícula**: crear en Zapier los pasos del catch hook (email a admisiones + Brevo por `programa` + Sheets opcional) y hacer UN envío de prueba real desde `/matricula/` tras publicar.
+2. **Automatización de matrícula**: mantener Brevo/SIS como flujo principal; no reactivar Zapier para matrícula.
 3. Opcional: propiedad GA4 propia (G-XXXX) — hoy se mide con el contenedor GT-NSSXS5N6/AW existente. Si la creas, se añade en una línea.
 4. `dossier-iglesias.html` (página legacy de iglesias) conserva sus emojis: fuera del alcance de venta actual. Si la quieres alineada, se hace en 20 min.
 5. Meta Pixel en /diagnostico/ dispara sin consentimiento previo (ya era así). Recomendado moverlo tras el banner de cookies en una siguiente iteración.
@@ -80,6 +89,6 @@ Las landings /off-campus/, /dual-diploma/ y /dual-diploma-panama/ son exports Ne
 2. Clic en "Iniciar matrícula" (banner superior) → `/matricula/` con el programa "general"; recorre los 4 pasos sin rellenar → no deja avanzar (validación).
 3. `/matricula/?programa=dual-diploma` → el selector de programa llega preseleccionado.
 4. `/diagnostico/` → acentos perfectos, un solo CTA de pago (Stripe 50€), WhatsApp termina en 72.
-5. `/dual-diploma/` → H2 "Doble titulación…", "Desde 110€/mes*", botón verde "Formalizar matrícula" junto a cada Stripe, barra inferior de matrícula.
-6. `/off-campus/` → carga rápida, logos visibles, botón "Ya decidí — matricularme" te lleva a /matricula/.
+5. `/dual-diploma/` → H2 "Doble titulación…", "Desde 110€/mes*", botones de matrícula te llevan al SIS antes del pago.
+6. `/off-campus/` → carga rápida, logos visibles, botón "Ya decidí — matricularme" te lleva al SIS antes del pago.
 7. Si todo OK: merge de `sprint-conversion` a `main` + Deploy en Hostinger + envío de prueba del formulario.

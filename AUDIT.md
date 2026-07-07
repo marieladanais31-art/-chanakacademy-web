@@ -2,6 +2,8 @@
 
 Fecha: 2026-07-05 · Auditoría previa al sprint de conversión. Estado ANTES de los cambios.
 
+Nota 2026-07-07: esta auditoría queda como histórico. Los pagos directos de matrícula a Stripe ya fueron retirados/bloqueados; la matrícula oficial pasa por `https://sis.chanakacademy.org/matricula/`.
+
 ## Páginas del sitio
 
 | Página | Tipo | Peso | Estado |
@@ -31,9 +33,9 @@ Fecha: 2026-07-05 · Auditoría previa al sprint de conversión. Estado ANTES de
 | Home L913 | "Solicitar matrícula" (Dual) | `/dual-diploma/#solicitud` | Manda a formulario de INFORMACIÓN |
 | Home L818 | "Matricularme ahora →" | `/dual-diploma/` | Ídem |
 | Off-campus | "Ya decidí — matricularme" ×3 | `<button>` React sin navegación clara | Sin destino de matrícula real |
-| Dual-diploma | "Matricularme ahora" ×2 | Stripe `buy.stripe.com/28E3cw...` | OK como pago directo (se mantiene) |
-| Panamá | matrícula multi-paso propia | form + Stripe | OK (se mantiene) |
-- **No existe formulario de matrícula Zapier en ningún repo** — el webhook `hooks.zapier.com/hooks/catch/27757659/4bsxiu9/` lo aporta Mariela; hay que construir `/matricula/`.
+| Dual-diploma | "Matricularme ahora" ×2 | Stripe `buy.stripe.com/28E3cw...` | CORREGIDO 2026-07-07: ahora debe pasar por SIS antes del pago |
+| Panamá | matrícula multi-paso propia | form + Stripe | Se conserva solo cuando hay captura de datos previa |
+- Estado histórico: no existía formulario de matrícula oficial en la web. La solución actual ya no usa Zapier; la matrícula pasa por el SIS.
 - Base del multi-paso: `github-sources/chanak-dual-panama` (campos en `api/send-enrollment.js`).
 
 ### Formularios (estado ANTES)
@@ -43,7 +45,7 @@ Fecha: 2026-07-05 · Auditoría previa al sprint de conversión. Estado ANTES de
 | Solicitud info (`#solicitud`) | /dual-diploma/ | `/api/send-info-request` → .htaccess → `enviar-formulario.php` | OK |
 | Form compilado off-campus | /off-campus/ | `/api/brevo-lead` → `enviar-formulario.php` | OK |
 | Matrícula Panamá | /dual-diploma-panama/matricula/ | `/api/send-enrollment` → `enviar-formulario.php` (+Stripe) | OK |
-| Matrícula oficial Zapier | — | — | **FALTA construir** |
+| Matrícula oficial | — | — | CORREGIDO 2026-07-07: ahora pasa por SIS |
 
 ### WhatsApp
 - Correcto (+34 624 70 32 72 / `wa.me/34624703272`): home y config.
