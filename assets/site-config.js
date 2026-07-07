@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var SIS_MATRICULA_URL = "https://sis.chanakacademy.org/matricula/";
+  var SIS_MATRICULA_URL = "https://sis.chanakacademy.org/matricula";
 
   window.CHANAK_CONFIG = Object.freeze({
     whatsappNumber: "+34 624 70 32 72",

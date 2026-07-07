@@ -5,7 +5,7 @@ Generated for `recovery-v3/` during Fase 3. `_descartados/` is excluded.
 ## 2026-07-07 SIS enrollment update
 
 - Direct enrollment payments were removed/guarded from active Off Campus and Dual Diploma CTAs.
-- Enrollment CTAs now go to `https://sis.chanakacademy.org/matricula/` before any payment step.
+- Enrollment CTAs now go to `https://sis.chanakacademy.org/matricula` before any payment step.
 - Remaining Stripe links are diagnostic/evaluation-only or appear after a data-capture form.
 
 ## Vercel check
@@ -159,11 +159,11 @@ Generated for `recovery-v3/` during Fase 3. `_descartados/` is excluded.
 |---:|---|---|---|
 | 1 | a[href] | `#solicitud` | OK |
 | 1 | a[href] | `https://drive.google.com/file/d/1ZjT8bnPZ9LielQUEWjW5hjCr5yhjl0-s/view?usp=drive_link` | external |
-| 1 | a[href] | `https://sis.chanakacademy.org/matricula/?programa=dual-diploma&src=legacy-stripe` | OK - SIS before payment |
+| 1 | a[href] | `https://sis.chanakacademy.org/matricula?programa=dual-diploma&src=legacy-stripe` | OK - SIS before payment |
 | 1 | a[href] | `https://drive.google.com/file/d/1ZjT8bnPZ9LielQUEWjW5hjCr5yhjl0-s/view?usp=drive_link` | external |
 | 1 | a[href] | `#solicitud` | OK |
 | 1 | a[href] | `https://drive.google.com/file/d/1ZjT8bnPZ9LielQUEWjW5hjCr5yhjl0-s/view?usp=drive_link` | external |
-| 1 | a[href] | `https://sis.chanakacademy.org/matricula/?programa=dual-diploma&src=legacy-stripe` | OK - SIS before payment |
+| 1 | a[href] | `https://sis.chanakacademy.org/matricula?programa=dual-diploma&src=legacy-stripe` | OK - SIS before payment |
 | 1 | link[href] | `/_next/static/chunks/1ee4c-6fpawm5.js` | OK |
 | 1 | link[href] | `https://www.googletagmanager.com/gtag/js?id=AW-18109980849` | external |
 

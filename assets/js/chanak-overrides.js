@@ -3,7 +3,7 @@
   "use strict";
 
   var cfg = window.CHANAK_CONFIG || {};
-  var MATRICULA = cfg.matriculaUrl || "https://sis.chanakacademy.org/matricula/";
+  var MATRICULA = cfg.matriculaUrl || "https://sis.chanakacademy.org/matricula";
   var path = location.pathname;
 
   function ready(fn) {

@@ -5,7 +5,7 @@ Fecha original: 2026-07-05. Actualizado: 2026-07-07.
 ## Actualización 2026-07-07 — matrícula oficial por SIS
 
 - La matrícula oficial ya no depende de Zapier ni de pagos directos desde la web principal.
-- Los CTAs de matrícula de Off Campus y Dual Diploma se envían a `https://sis.chanakacademy.org/matricula/` con el programa preseleccionado.
+- Los CTAs de matrícula de Off Campus y Dual Diploma se envían a `https://sis.chanakacademy.org/matricula` con el programa preseleccionado.
 - Los enlaces directos de matrícula a Stripe se bloquearon/reescribieron en HTML, bundles Next.js exportados, `assets/site-config.js` y `assets/js/chanak-overrides.js`.
 - Stripe queda permitido solo para flujos de evaluación/diagnóstico donde primero se capturan datos o el pago corresponde a la evaluación, no a matrícula directa.
 - El formulario legacy `/matricula/` de esta web redirige al formulario SIS para evitar duplicidad de datos.
@@ -14,8 +14,8 @@ El "antes" está en [AUDIT.md](AUDIT.md).
 
 ## 1. Matrícula oficial (SIS) — NUEVO
 
-- **Matrícula oficial**: el formulario principal vive en `https://sis.chanakacademy.org/matricula/` para que los datos entren al SIS antes del pago.
-- CTAs redirigidos a `https://sis.chanakacademy.org/matricula/?programa=...`:
+- **Matrícula oficial**: el formulario principal vive en `https://sis.chanakacademy.org/matricula` para que los datos entren al SIS antes del pago.
+- CTAs redirigidos a `https://sis.chanakacademy.org/matricula?programa=...`:
   - Home: 2 botones "Solicitar matrícula" → "Iniciar matrícula" (`?programa=off-campus|dual-diploma&src=home-rutas`), "Matricularme ahora" de la sección Dual (`src=home-dd`), y el CTA del banner sticky (`src=sticky`).
   - Off-Campus: los botones "Ya decidí / matricularme" → SIS con `?programa=off-campus`.
   - Dual Diploma: los botones de matrícula → SIS con `?programa=dual-diploma`.
