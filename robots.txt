@@ -3,4 +3,59 @@ Allow: /
 Disallow: /_private/
 Disallow: /enviar-formulario.php
 
+User-agent: Googlebot
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: GPTBot
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: Claude-User
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: Bingbot
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: Applebot
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /_private/
+Disallow: /enviar-formulario.php
+
 Sitemap: https://www.chanakacademy.org/sitemap.xml
