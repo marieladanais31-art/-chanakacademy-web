@@ -22,10 +22,6 @@ RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L]
 # Carpeta privada (leads, logs, claves): nunca accesible desde la web.
 RewriteRule ^_private(/|$) - [F,L]
 
-# Redirecciones 301 desde URLs antiguas hacia las rutas nuevas.
-RewriteRule ^dossier-offcampus\.html$ /off-campus/ [R=301,L]
-RewriteRule ^dossier-dualdiploma\.html$ /dual-diploma/ [R=301,L]
-
 # Compatibilidad con formularios que antes dependian de endpoints Vercel/Next.
 RewriteRule ^api/(brevo-lead|send-enrollment|send-info-request)/?$ /enviar-formulario.php [L,QSA]
 

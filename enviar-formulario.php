@@ -32,8 +32,8 @@ $CONFIG = [
     // Enrutamiento por producto. 'to' admite varios buzones.
     // 'brevo_list' = ID de la lista de contactos en Brevo para ese producto.
     'routes' => [
-        'offcampus'   => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'OFF-CAMPUS',          'landing' => '/off-campus/',  'brevo_list' => 3],
-        'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'brevo_list' => 4],
+        'offcampus'   => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'OFF-CAMPUS',          'landing' => '/off-campus/',  'dossier' => '/assets/dossiers/dossier-off-campus.pdf?v=20260709', 'brevo_list' => 3],
+        'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'dossier' => '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709', 'brevo_list' => 4],
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
         'general'     => ['to' => ['offcampus@chanakacademy.org', 'dualdiploma@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
@@ -58,6 +58,9 @@ $AUTOREPLY = [
             . "· Revisaremos contigo la situación de tu hijo/a y resolveremos todas tus dudas.\n\n"
             . "Mientras tanto:\n"
             . "· Programa completo: {landing}\n"
+            . "· Descargar dossier Off-Campus: {dossier}\n"
+            . "· El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte.\n"
+            . "· Para matricularse, el pago inicial es 180 + la primera mensualidad.\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
@@ -72,6 +75,9 @@ $AUTOREPLY = [
             . "· Revisaremos contigo la compatibilidad con el colegio actual y resolveremos todas tus dudas.\n\n"
             . "Mientras tanto:\n"
             . "· Programa completo: {landing}\n"
+            . "· Descargar dossier Dual Diploma: {dossier}\n"
+            . "· El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte.\n"
+            . "· Para matricularse, el pago inicial es 180 + la primera mensualidad.\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
@@ -100,6 +106,13 @@ $AUTOREPLY = [
             . "¿No sabes qué programa encaja mejor con tu familia?\n"
             . "Nuestro primer paso recomendado es el Diagnóstico Académico (50€): una evaluación completa del nivel real "
             . "de tu hijo/a con propuesta personalizada. Más información: {site}/diagnostico/\n\n"
+            . "Mientras tanto puedes descargar los dossiers principales:\n"
+            . "· Dossier Off-Campus: {dossier_offcampus}\n"
+            . "· Dossier Dual Diploma: {dossier_dual}\n\n"
+            . "Importante:\n"
+            . "· El dossier resume las 4 rutas disponibles.\n"
+            . "· Los materiales académicos se gestionan aparte.\n"
+            . "· Para matricularse, el pago inicial es 180 + la primera mensualidad.\n\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
@@ -123,6 +136,8 @@ $AUTOREPLY = [
             . "· Revisaremos contigo el nivel de entrada del estudiante y confirmaremos la ruta académica y el plan económico final.\n\n"
             . "Mientras tanto:\n"
             . "· Información del programa: {landing}\n"
+            . "· El pago inicial de matrícula es 180 + la primera mensualidad.\n"
+            . "· Los materiales académicos se gestionan aparte según la ruta elegida.\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo de Admisiones — Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
@@ -448,6 +463,13 @@ if ($esMatricula) {
     $label = 'MATRICULA · ' . $label;
 }
 $landing  = $CONFIG['site_url'] . $routeCfg['landing'];
+$dossierLinks = [
+    'offcampus' => $CONFIG['site_url'] . '/assets/dossiers/dossier-off-campus.pdf?v=20260709',
+    'dual'      => $CONFIG['site_url'] . '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709',
+];
+$dossier = isset($routeCfg['dossier']) && $routeCfg['dossier'] !== ''
+    ? $CONFIG['site_url'] . $routeCfg['dossier']
+    : '';
 $origin   = first_value($data, ['origen', 'origin']) ?: ($_SERVER['HTTP_REFERER'] ?? ($_SERVER['REQUEST_URI'] ?? ''));
 
 /* ── 1) GUARDAR EL LEAD (antes de cualquier correo) ── */
@@ -523,6 +545,9 @@ $reply = $esMatricula ? $AUTOREPLY['matricula'] : ($AUTOREPLY[$route] ?? $AUTORE
 $replyBody = strtr($reply['body'], [
     '{nombre}'           => $name !== '' ? $name : 'familia',
     '{landing}'          => $landing,
+    '{dossier}'          => $dossier,
+    '{dossier_offcampus}' => $dossierLinks['offcampus'],
+    '{dossier_dual}'     => $dossierLinks['dual'],
     '{site}'             => $CONFIG['site_url'],
     '{whatsapp}'         => $CONFIG['whatsapp_link'],
     '{whatsapp_display}' => $CONFIG['whatsapp_display'],
@@ -545,4 +570,6 @@ respond_json(200, [
     'ok'      => true,
     'success' => true,
     'message' => 'Solicitud recibida.',
+    'dossier' => $dossier,
+    'dossiers' => $route === 'general' ? $dossierLinks : array_filter([$route => $dossier]),
 ]);
