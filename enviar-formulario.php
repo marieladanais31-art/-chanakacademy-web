@@ -32,8 +32,8 @@ $CONFIG = [
     // Enrutamiento por producto. 'to' admite varios buzones.
     // 'brevo_list' = ID de la lista de contactos en Brevo para ese producto.
     'routes' => [
-        'offcampus'   => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'OFF-CAMPUS',          'landing' => '/off-campus/',  'dossier' => '/assets/dossiers/dossier-off-campus.pdf?v=20260709', 'brevo_list' => 3],
-        'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'dossier' => '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709', 'brevo_list' => 4],
+        'offcampus'   => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'OFF-CAMPUS',          'landing' => '/off-campus/',  'dossier' => '/assets/dossiers/dossier-off-campus.pdf?v=20260709b', 'brevo_list' => 3],
+        'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'dossier' => '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709b', 'brevo_list' => 4],
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
         'general'     => ['to' => ['offcampus@chanakacademy.org', 'dualdiploma@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
@@ -60,7 +60,8 @@ $AUTOREPLY = [
             . "· Programa completo: {landing}\n"
             . "· Descargar dossier Off-Campus: {dossier}\n"
             . "· El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte.\n"
-            . "· Para matricularse, el pago inicial es 180 + la primera mensualidad.\n"
+            . "· Para matricularse: €180 de matrícula + primera mensualidad. Off-Campus inicia desde €250.\n"
+            . "· Referencia internacional para Panamá, Dubái u otros países: aprox. USD $286 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
@@ -77,7 +78,8 @@ $AUTOREPLY = [
             . "· Programa completo: {landing}\n"
             . "· Descargar dossier Dual Diploma: {dossier}\n"
             . "· El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte.\n"
-            . "· Para matricularse, el pago inicial es 180 + la primera mensualidad.\n"
+            . "· Para matricularse: €180 de matrícula + primera mensualidad. Dual Diploma inicia desde €290.\n"
+            . "· Referencia internacional para Panamá, Dubái u otros países: aprox. USD $331 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
@@ -112,7 +114,11 @@ $AUTOREPLY = [
             . "Importante:\n"
             . "· El dossier resume las 4 rutas disponibles.\n"
             . "· Los materiales académicos se gestionan aparte.\n"
-            . "· Para matricularse, el pago inicial es 180 + la primera mensualidad.\n\n"
+            . "· Diagnóstico Académico: €50 (aprox. USD $58).\n"
+            . "· Matrícula: €180 + primera mensualidad.\n"
+            . "· Off-Campus inicia desde €250 (aprox. USD $286).\n"
+            . "· Dual Diploma inicia desde €290 (aprox. USD $331).\n"
+            . "· Referencia USD para Panamá, Dubái u otros países calculada con cambio BCE 1 EUR = 1.1404 USD, redondeada al alza.\n\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
@@ -136,7 +142,8 @@ $AUTOREPLY = [
             . "· Revisaremos contigo el nivel de entrada del estudiante y confirmaremos la ruta académica y el plan económico final.\n\n"
             . "Mientras tanto:\n"
             . "· Información del programa: {landing}\n"
-            . "· El pago inicial de matrícula es 180 + la primera mensualidad.\n"
+            . "· El pago inicial de matrícula es €180 + la primera mensualidad.\n"
+            . "· Referencia internacional: Off-Campus desde €250 / USD $286; Dual Diploma desde €290 / USD $331.\n"
             . "· Los materiales académicos se gestionan aparte según la ruta elegida.\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo de Admisiones — Chanak International Academy\n\n"
@@ -464,8 +471,8 @@ if ($esMatricula) {
 }
 $landing  = $CONFIG['site_url'] . $routeCfg['landing'];
 $dossierLinks = [
-    'offcampus' => $CONFIG['site_url'] . '/assets/dossiers/dossier-off-campus.pdf?v=20260709',
-    'dual'      => $CONFIG['site_url'] . '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709',
+    'offcampus' => $CONFIG['site_url'] . '/assets/dossiers/dossier-off-campus.pdf?v=20260709b',
+    'dual'      => $CONFIG['site_url'] . '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709b',
 ];
 $dossier = isset($routeCfg['dossier']) && $routeCfg['dossier'] !== ''
     ? $CONFIG['site_url'] . $routeCfg['dossier']

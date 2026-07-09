@@ -735,7 +735,7 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="aud-arr">→</div>
 </div>
 </div>
-<p data-i18n="aud_note" style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1.25rem;max-width:600px;margin-left:auto;margin-right:auto">* Precio orientativo según modalidad, nivel y acompañamiento requerido. No incluye materiales académicos, matrícula ni servicios adicionales.</p>
+<p data-i18n="aud_note" style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1.25rem;max-width:760px;margin-left:auto;margin-right:auto">* Precio orientativo según modalidad, nivel y acompañamiento requerido. No incluye materiales académicos ni servicios adicionales. Matrícula: €180 + primera mensualidad. Referencia USD redondeada al alza para Panamá, Dubái u otros países.</p>
 </div>
 </section>
 <!-- IDENTITY -->
@@ -1330,7 +1330,7 @@ es:{
   aud_cta:"Ver programa →",aud3_cta:"Hacer el diagnóstico →",
   aud4_b1:"PROYECCIÓN 2027",aud4_t:"Alianzas futuras",
   aud4_s:"Línea institucional secundaria para iglesias, colegios y comunidades interesadas en explorar proyectos para 2027.",
-  aud_note:"* Precio orientativo según modalidad, nivel y acompañamiento requerido. No incluye materiales académicos, matrícula ni servicios adicionales.",
+  aud_note:"* Precio orientativo según modalidad, nivel y acompañamiento requerido. No incluye materiales académicos ni servicios adicionales. Matrícula: €180 + primera mensualidad. Referencia USD redondeada al alza para Panamá, Dubái u otros países.",
   id_lbl:"Quiénes somos",id_p1:"<strong>Dedicar, iniciar, consagrar al Señor.</strong> El nombre Chanak aparece en Proverbios 22:6. No es solo un nombre: es nuestra misión.",
   id_p2:"Chanak International Academy acompaña a familias que buscan una ruta educativa flexible, seria y con identidad cristiana. Nuestro enfoque combina estructura académica estadounidense, seguimiento personalizado y herramientas digitales para que cada estudiante avance con claridad.",id_p3:"Hoy nuestra prioridad es servir a familias mediante Off Campus y Dual Diploma. Las alianzas locales se proyectan como una fase institucional posterior para 2027, con procesos de evaluación, formación y acuerdos específicos.",
   id_cta:"Solicitar información →",pillars_lbl:"Los cuatro pilares",
@@ -2003,12 +2003,12 @@ async function sendEmail(e){
   }
 
   const dossierMap={
-    offcampus:[{label:'Descargar dossier Off-Campus',url:'/assets/dossiers/dossier-off-campus.pdf?v=20260709'}],
-    dual:[{label:'Descargar dossier Dual Diploma',url:'/assets/dossiers/dossier-dual-diploma.pdf?v=20260709'}],
+    offcampus:[{label:'Descargar dossier Off-Campus',url:'/assets/dossiers/dossier-off-campus.pdf?v=20260709b'}],
+    dual:[{label:'Descargar dossier Dual Diploma',url:'/assets/dossiers/dossier-dual-diploma.pdf?v=20260709b'}],
     diagnostico:[{label:'Ver información del Diagnóstico Académico',url:'/diagnostico/'}],
     info:[
-      {label:'Descargar dossier Off-Campus',url:'/assets/dossiers/dossier-off-campus.pdf?v=20260709'},
-      {label:'Descargar dossier Dual Diploma',url:'/assets/dossiers/dossier-dual-diploma.pdf?v=20260709'}
+      {label:'Descargar dossier Off-Campus',url:'/assets/dossiers/dossier-off-campus.pdf?v=20260709b'},
+      {label:'Descargar dossier Dual Diploma',url:'/assets/dossiers/dossier-dual-diploma.pdf?v=20260709b'}
     ]
   };
   const dossierLinks=dossierMap[nec]||dossierMap.info;
@@ -2070,7 +2070,7 @@ async function sendEmail(e){
         <div style="font-weight:700;margin-bottom:.75rem">Descarga inmediata</div>
         <div style="display:grid;gap:.65rem">${dossierButtons}</div>
         <div style="margin-top:.85rem;line-height:1.55;color:#486a4b">
-          El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte. Para matricularse, el pago inicial es 180 + la primera mensualidad.
+          El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte. Para matricularse: €180 + primera mensualidad. Referencia internacional redondeada al alza: Diagnóstico €50 / USD $58, Off-Campus inicial desde €250 / USD $286, Dual Diploma inicial desde €290 / USD $331.
         </div>
       </div>`:''}
       <p style="font-size:.78rem;color:#8a9ab0">Si no recibiste respuesta en 24h, escríbenos directamente a <strong>offcampus@chanakacademy.org</strong></p>
