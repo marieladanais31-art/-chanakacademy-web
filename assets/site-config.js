@@ -13,6 +13,13 @@
     matriculaUrl: SIS_MATRICULA_URL,
     sisUrl: "https://sis.chanakacademy.org",
     foundationUrl: "https://foundation.chanakacademy.org",
+    // Pagos Stripe del Dual Diploma. Flujo obligatorio: 1) evaluación 35€ → 2) matrícula 210€.
+    // La matrícula NO se ofrece como pago directo de entrada (se reserva para el paso 2,
+    // posterior a la evaluación, conforme al flujo SIS-primero).
+    stripeDualDiploma: {
+      evaluacionDiagnostica: "https://buy.stripe.com/eVq28sffHfNHgA0coq67S0g", // 35€ · paso 1
+      matricula: "https://buy.stripe.com/aFa4gA5F7fNH6Zqbkm67S07"              // 210€ · paso 2
+    },
     banner: {
       earlyUntil: "2026-07-31",
       lateUntil: "2026-09-04"
