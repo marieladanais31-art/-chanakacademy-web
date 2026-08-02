@@ -37,8 +37,8 @@ fbq('track', 'ViewContent', {
 src="https://www.facebook.com/tr?id=1697477548238291&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-<title>Evaluación de Nivel Académico para tu Hijo · Test Homeschool 50€ — Chanak International Academy</title>
-<meta name="description" content="Evaluación del nivel académico de tu hijo: test de nivel homeschool completo (149 preguntas) con Plan Educativo Individual. 50 € pago único · Chanak International Academy, colegio registrado en Florida FLDOE #134620.">
+<title>Evaluación de Nivel Académico para tu Hijo · Test Homeschool Online — Chanak International Academy</title>
+<meta name="description" content="Evaluación del nivel académico de tu hijo: test de nivel homeschool completo (149 preguntas) con Plan Educativo Individual y certificación de dominio. Chanak International Academy, colegio registrado en Florida FLDOE #134620.">
 
 <link rel="canonical" href="https://www.chanakacademy.org/diagnostico/">
 <script type="application/ld+json">
@@ -625,14 +625,12 @@ footer a{color:rgba(255,255,255,.42);text-decoration:underline}
       <div class="country-hint" id="country-hint"></div>
     </div>
 
-    <div class="hero-price he he4">
-      <span class="price-was" id="hero-price-was">Precio regular: 80 €</span>
-      <div class="price-big" id="hero-price-big"><sup>€</sup>50</div>
-      <span class="price-note">Oferta de lanzamiento · Pago único</span>
+    <div class="hero-price he he4" style="text-align:center">
+      <span class="price-note" style="font-size:1rem;font-weight:700;color:#fff">149 preguntas · Plan Educativo Individual incluido</span>
     </div>
 
     <div class="hero-btns he he5">
-      <a id="stripe-payment-btn" href="https://buy.stripe.com/6oU00k5F79pj1F660267S03" target="_blank" rel="noopener" class="btn btn-stripe btn-lg">Pagar evaluación por 50 €</a>
+      <a id="stripe-payment-btn" href="https://buy.stripe.com/6oU00k5F79pj1F660267S03" target="_blank" rel="noopener" class="btn btn-stripe btn-lg">Iniciar evaluación diagnóstica</a>
       <a id="whatsapp-btn" href="https://wa.me/34624703272?text=Hola%2C%20quiero%20hacer%20la%20Prueba%20Diagn%C3%B3stica%20de%2050%E2%82%AC" target="_blank" rel="noopener" class="btn btn-green btn-lg">Solicitar información por WhatsApp</a>
       <a href="https://www.chanakacademy.org" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Conocer programas Chanak</a>
     </div>
@@ -998,7 +996,7 @@ footer a{color:rgba(255,255,255,.42);text-decoration:underline}
   <p style="color:#c9d6ef;font-size:15px;max-width:620px;margin:0 auto 22px;line-height:1.6">El primer paso es conocer el nivel real de tu hijo. Evaluación completa + Plan Educativo Individual inicial.</p>
   <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
     <a id="cta-final-wa" href="https://wa.me/34624703272?text=Hola%2C%20quiero%20hacer%20la%20Prueba%20Diagn%C3%B3stica%20de%2050%E2%82%AC" target="_blank" rel="noopener" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;text-decoration:none">Solicitar orientación</a>
-    <a id="cta-final-pagar" href="https://buy.stripe.com/6oU00k5F79pj1F660267S03" target="_blank" rel="noopener" style="background:#d4922a;color:#fff;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;text-decoration:none">Pagar evaluación por 50 €</a>
+    <a id="cta-final-pagar" class="dynamic-cta" href="https://buy.stripe.com/6oU00k5F79pj1F660267S03" target="_blank" rel="noopener" style="background:#d4922a;color:#fff;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;text-decoration:none">Pagar evaluación por 50 €</a>
   </div>
 </section>
 <footer>
@@ -1159,8 +1157,6 @@ function updateWhatsAppLink(countryCode) {
 function applyCountryConfig(countryCode) {
   const c = COUNTRY_CONFIG[countryCode] || COUNTRY_CONFIG.int;
   document.getElementById('hero-copy').textContent = c.heroCopy;
-  document.getElementById('hero-price-was').textContent = c.regular;
-  document.getElementById('hero-price-big').innerHTML = c.promo === '50 €' ? '<sup>€</sup>50' : (c.promo === '$50' ? '<sup>$</sup>50' : c.promo);
   document.getElementById('cta-price-was').textContent = c.regular;
   document.getElementById('cta-price-now').textContent = c.promo;
   document.getElementById('form-price-was').textContent = c.regular;
@@ -1178,7 +1174,6 @@ function applyCountryConfig(countryCode) {
     stripeBtn.textContent = 'Solicitar información';
     stripeBtn.href = `https://wa.me/${WHATSAPP_PHONE}`;
   } else {
-    stripeBtn.textContent = c.cta;
     stripeBtn.href = withUTM(c.stripeUrl);
   }
   updateWhatsAppLink(countryCode);
@@ -1199,7 +1194,7 @@ function syncCtaFinal() {
   const dst = document.getElementById('cta-final-pagar');
   const wsrc = document.getElementById('whatsapp-btn');
   const wdst = document.getElementById('cta-final-wa');
-  if (src && dst) { dst.href = src.href; dst.textContent = src.textContent; }
+  if (src && dst) { dst.href = src.href; }
   if (wsrc && wdst) { wdst.href = wsrc.href; }
 }
 syncCtaFinal();
