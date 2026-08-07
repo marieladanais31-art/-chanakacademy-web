@@ -181,12 +181,24 @@
   }
 
   document.addEventListener("click", function (event) {
-    var anchor = event.target.closest("a");
-    if (!anchor || typeof window.gtag !== "function") return;
+    var anchor = event.target.closest ? event.target.closest("a") : null;
+    if (!anchor) return;
     var href = anchor.href || "";
-    if (href.indexOf("wa.me") > -1) window.gtag("event", "whatsapp_click", { event_category: "contact", event_label: location.pathname });
-    else if (href.indexOf("sis.chanakacademy.org/matricula") > -1) window.gtag("event", "matricula_click", { event_category: "enrollment", event_label: location.pathname });
-    else if (href.indexOf("/assets/dossiers/") > -1) window.gtag("event", "dossier_download", { event_category: "content", event_label: location.pathname });
+    if (href.indexOf("wa.me") > -1) {
+      if (typeof window.gtag === "function") window.gtag("event", "whatsapp_click", { event_category: "contact", event_label: location.pathname });
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Lead", { content_name: "WhatsApp Click", content_category: location.pathname });
+        window.fbq("track", "Schedule", { content_name: "WhatsApp Schedule", content_category: location.pathname });
+      }
+    }
+    else if (href.indexOf("sis.chanakacademy.org/matricula") > -1) {
+      if (typeof window.gtag === "function") window.gtag("event", "matricula_click", { event_category: "enrollment", event_label: location.pathname });
+      if (typeof window.fbq === "function") window.fbq("track", "InitiateCheckout", { content_name: "Matricula Click" });
+    }
+    else if (href.indexOf("/assets/dossiers/") > -1) {
+      if (typeof window.gtag === "function") window.gtag("event", "dossier_download", { event_category: "content", event_label: location.pathname });
+      if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: "Dossier Download" });
+    }
   }, true);
 
   ready(function () {

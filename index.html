@@ -105,14 +105,18 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 gtag('js',new Date());gtag('config','AW-18109980849');gtag('config','GT-NSSXS5N6');
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18109980849"></script>
-<!-- Meta Pixel: descomentar para activar. El ID 1697477548238291 es el mismo
-     que ya usa /diagnostico/. Idealmente activarlo solo con consentimiento de
-     cookies de marketing (ver politica de cookies).
+<!-- Meta Pixel Base Code (ID: 1697477548238291) -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1697477548238291');fbq('track','PageView');
+fbq('init','1697477548238291');
+fbq('track','PageView');
+function trackMetaLead(programName) {
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead', { content_name: programName || 'Orientación WhatsApp' });
+    fbq('track', 'Schedule', { content_name: programName || 'Orientación WhatsApp' });
+  }
+}
 </script>
--->
 <style>
 :root{--navy:#0c2d48;--blue:#1a5f8a;--teal:#1b9faa;--green:#6ab04c;--gold:#e8a020;--off:#f4f8fb;--border:#d8e6ee;--text:#1a2d3e;--muted:#5b7a91;--r:12px;--sh:0 4px 24px rgba(12,45,72,.1);--shl:0 16px 48px rgba(12,45,72,.18)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -665,14 +669,14 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="wrap" style="width:100%">
 <div class="hero-in">
 <div class="verse-pill"><span class="verse-dot"></span><span data-i18n="h_verse">"Instruye al niño en su camino..." — Proverbios 22:6</span></div>
-<h1 data-i18n="h_h1">Homeschool en España<br/>con certificación de colegio <em>americano</em></h1>
+<h1 data-i18n="h_h1">Educación Americana de Excelencia,<br/>a tu medida y con validez oficial.</h1>
 <div class="orn"><div class="orn-line"></div><span style="color:var(--teal)">✦</span><div class="orn-line"></div></div>
-<p class="hero-tag" data-i18n="h_tag">Educación en casa con diploma oficial americano, o doble titulación (Dual Diploma) sin cambiar de colegio. Registrado en Florida, FLDOE #134620.</p>
-<p class="hero-sub2" data-i18n="h_sub">Off-Campus: educación en casa para familias homeschool. Dual Diploma: doble titulación sin cambiar de colegio.</p>
+<p class="hero-tag" data-i18n="h_tag">La alternativa líder en Homeschool (Educación en Casa) y Dual Diploma en España e Internacional. Certificación oficial registrada en el Departamento de Educación de Florida (FLDOE #134620).</p>
+<p class="hero-sub2" data-i18n="h_sub">Homeschool Off-Campus: educación integral en casa. Dual Diploma: doble titulación americana sin cambiar de colegio.</p>
 <div class="hero-ctas">
-<a class="btn btn-t" href="/off-campus/" rel="noopener noreferrer" style="font-size:1rem;padding:.95rem 2.25rem" target="_blank">Off Campus</a>
-<a class="btn btn-gold" href="/dual-diploma/" rel="noopener noreferrer" style="font-size:1rem;padding:.95rem 2.25rem" target="_blank">Dual Diploma</a>
-<a class="btn btn-o" data-i18n="h_cta1" href="#dossier" style="font-size:1rem;padding:.95rem 2.25rem">Solicitar información</a>
+<a class="btn btn-t" href="/off-campus/" rel="noopener noreferrer" style="font-size:1rem;padding:.95rem 2.25rem" target="_blank" onclick="trackMetaLead('Homeschool Off-Campus')">Homeschool Off-Campus</a>
+<a class="btn btn-gold" href="/dual-diploma/" rel="noopener noreferrer" style="font-size:1rem;padding:.95rem 2.25rem" target="_blank" onclick="trackMetaLead('Dual Diploma')">Dual Diploma U.S.</a>
+<a class="btn btn-o" data-i18n="h_cta1" href="https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20la%20Orientación%20Gratuita" style="font-size:1rem;padding:.95rem 2.25rem" target="_blank" onclick="trackMetaLead('Orientación WhatsApp')">Solicitar Cita de Orientación 📲</a>
 </div>
 <div class="trust-bar">
 <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1em;height:1em"><path d="M12 4v16M7 9h10"/></svg> <span data-i18n="t_1">Cristocéntrico</span></span>
@@ -706,23 +710,23 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <p class="sub" data-i18n="aud_sub" style="margin:0 auto">Nuestra prioridad actual es acompañar familias con Off-Campus y estudiantes/colegios con Dual Diploma. Las alianzas locales se proyectan como una fase institucional posterior para 2027.</p>
 </div>
 <div class="aud-cards fi">
-<div class="aud-card" onclick="window.location.href='/off-campus/'">
+<div class="aud-card" onclick="trackMetaLead('Card Homeschool'); window.location.href='/off-campus/';">
 <div class="aud-img" style="background:url('/assets/img/hero-offcampus.webp') center/cover"></div>
 <div class="aud-body">
-<div class="aud-tags"><span class="badge badge-t" data-i18n="aud1_b1">OFF-CAMPUS</span><span class="badge badge-g" data-i18n="aud1_b2">Consulta el dossier</span></div>
-<div class="aud-ttl" data-i18n="aud1_t">Para familias homeschool</div>
-<div class="aud-sub" data-i18n="aud1_s">Colegio americano completo desde casa: currículo K-12 individualizado, mentoría, seguimiento en el SIS y diploma registrado en Florida.</div>
-<div style="margin-top:.9rem"><span class="prc-cta" data-i18n="aud_cta">Ver programa →</span></div>
+<div class="aud-tags"><span class="badge badge-t">HOMESCHOOL K-12</span><span class="badge badge-g">Opción Flexible / PEI</span></div>
+<div class="aud-ttl">🏡 Busco Homeschool / Educación en Casa</div>
+<div class="aud-sub">Colegio americano completo desde casa: currículo K-12 individualizado, mentoría pedagógica, seguimiento en el SIS y diploma registrado en Florida.</div>
+<div style="margin-top:.9rem"><span class="prc-cta">Ver Programa Homeschool →</span></div>
 </div>
 <div class="aud-arr">→</div>
 </div>
-<div class="aud-card" onclick="window.location.href='/dual-diploma/'">
+<div class="aud-card" onclick="trackMetaLead('Card Dual Diploma'); window.location.href='/dual-diploma/';">
 <div class="aud-img" style="background:url('/assets/img/hero-dualdiploma.webp') center/cover"></div>
 <div class="aud-body">
-<div class="aud-tags"><span class="badge badge-t">DUAL DIPLOMA</span><span class="badge badge-gold" data-i18n="aud2_b2">Consulta el dossier</span></div>
-<div class="aud-ttl" data-i18n="aud2_t">Sin cambiar de colegio</div>
-<div class="aud-sub" data-i18n="aud2_s">Diploma estadounidense complementario: reconocemos hasta el 75% del currículo local y tu hijo añade solo 5 horas semanales.</div>
-<div style="margin-top:.9rem"><span class="prc-cta" data-i18n="aud_cta">Ver programa →</span></div>
+<div class="aud-tags"><span class="badge badge-t">DUAL DIPLOMA</span><span class="badge badge-gold">Doble Titulación U.S.</span></div>
+<div class="aud-ttl">🎓 Busco convalidar mi colegio actual</div>
+<div class="aud-sub">Diploma estadounidense complementario sin cambiar de colegio: convalidamos hasta el 75% del currículo local y tu hijo añade solo 5 horas semanales.</div>
+<div style="margin-top:.9rem"><span class="prc-cta">Ver Programa Dual Diploma →</span></div>
 </div>
 <div class="aud-arr">→</div>
 </div>
