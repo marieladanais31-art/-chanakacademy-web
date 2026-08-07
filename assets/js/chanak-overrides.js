@@ -269,6 +269,36 @@
     }
   }, true);
 
+  function removeOffCampusPricingSection() {
+    var titles = document.querySelectorAll("h2, p, span, div, section");
+    titles.forEach(function (el) {
+      if (el.textContent && (el.textContent.indexOf("INVERSIÓN OFF-CAMPUS") > -1 || el.textContent.indexOf("Precios claros para planificar el año") > -1)) {
+        var section = el.closest ? el.closest("section, div[style*='padding']") : null;
+        if (section && section.tagName !== "BODY") {
+          section.style.display = "none";
+          section.style.visibility = "hidden";
+          section.style.height = "0px";
+          section.style.overflow = "hidden";
+        }
+      }
+    });
+  }
+
+  function updateDualDiplomaConvalidationCTA() {
+    var anchors = document.querySelectorAll("a[href*='stripe.com'], a[href*='diagnostico']");
+    anchors.forEach(function (a) {
+      var text = plain(a.textContent || "");
+      if (text.indexOf("35") > -1 || text.indexOf("evaluacion") > -1 || text.indexOf("diagnostica") > -1) {
+        a.textContent = "Agendar Orientación de Convalidación Gratuita 📲";
+        a.href = "https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20la%20Orientación%20de%20Convalidación%20para%20Dual%20Diploma";
+        a.style.background = "linear-gradient(135deg, #1b9faa, #1a5f8a)";
+        a.style.color = "#ffffff";
+        a.style.fontWeight = "800";
+        a.style.boxShadow = "0 10px 30px rgba(27, 159, 170, 0.35)";
+      }
+    });
+  }
+
   ready(function () {
     inject3dStyles();
     init3dTilt();
@@ -288,6 +318,7 @@
         stickyBar("off-campus");
         testimonialBadges();
         ctaFinal("off-campus");
+        removeOffCampusPricingSection();
         internalLinks([
           ["/dual-diploma/", "Doble titulacion: Dual Diploma americano"],
           ["/diagnostico/", "Test de nivel homeschool"]
@@ -297,9 +328,10 @@
       keepApplying(function () {
         rewriteEnrollmentLinks();
         stickyBar("dual-diploma");
+        updateDualDiplomaConvalidationCTA();
         ctaFinal("dual-diploma",
-          '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">Quieres empezar con diagnostico? '
-          + '<a href="/diagnostico/?programa=dual-diploma&src=dd-landing" style="color:#e8a020;font-weight:700;text-decoration:underline">Abrir evaluacion diagnostica →</a></p>');
+          '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">¿Quieres revisar convalidaciones? '
+          + '<a href="https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20orientacion%20de%20convalidacion" style="color:#e8a020;font-weight:700;text-decoration:underline">Agendar Orientación de Convalidación →</a></p>');
         internalLinks([
           ["/off-campus/", "Colegio americano online homeschool"],
           ["/diagnostico/", "Evaluacion de nivel academico"]

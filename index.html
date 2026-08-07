@@ -706,38 +706,62 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="aw"><div class="aw-txt"><strong>IRS 501(c)(3)</strong><span>EIN 36-5154011</span></div></div>
 </div></div>
 </div>
-<!-- AUDIENCE -->
-<section class="aud-sec" id="quien">
-<div class="wrap">
-<div class="fi" style="text-align:center;margin-bottom:3rem">
-<div class="lbl" data-i18n="aud_lbl">¿Cómo podemos ayudarte?</div>
-<h2 class="ttl" data-i18n="aud_ttl" style="margin:0 auto .625rem">Elige la ruta que necesitas ahora</h2>
-<p class="sub" data-i18n="aud_sub" style="margin:0 auto">Nuestra prioridad actual es acompañar familias con Off-Campus y estudiantes/colegios con Dual Diploma. Las alianzas locales se proyectan como una fase institucional posterior para 2027.</p>
+<!-- AUDIENCE / 3D ARTIFACT SHOWCASE WIDGET -->
+<section class="aud-sec" id="quien" style="background:linear-gradient(180deg,#0a192f 0%,#0c2d48 100%);color:#fff;padding:100px 0;position:relative;overflow:hidden">
+<div style="position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(circle,rgba(27,159,170,.18) 0%,transparent 70%);pointer-events:none"></div>
+<div class="wrap" style="position:relative;z-index:2">
+<div class="fi" style="text-align:center;margin-bottom:3.5rem">
+<div class="lbl" style="color:var(--gold);letter-spacing:.22em">✦ SELECCIONA TU OBJETIVO EDUCATIVO ✦</div>
+<h2 class="ttl" style="color:#fff;margin:0 auto .875rem;font-size:clamp(2.2rem,4.5vw,3.4rem);text-shadow:0 4px 20px rgba(0,0,0,.4)">Diseña la Ruta Académica de tu Hijo</h2>
+<p class="sub" style="color:rgba(255,255,255,.75);margin:0 auto;max-width:700px;font-size:1.05rem">Colegio Privado Norteamericano registrado en el Departamento de Educación de Florida (FLDOE #134620). Selecciona el programa para explorar la experiencia interactiva.</p>
 </div>
-<div class="aud-cards fi">
-<div class="aud-card" onclick="trackMetaLead('Card Homeschool'); window.location.href='/off-campus/';">
-<div class="aud-img" style="background:url('/assets/img/hero-offcampus.webp') center/cover"></div>
-<div class="aud-body">
-<div class="aud-tags"><span class="badge badge-t">HOMESCHOOL K-12</span><span class="badge badge-g">Opción Flexible / PEI</span></div>
-<div class="aud-ttl">🏡 Busco Homeschool / Educación en Casa</div>
-<div class="aud-sub">Colegio americano completo desde casa: currículo K-12 individualizado, mentoría pedagógica, seguimiento en el SIS y diploma registrado en Florida.</div>
-<div style="margin-top:.9rem"><span class="prc-cta">Ver Programa Homeschool →</span></div>
+
+<!-- 3D ARTIFACT SHOWCASE GRID -->
+<div class="aud-cards fi" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;max-width:1100px;margin:0 auto">
+
+<!-- CARD 1: HOMESCHOOL OFF-CAMPUS -->
+<div class="aud-card" onclick="trackMetaLead('Card Homeschool'); window.location.href='/off-campus/';" style="background:rgba(255,255,255,.05);border:1.5px solid rgba(27,159,170,.35);border-radius:22px;padding:2.2rem;backdrop-filter:blur(20px);box-shadow:0 20px 50px rgba(0,0,0,.3);display:flex;flex-direction:column;justify-space-between;cursor:pointer;transition:all .4s cubic-bezier(.16,1,.3,1)">
+<div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+<span class="badge" style="background:rgba(27,159,170,.2);color:#38ef7d;border:1px solid rgba(56,239,125,.4);font-size:.78rem;padding:.4rem 1rem">HOMESCHOOL K-12</span>
+<span style="color:var(--gold);font-size:1.5rem">🏡</span>
 </div>
-<div class="aud-arr">→</div>
+<h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;color:#fff;margin-bottom:.75rem;line-height:1.25">Educación Integral en Casa</h3>
+<p style="color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem">Colegio americano completo desde casa: currículo K-12 individualizado, mentoría pedagógica en español, expediente SIS en tiempo real y diploma oficial registrado en Florida.</p>
+<ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.6rem;font-size:.88rem;color:rgba(255,255,255,.88)">
+<li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--teal)">✓</span> Convalidación y apostilla de La Haya</li>
+<li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--teal)">✓</span> Plan Educativo Individualizado (PEI)</li>
+<li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--teal)">✓</span> Acompañamiento de Mentora en Español</li>
+</ul>
 </div>
-<div class="aud-card" onclick="trackMetaLead('Card Dual Diploma'); window.location.href='/dual-diploma/';">
-<div class="aud-img" style="background:url('/assets/img/hero-dualdiploma.webp') center/cover"></div>
-<div class="aud-body">
-<div class="aud-tags"><span class="badge badge-t">DUAL DIPLOMA</span><span class="badge badge-gold">Doble Titulación U.S.</span></div>
-<div class="aud-ttl">🎓 Busco convalidar mi colegio actual</div>
-<div class="aud-sub">Diploma estadounidense complementario sin cambiar de colegio: convalidamos hasta el 75% del currículo local y tu hijo añade solo 5 horas semanales.</div>
-<div style="margin-top:.9rem"><span class="prc-cta">Ver Programa Dual Diploma →</span></div>
+<div>
+<span class="btn btn-t" style="width:100%;justify-content:center;padding:1rem 1.5rem;font-size:1rem;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--blue))">Explorar Ruta Homeschool →</span>
 </div>
-<div class="aud-arr">→</div>
 </div>
-<div class="aud-card diag" onclick="window.location.href='/diagnostico/'">
-<div class="aud-img" style="background:url('/assets/img/hero-diagnostico.webp') center/cover"></div>
-<div class="aud-body">
+
+<!-- CARD 2: DUAL DIPLOMA -->
+<div class="aud-card" onclick="trackMetaLead('Card Dual Diploma'); window.location.href='/dual-diploma/';" style="background:rgba(255,255,255,.05);border:1.5px solid rgba(232,160,32,.4);border-radius:22px;padding:2.2rem;backdrop-filter:blur(20px);box-shadow:0 20px 50px rgba(0,0,0,.3);display:flex;flex-direction:column;justify-space-between;cursor:pointer;transition:all .4s cubic-bezier(.16,1,.3,1)">
+<div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+<span class="badge" style="background:rgba(232,160,32,.2);color:#ffd700;border:1px solid rgba(255,215,0,.4);font-size:.78rem;padding:.4rem 1rem">DUAL DIPLOMA U.S.</span>
+<span style="color:var(--gold);font-size:1.5rem">🎓</span>
+</div>
+<h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;color:#fff;margin-bottom:.75rem;line-height:1.25">Doble Titulación de Bachillerato</h3>
+<p style="color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem">Diploma estadounidense complementario sin cambiar de colegio: reconocemos hasta el 75% del currículo local y tu hijo añade solo 5 horas semanales.</p>
+<ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.6rem;font-size:.88rem;color:rgba(255,255,255,.88)">
+<li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--gold)">✓</span> Doble titulación americana + colegio local</li>
+<li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--gold)">✓</span> Inmersión en inglés académico avanzado</li>
+<li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--gold)">✓</span> 75% de créditos reconocidos automáticamente</li>
+</ul>
+</div>
+<div>
+<span class="btn btn-gold" style="width:100%;justify-content:center;padding:1rem 1.5rem;font-size:1rem;border-radius:12px;background:linear-gradient(135deg,var(--gold),#c88010);color:#fff">Convalidar Bachillerato →</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
 <div class="aud-tags"><span class="badge" data-i18n="aud3_b1">¿NO SABES CUÁL ELEGIR?</span></div>
 <div class="aud-ttl" data-i18n="aud3_t">Inicia con una prueba diagnóstica</div>
 <div class="aud-sub" data-i18n="aud3_s">Descubre el nivel real de tu hijo con una evaluación completa y recibe una propuesta personalizada del programa más adecuado.</div>
