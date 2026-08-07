@@ -284,10 +284,12 @@
   }, true);
 
   function removeOffCampusPricingSection() {
-    var titles = document.querySelectorAll("h2, p, span, div, section");
+    var titles = document.querySelectorAll("h2, p, span, div, section, a");
     titles.forEach(function (el) {
-      if (el.textContent && (el.textContent.indexOf("INVERSIÓN OFF-CAMPUS") > -1 || el.textContent.indexOf("Precios claros para planificar el año") > -1)) {
-        var section = el.closest ? el.closest("section, div[style*='padding']") : null;
+      if (!el || !el.textContent) return;
+      var txt = el.textContent;
+      if (txt.indexOf("INVERSIÓN OFF-CAMPUS") > -1 || txt.indexOf("Precios claros para planificar el año") > -1 || txt.indexOf("PLAN DE PAGO 2026-27") > -1 || txt.indexOf("¿Cuánto cuesta exactamente?") > -1) {
+        var section = el.closest ? (el.closest("section") || el.closest("div[style*='padding']") || el.closest(".pricing-card") || el.parentElement) : null;
         if (section && section.tagName !== "BODY") {
           section.style.display = "none";
           section.style.visibility = "hidden";
@@ -299,12 +301,12 @@
   }
 
   function updateDualDiplomaConvalidationCTA() {
-    var anchors = document.querySelectorAll("a[href*='stripe.com'], a[href*='diagnostico']");
+    var anchors = document.querySelectorAll("a, button");
     anchors.forEach(function (a) {
       var text = plain(a.textContent || "");
-      if (text.indexOf("35") > -1 || text.indexOf("evaluacion") > -1 || text.indexOf("diagnostica") > -1) {
-        a.textContent = "Agendar Orientación de Convalidación Gratuita 📲";
-        a.href = "https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20la%20Orientación%20de%20Convalidación%20para%20Dual%20Diploma";
+      if (text.indexOf("35") > -1 || text.indexOf("evaluacion") > -1 || text.indexOf("diagnostica") > -1 || text.indexOf("hacer el diagnostico") > -1) {
+        a.textContent = "Agendar Cita / Orientación Gratuita 📲";
+        a.href = "https://wa.me/34624703272?text=Hola,%20quiero%20agendar%20una%20cita%20de%20orientación%20para%20Dual%20Diploma";
         a.style.background = "linear-gradient(135deg, #1b9faa, #1a5f8a)";
         a.style.color = "#ffffff";
         a.style.fontWeight = "800";
