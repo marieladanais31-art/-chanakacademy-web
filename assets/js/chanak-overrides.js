@@ -11,6 +11,74 @@
     else document.addEventListener("DOMContentLoaded", fn);
   }
 
+  function inject3dStyles() {
+    if (document.getElementById("chanak3dStyles")) return;
+    var style = document.createElement("style");
+    style.id = "chanak3dStyles";
+    style.textContent = `
+      /* 3D GLASSMORPHISM & CARD ELEVATION OVERRIDES */
+      form, .aud-card, .tcard, .pc, article, div[style*="border-radius:18px"], div[style*="border-radius:16px"], div[style*="border-radius:14px"] {
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease !important;
+      }
+      form {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(20px) !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 0 24px 64px rgba(12, 45, 72, 0.22), 0 0 0 1px rgba(27, 159, 170, 0.15) !important;
+      }
+      input[type="text"], input[type="tel"], input[type="email"], select {
+        transition: all 0.25s ease !important;
+        border-radius: 12px !important;
+      }
+      input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus, select:focus {
+        border-color: #1b9faa !important;
+        box-shadow: 0 0 16px rgba(27, 159, 170, 0.3), 0 4px 12px rgba(12, 45, 72, 0.08) !important;
+        transform: translateY(-1px) !important;
+      }
+      button[type="submit"], .btn-t, .btn-gold {
+        position: relative !important;
+        overflow: hidden !important;
+        box-shadow: 0 8px 24px rgba(27, 159, 170, 0.25) !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      button[type="submit"]:hover, .btn-t:hover, .btn-gold:hover {
+        transform: translateY(-3px) scale(1.02) !important;
+        box-shadow: 0 14px 36px rgba(27, 159, 170, 0.4) !important;
+      }
+      /* ACCORDION UI ANIMATIONS */
+      .faq-item, details {
+        transition: all 0.3s ease !important;
+        border-radius: 12px !important;
+      }
+      .faq-item:hover, details:hover {
+        border-color: #1b9faa !important;
+        box-shadow: 0 8px 24px rgba(12, 45, 72, 0.08) !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function init3dTilt() {
+    var cards = document.querySelectorAll(".aud-card, .tcard, .pc, article, div[style*='border-radius:18px']");
+    cards.forEach(function (card) {
+      if (card.dataset.tiltInit) return;
+      card.dataset.tiltInit = "1";
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var centerX = rect.width / 2;
+        var centerY = rect.height / 2;
+        var rotateX = ((y - centerY) / centerY) * -4;
+        var rotateY = ((x - centerX) / centerX) * 4;
+        card.style.transform = "perspective(1000px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) translateY(-4px)";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+      });
+    });
+  }
+
   function plain(value) {
     return String(value || "")
       .toLowerCase()
@@ -202,6 +270,10 @@
   }, true);
 
   ready(function () {
+    inject3dStyles();
+    init3dTilt();
+    setInterval(init3dTilt, 1500);
+
     if (path.indexOf("/dual-diploma-panama") === 0) {
       keepApplying(function () {
         rewriteEnrollmentLinks();
