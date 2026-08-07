@@ -45,7 +45,14 @@
         transform: translateY(-3px) scale(1.02) !important;
         box-shadow: 0 14px 36px rgba(27, 159, 170, 0.4) !important;
       }
-      /* ACCORDION UI ANIMATIONS */
+      /* HEADER CLIPPING & OVERLAP FIXES */
+      .logo-sub {
+        white-space: nowrap !important;
+      }
+      @media (max-width: 1280px) {
+        .logo-sub { display: none !important; }
+      }
+      /* ACCORDION & SCROLL ANIMATIONS */
       .faq-item, details {
         transition: all 0.3s ease !important;
         border-radius: 12px !important;
@@ -53,6 +60,13 @@
       .faq-item:hover, details:hover {
         border-color: #1b9faa !important;
         box-shadow: 0 8px 24px rgba(12, 45, 72, 0.08) !important;
+      }
+      .fi {
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      .fi.v {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
       }
     `;
     document.head.appendChild(style);
