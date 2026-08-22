@@ -487,6 +487,13 @@ $name    = first_value($data, ['nombre', 'nombre_padre', 'responsable_nombre', '
 $phone   = first_value($data, ['whatsapp', 'telefono', 'phone', 'guardianPhone', 'tel']);
 $country = first_value($data, ['pais', 'country', 'pais_residencia', 'pais_responsable', 'estudiante_pais']);
 $city    = first_value($data, ['ciudad', 'city']);
+$situacionEducativa = first_value($data, ['situacion_educativa', 'currentSituation']);
+$etapaEducativa     = first_value($data, ['etapa_educativa', 'educationStage']);
+$utmSource   = first_value($data, ['utm_source']);
+$utmMedium   = first_value($data, ['utm_medium']);
+$utmCampaign = first_value($data, ['utm_campaign']);
+$utmContent  = first_value($data, ['utm_content']);
+$utmTerm     = first_value($data, ['utm_term']);
 
 /* ── Enrutamiento por producto ──
    1º el campo explícito 'necesidad' del formulario de la home;
@@ -590,6 +597,24 @@ if ($city !== '') {
 }
 if ($commercialRegion !== '') {
     $brevoExtraAttributes['REGION_COMERCIAL'] = $commercialRegion;
+}
+if ($situacionEducativa !== '') {
+    $brevoExtraAttributes['SITUACION_EDUCATIVA'] = $situacionEducativa;
+}
+if ($etapaEducativa !== '') {
+    $brevoExtraAttributes['ETAPA_EDUCATIVA'] = $etapaEducativa;
+}
+if ($utmSource !== '') {
+    $brevoExtraAttributes['UTM_SOURCE'] = $utmSource;
+}
+if ($utmMedium !== '') {
+    $brevoExtraAttributes['UTM_MEDIUM'] = $utmMedium;
+}
+if ($utmCampaign !== '') {
+    $brevoExtraAttributes['UTM_CAMPAIGN'] = $utmCampaign;
+}
+if ($utmContent !== '') {
+    $brevoExtraAttributes['UTM_CONTENT'] = $utmContent;
 }
 brevo_add_contact($email, $name, $phone, $brevoLists, $brevoExtraAttributes);
 

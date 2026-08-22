@@ -78,6 +78,7 @@ function fmt_aed(int $amount): string
     .field-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
     @media(max-width:680px){.field-row{grid-template-columns:1fr}}
   </style>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1697477548238291');fbq('track','PageView');function trackMetaLead(programName){if(typeof fbq==='function'){fbq('track','Lead',{content_name:programName||'Landing'});fbq('track','Schedule',{content_name:programName||'Landing'});}}</script>
 </head>
 <body>
   <header class="topbar">
@@ -194,6 +195,30 @@ function fmt_aed(int $amount): string
             <div class="field"><label for="currentGrade">Current grade</label><input id="currentGrade" name="currentGrade" required /></div>
             <div class="field"><label for="currentSchool">Current school</label><input id="currentSchool" name="currentSchool" required /></div>
           </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="currentSituation">Student's current educational situation</label>
+              <select id="currentSituation" name="currentSituation">
+                <option value="">Select one</option>
+                <option>Homeschool</option>
+                <option>Public school</option>
+                <option>Private school</option>
+                <option>Not currently enrolled</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="educationStage">Current education stage</label>
+              <select id="educationStage" name="educationStage">
+                <option value="">Select one</option>
+                <option>Elementary</option>
+                <option>Middle school</option>
+                <option>High school</option>
+                <option>Already graduated</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
 
           <div style="margin-top:.4rem">
             <button id="submitInfoBtn" class="btn btn-primary" type="submit" style="border:none;cursor:pointer">Request Dual Diploma Information</button>
@@ -236,6 +261,25 @@ function fmt_aed(int $amount): string
     var cityInput = document.getElementById('city');
     var dossierLink = document.getElementById('dossierDownload');
 
+    // Captura UTM de Meta/Google Ads al llegar, igual que en la Home.
+    (function captureUtm(){
+      try {
+        var qs = new URLSearchParams(location.search);
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) {
+          if (qs.get(k)) sessionStorage.setItem('chanak_' + k, qs.get(k));
+        });
+      } catch (e) {}
+    })();
+    function chanakUtm() {
+      var out = {};
+      try {
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) {
+          out[k] = sessionStorage.getItem('chanak_' + k) || '';
+        });
+      } catch (e) {}
+      return out;
+    }
+
     function syncDossierByCity() {
       var isDubai = (cityInput.value || '').toLowerCase().indexOf('dubai') > -1;
       if (isDubai) {
@@ -272,6 +316,7 @@ function fmt_aed(int $amount): string
         : (programSelect === 'Off-Campus' ? 'offcampus' : 'info');
       payload.programa = 'U.S. Dual Diploma - UAE/Dubai International Admissions Request';
       payload.origen = 'dual-diploma-uae landing';
+      Object.assign(payload, chanakUtm());
 
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
@@ -287,6 +332,7 @@ function fmt_aed(int $amount): string
         if (typeof gtag === 'function') {
           gtag('event', 'form_submitted', { event_category: 'international_admissions', event_label: 'dual-diploma-uae' });
         }
+        if (typeof trackMetaLead === 'function') trackMetaLead('Dual Diploma UAE');
         form.reset();
         document.getElementById('country').value = 'United Arab Emirates';
         status.textContent = 'Thank you. Your information has been received — our International Admissions team will review it and contact you soon.';
