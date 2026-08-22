@@ -5,7 +5,7 @@ REGION = sys.argv[1]  # "UAE" or "Dubai"
 
 PRICING = {
     "UAE":   {"monthly": 795, "annual": 8745, "enroll": 650, "name": "United Arab Emirates"},
-    "Dubai": {"monthly": 895, "annual": 9845, "enroll": 750, "name": "Dubai"},
+    "Dubai": {"monthly": 1035, "annual": 11385, "enroll": 845, "name": "Dubai"},
 }
 p = PRICING[REGION]
 
