@@ -110,6 +110,7 @@ function fmt_aed(int $amount): string
         <div class="btns">
           <a class="btn btn-primary" href="#form">Request Dual Diploma Information</a>
           <a class="btn btn-secondary" href="#pricing">View Pricing</a>
+          <a class="btn btn-secondary dark" href="/matricula/?programa=dual-diploma-uae&amp;src=dual-diploma-uae-hero">Start Enrollment</a>
         </div>
         <p class="subtext">Our International Admissions team reviews every request individually. Eligibility is confirmed during the admissions process.</p>
       </div>
@@ -232,7 +233,7 @@ function fmt_aed(int $amount): string
       <div class="container card">
         <h2>International Admissions</h2>
         <p>Interested in the U.S. Dual Diploma? Our International Admissions team can help you understand the program, eligibility requirements, enrollment process and next steps. Your information has been received and reviewed on a case-by-case basis — eligibility is confirmed during the admissions process, not before.</p>
-        <div class="btns"><a class="btn btn-primary" href="#form">Contact International Admissions</a></div>
+        <div class="btns"><a class="btn btn-primary" href="#form">Contact International Admissions</a><a class="btn btn-secondary dark" href="/matricula/?programa=dual-diploma-uae&amp;src=dual-diploma-uae-cta">Start Enrollment</a></div>
       </div>
     </section>
 
