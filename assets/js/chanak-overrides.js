@@ -210,7 +210,7 @@
     bar.setAttribute("aria-label", "Matricula 2026-27");
     bar.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0c2d48;color:#fff;display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 14px;font-family:DM Sans,sans-serif;font-size:14px;box-shadow:0 -6px 24px rgba(0,0,0,.25);flex-wrap:wrap;text-align:center";
     bar.innerHTML = '<span style="font-weight:600">Matricula 2026-27 abierta · folio SIS antes del pago</span>'
-      + '<a href="' + buildMatricula(program, "sticky-landing") + '" style="background:#e8a020;color:#fff;text-decoration:none;border-radius:50px;padding:8px 18px;font-weight:700;white-space:nowrap">Iniciar matricula →</a>';
+      + '<a href="' + buildMatricula(program, "sticky-landing") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:8px 18px;font-weight:700;white-space:nowrap">Iniciar matricula →</a>';
     document.body.appendChild(bar);
     document.body.style.paddingBottom = "64px";
   }
@@ -238,7 +238,7 @@
       + '<p style="color:#cfdde9;font-size:15px;max-width:640px;margin:0 auto 22px;line-height:1.6">Matricula 2026-27 abierta · datos y folio SIS antes del pago · FLDOE #134620</p>'
       + '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">'
       + '<button type="button" id="chanakCtaOrienta" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit">Solicitar orientacion</button>'
-      + '<a href="' + buildMatricula(program, "cta-final") + '" style="background:#e8a020;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Iniciar matricula →</a>'
+      + '<a href="' + buildMatricula(program, "cta-final") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Iniciar matricula →</a>'
       + "</div>" + (extraHtml || "");
     document.body.appendChild(box);
     var button = document.getElementById("chanakCtaOrienta");
@@ -347,7 +347,7 @@
         updateDualDiplomaConvalidationCTA();
         ctaFinal("dual-diploma",
           '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">¿Quieres revisar convalidaciones? '
-          + '<a href="https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20orientacion%20de%20convalidacion" style="color:#e8a020;font-weight:700;text-decoration:underline">Agendar Orientación de Convalidación →</a></p>');
+          + '<a href="https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20orientacion%20de%20convalidacion" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Agendar Orientación de Convalidación →</a></p>');
         internalLinks([
           ["/off-campus/", "Colegio americano online homeschool"],
           ["/diagnostico/", "Evaluacion de nivel academico"]
