@@ -326,10 +326,9 @@
     var note = document.createElement("p");
     note.id = "chanakPricingNote";
     note.style.cssText = "margin-top:14px;font-size:15px;line-height:1.6;color:#2A4262;max-width:900px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:10px;padding:12px 16px";
-    note.innerHTML = "<strong>Antes de matricularte:</strong> diagnóstico académico €35 (aprox. USD $40) — un paso previo e independiente, no incluido en la matrícula. "
-      + "<strong>Una vez confirmada la ruta:</strong> matrícula €210 (aprox. USD $240) · mensualidad desde €110/mes (aprox. USD $126) · "
-      + "<strong>total desde €1.310/año</strong> en 3.º ESO (aprox. USD $1.494). "
-      + "Referencia en USD para familias en Panamá y Latinoamérica, cambio BCE 1 EUR = 1.1404 USD, redondeado al alza.";
+    note.innerHTML = "<strong>Antes de matricularte:</strong> el diagnóstico académico es un paso previo e independiente, no incluido en la matrícula. "
+      + "Una vez confirmada la ruta se define el plan económico (matrícula y mensualidad). "
+      + "Consulta los precios exactos en el dossier informativo.";
     heading.parentElement.insertBefore(note, heading.nextSibling);
   }
 

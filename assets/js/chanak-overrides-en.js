@@ -326,10 +326,9 @@
     var note = document.createElement("p");
     note.id = "chanakPricingNote";
     note.style.cssText = "margin-top:14px;font-size:15px;line-height:1.6;color:#2A4262;max-width:900px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:10px;padding:12px 16px";
-    note.innerHTML = "<strong>Before enrolling:</strong> academic diagnostic €35 (approx. USD $40) — a separate, prior step, not included in enrollment. "
-      + "<strong>Once the path is confirmed:</strong> enrollment fee €210 (approx. USD $240) · monthly from €110/month (approx. USD $126) · "
-      + "<strong>from €1,310/year</strong> in 3rd ESO (approx. USD $1,494). "
-      + "USD reference for families in Panama and Latin America, ECB rate 1 EUR = 1.1404 USD, rounded up.";
+    note.innerHTML = "<strong>Before enrolling:</strong> the academic diagnostic is a separate, prior step, not included in enrollment. "
+      + "Once the academic path is confirmed, the financial plan (enrollment fee and monthly tuition) is defined. "
+      + "See exact pricing in the information dossier.";
     heading.parentElement.insertBefore(note, heading.nextSibling);
   }
 
