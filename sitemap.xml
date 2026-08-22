@@ -49,6 +49,18 @@
     <priority>0.60</priority>
   </url>
   <url>
+    <loc>https://www.chanakacademy.org/dual-diploma-uae/</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.chanakacademy.org/terminos/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.20</priority>
+  </url>
+  <url>
     <loc>https://www.chanakacademy.org/alianzas/</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>yearly</changefreq>
