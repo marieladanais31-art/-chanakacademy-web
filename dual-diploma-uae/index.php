@@ -148,9 +148,9 @@ function fmt_aed(int $amount): string
           </table>
           <p class="disclaimer">Pricing shown in AED. Your applicable region is confirmed by our International Admissions team based on your city of residence. Pricing does not include additional academic materials, which are managed separately.</p>
           <div class="btns" style="margin-top:1rem">
-            <a class="btn btn-secondary dark btn-sm" href="/assets/dossiers/Chanak_Dual_Diploma_UAE_2026-2027.pdf" target="_blank" rel="noopener noreferrer" data-chanak-track="dossier_download">Download UAE information pack (PDF)</a>
-            <a class="btn btn-secondary dark btn-sm" href="/assets/dossiers/Chanak_Dual_Diploma_Dubai_2026-2027.pdf" target="_blank" rel="noopener noreferrer" data-chanak-track="dossier_download">Download Dubai information pack (PDF)</a>
+            <a id="dossierDownload" class="btn btn-secondary dark btn-sm" href="/assets/dossiers/Chanak_Dual_Diploma_UAE_2026-2027.pdf" target="_blank" rel="noopener noreferrer" data-chanak-track="dossier_download">Download information pack (PDF) — United Arab Emirates</a>
           </div>
+          <p class="disclaimer">Type your city in the form below and this link updates automatically — Dubai gets the Dubai-priced pack, any other UAE city gets the UAE pack.</p>
         </div>
       </div>
     </section>
@@ -240,6 +240,21 @@ function fmt_aed(int $amount): string
     var form = document.getElementById('infoRequestForm');
     var status = document.getElementById('infoRequestStatus');
     var submitBtn = document.getElementById('submitInfoBtn');
+    var cityInput = document.getElementById('city');
+    var dossierLink = document.getElementById('dossierDownload');
+
+    function syncDossierByCity() {
+      var isDubai = (cityInput.value || '').toLowerCase().indexOf('dubai') > -1;
+      if (isDubai) {
+        dossierLink.href = '/assets/dossiers/Chanak_Dual_Diploma_Dubai_2026-2027.pdf';
+        dossierLink.textContent = 'Download information pack (PDF) — Dubai';
+      } else {
+        dossierLink.href = '/assets/dossiers/Chanak_Dual_Diploma_UAE_2026-2027.pdf';
+        dossierLink.textContent = 'Download information pack (PDF) — United Arab Emirates';
+      }
+    }
+    cityInput.addEventListener('input', syncDossierByCity);
+    syncDossierByCity();
 
     document.addEventListener('click', function (event) {
       var el = event.target.closest && event.target.closest('[data-chanak-track="dossier_download"]');
