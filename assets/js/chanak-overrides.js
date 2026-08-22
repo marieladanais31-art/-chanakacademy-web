@@ -115,7 +115,9 @@
      HTML exportado tras la hidratación, así que este reemplazo se aplica
      por JS y se repite (keepApplying) para sobrevivir a esos repintados. */
   var LEGAL_TEXT_FIXES = [
-    [": estructura, acompañamiento y diploma reconocido.", ": estructura, acompañamiento y diploma de High School americano (FLDOE #134620)."]
+    [": estructura, acompañamiento y diploma reconocido.", ": estructura, acompañamiento y diploma de High School americano (FLDOE #134620)."],
+    ["Garantiza que no haya lagunas de aprendizaje.", "Detectamos las áreas que necesitan refuerzo y trabajamos sobre ellas antes de avanzar."],
+    ["Puedes revisarlos en la sección de precios de esta página. El dossier informativo amplía el proceso de admisión y la ruta académica.", "Puedes revisarlos en el dossier informativo de Off-Campus, que amplía también el proceso de admisión y la ruta académica."]
   ];
   function fixLegalText() {
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -324,12 +326,50 @@
     var note = document.createElement("p");
     note.id = "chanakPricingNote";
     note.style.cssText = "margin-top:14px;font-size:15px;line-height:1.6;color:#2A4262;max-width:900px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:10px;padding:12px 16px";
-    note.innerHTML = "<strong>Diagnóstico académico:</strong> €35 (aprox. USD $40) · "
-      + "<strong>Matrícula:</strong> €210 (aprox. USD $240) · "
-      + "<strong>Mensualidad:</strong> desde €110/mes (aprox. USD $126) · "
-      + "<strong>Total desde €1.310/año</strong> en 3.º ESO (aprox. USD $1.494). "
+    note.innerHTML = "<strong>Antes de matricularte:</strong> diagnóstico académico €35 (aprox. USD $40) — un paso previo e independiente, no incluido en la matrícula. "
+      + "<strong>Una vez confirmada la ruta:</strong> matrícula €210 (aprox. USD $240) · mensualidad desde €110/mes (aprox. USD $126) · "
+      + "<strong>total desde €1.310/año</strong> en 3.º ESO (aprox. USD $1.494). "
       + "Referencia en USD para familias en Panamá y Latinoamérica, cambio BCE 1 EUR = 1.1404 USD, redondeado al alza.";
     heading.parentElement.insertBefore(note, heading.nextSibling);
+  }
+
+  /* Refuerza "no cambia de colegio" como frase propia del cuerpo (antes solo
+     vivía dentro del H2), justo debajo del subtítulo del hero. */
+  function dualDiplomaReassurance() {
+    if (document.getElementById("chanakReassurance")) return;
+    var h2 = document.querySelector("h2");
+    if (!h2 || !h2.parentElement) return;
+    var p = document.createElement("p");
+    p.id = "chanakReassurance";
+    p.style.cssText = "margin-top:10px;font-size:16px;font-weight:700;color:#fff";
+    p.textContent = "Tu hijo no tiene que cambiar de colegio.";
+    h2.parentElement.insertBefore(p, h2.nextSibling);
+  }
+
+  /* "Lo que NO es" — la landing ya tenía "Qué incluye" pero nada que acote
+     expectativas. Se inserta después de esa sección (buscada por su H2). */
+  function dualDiplomaNotList() {
+    if (document.getElementById("chanakNotList")) return;
+    var heading = null;
+    document.querySelectorAll("h2").forEach(function (h) {
+      if (plain(h.textContent) === "que incluye") heading = h;
+    });
+    if (!heading) return;
+    var section = heading.closest("section");
+    if (!section || !section.parentElement) return;
+    var box = document.createElement("section");
+    box.id = "chanakNotList";
+    box.style.cssText = "max-width:1100px;margin:0 auto;padding:24px 5% 64px;font-family:DM Sans,sans-serif";
+    box.innerHTML = '<h2 style="font-family:Playfair Display,Georgia,serif;font-size:32px;color:#0c2d48;margin:0 0 14px">Lo que el Dual Diploma NO es</h2>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px">'
+      + ['No sustituye ni cambia el colegio actual del estudiante',
+         'No es un curso de inglés básico',
+         'No es lo mismo que el programa Off-Campus',
+         'No garantiza por sí mismo la admisión a ninguna universidad',
+         'No implica homologación o equivalencia automática en ningún país'
+        ].map(function (t) { return '<div style="background:#f4f7fa;border-radius:10px;padding:14px 16px;font-size:14px;color:#3a5a7a">✕ ' + t + '</div>'; }).join('')
+      + '</div>';
+    section.parentElement.insertBefore(box, section.nextSibling);
   }
 
   /* Foto de cabecera para Dual Diploma / Off-Campus: estas landings
@@ -451,6 +491,8 @@
         stickyBar("dual-diploma");
         updateDualDiplomaConvalidationCTA();
         dualDiplomaPricingNote();
+        dualDiplomaReassurance();
+        dualDiplomaNotList();
         ctaFinal("dual-diploma",
           '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">¿Quieres revisar convalidaciones? '
           + '<a href="https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20orientacion%20de%20convalidacion" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Agendar Orientación de Convalidación →</a></p>');

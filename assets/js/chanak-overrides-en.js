@@ -107,7 +107,9 @@
   /* See fixLegalText() in chanak-overrides.js for why this runs via JS
      (with keepApplying) instead of editing the exported HTML directly. */
   var LEGAL_TEXT_FIXES = [
-    [": structure, support and a recognized diploma.", ": structure, support and an American high school diploma (FLDOE #134620)."]
+    [": structure, support and a recognized diploma.", ": structure, support and an American high school diploma (FLDOE #134620)."],
+    ["It guarantees there are no learning gaps.", "We detect the areas that need reinforcement and work on them before moving forward."],
+    ["You can review them in the pricing section of this page. The information dossier expands on the admission process and the academic path.", "You can review them in the Off-Campus information dossier, which also expands on the admission process and the academic path."]
   ];
   function fixLegalText() {
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -324,12 +326,50 @@
     var note = document.createElement("p");
     note.id = "chanakPricingNote";
     note.style.cssText = "margin-top:14px;font-size:15px;line-height:1.6;color:#2A4262;max-width:900px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:10px;padding:12px 16px";
-    note.innerHTML = "<strong>Diagnostic assessment:</strong> €35 (approx. USD $40) · "
-      + "<strong>Enrollment fee:</strong> €210 (approx. USD $240) · "
-      + "<strong>Monthly:</strong> from €110/month (approx. USD $126) · "
-      + "<strong>From €1,310/year</strong> in 3rd ESO (approx. USD $1,494). "
+    note.innerHTML = "<strong>Before enrolling:</strong> academic diagnostic €35 (approx. USD $40) — a separate, prior step, not included in enrollment. "
+      + "<strong>Once the path is confirmed:</strong> enrollment fee €210 (approx. USD $240) · monthly from €110/month (approx. USD $126) · "
+      + "<strong>from €1,310/year</strong> in 3rd ESO (approx. USD $1,494). "
       + "USD reference for families in Panama and Latin America, ECB rate 1 EUR = 1.1404 USD, rounded up.";
     heading.parentElement.insertBefore(note, heading.nextSibling);
+  }
+
+  /* Reinforces "does not have to change schools" as its own body sentence
+     (previously it only lived inside the H2), right under the hero subtitle. */
+  function dualDiplomaReassurance() {
+    if (document.getElementById("chanakReassurance")) return;
+    var h2 = document.querySelector("h2");
+    if (!h2 || !h2.parentElement) return;
+    var p = document.createElement("p");
+    p.id = "chanakReassurance";
+    p.style.cssText = "margin-top:10px;font-size:16px;font-weight:700;color:#fff";
+    p.textContent = "Your child does not have to change schools.";
+    h2.parentElement.insertBefore(p, h2.nextSibling);
+  }
+
+  /* "What this is NOT" — inserted right after the "What is included" section
+     (found via its H2), matching the same card markup already on the page. */
+  function dualDiplomaNotList() {
+    if (document.getElementById("chanakNotList")) return;
+    var heading = null;
+    document.querySelectorAll("h2").forEach(function (h) {
+      if (plain(h.textContent) === "what is included") heading = h;
+    });
+    if (!heading) return;
+    var section = heading.closest("section");
+    if (!section || !section.parentElement) return;
+    var box = document.createElement("section");
+    box.id = "chanakNotList";
+    box.style.cssText = "max-width:1100px;margin:0 auto;padding:24px 5% 64px;font-family:DM Sans,sans-serif";
+    box.innerHTML = '<h2 style="font-family:Playfair Display,Georgia,serif;font-size:32px;color:#0c2d48;margin:0 0 14px">What the Dual Diploma is NOT</h2>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px">'
+      + ["Does not replace or change the student's current school",
+         'Not a basic English course',
+         'Not the same as the Off-Campus program',
+         'Does not by itself guarantee admission to any university',
+         'Does not imply automatic homologation or equivalency in any country'
+        ].map(function (t) { return '<div style="background:#f4f7fa;border-radius:10px;padding:14px 16px;font-size:14px;color:#3a5a7a">✕ ' + t + '</div>'; }).join('')
+      + '</div>';
+    section.parentElement.insertBefore(box, section.nextSibling);
   }
 
   /* Hero photo for Dual Diploma / Off-Campus: these compiled landings had
@@ -452,6 +492,8 @@
         stickyBar("dual-diploma");
         updateDualDiplomaConvalidationCTA();
         dualDiplomaPricingNote();
+        dualDiplomaReassurance();
+        dualDiplomaNotList();
         ctaFinal("dual-diploma",
           '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">Would you like to review credit recognition? '
           + '<a href="https://wa.me/34624703272?text=Hello,%20I%20would%20like%20guidance%20on%20credit%20recognition" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Book a Credit Recognition Call →</a></p>');
