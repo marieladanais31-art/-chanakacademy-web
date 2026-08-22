@@ -138,19 +138,12 @@ function fmt_aed(int $amount): string
     <section class="section navy" id="pricing">
       <div class="container">
         <h2>Pricing — 2026–2027</h2>
-        <div class="card" style="overflow-x:auto">
-          <table class="price-table">
-            <thead><tr><th>Region</th><th>Monthly</th><th>Academic year (11 payments)</th><th>Enrollment fee</th></tr></thead>
-            <tbody>
-              <tr><td><strong>United Arab Emirates</strong></td><td><?= fmt_aed($uae['monthly']) ?>/month</td><td><?= fmt_aed($uae['annual']) ?>/year</td><td><?= fmt_aed($uae['enrollment_fee']) ?></td></tr>
-              <tr><td><strong>Dubai</strong></td><td><?= fmt_aed($dubai['monthly']) ?>/month</td><td><?= fmt_aed($dubai['annual']) ?>/year</td><td><?= fmt_aed($dubai['enrollment_fee']) ?></td></tr>
-            </tbody>
-          </table>
-          <p class="disclaimer">Pricing shown in AED. Your applicable region is confirmed by our International Admissions team based on your city of residence. Pricing does not include additional academic materials, which are managed separately.</p>
+        <div class="card">
+          <p>Pricing is confirmed individually by city — the United Arab Emirates and Dubai have different rates (monthly, academic year, and enrollment fee), in AED. Download the information pack for your city to see exact pricing, or request information below and our International Admissions team will confirm it with you.</p>
           <div class="btns" style="margin-top:1rem">
             <a id="dossierDownload" class="btn btn-secondary dark btn-sm" href="/assets/dossiers/Chanak_Dual_Diploma_UAE_2026-2027.pdf" target="_blank" rel="noopener noreferrer" data-chanak-track="dossier_download">Download information pack (PDF) — United Arab Emirates</a>
           </div>
-          <p class="disclaimer">Type your city in the form below and this link updates automatically — Dubai gets the Dubai-priced pack, any other UAE city gets the UAE pack.</p>
+          <p class="disclaimer">The pack shown updates automatically once you type your city in the form below — Dubai gets the Dubai-priced pack, any other UAE city gets the UAE pack. Pricing does not include additional academic materials, which are managed separately.</p>
         </div>
       </div>
     </section>
@@ -224,7 +217,7 @@ function fmt_aed(int $amount): string
         <div class="faq-item"><h3>What is the U.S. Dual Diploma?</h3><p>A complementary U.S. high school pathway. Students continue their current school program (when applicable) and work toward a U.S. High School Diploma issued by Chanak International Academy (FLDOE #134620).</p></div>
         <div class="faq-item"><h3>How does it work?</h3><p>After an initial review, Chanak defines a personalized academic route. Students study through Chanak's Student Information System (SIS) with academic mentoring and progress tracking.</p></div>
         <div class="faq-item"><h3>How many hours per week?</h3><p>Approximately 5 hours per week on average, confirmed for each student during the admissions process.</p></div>
-        <div class="faq-item"><h3>How much does it cost?</h3><p>See the pricing table above for the United Arab Emirates and Dubai. Your applicable region and final pricing are confirmed by our International Admissions team.</p></div>
+        <div class="faq-item"><h3>How much does it cost?</h3><p>Pricing is shown in the information pack for your city — download it above, or type your city in the request form and the correct pack (United Arab Emirates or Dubai) opens automatically. Your applicable region and final pricing are confirmed by our International Admissions team.</p></div>
         <div class="faq-item"><h3>What are the enrollment steps?</h3><p>Request information → academic orientation call → eligibility review → enrollment, once the family and Chanak confirm the academic route together.</p></div>
         <div class="faq-item"><h3>What documents are required?</h3><p>Typically: student's most recent school report/transcript, a copy of the guardian's and student's ID or passport, and any prior academic records. Our team will confirm the exact list for your case.</p></div>
         <div class="faq-item"><h3>Is Chanak accredited?</h3><p>Chanak International Academy is registered with the Florida Department of Education (FLDOE #134620) and is currently a Candidate for Accreditation with the Middle States Association (MSA-CESS). Candidate status does not constitute accreditation.</p></div>

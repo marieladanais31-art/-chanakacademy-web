@@ -70,8 +70,56 @@
         opacity: 1 !important;
         transform: translateY(0) !important;
       }
+      /* BRAND RECOLOR: navy + teal. See chanak-overrides.js for why the
+         rgb() form (not the original hex) is what actually needs to be
+         matched — React re-serializes inline colors that way once it
+         re-renders after hydration. */
+      [style*="background: rgb(26, 58, 107)"], [style*="background:#1A3A6B"],
+      [style*="background: rgb(19, 42, 79)"], [style*="background:#132A4F"],
+      [style*="background: rgb(14, 37, 73)"], [style*="background:#0E2549"],
+      [style*="background: rgb(14, 58, 92)"], [style*="background:#0E3A5C"] {
+        background: #0c2d48 !important;
+      }
+      [style*="border-color: rgb(26, 58, 107)"], [style*="border-color:#1A3A6B"] { border-color: #0c2d48 !important; }
+      [style*="background: rgb(58, 125, 44)"], [style*="background:#3A7D2C"],
+      [style*="background: rgb(125, 207, 71)"], [style*="background:#7DCF47"],
+      [style*="background: rgb(217, 184, 111)"], [style*="background:#D9B86F"],
+      [style*="background: rgb(184, 150, 46)"], [style*="background:#B8962E"] {
+        background: #1b9faa !important;
+      }
+      [style*="color: rgb(58, 125, 44)"], [style*="color:#3A7D2C"],
+      [style*="color: rgb(125, 207, 71)"], [style*="color:#7DCF47"],
+      [style*="color: rgb(141, 212, 106)"], [style*="color:#8DD46A"],
+      [style*="color: rgb(255, 184, 0)"], [style*="color:#FFB800"] {
+        color: #1b9faa !important;
+      }
+      [style*="background: rgb(32, 69, 125)"], [style*="background:#20457D"] {
+        background: #1a5f8a !important;
+      }
+      [style*="color: rgb(255, 209, 102)"], [style*="color:#FFD166"] { color: #6fd9d1 !important; }
+      [style*="border-color: rgb(217, 184, 111)"], [style*="border-color:#D9B86F"] { border-color: #1b9faa !important; }
+      [style*="rgba(58, 125, 44"], [style*="rgba(58,125,44"] { background: radial-gradient(circle, rgba(27,159,170,.13) 0%, transparent 70%) !important; }
+      [style*="rgba(26, 58, 107"], [style*="rgba(26,58,107"] { background: rgba(12,45,72,.3) !important; }
     `;
     document.head.appendChild(style);
+  }
+
+  /* See fixLegalText() in chanak-overrides.js for why this runs via JS
+     (with keepApplying) instead of editing the exported HTML directly. */
+  var LEGAL_TEXT_FIXES = [
+    [": structure, support and a recognized diploma.", ": structure, support and an American high school diploma (FLDOE #134620)."]
+  ];
+  function fixLegalText() {
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      for (var i = 0; i < LEGAL_TEXT_FIXES.length; i++) {
+        var pair = LEGAL_TEXT_FIXES[i];
+        if (node.data.indexOf(pair[0]) > -1) {
+          node.data = node.data.replace(pair[0], pair[1]);
+        }
+      }
+    }
   }
 
   function init3dTilt() {
@@ -231,7 +279,7 @@
         var card = div.parentElement;
         card.dataset.chanakWa = "1";
         var tag = document.createElement("div");
-        tag.style.cssText = "font-size:11px;color:#1f9e4f;font-weight:600;margin-top:12px;padding-top:10px;border-top:1px dashed #D1D5E8";
+        tag.style.cssText = "font-size:11px;color:#1b9faa;font-weight:600;margin-top:12px;padding-top:10px;border-top:1px dashed #D1D5E8";
         tag.textContent = "Testimonial received via WhatsApp";
         card.appendChild(tag);
       }
@@ -282,6 +330,26 @@
       + "<strong>From €1,310/year</strong> in 3rd ESO (approx. USD $1,494). "
       + "USD reference for families in Panama and Latin America, ECB rate 1 EUR = 1.1404 USD, rounded up.";
     heading.parentElement.insertBefore(note, heading.nextSibling);
+  }
+
+  /* Hero photo for Dual Diploma / Off-Campus: these compiled landings had
+     no real photography (only small logo/badge images). Inserted as a new
+     section right after the hero (found via <nav>, always the first
+     element), never inside the React-hydrated tree. */
+  function heroPhoto(imgSrc, altText) {
+    if (document.getElementById("chanakHeroPhoto")) return;
+    // off-campus has a <nav> immediately before its (very tall) hero
+    // wrapper, so the photo goes between them; dual-diploma has no <nav>
+    // at all, so it falls back to inserting right before <main>, which
+    // is the first real content on that page.
+    var nav = document.querySelector("nav");
+    var anchor = nav ? nav.nextElementSibling : document.querySelector("main");
+    if (!anchor || !anchor.parentElement) return;
+    var section = document.createElement("div");
+    section.id = "chanakHeroPhoto";
+    section.style.cssText = "max-height:380px;overflow:hidden;line-height:0";
+    section.innerHTML = '<img src="' + imgSrc + '" alt="' + altText + '" style="width:100%;height:380px;object-fit:cover;display:block" />';
+    anchor.parentElement.insertBefore(section, anchor);
   }
 
   function internalLinks(items) {
@@ -366,6 +434,8 @@
     if (path.indexOf("/off-campus") === 0) {
       keepApplying(function () {
         rewriteEnrollmentLinks();
+        heroPhoto("/assets/img/hero-offcampus.webp", "Homeschool student studying with Off-Campus");
+        fixLegalText();
         stickyBar("off-campus");
         testimonialBadges();
         ctaFinal("off-campus");
@@ -378,6 +448,7 @@
     } else if (path.indexOf("/dual-diploma") === 0) {
       keepApplying(function () {
         rewriteEnrollmentLinks();
+        heroPhoto("/assets/img/hero-dualdiploma.webp", "Student following the U.S. Dual Diploma pathway");
         stickyBar("dual-diploma");
         updateDualDiplomaConvalidationCTA();
         dualDiplomaPricingNote();
