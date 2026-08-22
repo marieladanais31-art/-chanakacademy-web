@@ -220,7 +220,7 @@
     bar.setAttribute("aria-label", "Enrollment 2026-27");
     bar.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0c2d48;color:#fff;display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 14px;font-family:DM Sans,sans-serif;font-size:14px;box-shadow:0 -6px 24px rgba(0,0,0,.25);flex-wrap:wrap;text-align:center";
     bar.innerHTML = '<span style="font-weight:600">Enrollment 2026-27 open · SIS reference before payment</span>'
-      + '<a href="' + buildMatricula(program, "sticky-landing") + '" style="background:#e8a020;color:#fff;text-decoration:none;border-radius:50px;padding:8px 18px;font-weight:700;white-space:nowrap">Start enrollment →</a>';
+      + '<a href="' + buildMatricula(program, "sticky-landing") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:8px 18px;font-weight:700;white-space:nowrap">Start enrollment →</a>';
     document.body.appendChild(bar);
     document.body.style.paddingBottom = "64px";
   }
@@ -248,7 +248,7 @@
       + '<p style="color:#cfdde9;font-size:15px;max-width:640px;margin:0 auto 22px;line-height:1.6">Enrollment 2026-27 open · details and SIS reference before payment · FLDOE #134620</p>'
       + '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">'
       + '<button type="button" id="chanakCtaOrienta" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit">Request guidance</button>'
-      + '<a href="' + buildMatricula(program, "cta-final") + '" style="background:#e8a020;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Start enrollment →</a>'
+      + '<a href="' + buildMatricula(program, "cta-final") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Start enrollment →</a>'
       + "</div>" + (extraHtml || "");
     document.body.appendChild(box);
     var button = document.getElementById("chanakCtaOrienta");
@@ -259,6 +259,29 @@
         else location.href = "/#dossier";
       });
     }
+  }
+
+  /* EUR/USD pricing note for Dual Diploma. 2026-27 figures (confirmed by
+     Mariela 2026-08-22): €35 diagnostic, €210 enrollment, €110/month,
+     from €1,310/year in 3rd ESO. USD reference: ECB rate 1 EUR=1.1404,
+     rounded up — same method used across the site. Keep in sync with
+     the Spanish version in chanak-overrides.js if these figures change. */
+  function dualDiplomaPricingNote() {
+    if (document.getElementById("chanakPricingNote")) return;
+    var heading = null;
+    document.querySelectorAll("h2").forEach(function (h) {
+      if (plain(h.textContent) === "pricing") heading = h;
+    });
+    if (!heading || !heading.parentElement) return;
+    var note = document.createElement("p");
+    note.id = "chanakPricingNote";
+    note.style.cssText = "margin-top:14px;font-size:15px;line-height:1.6;color:#2A4262;max-width:900px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:10px;padding:12px 16px";
+    note.innerHTML = "<strong>Diagnostic assessment:</strong> €35 (approx. USD $40) · "
+      + "<strong>Enrollment fee:</strong> €210 (approx. USD $240) · "
+      + "<strong>Monthly:</strong> from €110/month (approx. USD $126) · "
+      + "<strong>From €1,310/year</strong> in 3rd ESO (approx. USD $1,494). "
+      + "USD reference for families in Panama and Latin America, ECB rate 1 EUR = 1.1404 USD, rounded up.";
+    heading.parentElement.insertBefore(note, heading.nextSibling);
   }
 
   function internalLinks(items) {
@@ -357,9 +380,10 @@
         rewriteEnrollmentLinks();
         stickyBar("dual-diploma");
         updateDualDiplomaConvalidationCTA();
+        dualDiplomaPricingNote();
         ctaFinal("dual-diploma",
           '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">Would you like to review credit recognition? '
-          + '<a href="https://wa.me/34624703272?text=Hello,%20I%20would%20like%20guidance%20on%20credit%20recognition" style="color:#e8a020;font-weight:700;text-decoration:underline">Book a Credit Recognition Call →</a></p>');
+          + '<a href="https://wa.me/34624703272?text=Hello,%20I%20would%20like%20guidance%20on%20credit%20recognition" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Book a Credit Recognition Call →</a></p>');
         internalLinks([
           ["/off-campus/en/", "American online homeschool"],
           ["/diagnostico/", "Academic level assessment"]

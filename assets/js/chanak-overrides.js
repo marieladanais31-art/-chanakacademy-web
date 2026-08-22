@@ -251,6 +251,29 @@
     }
   }
 
+  /* Nota de precio EUR/USD para Dual Diploma. Cifras 2026-27 (confirmadas
+     por Mariela 2026-08-22): 35€ diagnóstico, 210€ matrícula, 110€/mes,
+     desde 1.310€/año en 3.º ESO. Referencia USD: cambio BCE 1 EUR=1.1404,
+     redondeado al alza — mismo método que el resto del sitio. No duplicar
+     estas cifras en otro sitio del código sin actualizar aquí también. */
+  function dualDiplomaPricingNote() {
+    if (document.getElementById("chanakPricingNote")) return;
+    var heading = null;
+    document.querySelectorAll("h2").forEach(function (h) {
+      if (plain(h.textContent) === "precios") heading = h;
+    });
+    if (!heading || !heading.parentElement) return;
+    var note = document.createElement("p");
+    note.id = "chanakPricingNote";
+    note.style.cssText = "margin-top:14px;font-size:15px;line-height:1.6;color:#2A4262;max-width:900px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:10px;padding:12px 16px";
+    note.innerHTML = "<strong>Diagnóstico académico:</strong> €35 (aprox. USD $40) · "
+      + "<strong>Matrícula:</strong> €210 (aprox. USD $240) · "
+      + "<strong>Mensualidad:</strong> desde €110/mes (aprox. USD $126) · "
+      + "<strong>Total desde €1.310/año</strong> en 3.º ESO (aprox. USD $1.494). "
+      + "Referencia en USD para familias en Panamá y Latinoamérica, cambio BCE 1 EUR = 1.1404 USD, redondeado al alza.";
+    heading.parentElement.insertBefore(note, heading.nextSibling);
+  }
+
   function internalLinks(items) {
     if (document.getElementById("chanakXlinks")) return;
     var box = document.createElement("div");
@@ -345,6 +368,7 @@
         rewriteEnrollmentLinks();
         stickyBar("dual-diploma");
         updateDualDiplomaConvalidationCTA();
+        dualDiplomaPricingNote();
         ctaFinal("dual-diploma",
           '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">¿Quieres revisar convalidaciones? '
           + '<a href="https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20orientacion%20de%20convalidacion" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Agendar Orientación de Convalidación →</a></p>');
