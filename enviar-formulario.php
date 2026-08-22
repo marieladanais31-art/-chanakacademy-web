@@ -46,6 +46,11 @@ $CONFIG = [
     'brevo_newsletter_list' => 7,
 ];
 
+/* Precios internacionales AED (UAE / Dubai) para Dual Diploma. Única fuente
+   de verdad, compartida con dual-diploma-uae/index.php. Editar solo en
+   _private/commercial-pricing.php. */
+$COMMERCIAL_PRICING = include __DIR__ . '/_private/commercial-pricing.php';
+
 /* Autorespuesta al solicitante, por producto. Placeholders: {nombre},
    {landing}, {whatsapp}, {whatsapp_display}. Texto plano. */
 $AUTOREPLY = [
@@ -150,6 +155,35 @@ $AUTOREPLY = [
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
             . "La matrícula se confirma tras la validación del equipo de admisiones.",
     ],
+    // Autorespuesta en inglés para leads UAE/Dubai del Dual Diploma
+    // (International Admissions). Placeholders: {nombre}, {landing},
+    // {dossier}, {whatsapp}, {whatsapp_display}.
+    'dual_uae' => [
+        'subject' => 'Chanak International Academy – U.S. Dual Diploma Information',
+        'body' => "Dear {nombre},\n\n"
+            . "Thank you for your interest in the Chanak International Academy U.S. Dual Diploma.\n\n"
+            . "We have received your request and our International Admissions team will review your information and contact you shortly.\n\n"
+            . "In the meantime, you can review the information pack for your region below:\n"
+            . "· Program page: {landing}\n"
+            . "· Information pack (PDF): {dossier}\n\n"
+            . "Please note: your information has been received. Eligibility is confirmed during the admissions process, not before.\n\n"
+            . "Prefer to talk now? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
+            . "Kind regards,\nChanak International Academy\nInternational Admissions\n\n"
+            . "FLDOE #134620 (publicly verifiable) · MSA-CESS Official Candidate for Accreditation — candidate status does not constitute accreditation · Nonprofit 501(c)(3)",
+    ],
+    'dual_dubai' => [
+        'subject' => 'Chanak International Academy – U.S. Dual Diploma Information',
+        'body' => "Dear {nombre},\n\n"
+            . "Thank you for your interest in the Chanak International Academy U.S. Dual Diploma.\n\n"
+            . "We have received your request and our International Admissions team will review your information and contact you shortly.\n\n"
+            . "In the meantime, you can review the information pack for Dubai below:\n"
+            . "· Program page: {landing}\n"
+            . "· Information pack (PDF): {dossier}\n\n"
+            . "Please note: your information has been received. Eligibility is confirmed during the admissions process, not before.\n\n"
+            . "Prefer to talk now? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
+            . "Kind regards,\nChanak International Academy\nInternational Admissions\n\n"
+            . "FLDOE #134620 (publicly verifiable) · MSA-CESS Official Candidate for Accreditation — candidate status does not constitute accreditation · Nonprofit 501(c)(3)",
+    ],
 ];
 
 /* ══════════════════════════════════════════════════════════════════
@@ -198,6 +232,29 @@ function contains_any(string $text, array $needles): bool
     return false;
 }
 
+/**
+ * Detecta la región comercial internacional (UAE / Dubai) a partir del
+ * país y la ciudad enviados en el formulario. Ciudad "Dubai" manda sobre
+ * el país (commercial_region = Dubai); cualquier otra ciudad de Emiratos
+ * cae en commercial_region = UAE. Devuelve '' si no aplica (todo lo demás
+ * sigue el flujo estándar en español/EUR sin cambios).
+ */
+function detect_commercial_region(string $country, string $city): string
+{
+    $plainCity = strtolower(str_replace(['á', 'Á', 'í', 'Í'], ['a', 'a', 'i', 'i'], $city));
+    if (strpos($plainCity, 'dubai') !== false) {
+        return 'Dubai';
+    }
+
+    $plainCountry = strtolower(str_replace(['á', 'Á', 'é', 'É'], ['a', 'a', 'e', 'e'], $country));
+    $uaeNeedles = ['uae', 'u.a.e', 'united arab emirates', 'emiratos arabes unidos', 'emiratos'];
+    if (contains_any($plainCountry, $uaeNeedles)) {
+        return 'UAE';
+    }
+
+    return '';
+}
+
 function private_dir(): string
 {
     $dir = __DIR__ . '/_private';
@@ -242,7 +299,7 @@ function log_brevo(string $message): void
  * en /_private/brevo.log. Si el teléfono no es válido para Brevo (HTTP 400),
  * se reintenta sin el atributo SMS para no perder el contacto.
  */
-function brevo_add_contact(string $email, string $name, string $phone, array $listIds): bool
+function brevo_add_contact(string $email, string $name, string $phone, array $listIds, array $extraAttributes = []): bool
 {
     $key = brevo_key();
     if ($key === '' || !function_exists('curl_init') || !$listIds) {
@@ -250,7 +307,9 @@ function brevo_add_contact(string $email, string $name, string $phone, array $li
     }
 
     // Atributos según la cuenta Brevo de Chanak (español): NOMBRE / WHATSAPP / SMS.
-    $attributes = [];
+    // $extraAttributes añade PAIS / CIUDAD / REGION_COMERCIAL para leads
+    // internacionales (UAE/Dubai) sin afectar al resto de contactos.
+    $attributes = $extraAttributes;
     if ($name !== '') {
         $attributes['NOMBRE'] = $name;
     }
@@ -427,6 +486,7 @@ if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $name    = first_value($data, ['nombre', 'nombre_padre', 'responsable_nombre', 'guardianFullName', 'guardianName', 'name', 'estudiante_nombre', 'studentFullName']);
 $phone   = first_value($data, ['whatsapp', 'telefono', 'phone', 'guardianPhone', 'tel']);
 $country = first_value($data, ['pais', 'country', 'pais_residencia', 'pais_responsable', 'estudiante_pais']);
+$city    = first_value($data, ['ciudad', 'city']);
 
 /* ── Enrutamiento por producto ──
    1º el campo explícito 'necesidad' del formulario de la home;
@@ -469,6 +529,18 @@ $esMatricula = contains_any(strtolower(implode(' ', [
 if ($esMatricula) {
     $label = 'MATRICULA · ' . $label;
 }
+
+/* ── Región comercial internacional (UAE / Dubai) ──
+   Solo se activa dentro de la ruta 'dual' (Off-Campus y el resto de
+   productos no se ven afectados: Test Case 4 del brief). Cuando aplica,
+   cambia la autorespuesta a inglés y el dossier/precio a AED; el resto del
+   flujo (CSV, correo interno, Brevo) sigue exactamente igual, solo con el
+   dato de región añadido. */
+$commercialRegion = $route === 'dual' ? detect_commercial_region($country, $city) : '';
+if ($commercialRegion !== '') {
+    $label = $label . ' · ' . strtoupper($commercialRegion);
+}
+
 $landing  = $CONFIG['site_url'] . $routeCfg['landing'];
 $dossierLinks = [
     'offcampus' => $CONFIG['site_url'] . '/assets/dossiers/dossier-off-campus.pdf?v=20260709b',
@@ -477,6 +549,9 @@ $dossierLinks = [
 $dossier = isset($routeCfg['dossier']) && $routeCfg['dossier'] !== ''
     ? $CONFIG['site_url'] . $routeCfg['dossier']
     : '';
+if ($commercialRegion !== '' && isset($COMMERCIAL_PRICING[$commercialRegion]['dossier'])) {
+    $dossier = $CONFIG['site_url'] . $COMMERCIAL_PRICING[$commercialRegion]['dossier'];
+}
 $origin   = first_value($data, ['origen', 'origin']) ?: ($_SERVER['HTTP_REFERER'] ?? ($_SERVER['REQUEST_URI'] ?? ''));
 
 /* ── 1) GUARDAR EL LEAD (antes de cualquier correo) ── */
@@ -506,7 +581,17 @@ $newsletterOptIn = strtolower(first_value($data, ['newsletter', 'boletin', 'susc
 if (in_array($newsletterOptIn, ['si', 'sí', 'yes', 'on', 'true', '1'], true)) {
     $brevoLists[] = $CONFIG['brevo_newsletter_list'];
 }
-brevo_add_contact($email, $name, $phone, $brevoLists);
+$brevoExtraAttributes = [];
+if ($country !== '') {
+    $brevoExtraAttributes['PAIS'] = $country;
+}
+if ($city !== '') {
+    $brevoExtraAttributes['CIUDAD'] = $city;
+}
+if ($commercialRegion !== '') {
+    $brevoExtraAttributes['REGION_COMERCIAL'] = $commercialRegion;
+}
+brevo_add_contact($email, $name, $phone, $brevoLists, $brevoExtraAttributes);
 
 /* ── 2) CORREO INTERNO al equipo ── */
 $subjectInterno = 'Solicitud web [' . $label . '] — ' . ($name !== '' ? $name : $email) . ($country !== '' ? ' (' . $country . ')' : '');
@@ -548,7 +633,8 @@ if (!$sentInterno) {
 }
 
 /* ── 3) AUTORESPUESTA a la familia ── */
-$reply = $esMatricula ? $AUTOREPLY['matricula'] : ($AUTOREPLY[$route] ?? $AUTOREPLY['general']);
+$autoreplyKey = $commercialRegion === 'Dubai' ? 'dual_dubai' : ($commercialRegion === 'UAE' ? 'dual_uae' : $route);
+$reply = $esMatricula ? $AUTOREPLY['matricula'] : ($AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general']);
 $replyBody = strtr($reply['body'], [
     '{nombre}'           => $name !== '' ? $name : 'familia',
     '{landing}'          => $landing,
