@@ -16,8 +16,8 @@
  *                            dirección el 2026-09-18; sustituye al «desde 250 €» de la home)
  *  - UAE / Dubái ........... _private/commercial-pricing.php
  *
- * Pendientes de aprobación de dirección: la MENSUALIDAD de Off-Campus en España,
- * México, Panamá e Internacional (la de EE. UU. sí está aprobada),
+ * Pendientes de aprobación de dirección: la mensualidad de Off-Campus en México,
+ * Panamá e Internacional (España 70 € y EE. UU. sí están aprobadas),
  * Dual Diploma US / PA / Internacional, y los productos modulares.
  *
  * El enlace al SIS NO se toca desde aquí: buildSisEnrollmentUrl() conserva
@@ -104,17 +104,20 @@ window.CHANAK_PRICING = {
         description: 'Evaluación completa de nivel (149 preguntas) y propuesta de programa. Servicio independiente para familias que aún no han elegido programa.'
       },
 
+      // Mensualidad 70 € confirmada por dirección el 2026-09-18. La matrícula de
+      // 180 € más la primera mensualidad son los 250 € iniciales que ya figuraban
+      // en la home: las dos cifras eran correctas y complementarias.
       off_campus: {
-        // La mensualidad de Off-Campus no está publicada en ningún documento
-        // aprobado. Hasta que dirección la confirme, no se muestra cifra.
-        status: 'on_request',
+        status: 'published',
         title: 'Off-Campus · Escuela completa a distancia',
         enrollmentFee: '180 €',
-        note: 'En España, Off-Campus se ofrece a partir de los 16 años o a través de centro extranjero autorizado (RD 806/1993) con iglesia colaboradora. Consultar admisión.',
+        installments: 'mensualidad',
+        note: 'Al formalizar se abonan 250 €: matrícula de 180 € más la primera mensualidad. En España, Off-Campus se ofrece a partir de los 16 años o a través de centro extranjero autorizado (RD 806/1993) con iglesia colaboradora.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', description: 'Currículo estadounidense completo, créditos oficiales y transcript FLDOE #134620.' }
-        ]
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: '70 €', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', monthly: '70 €', description: 'Currículo estadounidense completo, créditos oficiales y transcript FLDOE #134620.' }
+        ],
+        footnote: 'Mensualidad única para todos los niveles. La matrícula se abona una sola vez al formalizar.'
       },
 
       dual_diploma: {

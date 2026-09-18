@@ -256,3 +256,14 @@ Rama de trabajo: `mejoras-venta`. Producción (= rama `main` + auto-deploy Hosti
 - 12 rutas a 1440 y 390 px: 0 contactos telefónicos, 0 scroll horizontal, SIS y
   Stripe intactos. Los errores React #418 de /off-campus/ y /dual-diploma/ siguen
   siendo previos a este trabajo.
+
+## 2026-09-18 (4.ª tanda) — Off-Campus España 70 €/mes y publicación
+
+- Dirección confirma la mensualidad de Off-Campus en España: **70 €**. Con la
+  matrícula de 180 €, los 250 € iniciales que ya figuraban en la home quedan
+  explicados: matrícula más primera mensualidad. Las dos cifras eran correctas.
+- Off-Campus España pasa de `on_request` a `published` en el catálogo.
+- México, Panamá y Florida se quedan exactamente como estaban.
+- Comprobado que el hero de la home no se ha tocado: el bloque `<video>` es
+  idéntico al de `main` y los dos ficheros de `assets/video/` tienen el mismo
+  MD5 que en `main`.
