@@ -641,7 +641,8 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <div class="nav-links">
 <a class="act" data-i18n="n_home" href="#inicio">Inicio</a>
 <a data-i18n="n_quien" href="#quien">Quiénes somos</a>
-<a data-i18n="n_prog" href="#programas">Programas</a>
+<a href="/programs/">Programas</a>
+<a href="/tuition/">Tarifas / Tuition</a>
 <a data-i18n="n_uni" href="/universidad-eeuu/">Universidad EE.UU.</a>
 <a data-i18n="n_como" href="#como">Cómo empezar</a>
 <a href="#faq">FAQ</a>
@@ -1044,6 +1045,91 @@ Chanak nació de esta visión: la educación es transmisión de valores, fe y ca
 <a class="btn btn-gold" data-i18n="dd_undecided_cta" href="/diagnostico/">Iniciar prueba diagnóstica →</a>
 </div>
 </div>
+</div>
+<!-- TARIFAS Y PLANES REGIONALES -->
+<section style="padding:80px 0;background:#ffffff" id="tarifas">
+<div class="wrap">
+<div class="fi" style="text-align:center;margin-bottom:2.5rem">
+<div class="lbl" style="color:var(--teal);letter-spacing:.2em;font-weight:700">✦ PLANES DE INVERSIÓN ACADÉMICA ✦</div>
+<h2 class="ttl" style="margin:0 auto .75rem;font-size:clamp(2rem,3.8vw,2.8rem)">Colegiaturas Oficiales y Transparentes</h2>
+<p class="sub" style="margin:0 auto 1.5rem;max-width:680px">Tarifas adaptadas a tu región de residencia. Selecciona tu país en la barra superior o en el recuadro inferior para ver los importes en tu moneda local.</p>
+
+<div style="display:inline-flex;align-items:center;gap:10px;background:var(--off);border:1px solid var(--border);border-radius:50px;padding:8px 20px;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:1.5rem">
+  <span>Región activa:</span>
+  <span class="current-region-flag">🇪🇸</span>
+  <span class="current-region-name">España / Europa</span>
+  <span class="current-region-currency" style="color:var(--gold);font-weight:bold">(EUR)</span>
+</div>
+</div>
+
+<div class="aud-cards fi" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1100px;margin:0 auto 3rem">
+  <!-- Tarjeta 1: Off-Campus K-5 -->
+  <div style="background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:2rem;box-shadow:var(--sh);display:flex;flex-direction:column;justify-content:space-between">
+    <div>
+      <span class="badge badge-t" style="font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">PRIMARIA K-5</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">Off-Campus K-5</h3>
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Colegio completo en casa con Plan Educativo Individualizado (PEI) y respaldo FLDOE #134620.</p>
+      <div id="price-offcampus-elementary" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)">
+        <strong>165 €/mes</strong> <span class="text-xs text-slate-400" style="font-size:.85rem;color:var(--muted)">(10 cuotas) + 250 € matrícula</span>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:var(--text)">
+        <li>✓ Plataforma LMS y portal de familias</li>
+        <li>✓ Report cards y actas oficiales FLDOE</li>
+        <li>✓ Acompañamiento tutorial bilingüe</li>
+      </ul>
+    </div>
+    <a class="btn btn-t" style="width:100%;justify-content:center;font-size:.9rem" data-sis-program="off_campus" data-sis-grade="elementary" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=elementary">Iniciar matrícula (SIS) →</a>
+  </div>
+
+  <!-- Tarjeta 2: Off-Campus 6-12 -->
+  <div style="background:linear-gradient(to bottom,#ffffff,#fefcf6);border:2px solid var(--gold);border-radius:18px;padding:2rem;box-shadow:var(--sh);display:flex;flex-direction:column;justify-content:space-between;position:relative">
+    <div style="position:absolute;top:-12px;right:20px;background:var(--gold);color:#0c2d48;font-size:11px;font-weight:800;padding:3px 12px;border-radius:50px;text-transform:uppercase">Más Elegido</div>
+    <div>
+      <span class="badge" style="background:rgba(232,160,32,0.15);color:var(--gold);font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">SECUNDARIA Y HIGH SCHOOL</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">Off-Campus 6-12</h3>
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Secundaria y Bachillerato estadounidense completo con titulación oficial de High School.</p>
+      <div id="price-offcampus-secondary" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)">
+        <strong>195 €/mes</strong> <span class="text-xs text-slate-400" style="font-size:.85rem;color:var(--muted)">(10 cuotas) + 290 € matrícula</span>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:var(--text)">
+        <li>✓ Créditos oficiales acumulativos de High School</li>
+        <li>✓ Diploma de High School Americano oficial</li>
+        <li>✓ Orientación universitaria y convalidación</li>
+      </ul>
+    </div>
+    <a class="btn btn-gold" style="width:100%;justify-content:center;font-size:.9rem" data-sis-program="off_campus" data-sis-grade="middle_high" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=middle_high">Iniciar matrícula (SIS) →</a>
+  </div>
+
+  <!-- Tarjeta 3: Dual Diploma -->
+  <div style="background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:2rem;box-shadow:var(--sh);display:flex;flex-direction:column;justify-content:space-between">
+    <div>
+      <span class="badge badge-t" style="font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">DOBLE TITULACIÓN</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">U.S. Dual Diploma</h3>
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Doble titulación simultánea en paralelo al colegio habitual (convalidando hasta 75% de créditos).</p>
+      <div id="price-dual-diploma" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)">
+        <strong>135 €/mes</strong> <span class="text-xs text-slate-400" style="font-size:.85rem;color:var(--muted)">(10 cuotas) + 210 € matrícula</span>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:var(--text)">
+        <li>✓ 100% online (5 horas semanales)</li>
+        <li>✓ Materias clave e inmersión en inglés</li>
+        <li>✓ Compatible con cualquier colegio local</li>
+      </ul>
+    </div>
+    <a class="btn btn-nv" style="width:100%;justify-content:center;font-size:.9rem" data-sis-program="dual_diploma" data-sis-grade="standard" href="https://sis.chanakacademy.org/matricula?program=dual_diploma&grade=standard">Iniciar matrícula (SIS) →</a>
+  </div>
+</div>
+
+<!-- Landings Específicas por País -->
+<div class="fi" style="background:var(--off);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;max-width:960px;margin:0 auto">
+  <h4 style="color:var(--navy);margin-bottom:1rem;font-size:1.1rem">Accede a la información específica de tu país:</h4>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="/us/florida/" class="btn btn-out" style="padding:.6rem 1.2rem;font-size:.85rem">🇺🇸 Estados Unidos / Florida</a>
+    <a href="/mx/" class="btn btn-out" style="padding:.6rem 1.2rem;font-size:.85rem">🇲🇽 México (Tarifas en Pesos)</a>
+    <a href="/pa/" class="btn btn-out" style="padding:.6rem 1.2rem;font-size:.85rem">🇵🇦 Panamá (Doble Titulación)</a>
+    <a href="/tuition/" class="btn btn-t" style="padding:.6rem 1.4rem;font-size:.85rem">Ver catálogo general de colegiaturas →</a>
+  </div>
+</div>
+
 </div>
 </section>
 <!-- ENRICHMENT -->
