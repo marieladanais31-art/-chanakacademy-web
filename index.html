@@ -40,7 +40,7 @@
  "alternateName": "Chanak Academy",
  "url": "https://www.chanakacademy.org/",
  "logo": "https://www.chanakacademy.org/assets/chanak-logo.png",
- "description": "Colegio privado americano cristiano K-12 online en español para familias homeschool en España, Panamá e internacional. Programas Off-Campus, Dual Diploma y Evaluación Académica Diagnóstica. Diploma de High School Americano con certificado apostillado. Registrado en el Departamento de Educación de Florida (FLDOE #134620).",
+ "description": "Colegio privado americano cristiano K-12, online y presencial, para familias homeschool en Estados Unidos, México, Panamá, España e internacional. Programas Off-Campus, Dual Diploma y Evaluación Académica Diagnóstica. Diploma de High School Americano. Registrado en el Departamento de Educación de Florida (FLDOE #134620).",
  "identifier": [
  "FLDOE #134620",
  "IRS 501(c)(3)",
@@ -1294,11 +1294,30 @@ Chanak nació de esta visión: la educación es transmisión de valores, fe y ca
 <a class="footer-access-btn" href="https://www.instagram.com/chanakinternationalacademy/" rel="noopener noreferrer" target="_blank" title="Instagram Chanak"><span class="brand-icon brand-icon-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3.4A4.6 4.6 0 1 1 12 16.6 4.6 4.6 0 0 1 12 7.4Zm0 2A2.6 2.6 0 1 0 14.6 12 2.6 2.6 0 0 0 12 9.4Zm5-2.35a1.05 1.05 0 1 1-1.05 1.05A1.05 1.05 0 0 1 17 7.05Z"/></svg></span><span>Instagram</span></a>
 <a class="footer-access-btn" href="https://www.facebook.com/profile.php?id=61585911365975" rel="noopener noreferrer" target="_blank" title="Facebook Chanak"><span class="brand-icon brand-icon-fb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.03 3.68 9.2 8.5 9.94v-7.03H8v-2.91h2.5V9.84c0-2.48 1.48-3.85 3.74-3.85 1.08 0 2.21.19 2.21.19v2.43H15.2c-1.23 0-1.61.76-1.61 1.54v1.91h2.74l-.44 2.91h-2.3V22c4.83-.74 8.41-4.91 8.41-9.94Z"/></svg></span><span>Facebook</span></a>
 </div>
-<div class="f-part">
+<div class="f-part" id="footer-educafe-badge">
 <div class="f-part-logo"><img loading="lazy" decoding="async" alt="EducaFe" src="assets/educafe-logo.png" style="height:28px"/></div>
 <span style="font-size:.76rem">EducaFe · CIF G 19357789<br/>Alianza Red Educativa</span>
 </div>
 <div class="chanak-region-selector-mount in-footer" style="margin-top:14px;"></div>
+<script>
+/* La alianza EducaFe es una entidad española (RD 806/1993); no aplica fuera
+   de España. Se oculta para el resto de países en lugar de mostrarla a
+   familias de EE.UU., México o Panamá donde no significa nada. */
+(function(){
+  function syncEducaFeBadge(country){
+    var badge = document.getElementById('footer-educafe-badge');
+    if (!badge) return;
+    badge.style.display = (country === 'ES') ? '' : 'none';
+  }
+  window.addEventListener('chanak:countryChange', function(e){ syncEducaFeBadge(e.detail.country); });
+  document.addEventListener('DOMContentLoaded', function(){
+    syncEducaFeBadge(window.getCurrentCountry ? window.getCurrentCountry() : 'ES');
+  });
+  if (document.readyState !== 'loading') {
+    syncEducaFeBadge(window.getCurrentCountry ? window.getCurrentCountry() : 'ES');
+  }
+})();
+</script>
 </div>
 <div class="fc">
 <h4>Por país</h4>
