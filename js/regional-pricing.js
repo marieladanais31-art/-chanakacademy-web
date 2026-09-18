@@ -12,9 +12,12 @@
  *  - MX Dual Diploma ....... Chanak_Dual_Diploma_Mexico_2026-27_PROPUESTA.pdf (pág. 8)
  *  - Diagnóstico 50 € ...... landing /diagnostico/ + Stripe
  *  - ES alta Dual Diploma .. assets/site-config.js (evaluación 35 € · matrícula 210 €)
+ *  - ES alta Off-Campus ... matrícula 180 € + primera mensualidad (confirmado por
+ *                            dirección el 2026-09-18; sustituye al «desde 250 €» de la home)
  *  - UAE / Dubái ........... _private/commercial-pricing.php
  *
- * Pendientes de aprobación de dirección: Off-Campus (todas las regiones),
+ * Pendientes de aprobación de dirección: la MENSUALIDAD de Off-Campus (todas las
+ * regiones; la matrícula de España sí está confirmada),
  * Dual Diploma US / PA / Internacional, y los productos modulares.
  *
  * El enlace al SIS NO se toca desde aquí: buildSisEnrollmentUrl() conserva
@@ -104,7 +107,7 @@ window.CHANAK_PRICING = {
         // aprobado. Hasta que dirección la confirme, no se muestra cifra.
         status: 'on_request',
         title: 'Off-Campus · Escuela completa a distancia',
-        enrollmentFee: 'desde 250 €',
+        enrollmentFee: '180 €',
         note: 'En España, Off-Campus se ofrece a partir de los 16 años o a través de centro extranjero autorizado (RD 806/1993) con iglesia colaboradora. Consultar admisión.',
         tiers: [
           { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },

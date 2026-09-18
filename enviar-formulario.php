@@ -27,8 +27,8 @@ $CONFIG = [
     'from_email'       => 'offcampus@chanakacademy.org',
     'from_name'        => 'Chanak International Academy',
     'site_url'         => 'https://www.chanakacademy.org',
-    'whatsapp_link'    => 'https://wa.me/34624703272',
-    'whatsapp_display' => '+34 624 70 32 72',
+    'whatsapp_link'    => '',
+    'whatsapp_display' => '',
     // Enrutamiento por producto. 'to' admite varios buzones.
     // 'brevo_list' = ID de la lista de contactos en Brevo para ese producto.
     'routes' => [
@@ -67,7 +67,6 @@ $AUTOREPLY = [
             . "· El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte.\n"
             . "· Para matricularse: €180 de matrícula + primera mensualidad. Off-Campus inicia desde €250.\n"
             . "· Referencia internacional para Panamá, Dubái u otros países: aprox. USD $286 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
-            . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). IRS 501(c)(3).\n"
             . "Al finalizar sus estudios, el estudiante obtiene el diploma de High School Americano con certificado apostillado.",
@@ -85,7 +84,6 @@ $AUTOREPLY = [
             . "· El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte.\n"
             . "· Diagnóstico académico: €35 (aprox. USD $40). Matrícula: €210 (aprox. USD $240). Mensualidad: desde €110/mes (aprox. USD $126).\n"
             . "· Total desde €1.310/año en 3.º ESO (aprox. USD $1.494). Referencia USD para Panamá, Dubái u otros países, cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
-            . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). IRS 501(c)(3).\n"
             . "Tu hijo no cambia de colegio: añade el diploma de High School Americano convalidando hasta el 75% de créditos según expediente.",
@@ -100,7 +98,6 @@ $AUTOREPLY = [
             . "· En las próximas 24 horas (días laborables) te contactaremos para coordinar la evaluación.\n\n"
             . "Mientras tanto:\n"
             . "· Toda la información del Diagnóstico (50€): {landing}\n"
-            . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)",
     ],
@@ -124,7 +121,6 @@ $AUTOREPLY = [
             . "· Off-Campus inicia desde €250 (aprox. USD $286).\n"
             . "· Dual Diploma: diagnóstico €35, matrícula €210, mensualidad desde €110/mes (aprox. USD $40 / $240 / $126).\n"
             . "· Referencia USD para Panamá, Dubái u otros países calculada con cambio BCE 1 EUR = 1.1404 USD, redondeada al alza.\n\n"
-            . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
             . "Al finalizar sus estudios, el estudiante obtiene el diploma de High School Americano con certificado apostillado.",
@@ -134,7 +130,6 @@ $AUTOREPLY = [
         'body' => "Hola {nombre},\n\n"
             . "Gracias por tu interés en las alianzas educativas de Chanak International Academy.\n\n"
             . "Nuestro equipo institucional revisará tu mensaje y te contactará para abrir la conversación.\n\n"
-            . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy",
     ],
     // Autorespuesta específica cuando el lead llega desde /matricula/ (alta intención).
@@ -143,14 +138,13 @@ $AUTOREPLY = [
         'body' => "Hola {nombre},\n\n"
             . "¡Gracias por iniciar el proceso de matrícula en Chanak International Academy!\n\n"
             . "Qué pasará ahora:\n"
-            . "· En menos de 24 horas (días laborables) el equipo de admisiones te contactará por email o WhatsApp.\n"
+            . "· En menos de 24 horas (días laborables) el equipo de admisiones te contactará por email.\n"
             . "· Revisaremos contigo el nivel de entrada del estudiante y confirmaremos la ruta académica y el plan económico final.\n\n"
             . "Mientras tanto:\n"
             . "· Información del programa: {landing}\n"
             . "· El pago inicial de matrícula es €180 + la primera mensualidad.\n"
             . "· Referencia internacional: Off-Campus desde €250 / USD $286; Dual Diploma: diagnóstico €35/USD $40, matrícula €210/USD $240, mensualidad desde €110/USD $126.\n"
             . "· Los materiales académicos se gestionan aparte según la ruta elegida.\n"
-            . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo de Admisiones — Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
             . "La matrícula se confirma tras la validación del equipo de admisiones.",
@@ -167,7 +161,6 @@ $AUTOREPLY = [
             . "· Program page: {landing}\n"
             . "· Information pack (PDF): {dossier}\n\n"
             . "Please note: your information has been received. Eligibility is confirmed during the admissions process, not before.\n\n"
-            . "Prefer to talk now? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Kind regards,\nChanak International Academy\nInternational Admissions\n\n"
             . "FLDOE #134620 (publicly verifiable) · MSA-CESS Official Candidate for Accreditation — candidate status does not constitute accreditation · Nonprofit 501(c)(3)",
     ],
@@ -180,7 +173,6 @@ $AUTOREPLY = [
             . "· Program page: {landing}\n"
             . "· Information pack (PDF): {dossier}\n\n"
             . "Please note: your information has been received. Eligibility is confirmed during the admissions process, not before.\n\n"
-            . "Prefer to talk now? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Kind regards,\nChanak International Academy\nInternational Admissions\n\n"
             . "FLDOE #134620 (publicly verifiable) · MSA-CESS Official Candidate for Accreditation — candidate status does not constitute accreditation · Nonprofit 501(c)(3)",
     ],

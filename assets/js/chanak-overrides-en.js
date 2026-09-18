@@ -282,7 +282,7 @@
         card.dataset.chanakWa = "1";
         var tag = document.createElement("div");
         tag.style.cssText = "font-size:11px;color:#1b9faa;font-weight:600;margin-top:12px;padding-top:10px;border-top:1px dashed #D1D5E8";
-        tag.textContent = "Testimonial received via WhatsApp";
+        tag.textContent = "Testimonial received via Admisiones";
         card.appendChild(tag);
       }
     });
@@ -409,8 +409,8 @@
     if (href.indexOf("wa.me") > -1) {
       if (typeof window.gtag === "function") window.gtag("event", "whatsapp_click", { event_category: "contact", event_label: location.pathname });
       if (typeof window.fbq === "function") {
-        window.fbq("track", "Lead", { content_name: "WhatsApp Click", content_category: location.pathname });
-        window.fbq("track", "Schedule", { content_name: "WhatsApp Schedule", content_category: location.pathname });
+        window.fbq("track", "Lead", { content_name: "Admisiones Click", content_category: location.pathname });
+        window.fbq("track", "Schedule", { content_name: "Admisiones Schedule", content_category: location.pathname });
       }
     }
     else if (href.indexOf("sis.chanakacademy.org/matricula") > -1) {
@@ -448,7 +448,7 @@
       if (text.indexOf("35") > -1 || text.indexOf("evaluacion") > -1 || text.indexOf("diagnostica") > -1 || text.indexOf("hacer el diagnostico") > -1
         || text.indexOf("evaluation") > -1 || text.indexOf("diagnostic") > -1 || text.indexOf("take the diagnostic") > -1) {
         a.textContent = "Book a Free Orientation Call 📲";
-        a.href = "https://wa.me/34624703272?text=Hello,%20I%20would%20like%20to%20book%20an%20orientation%20call%20for%20the%20Dual%20Diploma";
+        a.href = "/#solicitud";
         a.style.background = "linear-gradient(135deg, #1b9faa, #1a5f8a)";
         a.style.color = "#ffffff";
         a.style.fontWeight = "800";
@@ -495,7 +495,7 @@
         dualDiplomaNotList();
         ctaFinal("dual-diploma",
           '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">Would you like to review credit recognition? '
-          + '<a href="https://wa.me/34624703272?text=Hello,%20I%20would%20like%20guidance%20on%20credit%20recognition" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Book a Credit Recognition Call →</a></p>');
+          + '<a href="/#solicitud" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Book a Credit Recognition Call →</a></p>');
         internalLinks([
           ["/off-campus/en/", "American online homeschool"],
           ["/diagnostico/", "Academic level assessment"]

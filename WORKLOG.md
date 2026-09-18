@@ -181,3 +181,49 @@ Rama de trabajo: `mejoras-venta`. Producción (= rama `main` + auto-deploy Hosti
 3. Teléfonos propios de EE. UU. y México (hoy todo el sitio usa el +34).
 4. Errores de hidratación React (#418) preexistentes en /off-campus/ y
    /dual-diploma/: no introducidos aquí, requieren rebuild desde `chanak-landing`.
+
+## 2026-09-18 (tarde) — Retirada de teléfonos y WhatsApp + matrícula Off-Campus
+
+### Contacto
+- Decisión de dirección: fuera todos los teléfonos **y también WhatsApp**. La
+  captación queda por formulario y correo hasta tener números de EE. UU. y México.
+- `assets/site-config.js` y `-en.js`: `whatsappNumber` y `whatsappLink` vacíos +
+  rutina `purgeContacts()` que elimina en tiempo de ejecución cualquier enlace
+  `wa.me`, `api/web.whatsapp`, `whatsapp:`, `tel:` y el número suelto en texto.
+  Se ejecuta en el mismo bucle que los guardas de matrícula, así que también
+  alcanza lo que React repinta al hidratar en las landings compiladas.
+- Limpieza en origen de HTML, PHP y bundles `_next`. Los CTA que eran de WhatsApp
+  apuntan ahora al formulario (`/#solicitud`).
+- `enviar-formulario.php`: fuera la línea "¿Prefieres hablar ya? WhatsApp…" de
+  las 7 autorespuestas (ES y EN). Los campos internos `whatsapp` y el atributo
+  `WHATSAPP` de Brevo se conservan: son fontanería de datos, no texto visible.
+
+### Incidencias introducidas y corregidas en el mismo paso
+- La sustitución global de la palabra "WhatsApp" alcanzó atributos y rompió
+  `name="whatsapp"` en 4 formularios y `id`/`for` en 3 páginas. Restaurados; los
+  campos que lee el PHP vuelven a existir con su nombre original.
+- La sustitución de URLs rompió dos plantillas de JavaScript en `/diagnostico/`,
+  una de ellas la del botón de pago de Stripe. Reparadas y verificadas.
+- Verificación: `node --check` sobre los 44 scripts inline de las 14 páginas
+  tocadas y sobre los bundles; `php -l` sobre el receptor de formularios.
+
+### Precios
+- Confirmado por dirección: **matrícula Off-Campus 180 € + primera mensualidad**
+  y **matrícula Dual Diploma 210 €**. El catálogo pasa a 180 € y se retira el
+  "desde 250 €" que circulaba en la home.
+- Reescrito el párrafo de la home que se contradecía a sí mismo (decía 180 € y
+  250 € en la misma frase).
+- Sigue pendiente la **mensualidad** de Off-Campus en todas las regiones.
+
+### Móvil
+- La guarda de desbordamiento se mueve a `site-config.js`, que sí cargan todas
+  las páginas. Corrige además `/universidad-eeuu/` y `/diagnostico/`.
+
+### Verificación final (Chromium, 1440 y 390 px, 12 rutas)
+- 0 enlaces de WhatsApp, 0 enlaces `tel:`, 0 apariciones del número, 0 menciones
+  de la palabra WhatsApp.
+- 0 scroll horizontal en las 12 rutas.
+- Enlaces del SIS intactos y con sus parámetros; los 2 enlaces de Stripe de
+  `/diagnostico/` intactos.
+- Los errores de hidratación React #418 de `/off-campus/` y `/dual-diploma/` son
+  anteriores a este trabajo y siguen ahí: requieren rebuild desde `chanak-landing`.
