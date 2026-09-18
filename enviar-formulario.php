@@ -69,7 +69,7 @@ $AUTOREPLY = [
             . "· Referencia internacional para Panamá, Dubái u otros países: aprox. USD $286 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
-            . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
+            . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). IRS 501(c)(3).\n"
             . "Al finalizar sus estudios, el estudiante obtiene el diploma de High School Americano con certificado apostillado.",
     ],
     'dual' => [
@@ -87,8 +87,8 @@ $AUTOREPLY = [
             . "· Total desde €1.310/año en 3.º ESO (aprox. USD $1.494). Referencia USD para Panamá, Dubái u otros países, cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
             . "· ¿Prefieres hablar ya? WhatsApp {whatsapp_display}: {whatsapp}\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
-            . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
-            . "Tu hijo no cambia de colegio: añade el diploma de High School Americano con certificado apostillado.",
+            . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). IRS 501(c)(3).\n"
+            . "Tu hijo no cambia de colegio: añade el diploma de High School Americano convalidando hasta el 75% de créditos según expediente.",
     ],
     'diagnostico' => [
         'subject' => 'Hemos recibido tu solicitud · Diagnóstico Académico | Chanak Academy',
