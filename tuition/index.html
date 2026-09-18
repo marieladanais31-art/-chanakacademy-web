@@ -3,50 +3,70 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Tarifas y Matrícula 2026-2027 | Chanak International Academy</title>
-<meta content="Planes de inversión académica, matrícula y mensualidades para los programas Off-Campus K-12, U.S. Dual Diploma y Diagnóstico Académico según tu región." name="description"/>
-<meta content="Tarifas y Matrícula 2026-2027 | Chanak International Academy" property="og:title"/>
-<meta content="Transparencia en aranceles académicos para España (EUR), EE.UU. (USD), México (USD), Panamá (USD) e Internacional." property="og:description"/>
+<title>Colegiaturas y planes de pago 2026-2027 | Chanak International Academy</title>
+<meta content="Matrícula, mensualidades y planes de pago de los programas Off-Campus K-12, Chanak Dual Diploma y Diagnóstico Académico. Selecciona tu país para ver la tarifa que te corresponde." name="description"/>
+<meta content="Colegiaturas y planes de pago 2026-2027 | Chanak International Academy" property="og:title"/>
+<meta content="Tarifas por país para España, México, Panamá, Estados Unidos e Internacional." property="og:description"/>
 <meta content="https://www.chanakacademy.org/tuition/" property="og:url"/>
 <meta content="website" property="og:type"/>
 <meta content="https://www.chanakacademy.org/assets/og-image.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <link href="https://www.chanakacademy.org/tuition/" rel="canonical"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="/assets/site-config.js?v=20260707sis"></script>
-<script src="/js/regional-pricing.js?v=202609"></script>
-<script src="/js/regional-selector.js?v=202609"></script>
+<script src="/js/regional-pricing.js?v=202609b"></script>
+<script src="/js/regional-selector.js?v=202609b"></script>
 <style>
 :root{--navy:#0c2d48;--blue:#1a5f8a;--teal:#1b9faa;--green:#6ab04c;--gold:#e8a020;--off:#f8fafc;--border:#e2e8f0;--text:#0f172a;--muted:#64748b}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff;line-height:1.6}
-.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
-.nav{position:sticky;top:0;background:rgba(12,45,72,0.95);backdrop-filter:blur(10px);z-index:100;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
-.nav-i{display:flex;justify-content:space-between;align-items:center}
-.logo-w{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
-.logo-w img{height:38px}
-.nav-r{display:flex;align-items:center;gap:12px}
-.hero{background:linear-gradient(135deg,#0c2d48 0%,#1a5f8a 100%);color:#fff;padding:60px 0 40px;text-align:center}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);margin-bottom:12px}
-.hero p{color:#cbd5e1;font-size:1.1rem;max-width:650px;margin:0 auto}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin:40px 0}
-.p-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,0.05);display:flex;flex-direction:column;justify-content:space-between;position:relative;transition:all .2s}
-.p-card:hover{transform:translateY(-4px);border-color:var(--teal)}
+html,body{max-width:100%;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff;line-height:1.6;-webkit-text-size-adjust:100%}
+img,svg{max-width:100%}
+.wrap{max-width:1140px;margin:0 auto;padding:0 16px}
+@media(min-width:640px){.wrap{padding:0 24px}}
+.nav{position:sticky;top:0;background:rgba(12,45,72,0.96);backdrop-filter:blur(10px);z-index:100;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+.nav-i{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo-w{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;min-width:0}
+.logo-w img{height:34px;flex:none}
+.nav-r{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero{background:linear-gradient(135deg,#0c2d48 0%,#1a5f8a 100%);color:#fff;padding:56px 0 40px;text-align:center}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);margin-bottom:12px}
+.hero p{color:#cbd5e1;font-size:1.05rem;max-width:650px;margin:0 auto}
+.regionbar{background:var(--off);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:30px 0}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;margin:28px 0}
+.p-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:26px;box-shadow:0 10px 30px rgba(0,0,0,0.05);display:flex;flex-direction:column;justify-content:space-between;position:relative}
 .p-card.featured{border:2px solid var(--gold);background:linear-gradient(to bottom,#ffffff,#fefcf6)}
-.p-badge{position:absolute;top:-12px;right:24px;background:var(--gold);color:#0f172a;font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;text-transform:uppercase}
-.p-title{font-size:1.4rem;color:var(--navy);font-family:'Playfair Display',serif;margin-bottom:8px}
-.p-desc{font-size:0.9rem;color:var(--muted);margin-bottom:20px;min-height:44px}
-.p-amount{font-size:2.2rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+@media(min-width:1000px){.p-card.wide{grid-column:span 2}}
+.p-badge{position:absolute;top:-12px;right:20px;background:var(--gold);color:#0f172a;font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;text-transform:uppercase}
+.p-title{font-size:1.3rem;color:var(--navy);font-family:'Playfair Display',serif;margin-bottom:8px}
+.p-desc{font-size:0.9rem;color:var(--muted);margin-bottom:18px}
+.p-amount{font-size:2rem;font-weight:800;color:var(--navy);margin-bottom:4px;line-height:1.2}
 .p-amount span{font-size:1rem;font-weight:500;color:var(--muted)}
-.p-meta{font-size:0.85rem;color:#059669;font-weight:600;margin-bottom:20px;background:#ecfdf5;padding:6px 12px;border-radius:8px;display:inline-block}
-.p-features{list-style:none;margin:20px 0;padding:0;border-top:1px solid #f1f5f9;padding-top:16px}
-.p-features li{font-size:0.9rem;color:#334155;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.p-features li::before{content:"✓";color:var(--green);font-weight:bold}
-.btn-enroll{display:block;text-align:center;padding:12px 24px;border-radius:12px;background:var(--navy);color:#fff;font-weight:700;text-decoration:none;transition:background .2s}
+.p-amount.request{font-size:1.15rem;font-weight:700;color:var(--blue)}
+.p-meta{font-size:0.85rem;color:#047857;font-weight:600;margin-bottom:16px;background:#ecfdf5;padding:6px 12px;border-radius:8px;display:inline-block}
+.p-features{list-style:none;margin:16px 0;padding:16px 0 0;border-top:1px solid #f1f5f9}
+.p-features li{font-size:0.9rem;color:#334155;margin-bottom:9px;display:flex;align-items:flex-start;gap:8px}
+.p-features li::before{content:"✓";color:var(--green);font-weight:bold;flex:none}
+.p-routes{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 16px}
+.p-routes th,.p-routes td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--border)}
+.p-routes th{color:var(--navy);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.p-routes tr:last-child td{border-bottom:none}
+.btns{display:grid;gap:8px;margin-top:6px}
+.btn-enroll{display:block;text-align:center;padding:12px 20px;border-radius:12px;background:var(--navy);color:#fff;font-weight:700;text-decoration:none;font-size:15px}
 .btn-enroll:hover{background:var(--blue)}
 .btn-enroll.gold{background:var(--gold);color:#0f172a}
 .btn-enroll.gold:hover{background:#f59e0b}
-footer{background:#0c2d48;color:#94a3b8;padding:60px 0 30px;font-size:14px}
+.btn-inquire{display:block;text-align:center;padding:11px 20px;border-radius:12px;border:1.5px solid var(--border);color:var(--navy);font-weight:600;text-decoration:none;font-size:14px;background:#fff}
+.btn-inquire:hover{border-color:var(--teal)}
+.noteblock{background:#f8fafc;border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:26px}
+.noteblock h3{font-size:1.05rem;color:var(--navy);margin-bottom:8px}
+.noteblock p{font-size:0.9rem;color:var(--muted);line-height:1.7}
+footer{background:#0c2d48;color:#94a3b8;padding:48px 0 28px;font-size:14px}
 footer a{color:#cbd5e1;text-decoration:none}
+.fcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px;margin-bottom:28px}
+.fcols h4{color:#fff;font-size:15px;margin-bottom:12px}
+.wa{position:fixed;right:16px;bottom:16px;z-index:200;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.25)}
+.wa svg{width:28px;height:28px;fill:#fff}
 </style>
 </head>
 <body>
@@ -54,147 +74,244 @@ footer a{color:#cbd5e1;text-decoration:none}
 <nav class="nav">
   <div class="wrap nav-i">
     <a href="/" class="logo-w">
-      <img src="/assets/chanak-logo.png" alt="Chanak Academy"/>
+      <img src="/assets/chanak-logo.png" alt="Chanak International Academy"/>
       <div>
-        <div style="font-weight:700;font-size:15px;">Chanak International Academy</div>
-        <div style="font-size:11px;color:#cbd5e1;">FLDOE #134620 · MSA Candidate</div>
+        <div style="font-weight:700;font-size:14px;">Chanak International Academy</div>
+        <div style="font-size:11px;color:#cbd5e1;">FLDOE #134620 · MSA-CESS Candidate</div>
       </div>
     </a>
     <div class="nav-r">
       <div class="chanak-region-selector-mount"></div>
-      <a href="/" style="color:#cbd5e1;font-size:14px;font-weight:600;text-decoration:none;margin-right:12px;">Inicio</a>
-      <a href="https://sis.chanakacademy.org/login" target="_blank" style="color:#cbd5e1;font-size:14px;text-decoration:none;">Portal SIS ↗</a>
+      <a href="/" style="color:#cbd5e1;font-size:14px;font-weight:600;text-decoration:none;">Inicio</a>
+      <a href="https://sis.chanakacademy.org/login" target="_blank" rel="noopener" style="color:#cbd5e1;font-size:14px;text-decoration:none;">Acceso SIS</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <h1>Catálogo de Matrícula y Mensualidades</h1>
-    <p>Tarifas oficiales y transparentes adaptadas a tu región de residencia.</p>
+    <h1>Colegiaturas y planes de pago</h1>
+    <p>Tuition and Payment Options · Ciclo 2026-2027. Selecciona tu país para ver la tarifa que te corresponde.</p>
   </div>
 </header>
 
-<main class="wrap" style="padding:40px 24px;">
-  <!-- Notificador de Región Activa -->
-  <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:30px;">
+<main class="wrap" style="padding:0 16px 40px;">
+
+  <div class="regionbar">
     <div>
-      <span style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;">Región Seleccionada:</span>
+      <span style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;">País seleccionado</span>
       <div style="font-size:16px;font-weight:700;color:var(--navy);">
-        <span class="current-region-flag">🇪🇸</span> <span class="current-region-name">España / Europa</span> <span class="current-region-currency text-amber-500">(EUR)</span>
+        <span class="current-region-flag">🌐</span> <span class="current-region-name">Internacional</span> <span class="current-region-currency" style="color:var(--gold);">(USD)</span>
       </div>
     </div>
-    <div style="font-size:13px;color:var(--muted);">
-      ¿Deseas ver precios para otro país? Usa el selector en la esquina superior.
+    <div style="font-size:13px;color:var(--muted);max-width:420px;">
+      ¿Vives en otro país? Cambia la región con el selector de la cabecera y las tarifas se actualizan.
     </div>
   </div>
 
-  <div class="pricing-grid">
-    <!-- Card 1: Off-Campus Primaria -->
-    <div class="p-card">
-      <div>
-        <div class="p-title">Off-Campus K-5</div>
-        <div class="p-desc">Programa K-12 completo para Primaria con Plan Educativo Individualizado (PEI) y respaldo FLDOE #134620.</div>
-        <div id="price-offcampus-elementary">
-          <div class="p-amount">165 €<span>/mes</span></div>
-          <div class="p-meta">10 cuotas mensuales + 250 € matrícula</div>
-        </div>
-        <ul class="p-features">
-          <li>Acceso 24/7 a plataforma de aprendizaje</li>
-          <li>Evaluación diagnóstica inicial</li>
-          <li>Plan Educativo Individualizado (PEI)</li>
-          <li>Expedición de notas y transcripts FLDOE</li>
-          <li>Soporte y orientación tutorial</li>
-        </ul>
-      </div>
-      <a href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=elementary" data-sis-program="off_campus" data-sis-grade="elementary" class="btn-enroll">Matricularse en SIS →</a>
-    </div>
+  <div class="pricing-grid" id="tuition-cards"></div>
 
-    <!-- Card 2: Off-Campus Secundaria y High School (Destacada) -->
-    <div class="p-card featured">
-      <div class="p-badge">Más Elegido</div>
-      <div>
-        <div class="p-title">Off-Campus 6-12</div>
-        <div class="p-desc">Secundaria y Bachillerato estadounidense completo con titulación oficial de High School.</div>
-        <div id="price-offcampus-secondary">
-          <div class="p-amount">195 €<span>/mes</span></div>
-          <div class="p-meta">10 cuotas mensuales + 290 € matrícula</div>
-        </div>
-        <ul class="p-features">
-          <li>Currículo estadounidense completo</li>
-          <li>Créditos oficiales acumulativos para High School</li>
-          <li>Diploma oficial de Florida con opción de Apostilla</li>
-          <li>Orientación vocacional y preuniversitaria</li>
-          <li>Secretaría académica y convalidación internacional</li>
-        </ul>
-      </div>
-      <a href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=middle_high" data-sis-program="off_campus" data-sis-grade="middle_high" class="btn-enroll gold">Matricularse en SIS →</a>
-    </div>
-
-    <!-- Card 3: U.S. Dual Diploma -->
-    <div class="p-card">
-      <div>
-        <div class="p-title">U.S. Dual Diploma</div>
-        <div class="p-desc">Doble titulación simultánea en paralelo al colegio habitual (convalidación de hasta 75% de créditos).</div>
-        <div id="price-dual-diploma">
-          <div class="p-amount">135 €<span>/mes</span></div>
-          <div class="p-meta">10 cuotas mensuales + 210 € matrícula</div>
-        </div>
-        <ul class="p-features">
-          <li>Solo 5 horas semanales 100% online</li>
-          <li>Inmersión lingüística y materias en inglés</li>
-          <li>Convalidación de hasta el 75% de asignaturas locales</li>
-          <li>Diploma de High School Americano de Florida</li>
-          <li>No interfiere con el horario escolar local</li>
-        </ul>
-      </div>
-      <a href="https://sis.chanakacademy.org/matricula?program=dual_diploma&grade=standard" data-sis-program="dual_diploma" data-sis-grade="standard" class="btn-enroll">Matricularse en SIS →</a>
-    </div>
+  <div class="noteblock">
+    <h3>Qué incluye la matrícula</h3>
+    <p>El importe de matrícula cubre la apertura del expediente oficial en el Sistema de Información Escolar (SIS), el alta en la plataforma de aprendizaje y la emisión de actas y certificados con el número de registro FLDOE #134620. No existen costes ocultos de permanencia. Los materiales académicos que no formen parte de la plataforma se indican por escrito antes de formalizar.</p>
   </div>
 
-  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:28px;margin-top:30px;">
-    <h3 style="font-size:1.1rem;color:var(--navy);margin-bottom:8px;">📌 Garantía Académica y Respaldo Institucional</h3>
-    <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;">
-      Los importes de matrícula garantizan la apertura del expediente oficial en el Sistema de Información Escolar (SIS), la emisión de actas y certificados con número de registro FLDOE #134620. No existen costes ocultos de permanencia.
-    </p>
+  <div class="noteblock">
+    <h3>Reconocimiento de créditos</h3>
+    <p>El diploma estadounidense se organiza en 24 créditos. Una parte puede proceder del expediente académico local del estudiante: el reconocimiento se realiza tras la evaluación individual del expediente y según las normativas de cada institución receptora. No es automático y no se garantiza un porcentaje previo a la evaluación.</p>
   </div>
+
 </main>
 
 <footer>
   <div class="wrap">
-    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:40px;">
+    <div class="fcols">
       <div>
-        <h4 style="color:#fff;font-size:16px;margin-bottom:12px;">Chanak International Academy</h4>
-        <p style="font-size:13px;line-height:1.6;max-width:320px;">
-          Colegio privado americano registrado en Florida<br/>
-          FLDOE #134620 · MSA Candidate<br/>
-          7901 4th St N Ste 300, St. Petersburg FL
-        </p>
+        <h4>Chanak International Academy</h4>
+        <p style="font-size:13px;line-height:1.7;">Colegio privado americano registrado en Florida<br/>FLDOE #134620 · MSA-CESS Candidate<br/>7901 4th St N Ste 300, St. Petersburg FL</p>
         <div class="chanak-region-selector-mount in-footer" style="margin-top:16px;"></div>
       </div>
       <div>
-        <h4 style="color:#fff;font-size:15px;margin-bottom:12px;">Programas</h4>
+        <h4>Programas</h4>
         <p style="margin-bottom:6px;"><a href="/off-campus/">Off-Campus K-12</a></p>
-        <p style="margin-bottom:6px;"><a href="/dual-diploma/">Dual Diploma</a></p>
-        <p style="margin-bottom:6px;"><a href="/us/florida/">Florida / US Academy</a></p>
-        <p><a href="/diagnostico/">Diagnóstico Académico</a></p>
+        <p style="margin-bottom:6px;"><a href="/dual-diploma/">Chanak Dual Diploma</a></p>
+        <p style="margin-bottom:6px;"><a href="/us/florida/">Estados Unidos</a></p>
+        <p style="margin-bottom:6px;"><a href="/mx/">México</a></p>
+        <p style="margin-bottom:6px;"><a href="/pa/">Panamá</a></p>
+        <p><a href="/diagnostico/">Diagnóstico académico</a></p>
       </div>
       <div>
-        <h4 style="color:#fff;font-size:15px;margin-bottom:12px;">Enlaces Directos</h4>
-        <p style="margin-bottom:6px;"><a href="https://sis.chanakacademy.org/matricula">Pasarela Matrícula SIS ↗</a></p>
-        <p style="margin-bottom:6px;"><a href="https://portal.chanakacademy.org">Portal Estudiantes ↗</a></p>
-        <p><a href="https://foundation.chanakacademy.org">Fundación Chanak ↗</a></p>
+        <h4>Enlaces directos</h4>
+        <p style="margin-bottom:6px;"><a href="https://sis.chanakacademy.org/matricula">Matrícula (SIS)</a></p>
+        <p style="margin-bottom:6px;"><a href="https://portal.chanakacademy.org">Portal de estudiantes</a></p>
+        <p style="margin-bottom:6px;"><a href="https://foundation.chanakacademy.org">Chanak Foundation</a></p>
+        <p><a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a></p>
       </div>
     </div>
 
-    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;font-size:12px;color:#94a3b8;line-height:1.6;">
-      <p style="margin-bottom:8px;"><strong>Acreditación y Registro:</strong> Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS).</p>
-      <p style="margin-bottom:8px;"><strong>Educación a Distancia:</strong> Chanak Academy ofrece programas y servicios de educación a distancia y acompañamiento académico bajo estándares estadounidenses para familias internacionales. Chanak no participa en programas de becas presenciales de asistencia diaria en Florida (FTC/FES).</p>
-      <p><strong>Transferencia de Créditos:</strong> El reconocimiento de hasta un 75% de créditos en el Dual Diploma o en transferencias académicas se realiza tras la evaluación individual del expediente y según las normativas de convalidación de cada país o institución receptora.</p>
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;font-size:12px;color:#94a3b8;line-height:1.7;">
+      <p style="margin-bottom:8px;"><strong>Acreditación y registro:</strong> Chanak International Academy está registrada como escuela privada en el Florida Department of Education (FLDOE #134620) y es candidata oficial a la acreditación de la Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). Chanak no está acreditada por MSA todavía.</p>
+      <p style="margin-bottom:8px;"><strong>Educación a distancia:</strong> Chanak ofrece programas y servicios de educación a distancia y acompañamiento académico bajo estándares estadounidenses para familias internacionales. Chanak no participa en programas de becas presenciales de asistencia diaria en Florida (FTC/FES).</p>
+      <p><strong>Transferencia de créditos:</strong> el reconocimiento de créditos procedentes del expediente local se realiza tras la evaluación individual del estudiante y según las normativas de cada país o institución receptora. No es automático.</p>
       <p style="margin-top:12px;">© 2026 Chanak TrainUp Education Inc. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
+
+<a class="wa" href="https://wa.me/34624703272?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20las%20colegiaturas" data-config-href="whatsappLink" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4 2.5 1 3 .8 3.6.8.5 0 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+</a>
+
+<script>
+/* Render del catálogo de precios. Única fuente: window.CHANAK_PRICING.
+   Si un bloque no está aprobado (status !== 'published') NO se muestra cifra:
+   se muestra "Plan de colegiatura personalizado" y el CTA pasa a solicitud. */
+(function () {
+  "use strict";
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function sisUrl(program, grade, country) {
+    if (typeof window.buildSisEnrollmentUrl === 'function') {
+      return window.buildSisEnrollmentUrl(program, grade, country);
+    }
+    return 'https://sis.chanakacademy.org/matricula';
+  }
+
+  function ctas(program, grade, country, gold) {
+    return '<div class="btns">'
+      + '<a class="btn-enroll' + (gold ? ' gold' : '') + '" data-sis-program="' + esc(program) + '" data-sis-grade="' + esc(grade) + '" href="' + esc(sisUrl(program, grade, country)) + '">Iniciar matrícula</a>'
+      + '<a class="btn-inquire" href="/#solicitud">Solicitar información</a>'
+      + '</div>';
+  }
+
+  function onRequestText() {
+    var d = (document.documentElement.getAttribute('lang') || 'es').indexOf('en') === 0 ? 'en' : 'es';
+    return (window.CHANAK_PRICE_ON_REQUEST || {})[d] || 'Plan de colegiatura personalizado';
+  }
+
+  function offCampusCard(tier, oc, country, featured) {
+    var published = oc.status === 'published';
+    var amount = published
+      ? '<div class="p-amount">' + esc(tier.monthly) + '<span>/mes</span></div>'
+        + (oc.enrollmentFee ? '<div class="p-meta">' + esc(oc.installments || '10 mensualidades') + ' + ' + esc(oc.enrollmentFee) + ' de matrícula</div>' : '')
+      : '<div class="p-amount request">' + esc(onRequestText()) + '</div>'
+        + (oc.enrollmentFee ? '<div class="p-meta">Matrícula ' + esc(oc.enrollmentFee) + '</div>' : '');
+
+    return '<div class="p-card' + (featured ? ' featured' : '') + '">'
+      + (featured ? '<div class="p-badge">Escuela completa</div>' : '')
+      + '<div>'
+      + '<div class="p-title">' + esc(tier.title) + '</div>'
+      + '<div class="p-desc">' + esc(tier.description || '') + '</div>'
+      + amount
+      + (oc.note ? '<p style="font-size:12px;color:var(--muted);margin-bottom:10px;">' + esc(oc.note) + '</p>' : '')
+      + '<ul class="p-features">'
+      + '<li>Plan Educativo Individualizado y evaluación de nivel</li>'
+      + '<li>Mentoría y acompañamiento familiar bilingüe</li>'
+      + '<li>Report cards y transcript oficial FLDOE #134620</li>'
+      + '<li>Seguimiento de la familia en el SIS</li>'
+      + '<li>Life Skills &amp; Leadership incluido</li>'
+      + '</ul></div>'
+      + ctas('off_campus', tier.key, country, featured)
+      + '</div>';
+  }
+
+  function dualCard(dd, country) {
+    var published = dd.status === 'published';
+    var head = '';
+    var table = '';
+
+    if (published) {
+      var first = (dd.routes || [])[0] || {};
+      head = '<div class="p-amount">' + esc(first.monthly ? ('desde ' + first.monthly) : (first.totalYear || '')) + (first.monthly ? '<span>/mes</span>' : '') + '</div>';
+      var meta = [];
+      if (dd.enrollmentFee) meta.push('matrícula ' + dd.enrollmentFee);
+      if (dd.assessmentFee) meta.push((dd.assessmentLabel || 'evaluación') + ' ' + dd.assessmentFee);
+      if (meta.length) head += '<div class="p-meta">Alta: ' + esc(meta.join(' · ')) + '</div>';
+
+      var rows = (dd.routes || []).filter(function (r) { return r.monthly; });
+      if (rows.length > 1) {
+        table = '<table class="p-routes"><thead><tr><th>Ruta</th><th>Nivel</th><th>Mensualidad</th></tr></thead><tbody>'
+          + rows.map(function (r) {
+            return '<tr><td><strong>' + esc(r.title) + '</strong></td><td>' + esc(r.level) + '</td><td>' + esc(r.monthly) + '</td></tr>';
+          }).join('')
+          + '</tbody></table>';
+      }
+    } else {
+      head = '<div class="p-amount request">' + esc(onRequestText()) + '</div>';
+    }
+
+    return '<div class="p-card featured' + (table ? ' wide' : '') + '">'
+      + '<div class="p-badge">Más elegido</div>'
+      + '<div>'
+      + '<div class="p-title">' + esc(dd.title || 'Chanak Dual Diploma') + '</div>'
+      + '<div class="p-desc">Doble titulación en paralelo al colegio habitual, con 3 a 6 horas semanales según la ruta.</div>'
+      + head
+      + table
+      + '<ul class="p-features">'
+      + '<li>Mentoría semanal con mentor asignado</li>'
+      + '<li>Academic English Pathway e inglés académico real</li>'
+      + '<li>American History, U.S. Civics &amp; Economics</li>'
+      + '<li>Life Skills &amp; Leadership con portfolio evaluable</li>'
+      + '<li>Transcript oficial y preparación SAT incluida</li>'
+      + '</ul>'
+      + (dd.footnote ? '<p style="font-size:12px;color:var(--muted);margin-bottom:10px;">' + esc(dd.footnote) + '</p>' : '')
+      + (dd.note ? '<p style="font-size:12px;color:var(--muted);margin-bottom:10px;">' + esc(dd.note) + '</p>' : '')
+      + '</div>'
+      + ctas('dual_diploma', 'standard', country, true)
+      + '</div>';
+  }
+
+  function diagnosticCard(dg) {
+    if (!dg || dg.status !== 'published') return '';
+    return '<div class="p-card">'
+      + '<div>'
+      + '<div class="p-title">' + esc(dg.title) + '</div>'
+      + '<div class="p-desc">Para familias que aún no han elegido programa.</div>'
+      + '<div class="p-amount">' + esc(dg.price) + '</div>'
+      + '<ul class="p-features">'
+      + '<li>' + esc(dg.description) + '</li>'
+      + '<li>Identificación de brechas por materia</li>'
+      + '<li>Recomendación de programa y ruta</li>'
+      + '</ul></div>'
+      + '<div class="btns"><a class="btn-enroll" href="/diagnostico/">Ver el diagnóstico</a>'
+      + '<a class="btn-inquire" href="/#solicitud">Solicitar información</a></div>'
+      + '</div>';
+  }
+
+  function render(country) {
+    var mount = document.getElementById('tuition-cards');
+    if (!mount || !window.CHANAK_PRICING) return;
+
+    var code = (country || (typeof window.getCurrentCountry === 'function' ? window.getCurrentCountry() : 'GLOBAL') || 'GLOBAL').toUpperCase();
+    var m = window.CHANAK_PRICING.markets[code] || window.CHANAK_PRICING.markets.GLOBAL;
+    var oc = m.off_campus || { tiers: [] };
+    var html = '';
+
+    html += dualCard(m.dual_diploma || {}, code);
+    (oc.tiers || []).forEach(function (t, i) {
+      html += offCampusCard(t, oc, code, false);
+    });
+    html += diagnosticCard(m.diagnostic);
+
+    mount.innerHTML = html;
+  }
+
+  function boot() {
+    render();
+    window.addEventListener('chanak:countryChange', function (e) {
+      render(e && e.detail ? e.detail.country : null);
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
 
 </body>
 </html>

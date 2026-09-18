@@ -30,8 +30,8 @@
 <link href="https://www.chanakacademy.org/" hreflang="x-default" rel="alternate"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="/assets/site-config.js?v=20260707sis"></script>
-<script src="/js/regional-pricing.js?v=202609"></script>
-<script src="/js/regional-selector.js?v=202609"></script>
+<script src="/js/regional-pricing.js?v=202609b"></script>
+<script src="/js/regional-selector.js?v=202609b"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -172,6 +172,8 @@ a{color:inherit;text-decoration:none}
 .animate-float { animation: floatPulse 4s ease-in-out infinite; }
 .animate-glow { animation: glowBorder 5s ease-in-out infinite; }
 .nav-r{display:flex;align-items:center;gap:.75rem;margin-left:auto;flex-shrink:0}
+@media(max-width:900px){.nav-r{flex-shrink:1;min-width:0;flex-wrap:wrap;justify-content:flex-end;gap:.5rem}}
+html,body{max-width:100%;overflow-x:hidden}
 .lang-w{position:relative}
 .lang-b{display:flex;align-items:center;gap:.35rem;padding:.42rem .88rem;border:1.5px solid var(--border);border-radius:50px;font-size:.88rem;font-weight:700;color:var(--navy);cursor:pointer;background:#fff;font-family:inherit;transition:all .15s}
 .lang-b:hover{border-color:var(--teal);color:var(--teal)}
@@ -762,9 +764,9 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 <span style="font-size:1.6rem">🎓</span>
 </div>
 <h3 data-i18n="q1c2_ttl" style="font-family:'Playfair Display',serif;font-size:1.75rem;color:var(--navy);margin-bottom:.75rem;line-height:1.25">Doble Titulación de Bachillerato</h3>
-<p data-i18n="q1c2_desc" style="color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem">Diploma estadounidense complementario sin cambiar de colegio: reconocemos hasta el 75% del currículo local y tu hijo añade solo 5 horas semanales.</p>
+<p data-i18n="q1c2_desc" style="color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem">Diploma estadounidense complementario sin cambiar de colegio: hasta el 75% del currículo local puede reconocerse tras la evaluación del expediente, y tu hijo añade solo 5 horas semanales.</p>
 <ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.7rem;font-size:.9rem;color:var(--navy);font-weight:600">
-<li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--gold);font-weight:900">✓</span> <span data-i18n="q1c2_li1">Convalidación de hasta el 75% del colegio local</span></li>
+<li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--gold);font-weight:900">✓</span> <span data-i18n="q1c2_li1">Hasta el 75% de créditos reconocibles, sujeto a evaluación</span></li>
 <li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--gold);font-weight:900">✓</span> <span data-i18n="q1c2_li2">Doble titulación de Bachillerato estadounidense</span></li>
 <li style="display:flex;align-items:center;gap:.6rem"><span style="color:var(--gold);font-weight:900">✓</span> <span data-i18n="q1c2_li3">Inmersión en inglés académico (solo 5h/semana)</span></li>
 </ul>
@@ -972,17 +974,17 @@ Chanak nació de esta visión: la educación es transmisión de valores, fe y ca
 <!-- DUAL DIPLOMA -->
 <section class="dd-sec" id="dual">
 <div class="wrap">
-<div class="fi"><div class="lbl" data-i18n="dd_lbl">Programa Complementario · Destacado</div><h2 class="ttl" data-i18n="dd_ttl">Dual Diploma · Modelo 75/25</h2><p class="sub" data-i18n="dd_sub">Tu hijo no cambia de colegio. Reconocemos hasta el 75% del currículo local, según revisión académica. Solo 5 horas semanales de programas complementarios.</p></div>
+<div class="fi"><div class="lbl" data-i18n="dd_lbl">Programa Complementario · Destacado</div><h2 class="ttl" data-i18n="dd_ttl">Dual Diploma · Modelo 75/25</h2><p class="sub" data-i18n="dd_sub">Tu hijo no cambia de colegio. Hasta el 75% del currículo local puede reconocerse, según revisión académica del expediente y la nota mínima requerida en cada asignatura. Solo 5 horas semanales de programas complementarios.</p></div>
 <img class="fi" loading="lazy" decoding="async" src="/assets/img/universidad-dual-diploma.jpg" alt="Estudiante con diploma americano frente a su colegio" style="width:100%;max-width:960px;display:block;margin:1.75rem auto 0;border-radius:var(--r);box-shadow:var(--sh);aspect-ratio:16/9;object-fit:cover"/>
 <div class="dd-g">
 <div class="fi">
 <div class="ddm-g">
-<div class="ddm ma"><div class="ddm-pct">75%</div><div class="ddm-lbl" data-i18n="dd75_l">Colegio actual</div><div class="ddm-t" data-i18n="dd75_t">Plan local convalidado</div><p class="ddm-s" data-i18n="dd75_s">Chanak reconoce el 75% del currículo de tu colegio. No se cambia nada de la vida escolar actual.</p></div>
+<div class="ddm ma"><div class="ddm-pct">75%</div><div class="ddm-lbl" data-i18n="dd75_l">Colegio actual</div><div class="ddm-t" data-i18n="dd75_t">Plan local reconocible</div><p class="ddm-s" data-i18n="dd75_s">Hasta el 75% del currículo de tu colegio puede reconocerse tras la revisión del expediente. No se cambia nada de la vida escolar actual.</p></div>
 <div class="ddm co"><div class="ddm-pct">25%</div><div class="ddm-lbl" data-i18n="dd25_l">Chanak añade</div><div class="ddm-t" data-i18n="dd25_t">Programas complementarios</div><p class="ddm-s" data-i18n="dd25_s">Inglés académico, Historia USA, Biblia y Life Skills. Solo 5 horas semanales.</p></div>
 </div>
 <ul class="dd-feats">
 <li data-i18n="ddf1">Diploma FLDOE #134620 — emitido por colegio registrado en Florida</li>
-<li data-i18n="ddf2">Reconocimiento académico hasta el 75% del currículo del colegio local</li>
+<li data-i18n="ddf2">Reconocimiento académico de hasta el 75% del currículo local, sujeto a evaluación del expediente</li>
 <li data-i18n="ddf3">Compatible con colegios españoles, latinoamericanos y europeos</li>
 <li data-i18n="ddf4">Solo 5 horas semanales de programas complementarios</li>
 <li data-i18n="ddf5">Transcripts y diplomas oficiales apostillados</li>
@@ -1299,6 +1301,15 @@ Chanak nació de esta visión: la educación es transmisión de valores, fe y ca
 <div class="chanak-region-selector-mount in-footer" style="margin-top:14px;"></div>
 </div>
 <div class="fc">
+<h4>Por país</h4>
+<a href="/us/florida/">Estados Unidos · Florida</a>
+<a href="/mx/">México</a>
+<a href="/pa/">Panamá</a>
+<a href="/dual-diploma/">España</a>
+<a href="/tuition/">Colegiaturas y planes de pago</a>
+<a href="/programs/">Comparar programas</a>
+</div>
+<div class="fc">
 <h4 data-i18n="fc1_h">Programas</h4>
 <a data-i18n="fc1_1" href="/off-campus/" rel="noopener noreferrer" target="_blank">Off-Campus / Ed. Familiar</a>
 <a href="/dual-diploma/" rel="noopener noreferrer" target="_blank">Dual Diploma</a>
@@ -1484,7 +1495,7 @@ es:{
   aud1_b1:"HOMESCHOOL K-12",aud1_b2:"Opción Flexible / PEI",aud1_t:"🏡 Busco Homeschool / Educación en Casa",
   aud1_s:"Colegio americano completo desde casa: currículo K-12 individualizado, mentoría pedagógica, seguimiento en el SIS y diploma registrado en Florida.",
   aud2_b2:"Doble Titulación U.S.",aud2_t:"🎓 Busco convalidar mi colegio actual",
-  aud2_s:"Diploma estadounidense complementario sin cambiar de colegio: convalidamos hasta el 75% del currículo local y tu hijo añade solo 5 horas semanales.",
+  aud2_s:"Diploma estadounidense complementario sin cambiar de colegio: hasta el 75% del currículo local puede reconocerse tras la evaluación del expediente, y tu hijo añade solo 5 horas semanales.",
   aud3_b1:"¿NO SABES CUÁL ELEGIR?",aud3_t:"Inicia con una prueba diagnóstica",
   aud3_s:"Descubre el nivel real de tu hijo con una evaluación completa y recibe una propuesta personalizada del programa más adecuado.",
   aud_cta:"Ver programa →",aud3_cta:"Hacer el diagnóstico →",
@@ -1514,11 +1525,11 @@ es:{
   prog_msa:"MSA Candidacy 2026",prog_hub_dev:"Proyección 2027",ver_prog:"Conocer Off-Campus →",
   oc_t:"Off-Campus · Educación Familiar Supervisada",oc_s:"Para familias que buscan estructura académica internacional con acompañamiento, currículo individualizado y registro oficial estadounidense.",
   hub_t:"Dual Diploma",hub_s:"Para estudiantes que desean fortalecer su perfil internacional sin cambiar de colegio. Ruta complementaria con seguimiento académico y acceso a la landing de matrícula.",
-  dd_lbl:"Programa Complementario · Destacado",dd_ttl:"Dual Diploma · Modelo 75/25",dd_sub:"Tu hijo no cambia de colegio. Reconocemos hasta el 75% del currículo local, según revisión académica. Solo 5 horas semanales.",
-  dd75_l:"Colegio actual",dd75_t:"Plan local convalidado",dd75_s:"Chanak reconoce el 75% del currículo de tu colegio. No se cambia nada de la vida escolar actual.",
+  dd_lbl:"Programa Complementario · Destacado",dd_ttl:"Dual Diploma · Modelo 75/25",dd_sub:"Tu hijo no cambia de colegio. Hasta el 75% del currículo local puede reconocerse, según revisión académica del expediente y la nota mínima requerida en cada asignatura. Solo 5 horas semanales.",
+  dd75_l:"Colegio actual",dd75_t:"Plan local reconocible",dd75_s:"Hasta el 75% del currículo de tu colegio puede reconocerse tras la revisión del expediente. No se cambia nada de la vida escolar actual.",
   dd25_l:"Chanak añade",dd25_t:"Programas complementarios",dd25_s:"Inglés académico, Historia USA, Biblia y Life Skills. Solo 5 horas semanales.",
   ddf1:"Diploma FLDOE #134620 — emitido por colegio registrado en Florida",
-  ddf2:"Reconocimiento académico hasta el 75% del currículo del colegio local",
+  ddf2:"Reconocimiento académico de hasta el 75% del currículo local, sujeto a evaluación del expediente",
   ddf3:"Compatible con colegios españoles, latinoamericanos y europeos",
   ddf4:"Solo 5 horas semanales de programas complementarios",
   ddf5:"Transcripts y diplomas oficiales apostillados",
@@ -1628,8 +1639,8 @@ es:{
   q1c1_li3:"Libre elección de material pedagógico por la familia",
   q1c1_cta:"Explorar Ruta Homeschool →",
   q1c2_ttl:"Doble Titulación de Bachillerato",
-  q1c2_desc:"Diploma estadounidense complementario sin cambiar de colegio: reconocemos hasta el 75% del currículo local y tu hijo añade solo 5 horas semanales.",
-  q1c2_li1:"Convalidación de hasta el 75% del colegio local",
+  q1c2_desc:"Diploma estadounidense complementario sin cambiar de colegio: hasta el 75% del currículo local puede reconocerse tras la evaluación del expediente, y tu hijo añade solo 5 horas semanales.",
+  q1c2_li1:"Hasta el 75% de créditos reconocibles, sujeto a evaluación",
   q1c2_li2:"Doble titulación de Bachillerato estadounidense",
   q1c2_li3:"Inmersión en inglés académico (solo 5h/semana)",
   q1c2_cta:"Convalidar Bachillerato →",

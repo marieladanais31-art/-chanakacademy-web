@@ -1,13 +1,31 @@
 /**
  * js/regional-pricing.js
- * Catálogo centralizado de precios multirregión y utilidades de enlace al SIS para Chanak Academy.
- * Zero-Breakage: Conexión con el SIS únicamente mediante query parameters limpios.
+ * CATÁLOGO ÚNICO DE PRECIOS — única fuente de verdad del sitio.
+ *
+ * REGLA DEL PROYECTO: aquí solo entran importes CONFIRMADOS por dirección,
+ * documentados en un PDF oficial o en la configuración de pago. Si un importe
+ * no está confirmado, su bloque lleva status:'on_request' y la web muestra
+ * "Solicitar plan de colegiatura" en lugar de una cifra. Nunca se inventa un precio.
+ *
+ * Fuentes de los importes publicados:
+ *  - ES Dual Diploma ....... Chanak_Dual_Diploma_Espana_2026-27.pdf (pág. 11)
+ *  - MX Dual Diploma ....... Chanak_Dual_Diploma_Mexico_2026-27_PROPUESTA.pdf (pág. 8)
+ *  - Diagnóstico 50 € ...... landing /diagnostico/ + Stripe
+ *  - ES alta Dual Diploma .. assets/site-config.js (evaluación 35 € · matrícula 210 €)
+ *  - UAE / Dubái ........... _private/commercial-pricing.php
+ *
+ * Pendientes de aprobación de dirección: Off-Campus (todas las regiones),
+ * Dual Diploma US / PA / Internacional, y los productos modulares.
+ *
+ * El enlace al SIS NO se toca desde aquí: buildSisEnrollmentUrl() conserva
+ * exactamente los mismos parámetros que ya estaban en producción.
  */
 
 window.SUPPORTED_REGIONS = {
   ES: {
     code: 'ES',
     name: 'España / Europa',
+    shortName: 'España',
     flag: '🇪🇸',
     currency: 'EUR',
     symbol: '€',
@@ -17,6 +35,7 @@ window.SUPPORTED_REGIONS = {
   MX: {
     code: 'MX',
     name: 'México',
+    shortName: 'México',
     flag: '🇲🇽',
     currency: 'USD',
     currencyAlt: 'MXN',
@@ -27,6 +46,7 @@ window.SUPPORTED_REGIONS = {
   PA: {
     code: 'PA',
     name: 'Panamá',
+    shortName: 'Panamá',
     flag: '🇵🇦',
     currency: 'USD',
     symbol: '$',
@@ -35,7 +55,8 @@ window.SUPPORTED_REGIONS = {
   },
   US: {
     code: 'US',
-    name: 'Florida / USA',
+    name: 'Estados Unidos',
+    shortName: 'Estados Unidos',
     flag: '🇺🇸',
     currency: 'USD',
     symbol: '$',
@@ -45,6 +66,7 @@ window.SUPPORTED_REGIONS = {
   GLOBAL: {
     code: 'GLOBAL',
     name: 'Internacional',
+    shortName: 'Internacional',
     flag: '🌐',
     currency: 'USD',
     symbol: '$',
@@ -53,177 +75,278 @@ window.SUPPORTED_REGIONS = {
   }
 };
 
-window.REGIONAL_PRICING_CATALOG = {
-  ES: {
-    currency: 'EUR',
-    symbol: '€',
-    off_campus: {
-      elementary: {
-        title: 'Primaria (K-5)',
-        enrollmentFee: '250 €',
-        monthlyFee: '165 €/mes',
-        installments: '10 cuotas',
-        totalYear: '1.900 € / año',
-        description: 'Programa K-5 con Plan Educativo Individualizado (PEI) y respaldo FLDOE #134620.'
+/** Texto único que se muestra cuando un precio no está aprobado todavía. */
+window.CHANAK_PRICE_ON_REQUEST = {
+  es: 'Plan de colegiatura personalizado',
+  en: 'Personalized tuition plan'
+};
+
+window.CHANAK_PRICING = {
+  updated: '2026-09-18',
+  cycle: '2026-2027',
+
+  markets: {
+
+    /* ---------------------------------------------------------------- ES */
+    ES: {
+      currency: 'EUR',
+      symbol: '€',
+
+      diagnostic: {
+        status: 'published',
+        title: 'Diagnóstico Académico',
+        price: '50 €',
+        description: 'Evaluación completa de nivel (149 preguntas) y propuesta de programa. Servicio independiente para familias que aún no han elegido programa.'
       },
-      middle_high: {
-        title: 'Secundaria y Bachillerato (6-12)',
-        enrollmentFee: '290 €',
-        monthlyFee: '195 €/mes',
-        installments: '10 cuotas',
-        totalYear: '2.240 € / año',
-        description: 'Currículo U.S. completo, créditos oficiales y preparación para convalidación.'
-      }
-    },
-    dual_diploma: {
-      standard: {
-        title: 'U.S. Dual Diploma (3º ESO - Bachillerato)',
+
+      off_campus: {
+        // La mensualidad de Off-Campus no está publicada en ningún documento
+        // aprobado. Hasta que dirección la confirme, no se muestra cifra.
+        status: 'on_request',
+        title: 'Off-Campus · Escuela completa a distancia',
+        enrollmentFee: 'desde 250 €',
+        note: 'En España, Off-Campus se ofrece a partir de los 16 años o a través de centro extranjero autorizado (RD 806/1993) con iglesia colaboradora. Consultar admisión.',
+        tiers: [
+          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', description: 'Currículo estadounidense completo, créditos oficiales y transcript FLDOE #134620.' }
+        ]
+      },
+
+      dual_diploma: {
+        status: 'published',
+        title: 'Chanak Dual Diploma',
+        assessmentFee: '35 €',
+        assessmentLabel: 'Examen diagnóstico de inglés',
         enrollmentFee: '210 €',
-        monthlyFee: '135 €/mes',
-        installments: '10 cuotas',
-        totalYear: '1.560 € / año',
-        description: 'Convalidación de hasta 75% de créditos locales y obtención del U.S. High School Diploma.'
+        installments: '10 mensualidades',
+        includes: 'Mentoría semanal · LMS y SIS · evaluaciones · SAT Prep Hub · Test de Dones · transcript oficial',
+        routes: [
+          { key: 'r4', title: 'Ruta 4 años', level: '3.º ESO · Grade 9', hours: '3-5 h/sem', monthly: '110 €', totalFirstYear: '1.310 €' },
+          { key: 'r3', title: 'Ruta 3 años', level: '4.º ESO · Grade 10', hours: '3-5 h/sem', monthly: '129 €', totalFirstYear: '1.500 €' },
+          { key: 'r2', title: 'Ruta 2 años', level: '1.º Bach · Grade 11', hours: '3-5 h/sem', monthly: '148 €', totalFirstYear: '1.690 €' },
+          { key: 'r1', title: 'Ruta intensiva', level: '2.º Bach · Grade 12', hours: '3-5 h/sem', monthly: '167 €', totalFirstYear: '1.880 €' }
+        ],
+        footnote: 'La mensualidad se fija al entrar y se mantiene hasta terminar la ruta. El total del primer año incluye matrícula y diez mensualidades; el examen diagnóstico va aparte.'
+      }
+    },
+
+    /* ---------------------------------------------------------------- MX */
+    MX: {
+      currency: 'USD',
+      symbol: '$',
+
+      diagnostic: {
+        status: 'published',
+        title: 'Evaluación académica',
+        price: 'US$50',
+        description: 'Revisión de expediente y recomendación inicial.'
+      },
+
+      off_campus: {
+        status: 'on_request',
+        title: 'Off-Campus · Escuela completa a distancia',
+        enrollmentFee: null,
+        tiers: [
+          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ]
+      },
+
+      dual_diploma: {
+        status: 'published',
+        title: 'Chanak Dual Diploma',
+        assessmentFee: 'US$50',
+        assessmentLabel: 'Evaluación académica',
+        enrollmentFee: 'US$250',
+        installments: '10 mensualidades',
+        includes: 'Plan de Ruta · SIS · LMS · clases semanales en vivo · mentoría personalizada',
+        routes: [
+          { key: 'r4', title: 'Ruta 4 años', level: '3.º Secundaria · Grade 9', hours: '3-4 h/sem', monthly: 'US$140', totalYear: 'US$1,400' },
+          { key: 'r3', title: 'Ruta 3 años', level: 'Inicio Prepa · Grade 10', hours: '4-5 h/sem', monthly: 'US$180', totalYear: 'US$1,800' },
+          { key: 'r2', title: 'Ruta 2 años', level: 'Etapa avanzada · Grade 11', hours: '5-6 h/sem + Summer', monthly: 'US$220', totalYear: 'US$2,200' },
+          { key: 'r1', title: 'Ruta acelerada', level: 'Último ciclo · Grade 12', hours: 'Plan modular + Summer', monthly: 'US$260', totalYear: 'US$2,600' }
+        ],
+        footnote: 'Total anual calculado a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Ruta y la inversión correspondiente antes de formalizar.'
+      }
+    },
+
+    /* ---------------------------------------------------------------- PA */
+    PA: {
+      currency: 'USD',
+      symbol: '$',
+
+      diagnostic: {
+        status: 'published',
+        title: 'Evaluación académica',
+        price: 'US$50',
+        description: 'Revisión de expediente y recomendación inicial.'
+      },
+
+      off_campus: {
+        status: 'on_request',
+        title: 'Off-Campus · Escuela completa a distancia',
+        enrollmentFee: null,
+        tiers: [
+          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Media (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ]
+      },
+
+      // Importes ya publicados en /dual-diploma-panama/. La tabla completa por
+      // grado no está publicada: se entrega con el Plan de Ruta, así que aquí
+      // solo se declara el "desde" que ya figura en producción.
+      dual_diploma: {
+        status: 'published',
+        title: 'Chanak Dual Diploma',
+        assessmentFee: 'US$50',
+        assessmentLabel: 'Evaluación académica inicial',
+        enrollmentFee: 'US$250',
+        installments: '10 mensualidades',
+        includes: 'Plan de Ruta · SIS · LMS · mentoría · Life Skills & Leadership',
+        routes: [
+          { key: 'from', title: 'Según grado de entrada', level: 'Grade 9 a Grade 12', hours: '3-6 h/sem', monthly: null, totalYear: 'desde US$1,400 al año' }
+        ],
+        footnote: 'Inversión anual desde US$1,400 según el grado de entrada. La tabla completa por ruta se entrega con el Plan de Ruta personalizado, antes de formalizar la matrícula.'
+      }
+    },
+
+    /* ---------------------------------------------------------------- US */
+    US: {
+      currency: 'USD',
+      symbol: '$',
+
+      diagnostic: {
+        status: 'published',
+        title: 'Academic Diagnostic',
+        price: 'US$58',
+        description: 'Full level assessment and personalized program recommendation.'
+      },
+
+      off_campus: {
+        status: 'on_request',
+        title: 'U.S. K-12 Off-Campus',
+        enrollmentFee: null,
+        tiers: [
+          { key: 'elementary', title: 'Elementary (K-5)', description: 'FLDOE #134620 registration, individualized learning plan, official transcripts and bilingual family support.' },
+          { key: 'middle_high', title: 'Middle & High School (6-12)', description: 'Full U.S. college-prep curriculum, official credits, transcript issuance and counseling.' }
+        ]
+      },
+
+      dual_diploma: {
+        status: 'on_request',
+        title: 'Chanak Dual Diploma',
+        note: 'U.S. tuition pending board approval.',
+        routes: []
+      }
+    },
+
+    /* ------------------------------------------------------------ GLOBAL */
+    GLOBAL: {
+      currency: 'USD',
+      symbol: '$',
+
+      diagnostic: {
+        status: 'published',
+        title: 'Academic Diagnostic',
+        price: 'US$58',
+        description: 'Full level assessment and personalized program recommendation.'
+      },
+
+      off_campus: {
+        status: 'on_request',
+        title: 'Off-Campus · Full distance school',
+        enrollmentFee: null,
+        tiers: [
+          { key: 'elementary', title: 'International Primary (K-5)', description: 'U.S. curriculum with individualized learning plan and SIS tracking.' },
+          { key: 'middle_high', title: 'International Secondary (6-12)', description: 'Official High School credits and transcript issued by Chanak.' }
+        ]
+      },
+
+      dual_diploma: {
+        status: 'on_request',
+        title: 'Chanak Dual Diploma',
+        note: 'International tuition pending board approval.',
+        routes: []
       }
     }
   },
-  MX: {
-    currency: 'USD',
-    symbol: '$',
-    off_campus: {
-      elementary: {
-        title: 'Primaria (K-5)',
-        enrollmentFee: '$200 USD',
-        monthlyFee: '$140 USD/mes',
-        installments: '10 cuotas',
-        totalYear: '$1,600 USD / año',
-        description: 'Currículo bilingüe K-5, seguimiento personalizado y validez con Apostilla de La Haya.'
-      },
-      middle_high: {
-        title: 'Secundaria y Preparatoria (6-12)',
-        enrollmentFee: '$250 USD',
-        monthlyFee: '$175 USD/mes',
-        installments: '10 cuotas',
-        totalYear: '$2,000 USD / año',
-        description: 'Créditos oficiales High School, mentoría y expedientes para convalidación SEP.'
-      }
-    },
-    dual_diploma: {
-      standard: {
-        title: 'Bachillerato Dual Internacional',
-        enrollmentFee: '$180 USD',
-        monthlyFee: '$125 USD/mes',
-        installments: '10 cuotas',
-        totalYear: '$1,430 USD / año',
-        description: 'Doble titulación EE.UU. + México 100% online compatible con el colegio local.'
-      }
-    }
-  },
-  PA: {
-    currency: 'USD',
-    symbol: '$',
-    off_campus: {
-      elementary: {
-        title: 'Primaria (K-5)',
-        enrollmentFee: '$220 USD',
-        monthlyFee: '$150 USD/mes',
-        installments: '10 cuotas',
-        totalYear: '$1,720 USD / año',
-        description: 'Educación flexible K-5 con certificación de colegio privado estadounidense.'
-      },
-      middle_high: {
-        title: 'Secundaria y Media (6-12)',
-        enrollmentFee: '$260 USD',
-        monthlyFee: '$180 USD/mes',
-        installments: '10 cuotas',
-        totalYear: '$2,060 USD / año',
-        description: 'Créditos U.S. de High School y diploma oficial convalidable ante MEDUCA.'
-      }
-    },
-    dual_diploma: {
-      standard: {
-        title: 'Doble Titulación Panamá - EE.UU.',
-        enrollmentFee: '$180 USD',
-        monthlyFee: '$130 USD/mes',
-        installments: '10 cuotas',
-        totalYear: '$1,480 USD / año',
-        description: 'High School Diploma de Florida para estudiantes de colegios en Panamá.'
-      }
-    }
-  },
-  US: {
-    currency: 'USD',
-    symbol: '$',
-    off_campus: {
-      elementary: {
-        title: 'Elementary (K-5 Umbrella Program)',
-        enrollmentFee: '$250 USD',
-        monthlyFee: '$180 USD/month',
-        installments: '10 payments',
-        totalYear: '$2,050 USD / year',
-        description: 'FLDOE #134620 umbrella registration, official transcripts & Christian curriculum.'
-      },
-      middle_high: {
-        title: 'Middle & High School (6-12)',
-        enrollmentFee: '$300 USD',
-        monthlyFee: '$220 USD/month',
-        installments: '10 payments',
-        totalYear: '$2,500 USD / year',
-        description: 'Full college-prep U.S. diploma, transcript issuance & counseling.'
-      }
-    },
-    dual_diploma: {
-      standard: {
-        title: 'Credit Acceleration / Dual Enrollment',
-        enrollmentFee: '$200 USD',
-        monthlyFee: '$150 USD/month',
-        installments: '10 payments',
-        totalYear: '$1,700 USD / year',
-        description: 'Individual credit recovery, honors courses & mastery learning.'
-      }
-    }
-  },
-  GLOBAL: {
-    currency: 'USD',
-    symbol: '$',
-    off_campus: {
-      elementary: {
-        title: 'International Primary (K-5)',
-        enrollmentFee: '$250 USD',
-        monthlyFee: '$160 USD/month',
-        installments: '10 payments',
-        totalYear: '$1,850 USD / year',
-        description: 'Global Christian Curriculum, FLDOE #134620 backing and Apostille available.'
-      },
-      middle_high: {
-        title: 'International Secondary (6-12)',
-        enrollmentFee: '$290 USD',
-        monthlyFee: '$195 USD/month',
-        installments: '10 payments',
-        totalYear: '$2,240 USD / year',
-        description: 'Official U.S. High School Diploma with full international recognition.'
-      }
-    },
-    dual_diploma: {
-      standard: {
-        title: 'Global Dual Diploma Program',
-        enrollmentFee: '$190 USD',
-        monthlyFee: '$135 USD/month',
-        installments: '10 payments',
-        totalYear: '$1,540 USD / year',
-        description: 'Simultaneous graduation with local diploma and U.S. High School Diploma.'
-      }
-    }
+
+  /**
+   * Mercados con tarifa propia gestionada fuera del selector general.
+   * Fuente: _private/commercial-pricing.php (no modificar aquí sin sincronizar).
+   */
+  specialMarkets: {
+    UAE:   { currency: 'AED', monthly: 795,  annual: 8745,  enrollmentFee: 650, label: 'United Arab Emirates' },
+    Dubai: { currency: 'AED', monthly: 1035, annual: 11385, enrollmentFee: 845, label: 'Dubai' }
   }
 };
 
 /**
- * Generador limpio de URL hacia la pasarela del SIS
+ * Compatibilidad hacia atrás: js/regional-selector.js y las páginas ya
+ * publicadas leen REGIONAL_PRICING_CATALOG[pais].off_campus.elementary.monthlyFee.
+ * Se deriva del catálogo único para que no existan dos listas de precios.
  */
-window.buildSisEnrollmentUrl = function(program, grade, countryCode) {
+(function buildLegacyCatalog() {
+  var out = {};
+  var onRequest = window.CHANAK_PRICE_ON_REQUEST.es;
+
+  Object.keys(window.CHANAK_PRICING.markets).forEach(function (code) {
+    var m = window.CHANAK_PRICING.markets[code];
+    var oc = m.off_campus || {};
+    var dd = m.dual_diploma || {};
+
+    function tier(key) {
+      var t = (oc.tiers || []).filter(function (x) { return x.key === key; })[0] || {};
+      var published = oc.status === 'published';
+      return {
+        title: t.title || '',
+        description: t.description || '',
+        enrollmentFee: published ? (oc.enrollmentFee || '') : (oc.enrollmentFee || ''),
+        monthlyFee: published ? (t.monthly || onRequest) : onRequest,
+        installments: published ? (oc.installments || '') : '',
+        totalYear: published ? (t.totalYear || '') : '',
+        onRequest: !published
+      };
+    }
+
+    var firstRoute = (dd.routes || [])[0] || {};
+    var ddPublished = dd.status === 'published';
+
+    out[code] = {
+      currency: m.currency,
+      symbol: m.symbol,
+      off_campus: {
+        elementary: tier('elementary'),
+        middle_high: tier('middle_high')
+      },
+      dual_diploma: {
+        standard: {
+          title: dd.title || '',
+          description: dd.footnote || dd.note || '',
+          enrollmentFee: ddPublished ? (dd.enrollmentFee || '') : '',
+          monthlyFee: ddPublished
+            ? (firstRoute.monthly ? ('desde ' + firstRoute.monthly + '/mes') : (firstRoute.totalYear || firstRoute.totalFirstYear || onRequest))
+            : onRequest,
+          installments: ddPublished ? (dd.installments || '') : '',
+          totalYear: ddPublished ? (firstRoute.totalFirstYear || firstRoute.totalYear || '') : '',
+          onRequest: !ddPublished
+        }
+      }
+    };
+  });
+
+  window.REGIONAL_PRICING_CATALOG = out;
+})();
+
+/**
+ * Generador de URL hacia la pasarela del SIS.
+ * SIN CAMBIOS respecto a producción: mismos parámetros, mismo destino.
+ */
+window.buildSisEnrollmentUrl = function (program, grade, countryCode) {
   var country = (countryCode || window.getCurrentCountry() || 'GLOBAL').toUpperCase();
   var region = window.SUPPORTED_REGIONS[country] || window.SUPPORTED_REGIONS.GLOBAL;
   var currency = region.currency;
-  
+
   var params = new URLSearchParams({
     country: country,
     program: program || 'off_campus',
@@ -236,9 +359,9 @@ window.buildSisEnrollmentUrl = function(program, grade, countryCode) {
 };
 
 /**
- * Resolver de Dossiers informativos
+ * Resolver de dossiers informativos. Sin cambios.
  */
-window.getDossierUrl = function(program, countryCode) {
+window.getDossierUrl = function (program, countryCode) {
   var country = (countryCode || window.getCurrentCountry() || 'ES').toLowerCase();
   var prog = (program === 'dual' || program === 'dual_diploma') ? 'dual-diploma' : 'off-campus';
   if (country === 'es') {

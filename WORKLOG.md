@@ -114,3 +114,70 @@ Rama de trabajo: `mejoras-venta`. Producción (= rama `main` + auto-deploy Hosti
 ### Verificación Fase 4
 - node --check JS home: OK. JSON-LD parseados como JSON válido en las 4 páginas (5 bloques).
 - Pendiente Mariela: TXT SPF en DNS (en curso), crear GA4 y descomentar bloques.
+
+## 2026-09-18 — Entrada a mercados: precios reales, claims y móvil (rama `mercados-2026-27`)
+
+### Precios: catálogo único
+- `js/regional-pricing.js` reescrito como **única fuente de verdad**. Regla: solo
+  entran importes confirmados en un PDF oficial o en la configuración de pago; lo
+  no aprobado lleva `status:'on_request'` y la web muestra "Plan de colegiatura
+  personalizado" en vez de una cifra.
+- Retiradas las tarifas que no constan en ningún documento aprobado (Off-Campus
+  165/195 €, Dual 135 €, y los importes de MX/PA/US/GLOBAL inventados).
+- Publicados los importes reales: ES Dual Diploma 110/129/148/167 € + matrícula
+  210 € + diagnóstico 35 € (PDF España pág. 11); MX 140/180/220/260 USD +
+  matrícula 250 USD + evaluación 50 USD (PDF México pág. 8); PA evaluación 50 USD,
+  matrícula 250 USD, anual desde 1.400 USD (ya publicado en /dual-diploma-panama/);
+  diagnóstico 50 €. UAE/Dubái siguen en `_private/commercial-pricing.php`.
+- `REGIONAL_PRICING_CATALOG` se deriva del catálogo único: no hay dos listas.
+- **SIS intacto**: `buildSisEnrollmentUrl()` conserva los mismos parámetros y destino.
+
+### Claims legales
+- Fuera "convalidable ante la SEP" (/mx/) y "convalidable ante MEDUCA" (/pa/).
+- "Convalidación de hasta 75%" sin matiz → redacción de los PDF: hasta 18 de 24
+  créditos pueden proceder del expediente local, **sujeto a evaluación individual;
+  el reconocimiento no es automático**. Corregido en HTML y en los diccionarios
+  i18n de la home (ES y EN), no solo en el HTML visible.
+- Añadido en todas las páginas nuevas el estado real de MSA: candidata, visita
+  completada, resolución noviembre 2026, "no acreditada por MSA todavía".
+
+### Selector de país
+- Prioridad nueva: bloqueo de página (`<html data-chanak-country="MX">`) > `?country=`
+  > cookie > zona horaria. `/mx/` ya no arranca en "España / Europa (EUR)".
+- Corregida la detección por huso: `America/*` a secas mandaba a Bogotá, Lima y
+  Buenos Aires a la tarifa de EE. UU. Ahora solo husos reales de EE. UU.
+- Fallback neutro `GLOBAL` en vez de `ES`.
+- CSS responsivo inyectado por el propio script; en móvil el selector se reduce
+  a bandera + moneda.
+
+### Páginas
+- `/mx/` reescrita: rutas y tarifa del PDF, créditos, proceso de admisión, FAQ,
+  WhatsApp, CTA fijo en móvil. Es la página de la reunión de México.
+- `/pa/` reescrita con los importes ya publicados de Panamá.
+- `/tuition/` renderiza desde el catálogo: cambia el país y cambian las tarjetas.
+  Botones "Iniciar matrícula" (SIS) + "Solicitar información" en cada tarjeta.
+- `/programs/` y `/us/florida/`: claims y móvil.
+- Home: nueva columna de pie **Por país** → /us/florida/, /mx/, /pa/, /tuition/,
+  /programs/. Antes eran páginas huérfanas: en el sitemap pero sin un solo enlace
+  interno desde la portada.
+
+### Móvil
+- Scroll horizontal eliminado en / (709 px de contenido en 390), /mx/, /pa/,
+  /tuition/, /programs/, /us/florida/ y, vía `chanak-overrides.js`, en
+  /off-campus/ (830 px) y /dual-diploma/.
+
+### Verificación
+- Chromium 1440 px y 390 px en las 9 rutas: sin scroll horizontal, sin errores JS
+  nuevos, enlaces del SIS intactos y con sus parámetros.
+- Detección por huso probada en Madrid, Ciudad de México, Panamá, Nueva York,
+  Bogotá, Dubái y Buenos Aires.
+- `node --check` en los 3 JS tocados y en los 5 bloques inline de la home.
+
+### Pendiente de dirección
+1. Tarifa de Off-Campus (todas las regiones) y Dual Diploma US/Internacional:
+   hoy muestran "Plan de colegiatura personalizado".
+2. Incoherencia en la home: un mismo párrafo dice "Para matricularse: €180 +
+   primera mensualidad" y "matrícula €210". Hay que decidir cuál es.
+3. Teléfonos propios de EE. UU. y México (hoy todo el sitio usa el +34).
+4. Errores de hidratación React (#418) preexistentes en /off-campus/ y
+   /dual-diploma/: no introducidos aquí, requieren rebuild desde `chanak-landing`.

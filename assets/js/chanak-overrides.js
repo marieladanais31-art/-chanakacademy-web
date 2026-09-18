@@ -505,3 +505,26 @@
     }
   });
 })();
+
+/* ---------------------------------------------------------------------------
+ * Guarda de desbordamiento horizontal en móvil (2026-09-18).
+ * Las landings compiladas de Next (/off-campus/, /dual-diploma/) desbordaban
+ * el viewport a 390 px: el contenido medía hasta 830 px y la página se movía
+ * en horizontal. Se corrige solo con CSS, sin tocar los bundles hidratados.
+ * ------------------------------------------------------------------------ */
+(function () {
+  "use strict";
+  function addGuard() {
+    if (document.getElementById('chanak-overflow-guard')) return;
+    var st = document.createElement('style');
+    st.id = 'chanak-overflow-guard';
+    st.textContent = [
+      'html,body{max-width:100%;overflow-x:hidden}',
+      'img,svg,video,iframe{max-width:100%;height:auto}',
+      '@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}'
+    ].join('\n');
+    (document.head || document.documentElement).appendChild(st);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addGuard);
+  else addGuard();
+})();

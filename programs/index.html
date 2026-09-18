@@ -13,11 +13,14 @@
 <link href="https://www.chanakacademy.org/programs/" rel="canonical"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="/assets/site-config.js?v=20260707sis"></script>
-<script src="/js/regional-pricing.js?v=202609"></script>
-<script src="/js/regional-selector.js?v=202609"></script>
+<script src="/js/regional-pricing.js?v=202609b"></script>
+<script src="/js/regional-selector.js?v=202609b"></script>
 <style>
 :root{--navy:#0c2d48;--blue:#1a5f8a;--teal:#1b9faa;--green:#6ab04c;--gold:#e8a020;--off:#f8fafc;--border:#e2e8f0;--text:#0f172a;--muted:#64748b}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden}
+img,svg{max-width:100%}
+@media(max-width:639px){.wrap{padding:0 16px}}
 body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff;line-height:1.6}
 .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 .nav{position:sticky;top:0;background:rgba(12,45,72,0.95);backdrop-filter:blur(10px);z-index:100;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
@@ -28,7 +31,8 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff;line-hei
 .hero{background:linear-gradient(135deg,#0c2d48 0%,#1a5f8a 100%);color:#fff;padding:60px 0 40px;text-align:center}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);margin-bottom:12px}
 .hero p{color:#cbd5e1;font-size:1.1rem;max-width:650px;margin:0 auto}
-.comp-table{width:100%;border-collapse:collapse;margin:40px 0;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);border:1px solid var(--border)}
+.tblscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.comp-table{width:100%;min-width:640px;border-collapse:collapse;margin:40px 0;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);border:1px solid var(--border)}
 .comp-table th{background:var(--navy);color:#fff;padding:18px 16px;font-size:15px;text-align:left}
 .comp-table td{padding:16px;border-bottom:1px solid var(--border);font-size:14px;color:var(--text)}
 .comp-table tr:nth-child(even){background:var(--off)}
@@ -65,7 +69,7 @@ footer a{color:#cbd5e1;text-decoration:none}
 
 <main class="wrap" style="padding:40px 24px;">
   <div style="overflow-x:auto;">
-    <table class="comp-table">
+    <div class="tblscroll"><table class="comp-table">
       <thead>
         <tr>
           <th>Característica</th>
@@ -90,7 +94,7 @@ footer a{color:#cbd5e1;text-decoration:none}
         <tr>
           <td><strong>Titulación</strong></td>
           <td>Expediente K-12 completo y U.S. High School Diploma oficial de Florida.</td>
-          <td>U.S. High School Diploma (convalidando hasta 75% del colegio local).</td>
+          <td>U.S. High School Diploma. Parte de los 24 créditos puede proceder del expediente local tras la evaluación individual del estudiante; el reconocimiento no es automático.</td>
           <td>Informe psicopedagógico y mapa de brechas curriculares.</td>
         </tr>
         <tr>
@@ -112,7 +116,7 @@ footer a{color:#cbd5e1;text-decoration:none}
           <td><a href="/diagnostico/" class="btn-cta">Ver Diagnóstico →</a></td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 </main>
 
