@@ -16,8 +16,8 @@
  *                            dirección el 2026-09-18; sustituye al «desde 250 €» de la home)
  *  - UAE / Dubái ........... _private/commercial-pricing.php
  *
- * Pendientes de aprobación de dirección: la MENSUALIDAD de Off-Campus (todas las
- * regiones; la matrícula de España sí está confirmada),
+ * Pendientes de aprobación de dirección: la MENSUALIDAD de Off-Campus en España,
+ * México, Panamá e Internacional (la de EE. UU. sí está aprobada),
  * Dual Diploma US / PA / Internacional, y los productos modulares.
  *
  * El enlace al SIS NO se toca desde aquí: buildSisEnrollmentUrl() conserva
@@ -40,8 +40,10 @@ window.SUPPORTED_REGIONS = {
     name: 'México',
     shortName: 'México',
     flag: '🇲🇽',
+    // currency = lo que se envía al SIS. NO se cambia: el SIS ya espera USD.
+    // displayCurrency = lo único que ve la familia. México publica en pesos.
     currency: 'USD',
-    currencyAlt: 'MXN',
+    displayCurrency: 'MXN',
     symbol: '$',
     locale: 'es-MX',
     phonePrefix: '+52'
@@ -134,14 +136,18 @@ window.CHANAK_PRICING = {
     },
 
     /* ---------------------------------------------------------------- MX */
+    /* Tarifa publicada en pesos mexicanos por decisión de dirección (2026-09-18).
+       Equivale a la propuesta en USD del PDF de México al cambio de referencia
+       1 USD ≈ 17,15 MXN (XE y Wise, 18/09/2026), redondeada a cifra limpia.
+       Si el cambio se mueve de forma sostenida, hay que revisar esta tabla. */
     MX: {
-      currency: 'USD',
+      currency: 'MXN',
       symbol: '$',
 
       diagnostic: {
         status: 'published',
         title: 'Evaluación académica',
-        price: 'US$50',
+        price: '$850 MXN',
         description: 'Revisión de expediente y recomendación inicial.'
       },
 
@@ -158,18 +164,18 @@ window.CHANAK_PRICING = {
       dual_diploma: {
         status: 'published',
         title: 'Chanak Dual Diploma',
-        assessmentFee: 'US$50',
+        assessmentFee: '$850 MXN',
         assessmentLabel: 'Evaluación académica',
-        enrollmentFee: 'US$250',
+        enrollmentFee: '$4,300 MXN',
         installments: '10 mensualidades',
         includes: 'Plan de Ruta · SIS · LMS · clases semanales en vivo · mentoría personalizada',
         routes: [
-          { key: 'r4', title: 'Ruta 4 años', level: '3.º Secundaria · Grade 9', hours: '3-4 h/sem', monthly: 'US$140', totalYear: 'US$1,400' },
-          { key: 'r3', title: 'Ruta 3 años', level: 'Inicio Prepa · Grade 10', hours: '4-5 h/sem', monthly: 'US$180', totalYear: 'US$1,800' },
-          { key: 'r2', title: 'Ruta 2 años', level: 'Etapa avanzada · Grade 11', hours: '5-6 h/sem + Summer', monthly: 'US$220', totalYear: 'US$2,200' },
-          { key: 'r1', title: 'Ruta acelerada', level: 'Último ciclo · Grade 12', hours: 'Plan modular + Summer', monthly: 'US$260', totalYear: 'US$2,600' }
+          { key: 'r4', title: 'Ruta 4 años', level: '3.º Secundaria · Grade 9', hours: '3-4 h/sem', monthly: '$2,400 MXN', totalYear: '$24,000 MXN' },
+          { key: 'r3', title: 'Ruta 3 años', level: 'Inicio Prepa · Grade 10', hours: '4-5 h/sem', monthly: '$3,100 MXN', totalYear: '$31,000 MXN' },
+          { key: 'r2', title: 'Ruta 2 años', level: 'Etapa avanzada · Grade 11', hours: '5-6 h/sem + Summer', monthly: '$3,800 MXN', totalYear: '$38,000 MXN' },
+          { key: 'r1', title: 'Ruta acelerada', level: 'Último ciclo · Grade 12', hours: 'Plan modular + Summer', monthly: '$4,500 MXN', totalYear: '$45,000 MXN' }
         ],
-        footnote: 'Total anual calculado a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Ruta y la inversión correspondiente antes de formalizar.'
+        footnote: 'Tarifa México del ciclo 2026-2027. El total anual se calcula a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Ruta y la inversión correspondiente por escrito antes de formalizar.'
       }
     },
 
@@ -214,6 +220,9 @@ window.CHANAK_PRICING = {
     },
 
     /* ---------------------------------------------------------------- US */
+    /* Tarifa aprobada por dirección el 2026-09-18: se sitúa justo por debajo de
+       Forest Trail Academy (3.069 / 3.669 / 4.269 USD + 225 de registro) en los
+       tres niveles, incluyendo mentoría semanal que el competidor no ofrece. */
     US: {
       currency: 'USD',
       symbol: '$',
@@ -221,25 +230,38 @@ window.CHANAK_PRICING = {
       diagnostic: {
         status: 'published',
         title: 'Academic Diagnostic',
-        price: 'US$58',
+        price: '$58 USD',
         description: 'Full level assessment and personalized program recommendation.'
       },
 
       off_campus: {
-        status: 'on_request',
+        status: 'published',
         title: 'U.S. K-12 Off-Campus',
-        enrollmentFee: null,
+        enrollmentFee: '$295 USD',
+        installments: '10 monthly payments',
         tiers: [
-          { key: 'elementary', title: 'Elementary (K-5)', description: 'FLDOE #134620 registration, individualized learning plan, official transcripts and bilingual family support.' },
-          { key: 'middle_high', title: 'Middle & High School (6-12)', description: 'Full U.S. college-prep curriculum, official credits, transcript issuance and counseling.' }
-        ]
+          { key: 'elementary',  title: 'Elementary (K-5)',            monthly: '$275 USD', totalYear: '$3,045 USD',
+            description: 'FLDOE #134620 registration, individualized learning plan, official transcripts and bilingual family support.' },
+          { key: 'middle_high', title: 'Middle & High School (6-12)', monthly: '$320 USD', totalYear: '$3,495 USD',
+            description: 'Full U.S. college-prep curriculum, official credits, transcript issuance and counseling.' },
+          { key: 'high',        title: 'High School (9-12)',          monthly: '$365 USD', totalYear: '$3,945 USD',
+            description: 'Graduation track with College & Career Readiness, SAT prep and counseling.' }
+        ],
+        footnote: 'Annual tuition includes enrollment plus ten monthly payments. Tuition fits within state scholarship award amounts where families qualify.'
       },
 
       dual_diploma: {
-        status: 'on_request',
+        status: 'published',
         title: 'Chanak Dual Diploma',
-        note: 'U.S. tuition pending board approval.',
-        routes: []
+        assessmentFee: '$58 USD',
+        assessmentLabel: 'Academic assessment',
+        enrollmentFee: '$295 USD',
+        installments: '10 monthly payments',
+        includes: 'Weekly live classes · assigned mentor · LMS and SIS · SAT Prep Hub · official transcript',
+        routes: [
+          { key: 'std', title: 'Part-time track', level: 'Grade 9 to Grade 12', hours: '3-6 h/week', monthly: '$250 USD', totalYear: '$2,795 USD' }
+        ],
+        footnote: 'Part-time program: eligible as an education expense under several state scholarship programs. Eligibility is determined by each scholarship funding organization.'
       }
     },
 

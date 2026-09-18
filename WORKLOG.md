@@ -227,3 +227,32 @@ Rama de trabajo: `mejoras-venta`. Producción (= rama `main` + auto-deploy Hosti
   `/diagnostico/` intactos.
 - Los errores de hidratación React #418 de `/off-campus/` y `/dual-diploma/` son
   anteriores a este trabajo y siguen ahí: requieren rebuild desde `chanak-landing`.
+
+## 2026-09-18 (3.ª tanda) — Tarifa de EE. UU. aprobada y México en pesos
+
+### Estados Unidos
+- Dirección aprueba situarse justo por debajo de Forest Trail Academy:
+  K-5 3.045 USD/año, 6-8 3.495, 9-12 3.945, Dual Diploma 2.795. Matrícula 295 USD
+  y 10 mensualidades (275 / 320 / 365 / 250). Diagnóstico 58 USD.
+- `/us/florida/` reescrita al formato de la competencia: tabla de colegiaturas con
+  precio anual, matrícula, mensualidad y número de pagos, "Enroll Now" e
+  "Inquire Now" por tarjeta, modelo 60·20·20, proceso de admisión, FAQ y formulario.
+- Sección de becas estatales redactada con prudencia: lo que sí puede cubrirse
+  (programas a tiempo parcial), lo que no (instrucción online a tiempo completo
+  en las becas de Florida) y quién decide la elegibilidad (la SFO, no Chanak).
+
+### México en pesos
+- Decisión de dirección: la página de México muestra únicamente pesos.
+- Tarifa fijada al cambio de referencia 1 USD ≈ 17,15 MXN (XE y Wise, 18/09/2026),
+  redondeada a cifra limpia: evaluación 850, matrícula 4.300, mensualidades
+  2.400 / 3.100 / 3.800 / 4.500 y totales anuales 24.000 / 31.000 / 38.000 / 45.000.
+- **El SIS no cambia**: `SUPPORTED_REGIONS.MX.currency` sigue siendo USD, que es lo
+  que recibe la pasarela. Se añade `displayCurrency: 'MXN'`, que solo afecta a la
+  etiqueta del selector. Verificado que la URL del SIS sale idéntica.
+- Riesgo asumido y anotado: si el peso se mueve de forma sostenida hay que revisar
+  la tabla, porque el precio publicado en pesos deja de corresponder al de USD.
+
+### Verificación
+- 12 rutas a 1440 y 390 px: 0 contactos telefónicos, 0 scroll horizontal, SIS y
+  Stripe intactos. Los errores React #418 de /off-campus/ y /dual-diploma/ siguen
+  siendo previos a este trabajo.

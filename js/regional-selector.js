@@ -98,7 +98,7 @@
     // Actualizar etiquetas visuales del selector
     document.querySelectorAll('.current-region-flag').forEach(function(el) { el.textContent = region.flag; });
     document.querySelectorAll('.current-region-name').forEach(function(el) { el.textContent = region.name; });
-    document.querySelectorAll('.current-region-currency').forEach(function(el) { el.textContent = '(' + region.currency + ')'; });
+    document.querySelectorAll('.current-region-currency').forEach(function(el) { el.textContent = '(' + (region.displayCurrency || region.currency) + ')'; });
 
     if (!catalog) return;
 
@@ -174,7 +174,7 @@
         var reg = window.SUPPORTED_REGIONS[code];
         html += '<button type="button" data-country="' + code + '" style="width:100%; display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border:none; background:transparent; color:#cbd5e1; border-radius:6px; cursor:pointer; text-align:left; font-size:13px; margin-bottom:2px;" onmouseover="this.style.background=\'#1e293b\';this.style.color=\'#fff\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#cbd5e1\';">' +
           '<div style="display:flex; align-items:center; gap:8px;"><span>' + reg.flag + '</span><span>' + reg.name + '</span></div>' +
-          '<span style="font-family:monospace; font-size:11px; color:#94a3b8;">' + reg.currency + '</span>' +
+          '<span style="font-family:monospace; font-size:11px; color:#94a3b8;">' + (reg.displayCurrency || reg.currency) + '</span>' +
           '</button>';
       });
 
