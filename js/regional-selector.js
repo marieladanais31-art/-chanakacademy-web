@@ -23,21 +23,45 @@
     document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/; SameSite=Lax';
   }
 
+  function isKnown(code) {
+    return !!(code && window.SUPPORTED_REGIONS && window.SUPPORTED_REGIONS[String(code).toUpperCase()]);
+  }
+
   function detectInitialCountry() {
+    // 1. Región fijada por la propia página (landings de país).
+    //    Se declara con <html data-chanak-country="MX"> o window.CHANAK_PAGE_COUNTRY.
+    //    Tiene prioridad sobre la cookie: una familia que llega a /mx/ debe ver
+    //    México aunque en una visita anterior mirase otro país.
+    var pageLock = window.CHANAK_PAGE_COUNTRY
+      || document.documentElement.getAttribute('data-chanak-country');
+    if (isKnown(pageLock)) return String(pageLock).toUpperCase();
+
+    // 2. Parámetro explícito en la URL (?country=MX), útil para campañas.
+    try {
+      var qs = new URLSearchParams(window.location.search).get('country');
+      if (isKnown(qs)) return String(qs).toUpperCase();
+    } catch (e) {}
+
+    // 3. Elección previa del usuario.
     var saved = getCookie(COOKIE_NAME);
     if (saved && window.SUPPORTED_REGIONS && window.SUPPORTED_REGIONS[saved]) {
       return saved;
     }
-    // Detección por zona horaria o idioma si no hay cookie
+
+    // 4. Detección por zona horaria o idioma si no hay nada de lo anterior
     try {
       var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-      if (tz.indexOf('Madrid') !== -1 || tz.indexOf('Canary') !== -1) return 'ES';
-      if (tz.indexOf('Mexico') !== -1 || tz.indexOf('Cancun') !== -1 || tz.indexOf('Monterrey') !== -1) return 'MX';
+      if (tz.indexOf('Madrid') !== -1 || tz.indexOf('Canary') !== -1 || tz.indexOf('Ceuta') !== -1) return 'ES';
+      if (tz.indexOf('Mexico') !== -1 || tz.indexOf('Cancun') !== -1 || tz.indexOf('Monterrey') !== -1
+        || tz.indexOf('Tijuana') !== -1 || tz.indexOf('Merida') !== -1 || tz.indexOf('Chihuahua') !== -1) return 'MX';
       if (tz.indexOf('Panama') !== -1) return 'PA';
-      if (tz.indexOf('New_York') !== -1 || tz.indexOf('Miami') !== -1 || tz.indexOf('America/') !== -1) return 'US';
+      // Solo husos de Estados Unidos. "America/*" a secas capturaba toda
+      // Latinoamérica y mostraba tarifas de EE. UU. a familias de Bogotá o Lima.
+      if (/America\/(New_York|Detroit|Chicago|Denver|Phoenix|Los_Angeles|Anchorage|Boise|Indiana|Kentucky|North_Dakota|Menominee|Juneau|Sitka|Nome|Adak)/.test(tz)
+        || tz.indexOf('Pacific/Honolulu') !== -1) return 'US';
     } catch(e) {}
-    
-    return 'ES'; // Fallback por defecto
+
+    return 'GLOBAL'; // Fallback neutro: ninguna región por defecto
   }
 
   window.getCurrentCountry = function() {
@@ -74,24 +98,33 @@
     // Actualizar etiquetas visuales del selector
     document.querySelectorAll('.current-region-flag').forEach(function(el) { el.textContent = region.flag; });
     document.querySelectorAll('.current-region-name').forEach(function(el) { el.textContent = region.name; });
-    document.querySelectorAll('.current-region-currency').forEach(function(el) { el.textContent = '(' + region.currency + ')'; });
+    document.querySelectorAll('.current-region-currency').forEach(function(el) { el.textContent = '(' + (region.displayCurrency || region.currency) + ')'; });
 
     if (!catalog) return;
 
-    // Actualizar tarjetas de tarifas si existen en la página
-    var offcampusElem = document.getElementById('price-offcampus-elementary');
-    if (offcampusElem && catalog.off_campus && catalog.off_campus.elementary) {
-      offcampusElem.innerHTML = '<strong>' + catalog.off_campus.elementary.monthlyFee + '</strong> <span class="text-xs text-slate-400">(' + catalog.off_campus.elementary.installments + ') + ' + catalog.off_campus.elementary.enrollmentFee + ' matrícula</span>';
+    // Render de una tarifa. Si el precio no está aprobado (onRequest) no se
+    // inventa cifra: se muestra el texto de plan personalizado, sin paréntesis
+    // vacíos ni "matrícula" colgando.
+    function renderPrice(el, item) {
+      if (!el || !item) return;
+      if (item.onRequest) {
+        el.innerHTML = '<strong>' + (item.monthlyFee || '') + '</strong>'
+          + (item.enrollmentFee ? ' <span class="text-xs text-slate-400">Matrícula ' + item.enrollmentFee + '</span>' : '');
+        return;
+      }
+      var extra = [];
+      if (item.installments) extra.push(item.installments);
+      if (item.enrollmentFee) extra.push('matrícula ' + item.enrollmentFee);
+      el.innerHTML = '<strong>' + item.monthlyFee + '</strong>'
+        + (extra.length ? ' <span class="text-xs text-slate-400">(' + extra.join(') + ') + '</span>' : '');
     }
 
-    var offcampusSec = document.getElementById('price-offcampus-secondary');
-    if (offcampusSec && catalog.off_campus && catalog.off_campus.middle_high) {
-      offcampusSec.innerHTML = '<strong>' + catalog.off_campus.middle_high.monthlyFee + '</strong> <span class="text-xs text-slate-400">(' + catalog.off_campus.middle_high.installments + ') + ' + catalog.off_campus.middle_high.enrollmentFee + ' matrícula</span>';
+    if (catalog.off_campus) {
+      renderPrice(document.getElementById('price-offcampus-elementary'), catalog.off_campus.elementary);
+      renderPrice(document.getElementById('price-offcampus-secondary'), catalog.off_campus.middle_high);
     }
-
-    var dualElem = document.getElementById('price-dual-diploma');
-    if (dualElem && catalog.dual_diploma && catalog.dual_diploma.standard) {
-      dualElem.innerHTML = '<strong>' + catalog.dual_diploma.standard.monthlyFee + '</strong> <span class="text-xs text-slate-400">(' + catalog.dual_diploma.standard.installments + ') + ' + catalog.dual_diploma.standard.enrollmentFee + ' matrícula</span>';
+    if (catalog.dual_diploma) {
+      renderPrice(document.getElementById('price-dual-diploma'), catalog.dual_diploma.standard);
     }
 
     // Actualizar botones de enlace al SIS
@@ -102,7 +135,24 @@
     });
   }
 
+  function injectSelectorStyles() {
+    if (document.getElementById('chanak-region-css')) return;
+    var st = document.createElement('style');
+    st.id = 'chanak-region-css';
+    st.textContent = [
+      '.chanak-region-selector-mount{max-width:100%;min-width:0}',
+      '.chanak-region-dropdown{max-width:100%}',
+      '.chanak-region-btn{max-width:100%;min-width:0;overflow:hidden;white-space:nowrap}',
+      '.chanak-region-menu{max-width:calc(100vw - 24px)}',
+      /* En pantallas estrechas el selector se reduce a bandera + moneda para
+         no desbordar la cabecera. El nombre sigue estando en el menu. */
+      '@media(max-width:860px){.chanak-region-btn .current-region-name{display:none}}'
+    ].join('\n');
+    document.head.appendChild(st);
+  }
+
   function initSelectors() {
+    injectSelectorStyles();
     var country = detectInitialCountry();
     window.__currentCountry = country;
 
@@ -124,7 +174,7 @@
         var reg = window.SUPPORTED_REGIONS[code];
         html += '<button type="button" data-country="' + code + '" style="width:100%; display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border:none; background:transparent; color:#cbd5e1; border-radius:6px; cursor:pointer; text-align:left; font-size:13px; margin-bottom:2px;" onmouseover="this.style.background=\'#1e293b\';this.style.color=\'#fff\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#cbd5e1\';">' +
           '<div style="display:flex; align-items:center; gap:8px;"><span>' + reg.flag + '</span><span>' + reg.name + '</span></div>' +
-          '<span style="font-family:monospace; font-size:11px; color:#94a3b8;">' + reg.currency + '</span>' +
+          '<span style="font-family:monospace; font-size:11px; color:#94a3b8;">' + (reg.displayCurrency || reg.currency) + '</span>' +
           '</button>';
       });
 

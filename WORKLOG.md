@@ -114,3 +114,156 @@ Rama de trabajo: `mejoras-venta`. Producción (= rama `main` + auto-deploy Hosti
 ### Verificación Fase 4
 - node --check JS home: OK. JSON-LD parseados como JSON válido en las 4 páginas (5 bloques).
 - Pendiente Mariela: TXT SPF en DNS (en curso), crear GA4 y descomentar bloques.
+
+## 2026-09-18 — Entrada a mercados: precios reales, claims y móvil (rama `mercados-2026-27`)
+
+### Precios: catálogo único
+- `js/regional-pricing.js` reescrito como **única fuente de verdad**. Regla: solo
+  entran importes confirmados en un PDF oficial o en la configuración de pago; lo
+  no aprobado lleva `status:'on_request'` y la web muestra "Plan de colegiatura
+  personalizado" en vez de una cifra.
+- Retiradas las tarifas que no constan en ningún documento aprobado (Off-Campus
+  165/195 €, Dual 135 €, y los importes de MX/PA/US/GLOBAL inventados).
+- Publicados los importes reales: ES Dual Diploma 110/129/148/167 € + matrícula
+  210 € + diagnóstico 35 € (PDF España pág. 11); MX 140/180/220/260 USD +
+  matrícula 250 USD + evaluación 50 USD (PDF México pág. 8); PA evaluación 50 USD,
+  matrícula 250 USD, anual desde 1.400 USD (ya publicado en /dual-diploma-panama/);
+  diagnóstico 50 €. UAE/Dubái siguen en `_private/commercial-pricing.php`.
+- `REGIONAL_PRICING_CATALOG` se deriva del catálogo único: no hay dos listas.
+- **SIS intacto**: `buildSisEnrollmentUrl()` conserva los mismos parámetros y destino.
+
+### Claims legales
+- Fuera "convalidable ante la SEP" (/mx/) y "convalidable ante MEDUCA" (/pa/).
+- "Convalidación de hasta 75%" sin matiz → redacción de los PDF: hasta 18 de 24
+  créditos pueden proceder del expediente local, **sujeto a evaluación individual;
+  el reconocimiento no es automático**. Corregido en HTML y en los diccionarios
+  i18n de la home (ES y EN), no solo en el HTML visible.
+- Añadido en todas las páginas nuevas el estado real de MSA: candidata, visita
+  completada, resolución noviembre 2026, "no acreditada por MSA todavía".
+
+### Selector de país
+- Prioridad nueva: bloqueo de página (`<html data-chanak-country="MX">`) > `?country=`
+  > cookie > zona horaria. `/mx/` ya no arranca en "España / Europa (EUR)".
+- Corregida la detección por huso: `America/*` a secas mandaba a Bogotá, Lima y
+  Buenos Aires a la tarifa de EE. UU. Ahora solo husos reales de EE. UU.
+- Fallback neutro `GLOBAL` en vez de `ES`.
+- CSS responsivo inyectado por el propio script; en móvil el selector se reduce
+  a bandera + moneda.
+
+### Páginas
+- `/mx/` reescrita: rutas y tarifa del PDF, créditos, proceso de admisión, FAQ,
+  WhatsApp, CTA fijo en móvil. Es la página de la reunión de México.
+- `/pa/` reescrita con los importes ya publicados de Panamá.
+- `/tuition/` renderiza desde el catálogo: cambia el país y cambian las tarjetas.
+  Botones "Iniciar matrícula" (SIS) + "Solicitar información" en cada tarjeta.
+- `/programs/` y `/us/florida/`: claims y móvil.
+- Home: nueva columna de pie **Por país** → /us/florida/, /mx/, /pa/, /tuition/,
+  /programs/. Antes eran páginas huérfanas: en el sitemap pero sin un solo enlace
+  interno desde la portada.
+
+### Móvil
+- Scroll horizontal eliminado en / (709 px de contenido en 390), /mx/, /pa/,
+  /tuition/, /programs/, /us/florida/ y, vía `chanak-overrides.js`, en
+  /off-campus/ (830 px) y /dual-diploma/.
+
+### Verificación
+- Chromium 1440 px y 390 px en las 9 rutas: sin scroll horizontal, sin errores JS
+  nuevos, enlaces del SIS intactos y con sus parámetros.
+- Detección por huso probada en Madrid, Ciudad de México, Panamá, Nueva York,
+  Bogotá, Dubái y Buenos Aires.
+- `node --check` en los 3 JS tocados y en los 5 bloques inline de la home.
+
+### Pendiente de dirección
+1. Tarifa de Off-Campus (todas las regiones) y Dual Diploma US/Internacional:
+   hoy muestran "Plan de colegiatura personalizado".
+2. Incoherencia en la home: un mismo párrafo dice "Para matricularse: €180 +
+   primera mensualidad" y "matrícula €210". Hay que decidir cuál es.
+3. Teléfonos propios de EE. UU. y México (hoy todo el sitio usa el +34).
+4. Errores de hidratación React (#418) preexistentes en /off-campus/ y
+   /dual-diploma/: no introducidos aquí, requieren rebuild desde `chanak-landing`.
+
+## 2026-09-18 (tarde) — Retirada de teléfonos y WhatsApp + matrícula Off-Campus
+
+### Contacto
+- Decisión de dirección: fuera todos los teléfonos **y también WhatsApp**. La
+  captación queda por formulario y correo hasta tener números de EE. UU. y México.
+- `assets/site-config.js` y `-en.js`: `whatsappNumber` y `whatsappLink` vacíos +
+  rutina `purgeContacts()` que elimina en tiempo de ejecución cualquier enlace
+  `wa.me`, `api/web.whatsapp`, `whatsapp:`, `tel:` y el número suelto en texto.
+  Se ejecuta en el mismo bucle que los guardas de matrícula, así que también
+  alcanza lo que React repinta al hidratar en las landings compiladas.
+- Limpieza en origen de HTML, PHP y bundles `_next`. Los CTA que eran de WhatsApp
+  apuntan ahora al formulario (`/#solicitud`).
+- `enviar-formulario.php`: fuera la línea "¿Prefieres hablar ya? WhatsApp…" de
+  las 7 autorespuestas (ES y EN). Los campos internos `whatsapp` y el atributo
+  `WHATSAPP` de Brevo se conservan: son fontanería de datos, no texto visible.
+
+### Incidencias introducidas y corregidas en el mismo paso
+- La sustitución global de la palabra "WhatsApp" alcanzó atributos y rompió
+  `name="whatsapp"` en 4 formularios y `id`/`for` en 3 páginas. Restaurados; los
+  campos que lee el PHP vuelven a existir con su nombre original.
+- La sustitución de URLs rompió dos plantillas de JavaScript en `/diagnostico/`,
+  una de ellas la del botón de pago de Stripe. Reparadas y verificadas.
+- Verificación: `node --check` sobre los 44 scripts inline de las 14 páginas
+  tocadas y sobre los bundles; `php -l` sobre el receptor de formularios.
+
+### Precios
+- Confirmado por dirección: **matrícula Off-Campus 180 € + primera mensualidad**
+  y **matrícula Dual Diploma 210 €**. El catálogo pasa a 180 € y se retira el
+  "desde 250 €" que circulaba en la home.
+- Reescrito el párrafo de la home que se contradecía a sí mismo (decía 180 € y
+  250 € en la misma frase).
+- Sigue pendiente la **mensualidad** de Off-Campus en todas las regiones.
+
+### Móvil
+- La guarda de desbordamiento se mueve a `site-config.js`, que sí cargan todas
+  las páginas. Corrige además `/universidad-eeuu/` y `/diagnostico/`.
+
+### Verificación final (Chromium, 1440 y 390 px, 12 rutas)
+- 0 enlaces de WhatsApp, 0 enlaces `tel:`, 0 apariciones del número, 0 menciones
+  de la palabra WhatsApp.
+- 0 scroll horizontal en las 12 rutas.
+- Enlaces del SIS intactos y con sus parámetros; los 2 enlaces de Stripe de
+  `/diagnostico/` intactos.
+- Los errores de hidratación React #418 de `/off-campus/` y `/dual-diploma/` son
+  anteriores a este trabajo y siguen ahí: requieren rebuild desde `chanak-landing`.
+
+## 2026-09-18 (3.ª tanda) — Tarifa de EE. UU. aprobada y México en pesos
+
+### Estados Unidos
+- Dirección aprueba situarse justo por debajo de Forest Trail Academy:
+  K-5 3.045 USD/año, 6-8 3.495, 9-12 3.945, Dual Diploma 2.795. Matrícula 295 USD
+  y 10 mensualidades (275 / 320 / 365 / 250). Diagnóstico 58 USD.
+- `/us/florida/` reescrita al formato de la competencia: tabla de colegiaturas con
+  precio anual, matrícula, mensualidad y número de pagos, "Enroll Now" e
+  "Inquire Now" por tarjeta, modelo 60·20·20, proceso de admisión, FAQ y formulario.
+- Sección de becas estatales redactada con prudencia: lo que sí puede cubrirse
+  (programas a tiempo parcial), lo que no (instrucción online a tiempo completo
+  en las becas de Florida) y quién decide la elegibilidad (la SFO, no Chanak).
+
+### México en pesos
+- Decisión de dirección: la página de México muestra únicamente pesos.
+- Tarifa fijada al cambio de referencia 1 USD ≈ 17,15 MXN (XE y Wise, 18/09/2026),
+  redondeada a cifra limpia: evaluación 850, matrícula 4.300, mensualidades
+  2.400 / 3.100 / 3.800 / 4.500 y totales anuales 24.000 / 31.000 / 38.000 / 45.000.
+- **El SIS no cambia**: `SUPPORTED_REGIONS.MX.currency` sigue siendo USD, que es lo
+  que recibe la pasarela. Se añade `displayCurrency: 'MXN'`, que solo afecta a la
+  etiqueta del selector. Verificado que la URL del SIS sale idéntica.
+- Riesgo asumido y anotado: si el peso se mueve de forma sostenida hay que revisar
+  la tabla, porque el precio publicado en pesos deja de corresponder al de USD.
+
+### Verificación
+- 12 rutas a 1440 y 390 px: 0 contactos telefónicos, 0 scroll horizontal, SIS y
+  Stripe intactos. Los errores React #418 de /off-campus/ y /dual-diploma/ siguen
+  siendo previos a este trabajo.
+
+## 2026-09-18 (4.ª tanda) — Off-Campus España 70 €/mes y publicación
+
+- Dirección confirma la mensualidad de Off-Campus en España: **70 €**. Con la
+  matrícula de 180 €, los 250 € iniciales que ya figuraban en la home quedan
+  explicados: matrícula más primera mensualidad. Las dos cifras eran correctas.
+- Off-Campus España pasa de `on_request` a `published` en el catálogo.
+- México, Panamá y Florida se quedan exactamente como estaban.
+- Comprobado que el hero de la home no se ha tocado: el bloque `<video>` es
+  idéntico al de `main` y los dos ficheros de `assets/video/` tienen el mismo
+  MD5 que en `main`.

@@ -10,11 +10,11 @@
 <meta http-equiv="refresh" content="0; url=https://sis.chanakacademy.org/matricula?src=legacy-matricula"/>
 <script>
 (function(){
-  var target = new URL("https://sis.chanakacademy.org/matricula");
-  var source = new URLSearchParams(window.location.search);
-  source.forEach(function(value, key){ target.searchParams.set(key, value); });
-  if (!target.searchParams.has("src")) target.searchParams.set("src", "legacy-matricula");
-  window.location.replace(target.toString());
+ var target = new URL("https://sis.chanakacademy.org/matricula");
+ var source = new URLSearchParams(window.location.search);
+ source.forEach(function(value, key){ target.searchParams.set(key, value); });
+ if (!target.searchParams.has("src")) target.searchParams.set("src", "legacy-matricula");
+ window.location.replace(target.toString());
 })();
 </script>
 <meta property="og:title" content="Iniciar Matrícula 2026-27 | Chanak International Academy"/>
@@ -119,7 +119,7 @@ footer a{color:#fff;text-decoration:underline}
 </div>
 <div class="row2">
 <div class="fg"><label class="fl" for="g_email">Email *</label><input class="inp" id="g_email" name="email" type="email" required autocomplete="email"/></div>
-<div class="fg"><label class="fl" for="g_wa">WhatsApp *</label><input class="inp" id="g_wa" name="whatsapp" type="tel" placeholder="+34 600 000 000" required autocomplete="tel"/></div>
+<div class="fg"><label class="fl" for="g_wa">Teléfono de contacto *</label><input class="inp" id="g_wa" name="whatsapp" type="tel" placeholder="Teléfono de contacto" required autocomplete="tel"/></div>
 </div>
 <div class="fg"><label class="fl" for="g_pais">País del responsable *</label><input class="inp" id="g_pais" name="pais_responsable" required/></div>
 </fieldset>
@@ -153,7 +153,7 @@ footer a{color:#fff;text-decoration:underline}
 <div class="step-lbl">Paso 4 de 4</div>
 <div class="step-t">Confirmación y envío</div>
 <label class="chk"><input type="checkbox" id="c_proceso" required/><span>Entiendo que este formulario <strong>inicia el proceso de matrícula</strong>: la ruta académica y el plan económico final se confirman con el equipo de admisiones tras revisar el nivel de entrada y el expediente del estudiante. *</span></label>
-<label class="chk"><input type="checkbox" id="c_contacto" required/><span>Acepto que Chanak International Academy me contacte por email y WhatsApp para gestionar esta matrícula. *</span></label>
+<label class="chk"><input type="checkbox" id="c_contacto" required/><span>Acepto que Chanak International Academy me contacte por email y Admisiones para gestionar esta matrícula. *</span></label>
 <label class="chk"><input type="checkbox" id="c_priv" required/><span>He leído y acepto la <a href="/privacidad/" target="_blank" style="color:var(--teal);text-decoration:underline">Política de Privacidad</a>. *</span></label>
 <!-- Honeypot antispam -->
 <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden"><label for="mweb">Website</label><input autocomplete="off" id="mweb" name="website" tabindex="-1" type="text" value=""/></div>
@@ -172,9 +172,9 @@ footer a{color:#fff;text-decoration:underline}
 <div id="matOk" hidden style="text-align:center;padding:1.5rem 0">
 <div class="ok-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:3.2rem;height:3.2rem"><circle cx="12" cy="12" r="9"/><path d="m8.3 12.4 2.6 2.6 4.8-5.4"/></svg></div>
 <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">Recibido. Te contactamos en menos de 24h.</h2>
-<p style="color:var(--muted);font-size:.92rem;margin-bottom:1.4rem">Tu solicitud de matrícula ha sido registrada. El equipo de admisiones te escribirá por email y WhatsApp en días laborables.</p>
+<p style="color:var(--muted);font-size:.92rem;margin-bottom:1.4rem">Tu solicitud de matrícula ha sido registrada. El equipo de admisiones te escribirá por email y Admisiones en días laborables.</p>
 <div id="okPay" hidden style="margin-bottom:1.4rem"></div>
-<a class="wa-btn" id="okWa" href="https://wa.me/34624703272?text=Hola%2C%20acabo%20de%20enviar%20mi%20solicitud%20de%20matr%C3%ADcula%202026-27" target="_blank" rel="noopener">💬 ¿Prefieres hablar ya? WhatsApp +34 624 70 32 72</a>
+
 </div>
 </div>
 </div>
@@ -186,98 +186,98 @@ footer a{color:#fff;text-decoration:underline}
 
 <script>
 (function(){
-  /* Envío directo al receptor propio: guarda en leads.csv, avisa a admisiones,
-     manda autorespuesta y registra el contacto en la lista Brevo del programa.
-     Sin Zapier: gratis y sin dependencias externas. */
-  var ENDPOINT='/enviar-formulario.php';
-  var steps=[].slice.call(document.querySelectorAll('.fstep'));
-  var cur=1,TOTAL=steps.length;
-  var bar=document.getElementById('progBar').children;
-  var prev=document.getElementById('btnPrev'),next=document.getElementById('btnNext');
-  var form=document.getElementById('matForm'),errBox=document.getElementById('matErr');
+ /* Envío directo al receptor propio: guarda en leads.csv, avisa a admisiones,
+ manda autorespuesta y registra el contacto en la lista Brevo del programa.
+ Sin Zapier: gratis y sin dependencias externas. */
+ var ENDPOINT='/enviar-formulario.php';
+ var steps=[].slice.call(document.querySelectorAll('.fstep'));
+ var cur=1,TOTAL=steps.length;
+ var bar=document.getElementById('progBar').children;
+ var prev=document.getElementById('btnPrev'),next=document.getElementById('btnNext');
+ var form=document.getElementById('matForm'),errBox=document.getElementById('matErr');
 
-  // Preseleccionar programa desde ?programa=
-  var q=new URLSearchParams(location.search);
-  var pre=(q.get('programa')||'').toLowerCase();
-  var map={'off-campus':'off-campus','offcampus':'off-campus','dual-diploma':'dual-diploma','dual':'dual-diploma','dual-diploma-panama':'dual-diploma-panama','panama':'dual-diploma-panama'};
-  if(map[pre])document.getElementById('p_prog').value=map[pre];
+ // Preseleccionar programa desde ?programa=
+ var q=new URLSearchParams(location.search);
+ var pre=(q.get('programa')||'').toLowerCase();
+ var map={'off-campus':'off-campus','offcampus':'off-campus','dual-diploma':'dual-diploma','dual':'dual-diploma','dual-diploma-panama':'dual-diploma-panama','panama':'dual-diploma-panama'};
+ if(map[pre])document.getElementById('p_prog').value=map[pre];
 
-  function show(n){
-    cur=n;
-    steps.forEach(function(s){s.hidden=+s.getAttribute('data-step')!==n});
-    for(var i=0;i<bar.length;i++)bar[i].classList.toggle('on',i<n);
-    prev.style.visibility=n===1?'hidden':'visible';
-    next.style.display=n===TOTAL?'none':'inline-flex';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  function validStep(n){
-    var f=steps[n-1],ok=true;
-    [].slice.call(f.querySelectorAll('input,select,textarea')).forEach(function(el){
-      if(!el.checkValidity()&&ok){el.reportValidity();ok=false}
-    });
-    return ok;
-  }
-  next.addEventListener('click',function(){if(validStep(cur))show(cur+1)});
-  prev.addEventListener('click',function(){show(cur-1)});
+ function show(n){
+ cur=n;
+ steps.forEach(function(s){s.hidden=+s.getAttribute('data-step')!==n});
+ for(var i=0;i<bar.length;i++)bar[i].classList.toggle('on',i<n);
+ prev.style.visibility=n===1?'hidden':'visible';
+ next.style.display=n===TOTAL?'none':'inline-flex';
+ window.scrollTo({top:0,behavior:'smooth'});
+ }
+ function validStep(n){
+ var f=steps[n-1],ok=true;
+ [].slice.call(f.querySelectorAll('input,select,textarea')).forEach(function(el){
+ if(!el.checkValidity()&&ok){el.reportValidity();ok=false}
+ });
+ return ok;
+ }
+ next.addEventListener('click',function(){if(validStep(cur))show(cur+1)});
+ prev.addEventListener('click',function(){show(cur-1)});
 
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    if(!validStep(TOTAL))return;
-    if(document.getElementById('mweb').value!==''){done();return} // honeypot: fingir éxito
-    var btn=document.getElementById('matSubmit');
-    btn.disabled=true;btn.textContent='Enviando...';errBox.style.display='none';
+ form.addEventListener('submit',function(e){
+ e.preventDefault();
+ if(!validStep(TOTAL))return;
+ if(document.getElementById('mweb').value!==''){done();return} // honeypot: fingir éxito
+ var btn=document.getElementById('matSubmit');
+ btn.disabled=true;btn.textContent='Enviando...';errBox.style.display='none';
 
-    var obj={
-      origen:'www.chanakacademy.org/matricula/',
-      src:q.get('src')||'',
-      utm_source:q.get('utm_source')||'',
-      utm_medium:q.get('utm_medium')||'',
-      utm_campaign:q.get('utm_campaign')||'',
-      pagina_referrer:document.referrer||''
-    };
-    [].slice.call(form.querySelectorAll('[name]')).forEach(function(el){obj[el.name]=el.value});
-    // Alias que el receptor usa para leads.csv, autorespuesta y Brevo
-    obj.nombre=obj.responsable_nombre||'';
-    obj.pais=obj.pais_responsable||obj.estudiante_pais||'';
+ var obj={
+ origen:'www.chanakacademy.org/matricula/',
+ src:q.get('src')||'',
+ utm_source:q.get('utm_source')||'',
+ utm_medium:q.get('utm_medium')||'',
+ utm_campaign:q.get('utm_campaign')||'',
+ pagina_referrer:document.referrer||''
+ };
+ [].slice.call(form.querySelectorAll('[name]')).forEach(function(el){obj[el.name]=el.value});
+ // Alias que el receptor usa para leads.csv, autorespuesta y Brevo
+ obj.nombre=obj.responsable_nombre||'';
+ obj.pais=obj.pais_responsable||obj.estudiante_pais||'';
 
-    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)})
-      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){
-        if(!r.ok||j.success===false)throw 0;
-        done();
-      })})
-      .catch(function(){
-        btn.disabled=false;btn.textContent='Enviar solicitud de matrícula →';
-        errBox.textContent='No pudimos enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp al +34 624 70 32 72.';
-        errBox.style.display='block';
-      });
-  });
+ fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)})
+ .then(function(r){return r.json().catch(function(){return{}}).then(function(j){
+ if(!r.ok||j.success===false)throw 0;
+ done();
+ })})
+ .catch(function(){
+ btn.disabled=false;btn.textContent='Enviar solicitud de matrícula →';
+ errBox.textContent='No pudimos enviar la solicitud. Inténtalo de nuevo o escríbenos al .';
+ errBox.style.display='block';
+ });
+ });
 
-  function done(){
-    var prog=document.getElementById('p_prog').value||'general';
-    if(typeof gtag==='function')gtag('event','matricula_submit',{event_category:'enrollment',event_label:prog});
-    var msgs={'off-campus':'Hola, quiero matricular a mi hijo en Off-Campus 2026-27','dual-diploma':'Hola, quiero información de matrícula Dual Diploma 2026-27','dual-diploma-panama':'Hola, quiero información de matrícula Dual Diploma Panamá 2026-27'};
-    if(msgs[prog])document.getElementById('okWa').href='https://wa.me/34624703272?text='+encodeURIComponent(msgs[prog]+' (solicitud ya enviada)');
-    // Siguiente paso: pago con Stripe según programa (enlaces en site-config.js)
-    var S=(window.CHANAK_CONFIG&&CHANAK_CONFIG.stripe)||{};
-    var pay=document.getElementById('okPay');
-    if(pay){
-      if(prog==='off-campus'&&S.offCampus){
-        pay.innerHTML='<a href="'+S.offCampus+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Pagar matrícula ahora →</a>'+
-          '<p class="note" style="margin-top:.6rem">Pago seguro con Stripe. Tu solicitud ya está registrada: puedes pagar ahora o esperar la llamada del equipo.</p>';
-      }else if(prog==='dual-diploma'&&S.diagnosticoDualDiploma){
-        pay.innerHTML='<a href="'+S.diagnosticoDualDiploma+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Pagar evaluación diagnóstica (35€) →</a>'+
-          '<p class="note" style="margin-top:.6rem">Primer paso del Dual Diploma: la evaluación define tu Plan de Ruta. '+(S.dualDiploma?'¿Ya tienes tu Plan de Ruta? <a href="'+S.dualDiploma+'" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:underline">Pagar matrícula</a>.':'')+'</p>';
-      }else if(prog==='no-lo-se'&&S.evaluacionDiagnostica){
-        pay.innerHTML='<a href="'+S.evaluacionDiagnostica+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Empezar con el Diagnóstico Académico (50€) →</a>'+
-          '<p class="note" style="margin-top:.6rem">El mejor primer paso si aún no sabes qué programa encaja: evaluación completa + propuesta personalizada.</p>';
-      }
-      if(pay.innerHTML)pay.hidden=false;
-    }
-    form.hidden=true;document.getElementById('navBtns').style.display='none';
-    document.getElementById('matOk').hidden=false;
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  show(1);
+ function done(){
+ var prog=document.getElementById('p_prog').value||'general';
+ if(typeof gtag==='function')gtag('event','matricula_submit',{event_category:'enrollment',event_label:prog});
+ var msgs={'off-campus':'Hola, quiero matricular a mi hijo en Off-Campus 2026-27','dual-diploma':'Hola, quiero información de matrícula Dual Diploma 2026-27','dual-diploma-panama':'Hola, quiero información de matrícula Dual Diploma Panamá 2026-27'};
+ if(msgs[prog])document.getElementById('okWa').href='/#solicitud'+encodeURIComponent(msgs[prog]+' (solicitud ya enviada)');
+ // Siguiente paso: pago con Stripe según programa (enlaces en site-config.js)
+ var S=(window.CHANAK_CONFIG&&CHANAK_CONFIG.stripe)||{};
+ var pay=document.getElementById('okPay');
+ if(pay){
+ if(prog==='off-campus'&&S.offCampus){
+ pay.innerHTML='<a href="'+S.offCampus+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Pagar matrícula ahora →</a>'+
+ '<p class="note" style="margin-top:.6rem">Pago seguro con Stripe. Tu solicitud ya está registrada: puedes pagar ahora o esperar la llamada del equipo.</p>';
+ }else if(prog==='dual-diploma'&&S.diagnosticoDualDiploma){
+ pay.innerHTML='<a href="'+S.diagnosticoDualDiploma+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Pagar evaluación diagnóstica (35€) →</a>'+
+ '<p class="note" style="margin-top:.6rem">Primer paso del Dual Diploma: la evaluación define tu Plan de Ruta. '+(S.dualDiploma?'¿Ya tienes tu Plan de Ruta? <a href="'+S.dualDiploma+'" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:underline">Pagar matrícula</a>.':'')+'</p>';
+ }else if(prog==='no-lo-se'&&S.evaluacionDiagnostica){
+ pay.innerHTML='<a href="'+S.evaluacionDiagnostica+'" target="_blank" rel="noopener" class="btn btn-nv" style="width:auto;padding:.8rem 1.8rem">Empezar con el Diagnóstico Académico (50€) →</a>'+
+ '<p class="note" style="margin-top:.6rem">El mejor primer paso si aún no sabes qué programa encaja: evaluación completa + propuesta personalizada.</p>';
+ }
+ if(pay.innerHTML)pay.hidden=false;
+ }
+ form.hidden=true;document.getElementById('navBtns').style.display='none';
+ document.getElementById('matOk').hidden=false;
+ window.scrollTo({top:0,behavior:'smooth'});
+ }
+ show(1);
 })();
 </script>
 </body>

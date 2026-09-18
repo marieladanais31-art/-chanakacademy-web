@@ -282,7 +282,7 @@
         card.dataset.chanakWa = "1";
         var tag = document.createElement("div");
         tag.style.cssText = "font-size:11px;color:#1b9faa;font-weight:600;margin-top:12px;padding-top:10px;border-top:1px dashed #D1D5E8";
-        tag.textContent = "Testimonio recibido por WhatsApp";
+        tag.textContent = "Testimonio recibido ";
         card.appendChild(tag);
       }
     });
@@ -410,8 +410,8 @@
     if (href.indexOf("wa.me") > -1) {
       if (typeof window.gtag === "function") window.gtag("event", "whatsapp_click", { event_category: "contact", event_label: location.pathname });
       if (typeof window.fbq === "function") {
-        window.fbq("track", "Lead", { content_name: "WhatsApp Click", content_category: location.pathname });
-        window.fbq("track", "Schedule", { content_name: "WhatsApp Schedule", content_category: location.pathname });
+        window.fbq("track", "Lead", { content_name: "Admisiones Click", content_category: location.pathname });
+        window.fbq("track", "Schedule", { content_name: "Admisiones Schedule", content_category: location.pathname });
       }
     }
     else if (href.indexOf("sis.chanakacademy.org/matricula") > -1) {
@@ -447,7 +447,7 @@
       var text = plain(a.textContent || "");
       if (text.indexOf("35") > -1 || text.indexOf("evaluacion") > -1 || text.indexOf("diagnostica") > -1 || text.indexOf("hacer el diagnostico") > -1) {
         a.textContent = "Agendar Cita / Orientación Gratuita 📲";
-        a.href = "https://wa.me/34624703272?text=Hola,%20quiero%20agendar%20una%20cita%20de%20orientación%20para%20Dual%20Diploma";
+        a.href = "/#solicitud";
         a.style.background = "linear-gradient(135deg, #1b9faa, #1a5f8a)";
         a.style.color = "#ffffff";
         a.style.fontWeight = "800";
@@ -494,7 +494,7 @@
         dualDiplomaNotList();
         ctaFinal("dual-diploma",
           '<p style="margin:18px 0 0;font-size:13.5px;color:#cfdde9">¿Quieres revisar convalidaciones? '
-          + '<a href="https://wa.me/34624703272?text=Hola,%20quiero%20solicitar%20orientacion%20de%20convalidacion" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Agendar Orientación de Convalidación →</a></p>');
+          + '<a href="/#solicitud" style="color:#6fd9d1;font-weight:700;text-decoration:underline">Solicitar orientación →</a></p>');
         internalLinks([
           ["/off-campus/", "Colegio americano online homeschool"],
           ["/diagnostico/", "Evaluacion de nivel academico"]
@@ -504,4 +504,27 @@
       keepApplying(rewriteEnrollmentLinks);
     }
   });
+})();
+
+/* ---------------------------------------------------------------------------
+ * Guarda de desbordamiento horizontal en móvil (2026-09-18).
+ * Las landings compiladas de Next (/off-campus/, /dual-diploma/) desbordaban
+ * el viewport a 390 px: el contenido medía hasta 830 px y la página se movía
+ * en horizontal. Se corrige solo con CSS, sin tocar los bundles hidratados.
+ * ------------------------------------------------------------------------ */
+(function () {
+  "use strict";
+  function addGuard() {
+    if (document.getElementById('chanak-overflow-guard')) return;
+    var st = document.createElement('style');
+    st.id = 'chanak-overflow-guard';
+    st.textContent = [
+      'html,body{max-width:100%;overflow-x:hidden}',
+      'img,svg,video,iframe{max-width:100%;height:auto}',
+      '@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}'
+    ].join('\n');
+    (document.head || document.documentElement).appendChild(st);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addGuard);
+  else addGuard();
 })();

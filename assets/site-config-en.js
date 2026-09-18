@@ -6,8 +6,8 @@
   var SIS_MATRICULA_URL = "https://sis.chanakacademy.org/matricula";
 
   window.CHANAK_CONFIG = Object.freeze({
-    whatsappNumber: "+34 624 70 32 72",
-    whatsappLink: "https://wa.me/34624703272?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20la%20matr%C3%ADcula%202026-27",
+    whatsappNumber: "",
+    whatsappLink: "",
     instagramUrl: "https://www.instagram.com/chanakinternationalacademy/",
     facebookUrl: "https://www.facebook.com/profile.php?id=61585911365975",
     portalUrl: "https://portal.chanakacademy.org",
@@ -158,9 +158,72 @@
     location.href = buildSisUrl(inferProgram(button, ""), "button-guard");
   }, true);
 
+
+  /* -------------------------------------------------------------------------
+   * Retirada de teléfonos y WhatsApp (2026-09-18, por indicación de dirección).
+   * Se ejecuta en bucle junto a los guardas de matrícula porque las landings
+   * compiladas de Next rehidratan y vuelven a pintar nodos tras la carga.
+   * ---------------------------------------------------------------------- */
+  var PHONE_RE = /(\+?\s?34[\s.\-]?6\s?24[\s.\-]?70[\s.\-]?32[\s.\-]?72)|(\+34[\s.\-]?\d[\d\s.\-]{7,})/g;
+
+  function isWhatsappNode(el) {
+    var href = (el.getAttribute && (el.getAttribute('href') || '')) || '';
+    if (/wa\.me|api\.whatsapp\.com|web\.whatsapp\.com|whatsapp:/i.test(href)) return true;
+    if (el.getAttribute && el.getAttribute('data-config-href') === 'whatsappLink') return true;
+    return false;
+  }
+
+  function purgeContacts(root) {
+    var scope = root || document;
+
+    // 1. Enlaces y botones de WhatsApp: se eliminan del DOM.
+    scope.querySelectorAll('a[href],[data-config-href]').forEach(function (el) {
+      if (!isWhatsappNode(el)) return;
+      var box = el.closest('.wa,.whatsapp,.whatsapp-float,.btn-whatsapp,[class*="whatsapp"]') || el;
+      if (box && box.parentNode) box.parentNode.removeChild(box);
+    });
+
+    // 2. Enlaces telefónicos.
+    scope.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
+
+    // 3. Números sueltos que hayan quedado en texto.
+    var walker = document.createTreeWalker(scope.body || scope, NodeFilter.SHOW_TEXT, null);
+    var node, dead = [];
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue && PHONE_RE.test(node.nodeValue)) {
+        PHONE_RE.lastIndex = 0;
+        node.nodeValue = node.nodeValue.replace(PHONE_RE, '').replace(/\s{2,}/g, ' ').trim();
+        if (!node.nodeValue) dead.push(node);
+      }
+      PHONE_RE.lastIndex = 0;
+    }
+    dead.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+  }
+
+  window.chanakPurgeContacts = purgeContacts;
+
+
+  /* Guarda de desbordamiento horizontal en móvil (2026-09-18). Se aplica desde
+     aquí porque site-config.js lo cargan todas las páginas del sitio. */
+  function overflowGuard() {
+    if (document.getElementById('chanak-overflow-guard')) return;
+    var st = document.createElement('style');
+    st.id = 'chanak-overflow-guard';
+    st.textContent = [
+      'html,body{max-width:100%;overflow-x:hidden}',
+      'img,svg,video,iframe{max-width:100%}',
+      '@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}'
+    ].join('\n');
+    (document.head || document.documentElement).appendChild(st);
+  }
+
   function applyFlowGuards() {
     document.querySelectorAll("a[href]").forEach(rewriteAnchor);
     rewriteButtons();
+    purgeContacts();
+    overflowGuard();
   }
 
   if (location.hostname === "www.chanakacademy.org" && /^\/matricula\/?$/i.test(location.pathname)) {
