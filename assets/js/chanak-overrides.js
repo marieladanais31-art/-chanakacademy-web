@@ -553,6 +553,73 @@
     }
   }
 
+  /* Selector manual de país en header y pie (cierre del hueco 4, 2026-09-19).
+     /off-campus/ y /dual-diploma/ son URLs compartidas por todos los países;
+     el banner de geo-sugerencia (chanak-geo-banner.js) solo sugiere, nunca
+     redirige, así que hace falta un control manual siempre visible para
+     quien detectamos mal o llega desde un país sin banner (VPN, IP de
+     oficina, etc.). Reutiliza el mismo desplegable de la portada/mx/pa vía
+     window.renderChanakRegionSelector, expuesto por regional-selector.js,
+     para no mantener dos implementaciones del mismo control.
+     Off-campus trae su propio <nav> (logo + FLDOE/MSA); dual-diploma no
+     tiene ninguno, así que ahí se crea una barra fina fija arriba. En
+     ambos casos el <nav> se vuelve a localizar en cada pasada de
+     keepApplying (nunca se guarda la referencia) porque React puede
+     sustituir el nodo al hidratar. */
+  function chanakCountrySelector() {
+    if (!window.SUPPORTED_REGIONS || typeof window.renderChanakRegionSelector !== "function") return;
+
+    var headerMount = document.getElementById("chanakHeaderSelector");
+    if (!headerMount || !headerMount.isConnected) {
+      var nav = document.querySelector("nav");
+      if (nav) {
+        headerMount = document.getElementById("chanakHeaderSelector") || document.createElement("div");
+        headerMount.id = "chanakHeaderSelector";
+        headerMount.className = "chanak-region-selector-mount";
+        headerMount.style.cssText = "margin-left:auto";
+        nav.appendChild(headerMount);
+      } else {
+        var topBar = document.getElementById("chanakTopBar");
+        if (!topBar || !topBar.isConnected) {
+          topBar = document.getElementById("chanakTopBar") || document.createElement("div");
+          topBar.id = "chanakTopBar";
+          topBar.style.cssText = "position:sticky;top:0;left:0;right:0;z-index:9997;background:#0c2d48;padding:8px 5%;display:flex;justify-content:flex-end;border-bottom:3px solid #1b9faa";
+          if (document.body.firstChild) document.body.insertBefore(topBar, document.body.firstChild);
+          else document.body.appendChild(topBar);
+        }
+        headerMount = document.getElementById("chanakHeaderSelector") || document.createElement("div");
+        headerMount.id = "chanakHeaderSelector";
+        headerMount.className = "chanak-region-selector-mount";
+        topBar.appendChild(headerMount);
+      }
+    }
+    window.renderChanakRegionSelector(headerMount);
+
+    var footerMount = document.getElementById("chanakFooterSelector");
+    if (!footerMount || !footerMount.isConnected) {
+      var footerBox = document.getElementById("chanakFooterSelectorBox");
+      if (!footerBox) {
+        footerBox = document.createElement("div");
+        footerBox.id = "chanakFooterSelectorBox";
+        footerBox.style.cssText = "max-width:900px;margin:0 auto 28px;padding:14px 20px;text-align:center;font-family:'DM Sans',sans-serif";
+        var label = document.createElement("div");
+        label.style.cssText = "font-size:13px;color:#5A7060;margin-bottom:8px";
+        label.textContent = isEnglishPath() ? "Visiting from another country?" : "¿Nos visitas desde otro país?";
+        footerBox.appendChild(label);
+        document.body.appendChild(footerBox);
+      }
+      footerMount = document.getElementById("chanakFooterSelector") || document.createElement("div");
+      footerMount.id = "chanakFooterSelector";
+      footerMount.className = "chanak-region-selector-mount in-footer";
+      footerBox.appendChild(footerMount);
+    }
+    window.renderChanakRegionSelector(footerMount);
+  }
+
+  function isEnglishPath() {
+    return path.indexOf("/en") > -1;
+  }
+
   function updateDualDiplomaConvalidationCTA() {
     var anchors = document.querySelectorAll("a, button");
     anchors.forEach(function (a) {
@@ -586,6 +653,7 @@
       keepApplying(function () {
         offCampusPricingSection();
         chanakLocalContact();
+        chanakCountrySelector();
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-offcampus.webp", "Estudiante Off-Campus estudiando en casa");
         fixLegalText();
@@ -606,6 +674,7 @@
         dualDiplomaHeadline();
         updateDualDiplomaConvalidationCTA();
         chanakLocalContact();
+        chanakCountrySelector();
         dualDiplomaPricingNote();
         dualDiplomaReassurance();
         dualDiplomaNotList();

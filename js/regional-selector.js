@@ -151,17 +151,25 @@
     document.head.appendChild(st);
   }
 
-  function initSelectors() {
+  /* Renderiza el desplegable de país en UN contenedor. Se extrajo de
+     initSelectors() (2026-09-19) para poder montar el selector también desde
+     fuera de este archivo: /off-campus/ y /dual-diploma/ son landings de
+     Next.js exportadas cuyo header/footer no existe en el HTML fuente en el
+     momento de carga, así que chanak-overrides.js crea el contenedor por JS
+     y llama a esta función directamente en vez de esperar a initSelectors(),
+     que solo recorre los .chanak-region-selector-mount presentes al cargar.
+     Idempotente: si el contenedor ya está pintado (dataset.chanakRendered)
+     no se repinta, para no perder el desplegable abierto ni duplicar los
+     listeners de clic cuando algo vuelve a llamarla (p. ej. un keepApplying
+     que reinserta el nodo tras la hidratación de React). */
+  function renderRegionSelectorInto(container, country) {
+    if (!container || container.dataset.chanakRendered === '1') return;
+    container.dataset.chanakRendered = '1';
     injectSelectorStyles();
-    var country = detectInitialCountry();
-    window.__currentCountry = country;
+    var isFooter = container.classList.contains('in-footer');
+    var current = window.SUPPORTED_REGIONS[country] || window.SUPPORTED_REGIONS.GLOBAL;
 
-    // Renderizar selector en los contenedores designados
-    document.querySelectorAll('.chanak-region-selector-mount').forEach(function(container) {
-      var isFooter = container.classList.contains('in-footer');
-      var current = window.SUPPORTED_REGIONS[country] || window.SUPPORTED_REGIONS.GLOBAL;
-      
-      var html = '<div class="chanak-region-dropdown" style="position:relative; display:inline-block; text-align:left;">' +
+    var html = '<div class="chanak-region-dropdown" style="position:relative; display:inline-block; text-align:left;">' +
         '<button type="button" class="chanak-region-btn" style="display:flex; align-items:center; gap:8px; padding:6px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:' + (isFooter ? 'rgba(30,41,59,0.9)' : 'rgba(15,23,42,0.85)') + '; color:#e2e8f0; font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s;">' +
         '<span class="current-region-flag">' + current.flag + '</span>' +
         '<span class="current-region-name">' + current.name + '</span> ' +
@@ -199,15 +207,38 @@
             menu.style.display = 'none';
           });
         });
-      }
-    });
+    }
+  }
 
+  var globalClickListenerBound = false;
+  function bindGlobalMenuCloser() {
+    if (globalClickListenerBound) return;
+    globalClickListenerBound = true;
     document.addEventListener('click', function() {
       document.querySelectorAll('.chanak-region-menu').forEach(function(m) { m.style.display = 'none'; });
     });
+  }
 
+  function initSelectors() {
+    var country = detectInitialCountry();
+    window.__currentCountry = country;
+
+    // Renderizar selector en los contenedores designados
+    document.querySelectorAll('.chanak-region-selector-mount').forEach(function(container) {
+      renderRegionSelectorInto(container, country);
+    });
+
+    bindGlobalMenuCloser();
     updateUIElements(country);
   }
+
+  /* Punto de entrada para montar el selector fuera de esta carga inicial
+     (landings compiladas de Next que crean su propio contenedor por JS,
+     ver assets/js/chanak-overrides*.js). */
+  window.renderChanakRegionSelector = function(container) {
+    bindGlobalMenuCloser();
+    renderRegionSelectorInto(container, window.getCurrentCountry());
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSelectors);

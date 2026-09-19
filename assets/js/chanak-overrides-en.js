@@ -532,6 +532,60 @@
     }
   }
 
+  /* Manual country selector in header and footer (closing gap 4, 2026-09-19).
+     See the matching function in chanak-overrides.js for the full rationale.
+     Reuses window.renderChanakRegionSelector, exposed by regional-selector.js,
+     so there is only one implementation of the dropdown itself. */
+  function chanakCountrySelector() {
+    if (!window.SUPPORTED_REGIONS || typeof window.renderChanakRegionSelector !== "function") return;
+
+    var headerMount = document.getElementById("chanakHeaderSelector");
+    if (!headerMount || !headerMount.isConnected) {
+      var nav = document.querySelector("nav");
+      if (nav) {
+        headerMount = document.getElementById("chanakHeaderSelector") || document.createElement("div");
+        headerMount.id = "chanakHeaderSelector";
+        headerMount.className = "chanak-region-selector-mount";
+        headerMount.style.cssText = "margin-left:auto";
+        nav.appendChild(headerMount);
+      } else {
+        var topBar = document.getElementById("chanakTopBar");
+        if (!topBar || !topBar.isConnected) {
+          topBar = document.getElementById("chanakTopBar") || document.createElement("div");
+          topBar.id = "chanakTopBar";
+          topBar.style.cssText = "position:sticky;top:0;left:0;right:0;z-index:9997;background:#0c2d48;padding:8px 5%;display:flex;justify-content:flex-end;border-bottom:3px solid #1b9faa";
+          if (document.body.firstChild) document.body.insertBefore(topBar, document.body.firstChild);
+          else document.body.appendChild(topBar);
+        }
+        headerMount = document.getElementById("chanakHeaderSelector") || document.createElement("div");
+        headerMount.id = "chanakHeaderSelector";
+        headerMount.className = "chanak-region-selector-mount";
+        topBar.appendChild(headerMount);
+      }
+    }
+    window.renderChanakRegionSelector(headerMount);
+
+    var footerMount = document.getElementById("chanakFooterSelector");
+    if (!footerMount || !footerMount.isConnected) {
+      var footerBox = document.getElementById("chanakFooterSelectorBox");
+      if (!footerBox) {
+        footerBox = document.createElement("div");
+        footerBox.id = "chanakFooterSelectorBox";
+        footerBox.style.cssText = "max-width:900px;margin:0 auto 28px;padding:14px 20px;text-align:center;font-family:'DM Sans',sans-serif";
+        var label = document.createElement("div");
+        label.style.cssText = "font-size:13px;color:#5A7060;margin-bottom:8px";
+        label.textContent = "Visiting from another country?";
+        footerBox.appendChild(label);
+        document.body.appendChild(footerBox);
+      }
+      footerMount = document.getElementById("chanakFooterSelector") || document.createElement("div");
+      footerMount.id = "chanakFooterSelector";
+      footerMount.className = "chanak-region-selector-mount in-footer";
+      footerBox.appendChild(footerMount);
+    }
+    window.renderChanakRegionSelector(footerMount);
+  }
+
   function updateDualDiplomaConvalidationCTA() {
     var anchors = document.querySelectorAll("a, button");
     anchors.forEach(function (a) {
@@ -566,6 +620,7 @@
       keepApplying(function () {
         offCampusPricingSection();
         chanakLocalContact();
+        chanakCountrySelector();
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-offcampus.webp", "Homeschool student studying with Off-Campus");
         fixLegalText();
@@ -585,6 +640,7 @@
         stickyBar("dual-diploma");
         updateDualDiplomaConvalidationCTA();
         chanakLocalContact();
+        chanakCountrySelector();
         dualDiplomaPricingNote();
         dualDiplomaReassurance();
         dualDiplomaNotList();
