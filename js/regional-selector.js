@@ -1,12 +1,12 @@
 /**
  * js/regional-selector.js
  * Selector dinámico multirregión y actualización reactiva de tarifas / dossiers.
- * Persistencia en cookies (30 días), prevalencia de elección manual del usuario.
+ * Persistencia en cookies (365 días), prevalencia de elección manual del usuario.
  */
 
 (function() {
   var COOKIE_NAME = 'user_country';
-  var COOKIE_DAYS = 30;
+  var COOKIE_DAYS = 365;  // 2026-09-19: de 30 a 365 días por decisión de dirección
 
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
