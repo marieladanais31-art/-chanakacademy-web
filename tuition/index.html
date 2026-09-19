@@ -14,8 +14,8 @@
 <link href="https://www.chanakacademy.org/tuition/" rel="canonical"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="/assets/site-config.js?v=20260707sis"></script>
-<script src="/js/regional-pricing.js?v=202609c"></script>
-<script src="/js/regional-selector.js?v=202609c"></script>
+<script src="/js/regional-pricing.js?v=20260919rates"></script>
+<script src="/js/regional-selector.js?v=20260919rates"></script>
 <style>
 :root{--navy:#0c2d48;--blue:#1a5f8a;--teal:#1b9faa;--green:#6ab04c;--gold:#e8a020;--off:#f8fafc;--border:#e2e8f0;--text:#0f172a;--muted:#64748b}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -287,10 +287,17 @@ footer a{color:#cbd5e1;text-decoration:none}
     var oc = m.off_campus || { tiers: [] };
     var html = '';
 
-    html += dualCard(m.dual_diploma || {}, code);
-    (oc.tiers || []).forEach(function (t, i) {
-      html += offCampusCard(t, oc, code, false);
-    });
+    if (code === 'US') {
+      (oc.tiers || []).forEach(function (t, i) {
+        html += offCampusCard(t, oc, code, i === 2);
+      });
+      html += dualCard(m.dual_diploma || {}, code);
+    } else {
+      html += dualCard(m.dual_diploma || {}, code);
+      (oc.tiers || []).forEach(function (t, i) {
+        html += offCampusCard(t, oc, code, false);
+      });
+    }
     html += diagnosticCard(m.diagnostic);
 
     mount.innerHTML = html;
