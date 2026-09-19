@@ -199,7 +199,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 /* HERO */
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:#0a1e30}
-.hero-bg{position:absolute;inset:0;background:url('assets/dual.png') center top/cover no-repeat;animation:hzoom 6s ease forwards}
+.hero-bg{position:absolute;inset:0;background:url('/assets/img/hero-home.webp') center/cover no-repeat;animation:hzoom 6s ease forwards}
 @keyframes hzoom{from{transform:scale(1.05)}to{transform:scale(1)}}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,18,36,.9) 0%,rgba(8,24,44,.8) 50%,rgba(6,18,32,.95) 100%)}
 .hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:70px;background:#fff;clip-path:ellipse(55% 100% at 50% 100%);z-index:2}
@@ -704,19 +704,15 @@ input:disabled+.ck-sl{background:var(--teal);opacity:.6;cursor:not-allowed}
 </div>
 <!-- HERO -->
 <section class="hero" id="inicio">
-<div class="hero-bg">
-<video aria-hidden="true" autoplay loop muted playsinline poster="/assets/img/universidad-hero-poster.jpg" preload="none" class="hero-vid" id="heroVid" onerror="this.style.display='none'">
-<source src="/assets/video/universidad-hero.mp4" type="video/mp4"/>
-</video>
-</div>
+<div class="hero-bg"></div>
 <div class="hero-c">
 <div class="wrap" style="width:100%">
 <div class="hero-in">
-<div class="verse-pill"><span class="verse-dot"></span><span data-i18n="h_verse">"Instruye al niño en su camino..." — Proverbios 22:6</span></div>
-<h1 data-i18n="h_h1">Educación americana flexible,<br/>rigurosa y con acompañamiento real.</h1>
+<div class="verse-pill"><span class="verse-dot"></span><span data-i18n="h_verse">Colegio americano K-12 · FLDOE #134620</span></div>
+<h1 data-i18n="h_h1">Flexible en el ritmo.<br/><em>Rigurosa en los resultados.</em></h1>
 <div class="orn"><div class="orn-line"></div><span style="color:var(--teal)">✦</span><div class="orn-line"></div></div>
-<p class="hero-tag" data-i18n="h_tag">Colegio privado K-12 registrado en Florida para familias hispanohablantes en Estados Unidos, México y el mundo.</p>
-<p class="hero-sub2" data-i18n="h_sub">Estudia desde casa con acompañamiento en español o añade un diploma estadounidense sin cambiar de colegio.</p>
+<p class="hero-tag" data-i18n="h_tag">Educación americana K-12 con mentoría personalizada, expediente académico y una ruta clara hacia la graduación.</p>
+<p class="hero-sub2" data-i18n="h_sub">Colegio privado registrado en Florida · FLDOE #134620 · Candidato oficial MSA-CESS.</p>
 <div class="hero-ctas">
 <a class="btn btn-t" href="/off-campus/" rel="noopener noreferrer" style="font-size:1rem;padding:.95rem 2.25rem" onclick="trackMetaLead('Homeschool Off-Campus')">Quiero educación completa desde casa</a>
 <a class="btn btn-gold" href="/dual-diploma/" rel="noopener noreferrer" style="font-size:1rem;padding:.95rem 2.25rem" onclick="trackMetaLead('Dual Diploma')">Quiero el U.S. Dual Diploma</a>
@@ -1679,10 +1675,10 @@ es:{
  ck_ana_t:"Cookies analíticas",ck_ana_s:"Nos ayudan a entender cómo interactúas con la web.",
  ck_mkt_t:"Cookies de marketing",ck_mkt_s:"Publicidad y remarketing en Facebook/Instagram (Meta Ads). Solo se activan con tu consentimiento.",
  ck_pref_t:"Cookies de preferencias",ck_pref_s:"Guardan tu idioma y otras preferencias.",
- h_verse:'"Instruye al niño en su camino..." — Proverbios 22:6',
- h_h1:"Educación americana flexible,<br>rigurosa y con acompañamiento real.",
- h_tag:"Colegio privado K-12 registrado en Florida para familias hispanohablantes en Estados Unidos, México y el mundo.",
- h_sub:"Estudia desde casa con acompañamiento en español o añade un diploma estadounidense sin cambiar de colegio.",
+ h_verse:"Colegio americano K-12 · FLDOE #134620",
+ h_h1:"Flexible en el ritmo.<br><em>Rigurosa en los resultados.</em>",
+ h_tag:"Educación americana K-12 con mentoría personalizada, expediente académico y una ruta clara hacia la graduación.",
+ h_sub:"Colegio privado registrado en Florida · FLDOE #134620 · Candidato oficial MSA-CESS.",
  h_cta1:"Solicitar información",h_cta2:"Ver programas",
  t_1:"Mentoría personalizada",t_2:"Internacional",
  ab_ef:"Alianza Red Educativa",
@@ -1941,10 +1937,10 @@ en:{
  ck_ana_t:"Analytics cookies",ck_ana_s:"Help us understand how you interact with the site.",
  ck_mkt_t:"Marketing cookies",ck_mkt_s:"Advertising and remarketing on Facebook/Instagram (Meta Ads). Only activated with your consent.",
  ck_pref_t:"Preference cookies",ck_pref_s:"Store your language and other preferences.",
- h_verse:'"Train up a child in the way he should go..." — Proverbs 22:6',
- h_h1:"Flexible, rigorous American education<br>with <em>real student support</em>",
- h_tag:"US FLDOE diploma, mastery-based learning and personalized support for families, schools and churches.",
- h_sub:"Main programs: Off-Campus for homeschool families and Dual Diploma for students and schools seeking an international pathway.",
+ h_verse:"American K-12 school · FLDOE #134620",
+ h_h1:"Flexible in pace.<br><em>Rigorous in outcomes.</em>",
+ h_tag:"American K-12 education with personalized mentoring, official academic records and a clear path to graduation.",
+ h_sub:"Florida-registered private school · FLDOE #134620 · MSA-CESS Official Candidate.",
  h_cta1:"Request information",h_cta2:"View programs",
  t_1:"Personalized mentoring",t_2:"International",
  ab_ef:"Educational Network Alliance",
@@ -2202,10 +2198,10 @@ ca:{
  ck_ana_t:"Cookies analítiques",ck_ana_s:"Ens ajuden a entendre com interactues amb el web.",
  ck_mkt_t:"Cookies de màrqueting",ck_mkt_s:"Per mostrar-te contingut rellevant en altres plataformes.",
  ck_pref_t:"Cookies de preferències",ck_pref_s:"Guarden el teu idioma i altres preferències.",
- h_verse:'"Instrueix el nen en el seu camí..." — Proverbis 22:6',
- h_h1:"Educació americana flexible i rigorosa<br>amb <em>acompanyament real</em>",
- h_tag:"Diploma nord-americà FLDOE, aprenentatge per domini i acompanyament personalitzat per a famílies, col·legis i esglésies.",
- h_sub:"Programes Off-Campus, Dual Diploma, Life Skills i Hubs educatius en aliança amb EducaFe a Espanya.",
+ h_verse:"Escola americana K-12 · FLDOE #134620",
+ h_h1:"Flexible en el ritme.<br><em>Rigorosa en els resultats.</em>",
+ h_tag:"Educació americana K-12 amb mentoria personalitzada, expedient acadèmic i una ruta clara cap a la graduació.",
+ h_sub:"Escola privada registrada a Florida · FLDOE #134620 · Candidata oficial MSA-CESS.",
  h_cta1:"Sol·licitar informació",h_cta2:"Veure programes",
  t_1:"Mentoria personalitzada",t_2:"Internacional",
  ab_ef:"Aliança Xarxa Educativa",
@@ -2322,10 +2318,10 @@ fr:{
  ck_ana_t:"Cookies analytiques",ck_ana_s:"Nous aident à comprendre comment vous interagissez.",
  ck_mkt_t:"Cookies marketing",ck_mkt_s:"Pour vous montrer du contenu pertinent.",
  ck_pref_t:"Cookies de préférences",ck_pref_s:"Stockent votre langue et autres préférences.",
- h_verse:'"Instruis l\'enfant dans la voie qu\'il doit suivre..." — Proverbes 22:6',
- h_h1:"Éducation américaine flexible et rigoureuse<br>avec <em>un suivi réel</em>",
- h_tag:"Diplôme américain FLDOE, apprentissage par maîtrise et accompagnement personnalisé pour familles, écoles et églises.",
- h_sub:"Programmes Off-Campus, Double Diplôme, Life Skills et Hubs éducatifs en alliance avec EducaFe en Espagne.",
+ h_verse:"École américaine K-12 · FLDOE #134620",
+ h_h1:"Flexible dans le rythme.<br><em>Rigoureuse dans les résultats.</em>",
+ h_tag:"Éducation américaine K-12 avec mentorat personnalisé, dossier scolaire officiel et parcours clair vers l'obtention du diplôme.",
+ h_sub:"École privée enregistrée en Floride · FLDOE #134620 · Candidate officielle MSA-CESS.",
  h_cta1:"Demander des informations",h_cta2:"Voir les programmes",
  t_1:"Mentorat personnalisé",t_2:"International",
  ab_ef:"Alliance Réseau Éducatif",
