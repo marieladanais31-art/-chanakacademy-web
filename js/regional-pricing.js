@@ -138,7 +138,12 @@ window.CHANAK_PRICING = {
         enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
         installments: 'mensualidad',
         includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
-        note: 'Al formalizar se abonan 250 €: matrícula de 180 € más la primera mensualidad. En España, Off-Campus se ofrece a partir de los 16 años o a través de centro extranjero autorizado (RD 806/1993) con iglesia colaboradora.',
+        // 2026-09-19: se retiran de aquí la mención al RD 806/1993 y a la
+        // iglesia colaboradora por indicación de dirección. Ese marco es el de
+        // los futuros centros de implementación presenciales, no el del
+        // programa a distancia, y mezclarlos confunde a la familia. El encuadre
+        // que queda es el del dossier oficial de Off-Campus (pág. 3).
+        note: 'Al formalizar se abonan 250 €: matrícula de 180 € más la primera mensualidad. El alumno queda registrado en una escuela privada americana bajo supervisión central desde Florida; la familia conserva la responsabilidad legal educativa local según su país de residencia.',
         tiers: [
           { key: 'elementary', title: 'Primaria (K-5)', monthly: '70 €', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', monthly: '70 €', description: 'Currículo estadounidense completo, créditos oficiales y transcript FLDOE #134620.' }

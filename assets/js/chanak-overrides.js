@@ -319,6 +319,19 @@
      desde 1.310€/año en 3.º ESO. Referencia USD: cambio BCE 1 EUR=1.1404,
      redondeado al alza — mismo método que el resto del sitio. No duplicar
      estas cifras en otro sitio del código sin actualizar aquí también. */
+  /* H1 de Dual Diploma (2026-09-19). El HTML estático ya trae la promesa,
+     pero React la pisa al hidratar y deja solo "Dual Diploma", que no dice
+     nada ni a la familia ni a Google. Se vuelve a aplicar con keepApplying,
+     igual que el resto de textos de estas landings compiladas. */
+  function dualDiplomaHeadline() {
+    var h1 = document.querySelector("h1");
+    if (!h1) return;
+    var txt = plain(h1.textContent || "");
+    if (txt === "dual diploma") {
+      h1.textContent = "Bachillerato americano sin cambiar de colegio";
+    }
+  }
+
   function dualDiplomaPricingNote() {
     if (document.getElementById("chanakPricingNote")) return;
     var heading = null;
@@ -590,6 +603,7 @@
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-dualdiploma.webp", "Estudiante siguiendo el programa Dual Diploma");
         stickyBar("dual-diploma");
+        dualDiplomaHeadline();
         updateDualDiplomaConvalidationCTA();
         chanakLocalContact();
         dualDiplomaPricingNote();
