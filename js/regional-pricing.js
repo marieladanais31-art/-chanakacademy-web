@@ -109,15 +109,17 @@ window.CHANAK_PRICING = {
       // en la home: las dos cifras eran correctas y complementarias.
       off_campus: {
         status: 'published',
-        title: 'Off-Campus · Escuela completa a distancia',
+        title: 'Off-Campus · Escuela completa K-12 a distancia',
         enrollmentFee: '180 €',
+        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
         installments: 'mensualidad',
+        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
         note: 'Al formalizar se abonan 250 €: matrícula de 180 € más la primera mensualidad. En España, Off-Campus se ofrece a partir de los 16 años o a través de centro extranjero autorizado (RD 806/1993) con iglesia colaboradora.',
         tiers: [
           { key: 'elementary', title: 'Primaria (K-5)', monthly: '70 €', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', monthly: '70 €', description: 'Currículo estadounidense completo, créditos oficiales y transcript FLDOE #134620.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. La matrícula se abona una sola vez al formalizar.'
+        footnote: 'Mensualidad única para todos los niveles. La matrícula se abona una sola vez al formalizar. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo 480-560 €/año).'
       },
 
       dual_diploma: {
@@ -154,14 +156,22 @@ window.CHANAK_PRICING = {
         description: 'Revisión de expediente y recomendación inicial.'
       },
 
+      // Off-Campus es una sola ruta K-12: la mensualidad no varía por nivel
+      // porque el servicio (LMS, SIS, portal de seguimiento, mentor) es el
+      // mismo en todos los grados. La matrícula incluye diagnóstico académico
+      // y PEI, no se cobran aparte. Aprobado por dirección 2026-09-19.
       off_campus: {
-        status: 'on_request',
-        title: 'Off-Campus · Escuela completa a distancia',
-        enrollmentFee: null,
+        status: 'published',
+        title: 'Off-Campus · Escuela completa K-12 a distancia',
+        enrollmentFee: '$9,500 MXN',
+        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
+        installments: '10 mensualidades',
+        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
-        ]
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: '$5,600 MXN', totalYear: '$65,500 MXN', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', monthly: '$5,600 MXN', totalYear: '$65,500 MXN', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ],
+        footnote: 'Mensualidad única para todos los niveles: el programa es el mismo K-12 completo en cualquier grado. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo 5.500-8.500 MXN/año).'
       },
 
       dual_diploma: {
@@ -194,14 +204,19 @@ window.CHANAK_PRICING = {
         description: 'Revisión de expediente y recomendación inicial.'
       },
 
+      // Alineado en USD con la tarifa de Off-Campus México (ver nota allí).
       off_campus: {
-        status: 'on_request',
-        title: 'Off-Campus · Escuela completa a distancia',
-        enrollmentFee: null,
+        status: 'published',
+        title: 'Off-Campus · Escuela completa K-12 a distancia',
+        enrollmentFee: 'US$550',
+        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
+        installments: '10 mensualidades',
+        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Media (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
-        ]
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$325', totalYear: 'US$3,800', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$325', totalYear: 'US$3,800', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ],
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo US$300-500/año).'
       },
 
       // Importes ya publicados en /dual-diploma-panama/. La tabla completa por
@@ -241,16 +256,18 @@ window.CHANAK_PRICING = {
         status: 'published',
         title: 'U.S. K-12 Off-Campus',
         enrollmentFee: '$295 USD',
+        enrollmentIncludes: 'Includes academic diagnostic and Individualized Education Plan (PEI).',
         installments: '10 monthly payments',
+        includes: 'SIS platform (sis.chanakacademy.org) · Progress portal (portal.chanakacademy.org) · LMS · assigned mentor · virtual language-reinforcement groups',
         tiers: [
           { key: 'elementary',  title: 'Elementary (K-5)',            monthly: '$275 USD', totalYear: '$3,045 USD',
             description: 'FLDOE #134620 registration, individualized learning plan, official transcripts and bilingual family support.' },
-          { key: 'middle_high', title: 'Middle & High School (6-12)', monthly: '$320 USD', totalYear: '$3,495 USD',
+          { key: 'middle_high', title: 'Middle School (6-8)', monthly: '$320 USD', totalYear: '$3,495 USD',
             description: 'Full U.S. college-prep curriculum, official credits, transcript issuance and counseling.' },
           { key: 'high',        title: 'High School (9-12)',          monthly: '$365 USD', totalYear: '$3,945 USD',
             description: 'Graduation track with College & Career Readiness, SAT prep and counseling.' }
         ],
-        footnote: 'Annual tuition includes enrollment plus ten monthly payments. Tuition fits within state scholarship award amounts where families qualify.'
+        footnote: 'Annual tuition includes enrollment plus ten monthly payments. Tuition fits within state scholarship award amounts where families qualify. Curriculum and materials not included; each family chooses and purchases their own (estimated cost $300-500 USD/year).'
       },
 
       dual_diploma: {
