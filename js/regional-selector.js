@@ -100,6 +100,21 @@
     document.querySelectorAll('.current-region-name').forEach(function(el) { el.textContent = region.name; });
     document.querySelectorAll('.current-region-currency').forEach(function(el) { el.textContent = '(' + (region.displayCurrency || region.currency) + ')'; });
 
+    document.querySelectorAll('[data-featured-es]').forEach(function(el) {
+      el.style.display = countryCode === 'ES' ? '' : 'none';
+    });
+
+    document.querySelectorAll('[data-chanak-dossier-program]').forEach(function(link) {
+      var program = link.getAttribute('data-chanak-dossier-program');
+      var suffix = countryCode === 'GLOBAL' ? 'en' : countryCode.toLowerCase();
+      link.setAttribute('href', '/assets/dossiers/dossier-' + program + '-' + suffix + '.pdf');
+    });
+    document.querySelectorAll('a[href*="/assets/dossiers/dossier-off-campus"],a[href*="/assets/dossiers/dossier-dual-diploma"]').forEach(function(link) {
+      var program = link.getAttribute('href').indexOf('off-campus') !== -1 ? 'off-campus' : 'dual-diploma';
+      var suffix = countryCode === 'GLOBAL' ? 'en' : countryCode.toLowerCase();
+      link.setAttribute('href', '/assets/dossiers/dossier-' + program + '-' + suffix + '.pdf');
+    });
+
     if (!catalog) return;
 
     // Render de una tarifa. Si el precio no está aprobado (onRequest) no se

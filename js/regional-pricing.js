@@ -146,12 +146,12 @@ window.CHANAK_PRICING = {
 
       dual_diploma: {
         status: 'published',
-        title: 'Chanak Dual Diploma',
+        title: 'Chanak Dual Diploma · Bachillerato y FP',
         assessmentFee: '35 €',
         assessmentLabel: 'Examen diagnóstico de inglés',
         enrollmentFee: '210 €',
         installments: '10 mensualidades',
-        includes: 'Mentoría semanal · LMS y SIS · evaluaciones · SAT Prep Hub · Test de Dones · transcript oficial',
+        includes: 'Compatible con Bachillerato y Formación Profesional (FP) · Mentoría semanal · LMS y SIS · evaluaciones · SAT Prep Hub · Test de Dones · transcript oficial',
         routes: [
           { key: 'r4', title: 'Ruta 4 años', level: '3.º ESO · Grade 9', hours: '3-5 h/sem', monthly: '110 €', totalFirstYear: '1.310 €' },
           { key: 'r3', title: 'Ruta 3 años', level: '4.º ESO · Grade 10', hours: '3-5 h/sem', monthly: '129 €', totalFirstYear: '1.500 €' },
