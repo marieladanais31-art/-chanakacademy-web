@@ -160,18 +160,25 @@ window.CHANAK_PRICING = {
       // porque el servicio (LMS, SIS, portal de seguimiento, mentor) es el
       // mismo en todos los grados. La matrícula incluye diagnóstico académico
       // y PEI, no se cobran aparte. Aprobado por dirección 2026-09-19.
+      // OCULTO 2026-09-19: el precio anterior (matrícula $9,500 + 10
+      // mensualidades de $5,600 = "totalYear" $65,500) copiaba por error la
+      // lógica de Dual Diploma (plan de pagos hacia un total cerrado). El
+      // dossier real de Off-Campus (Programa Off-Campus 2026-27, servicio
+      // Chanak) es una cuota de servicio RECURRENTE y modesta —matrícula
+      // única 180€ + mensualidad continua 70€, sin "total del año"—, igual
+      // en España para cualquier grado. Vuelto a on_request hasta que
+      // dirección confirme cifra para México. Propuesta pendiente de
+      // aprobar (equivalente a 180€/70€ al cambio de referencia, NO al
+      // techo de EE.UU.): matrícula ~$3,500-3,600 MXN, mensualidad
+      // ~$1,350-1,400 MXN, sin total ni número de cuotas.
       off_campus: {
-        status: 'published',
+        status: 'on_request',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: '$9,500 MXN',
-        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
-        installments: '10 mensualidades',
-        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
+        enrollmentFee: null,
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', monthly: '$5,600 MXN', totalYear: '$65,500 MXN', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', monthly: '$5,600 MXN', totalYear: '$65,500 MXN', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
-        ],
-        footnote: 'Mensualidad única para todos los niveles: el programa es el mismo K-12 completo en cualquier grado. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo 5.500-8.500 MXN/año).'
+          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ]
       },
 
       dual_diploma: {
@@ -204,19 +211,19 @@ window.CHANAK_PRICING = {
         description: 'Revisión de expediente y recomendación inicial.'
       },
 
-      // Alineado en USD con la tarifa de Off-Campus México (ver nota allí).
+      // OCULTO 2026-09-19: mismo error que México (ver nota allí) — el
+      // precio anterior copiaba el plan de pagos de Dual Diploma. Vuelto a
+      // on_request. Propuesta pendiente de aprobar (equivalente a 180€/70€
+      // de referencia, no al techo de EE.UU.): matrícula ~US$200-210,
+      // mensualidad continua ~US$80, sin total ni número de cuotas.
       off_campus: {
-        status: 'published',
+        status: 'on_request',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: 'US$550',
-        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
-        installments: '10 mensualidades',
-        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
+        enrollmentFee: null,
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$325', totalYear: 'US$3,800', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$325', totalYear: 'US$3,800', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
-        ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo US$300-500/año).'
+          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Media (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ]
       },
 
       // Importes ya publicados en /dual-diploma-panama/. La tabla completa por

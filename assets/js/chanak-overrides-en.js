@@ -433,9 +433,18 @@
     var country = window.getCurrentCountry();
     var market = window.CHANAK_PRICING.markets[country] || window.CHANAK_PRICING.markets.GLOBAL;
     var oc = market && market.off_campus;
-    if (!oc || oc.status !== "published") return;
+    if (!oc || oc.status !== "published") {
+      /* If we came from a country with a published price (e.g. Spain) and
+         the family switches to one under review (Mexico/Panama), the old
+         section must be hidden: a family should never see another
+         country's price. */
+      var stale = document.getElementById("chanakOffCampusPricing");
+      if (stale) stale.style.display = "none";
+      return;
+    }
 
     var mount = document.getElementById("chanakOffCampusPricing");
+    if (mount) mount.style.display = "";
     if (!mount) {
       mount = document.createElement("section");
       mount.id = "chanakOffCampusPricing";

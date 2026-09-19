@@ -456,9 +456,17 @@
     var country = window.getCurrentCountry();
     var market = window.CHANAK_PRICING.markets[country] || window.CHANAK_PRICING.markets.GLOBAL;
     var oc = market && market.off_campus;
-    if (!oc || oc.status !== "published") return;
+    if (!oc || oc.status !== "published") {
+      /* Si veníamos de un país con precio publicado (p. ej. España) y la
+         familia cambia a uno en revisión (México/Panamá), hay que ocultar
+         la sección anterior: nunca debe verse el precio de otro país. */
+      var stale = document.getElementById("chanakOffCampusPricing");
+      if (stale) stale.style.display = "none";
+      return;
+    }
 
     var mount = document.getElementById("chanakOffCampusPricing");
+    if (mount) mount.style.display = "";
     if (!mount) {
       mount = document.createElement("section");
       mount.id = "chanakOffCampusPricing";
