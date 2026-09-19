@@ -286,7 +286,7 @@ window.CHANAK_PRICING = {
 
     /* ---------------------------------------------------------------- US */
     /* Programa Principal: U.S. K-12 Off-Campus.
-       Programa Secundario: Finaliza tu High School / Adult High School Completion ($2,500 USD). */
+       Programa Secundario: Finaliza tu High School / Adult High School Completion (desde $2,500 USD). */
     US: {
       currency: 'USD',
       symbol: '$',
@@ -317,19 +317,19 @@ window.CHANAK_PRICING = {
         footnote: 'Annual tuition includes enrollment plus ten monthly payments. Tuition fits within state scholarship award amounts where families qualify. Curriculum and materials not included; each family chooses and purchases their own (estimated cost $300-500 USD/year).'
       },
 
-      // PROGRAMA SECUNDARIO: Finaliza tu High School / Adult Completion ($2,500 USD)
+      // PROGRAMA SECUNDARIO: Adult High School Completion (desde $2,500 USD)
       dual_diploma: {
         status: 'published',
         title: 'Finaliza tu High School · Adult High School Completion',
         assessmentFee: '$58 USD',
-        assessmentLabel: 'Convalidación de expediente',
-        enrollmentFee: '$250 USD',
-        installments: '10 cuotas o pago único',
-        includes: 'Convalidación oficial de créditos previos · plan acelerado personalizado · mentor asignado · plataforma 24/7 · diploma oficial FLDOE #134620',
+        assessmentLabel: 'Evaluación diagnóstica y revisión de expediente',
+        enrollmentFee: null,
+        installments: 'precio único según evaluación diagnóstica',
+        includes: 'Revisión individual de créditos previos · vía acelerada de un año · mentor asignado · plataforma 24/7 · diploma de High School emitido por Chanak',
         routes: [
-          { key: 'adult_completion', title: 'Plan Acelerado para Adultos', level: 'High School Diploma FLDOE #134620', hours: 'Flexible a tu ritmo', monthly: '$250 USD', totalYear: '$2,500 USD' }
+          { key: 'adult_completion', title: 'Vía Acelerada para Adultos', level: 'Adult High School Completion', hours: '1 año · según evaluación diagnóstica', monthly: null, totalYear: 'desde $2,500 USD' }
         ],
-        footnote: 'Diseñado especialmente para adultos y jóvenes que no han podido finalizar sus estudios secundarios. Convalidamos tus créditos anteriores y creamos un plan a tu medida para obtener tu diploma oficial estadounidense.'
+        footnote: 'Un solo programa desde $2,500 USD, diseñado para completarse mediante una vía acelerada de un año. La duración, asignaturas requeridas y precio final dependen de la evaluación diagnóstica y la revisión del expediente previo.'
       }
     },
 
