@@ -106,6 +106,10 @@
       [style*="border-color: rgb(217, 184, 111)"], [style*="border-color:#D9B86F"] { border-color: #1b9faa !important; }
       [style*="rgba(58, 125, 44"], [style*="rgba(58,125,44"] { background: radial-gradient(circle, rgba(27,159,170,.13) 0%, transparent 70%) !important; }
       [style*="rgba(26, 58, 107"], [style*="rgba(26,58,107"] { background: rgba(12,45,72,.3) !important; }
+      @media(max-width:720px){
+        #chanakRegionalAction>div{grid-template-columns:1fr !important}
+        #chanakCommercialOverview,#chanakDifference{padding-left:20px !important;padding-right:20px !important}
+      }
     `;
     document.head.appendChild(style);
   }
@@ -116,7 +120,24 @@
      por JS y se repite (keepApplying) para sobrevivir a esos repintados. */
   var LEGAL_TEXT_FIXES = [
     [": estructura, acompañamiento y diploma reconocido.", ": estructura, acompañamiento y diploma de High School americano (FLDOE #134620)."],
-    ["Garantiza que no haya lagunas de aprendizaje.", "Detectamos las áreas que necesitan refuerzo y trabajamos sobre ellas antes de avanzar."]
+    ["Garantiza que no haya lagunas de aprendizaje.", "Detectamos las áreas que necesitan refuerzo y trabajamos sobre ellas antes de avanzar."],
+    ["Off-Campus Program", "Programa Off-Campus"],
+    ["Homeschool Americano con Estructura y Fe", "Colegio americano en casa con estructura y acompañamiento"],
+    ["Mastery Learning — avanza al dominar", "Aprendizaje por dominio — avanza al dominar"],
+    ["Life Skills & Purpose Program", "Habilidades para la vida y propósito"],
+    ["Florida Dept. of Education", "Departamento de Educación de Florida"],
+    ["Registrada como Private School con estatus activo.", "Registrada como colegio privado con estatus activo."],
+    ["Official Candidate for Accreditation — organismo americano de referencia.", "Candidato oficial a la acreditación de un organismo estadounidense de referencia."],
+    ["Official Candidate", "Candidato oficial"],
+    ["Nonprofit 501(c)(3)", "Organización sin fines de lucro 501(c)(3)"],
+    ["Florida Nonprofit", "Entidad sin fines de lucro de Florida"],
+    ["Completar datos y pagar", "Completar datos y continuar en el SIS"],
+    ["Educar con fe, valores y visión internacional", "Una educación flexible, rigurosa y con visión internacional"],
+    ["Somos una familia internacional. Chanak nos dio la continuidad académica americana con valores cristianos.", "Somos una familia internacional. Chanak nos dio continuidad académica americana, estructura y acompañamiento."],
+    ["Educar con fe, valores y visión internacional sí es posible.", "Construir una trayectoria americana flexible y acompañada sí es posible."],
+    ["Tu hijo sigue en su colegio y suma el diploma de High School de una escuela registrada en Florida, candidata oficial a la acreditación MSA-CESS.", "Tu hijo continúa en su centro y añade una trayectoria de High School estadounidense con mentoría y seguimiento académico."],
+    ["Florida Registered Private School", "Colegio privado registrado en Florida"],
+    ["MSA-CESS Candidate for Accreditation", "Candidato oficial a la acreditación MSA-CESS"]
     /* La entrada que redirigía "sección de precios de esta página" al dossier
        se retiró el 2026-09-19: offCampusPricingSection() ya pone una sección
        de precios real en la página, así que la frase original vuelve a ser
@@ -205,6 +226,7 @@
   }
 
   function isEnrollmentStripe(anchor, href) {
+    if (anchor && anchor.getAttribute("data-chanak-direct-payment") === "1") return false;
     return href.indexOf("https://buy.stripe.com/") === 0 && !isDiagnosticPayment(anchor, href);
   }
 
@@ -272,8 +294,8 @@
     bar.setAttribute("role", "region");
     bar.setAttribute("aria-label", "Matricula 2026-27");
     bar.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0c2d48;color:#fff;display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 14px;font-family:DM Sans,sans-serif;font-size:14px;box-shadow:0 -6px 24px rgba(0,0,0,.25);flex-wrap:wrap;text-align:center";
-    bar.innerHTML = '<span style="font-weight:600">Matricula 2026-27 abierta · folio SIS antes del pago</span>'
-      + '<a href="' + buildMatricula(program, "sticky-landing") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:8px 18px;font-weight:700;white-space:nowrap">Iniciar matricula →</a>';
+    bar.innerHTML = '<span style="font-weight:600">Admisiones 2026-2027 abiertas · respuesta en 1 día hábil</span>'
+      + '<a href="' + buildMatricula(program, "sticky-landing") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:8px 18px;font-weight:700;white-space:nowrap">Iniciar matrícula →</a>';
     document.body.appendChild(bar);
     document.body.style.paddingBottom = "64px";
   }
@@ -297,11 +319,11 @@
     box.id = "chanakCtaFinal";
     box.style.cssText = "background:linear-gradient(155deg,#0c2d48,#1a5f8a);color:#fff;text-align:center;padding:48px 5%;font-family:DM Sans,sans-serif";
     box.innerHTML =
-      '<h2 style="font-family:Playfair Display,Georgia,serif;font-size:clamp(24px,4vw,34px);margin:0 0 10px">Listos para comenzar?</h2>'
-      + '<p style="color:#cfdde9;font-size:15px;max-width:640px;margin:0 auto 22px;line-height:1.6">Matricula 2026-27 abierta · datos y folio SIS antes del pago · FLDOE #134620</p>'
+      '<h2 style="font-family:Playfair Display,Georgia,serif;font-size:clamp(24px,4vw,34px);margin:0 0 10px">¿Listos para avanzar?</h2>'
+      + '<p style="color:#cfdde9;font-size:15px;max-width:640px;margin:0 auto 22px;line-height:1.6">Admisiones 2026-2027 abiertas · revisión académica antes del pago · FLDOE #134620</p>'
       + '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">'
-      + '<button type="button" id="chanakCtaOrienta" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit">Solicitar orientacion</button>'
-      + '<a href="' + buildMatricula(program, "cta-final") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Iniciar matricula →</a>'
+      + '<button type="button" id="chanakCtaOrienta" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit">Solicitar orientación</button>'
+      + '<a href="' + buildMatricula(program, "cta-final") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Iniciar matrícula →</a>'
       + "</div>" + (extraHtml || "");
     document.body.appendChild(box);
     var button = document.getElementById("chanakCtaOrienta");
@@ -635,6 +657,124 @@
     });
   }
 
+  function regionalSisUrl(program, source) {
+    var country = window.getCurrentCountry ? window.getCurrentCountry() : "GLOBAL";
+    var region = window.SUPPORTED_REGIONS && window.SUPPORTED_REGIONS[country];
+    var url = new URL(MATRICULA);
+    url.searchParams.set("country", country);
+    url.searchParams.set("program", program === "off-campus" ? "off_campus" : "dual_diploma");
+    url.searchParams.set("programa", program);
+    url.searchParams.set("currency", region ? region.currency : "USD");
+    url.searchParams.set("src", source || "landing-commercial");
+    return url.toString();
+  }
+
+  function regionalPaymentUrl(program, country) {
+    var stripe = cfg.stripe || {};
+    if (country === "MX") return stripe.mexico || "";
+    if (country === "CO") return stripe.colombia || "";
+    if (country === "US") return stripe.usa || "";
+    if (country === "PA") return stripe.panama || "";
+    if (country === "ES" && program === "dual-diploma") return stripe.dualDiploma || "";
+    if (program === "off-campus") return stripe.offCampus || "";
+    return stripe.dualDiploma || "";
+  }
+
+  function firstContentAnchor() {
+    return document.getElementById("chanakHeroPhoto") || document.querySelector("main") || document.querySelector("nav");
+  }
+
+  /* Nueva capa comercial común. Resume la decisión antes de que la familia
+     entre en el detalle académico y evita que ambas landings parezcan la
+     misma página con otro título. */
+  function commercialOverview(program) {
+    if (document.getElementById("chanakCommercialOverview")) return;
+    var anchor = firstContentAnchor();
+    if (!anchor || !anchor.parentNode) return;
+    var isOff = program === "off-campus";
+    var section = document.createElement("section");
+    section.id = "chanakCommercialOverview";
+    section.style.cssText = "background:#fff;padding:56px 5%;font-family:'DM Sans',sans-serif;border-bottom:1px solid #dce6ec";
+    var features = isOff ? [
+      ["Matrícula escolar real", "Expediente, seguimiento y documentación de un colegio privado registrado en Florida."],
+      ["Plan individual", "Diagnóstico, PEI y mentor asignado para organizar el recorrido completo."],
+      ["Libertad familiar", "La familia conserva flexibilidad de ritmo y materiales; Chanak evalúa, registra y acompaña."]
+    ] : [
+      ["Sin cambiar de centro", "El estudiante continúa ESO, Bachillerato o FP y añade su trayectoria estadounidense."],
+      ["Ruta por expediente", "Hasta el 75% puede reconocerse, siempre sujeto a revisión académica individual."],
+      ["Carga sostenible", "Dedicación habitual de 3 a 5 horas semanales con mentoría y seguimiento en SIS/LMS."]
+    ];
+    var title = isOff
+      ? "No compras solo un currículo: matriculas a tu hijo en una escuela americana"
+      : "Un diploma estadounidense complementario, sin empezar de cero";
+    var intro = isOff
+      ? "Off-Campus reúne en un solo programa la planificación, el acompañamiento y el expediente oficial que una plataforma o un paquete de libros no pueden ofrecer por sí solos."
+      : "Chanak estudia el expediente local, define los créditos pendientes y construye una ruta compatible con la vida académica actual del estudiante.";
+    section.innerHTML = '<div style="max-width:1120px;margin:0 auto">'
+      + '<div style="text-align:center;max-width:830px;margin:0 auto 30px">'
+      + '<div style="font-size:11px;letter-spacing:2.2px;font-weight:800;color:#1b9faa;margin-bottom:9px">DECIDE EN 60 SEGUNDOS</div>'
+      + '<h2 style="font-family:Playfair Display,Georgia,serif;font-size:clamp(28px,4vw,43px);line-height:1.15;color:#0c2d48;margin:0 0 14px">' + title + '</h2>'
+      + '<p style="color:#526577;font-size:16px;line-height:1.75;margin:0">' + intro + '</p></div>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px">'
+      + features.map(function (f) { return '<article style="border:1px solid #dce6ec;border-radius:14px;padding:22px;background:#f8fbfc"><div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#dff5f3;color:#087b82;font-weight:900;margin-bottom:12px">✓</div><h3 style="font-size:17px;color:#0c2d48;margin:0 0 8px">' + f[0] + '</h3><p style="font-size:14px;line-height:1.65;color:#526577;margin:0">' + f[1] + '</p></article>'; }).join("")
+      + '</div><div style="display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap">'
+      + '<a data-commercial-enroll href="' + regionalSisUrl(program, "overview") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:8px;padding:13px 24px;font-weight:800">' + (isOff ? "Solicitar mi plan de matrícula" : "Solicitar revisión de expediente") + ' →</a>'
+      + '<a href="#chanakRegionalAction" style="color:#0c2d48;text-decoration:none;border:1px solid #9fb5c3;border-radius:8px;padding:12px 22px;font-weight:700">Ver inversión y siguiente paso</a>'
+      + '</div><p style="text-align:center;color:#6c7f8e;font-size:12px;margin:13px 0 0">Admisiones abiertas todo el año · respuesta inicial en 1 día hábil · sin pago antes de revisar el caso</p></div>';
+    anchor.parentNode.insertBefore(section, anchor.nextSibling);
+  }
+
+  function programDifference(program) {
+    if (document.getElementById("chanakDifference")) return;
+    var overview = document.getElementById("chanakCommercialOverview");
+    if (!overview || !overview.parentNode) return;
+    var isOff = program === "off-campus";
+    var section = document.createElement("section");
+    section.id = "chanakDifference";
+    section.style.cssText = "background:#eef5f4;padding:54px 5%;font-family:'DM Sans',sans-serif";
+    section.innerHTML = '<div style="max-width:1050px;margin:auto"><div style="text-align:center;margin-bottom:26px"><div style="font-size:11px;letter-spacing:2px;font-weight:800;color:#1b9faa">EL VALOR DIFERENCIAL</div><h2 style="font-family:Playfair Display,Georgia,serif;color:#0c2d48;font-size:clamp(26px,3vw,36px);margin:8px 0">' + (isOff ? "Currículo, plataforma y colegio no son lo mismo" : "No es un curso de inglés ni un diploma genérico") + '</h2></div>'
+      + (isOff
+        ? '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden"><thead><tr style="background:#0c2d48;color:#fff"><th style="padding:14px;text-align:left">Qué recibes</th><th style="padding:14px">Solo currículo</th><th style="padding:14px">Solo plataforma</th><th style="padding:14px;background:#1b9faa">Chanak Off-Campus</th></tr></thead><tbody>' + [["Contenido y actividades","✓","✓","✓"],["PEI y mentor asignado","—","—","✓"],["Expediente y notas oficiales","—","—","✓"],["SIS para padres y estudiante","—","A veces","✓"],["Ruta hasta el diploma","—","—","✓"]].map(function(r){return '<tr>'+r.map(function(c,i){return '<td style="padding:13px;border-bottom:1px solid #e4ebef;text-align:'+(i?'center':'left')+';font-weight:'+(i===0?'700':'600')+'">'+c+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>'
+        : '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">' + [["Revisión académica real","La ruta nace del expediente, no de un paquete idéntico para todos."],["Créditos complementarios","Chanak define qué cursar y qué puede reconocerse, sin prometer convalidaciones automáticas."],["Mentoría y evidencias","El trabajo queda organizado en LMS/SIS y acompañado durante todo el recorrido."],["España: Bachillerato y FP","Compatible con ambas vías; en FP, los módulos se evalúan individualmente para posibles electivas."]].map(function(x){return '<div style="background:#fff;border-radius:12px;padding:20px"><h3 style="font-size:16px;color:#0c2d48;margin:0 0 7px">'+x[0]+'</h3><p style="font-size:13.5px;color:#526577;line-height:1.65;margin:0">'+x[1]+'</p></div>';}).join('') + '</div>')
+      + '</div>';
+    overview.parentNode.insertBefore(section, overview.nextSibling);
+  }
+
+  function regionalAction(program) {
+    if (!window.CHANAK_PRICING || !window.getCurrentCountry || !window.SUPPORTED_REGIONS) return;
+    var country = window.getCurrentCountry();
+    var region = window.SUPPORTED_REGIONS[country] || window.SUPPORTED_REGIONS.GLOBAL;
+    var market = window.CHANAK_PRICING.markets[country] || window.CHANAK_PRICING.markets.GLOBAL;
+    var data = program === "off-campus" ? market.off_campus : market.dual_diploma;
+    var box = document.getElementById("chanakRegionalAction");
+    if (!box) {
+      box = document.createElement("section");
+      box.id = "chanakRegionalAction";
+      box.style.cssText = "max-width:1050px;margin:42px auto;padding:30px 5%;background:#0c2d48;color:#fff;border-radius:18px;font-family:'DM Sans',sans-serif";
+      var finalCta = document.getElementById("chanakCtaFinal");
+      if (finalCta && finalCta.parentNode) finalCta.parentNode.insertBefore(box, finalCta);
+      else document.body.appendChild(box);
+    }
+    var price = "Plan personalizado";
+    if (data && data.status === "published" && !(program === "dual-diploma" && country === "US")) {
+      if (program === "off-campus") {
+        var tiers = data.tiers || [];
+        price = tiers.length && tiers[0].monthly ? (tiers.every(function(t){return t.monthly === tiers[0].monthly;}) ? tiers[0].monthly + "/mes" : "Desde " + tiers[0].monthly + "/mes") : "Plan confirmado tras revisión";
+      } else {
+        var routes = data.routes || [];
+        price = routes.length ? (routes[0].monthly || routes[0].totalYear || "Plan confirmado tras revisión") : "Plan confirmado tras revisión";
+      }
+    }
+    var paymentUrl = regionalPaymentUrl(program, country);
+    var paymentButton = paymentUrl ? '<a data-chanak-direct-payment="1" href="' + paymentUrl + '" style="display:block;margin-top:9px;background:#fff;color:#0c2d48;text-decoration:none;border:1px solid #9fb5c3;border-radius:8px;padding:10px 14px;font-weight:750;font-size:13px">Ya tengo mi plan aprobado: pagar matrícula →</a>' : '';
+    box.innerHTML = '<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);gap:28px;align-items:center"><div><div style="font-size:11px;letter-spacing:2px;color:#6fd9d1;font-weight:800">TU PAÍS Y TU SIGUIENTE PASO</div><h2 style="font-family:Playfair Display,Georgia,serif;font-size:30px;margin:8px 0 10px">' + region.flag + ' ' + region.name + '</h2><p style="font-size:14px;color:#cbd8e1;line-height:1.65;margin:0 0 9px">La familia completa primero los datos en el SIS. El equipo revisa el expediente o diagnóstico y confirma por escrito la ruta y el importe antes de habilitar el pago.</p><p style="font-size:12px;color:#94a9b8;margin:0">Si ya recibiste la aprobación y el plan económico, utiliza el enlace de pago de tu país.</p></div><div style="background:#fff;color:#0c2d48;border-radius:12px;padding:22px;text-align:center"><div style="font-size:11px;color:#526577;text-transform:uppercase;letter-spacing:1px">Inversión inicial orientativa</div><div style="font-size:22px;font-weight:900;margin:8px 0 14px">' + price + '</div><a data-commercial-enroll href="' + regionalSisUrl(program,"regional-action") + '" style="display:block;background:#1b9faa;color:#fff;text-decoration:none;border-radius:8px;padding:12px 16px;font-weight:800">1. Completar matrícula en el SIS →</a>' + paymentButton + '</div></div>';
+    document.querySelectorAll("[data-commercial-enroll]").forEach(function(a){a.href=regionalSisUrl(program,"commercial-cta");});
+    if (!box.dataset.listener) {
+      box.dataset.listener = "1";
+      window.addEventListener("chanak:countryChange", function(){ regionalAction(program); });
+    }
+  }
+
   ready(function () {
     inject3dStyles();
     init3dTilt();
@@ -656,6 +796,9 @@
         chanakCountrySelector();
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-offcampus.webp", "Estudiante Off-Campus estudiando en casa");
+        commercialOverview("off-campus");
+        programDifference("off-campus");
+        regionalAction("off-campus");
         fixLegalText();
         stickyBar("off-campus");
         testimonialBadges();
@@ -670,6 +813,10 @@
       keepApplying(function () {
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-dualdiploma.webp", "Estudiante siguiendo el programa Dual Diploma");
+        commercialOverview("dual-diploma");
+        programDifference("dual-diploma");
+        regionalAction("dual-diploma");
+        fixLegalText();
         stickyBar("dual-diploma");
         dualDiplomaHeadline();
         updateDualDiplomaConvalidationCTA();

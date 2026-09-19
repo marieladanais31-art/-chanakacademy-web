@@ -88,6 +88,7 @@
   }
 
   function isEnrollmentStripe(anchor, href) {
+    if (anchor && anchor.getAttribute("data-chanak-direct-payment") === "1") return false;
     return href.indexOf("https://buy.stripe.com/") === 0 && !isDiagnosticPayment(anchor, href);
   }
 
