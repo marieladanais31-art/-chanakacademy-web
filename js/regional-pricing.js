@@ -68,6 +68,16 @@ window.SUPPORTED_REGIONS = {
     locale: 'en-US',
     phonePrefix: '+1'
   },
+  CO: {
+    code: 'CO',
+    name: 'Colombia',
+    shortName: 'Colombia',
+    flag: '🇨🇴',
+    currency: 'COP',
+    symbol: '$',
+    locale: 'es-CO',
+    phonePrefix: '+57'
+  },
   GLOBAL: {
     code: 'GLOBAL',
     name: 'Internacional',
@@ -84,6 +94,20 @@ window.SUPPORTED_REGIONS = {
 window.CHANAK_PRICE_ON_REQUEST = {
   es: 'Plan de colegiatura personalizado',
   en: 'Personalized tuition plan'
+};
+
+/**
+ * Enlace Chanak por país (dado por dirección 2026-09-19). Es el punto de
+ * contacto que se muestra en Off-Campus y Dual Diploma; NO es "representante
+ * legal" de ninguna entidad — las únicas entidades legales del proyecto son
+ * Chanak Academy (Florida, FLDOE #134620) y Asociación EducaFe (España, NIF
+ * G19357789). Un país sin entrada aquí simplemente no muestra el bloque.
+ */
+window.CHANAK_CONTACTS = {
+  US: { name: 'Karen Pujols' },
+  MX: { name: 'Karen Vidal' },
+  ES: { name: 'Elias Vidal' },
+  PA: { name: 'Mariela Andrade' }
 };
 
 window.CHANAK_PRICING = {
@@ -160,25 +184,25 @@ window.CHANAK_PRICING = {
       // porque el servicio (LMS, SIS, portal de seguimiento, mentor) es el
       // mismo en todos los grados. La matrícula incluye diagnóstico académico
       // y PEI, no se cobran aparte. Aprobado por dirección 2026-09-19.
-      // OCULTO 2026-09-19: el precio anterior (matrícula $9,500 + 10
-      // mensualidades de $5,600 = "totalYear" $65,500) copiaba por error la
-      // lógica de Dual Diploma (plan de pagos hacia un total cerrado). El
-      // dossier real de Off-Campus (Programa Off-Campus 2026-27, servicio
-      // Chanak) es una cuota de servicio RECURRENTE y modesta —matrícula
-      // única 180€ + mensualidad continua 70€, sin "total del año"—, igual
-      // en España para cualquier grado. Vuelto a on_request hasta que
-      // dirección confirme cifra para México. Propuesta pendiente de
-      // aprobar (equivalente a 180€/70€ al cambio de referencia, NO al
-      // techo de EE.UU.): matrícula ~$3,500-3,600 MXN, mensualidad
-      // ~$1,350-1,400 MXN, sin total ni número de cuotas.
+      // APROBADO por dirección 2026-09-19 (cifra definitiva, sustituye al
+      // borrador anterior que mezclaba la lógica de Dual Diploma). Matrícula
+      // $4,500 MXN + mensualidad $3,500 MXN, igual en cualquier grado. Coste
+      // de material orientativo calculado como el equivalente de España
+      // (480-560 €/año) al cambio de referencia (1 EUR ≈ 1,15 USD ≈ 17,2 MXN,
+      // Wise 2026-09-19): ≈ $9,500-11,000 MXN/año.
       off_campus: {
-        status: 'on_request',
+        status: 'published',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: null,
+        enrollmentFee: '$4,500 MXN',
+        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
+        installments: 'mensualidad',
+        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
+        note: 'Al formalizar se abonan $8,000 MXN: matrícula de $4,500 MXN más la primera mensualidad de $3,500 MXN.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
-        ]
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: '$3,500 MXN', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', monthly: '$3,500 MXN', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ],
+        footnote: 'Mensualidad única para todos los niveles: el programa es el mismo K-12 completo en cualquier grado. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo $9,500-11,000 MXN/año, equivalente al de España).'
       },
 
       dual_diploma: {
@@ -211,19 +235,23 @@ window.CHANAK_PRICING = {
         description: 'Revisión de expediente y recomendación inicial.'
       },
 
-      // OCULTO 2026-09-19: mismo error que México (ver nota allí) — el
-      // precio anterior copiaba el plan de pagos de Dual Diploma. Vuelto a
-      // on_request. Propuesta pendiente de aprobar (equivalente a 180€/70€
-      // de referencia, no al techo de EE.UU.): matrícula ~US$200-210,
-      // mensualidad continua ~US$80, sin total ni número de cuotas.
+      // APROBADO por dirección 2026-09-19: mismos importes que España en
+      // dólares (matrícula US$180 + mensualidad US$70, igual en cualquier
+      // grado). Coste de material orientativo equivalente al de España
+      // (480-560 €/año ≈ US$550-650/año a 1 EUR ≈ 1,15 USD, Wise 2026-09-19).
       off_campus: {
-        status: 'on_request',
+        status: 'published',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: null,
+        enrollmentFee: 'US$180',
+        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
+        installments: 'mensualidad',
+        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
+        note: 'Al formalizar se abonan US$250: matrícula de US$180 más la primera mensualidad de US$70.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Media (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
-        ]
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$70', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$70', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ],
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo US$550-650/año, equivalente al de España).'
       },
 
       // Importes ya publicados en /dual-diploma-panama/. La tabla completa por
@@ -241,6 +269,45 @@ window.CHANAK_PRICING = {
           { key: 'from', title: 'Según grado de entrada', level: 'Grade 9 a Grade 12', hours: '3-6 h/sem', monthly: null, totalYear: 'desde US$1,400 al año' }
         ],
         footnote: 'Inversión anual desde US$1,400 según el grado de entrada. La tabla completa por ruta se entrega con el Plan de Ruta personalizado, antes de formalizar la matrícula.'
+      }
+    },
+
+    /* ---------------------------------------------------------------- CO */
+    /* Off-Campus aprobado por dirección 2026-09-19: mismo servicio y tarifa
+       que Panamá (US$180 matrícula + US$70/mes), convertido a pesos
+       colombianos a 1 USD ≈ 3.200 COP (Wise, verificado 2026-09-19; el
+       mid-market real era 3.183,50, con rango de 30 días 3.040-3.213).
+       Diagnóstico y Dual Diploma todavía no tienen tarifa propia para
+       Colombia: se muestran on_request hasta que dirección la confirme. */
+    CO: {
+      currency: 'COP',
+      symbol: '$',
+
+      diagnostic: {
+        status: 'on_request',
+        title: 'Evaluación académica',
+        description: 'Revisión de expediente y recomendación inicial.'
+      },
+
+      off_campus: {
+        status: 'published',
+        title: 'Off-Campus · Escuela completa K-12 a distancia',
+        enrollmentFee: '$575.000 COP',
+        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
+        installments: 'mensualidad',
+        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
+        note: 'Al formalizar se abonan $800.000 COP: matrícula de $575.000 COP más la primera mensualidad de $225.000 COP.',
+        tiers: [
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: '$225.000 COP', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: '$225.000 COP', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+        ],
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo $1.800.000-2.050.000 COP/año, equivalente al de España).'
+      },
+
+      dual_diploma: {
+        status: 'on_request',
+        title: 'Chanak Dual Diploma',
+        routes: []
       }
     },
 

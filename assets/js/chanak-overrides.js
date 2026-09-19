@@ -504,6 +504,42 @@
     }
   }
 
+  /* Enlace Chanak por país (2026-09-19). No es "representante legal": es el
+     punto de contacto humano para esa región. Se oculta solo si no hay
+     enlace para el país actual (evita el mismo tipo de fuga entre países
+     que offCampusPricingSection ya corrige). */
+  function chanakLocalContact() {
+    if (!window.CHANAK_CONTACTS || !window.getCurrentCountry || !window.SUPPORTED_REGIONS) return;
+    var country = window.getCurrentCountry();
+    var contact = window.CHANAK_CONTACTS[country];
+    var mount = document.getElementById("chanakLocalContact");
+
+    if (!contact) {
+      if (mount) mount.style.display = "none";
+      return;
+    }
+
+    var region = window.SUPPORTED_REGIONS[country] || {};
+    if (!mount) {
+      mount = document.createElement("div");
+      mount.id = "chanakLocalContact";
+      mount.style.cssText = "max-width:900px;margin:0 auto 28px;padding:14px 20px;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;font-family:'DM Sans',sans-serif;color:#2A4262;font-size:14px;text-align:center";
+      var anchor = document.getElementById("chanakOffCampusPricing");
+      if (anchor && anchor.parentNode) {
+        anchor.parentNode.insertBefore(mount, anchor.nextSibling);
+      } else {
+        document.body.appendChild(mount);
+      }
+    }
+    mount.style.display = "";
+    mount.innerHTML = '<strong>Enlace Chanak · ' + (region.shortName || '') + ':</strong> ' + contact.name;
+
+    if (!mount.dataset.countryListener) {
+      mount.dataset.countryListener = "1";
+      window.addEventListener("chanak:countryChange", chanakLocalContact);
+    }
+  }
+
   function updateDualDiplomaConvalidationCTA() {
     var anchors = document.querySelectorAll("a, button");
     anchors.forEach(function (a) {
@@ -528,6 +564,7 @@
       keepApplying(function () {
         rewriteEnrollmentLinks();
         stickyBar("dual-diploma-panama");
+        chanakLocalContact();
       });
       return;
     }
@@ -535,6 +572,7 @@
     if (path.indexOf("/off-campus") === 0) {
       keepApplying(function () {
         offCampusPricingSection();
+        chanakLocalContact();
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-offcampus.webp", "Estudiante Off-Campus estudiando en casa");
         fixLegalText();
@@ -553,6 +591,7 @@
         heroPhoto("/assets/img/hero-dualdiploma.webp", "Estudiante siguiendo el programa Dual Diploma");
         stickyBar("dual-diploma");
         updateDualDiplomaConvalidationCTA();
+        chanakLocalContact();
         dualDiplomaPricingNote();
         dualDiplomaReassurance();
         dualDiplomaNotList();
