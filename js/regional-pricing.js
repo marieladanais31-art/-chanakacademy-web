@@ -128,27 +128,20 @@ window.CHANAK_PRICING = {
         description: 'Evaluación completa de nivel (149 preguntas) y propuesta de programa. Servicio independiente para familias que aún no han elegido programa.'
       },
 
-      // Mensualidad 70 € confirmada por dirección el 2026-09-18. La matrícula de
-      // 180 € más la primera mensualidad son los 250 € iniciales que ya figuraban
-      // en la home: las dos cifras eran correctas y complementarias.
+      // Off-Campus en España: plan personalizado sin importes fijos públicos (on_request)
       off_campus: {
-        status: 'published',
+        status: 'on_request',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: '180 €',
+        enrollmentFee: null,
         enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
-        installments: 'mensualidad',
+        installments: 'plan personalizado',
         includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
-        // 2026-09-19: se retiran de aquí la mención al RD 806/1993 y a la
-        // iglesia colaboradora por indicación de dirección. Ese marco es el de
-        // los futuros centros de implementación presenciales, no el del
-        // programa a distancia, y mezclarlos confunde a la familia. El encuadre
-        // que queda es el del dossier oficial de Off-Campus (pág. 3).
-        note: 'Al formalizar se abonan 250 €: matrícula de 180 € más la primera mensualidad. El alumno queda registrado en una escuela privada americana bajo supervisión central desde Florida; la familia conserva la responsabilidad legal educativa local según su país de residencia.',
+        note: 'El alumno queda registrado en una escuela privada americana bajo supervisión central desde Florida; la familia conserva la responsabilidad legal educativa local según su país de residencia.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', monthly: '70 €', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', monthly: '70 €', description: 'Currículo estadounidense completo, créditos oficiales y transcript FLDOE #134620.' }
+          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', description: 'Currículo estadounidense completo, créditos oficiales y transcript FLDOE #134620.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. La matrícula se abona una sola vez al formalizar. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo 480-560 €/año).'
+        footnote: 'Plan de colegiatura adaptado a las necesidades de cada estudiante y familia. Material y currículo no incluidos.'
       },
 
       dual_diploma: {
@@ -171,9 +164,7 @@ window.CHANAK_PRICING = {
 
     /* ---------------------------------------------------------------- MX */
     /* Tarifa publicada en pesos mexicanos por decisión de dirección (2026-09-18).
-       Equivale a la propuesta en USD del PDF de México al cambio de referencia
-       1 USD ≈ 17,15 MXN (XE y Wise, 18/09/2026), redondeada a cifra limpia.
-       Si el cambio se mueve de forma sostenida, hay que revisar esta tabla. */
+       Actualizada con tarifas aprobadas de Dual Diploma y Homeschool. */
     MX: {
       currency: 'MXN',
       symbol: '$',
@@ -185,29 +176,19 @@ window.CHANAK_PRICING = {
         description: 'Revisión de expediente y recomendación inicial.'
       },
 
-      // Off-Campus es una sola ruta K-12: la mensualidad no varía por nivel
-      // porque el servicio (LMS, SIS, portal de seguimiento, mentor) es el
-      // mismo en todos los grados. La matrícula incluye diagnóstico académico
-      // y PEI, no se cobran aparte. Aprobado por dirección 2026-09-19.
-      // APROBADO por dirección 2026-09-19 (cifra definitiva, sustituye al
-      // borrador anterior que mezclaba la lógica de Dual Diploma). Matrícula
-      // $4,500 MXN + mensualidad $3,500 MXN, igual en cualquier grado. Coste
-      // de material orientativo calculado como el equivalente de España
-      // (480-560 €/año) al cambio de referencia (1 EUR ≈ 1,15 USD ≈ 17,2 MXN,
-      // Wise 2026-09-19): ≈ $9,500-11,000 MXN/año.
       off_campus: {
-        status: 'published',
+        status: 'on_request',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: '$4,500 MXN',
+        enrollmentFee: null,
         enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
-        installments: 'mensualidad',
+        installments: 'plan personalizado',
         includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
-        note: 'Al formalizar se abonan $8,000 MXN: matrícula de $4,500 MXN más la primera mensualidad de $3,500 MXN.',
+        note: 'La familia recibe una propuesta personalizada según el grado y expediente del estudiante.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', monthly: '$3,500 MXN', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', monthly: '$3,500 MXN', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles: el programa es el mismo K-12 completo en cualquier grado. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo $9,500-11,000 MXN/año, equivalente al de España).'
+        footnote: 'Plan de colegiatura adaptado a las necesidades de cada estudiante y familia. Material y currículo no incluidos.'
       },
 
       dual_diploma: {
@@ -219,12 +200,12 @@ window.CHANAK_PRICING = {
         installments: '10 mensualidades',
         includes: 'Plan de Ruta · SIS · LMS · clases semanales en vivo · mentoría personalizada',
         routes: [
-          { key: 'r4', title: 'Ruta 4 años', level: '3.º Secundaria · Grade 9', hours: '3-4 h/sem', monthly: '$2,400 MXN', totalYear: '$24,000 MXN' },
-          { key: 'r3', title: 'Ruta 3 años', level: 'Inicio Prepa · Grade 10', hours: '4-5 h/sem', monthly: '$3,100 MXN', totalYear: '$31,000 MXN' },
-          { key: 'r2', title: 'Ruta 2 años', level: 'Etapa avanzada · Grade 11', hours: '5-6 h/sem + Summer', monthly: '$3,800 MXN', totalYear: '$38,000 MXN' },
-          { key: 'r1', title: 'Ruta acelerada', level: 'Último ciclo · Grade 12', hours: 'Plan modular + Summer', monthly: '$4,500 MXN', totalYear: '$45,000 MXN' }
+          { key: 'r4', title: 'Ruta 4 años', level: '3.º Secundaria · Grade 9', hours: '3-4 h/sem', monthly: '$3,400 MXN', totalYear: '$34,000 MXN' },
+          { key: 'r3', title: 'Ruta 3 años', level: 'Inicio Prepa · Grade 10', hours: '4-5 h/sem', monthly: '$4,100 MXN', totalYear: '$41,000 MXN' },
+          { key: 'r2', title: 'Ruta 2 años', level: 'Etapa avanzada · Grade 11', hours: '5-6 h/sem + Summer', monthly: '$5,800 MXN', totalYear: '$58,000 MXN' },
+          { key: 'r1', title: 'Ruta acelerada', level: 'Último ciclo · Grade 12', hours: 'Plan modular + Summer', monthly: '$6,500 MXN', totalYear: '$65,000 MXN' }
         ],
-        footnote: 'Tarifa México del ciclo 2026-2027. El total anual se calcula a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Ruta y la inversión correspondiente por escrito antes de formalizar.'
+        footnote: 'Tarifa México del ciclo 2026-2027 en pesos mexicanos. El total anual se calcula a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Ruta y la inversión correspondiente por escrito antes de formalizar.'
       }
     },
 
@@ -240,10 +221,6 @@ window.CHANAK_PRICING = {
         description: 'Revisión de expediente y recomendación inicial.'
       },
 
-      // APROBADO por dirección 2026-09-19: mismos importes que España en
-      // dólares (matrícula US$180 + mensualidad US$70, igual en cualquier
-      // grado). Coste de material orientativo equivalente al de España
-      // (480-560 €/año ≈ US$550-650/año a 1 EUR ≈ 1,15 USD, Wise 2026-09-19).
       off_campus: {
         status: 'published',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
@@ -259,9 +236,6 @@ window.CHANAK_PRICING = {
         footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo US$550-650/año, equivalente al de España).'
       },
 
-      // Importes ya publicados en /dual-diploma-panama/. La tabla completa por
-      // grado no está publicada: se entrega con el Plan de Ruta, así que aquí
-      // solo se declara el "desde" que ya figura en producción.
       dual_diploma: {
         status: 'published',
         title: 'Chanak Dual Diploma',
@@ -278,12 +252,6 @@ window.CHANAK_PRICING = {
     },
 
     /* ---------------------------------------------------------------- CO */
-    /* Off-Campus aprobado por dirección 2026-09-19: mismo servicio y tarifa
-       que Panamá (US$180 matrícula + US$70/mes), convertido a pesos
-       colombianos a 1 USD ≈ 3.200 COP (Wise, verificado 2026-09-19; el
-       mid-market real era 3.183,50, con rango de 30 días 3.040-3.213).
-       Diagnóstico y Dual Diploma todavía no tienen tarifa propia para
-       Colombia: se muestran on_request hasta que dirección la confirme. */
     CO: {
       currency: 'COP',
       symbol: '$',
@@ -317,9 +285,8 @@ window.CHANAK_PRICING = {
     },
 
     /* ---------------------------------------------------------------- US */
-    /* Tarifa aprobada por dirección el 2026-09-18: se sitúa justo por debajo de
-       Forest Trail Academy (3.069 / 3.669 / 4.269 USD + 225 de registro) en los
-       tres niveles, incluyendo mentoría semanal que el competidor no ofrece. */
+    /* Programa Principal: U.S. K-12 Off-Campus.
+       Programa Secundario: Finaliza tu High School / Adult High School Completion ($2,500 USD). */
     US: {
       currency: 'USD',
       symbol: '$',
@@ -331,9 +298,10 @@ window.CHANAK_PRICING = {
         description: 'Full level assessment and personalized program recommendation.'
       },
 
+      // PROGRAMA PRINCIPAL EN EE. UU.
       off_campus: {
         status: 'published',
-        title: 'U.S. K-12 Off-Campus',
+        title: 'U.S. K-12 Off-Campus · Private Umbrella School',
         enrollmentFee: '$295 USD',
         enrollmentIncludes: 'Includes academic diagnostic and Individualized Education Plan (PEI).',
         installments: '10 monthly payments',
@@ -349,18 +317,19 @@ window.CHANAK_PRICING = {
         footnote: 'Annual tuition includes enrollment plus ten monthly payments. Tuition fits within state scholarship award amounts where families qualify. Curriculum and materials not included; each family chooses and purchases their own (estimated cost $300-500 USD/year).'
       },
 
+      // PROGRAMA SECUNDARIO: Finaliza tu High School / Adult Completion ($2,500 USD)
       dual_diploma: {
         status: 'published',
-        title: 'Chanak Dual Diploma',
+        title: 'Finaliza tu High School · Adult High School Completion',
         assessmentFee: '$58 USD',
-        assessmentLabel: 'Academic assessment',
-        enrollmentFee: '$295 USD',
-        installments: '10 monthly payments',
-        includes: 'Weekly live classes · assigned mentor · LMS and SIS · SAT Prep Hub · official transcript',
+        assessmentLabel: 'Convalidación de expediente',
+        enrollmentFee: '$250 USD',
+        installments: '10 cuotas o pago único',
+        includes: 'Convalidación oficial de créditos previos · plan acelerado personalizado · mentor asignado · plataforma 24/7 · diploma oficial FLDOE #134620',
         routes: [
-          { key: 'std', title: 'Part-time track', level: 'Grade 9 to Grade 12', hours: '3-6 h/week', monthly: '$250 USD', totalYear: '$2,795 USD' }
+          { key: 'adult_completion', title: 'Plan Acelerado para Adultos', level: 'High School Diploma FLDOE #134620', hours: 'Flexible a tu ritmo', monthly: '$250 USD', totalYear: '$2,500 USD' }
         ],
-        footnote: 'Part-time program: eligible as an education expense under several state scholarship programs. Eligibility is determined by each scholarship funding organization.'
+        footnote: 'Diseñado especialmente para adultos y jóvenes que no han podido finalizar sus estudios secundarios. Convalidamos tus créditos anteriores y creamos un plan a tu medida para obtener tu diploma oficial estadounidense.'
       }
     },
 
