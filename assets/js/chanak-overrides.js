@@ -116,8 +116,11 @@
      por JS y se repite (keepApplying) para sobrevivir a esos repintados. */
   var LEGAL_TEXT_FIXES = [
     [": estructura, acompañamiento y diploma reconocido.", ": estructura, acompañamiento y diploma de High School americano (FLDOE #134620)."],
-    ["Garantiza que no haya lagunas de aprendizaje.", "Detectamos las áreas que necesitan refuerzo y trabajamos sobre ellas antes de avanzar."],
-    ["Puedes revisarlos en la sección de precios de esta página. El dossier informativo amplía el proceso de admisión y la ruta académica.", "Puedes revisarlos en el dossier informativo de Off-Campus, que amplía también el proceso de admisión y la ruta académica."]
+    ["Garantiza que no haya lagunas de aprendizaje.", "Detectamos las áreas que necesitan refuerzo y trabajamos sobre ellas antes de avanzar."]
+    /* La entrada que redirigía "sección de precios de esta página" al dossier
+       se retiró el 2026-09-19: offCampusPricingSection() ya pone una sección
+       de precios real en la página, así que la frase original vuelve a ser
+       cierta y no hace falta parchearla. */
   ];
   function fixLegalText() {
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -316,6 +319,19 @@
      desde 1.310€/año en 3.º ESO. Referencia USD: cambio BCE 1 EUR=1.1404,
      redondeado al alza — mismo método que el resto del sitio. No duplicar
      estas cifras en otro sitio del código sin actualizar aquí también. */
+  /* H1 de Dual Diploma (2026-09-19). El HTML estático ya trae la promesa,
+     pero React la pisa al hidratar y deja solo "Dual Diploma", que no dice
+     nada ni a la familia ni a Google. Se vuelve a aplicar con keepApplying,
+     igual que el resto de textos de estas landings compiladas. */
+  function dualDiplomaHeadline() {
+    var h1 = document.querySelector("h1");
+    if (!h1) return;
+    var txt = plain(h1.textContent || "");
+    if (txt === "dual diploma") {
+      h1.textContent = "Bachillerato americano sin cambiar de colegio";
+    }
+  }
+
   function dualDiplomaPricingNote() {
     if (document.getElementById("chanakPricingNote")) return;
     var heading = null;
@@ -441,6 +457,169 @@
     });
   }
 
+  /* Sección de precio real de Off-Campus (2026-09-19). La landing traía una
+     sección de precios con cifras equivocadas que removeOffCampusPricingSection()
+     oculta; esta función pone en su lugar la tarifa aprobada, leída en vivo de
+     window.CHANAK_PRICING según el país detectado por regional-selector.js.
+     Off-Campus es una sola ruta K-12: la mensualidad es igual en todos los
+     niveles porque el servicio (SIS, LMS, portal, mentor) es el mismo. */
+  function offCampusPricingSection() {
+    if (!window.CHANAK_PRICING || !window.getCurrentCountry) return;
+    var isEn = path.indexOf("/off-campus/en") === 0;
+    var country = window.getCurrentCountry();
+    var market = window.CHANAK_PRICING.markets[country] || window.CHANAK_PRICING.markets.GLOBAL;
+    var oc = market && market.off_campus;
+    if (!oc || oc.status !== "published") {
+      /* Si veníamos de un país con precio publicado (p. ej. España) y la
+         familia cambia a uno en revisión (México/Panamá), hay que ocultar
+         la sección anterior: nunca debe verse el precio de otro país. */
+      var stale = document.getElementById("chanakOffCampusPricing");
+      if (stale) stale.style.display = "none";
+      return;
+    }
+
+    var mount = document.getElementById("chanakOffCampusPricing");
+    if (mount) mount.style.display = "";
+    if (!mount) {
+      mount = document.createElement("section");
+      mount.id = "chanakOffCampusPricing";
+      mount.style.cssText = "max-width:900px;margin:36px auto;padding:28px 24px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:16px;font-family:'DM Sans',sans-serif;color:#0c2d48";
+      document.body.appendChild(mount);
+    }
+    var tiers = oc.tiers || [];
+    var flat = tiers.length > 0 && tiers.every(function (t) { return t.monthly === tiers[0].monthly; });
+    var title = isEn ? "Tuition" : "Matrícula y mensualidad";
+    var enrollLabel = isEn ? "Enrollment (one-time)" : "Matrícula (única)";
+    var perMonth = isEn ? "/month" : "/mes";
+    var installLabel = oc.installments || "";
+    var monthlyBlock;
+    if (flat) {
+      monthlyBlock = '<p style="font-size:2rem;font-weight:800;margin:0 0 4px">' + tiers[0].monthly + '<span style="font-size:1rem;font-weight:600">' + perMonth + '</span></p>';
+    } else {
+      monthlyBlock = '<div style="display:grid;gap:8px;margin:0 0 4px">' + tiers.map(function (t) {
+        return '<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #cdeeee">'
+          + '<span style="font-weight:600">' + t.title + '</span>'
+          + '<span style="font-weight:800">' + t.monthly + perMonth + '</span></div>';
+      }).join('') + '</div>';
+    }
+    mount.innerHTML =
+      '<h2 style="font-family:\'Playfair Display\',Georgia,serif;font-size:1.4rem;margin:0 0 14px">' + title + '</h2>'
+      + '<p style="font-size:1.6rem;font-weight:800;margin:0 0 4px">' + (oc.enrollmentFee || "") + ' <span style="font-size:1rem;font-weight:600;color:#2A4262">' + enrollLabel + '</span></p>'
+      + (oc.enrollmentIncludes ? '<p style="font-size:14px;color:#2A4262;margin:0 0 14px">' + oc.enrollmentIncludes + '</p>' : "")
+      + monthlyBlock
+      + (installLabel ? '<p style="font-size:14px;color:#2A4262;margin:0 0 14px">' + installLabel + '</p>' : "")
+      + (oc.includes ? '<p style="font-size:14px;line-height:1.7;margin:0 0 10px"><strong>' + (isEn ? "Included: " : "Incluye: ") + '</strong>' + oc.includes + '</p>' : "")
+      + (oc.footnote ? '<p style="font-size:13px;color:#5A7060;line-height:1.6;margin:0">' + oc.footnote + '</p>' : "");
+
+    if (!mount.dataset.countryListener) {
+      mount.dataset.countryListener = "1";
+      window.addEventListener("chanak:countryChange", offCampusPricingSection);
+    }
+  }
+
+  /* Enlace Chanak por país (2026-09-19). No es "representante legal": es el
+     punto de contacto humano para esa región. Se oculta solo si no hay
+     enlace para el país actual (evita el mismo tipo de fuga entre países
+     que offCampusPricingSection ya corrige). */
+  function chanakLocalContact() {
+    if (!window.CHANAK_CONTACTS || !window.getCurrentCountry || !window.SUPPORTED_REGIONS) return;
+    var country = window.getCurrentCountry();
+    var contact = window.CHANAK_CONTACTS[country];
+    var mount = document.getElementById("chanakLocalContact");
+
+    if (!contact) {
+      if (mount) mount.style.display = "none";
+      return;
+    }
+
+    var region = window.SUPPORTED_REGIONS[country] || {};
+    if (!mount) {
+      mount = document.createElement("div");
+      mount.id = "chanakLocalContact";
+      mount.style.cssText = "max-width:900px;margin:0 auto 28px;padding:14px 20px;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;font-family:'DM Sans',sans-serif;color:#2A4262;font-size:14px;text-align:center";
+      var anchor = document.getElementById("chanakOffCampusPricing");
+      if (anchor && anchor.parentNode) {
+        anchor.parentNode.insertBefore(mount, anchor.nextSibling);
+      } else {
+        document.body.appendChild(mount);
+      }
+    }
+    mount.style.display = "";
+    mount.innerHTML = '<strong>Enlace Chanak · ' + (region.shortName || '') + ':</strong> ' + contact.name;
+
+    if (!mount.dataset.countryListener) {
+      mount.dataset.countryListener = "1";
+      window.addEventListener("chanak:countryChange", chanakLocalContact);
+    }
+  }
+
+  /* Selector manual de país en header y pie (cierre del hueco 4, 2026-09-19).
+     /off-campus/ y /dual-diploma/ son URLs compartidas por todos los países;
+     el banner de geo-sugerencia (chanak-geo-banner.js) solo sugiere, nunca
+     redirige, así que hace falta un control manual siempre visible para
+     quien detectamos mal o llega desde un país sin banner (VPN, IP de
+     oficina, etc.). Reutiliza el mismo desplegable de la portada/mx/pa vía
+     window.renderChanakRegionSelector, expuesto por regional-selector.js,
+     para no mantener dos implementaciones del mismo control.
+     Off-campus trae su propio <nav> (logo + FLDOE/MSA); dual-diploma no
+     tiene ninguno, así que ahí se crea una barra fina fija arriba. En
+     ambos casos el <nav> se vuelve a localizar en cada pasada de
+     keepApplying (nunca se guarda la referencia) porque React puede
+     sustituir el nodo al hidratar. */
+  function chanakCountrySelector() {
+    if (!window.SUPPORTED_REGIONS || typeof window.renderChanakRegionSelector !== "function") return;
+
+    var headerMount = document.getElementById("chanakHeaderSelector");
+    if (!headerMount || !headerMount.isConnected) {
+      var nav = document.querySelector("nav");
+      if (nav) {
+        headerMount = document.getElementById("chanakHeaderSelector") || document.createElement("div");
+        headerMount.id = "chanakHeaderSelector";
+        headerMount.className = "chanak-region-selector-mount";
+        headerMount.style.cssText = "margin-left:auto";
+        nav.appendChild(headerMount);
+      } else {
+        var topBar = document.getElementById("chanakTopBar");
+        if (!topBar || !topBar.isConnected) {
+          topBar = document.getElementById("chanakTopBar") || document.createElement("div");
+          topBar.id = "chanakTopBar";
+          topBar.style.cssText = "position:sticky;top:0;left:0;right:0;z-index:9997;background:#0c2d48;padding:8px 5%;display:flex;justify-content:flex-end;border-bottom:3px solid #1b9faa";
+          if (document.body.firstChild) document.body.insertBefore(topBar, document.body.firstChild);
+          else document.body.appendChild(topBar);
+        }
+        headerMount = document.getElementById("chanakHeaderSelector") || document.createElement("div");
+        headerMount.id = "chanakHeaderSelector";
+        headerMount.className = "chanak-region-selector-mount";
+        topBar.appendChild(headerMount);
+      }
+    }
+    window.renderChanakRegionSelector(headerMount);
+
+    var footerMount = document.getElementById("chanakFooterSelector");
+    if (!footerMount || !footerMount.isConnected) {
+      var footerBox = document.getElementById("chanakFooterSelectorBox");
+      if (!footerBox) {
+        footerBox = document.createElement("div");
+        footerBox.id = "chanakFooterSelectorBox";
+        footerBox.style.cssText = "max-width:900px;margin:0 auto 28px;padding:14px 20px;text-align:center;font-family:'DM Sans',sans-serif";
+        var label = document.createElement("div");
+        label.style.cssText = "font-size:13px;color:#5A7060;margin-bottom:8px";
+        label.textContent = isEnglishPath() ? "Visiting from another country?" : "¿Nos visitas desde otro país?";
+        footerBox.appendChild(label);
+        document.body.appendChild(footerBox);
+      }
+      footerMount = document.getElementById("chanakFooterSelector") || document.createElement("div");
+      footerMount.id = "chanakFooterSelector";
+      footerMount.className = "chanak-region-selector-mount in-footer";
+      footerBox.appendChild(footerMount);
+    }
+    window.renderChanakRegionSelector(footerMount);
+  }
+
+  function isEnglishPath() {
+    return path.indexOf("/en") > -1;
+  }
+
   function updateDualDiplomaConvalidationCTA() {
     var anchors = document.querySelectorAll("a, button");
     anchors.forEach(function (a) {
@@ -465,19 +644,23 @@
       keepApplying(function () {
         rewriteEnrollmentLinks();
         stickyBar("dual-diploma-panama");
+        chanakLocalContact();
       });
       return;
     }
 
     if (path.indexOf("/off-campus") === 0) {
       keepApplying(function () {
+        offCampusPricingSection();
+        chanakLocalContact();
+        chanakCountrySelector();
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-offcampus.webp", "Estudiante Off-Campus estudiando en casa");
         fixLegalText();
         stickyBar("off-campus");
         testimonialBadges();
-        ctaFinal("off-campus");
         removeOffCampusPricingSection();
+        ctaFinal("off-campus");
         internalLinks([
           ["/dual-diploma/", "Doble titulacion: Dual Diploma americano"],
           ["/diagnostico/", "Test de nivel homeschool"]
@@ -488,7 +671,10 @@
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-dualdiploma.webp", "Estudiante siguiendo el programa Dual Diploma");
         stickyBar("dual-diploma");
+        dualDiplomaHeadline();
         updateDualDiplomaConvalidationCTA();
+        chanakLocalContact();
+        chanakCountrySelector();
         dualDiplomaPricingNote();
         dualDiplomaReassurance();
         dualDiplomaNotList();

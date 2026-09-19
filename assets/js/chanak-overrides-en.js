@@ -108,8 +108,10 @@
      (with keepApplying) instead of editing the exported HTML directly. */
   var LEGAL_TEXT_FIXES = [
     [": structure, support and a recognized diploma.", ": structure, support and an American high school diploma (FLDOE #134620)."],
-    ["It guarantees there are no learning gaps.", "We detect the areas that need reinforcement and work on them before moving forward."],
-    ["You can review them in the pricing section of this page. The information dossier expands on the admission process and the academic path.", "You can review them in the Off-Campus information dossier, which also expands on the admission process and the academic path."]
+    ["It guarantees there are no learning gaps.", "We detect the areas that need reinforcement and work on them before moving forward."]
+    /* The entry redirecting "pricing section of this page" to the dossier was
+       removed 2026-09-19: offCampusPricingSection() now puts a real pricing
+       section on the page, so the original sentence is true again. */
   ];
   function fixLegalText() {
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -423,6 +425,59 @@
     }
   }, true);
 
+  /* Real Off-Campus pricing section (2026-09-19). See the matching function
+     in chanak-overrides.js for the full rationale — same logic, English copy.
+     Off-Campus is a single K-12 track: tuition is the same at every level. */
+  function offCampusPricingSection() {
+    if (!window.CHANAK_PRICING || !window.getCurrentCountry) return;
+    var country = window.getCurrentCountry();
+    var market = window.CHANAK_PRICING.markets[country] || window.CHANAK_PRICING.markets.GLOBAL;
+    var oc = market && market.off_campus;
+    if (!oc || oc.status !== "published") {
+      /* If we came from a country with a published price (e.g. Spain) and
+         the family switches to one under review (Mexico/Panama), the old
+         section must be hidden: a family should never see another
+         country's price. */
+      var stale = document.getElementById("chanakOffCampusPricing");
+      if (stale) stale.style.display = "none";
+      return;
+    }
+
+    var mount = document.getElementById("chanakOffCampusPricing");
+    if (mount) mount.style.display = "";
+    if (!mount) {
+      mount = document.createElement("section");
+      mount.id = "chanakOffCampusPricing";
+      mount.style.cssText = "max-width:900px;margin:36px auto;padding:28px 24px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:16px;font-family:'DM Sans',sans-serif;color:#0c2d48";
+      document.body.appendChild(mount);
+    }
+    var tiers = oc.tiers || [];
+    var flat = tiers.length > 0 && tiers.every(function (t) { return t.monthly === tiers[0].monthly; });
+    var monthlyBlock;
+    if (flat) {
+      monthlyBlock = '<p style="font-size:2rem;font-weight:800;margin:0 0 4px">' + tiers[0].monthly + '<span style="font-size:1rem;font-weight:600">/month</span></p>';
+    } else {
+      monthlyBlock = '<div style="display:grid;gap:8px;margin:0 0 4px">' + tiers.map(function (t) {
+        return '<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #cdeeee">'
+          + '<span style="font-weight:600">' + t.title + '</span>'
+          + '<span style="font-weight:800">' + t.monthly + '/month</span></div>';
+      }).join('') + '</div>';
+    }
+    mount.innerHTML =
+      '<h2 style="font-family:\'Playfair Display\',Georgia,serif;font-size:1.4rem;margin:0 0 14px">Tuition</h2>'
+      + '<p style="font-size:1.6rem;font-weight:800;margin:0 0 4px">' + (oc.enrollmentFee || "") + ' <span style="font-size:1rem;font-weight:600;color:#2A4262">Enrollment (one-time)</span></p>'
+      + (oc.enrollmentIncludes ? '<p style="font-size:14px;color:#2A4262;margin:0 0 14px">' + oc.enrollmentIncludes + '</p>' : "")
+      + monthlyBlock
+      + (oc.installments ? '<p style="font-size:14px;color:#2A4262;margin:0 0 14px">' + oc.installments + '</p>' : "")
+      + (oc.includes ? '<p style="font-size:14px;line-height:1.7;margin:0 0 10px"><strong>Included: </strong>' + oc.includes + '</p>' : "")
+      + (oc.footnote ? '<p style="font-size:13px;color:#5A7060;line-height:1.6;margin:0">' + oc.footnote + '</p>' : "");
+
+    if (!mount.dataset.countryListener) {
+      mount.dataset.countryListener = "1";
+      window.addEventListener("chanak:countryChange", offCampusPricingSection);
+    }
+  }
+
   function removeOffCampusPricingSection() {
     var titles = document.querySelectorAll("h2, p, span, div, section, a");
     titles.forEach(function (el) {
@@ -439,6 +494,96 @@
         }
       }
     });
+  }
+
+  /* Local Chanak contact per country (2026-09-19). Not "legal
+     representative" — just the human point of contact for that region.
+     Hides when there is no contact for the current country (same
+     country-switch-safe pattern as offCampusPricingSection). */
+  function chanakLocalContact() {
+    if (!window.CHANAK_CONTACTS || !window.getCurrentCountry || !window.SUPPORTED_REGIONS) return;
+    var country = window.getCurrentCountry();
+    var contact = window.CHANAK_CONTACTS[country];
+    var mount = document.getElementById("chanakLocalContact");
+
+    if (!contact) {
+      if (mount) mount.style.display = "none";
+      return;
+    }
+
+    var region = window.SUPPORTED_REGIONS[country] || {};
+    if (!mount) {
+      mount = document.createElement("div");
+      mount.id = "chanakLocalContact";
+      mount.style.cssText = "max-width:900px;margin:0 auto 28px;padding:14px 20px;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;font-family:'DM Sans',sans-serif;color:#2A4262;font-size:14px;text-align:center";
+      var anchor = document.getElementById("chanakOffCampusPricing");
+      if (anchor && anchor.parentNode) {
+        anchor.parentNode.insertBefore(mount, anchor.nextSibling);
+      } else {
+        document.body.appendChild(mount);
+      }
+    }
+    mount.style.display = "";
+    mount.innerHTML = '<strong>Chanak contact · ' + (region.shortName || '') + ':</strong> ' + contact.name;
+
+    if (!mount.dataset.countryListener) {
+      mount.dataset.countryListener = "1";
+      window.addEventListener("chanak:countryChange", chanakLocalContact);
+    }
+  }
+
+  /* Manual country selector in header and footer (closing gap 4, 2026-09-19).
+     See the matching function in chanak-overrides.js for the full rationale.
+     Reuses window.renderChanakRegionSelector, exposed by regional-selector.js,
+     so there is only one implementation of the dropdown itself. */
+  function chanakCountrySelector() {
+    if (!window.SUPPORTED_REGIONS || typeof window.renderChanakRegionSelector !== "function") return;
+
+    var headerMount = document.getElementById("chanakHeaderSelector");
+    if (!headerMount || !headerMount.isConnected) {
+      var nav = document.querySelector("nav");
+      if (nav) {
+        headerMount = document.getElementById("chanakHeaderSelector") || document.createElement("div");
+        headerMount.id = "chanakHeaderSelector";
+        headerMount.className = "chanak-region-selector-mount";
+        headerMount.style.cssText = "margin-left:auto";
+        nav.appendChild(headerMount);
+      } else {
+        var topBar = document.getElementById("chanakTopBar");
+        if (!topBar || !topBar.isConnected) {
+          topBar = document.getElementById("chanakTopBar") || document.createElement("div");
+          topBar.id = "chanakTopBar";
+          topBar.style.cssText = "position:sticky;top:0;left:0;right:0;z-index:9997;background:#0c2d48;padding:8px 5%;display:flex;justify-content:flex-end;border-bottom:3px solid #1b9faa";
+          if (document.body.firstChild) document.body.insertBefore(topBar, document.body.firstChild);
+          else document.body.appendChild(topBar);
+        }
+        headerMount = document.getElementById("chanakHeaderSelector") || document.createElement("div");
+        headerMount.id = "chanakHeaderSelector";
+        headerMount.className = "chanak-region-selector-mount";
+        topBar.appendChild(headerMount);
+      }
+    }
+    window.renderChanakRegionSelector(headerMount);
+
+    var footerMount = document.getElementById("chanakFooterSelector");
+    if (!footerMount || !footerMount.isConnected) {
+      var footerBox = document.getElementById("chanakFooterSelectorBox");
+      if (!footerBox) {
+        footerBox = document.createElement("div");
+        footerBox.id = "chanakFooterSelectorBox";
+        footerBox.style.cssText = "max-width:900px;margin:0 auto 28px;padding:14px 20px;text-align:center;font-family:'DM Sans',sans-serif";
+        var label = document.createElement("div");
+        label.style.cssText = "font-size:13px;color:#5A7060;margin-bottom:8px";
+        label.textContent = "Visiting from another country?";
+        footerBox.appendChild(label);
+        document.body.appendChild(footerBox);
+      }
+      footerMount = document.getElementById("chanakFooterSelector") || document.createElement("div");
+      footerMount.id = "chanakFooterSelector";
+      footerMount.className = "chanak-region-selector-mount in-footer";
+      footerBox.appendChild(footerMount);
+    }
+    window.renderChanakRegionSelector(footerMount);
   }
 
   function updateDualDiplomaConvalidationCTA() {
@@ -466,19 +611,23 @@
       keepApplying(function () {
         rewriteEnrollmentLinks();
         stickyBar("dual-diploma-panama");
+        chanakLocalContact();
       });
       return;
     }
 
     if (path.indexOf("/off-campus") === 0) {
       keepApplying(function () {
+        offCampusPricingSection();
+        chanakLocalContact();
+        chanakCountrySelector();
         rewriteEnrollmentLinks();
         heroPhoto("/assets/img/hero-offcampus.webp", "Homeschool student studying with Off-Campus");
         fixLegalText();
         stickyBar("off-campus");
         testimonialBadges();
-        ctaFinal("off-campus");
         removeOffCampusPricingSection();
+        ctaFinal("off-campus");
         internalLinks([
           ["/dual-diploma/en/", "Dual qualification: American Dual Diploma"],
           ["/diagnostico/", "Homeschool level test"]
@@ -490,6 +639,8 @@
         heroPhoto("/assets/img/hero-dualdiploma.webp", "Student following the U.S. Dual Diploma pathway");
         stickyBar("dual-diploma");
         updateDualDiplomaConvalidationCTA();
+        chanakLocalContact();
+        chanakCountrySelector();
         dualDiplomaPricingNote();
         dualDiplomaReassurance();
         dualDiplomaNotList();
