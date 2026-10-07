@@ -36,6 +36,7 @@ $CONFIG = [
         'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'dossier' => '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709b', 'brevo_list' => 4],
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
+        'florida_pep_ema' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'FLORIDA PEP EMA', 'landing' => '/us/florida/pep/', 'dossier' => '/assets/docs/florida-home-education/Dossier_Familias_Florida_Chanak_2026-2027.pdf', 'brevo_list' => 3],
         'general'     => ['to' => ['offcampus@chanakacademy.org', 'dualdiploma@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
         // Sin lista propia en Brevo: va a la lista General (6).
@@ -100,6 +101,18 @@ $AUTOREPLY = [
             . "· Toda la información del Diagnóstico (50€): {landing}\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)",
+    ],
+    'florida_pep_ema' => [
+        'subject' => 'Hemos recibido tu solicitud · Florida PEP (EMA) | Chanak Academy',
+        'body' => "Hola {nombre},\n\n"
+            . "¡Gracias por tu interés en los programas de apoyo académico K-12 de Chanak aprobados y activos en EMA para familias PEP en Florida!\n\n"
+            . "Qué pasará ahora:\n"
+            . "· En las próximas 24 horas (días laborables) una persona de nuestro equipo te contactará para confirmar el nivel de tu estudiante y orientarte en el procedimiento de EMA.\n\n"
+            . "Mientras tanto:\n"
+            . "· Programa completo: {landing}\n"
+            . "· Descargar dossier para familias (PDF): {dossier}\n"
+            . "· En EMA nos encuentras buscando: Chanak International Academy (Entidad legal: Chanak TrainUp Education Inc.).\n\n"
+            . "Un saludo,\nEquipo Chanak International Academy\nFlorida Home Education Instructional Support",
     ],
     'general' => [
         'subject' => 'Hemos recibido tu solicitud | Chanak Academy',
@@ -492,7 +505,14 @@ $utmTerm     = first_value($data, ['utm_term']);
    2º detección por texto (landings compiladas y rutas antiguas). */
 $route = '';
 $nec   = strtolower(first_value($data, ['necesidad']));
-$necMap = ['offcampus' => 'offcampus', 'dual' => 'dual', 'diagnostico' => 'diagnostico', 'info' => 'general'];
+$necMap = [
+    'offcampus'              => 'offcampus',
+    'dual'                   => 'dual',
+    'diagnostico'            => 'diagnostico',
+    'info'                   => 'general',
+    'florida_pep_ema'        => 'florida_pep_ema',
+    'florida_home_education' => 'florida_pep_ema',
+];
 if (isset($necMap[$nec])) {
     $route = $necMap[$nec];
 }
@@ -503,7 +523,9 @@ if ($route === '') {
         $_SERVER['HTTP_REFERER'] ?? '',
         first_value($data, ['programa', 'program', 'origen', 'origin', 'intent', 'route']),
     ]));
-    if (contains_any($source, ['hub', 'alianza', 'iglesia', 'rededucativa'])) {
+    if (contains_any($source, ['pep', 'ema', 'florida_pep_ema', 'florida-home-education', 'florida_home_education'])) {
+        $route = 'florida_pep_ema';
+    } elseif (contains_any($source, ['hub', 'alianza', 'iglesia', 'rededucativa'])) {
         $route = 'hub';
     } elseif (contains_any($source, ['diagnostico', 'diagnostic', 'evaluacion'])) {
         $route = 'diagnostico';
