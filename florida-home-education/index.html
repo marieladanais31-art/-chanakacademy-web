@@ -129,7 +129,7 @@ footer a{color:#cbd5e1;text-decoration:none}
             <li>Life Skills &amp; Leadership learning activities</li>
           </ul>
         </div>
-        <a href="https://sis.chanakacademy.org/matricula?program=florida-heip" class="btn-action">Solicitar inscripción / Apply</a>
+        <a href="https://sis.chanakacademy.org/matricula?program=florida-heip&amp;funding=scholarship&amp;gradeBand=K-5&amp;src=florida-home-education" class="btn-action">Solicitar inscripción / Apply</a>
       </div>
 
       <!-- Middle School -->
@@ -155,7 +155,7 @@ footer a{color:#cbd5e1;text-decoration:none}
             <li>Life Skills &amp; Leadership learning activities</li>
           </ul>
         </div>
-        <a href="https://sis.chanakacademy.org/matricula?program=florida-heip" class="btn-action">Solicitar inscripción / Apply</a>
+        <a href="https://sis.chanakacademy.org/matricula?program=florida-heip&amp;funding=scholarship&amp;gradeBand=6-8&amp;src=florida-home-education" class="btn-action">Solicitar inscripción / Apply</a>
       </div>
 
       <!-- High School -->
@@ -182,7 +182,7 @@ footer a{color:#cbd5e1;text-decoration:none}
             <li>Life Skills &amp; Leadership learning activities</li>
           </ul>
         </div>
-        <a href="https://sis.chanakacademy.org/matricula?program=florida-heip" class="btn-action gold">Solicitar inscripción / Apply</a>
+        <a href="https://sis.chanakacademy.org/matricula?program=florida-heip&amp;funding=scholarship&amp;gradeBand=9-12&amp;src=florida-home-education" class="btn-action gold">Solicitar inscripción / Apply</a>
       </div>
     </div>
 
@@ -249,44 +249,48 @@ footer a{color:#cbd5e1;text-decoration:none}
 
   <section class="sec" id="inquire" style="padding-top:10px;">
     <div class="form-box">
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:8px;text-align:center;">Solicitar información</h3>
-      <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;">Completa el formulario para recibir detalles y orientación sobre el programa de apoyo educativo en Florida.</p>
-      <form action="/enviar-formulario.php" method="POST">
-        <input type="hidden" name="programa" value="florida_home_education"/>
-        <input type="hidden" name="necesidad" value="florida_home_education"/>
-        <input type="hidden" name="detected_country" value="US"/>
-        <input type="hidden" name="pais" value="Estados Unidos"/>
-        <input type="hidden" name="origen" value="Landing Florida Home Education"/>
-        <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off"/>
-
-        <label for="f_name">Parent or guardian full name</label>
-        <input type="text" id="f_name" name="nombre" placeholder="e.g. Carmen Rivera" required/>
-
-        <label for="f_email">Email</label>
-        <input type="email" id="f_email" name="email" placeholder="carmen@example.com" required/>
-
-        <label for="f_phone">Contact phone</label>
-        <input type="tel" id="f_phone" name="whatsapp" placeholder="Contact phone"/>
-
-        <label for="f_grade">Level of interest</label>
-        <select id="f_grade" name="grado">
-          <option value="Elementary K-5">Elementary (K-5)</option>
-          <option value="Middle 6-8">Middle School (6-8)</option>
-          <option value="High School 9-12">High School (9-12)</option>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:8px;text-align:center;">Solicitar incorporación / Apply</h3>
+      <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;">Elige tu etapa y continúa al formulario oficial del SIS. / Choose your level and continue to the SIS application.</p>
+      <form action="https://sis.chanakacademy.org/matricula" method="GET">
+        <input type="hidden" name="program" value="florida-heip"/>
+        <input type="hidden" name="src" value="florida-home-education"/>
+        <label for="f_grade">Etapa / Student level</label>
+        <select id="f_grade" name="gradeBand" required>
+          <option value="">Selecciona / Select…</option>
+          <option value="K-5">Elementary K–5 · EMA 20172869 · 275 USD/mes</option>
+          <option value="6-8">Middle Grades 6–8 · EMA 20169280 · 320 USD/mes</option>
+          <option value="9-12">High School 9–12 · EMA 20172870 · 365 USD/mes</option>
         </select>
-
-        <button type="submit">Solicitar información</button>
+        <label for="f_funding">Vía de pago / Funding</label>
+        <select id="f_funding" name="funding"><option value="scholarship">EMA · Step Up For Students</option><option value="private">Pago privado / Private payment</option></select>
+        <button type="submit">Continuar solicitud en el SIS / Continue application</button>
+        <p style="font-size:13px;color:#cbd5e1;margin-top:14px;">Completarás los datos del alumno y la familia una sola vez en el SIS y recibirás un folio. / Complete student and family details once in the SIS and receive an application number.</p>
       </form>
     </div>
   </section>
 
-</main>
+<section class="sec" id="informacion"><div class="form-box">
+<h2 style="color:white">Pedir información / Request information</h2>
+<p>Te orientaremos antes de solicitar el servicio. / Ask our team before applying.</p>
+<form class="information-request" action="/enviar-formulario.php" method="POST">
+<input type="hidden" name="necesidad" value="florida_home_education"/>
+<input type="hidden" name="origen" value="Florida Home Education · Información"/>
+<input type="hidden" name="pais" value="Estados Unidos"/>
+<input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off"/>
+<label>Nombre del padre, madre o tutor / Parent or guardian name<input name="nombre" autocomplete="name" required/></label>
+<label>Email<input type="email" name="email" autocomplete="email" required/></label>
+<label>Teléfono / Phone<input type="tel" name="whatsapp" autocomplete="tel"/></label>
+<label>Servicio o nivel de interés / Service or level<select name="programa"><option value="Florida HEIP K-5">Elementary K–5</option><option value="Florida HEIP 6-8">Middle School 6–8</option><option value="Florida HEIP 9-12">High School 9–12</option></select></label>
+<button type="submit">Pedir información / Request information</button>
+<p class="information-result" role="status" aria-live="polite"></p>
+<p>Contacto / Contact: <a href="mailto:offcampus@chanakacademy.org">offcampus@chanakacademy.org</a></p>
+</form></div></section></main>
 
 <section class="section" style="padding:32px 20px;max-width:1000px;margin:auto">
 <h2>Inscripción y programas por estado / State programs</h2>
 <p>Florida: solicite inscripción directamente en el SIS. El envío de la solicitud no confirma admisión ni pago de beca. El servicio de evaluación inicial y puesta en marcha de 295 USD se cotiza por separado; su pago mediante beca requiere verificar la aprobación específica del servicio. / Submission does not confirm admission or scholarship payment. The separate 295 USD assessment and setup fee requires service-specific eligibility verification.</p>
 <p><a href="https://sis.chanakacademy.org/matricula?program=florida-heip">Florida · Solicitar inscripción / Apply</a></p>
-<p><a href="https://sis.chanakacademy.org/matricula?program=alabama-homeschool">Alabama · Homeschool Guiado · Proveedor CHOOSE aprobado / Approved provider</a>. Servicios y tarifa sujetos a confirmación individual. / Services and fees require individual confirmation.</p>
+<p><a href="/us/alabama/">Alabama · CHOOSE: Homeschool Guiado, Life Skills, Diagnóstico Académico y Tutorías / Guided homeschool, life skills, academic assessment and tutoring</a>. Servicios y tarifa sujetos a confirmación individual. / Services and fees require individual confirmation.</p>
 <p>Texas: solicitud de proveedor en trámite. Arizona, New Hampshire, Arkansas, Georgia e Indiana: registro no iniciado. Estos enlaces son listas de interés; no confirman aprobación ni uso de fondos de beca. / Interest lists only; provider approval and scholarship use are not yet available.</p>
 <p><a href="https://sis.chanakacademy.org/matricula?program=tx-interest">Texas · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=az-interest">Arizona · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=nh-interest">New Hampshire · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=ar-interest">Arkansas · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=ga-interest">Georgia · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=in-interest">Indiana · Lista de interés / Interest list</a></p>
 </section>
@@ -298,5 +302,25 @@ footer a{color:#cbd5e1;text-decoration:none}
   </div>
 </footer>
 
-</body>
+<script>
+document.querySelectorAll('.information-request').forEach(form => {
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const button = form.querySelector('button[type="submit"]');
+    const result = form.querySelector('.information-result');
+    button.disabled = true;
+    result.textContent = 'Enviando / Sending…';
+    try {
+      const response = await fetch(form.action, {method: 'POST', body: new FormData(form)});
+      const data = await response.json();
+      if (!response.ok || !(data.ok || data.success)) throw new Error('Request failed');
+      result.textContent = 'Solicitud recibida. Nuestro equipo te contactará. / Request received. Our team will contact you.';
+      form.reset();
+    } catch {
+      result.textContent = 'No pudimos confirmar el envío. Intenta nuevamente o escribe a offcampus@chanakacademy.org. / Unable to confirm submission. Please retry or email us.';
+    } finally { button.disabled = false; }
+  });
+});
+</script></body>
 </html>
+

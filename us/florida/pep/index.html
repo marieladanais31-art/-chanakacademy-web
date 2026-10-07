@@ -387,76 +387,50 @@ footer a{color:#cbd5e1;text-decoration:none}
     <div class="wrap">
       <div class="form-box">
         <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:8px;text-align:center;" data-i18n="form_title">Solicitar incorporación</h3>
-        <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;" data-i18n="form_sub">Déjanos tus datos para coordinar la incorporación a través de EMA.</p>
+        <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;" data-i18n="form_sub">Elige tu etapa y continúa al formulario oficial del SIS con Florida EMA seleccionado.</p>
 
-        <div id="formAlertSuccess" class="alert-box alert-success" data-i18n="form_success_msg">
-          ¡Gracias! Hemos recibido tu solicitud correctamente. Nuestro equipo se pondrá en contacto contigo en breve para guiarte en el proceso de EMA.
-        </div>
-
-        <div id="formAlertError" class="alert-box alert-error" data-i18n="form_error_msg">
-          Hubo un problema al procesar el formulario. Por favor verifica los datos o contáctanos por email a offcampus@chanakacademy.org.
-        </div>
-
-        <form id="pepForm" action="/enviar-formulario.php" method="POST" onsubmit="handleFormSubmit(event)">
-          <input type="hidden" name="programa" value="florida_pep_ema"/>
-          <input type="hidden" name="necesidad" value="florida_pep_ema"/>
-          <input type="hidden" name="detected_country" value="US"/>
-          <input type="hidden" name="pais" value="Estados Unidos"/>
-          <input type="hidden" name="origen" value="Landing Florida PEP EMA"/>
-          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off"/>
-
-          <label for="f_name" data-i18n="f_lbl_name">Nombre completo del padre, madre o tutor *</label>
-          <input type="text" id="f_name" name="nombre" placeholder="ej. María González" required/>
-
-          <label for="f_email" data-i18n="f_lbl_email">Correo electrónico *</label>
-          <input type="email" id="f_email" name="email" placeholder="maria@ejemplo.com" required/>
-
-          <label for="f_phone" data-i18n="f_lbl_phone">Teléfono de contacto *</label>
-          <input type="tel" id="f_phone" name="whatsapp" placeholder="(555) 000-0000" required/>
-
-          <label for="f_grade" data-i18n="f_lbl_grade">Grado del estudiante *</label>
-          <select id="f_grade" name="grado" required onchange="syncProgramFromGrade(this.value)">
-            <option value="" disabled selected data-i18n="opt_select_grade">-- Selecciona el grado --</option>
-            <option value="K-5">Elementary (Grades K–5)</option>
-            <option value="6-8">Middle School (Grades 6–8)</option>
-            <option value="9-12">High School (Grades 9–12)</option>
+        <form id="pepForm" action="https://sis.chanakacademy.org/matricula" method="GET">
+          <input type="hidden" name="program" value="florida-heip"/>
+          <input type="hidden" name="funding" value="scholarship"/>
+          <input type="hidden" name="src" value="florida-pep-ema"/>
+          <label for="f_grade" data-i18n="f_lbl_grade">Etapa del estudiante / Student level *</label>
+          <select id="f_grade" name="gradeBand" required>
+            <option value="" disabled selected data-i18n="opt_select_grade">-- Selecciona la etapa --</option>
+            <option value="K-5">Elementary K–5 · EMA 20172869 · 275 USD/mes</option>
+            <option value="6-8">Middle Grades 6–8 · EMA 20169280 · 320 USD/mes</option>
+            <option value="9-12">High School 9–12 · EMA 20172870 · 365 USD/mes</option>
           </select>
-
-          <label for="f_program" data-i18n="f_lbl_prog">Programa elegido en EMA *</label>
-          <select id="f_program" name="programa_ema" required>
-            <option value="" disabled selected data-i18n="opt_select_prog">-- Selecciona el programa --</option>
-            <option value="Elementary (K-5) - Item ID 20172869">Elementary K–5 ($275/mes · EMA Item 20172869)</option>
-            <option value="Middle Grades (6-8) - Item ID 20169280">Middle Grades 6–8 ($320/mes · EMA Item 20169280)</option>
-            <option value="High School (9-12) - Item ID 20172870">High School 9–12 ($365/mes · EMA Item 20172870)</option>
+          <label for="f_pep_status" data-i18n="f_lbl_pep">Situación de fondos PEP / PEP fund status</label>
+          <select id="f_pep_status" name="scholarshipStatus">
+            <option value="unknown">No lo sé todavía / Not sure yet</option>
+            <option value="approved" data-i18n="pep_opt_1">Fondos aprobados</option>
+            <option value="pending" data-i18n="pep_opt_2">Solicitud en proceso</option>
+            <option value="not_applied" data-i18n="pep_opt_3">Todavía no he solicitado</option>
           </select>
-
-          <label for="f_pep_status" data-i18n="f_lbl_pep">Situación de fondos PEP (Step Up) *</label>
-          <select id="f_pep_status" name="situacion_pep" required>
-            <option value="Aprobados y disponibles" data-i18n="pep_opt_1">Fondos aprobados y disponibles en EMA</option>
-            <option value="Solicitud pendiente" data-i18n="pep_opt_2">Solicitud PEP presentada (en proceso)</option>
-            <option value="Todavía no he solicitado" data-i18n="pep_opt_3">Todavía no he solicitado la beca PEP</option>
-          </select>
-
-          <label for="f_lang_pref" data-i18n="f_lbl_lang_pref">Idioma preferido para la comunicación *</label>
-          <select id="f_lang_pref" name="idioma_preferido" required>
-            <option value="Español">Español</option>
-            <option value="English">English</option>
-          </select>
-
-          <div style="margin-bottom:18px;display:flex;align-items:flex-start;gap:10px;font-size:12.5px;color:#cbd5e1;line-height:1.5;">
-            <input type="checkbox" id="f_consent" name="consentimiento" required style="width:auto;margin:3px 0 0;flex:none;cursor:pointer;"/>
-            <label for="f_consent" style="font-weight:normal;cursor:pointer;" data-i18n="f_lbl_consent">
-              Acepto ser contactado/a por el equipo de Chanak respecto a este programa y confirmo haber leído las condiciones del servicio.
-            </label>
-          </div>
-
-          <button type="submit" id="btnSubmitForm" data-i18n="btn_submit_form">Solicitar incorporación</button>
+          <button type="submit" id="btnSubmitForm" data-i18n="btn_submit_form">Continuar al formulario SIS</button>
+          <p style="font-size:13px;color:#cbd5e1;margin-top:14px;" data-i18n="form_handoff">Los datos personales, documentos y consentimiento se completan una sola vez en el SIS. El envío de la solicitud genera un folio; no confirma pago ni aprobación de fondos.</p>
         </form>
       </div>
     </div>
   </section>
 
-</main>
+<section class="sec"><div class="wrap"><h2>Alabama · CHOOSE</h2><p>Homeschool Guiado, Life Skills, Diagnóstico Académico y Tutorías. / Guided homeschool, life skills, academic assessment and tutoring.</p><a href="/us/alabama/" class="btn btn-gold">Ver servicios Alabama / Alabama services</a></div></section>
+<section class="sec" id="informacion"><div class="form-box">
+<h2 style="color:white">Pedir información / Request information</h2>
+<p>Te orientaremos antes de solicitar el servicio. / Ask our team before applying.</p>
+<form class="information-request" action="/enviar-formulario.php" method="POST">
+<input type="hidden" name="necesidad" value="florida_pep_ema"/>
+<input type="hidden" name="origen" value="Florida EMA · Información"/>
+<input type="hidden" name="pais" value="Estados Unidos"/>
+<input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off"/>
+<label>Nombre del padre, madre o tutor / Parent or guardian name<input name="nombre" autocomplete="name" required/></label>
+<label>Email<input type="email" name="email" autocomplete="email" required/></label>
+<label>Teléfono / Phone<input type="tel" name="whatsapp" autocomplete="tel"/></label>
+<label>Servicio o nivel de interés / Service or level<select name="programa"><option value="Florida HEIP K-5">Elementary K–5</option><option value="Florida HEIP 6-8">Middle School 6–8</option><option value="Florida HEIP 9-12">High School 9–12</option></select></label>
+<button type="submit">Pedir información / Request information</button>
+<p class="information-result" role="status" aria-live="polite"></p>
+<p>Contacto / Contact: <a href="mailto:offcampus@chanakacademy.org">offcampus@chanakacademy.org</a></p>
+</form></div></section></main>
 
 <footer>
   <div class="wrap">
@@ -594,8 +568,9 @@ const I18N = {
     faq_6_a: "Estas ofertas están formalmente aprobadas y activas en el catálogo de EMA (Step Up For Students). La autorización final del pago depende de las reglas del programa de becas y de la disponibilidad de fondos en la cuenta de la familia.",
     faq_7_q: "¿Puedo contratar tutorías independientes por hora en EMA?",
     faq_7_a: "Todavía no se anuncian como servicio aprobado en esta campaña. Actualmente las opciones activas para solicitud son los programas mensuales estructurados por nivel (Elementary, Middle y High School).",
-    form_title: "Solicitar incorporación",
-    form_sub: "Déjanos tus datos para coordinar la incorporación a través de EMA.",
+    form_title: "Continuar solicitud en el SIS",
+    form_handoff: "Completa los datos personales, documentos y consentimiento una sola vez en el SIS. Recibirás un folio al enviar la solicitud; el pago y los fondos requieren revisión.",
+    form_sub: "Elige tu etapa y continúa al formulario oficial del SIS con Florida EMA seleccionado.",
     form_success_msg: "¡Gracias! Hemos recibido tu solicitud correctamente. Nuestro equipo se pondrá en contacto contigo en breve para guiarte en el proceso de EMA.",
     form_error_msg: "Hubo un problema al procesar el formulario. Por favor verifica los datos o contáctanos por email a offcampus@chanakacademy.org.",
     f_lbl_name: "Nombre completo del padre, madre o tutor *",
@@ -611,7 +586,7 @@ const I18N = {
     pep_opt_3: "Todavía no he solicitado la beca PEP",
     f_lbl_lang_pref: "Idioma preferido para la comunicación *",
     f_lbl_consent: "Acepto ser contactado/a por el equipo de Chanak respecto a este programa y confirmo haber leído las condiciones del servicio.",
-    btn_submit_form: "Solicitar incorporación",
+    btn_submit_form: "Continuar al formulario SIS",
     ft_links_prog: "Programas",
     ft_links_inst: "Enlaces",
     ft_disclaimer: "Aviso legal del servicio: Este programa es un servicio de apoyo educativo e instrucción complementaria para familias de educación en el hogar en Florida. No constituye una matrícula escolar privada de tiempo completo ni incluye servicios de escuela de registro (school-of-record), transcripciones oficiales o diploma. La autorización del uso de fondos depende de Step Up For Students."
@@ -714,8 +689,9 @@ const I18N = {
     faq_6_a: "These offerings are approved and active in the EMA marketplace (Step Up For Students). Payment authorization depends on scholarship rules and fund availability in your account.",
     faq_7_q: "Can I book independent hourly tutoring in EMA?",
     faq_7_a: "Not announced as an approved standalone service in this campaign. Current active offerings are structured monthly programs by level (Elementary, Middle, and High School).",
-    form_title: "Request Enrollment",
-    form_sub: "Leave your contact details to coordinate your onboarding through EMA.",
+    form_title: "Continue your SIS application",
+    form_handoff: "Complete personal details, documents and consent once in the SIS. Submitting the application creates an application number; payment and funding require review.",
+    form_sub: "Choose your level and continue to the official SIS form with Florida EMA selected.",
     form_success_msg: "Thank you! We have received your request. Our team will contact you shortly to guide you through EMA onboarding.",
     form_error_msg: "There was an issue submitting your request. Please check your information or email us at offcampus@chanakacademy.org.",
     f_lbl_name: "Parent or guardian full name *",
@@ -731,7 +707,7 @@ const I18N = {
     pep_opt_3: "Have not applied for PEP scholarship yet",
     f_lbl_lang_pref: "Preferred language for communication *",
     f_lbl_consent: "I agree to be contacted by Chanak regarding this program and confirm I have reviewed service terms.",
-    btn_submit_form: "Request Enrollment",
+    btn_submit_form: "Continue to the SIS form",
     ft_links_prog: "Programs",
     ft_links_inst: "Links",
     ft_disclaimer: "Service Legal Disclaimer: This program provides instructional and academic support services for home education families in Florida. It does not constitute full-time private school enrollment and does not include school-of-record services, official transcripts, or a diploma. Direct payment authorization is subject to Step Up For Students approval."
@@ -775,59 +751,27 @@ function selectProgram(progValue, gradeValue) {
   }
 }
 
-function syncProgramFromGrade(gradeVal) {
-  const progSelect = document.getElementById('f_program');
-  if (!progSelect) return;
-  if (gradeVal === 'K-5') {
-    progSelect.value = 'Elementary (K-5) - Item ID 20172869';
-  } else if (gradeVal === '6-8') {
-    progSelect.value = 'Middle Grades (6-8) - Item ID 20169280';
-  } else if (gradeVal === '9-12') {
-    progSelect.value = 'High School (9-12) - Item ID 20172870';
-  }
-}
-
-async function handleFormSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const submitBtn = document.getElementById('btnSubmitForm');
-  const successAlert = document.getElementById('formAlertSuccess');
-  const errorAlert = document.getElementById('formAlertError');
-
-  successAlert.style.display = 'none';
-  errorAlert.style.display = 'none';
-
-  submitBtn.disabled = true;
-  submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'Enviando...';
-
-  try {
-    const formData = new FormData(form);
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    const result = await response.json();
-    if (response.ok && (result.ok || result.success)) {
-      successAlert.style.display = 'block';
-      form.reset();
-      submitBtn.textContent = currentLang === 'en' ? 'Submitted' : 'Enviado';
-    } else {
-      errorAlert.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.textContent = I18N[currentLang].btn_submit_form;
-    }
-  } catch (err) {
-    console.error('Submission error:', err);
-    errorAlert.style.display = 'block';
-    submitBtn.disabled = false;
-    submitBtn.textContent = I18N[currentLang].btn_submit_form;
-  }
-}
 </script>
 
-</body>
+<script>
+document.querySelectorAll('.information-request').forEach(form => {
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const button = form.querySelector('button[type="submit"]');
+    const result = form.querySelector('.information-result');
+    button.disabled = true;
+    result.textContent = 'Enviando / Sending…';
+    try {
+      const response = await fetch(form.action, {method: 'POST', body: new FormData(form)});
+      const data = await response.json();
+      if (!response.ok || !(data.ok || data.success)) throw new Error('Request failed');
+      result.textContent = 'Solicitud recibida. Nuestro equipo te contactará. / Request received. Our team will contact you.';
+      form.reset();
+    } catch {
+      result.textContent = 'No pudimos confirmar el envío. Intenta nuevamente o escribe a offcampus@chanakacademy.org. / Unable to confirm submission. Please retry or email us.';
+    } finally { button.disabled = false; }
+  });
+});
+</script></body>
 </html>
+
