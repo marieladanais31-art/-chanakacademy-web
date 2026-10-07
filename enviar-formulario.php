@@ -37,6 +37,7 @@ $CONFIG = [
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
         'florida_pep_ema' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'FLORIDA PEP EMA', 'landing' => '/us/florida/pep/', 'dossier' => '/assets/docs/florida-home-education/Dossier_Familias_Florida_Chanak_2026-2027.pdf', 'brevo_list' => 3],
+        'alabama_choose' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'ALABAMA CHOOSE', 'landing' => '/us/alabama/', 'brevo_list' => 3],
         'general'     => ['to' => ['offcampus@chanakacademy.org', 'dualdiploma@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
         // Sin lista propia en Brevo: va a la lista General (6).
@@ -113,6 +114,10 @@ $AUTOREPLY = [
             . "· Descargar dossier para familias (PDF): {dossier}\n"
             . "· En EMA nos encuentras buscando: Chanak International Academy (Entidad legal: Chanak TrainUp Education Inc.).\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\nFlorida Home Education Instructional Support",
+    ],
+    'alabama_choose' => [
+        'subject' => 'Información recibida · Alabama CHOOSE | Chanak Academy',
+        'body' => "Hola / Hello {nombre},\n\nGracias por tu interés / Thank you for your interest.\nNuestro equipo te contactará para confirmar el servicio, requisitos y cotización en USD. / Our team will contact you to confirm the service, requirements and USD quote.\n\nInformación / Information: {landing}\nLa solicitud de información no confirma matrícula, elegibilidad ni autorización de pago. / This inquiry does not confirm enrollment, eligibility or payment authorization.\n\nEquipo Chanak International Academy",
     ],
     'general' => [
         'subject' => 'Hemos recibido tu solicitud | Chanak Academy',
@@ -510,6 +515,7 @@ $necMap = [
     'dual'                   => 'dual',
     'diagnostico'            => 'diagnostico',
     'info'                   => 'general',
+    'alabama_choose'         => 'alabama_choose',
     'florida_pep_ema'        => 'florida_pep_ema',
     'florida_home_education' => 'florida_pep_ema',
 ];
@@ -705,3 +711,4 @@ respond_json(200, [
     'dossier' => $dossier,
     'dossiers' => $route === 'general' ? $dossierLinks : array_filter([$route => $dossier]),
 ]);
+
