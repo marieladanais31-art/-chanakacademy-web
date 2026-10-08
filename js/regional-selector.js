@@ -107,13 +107,13 @@
     document.querySelectorAll('[data-chanak-dossier-program]').forEach(function(link) {
       var program = link.getAttribute('data-chanak-dossier-program');
       var suffix = countryCode.toLowerCase()+'-'+(document.documentElement.lang.indexOf('en')===0?'en':'es');
-      link.setAttribute('href', '/assets/dossiers/family/' + program + '-' + suffix + '.pdf');
+      link.setAttribute('href', '/assets/dossiers/family/' + program + '-' + suffix + '.pdf?v=20261008editorial');
     });
     document.querySelectorAll('a[href*="/assets/dossiers/dossier-off-campus"],a[href*="/assets/dossiers/dossier-dual-diploma"]').forEach(function(link) {
       var program = link.getAttribute('href').indexOf('off-campus') !== -1 ? 'off-campus' : 'dual-diploma';
       link.setAttribute('data-chanak-dossier-program',program);
       var suffix = countryCode.toLowerCase()+'-'+(document.documentElement.lang.indexOf('en')===0?'en':'es');
-      link.setAttribute('href', '/assets/dossiers/family/' + program + '-' + suffix + '.pdf');
+      link.setAttribute('href', '/assets/dossiers/family/' + program + '-' + suffix + '.pdf?v=20261008editorial');
     });
 
     if (!catalog) return;

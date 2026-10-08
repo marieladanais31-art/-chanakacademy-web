@@ -1,112 +1,112 @@
 {
-  "version": "2026.10.08-single",
+  "version": "2026.10.08-editorial",
   "routes": {
     "offcampus": {
       "countries": {
         "ES": {
-          "es": "/assets/dossiers/family/off-campus-es-es.pdf",
-          "en": "/assets/dossiers/family/off-campus-es-en.pdf"
+          "es": "/assets/dossiers/family/off-campus-es-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/off-campus-es-en.pdf?v=20261008editorial"
         },
         "MX": {
-          "es": "/assets/dossiers/family/off-campus-mx-es.pdf",
-          "en": "/assets/dossiers/family/off-campus-mx-en.pdf"
+          "es": "/assets/dossiers/family/off-campus-mx-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/off-campus-mx-en.pdf?v=20261008editorial"
         },
         "PA": {
-          "es": "/assets/dossiers/family/off-campus-pa-es.pdf",
-          "en": "/assets/dossiers/family/off-campus-pa-en.pdf"
+          "es": "/assets/dossiers/family/off-campus-pa-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/off-campus-pa-en.pdf?v=20261008editorial"
         },
         "CO": {
-          "es": "/assets/dossiers/family/off-campus-co-es.pdf",
-          "en": "/assets/dossiers/family/off-campus-co-en.pdf"
+          "es": "/assets/dossiers/family/off-campus-co-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/off-campus-co-en.pdf?v=20261008editorial"
         },
         "US": {
-          "es": "/assets/dossiers/family/off-campus-us-es.pdf",
-          "en": "/assets/dossiers/family/off-campus-us-en.pdf"
+          "es": "/assets/dossiers/family/off-campus-us-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/off-campus-us-en.pdf?v=20261008editorial"
         },
         "GLOBAL": {
-          "es": "/assets/dossiers/family/off-campus-global-es.pdf",
-          "en": "/assets/dossiers/family/off-campus-global-en.pdf"
+          "es": "/assets/dossiers/family/off-campus-global-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/off-campus-global-en.pdf?v=20261008editorial"
         }
       }
     },
     "dual": {
       "countries": {
         "ES": {
-          "es": "/assets/dossiers/family/dual-diploma-es-es.pdf",
-          "en": "/assets/dossiers/family/dual-diploma-es-en.pdf"
+          "es": "/assets/dossiers/family/dual-diploma-es-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/dual-diploma-es-en.pdf?v=20261008editorial"
         },
         "MX": {
-          "es": "/assets/dossiers/family/dual-diploma-mx-es.pdf",
-          "en": "/assets/dossiers/family/dual-diploma-mx-en.pdf"
+          "es": "/assets/dossiers/family/dual-diploma-mx-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/dual-diploma-mx-en.pdf?v=20261008editorial"
         },
         "PA": {
-          "es": "/assets/dossiers/family/dual-diploma-pa-es.pdf",
-          "en": "/assets/dossiers/family/dual-diploma-pa-en.pdf"
+          "es": "/assets/dossiers/family/dual-diploma-pa-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/dual-diploma-pa-en.pdf?v=20261008editorial"
         },
         "CO": {
-          "es": "/assets/dossiers/family/dual-diploma-co-es.pdf",
-          "en": "/assets/dossiers/family/dual-diploma-co-en.pdf"
+          "es": "/assets/dossiers/family/dual-diploma-co-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/dual-diploma-co-en.pdf?v=20261008editorial"
         },
         "US": {
-          "es": "/assets/dossiers/family/dual-diploma-us-es.pdf",
-          "en": "/assets/dossiers/family/dual-diploma-us-en.pdf"
+          "es": "/assets/dossiers/family/dual-diploma-us-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/dual-diploma-us-en.pdf?v=20261008editorial"
         },
         "GLOBAL": {
-          "es": "/assets/dossiers/family/dual-diploma-global-es.pdf",
-          "en": "/assets/dossiers/family/dual-diploma-global-en.pdf"
+          "es": "/assets/dossiers/family/dual-diploma-global-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/dual-diploma-global-en.pdf?v=20261008editorial"
         }
       }
     },
     "diagnostico": {
       "countries": {
         "ES": {
-          "es": "/assets/dossiers/family/diagnostico-es-es.pdf",
-          "en": "/assets/dossiers/family/diagnostico-es-en.pdf"
+          "es": "/assets/dossiers/family/diagnostico-es-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/diagnostico-es-en.pdf?v=20261008editorial"
         },
         "MX": {
-          "es": "/assets/dossiers/family/diagnostico-mx-es.pdf",
-          "en": "/assets/dossiers/family/diagnostico-mx-en.pdf"
+          "es": "/assets/dossiers/family/diagnostico-mx-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/diagnostico-mx-en.pdf?v=20261008editorial"
         },
         "PA": {
-          "es": "/assets/dossiers/family/diagnostico-pa-es.pdf",
-          "en": "/assets/dossiers/family/diagnostico-pa-en.pdf"
+          "es": "/assets/dossiers/family/diagnostico-pa-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/diagnostico-pa-en.pdf?v=20261008editorial"
         },
         "CO": {
-          "es": "/assets/dossiers/family/diagnostico-co-es.pdf",
-          "en": "/assets/dossiers/family/diagnostico-co-en.pdf"
+          "es": "/assets/dossiers/family/diagnostico-co-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/diagnostico-co-en.pdf?v=20261008editorial"
         },
         "US": {
-          "es": "/assets/dossiers/family/diagnostico-us-es.pdf",
-          "en": "/assets/dossiers/family/diagnostico-us-en.pdf"
+          "es": "/assets/dossiers/family/diagnostico-us-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/diagnostico-us-en.pdf?v=20261008editorial"
         },
         "GLOBAL": {
-          "es": "/assets/dossiers/family/diagnostico-global-es.pdf",
-          "en": "/assets/dossiers/family/diagnostico-global-en.pdf"
+          "es": "/assets/dossiers/family/diagnostico-global-es.pdf?v=20261008editorial",
+          "en": "/assets/dossiers/family/diagnostico-global-en.pdf?v=20261008editorial"
         }
       }
     },
     "florida_pep_ema": {
       "single": {
-        "es": "/assets/dossiers/family/florida-heip-es.pdf",
-        "en": "/assets/dossiers/family/florida-heip-en.pdf"
+        "es": "/assets/dossiers/family/florida-heip-es.pdf?v=20261008editorial",
+        "en": "/assets/dossiers/family/florida-heip-en.pdf?v=20261008editorial"
       }
     },
     "alabama_choose": {
       "single": {
-        "es": "/assets/dossiers/family/alabama-choose-es.pdf",
-        "en": "/assets/dossiers/family/alabama-choose-en.pdf"
+        "es": "/assets/dossiers/family/alabama-choose-es.pdf?v=20261008editorial",
+        "en": "/assets/dossiers/family/alabama-choose-en.pdf?v=20261008editorial"
       }
     },
     "life_skills": {
       "single": {
-        "es": "/assets/dossiers/family/life-skills-es.pdf",
-        "en": "/assets/dossiers/family/life-skills-en.pdf"
+        "es": "/assets/dossiers/family/life-skills-es.pdf?v=20261008editorial",
+        "en": "/assets/dossiers/family/life-skills-en.pdf?v=20261008editorial"
       }
     },
     "general": {
       "single": {
-        "es": "/assets/dossiers/family/general-es.pdf",
-        "en": "/assets/dossiers/family/general-en.pdf"
+        "es": "/assets/dossiers/family/general-es.pdf?v=20261008editorial",
+        "en": "/assets/dossiers/family/general-en.pdf?v=20261008editorial"
       }
     }
   }

@@ -21,7 +21,7 @@ foreach($cases as [$data,$route,$country,$lang,$file]){
  $p=chanak_information_pack($actual,$data,'https://www.chanakacademy.org/','https://www.chanakacademy.org');
  check($p['country']===$country,'country '.$file);
  check($p['language']===$lang,'language '.$file);
- check(str_ends_with($p['dossier'],$file.'.pdf'),'single dossier '.$file);
+ check(str_ends_with((string)parse_url($p['dossier'],PHP_URL_PATH),$file.'.pdf'),'single dossier '.$file);
  check($p['fees']==='' && $p['complete']==='','no extra dossiers '.$file);
  check(file_exists(__DIR__.'/..'.parse_url($p['dossier'],PHP_URL_PATH)),'PDF exists '.$file);
  check(chanak_route_recipients($actual)===[$route==='dual'?'dualdiploma@chanakacademy.org':'offcampus@chanakacademy.org'],'single internal recipient '.$file);
