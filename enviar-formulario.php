@@ -37,6 +37,7 @@ $CONFIG = [
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
         'florida_pep_ema' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'FLORIDA PEP EMA', 'landing' => '/us/florida/pep/', 'dossier' => '/assets/docs/florida-home-education/Dossier_Familias_Florida_Chanak_2026-2027.pdf', 'brevo_list' => 3],
+        'life_skills' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'LIFE SKILLS', 'landing' => '/', 'brevo_list' => 3],
         'alabama_choose' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'ALABAMA CHOOSE', 'landing' => '/us/alabama/', 'brevo_list' => 3],
         'general'     => ['to' => ['offcampus@chanakacademy.org', 'dualdiploma@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
@@ -516,6 +517,8 @@ $necMap = [
     'diagnostico'            => 'diagnostico',
     'info'                   => 'general',
     'alabama_choose'         => 'alabama_choose',
+    'life_skills'            => 'life_skills',
+    'life-skills'            => 'life_skills',
     'florida_pep_ema'        => 'florida_pep_ema',
     'florida_home_education' => 'florida_pep_ema',
 ];
@@ -529,7 +532,11 @@ if ($route === '') {
         $_SERVER['HTTP_REFERER'] ?? '',
         first_value($data, ['programa', 'program', 'origen', 'origin', 'intent', 'route']),
     ]));
-    if (contains_any($source, ['pep', 'ema', 'florida_pep_ema', 'florida-home-education', 'florida_home_education'])) {
+    if (contains_any($source, ['alabama', 'choose'])) {
+        $route = 'alabama_choose';
+    } elseif (contains_any($source, ['life-skills', 'life_skills', 'life skills'])) {
+        $route = 'life_skills';
+    } elseif (contains_any($source, ['pep', 'ema', 'florida_pep_ema', 'florida-home-education', 'florida_home_education'])) {
         $route = 'florida_pep_ema';
     } elseif (contains_any($source, ['hub', 'alianza', 'iglesia', 'rededucativa'])) {
         $route = 'hub';
@@ -579,6 +586,13 @@ $dossier = isset($routeCfg['dossier']) && $routeCfg['dossier'] !== ''
 if ($commercialRegion !== '' && isset($COMMERCIAL_PRICING[$commercialRegion]['dossier'])) {
     $dossier = $CONFIG['site_url'] . $COMMERCIAL_PRICING[$commercialRegion]['dossier'];
 }
+/* Information-pack selection is separate from enrollment and payment. */
+require_once __DIR__ . '/_private/dossier-routing.php';
+$pack = chanak_information_pack($route, $data, $_SERVER['HTTP_REFERER'] ?? '', $CONFIG['site_url']);
+if ($commercialRegion === '' && $pack) {
+    $dossier = $pack['initial'];
+}
+
 $origin   = first_value($data, ['origen', 'origin']) ?: ($_SERVER['HTTP_REFERER'] ?? ($_SERVER['REQUEST_URI'] ?? ''));
 
 /* ── 1) GUARDAR EL LEAD (antes de cualquier correo) ── */
@@ -680,6 +694,18 @@ if (!$sentInterno) {
 /* ── 3) AUTORESPUESTA a la familia ── */
 $autoreplyKey = $commercialRegion === 'Dubai' ? 'dual_dubai' : ($commercialRegion === 'UAE' ? 'dual_uae' : $route);
 $reply = $esMatricula ? $AUTOREPLY['matricula'] : ($AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general']);
+/* Current initial pack, in the family's language. Fees stay in their country document. */
+if ($commercialRegion === '' && $pack) {
+    $en = $pack['language'] === 'en';
+    $reply = [
+        'subject' => ($en ? 'Your information pack' : 'Tu dossier inicial') . ' | Chanak - ' . $routeCfg['label'],
+        'body' => ($en ? "Hello {nombre},\n\nThank you for your interest.\nInitial information pack (PDF): {dossier}\n" : "Hola {nombre},\n\nGracias por tu interés.\nDossier inicial (PDF): {dossier}\n")
+            . ($pack['fees'] !== '' ? ($en ? "Country fee document: " : "Documento de tarifas del país: ") . $pack['fees'] . "\n" : '')
+            . ($pack['complete'] !== '' ? ($en ? "Detailed program dossier: " : "Dossier completo del programa: ") . $pack['complete'] . "\n" : '')
+            . ($en ? "\nOur team will review your request and contact you. Information requests and applications are separate steps; submitting an inquiry does not confirm admission, scholarship eligibility or payment.\nProgram page: {landing}\n\nChanak International Academy\nFLDOE #134620 - MSA-CESS Candidate (accreditation not yet granted)." : "\nNuestro equipo revisará tu consulta y te contactará. Pedir información y solicitar incorporación son pasos distintos; la consulta no confirma admisión, elegibilidad para beca ni pago.\nPágina del programa: {landing}\n\nChanak International Academy\nFLDOE #134620 - MSA-CESS Candidate (acreditación todavía no concedida)."),
+    ];
+}
+
 $replyBody = strtr($reply['body'], [
     '{nombre}'           => $name !== '' ? $name : 'familia',
     '{landing}'          => $landing,
@@ -709,6 +735,8 @@ respond_json(200, [
     'success' => true,
     'message' => 'Solicitud recibida.',
     'dossier' => $dossier,
-    'dossiers' => $route === 'general' ? $dossierLinks : array_filter([$route => $dossier]),
+    'dossiers' => $commercialRegion === '' && $pack ? array_filter(['initial' => $pack['initial'], 'fees' => $pack['fees'], 'complete' => $pack['complete']]) : ($route === 'general' ? $dossierLinks : array_filter([$route => $dossier])),
+    'email_status' => ['internal_accepted' => $sentInterno, 'family_accepted' => $sentAuto],
+    'language' => $pack['language'] ?? 'es',
 ]);
 
