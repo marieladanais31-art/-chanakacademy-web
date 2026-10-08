@@ -39,7 +39,7 @@ $CONFIG = [
         'florida_pep_ema' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'FLORIDA PEP EMA', 'landing' => '/us/florida/pep/', 'dossier' => '/assets/docs/florida-home-education/Dossier_Familias_Florida_Chanak_2026-2027.pdf', 'brevo_list' => 3],
         'life_skills' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'LIFE SKILLS', 'landing' => '/', 'brevo_list' => 3],
         'alabama_choose' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'ALABAMA CHOOSE', 'landing' => '/us/alabama/', 'brevo_list' => 3],
-        'general'     => ['to' => ['offcampus@chanakacademy.org', 'dualdiploma@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
+        'general'     => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
         // Sin lista propia en Brevo: va a la lista General (6).
         'hub'         => ['to' => ['rededucativa@asociacioneducafe.org'], 'label' => 'ALIANZAS 2027', 'landing' => '/alianzas/', 'brevo_list' => 6],
@@ -153,20 +153,8 @@ $AUTOREPLY = [
     ],
     // Autorespuesta específica cuando el lead llega desde /matricula/ (alta intención).
     'matricula' => [
-        'subject' => 'Hemos recibido tu solicitud de matrícula 2026-27 | Chanak Academy',
-        'body' => "Hola {nombre},\n\n"
-            . "¡Gracias por iniciar el proceso de matrícula en Chanak International Academy!\n\n"
-            . "Qué pasará ahora:\n"
-            . "· En menos de 24 horas (días laborables) el equipo de admisiones te contactará por email.\n"
-            . "· Revisaremos contigo el nivel de entrada del estudiante y confirmaremos la ruta académica y el plan económico final.\n\n"
-            . "Mientras tanto:\n"
-            . "· Información del programa: {landing}\n"
-            . "· El pago inicial de matrícula es €180 + la primera mensualidad.\n"
-            . "· Referencia internacional: Off-Campus desde €250 / USD $286; Dual Diploma: diagnóstico €35/USD $40, matrícula €210/USD $240, mensualidad desde €110/USD $126.\n"
-            . "· Los materiales académicos se gestionan aparte según la ruta elegida.\n"
-            . "Un saludo,\nEquipo de Admisiones — Chanak International Academy\n\n"
-            . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
-            . "La matrícula se confirma tras la validación del equipo de admisiones.",
+        'subject' => 'Solicitud de incorporación recibida | Chanak Academy',
+        'body' => "Hola {nombre},\n\nRecibimos tu solicitud. El equipo de tu programa confirmará expediente, plan y cotización aplicable antes de la admisión o el pago.\n\nResponde a este correo para contactar con tu equipo.\nChanak International Academy",
     ],
     // Autorespuesta en inglés para leads UAE/Dubai del Dual Diploma
     // (International Admissions). Placeholders: {nombre}, {landing},
@@ -509,49 +497,11 @@ $utmTerm     = first_value($data, ['utm_term']);
 /* ── Enrutamiento por producto ──
    1º el campo explícito 'necesidad' del formulario de la home;
    2º detección por texto (landings compiladas y rutas antiguas). */
-$route = '';
-$nec   = strtolower(first_value($data, ['necesidad']));
-$necMap = [
-    'offcampus'              => 'offcampus',
-    'dual'                   => 'dual',
-    'diagnostico'            => 'diagnostico',
-    'info'                   => 'general',
-    'alabama_choose'         => 'alabama_choose',
-    'life_skills'            => 'life_skills',
-    'life-skills'            => 'life_skills',
-    'florida_pep_ema'        => 'florida_pep_ema',
-    'florida_home_education' => 'florida_pep_ema',
-];
-if (isset($necMap[$nec])) {
-    $route = $necMap[$nec];
-}
-
-if ($route === '') {
-    $source = strtolower(implode(' ', [
-        $_SERVER['REQUEST_URI'] ?? '',
-        $_SERVER['HTTP_REFERER'] ?? '',
-        first_value($data, ['programa', 'program', 'origen', 'origin', 'intent', 'route']),
-    ]));
-    if (contains_any($source, ['alabama', 'choose'])) {
-        $route = 'alabama_choose';
-    } elseif (contains_any($source, ['life-skills', 'life_skills', 'life skills'])) {
-        $route = 'life_skills';
-    } elseif (contains_any($source, ['pep', 'ema', 'florida_pep_ema', 'florida-home-education', 'florida_home_education'])) {
-        $route = 'florida_pep_ema';
-    } elseif (contains_any($source, ['hub', 'alianza', 'iglesia', 'rededucativa'])) {
-        $route = 'hub';
-    } elseif (contains_any($source, ['diagnostico', 'diagnostic', 'evaluacion'])) {
-        $route = 'diagnostico';
-    } elseif (contains_any($source, ['dual', 'panama', 'panamá', 'send-enrollment', 'send-info-request'])) {
-        $route = 'dual';
-    } elseif (contains_any($source, ['off-campus', 'offcampus', 'brevo-lead'])) {
-        $route = 'offcampus';
-    } else {
-        $route = 'general';
-    }
-}
+require_once __DIR__ . '/_private/dossier-routing.php';
+$route = chanak_resolve_route($data, $_SERVER['HTTP_REFERER'] ?? '');
 
 $routeCfg = $CONFIG['routes'][$route];
+$routeCfg['to'] = chanak_route_recipients($route);
 $label    = $routeCfg['label'];
 /* Lead de MATRÍCULA (viene de /matricula/): alta intención — se marca en el
    asunto y usa autorespuesta propia. El enrutamiento y la lista Brevo siguen
@@ -589,7 +539,7 @@ if ($commercialRegion !== '' && isset($COMMERCIAL_PRICING[$commercialRegion]['do
 /* Information-pack selection is separate from enrollment and payment. */
 require_once __DIR__ . '/_private/dossier-routing.php';
 $pack = chanak_information_pack($route, $data, $_SERVER['HTTP_REFERER'] ?? '', $CONFIG['site_url']);
-if ($commercialRegion === '' && !$esMatricula && $pack) {
+if ($commercialRegion === '' && $pack) {
     $dossier = $pack['initial'];
 }
 
@@ -694,15 +644,15 @@ if (!$sentInterno) {
 /* ── 3) AUTORESPUESTA a la familia ── */
 $autoreplyKey = $commercialRegion === 'Dubai' ? 'dual_dubai' : ($commercialRegion === 'UAE' ? 'dual_uae' : $route);
 $reply = $esMatricula ? $AUTOREPLY['matricula'] : ($AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general']);
-/* Current initial pack, in the family's language. Fees stay in their country document. */
-if ($commercialRegion === '' && !$esMatricula && $pack) {
-    $en = $pack['language'] === 'en';
-    $reply = [
-        'subject' => ($en ? 'Your information pack' : 'Tu dossier inicial') . ' | Chanak - ' . $routeCfg['label'],
-        'body' => ($en ? "Hello {nombre},\n\nThank you for your interest.\nInitial information pack (PDF): {dossier}\n" : "Hola {nombre},\n\nGracias por tu interés.\nDossier inicial (PDF): {dossier}\n")
-            . ($pack['fees'] !== '' ? ($en ? "Country fee document: " : "Documento de tarifas del país: ") . $pack['fees'] . "\n" : '')
-            . ($pack['complete'] !== '' ? ($en ? "Detailed program dossier: " : "Dossier completo del programa: ") . $pack['complete'] . "\n" : '')
-            . ($en ? "\nOur team will review your request and contact you. Information requests and applications are separate steps; submitting an inquiry does not confirm admission, scholarship eligibility or payment.\nProgram page: {landing}\n\nChanak International Academy\nFLDOE #134620 - MSA-CESS Candidate (accreditation not yet granted)." : "\nNuestro equipo revisará tu consulta y te contactará. Pedir información y solicitar incorporación son pasos distintos; la consulta no confirma admisión, elegibilidad para beca ni pago.\nPágina del programa: {landing}\n\nChanak International Academy\nFLDOE #134620 - MSA-CESS Candidate (acreditación todavía no concedida)."),
+/* A single contextual dossier for inquiries and legacy enrollment requests. */
+if ($commercialRegion === '' && $pack) {
+    $en=$pack['language']==='en';
+    $subject=$esMatricula ? ($en ? 'Your application request' : 'Tu solicitud de incorporación') : ($en ? 'Your program dossier' : 'Tu dossier del programa');
+    $reply=[
+        'subject'=>$subject.' | Chanak - '.$routeCfg['label'],
+        'body'=>($en ? "Hello {nombre},\n\nThank you for contacting Chanak.\nYour program dossier, including applicable fees and next steps: {dossier}\n\n" : "Hola {nombre},\n\nGracias por contactar con Chanak.\nTu dossier del programa, con las tarifas aplicables y los próximos pasos: {dossier}\n\n")
+        . ($esMatricula ? ($en ? "We have received your application request. Our team will review your records and confirm the individual plan and quote before admission or payment.\n" : "Recibimos tu solicitud de incorporación. Revisaremos el expediente y confirmaremos plan y cotización antes de formalizar la admisión o el pago.\n") : ($en ? "Our team will review your inquiry and contact you. Requesting information does not enroll a student or authorize a payment.\n" : "Nuestro equipo revisará tu consulta y te contactará. Pedir información no matricula al estudiante ni autoriza un pago.\n"))
+        . ($en ? "\nReply to this email to contact your program team.\nChanak International Academy" : "\nResponde a este correo para contactar con el equipo de tu programa.\nChanak International Academy"),
     ];
 }
 
@@ -735,7 +685,7 @@ respond_json(200, [
     'success' => true,
     'message' => 'Solicitud recibida.',
     'dossier' => $dossier,
-    'dossiers' => $commercialRegion === '' && !$esMatricula && $pack ? array_filter(['initial' => $pack['initial'], 'fees' => $pack['fees'], 'complete' => $pack['complete']]) : ($route === 'general' ? $dossierLinks : array_filter([$route => $dossier])),
+    'dossiers' => $commercialRegion === '' && $pack ? ['program' => $pack['dossier']] : ($route === 'general' ? $dossierLinks : array_filter([$route => $dossier])),
     'email_status' => ['internal_accepted' => $sentInterno, 'family_accepted' => $sentAuto],
     'language' => $pack['language'] ?? 'es',
 ]);
