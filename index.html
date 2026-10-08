@@ -30,7 +30,7 @@
 <link href="https://www.chanakacademy.org/" hreflang="x-default" rel="alternate"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="/assets/site-config.js?v=20261008single"></script>
-<script src="/js/regional-pricing.js?v=20260919rates"></script>
+<script src="/js/regional-pricing.js?v=20261008audit1"></script>
 <script src="/js/regional-selector.js?v=20261008editorial4"></script><script src="/js/chanak-geo-banner.js?v=20260919a" defer></script>
 <script type="application/ld+json">
 {
@@ -90,14 +90,14 @@
  {"@type":"Question","name":"¿Qué es el Aprendizaje por Dominio?","acceptedAnswer":{"@type":"Answer","text":"Es la metodología de Chanak: el estudiante avanza cuando domina el contenido, no cuando lo marca el calendario. Se evalúa el nivel real (no la edad), se identifican lagunas y se construye sobre base sólida. Por eso cada alumno tiene un plan individualizado."}},
  {"@type":"Question","name":"¿Se puede empezar a mitad de curso?","acceptedAnswer":{"@type":"Answer","text":"Sí. Precisamente porque trabajamos con Aprendizaje por Dominio, la incorporación está abierta todo el año: el estudiante empieza desde su nivel real, en cualquier mes, sin depender del ritmo de un grupo."}},
  {"@type":"Question","name":"¿Cuál es el estado real de la acreditación de Chanak?","acceptedAnswer":{"@type":"Answer","text":"Chanak es un colegio privado registrado en el Departamento de Educación de Florida (FLDOE #134620, verificable públicamente) y es candidato oficial a la acreditación MSA-CESS, con evaluación prevista para 2026. Aún no está acreditado por MSA; la candidatura es una fase formal del proceso."}},
- {"@type":"Question","name":"¿Qué incluye el Diagnóstico Académico de 50€?","acceptedAnswer":{"@type":"Answer","text":"Una evaluación completa del nivel real del estudiante (149 preguntas), la identificación de brechas por asignatura y una propuesta personalizada del programa más adecuado."}},
+ {"@type":"Question","name":"¿Qué incluye el Diagnóstico Académico independiente?","acceptedAnswer":{"@type":"Answer","text":"Una evaluación completa del nivel real del estudiante (149 preguntas), la identificación de brechas por asignatura y una propuesta personalizada del programa más adecuado."}},
  {"@type":"Question","name":"¿Qué diferencia hay entre Off-Campus y Dual Diploma?","acceptedAnswer":{"@type":"Answer","text":"Off-Campus es el colegio completo: Chanak es el proveedor académico principal del estudiante. Dual Diploma es complementario: tu hijo sigue en su colegio actual y añade una ruta al diploma americano con una dedicación habitual de 3 a 5 horas semanales. La inversión de cada programa está detallada en su dossier informativo."}},
  {"@type":"Question","name":"¿Con qué currículo trabaja Chanak?","acceptedAnswer":{"@type":"Answer","text":"Chanak es un colegio independiente que se basa en el Aprendizaje por Dominio. Trabajamos con materiales cristocéntricos, de core americano e individualizados que comparten esa filosofía; la familia elige la vía de material más adecuada y Chanak organiza el plan académico, el seguimiento y el expediente. No dependemos de una sola editorial ni estamos afiliados a ninguna."}},
  {"@type":"Question","name":"¿Es lo mismo comprar un currículo que matricularse en Chanak?","acceptedAnswer":{"@type":"Answer","text":"No. Al comprar un currículo, la familia recibe materiales y gestiona todo por su cuenta. Al matricularse en Chanak, el estudiante pertenece a un colegio americano registrado en Florida (FLDOE #134620): recibe evaluación integral, plan personalizado, mentoría, seguimiento en el SIS, expediente académico oficial y diploma."}},
  {"@type":"Question","name":"¿Qué diferencia hay entre currículo, plataforma y colegio?","acceptedAnswer":{"@type":"Answer","text":"El currículo es el contenido (los libros o módulos). La plataforma es la herramienta digital donde se trabaja o registra. El colegio es la institución que matricula, evalúa, certifica y emite el expediente y el diploma. Chanak es el colegio; el currículo y la plataforma son herramientas dentro de nuestro modelo 60/20/20."}},
  {"@type":"Question","name":"¿Puedo usar otros materiales complementarios?","acceptedAnswer":{"@type":"Answer","text":"Sí. El modelo Chanak 60/20/20 está diseñado para integrar el core americano con extensión local y Life Skills. En la Vía Chanak Flex, además, la familia puede proponer materiales aprobados y Chanak valida el aprendizaje mediante sus evaluaciones por dominio."}},
  {"@type":"Question","name":"¿La aceptación del diploma es automática en cualquier país?","acceptedAnswer":{"@type":"Answer","text":"No necesariamente. Los requisitos de reconocimiento, equivalencia u homologación pueden variar según el país, universidad o institución de destino. Recomendamos consultar los requisitos específicos de la institución correspondiente. Nuestro equipo puede orientarte sobre la documentación académica disponible."}},
- {"@type":"Question","name":"¿El diagnóstico académico está incluido?","acceptedAnswer":{"@type":"Answer","text":"En Off-Campus, el diagnóstico académico forma parte del proceso de matrícula. En el programa Dual Diploma, el diagnóstico no está incluido en la matrícula: es un paso previo independiente. El Diagnóstico Académico de 50€ es un servicio distinto, pensado para familias que aún no han elegido programa."}}
+ {"@type":"Question","name":"¿El diagnóstico académico está incluido?","acceptedAnswer":{"@type":"Answer","text":"En Off-Campus, el diagnóstico académico forma parte del proceso de matrícula. En el programa Dual Diploma, el diagnóstico no está incluido en la matrícula: es un paso previo independiente. El Diagnóstico Académico independiente es un servicio distinto, pensado para familias que aún no han elegido programa."}}
  ]
 }
 </script>
@@ -791,10 +791,8 @@ html{scroll-padding-top:90px}
     <div>
       <span class="badge badge-t" style="font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">PRIMARIA K-5</span>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">Off-Campus K-5</h3>
-      <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Colegio completo en casa con Plan Educativo Individualizado (PEI) y respaldo FLDOE #134620.</p>
-      <div id="price-offcampus-elementary" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)">
-        <strong>165 €/mes</strong> <span class="text-xs text-slate-400" style="font-size:.85rem;color:var(--muted)">(10 cuotas) + 250 € matrícula</span>
-      </div>
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Colegio completo en casa con Plan Educativo Individualizado (PEI) y seguimiento de Chanak, colegio registrado en Florida (FLDOE #134620).</p>
+      <div id="price-offcampus-elementary" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)"><strong>Consultar tarifa de mi país</strong></div>
       <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:var(--text)">
         <li>✓ Plataforma LMS y portal de familias</li>
         <li>✓ Report cards y expediente emitidos por Chanak, colegio registrado en Florida (FLDOE #134620)</li>
@@ -810,9 +808,7 @@ html{scroll-padding-top:90px}
       <span class="badge" style="background:rgba(232,160,32,0.15);color:var(--gold);font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">SECUNDARIA Y HIGH SCHOOL</span>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">Off-Campus 6-12</h3>
       <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Secundaria y Bachillerato estadounidense completo con High School Diploma emitido por Chanak.</p>
-      <div id="price-offcampus-secondary" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)">
-        <strong>195 €/mes</strong> <span class="text-xs text-slate-400" style="font-size:.85rem;color:var(--muted)">(10 cuotas) + 290 € matrícula</span>
-      </div>
+      <div id="price-offcampus-secondary" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)"><strong>Consultar tarifa de mi país</strong></div>
       <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:var(--text)">
         <li>✓ Créditos oficiales acumulativos de High School</li>
         <li>✓ Diploma de High School Americano oficial</li>
@@ -829,9 +825,7 @@ html{scroll-padding-top:90px}
       <span class="badge badge-t" style="font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">DOBLE TITULACIÓN</span>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">Dual Diploma</h3>
       <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Doble titulación en paralelo al colegio habitual. En España, compatible con Bachillerato y Formación Profesional (FP).</p>
-      <div id="price-dual-diploma" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)">
-        <strong>135 €/mes</strong> <span class="text-xs text-slate-400" style="font-size:.85rem;color:var(--muted)">(10 cuotas) + 210 € matrícula</span>
-      </div>
+      <div id="price-dual-diploma" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)"><strong>Consultar tarifa de mi país</strong></div>
       <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:var(--text)">
         <li>✓ 100% online (3–5 horas semanales)</li>
         <li>✓ Materias clave e inmersión en inglés</li>
@@ -1159,14 +1153,14 @@ Chanak nació de esta visión: la educación es transmisión de valores, fe y ca
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq6_q">¿Qué es el Aprendizaje por Dominio?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq6_a">Es la metodología de Chanak: el estudiante avanza cuando domina el contenido, no cuando lo marca el calendario. Se evalúa el nivel real (no la edad), se identifican lagunas y se construye sobre base sólida. Por eso cada alumno tiene un plan individualizado.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq7_q">¿Se puede empezar a mitad de curso?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq7_a">Sí. Precisamente porque trabajamos con Aprendizaje por Dominio, la incorporación está abierta todo el año: el estudiante empieza desde su nivel real, en cualquier mes, sin depender del ritmo de un grupo.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq8_q">¿Cuál es el estado real de la acreditación de Chanak?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq8_a">Con total transparencia: Chanak es un colegio privado registrado en el Departamento de Educación de Florida (FLDOE #134620, verificable públicamente) y es candidato oficial a la acreditación MSA-CESS, con evaluación prevista para 2026. Aún no está acreditado por MSA; la candidatura es una fase formal del proceso.</p></div></div>
-<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq9_q">¿Qué incluye el Diagnóstico Académico de 50€?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq9_a">Una evaluación completa del nivel real del estudiante (149 preguntas), la identificación de brechas por asignatura y una propuesta personalizada del programa más adecuado. Si no sabes por dónde empezar, este es el primer paso.</p></div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq9_q">¿Qué incluye el Diagnóstico Académico independiente?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq9_a">Una evaluación completa del nivel real del estudiante (149 preguntas), la identificación de brechas por asignatura y una propuesta personalizada del programa más adecuado. Si no sabes por dónde empezar, este es el primer paso.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq10_q">¿Qué diferencia hay entre Off-Campus y Dual Diploma?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq10_a">Off-Campus es el colegio completo: Chanak es el proveedor académico principal del estudiante. Dual Diploma es complementario: tu hijo sigue en su colegio actual y añade una ruta al diploma americano con una dedicación habitual de 3 a 5 horas semanales.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq11_q">¿Con qué currículo trabaja Chanak?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq11_a">Chanak es un colegio independiente que se basa en el Aprendizaje por Dominio. Trabajamos con materiales cristocéntricos, de core americano e individualizados que comparten esa filosofía; la familia elige la vía de material más adecuada y Chanak organiza el plan académico, el seguimiento y el expediente. No dependemos de una sola editorial ni estamos afiliados a ninguna.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq12_q">¿Es lo mismo comprar un currículo que matricularse en Chanak?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq12_a">No. Al comprar un currículo, la familia recibe materiales y gestiona todo por su cuenta: importación, nivelación, corrección, registros. Al matricularse en Chanak, el estudiante pertenece a un colegio americano registrado en Florida (FLDOE #134620): recibe evaluación integral, plan personalizado, mentoría, seguimiento en el SIS, expediente académico oficial y diploma.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq13_q">¿Qué diferencia hay entre currículo, plataforma y colegio?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq13_a">El currículo es el contenido (los libros o módulos). La plataforma es la herramienta digital donde se trabaja o registra. El colegio es la institución que matricula, evalúa, certifica y emite el expediente y el diploma. Chanak es el colegio; el currículo y la plataforma son herramientas dentro de nuestro modelo 60/20/20.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq14_q">¿Puedo usar otros materiales complementarios?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq14_a">Sí. El modelo Chanak 60/20/20 está diseñado para integrar el core americano con extensión local y Life Skills. En la Vía Chanak Flex, además, la familia puede proponer materiales aprobados y Chanak valida el aprendizaje mediante sus evaluaciones por dominio.</p></div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq15_q">¿La aceptación del diploma es automática en cualquier país?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq15_a">No necesariamente. Los requisitos de reconocimiento, equivalencia u homologación pueden variar según el país, universidad o institución de destino. Recomendamos consultar los requisitos específicos de la institución correspondiente. Nuestro equipo puede orientarte sobre la documentación académica disponible.</p></div></div>
-<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq16_q">¿El diagnóstico académico está incluido?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq16_a">En Off-Campus, el diagnóstico académico forma parte del proceso de matrícula. En el programa Dual Diploma, el diagnóstico no está incluido en la matrícula: es un paso previo independiente. El Diagnóstico Académico de 50€ es un servicio distinto, pensado para familias que aún no han elegido programa.</p></div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span data-i18n="fq16_q">¿El diagnóstico académico está incluido?</span><span class="faq-ic">＋</span></button><div class="faq-a"><p data-i18n="fq16_a">En Off-Campus, el diagnóstico académico forma parte del proceso de matrícula. En el programa Dual Diploma, el diagnóstico no está incluido en la matrícula: es un paso previo independiente. El Diagnóstico Académico independiente es un servicio distinto, pensado para familias que aún no han elegido programa.</p></div></div>
 </div>
 </div>
 </section><details class="home-details"><summary data-i18n="rd_community">Más sobre la comunidad Chanak</summary><section style="padding:56px 0 0;background:#fff">
@@ -1674,7 +1668,7 @@ es:{
  fq7_a:"Sí. Precisamente porque trabajamos con Aprendizaje por Dominio, la incorporación está abierta todo el año: el estudiante empieza desde su nivel real, en cualquier mes, sin depender del ritmo de un grupo.",
  fq8_q:"¿Cuál es el estado real de la acreditación de Chanak?",
  fq8_a:"Con total transparencia: Chanak es un colegio privado registrado en el Departamento de Educación de Florida (FLDOE #134620, verificable públicamente) y es candidato oficial a la acreditación MSA-CESS, con evaluación prevista para 2026. Aún no está acreditado por MSA; la candidatura es una fase formal del proceso.",
- fq9_q:"¿Qué incluye el Diagnóstico Académico de 50€?",
+ fq9_q:"¿Qué incluye el Diagnóstico Académico independiente?",
  fq9_a:"Una evaluación completa del nivel real del estudiante (149 preguntas), la identificación de brechas por asignatura y una propuesta personalizada del programa más adecuado. Si no sabes por dónde empezar, este es el primer paso.",
  fq10_q:"¿Qué diferencia hay entre Off-Campus y Dual Diploma?",
  fq10_a:"Off-Campus es el colegio completo: Chanak es el proveedor académico principal del estudiante. Dual Diploma es complementario: tu hijo sigue en su colegio actual y añade una ruta al diploma americano con una dedicación habitual de 3 a 5 horas semanales.",
@@ -1767,7 +1761,7 @@ es:{
  fq15_q:"¿La aceptación del diploma es automática en cualquier país?",
  fq15_a:"No necesariamente. Los requisitos de reconocimiento, equivalencia u homologación pueden variar según el país, universidad o institución de destino. Recomendamos consultar los requisitos específicos de la institución correspondiente. Nuestro equipo puede orientarte sobre la documentación académica disponible.",
  fq16_q:"¿El diagnóstico académico está incluido?",
- fq16_a:"En Off-Campus, el diagnóstico académico forma parte del proceso de matrícula. En el programa Dual Diploma, el diagnóstico no está incluido en la matrícula: es un paso previo independiente. El Diagnóstico Académico de 50€ es un servicio distinto, pensado para familias que aún no han elegido programa.",
+ fq16_a:"En Off-Campus, el diagnóstico académico forma parte del proceso de matrícula. En el programa Dual Diploma, el diagnóstico no está incluido en la matrícula: es un paso previo independiente. El Diagnóstico Académico independiente es un servicio distinto, pensado para familias que aún no han elegido programa.",
  mode_distancia:"Distancia",
  mode_acomp:"Acompañamiento",
  mode_casa:"Casa",
@@ -1862,7 +1856,7 @@ en:{
  how_lbl:"Process",how_ttl:"How to start",how_sub:"Each student begins with an initial orientation to identify their level and the most suitable program.",
  hw1_t:"You request information",hw1_s:"Fill out the form with your situation.",
  hw2_t:"Orientation call",hw2_s:"We schedule a free call to understand your needs.",
- hw3_t:"Academic assessment or review",hw3_s:"Included in enrollment for Off-Campus. A separate step (€35) for Dual Diploma. Not sure which program to choose? You can request the standalone Academic Diagnostic instead.",
+ hw3_t:"Academic assessment or review",hw3_s:"Included in enrollment for Off-Campus. A separate step for Dual Diploma; the fee depends on the country. Not sure which program to choose? You can request the standalone Academic Diagnostic instead.",
  hw4_t:"Individual Education Plan",hw4_s:"We create a plan with program, pace and appropriate support.",
  hw5_t:"Start with SIS tracking",hw5_s:"The program begins with parent access to the SIS.",
  how_cta:"Request free orientation →",
@@ -1925,7 +1919,7 @@ en:{
  fq7_a:"Yes. Precisely because we work with Mastery Learning, enrollment is open all year: the student starts from their real level, in any month, without depending on a group's pace.",
  fq8_q:"What is the real status of Chanak's accreditation?",
  fq8_a:"With full transparency: Chanak is a private school registered with the Florida Department of Education (FLDOE #134620, publicly verifiable) and is an official candidate for MSA-CESS accreditation, with the validation visit completed in August 2026 and the accreditation decision pending. It is not yet accredited by MSA; candidacy is a formal phase of the process.",
- fq9_q:"What does the €50 Academic Assessment include?",
+ fq9_q:"What does the standalone Academic Assessment include?",
  fq9_a:"A complete evaluation of the student's real level (149 questions), identification of gaps by subject and a personalized proposal for the most suitable program. If you don't know where to start, this is the first step.",
  fq10_q:"What is the difference between Off-Campus and Dual Diploma?",
  fq10_a:"Off-Campus is the complete school: Chanak is the student's main academic provider. Dual Diploma is complementary: your child stays at their current school and adds a pathway to the American diploma with a typical commitment of 3 to 5 hours per week.",
@@ -2018,7 +2012,7 @@ en:{
  fq15_q:"Is diploma acceptance automatic in any country?",
  fq15_a:"Not necessarily. Recognition, equivalency or homologation requirements can vary by country, university or receiving institution. We recommend checking the specific requirements of the institution in question. Our team can guide you on the academic documentation available.",
  fq16_q:"Is the academic diagnostic included?",
- fq16_a:"In Off-Campus, the academic diagnostic is part of the enrollment process. In the Dual Diploma program, the diagnostic is not included in enrollment: it is a separate, prior step. The €50 Academic Diagnostic is a different, standalone service for families who haven't chosen a program yet.",
+ fq16_a:"In Off-Campus, the academic diagnostic is part of the enrollment process. In the Dual Diploma program, the diagnostic is not included in enrollment: it is a separate, prior step. The standalone Academic Diagnostic is a different, standalone service for families who haven't chosen a program yet.",
  mode_distancia:"Remote",
  mode_acomp:"Support",
  mode_casa:"Home",
