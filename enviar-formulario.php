@@ -589,7 +589,7 @@ if ($commercialRegion !== '' && isset($COMMERCIAL_PRICING[$commercialRegion]['do
 /* Information-pack selection is separate from enrollment and payment. */
 require_once __DIR__ . '/_private/dossier-routing.php';
 $pack = chanak_information_pack($route, $data, $_SERVER['HTTP_REFERER'] ?? '', $CONFIG['site_url']);
-if ($commercialRegion === '' && $pack) {
+if ($commercialRegion === '' && !$esMatricula && $pack) {
     $dossier = $pack['initial'];
 }
 
@@ -695,7 +695,7 @@ if (!$sentInterno) {
 $autoreplyKey = $commercialRegion === 'Dubai' ? 'dual_dubai' : ($commercialRegion === 'UAE' ? 'dual_uae' : $route);
 $reply = $esMatricula ? $AUTOREPLY['matricula'] : ($AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general']);
 /* Current initial pack, in the family's language. Fees stay in their country document. */
-if ($commercialRegion === '' && $pack) {
+if ($commercialRegion === '' && !$esMatricula && $pack) {
     $en = $pack['language'] === 'en';
     $reply = [
         'subject' => ($en ? 'Your information pack' : 'Tu dossier inicial') . ' | Chanak - ' . $routeCfg['label'],
@@ -735,7 +735,7 @@ respond_json(200, [
     'success' => true,
     'message' => 'Solicitud recibida.',
     'dossier' => $dossier,
-    'dossiers' => $commercialRegion === '' && $pack ? array_filter(['initial' => $pack['initial'], 'fees' => $pack['fees'], 'complete' => $pack['complete']]) : ($route === 'general' ? $dossierLinks : array_filter([$route => $dossier])),
+    'dossiers' => $commercialRegion === '' && !$esMatricula && $pack ? array_filter(['initial' => $pack['initial'], 'fees' => $pack['fees'], 'complete' => $pack['complete']]) : ($route === 'general' ? $dossierLinks : array_filter([$route => $dossier])),
     'email_status' => ['internal_accepted' => $sentInterno, 'family_accepted' => $sentAuto],
     'language' => $pack['language'] ?? 'es',
 ]);
