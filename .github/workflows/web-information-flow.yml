@@ -1,0 +1,19 @@
+name: Web information flow
+on:
+  pull_request:
+    paths: ['_private/dossier-routing.php', 'enviar-formulario.php', 'tests/**', 'assets/dossiers/**', '.github/workflows/web-information-flow.yml']
+  push:
+    branches: [main]
+    paths: ['_private/dossier-routing.php', 'enviar-formulario.php', 'tests/**', 'assets/dossiers/**', '.github/workflows/web-information-flow.yml']
+permissions:
+  contents: read
+jobs:
+  contextual-information:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PHP and contextual dossier routing
+        run: |
+          php -l enviar-formulario.php
+          php -l _private/dossier-routing.php
+          php tests/information_flow.php

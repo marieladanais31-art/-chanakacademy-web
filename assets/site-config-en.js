@@ -47,30 +47,42 @@
   }
 
   function inferProgram(element, href) {
-    var haystack = plain([
-      location.pathname,
-      href || "",
-      element ? element.textContent : ""
-    ].join(" "));
-
-    if (haystack.indexOf("dual") > -1) return "dual-diploma";
-    if (haystack.indexOf("off-campus") > -1 || haystack.indexOf("off campus") > -1 || haystack.indexOf("homeschool") > -1) return "off-campus";
-    return "general";
-  }
-
-  function buildSisUrl(program, src, sourceHref) {
-    var target = new URL(SIS_MATRICULA_URL);
-    if (sourceHref) {
-      try {
-        var source = new URL(sourceHref, location.origin);
-        source.searchParams.forEach(function (value, key) {
-          target.searchParams.set(key, value);
-        });
-      } catch (error) {}
+    var explicit='';
+    try { var url=new URL(href||location.href,location.origin); explicit=url.searchParams.get('program')||url.searchParams.get('programa')||''; } catch(e){}
+    var declared=element&&element.getAttribute('data-sis-program')||document.body.dataset.program||'';
+    var text=plain(explicit||declared||[location.pathname,element?element.textContent:''].join(' '));
+    if (/alabama|choose/.test(text)) {
+      if (/life/.test(text)) return 'alabama-life-skills';
+      if (/tutor/.test(text)) return 'alabama-tutoring';
+      if (/assessment|diagnost/.test(text)) return 'alabama-academic-assessment';
+      return 'alabama-homeschool';
     }
-    if (program && !target.searchParams.has("programa")) target.searchParams.set("programa", program);
-    if (src && !target.searchParams.has("src")) target.searchParams.set("src", src);
+    if (/florida-heip|pep|ema/.test(text)) return 'florida-heip';
+    if (/dual/.test(text)) return 'dual_diploma';
+    if (/off.?campus|homeschool/.test(text)) return 'off_campus';
+    return 'general';
+  }
+  function buildSisUrl(program, src, sourceHref) {
+    var target=new URL(SIS_MATRICULA_URL);
+    if(sourceHref){try{new URL(sourceHref,location.origin).searchParams.forEach(function(v,k){target.searchParams.set(k,v)})}catch(e){}}
+    if(program&&program!=='general'&&!target.searchParams.has('program')) target.searchParams.set('program',program);
+    var country=target.searchParams.get('country')||(window.getCurrentCountry?window.getCurrentCountry():'GLOBAL');
+    if(/^alabama-|^florida-heip/.test(program||''))country='US';
+    target.searchParams.set('country',country);
+    var market=window.CHANAK_PRICING&&window.CHANAK_PRICING.markets[country];
+    if(/^alabama-|^florida-heip/.test(program||''))target.searchParams.set('currency','USD');
+    else if(!target.searchParams.has('currency'))target.searchParams.set('currency',market?market.currency:'USD');
+    if(src&&!target.searchParams.has('src'))target.searchParams.set('src',src);
+    if(program==='florida-heip'&&!target.searchParams.has('funding'))target.searchParams.set('funding','scholarship');
+    if(/^alabama-/.test(program||'')&&!target.searchParams.has('funding'))target.searchParams.set('funding','choose');
     return target.toString();
+  }
+  function enrollmentTarget(program,src,sourceHref) {
+    if(program!=='general')return buildSisUrl(program,src,sourceHref);
+    var chooser=new URL('/matricula/',location.origin);
+    chooser.searchParams.set('country',window.getCurrentCountry?window.getCurrentCountry():'GLOBAL');
+    chooser.searchParams.set('src',src||'web');
+    return chooser.toString();
   }
 
   function isDiagnosticPayment(anchor, href) {
@@ -105,7 +117,7 @@
     if (!rawHref) return;
 
     if (isEnrollmentStripe(anchor, href)) {
-      anchor.href = buildSisUrl(inferProgram(anchor, href), "stripe-guard", href);
+      anchor.href = enrollmentTarget(inferProgram(anchor, href), "stripe-guard", href);
       cleanTarget(anchor);
       anchor.dataset.chanakFlow = "sis-before-payment";
       if (text.indexOf("pagar") > -1 || text.indexOf("matric") > -1 || text.indexOf("checkout") > -1
@@ -116,7 +128,7 @@
     }
 
     if (/^\/matricula\/?/i.test(rawHref) || /^https:\/\/www\.chanakacademy\.org\/matricula\/?/i.test(href)) {
-      anchor.href = buildSisUrl(inferProgram(anchor, rawHref), "web-link", rawHref);
+      anchor.href = enrollmentTarget(inferProgram(anchor, rawHref), "web-link", rawHref);
       cleanTarget(anchor);
       anchor.dataset.chanakFlow = "sis-enrollment";
       return;
@@ -163,7 +175,7 @@
     event.preventDefault();
     event.stopPropagation();
     if (event.stopImmediatePropagation) event.stopImmediatePropagation();
-    location.href = buildSisUrl(inferProgram(button, ""), "button-guard");
+    location.href = enrollmentTarget(inferProgram(button, ""), "button-guard");
   }, true);
 
 
@@ -234,10 +246,6 @@
     overflowGuard();
   }
 
-  if (location.hostname === "www.chanakacademy.org" && /^\/matricula\/?$/i.test(location.pathname)) {
-    location.replace(buildSisUrl("general", "legacy-matricula", location.href));
-    return;
-  }
 
   ready(function () {
     var tries = 0;

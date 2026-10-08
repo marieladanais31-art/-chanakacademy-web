@@ -106,13 +106,14 @@
 
     document.querySelectorAll('[data-chanak-dossier-program]').forEach(function(link) {
       var program = link.getAttribute('data-chanak-dossier-program');
-      var suffix = countryCode === 'GLOBAL' ? 'en' : countryCode.toLowerCase();
-      link.setAttribute('href', '/assets/dossiers/dossier-' + program + '-' + suffix + '.pdf');
+      var suffix = countryCode.toLowerCase()+'-'+(document.documentElement.lang.indexOf('en')===0?'en':'es');
+      link.setAttribute('href', '/assets/dossiers/family/' + program + '-' + suffix + '.pdf');
     });
     document.querySelectorAll('a[href*="/assets/dossiers/dossier-off-campus"],a[href*="/assets/dossiers/dossier-dual-diploma"]').forEach(function(link) {
       var program = link.getAttribute('href').indexOf('off-campus') !== -1 ? 'off-campus' : 'dual-diploma';
-      var suffix = countryCode === 'GLOBAL' ? 'en' : countryCode.toLowerCase();
-      link.setAttribute('href', '/assets/dossiers/dossier-' + program + '-' + suffix + '.pdf');
+      link.setAttribute('data-chanak-dossier-program',program);
+      var suffix = countryCode.toLowerCase()+'-'+(document.documentElement.lang.indexOf('en')===0?'en':'es');
+      link.setAttribute('href', '/assets/dossiers/family/' + program + '-' + suffix + '.pdf');
     });
 
     if (!catalog) return;
@@ -149,6 +150,8 @@
       btn.setAttribute('href', window.buildSisEnrollmentUrl(prog, grade, countryCode));
     });
   }
+
+  window.addEventListener('chanak:languageChange',function(){updateUIElements(window.getCurrentCountry())});
 
   function injectSelectorStyles() {
     if (document.getElementById('chanak-region-css')) return;
