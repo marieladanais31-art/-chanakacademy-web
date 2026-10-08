@@ -2624,7 +2624,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  try{banClosed=sessionStorage.getItem('chanak_matban')==='off'}catch(e){}
  if(!banClosed)document.getElementById('matBanner').classList.add('show');
  // Admisiones flotante tras 3s
- setTimeout(()=>document.getElementById('waFloat').classList.add('show'),3000);
+ setTimeout(()=>document.getElementById('waFloat')?.classList.add('show'),3000);
  if(!localStorage.getItem('chanak_ck'))setTimeout(()=>document.getElementById('ckBanner').classList.add('show'),1800);
 });
 </script>
