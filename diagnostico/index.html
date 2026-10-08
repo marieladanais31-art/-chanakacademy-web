@@ -628,7 +628,7 @@ footer a{color:rgba(255,255,255,.42);text-decoration:underline}
  <div class="trust-sep" aria-hidden="true"></div>
  <div class="trust-item">
  <div class="trust-icon">⏱️</div>
- Resultados en menos de 48 h
+ Resultados y próximos pasos
  </div>
  <div class="trust-sep" aria-hidden="true"></div>
  <div class="trust-item">
@@ -689,7 +689,7 @@ footer a{color:rgba(255,255,255,.42);text-decoration:underline}
  <div class="inc-num">01</div>
  <div>
  <h4>Enlace de evaluación diagnóstica</h4>
- <p>Acceso inmediato a la evaluación académica adaptada al nivel del estudiante.</p>
+ <p>Acceso a la evaluación una vez confirmado el servicio académica adaptada al nivel del estudiante.</p>
  </div>
  </div>
  <div class="inc-item" data-sr>
@@ -801,7 +801,7 @@ footer a{color:rgba(255,255,255,.42);text-decoration:underline}
  <div class="cta-price">
  <div class="cta-price-was" id="cta-price-was"></div>
  <span class="cta-price-now" id="cta-price-now">tarifa según país</span>
- <span class="cta-price-tag">oferta de lanzamiento</span>
+ <span class="cta-price-tag">pago único</span>
  </div>
  <a href="#formulario" class="btn btn-green btn-full dynamic-cta">
  Solicitar orientación gratuita
@@ -829,8 +829,8 @@ footer a{color:rgba(255,255,255,.42);text-decoration:underline}
  <div class="wrap">
  <div data-sr>
  <span class="eyebrow">Solicita tu evaluación</span>
- <h2 class="section-title">Empieza hoy — cupos limitados</h2>
- <p class="section-sub">Completa el formulario y un orientador de Chanak Academy se pondrá en contacto en menos de 48 horas.</p>
+ <h2 class="section-title">Empieza con orientación personal</h2>
+ <p class="section-sub">Completa el formulario y un orientador de Chanak Academy se pondrá en contacto en 1 día hábil.</p>
  </div>
 
  <div class="form-shell" data-sr>
@@ -883,6 +883,7 @@ footer a{color:rgba(255,255,255,.42);text-decoration:underline}
  <option value="España">España</option>
  <option value="Panamá">Panamá</option>
  <option value="México">México</option>
+ <option value="Estados Unidos">Estados Unidos</option>
  <option value="Otro">Otro</option>
  </select>
  <input type="text" id="otro_pais" placeholder="Escribe tu país" style="display:none;margin-top:8px;">
@@ -1029,7 +1030,7 @@ const COUNTRY_CONFIG = {
  mx:{label:'México',formCountry:'México',heroCopy:'Evaluación académica y recomendaciones iniciales para familias en México.',hint:''},
  pa:{label:'Panamá',formCountry:'Panamá',heroCopy:'Evaluación académica y recomendaciones iniciales para familias en Panamá.',hint:''},
  us:{label:'Estados Unidos',formCountry:'Estados Unidos',heroCopy:'Academic assessment and initial recommendations for families in the United States.',hint:''},
- int:{label:'Internacional',formCountry:'Internacional',heroCopy:'Evaluación académica y orientación inicial según el contexto de la familia.',hint:'El equipo confirma la moneda y el pago antes de comenzar.'}
+ int:{label:'Internacional',formCountry:'Otro',heroCopy:'Evaluación académica y orientación inicial según el contexto de la familia.',hint:'El equipo confirma la moneda y el pago antes de comenzar.'}
 };
 
 function withUTM(baseUrl) {
@@ -1096,6 +1097,7 @@ function applyCountryConfig(countryCode) {
  document.querySelectorAll('.dynamic-cta').forEach(el => el.textContent = c.cta);
  document.getElementById('submit-btn').textContent = `${c.cta} →`;
  document.getElementById('pais').value = c.formCountry;
+ document.getElementById('otro_pais').style.display=c.formCountry==='Otro'?'block':'none';
  const stripeBtn = document.getElementById('stripe-payment-btn');
  if (!c.stripeUrl) {
  stripeBtn.textContent = 'Solicitar información';
