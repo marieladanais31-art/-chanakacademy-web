@@ -77,12 +77,21 @@
     }
     control.addEventListener('click', show); document.body.appendChild(control); if (!saved) show();
   });
+  function enrollment(program) {
+    window.gtag('event', 'matricula_click', { event_category:'enrollment', event_label:program });
+    if(state.marketing && window.fbq)window.fbq('track', 'InitiateCheckout', {content_name:program});
+  }
+  document.addEventListener('submit',function(e){
+    var form=e.target, url;
+    if(!form.action || form.method.toLowerCase()!=='get')return;
+    try{url=new URL(form.action,location.href)}catch(_){return}
+    if(/\/(matricula|enrollment)\/?$/.test(url.pathname))enrollment((form.elements.program && form.elements.program.value)||document.body.dataset.program||'general');
+  },true);
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a'); if (!a) return;
     var url; try { url = new URL(a.href, location.href); } catch (_) { return; }
     if (/\/(matricula|enrollment)\/?$/.test(url.pathname)) {
-      window.gtag('event', 'matricula_click', { event_category: 'enrollment', event_label: document.body.dataset.program || url.searchParams.get('program') || 'general' });
-      if (state.marketing && window.fbq) window.fbq('track', 'InitiateCheckout', { content_name: document.body.dataset.program || 'enrollment' });
+      enrollment(document.body.dataset.program || url.searchParams.get('program') || 'general');
     }
   }, true);
 })();
