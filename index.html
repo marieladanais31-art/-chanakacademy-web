@@ -647,7 +647,7 @@ html{scroll-padding-top:90px}
 @media(max-width:640px){.home-section{padding:45px 0}.hero,.hero-c{min-height:660px}.hero-in{padding:60px 0}.hero h1{font-size:2.7rem}.home-program-grid,.home-model-grid,.home-steps,.home-institution-grid{grid-template-columns:1fr}.home-card-photo{height:210px}.home-country-grid{grid-template-columns:1fr}.home-details{margin:14px 16px}.home-details>summary{padding:18px}.home-details .wrap{width:calc(100% - 32px)}.logo-nm{font-size:.86rem}.logo-sub{font-size:.6rem}.logo-pill{width:44px}.nav-r{gap:5px}.home-model-grid{gap:4px}.hero-ctas .btn{width:100%;justify-content:center}.trust-bar{font-size:.7rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.home-program{transition:none}.home-program:hover{transform:none}}
 .home-program-icon{display:flex;gap:12px;align-items:center}.home-program-icon svg{width:26px;height:26px;color:var(--teal)}
-</style>
+@media(min-width:960px) and (max-width:1100px){.nav-links{display:none}.hb-btn{display:flex}.nav-i{justify-content:space-between}.nav-r{margin-left:auto}}\n</style>
 </head>
 <body>
 <!-- COOKIE BANNER -->
@@ -686,11 +686,8 @@ html{scroll-padding-top:90px}
 </a>
 <div class="nav-links">
 <a class="act" data-i18n="n_home" href="#inicio">Inicio</a>
-<a data-i18n="n_quien" href="#quien">Quiénes somos</a>
 <a data-i18n="n_prog" href="#objetivo">Programas</a>
 <a data-i18n="rd_prices_nav" href="#tarifas">Tarifas</a>
-<a data-i18n="n_uni" href="/universidad-eeuu/">Universidad EE.UU.</a>
-<a data-i18n="n_como" href="#como">Cómo empezar</a>
 <a data-i18n="rd_institution_nav" href="#instituciones">Instituciones</a>
 <a data-i18n="n_contact" href="#dossier">Contacto</a>
 </div>
@@ -2633,7 +2630,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 <script>
 // Open tariff disclosure for direct links and preselect the inquiry without sending it.
-function revealHomeAnchor(){if(location.hash==='#tarifas'){const d=document.getElementById('tarifas')?.closest('details');if(d)d.open=true;document.getElementById('tarifas')?.scrollIntoView();}}
+function revealHomeAnchor(){const target=document.getElementById(location.hash.slice(1));const d=target?.closest('details');if(d){d.open=true;target.scrollIntoView();}}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const target=document.getElementById(a.getAttribute('href').slice(1));const d=target?.closest('details');if(d)d.open=true;},true);
 window.addEventListener('hashchange',revealHomeAnchor);window.addEventListener('load',revealHomeAnchor);
 document.querySelectorAll('[data-inquiry-program]').forEach(a=>a.addEventListener('click',()=>{const r=document.querySelector('input[name="necesidad"][value="'+a.dataset.inquiryProgram+'"]');if(r){r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}));}}));
 </script>
