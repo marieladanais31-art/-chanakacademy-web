@@ -148,7 +148,8 @@
       var prog = btn.getAttribute('data-sis-program');
       var grade = btn.getAttribute('data-sis-grade') || 'standard';
       var target = new URL(window.buildSisEnrollmentUrl(prog, grade, countryCode));
-      target.searchParams.set('currency', region.currency);
+      var market = window.CHANAK_PRICING && window.CHANAK_PRICING.markets[countryCode];
+      target.searchParams.set('currency', market ? market.currency : region.currency);
       btn.setAttribute('href', target.toString());
     });
   }
