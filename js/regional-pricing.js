@@ -139,7 +139,7 @@ window.CHANAK_PRICING = {
         note: 'El alumno queda registrado en una escuela privada americana bajo supervisión central desde Florida; la familia conserva la responsabilidad legal educativa local según su país de residencia.',
         tiers: [
           { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', description: 'Currículo estadounidense completo, créditos oficiales y transcript FLDOE #134620.' }
+          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', description: 'Currículo estadounidense completo, créditos y expediente emitidos por Chanak, colegio registrado en Florida (FLDOE #134620).' }
         ],
         footnote: 'Plan de colegiatura adaptado a las necesidades de cada estudiante y familia. Material y currículo no incluidos.'
       },
@@ -314,7 +314,7 @@ window.CHANAK_PRICING = {
           { key: 'high',        title: 'High School (9-12)',          monthly: '$365 USD', totalYear: '$3,945 USD',
             description: 'Graduation track with College & Career Readiness, SAT prep and counseling.' }
         ],
-        footnote: 'Annual tuition includes enrollment plus ten monthly payments. Tuition fits within state scholarship award amounts where families qualify. Curriculum and materials not included; each family chooses and purchases their own (estimated cost $300-500 USD/year).'
+        footnote: 'Annual tuition includes enrollment plus ten monthly payments. Direct-pay school tuition is separate from EMA and CHOOSE service listings. State funding is limited to approved services and eligible families. Curriculum and materials not included; each family chooses and purchases their own (estimated cost $300-500 USD/year).'
       },
 
       // PROGRAMA SECUNDARIO: Adult High School Completion (desde $2,500 USD)
@@ -462,3 +462,4 @@ window.getDossierUrl = function (program, countryCode) {
   }
   return '/assets/dossiers/dossier-' + prog + '-' + country + '.pdf?v=202609';
 };
+

@@ -69,7 +69,7 @@ img,svg{max-width:100%}
 footer{background:#0c2d48;color:#94a3b8;padding:42px 0 24px;font-size:13.5px}
 footer a{color:#cbd5e1;text-decoration:none}
 </style>
-</head>
+<script src="/assets/js/consent-tracking.js?v=20261008audit1"></script></head>
 <body>
 
 <div class="topbar">
@@ -103,7 +103,7 @@ footer a{color:#cbd5e1;text-decoration:none}
 
   <section class="sec" id="tuition">
     <h2>Services &amp; Fee Schedule</h2>
-    <p class="lead">Published rates for the 2026–2027 academic year. Every program includes one initial assessment and program setup fee of $295 plus ten monthly installments. Learning materials and textbooks are purchased separately by each family.</p>
+    <p class="lead">Published rates for the 2026–2027 academic year. Every program includes one initial assessment and program setup fee of $295 plus ten monthly installments. Learning materials and textbooks are purchased separately by each family. The published setup fee is not automatically eligible for scholarship payment: confirm the specific approved item in EMA before authorizing a charge.</p>
 
     <div class="tuition-grid">
       <!-- Elementary -->
@@ -313,10 +313,13 @@ document.querySelectorAll('.information-request').forEach(form => {
     try {
       const formData = new FormData(form);
       formData.set('country_code', 'US');
+      const params = new URLSearchParams(location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(key=>{if(params.has(key))formData.set(key,params.get(key));});
       formData.set('language', typeof currentLang !== 'undefined' ? currentLang : (document.documentElement.lang || 'es'));
       const response = await fetch(form.action, {method: 'POST', body: formData});
       const data = await response.json();
-      if (!response.ok || !(data.ok || data.success)) throw new Error('Request failed');
+      if (!response.ok || data.success !== true) throw new Error('Request failed');
+      if(window.ChanakTracking)window.ChanakTracking.lead('florida-heip');
       result.textContent = 'Solicitud recibida. Nuestro equipo te contactará. / Request received. Our team will contact you.';
       if (data.dossier) {
         const dossier = new URL(data.dossier, location.origin);
@@ -335,4 +338,5 @@ document.querySelectorAll('.information-request').forEach(form => {
 });
 </script></body>
 </html>
+
 
