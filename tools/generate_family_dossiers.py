@@ -3,11 +3,56 @@ from pathlib import Path
 from copy import deepcopy
 from urllib.parse import urlencode
 from xml.sax.saxutils import escape
-import json, subprocess
-from reportlab.platypus import PageBreak, Table, TableStyle, Spacer
+import json, subprocess, io
+from reportlab.platypus import PageBreak, Table, TableStyle, Spacer, Flowable, SimpleDocTemplate, Image
 from reportlab.lib import colors
 from reportlab.lib.units import mm
-from generate_initial_dossiers import ROOT, OUT, DATA, P, heading, section, credentials, link, build
+from generate_initial_dossiers import ROOT, OUT, DATA, P, section, credentials, link, styles
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.utils import ImageReader
+from PIL import Image as PILImage, ImageOps
+
+# The family edition has a photographic cover and a restrained editorial system.
+# Source copy and country fees remain separate from the presentation layer.
+styles['title'].fontSize=22; styles['title'].leading=26
+styles['title'].spaceAfter=9
+styles['body'].fontSize=10.3; styles['body'].leading=14.6; styles['body'].spaceAfter=8
+styles['h'].fontSize=11.5; styles['h'].leading=15; styles['h'].spaceBefore=9
+
+class CoverPhoto(Flowable):
+    def __init__(self,title,lang):
+        Flowable.__init__(self);self.width=174*mm;self.height=50*mm;self.lang=lang
+        file='universidad-dual-diploma.jpg' if ('dual' in title.lower() or 'high school' in title.lower()) else ('universidad-life-skills.jpg' if 'life' in title.lower() else 'universidad-off-campus.jpg')
+        im=PILImage.open(ROOT/'assets/img'/file).convert('RGB')
+        buffer=io.BytesIO();ImageOps.fit(im,(1200,345),centering=(.5,.4)).save(buffer,format='JPEG',quality=83)
+        buffer.seek(0);self.image=ImageReader(buffer)
+    def draw(self):
+        c=self.canv;c.saveState();c.drawImage(self.image,0,0,width=self.width,height=self.height)
+        c.setFillColor(colors.HexColor('#0c2d48'));c.rect(0,0,self.width,9*mm,fill=1,stroke=0)
+        c.setFont('ChanakBold',8);c.setFillColor(colors.white)
+        c.drawString(5*mm,3*mm,'EDUCATION WITH PURPOSE' if self.lang=='en' else 'EDUCACIÓN CON PROPÓSITO')
+        c.restoreState()
+
+def heading(title,lang,subtitle=''):
+    brand=Table([[Image(str(OUT/'brand-logo.png'),width=18*mm,height=18*mm),P('CHANAK INTERNATIONAL ACADEMY<br/>'+('FAMILY GUIDE' if lang=='en' else 'GUÍA PARA FAMILIAS')+' · 2026-2027','small')]],colWidths=[25*mm,149*mm])
+    brand.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'MIDDLE'),('LEFTPADDING',(0,0),(-1,-1),0),('BOTTOMPADDING',(0,0),(-1,-1),7)]))
+    return [brand,CoverPhoto(title,lang),Spacer(1,5*mm),P(title,'title'),P(subtitle)]
+
+def editorial_page(c,d):
+    c.saveState();c.setFillColor(colors.HexColor('#168b98'));c.rect(0,A4[1]-3*mm,A4[0],3*mm,fill=1,stroke=0)
+    if d.page>1:
+        c.setFont('ChanakBold',8);c.setFillColor(colors.HexColor('#0c2d48'));c.drawString(18*mm,A4[1]-11*mm,'CHANAK / FAMILY GUIDE / 2026-2027')
+        # The closing photograph sits below the text frame used by the fee page.
+        photo=CoverPhoto(d.title,'en' if d.title.endswith('-en') else 'es')
+        c.drawImage(photo.image,18*mm,27*mm,width=174*mm,height=50*mm)
+    c.setFillColor(colors.HexColor('#0c2d48'));c.rect(0,0,A4[0],17*mm,fill=1,stroke=0)
+    c.setFont('ChanakSans',7.5);c.setFillColor(colors.white);c.drawString(18*mm,7*mm,'Chanak International Academy · www.chanakacademy.org')
+    c.drawRightString(192*mm,7*mm,f'{d.page:02d}');c.restoreState()
+
+def build(name,story):
+    path=OUT/name;path.parent.mkdir(parents=True,exist_ok=True)
+    SimpleDocTemplate(str(path),pagesize=A4,leftMargin=18*mm,rightMargin=18*mm,topMargin=17*mm,bottomMargin=23*mm,title='Chanak - '+name.stem,author='Chanak International Academy',pageCompression=1).build(story,onFirstPage=editorial_page,onLaterPages=editorial_page)
+    return path
 
 COUNTRIES = {'ES':('España','Spain'),'MX':('México','Mexico'),'PA':('Panamá','Panama'),'CO':('Colombia','Colombia'),'US':('Estados Unidos','United States'),'GLOBAL':('Internacional','International')}
 
@@ -96,5 +141,9 @@ if __name__=='__main__':
     for route,key in [('offcampus','off-campus'),('dual','dual-diploma'),('diagnostico','diagnostico')]:
         routes[route]={'countries':{c:{l:f'/assets/dossiers/family/{key}-{c.lower()}-{l}.pdf' for l in ('es','en')} for c in COUNTRIES}}
     for route,key in [('florida_pep_ema','florida-heip'),('alabama_choose','alabama-choose'),('life_skills','life-skills'),('general','general')]:routes[route]={'single':{l:f'/assets/dossiers/family/{key}-{l}.pdf' for l in ('es','en')}}
-    (OUT/'catalog.json').write_text(json.dumps({'version':'2026.10.08-single','routes':routes},ensure_ascii=False,indent=2)+'\n')
+    def version_urls(value):
+        if isinstance(value,dict):return {k:version_urls(v) for k,v in value.items()}
+        return value+'?v=20261008editorial' if isinstance(value,str) and value.endswith('.pdf') else value
+    routes=version_urls(routes)
+    (OUT/'catalog.json').write_text(json.dumps({'version':'2026.10.08-editorial','routes':routes},ensure_ascii=False,indent=2)+'\n')
     for path in paths:print(path.relative_to(ROOT))

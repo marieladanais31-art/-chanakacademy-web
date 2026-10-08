@@ -6,7 +6,7 @@
   var code=function(){return window.getCurrentCountry?window.getCurrentCountry():'GLOBAL'};
   function sisUrl(source){var r=window.SUPPORTED_REGIONS&&window.SUPPORTED_REGIONS[code()];var u=new URL('https://sis.chanakacademy.org/matricula');u.searchParams.set('programa',program);u.searchParams.set('program',program==='off-campus'?'off_campus':'dual_diploma');u.searchParams.set('country',code());u.searchParams.set('currency',r?r.currency:'USD');u.searchParams.set('src',source||'program-landing');return u.toString()}
   function paymentUrl(c){var x=window.CHANAK_CONFIG&&window.CHANAK_CONFIG.stripe;if(!x)return'';if(c==='MX')return x.mexico;if(c==='CO')return x.colombia;return''}
-  function dossierUrl(c){var country=['ES','MX','PA','CO','US','GLOBAL'].indexOf(c)>=0?c:'GLOBAL';return '/assets/dossiers/family/'+program+'-'+country.toLowerCase()+'-'+(document.documentElement.lang.indexOf('en')===0?'en':'es')+'.pdf'}
+  function dossierUrl(c){var country=['ES','MX','PA','CO','US','GLOBAL'].indexOf(c)>=0?c:'GLOBAL';return '/assets/dossiers/family/'+program+'-'+country.toLowerCase()+'-'+(document.documentElement.lang.indexOf('en')===0?'en':'es')+'.pdf?v=20261008editorial'}
   function render(){
     var c=code(),region=window.SUPPORTED_REGIONS&&window.SUPPORTED_REGIONS[c]||{flag:'🌎',name:'Internacional',currency:'USD'};
     $$('[data-region-label]').forEach(function(el){el.textContent=region.flag+' '+region.name});
