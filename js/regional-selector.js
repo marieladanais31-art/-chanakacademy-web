@@ -147,7 +147,9 @@
     document.querySelectorAll('[data-sis-program]').forEach(function(btn) {
       var prog = btn.getAttribute('data-sis-program');
       var grade = btn.getAttribute('data-sis-grade') || 'standard';
-      btn.setAttribute('href', window.buildSisEnrollmentUrl(prog, grade, countryCode));
+      var target = new URL(window.buildSisEnrollmentUrl(prog, grade, countryCode));
+      target.searchParams.set('currency', region.currency);
+      btn.setAttribute('href', target.toString());
     });
   }
 

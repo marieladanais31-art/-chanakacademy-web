@@ -31,7 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="/assets/site-config.js?v=20261008single"></script>
 <script src="/js/regional-pricing.js?v=20260919rates"></script>
-<script src="/js/regional-selector.js?v=20261008single"></script><script src="/js/chanak-geo-banner.js?v=20260919a" defer></script>
+<script src="/js/regional-selector.js?v=20261008single2"></script><script src="/js/chanak-geo-banner.js?v=20260919a" defer></script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -2711,6 +2711,16 @@ function toggleFaq(btn){
  btn.setAttribute('aria-expanded',open?'true':'false');
 }
 
+function syncInquiryCountry(){
+ const field=document.getElementById('fp');if(!field)return;
+ const code=window.getCurrentCountry?window.getCurrentCountry():'GLOBAL';
+ const words={ES:/España|Spain|Espanya|Espagne/,MX:/México|Mexico|Mexique/,PA:/Panamá|Panama/,CO:/Colombia|Colombie/,US:/Estados Unidos|United States|États-Unis|Estats Units/,GLOBAL:/Otro|Other|Autre|Altre/};
+ const option=Array.from(field.options).find(o=>(words[code]||words.GLOBAL).test(o.textContent));
+ if(option)field.value=option.value;
+}
+window.addEventListener('chanak:countryChange',syncInquiryCountry);
+window.addEventListener('chanak:languageChange',syncInquiryCountry);
+document.addEventListener('DOMContentLoaded',syncInquiryCountry);
 // ── INIT ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
  // Enlaces centralizados en assets/site-config.js
