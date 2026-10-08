@@ -1,0 +1,93 @@
+{
+  "version": "2026.10.08",
+  "languages": [
+    "es",
+    "en"
+  ],
+  "routes": {
+    "offcampus": {
+      "initial": {
+        "es": "/assets/dossiers/initial/off-campus-es.pdf",
+        "en": "/assets/dossiers/initial/off-campus-en.pdf"
+      },
+      "complete": {
+        "en": "/assets/dossiers/complete/off-campus-en.pdf"
+      },
+      "fees": {
+        "ES": "/assets/dossiers/dossier-off-campus-es.pdf",
+        "MX": "/assets/dossiers/dossier-off-campus-mx.pdf",
+        "PA": "/assets/dossiers/dossier-off-campus-pa.pdf",
+        "CO": "/assets/dossiers/dossier-off-campus-co.pdf",
+        "US": "/assets/dossiers/dossier-off-campus-us.pdf"
+      },
+      "fees_en": {
+        "ES": "/assets/dossiers/dossier-off-campus-es-en.pdf",
+        "MX": "/assets/dossiers/dossier-off-campus-mx-en.pdf",
+        "PA": "/assets/dossiers/dossier-off-campus-pa-en.pdf"
+      }
+    },
+    "dual": {
+      "initial": {
+        "es": "/assets/dossiers/initial/dual-diploma-es.pdf",
+        "en": "/assets/dossiers/initial/dual-diploma-en.pdf"
+      },
+      "complete": {
+        "en": "/assets/dossiers/complete/dual-diploma-en.pdf"
+      },
+      "fees": {
+        "ES": "/assets/dossiers/dossier-dual-diploma-es.pdf",
+        "MX": "/assets/dossiers/dossier-dual-diploma-mx.pdf",
+        "PA": "/assets/dossiers/dossier-dual-diploma-pa.pdf",
+        "CO": "/assets/dossiers/dossier-dual-diploma-co.pdf",
+        "US": "/assets/dossiers/dossier-dual-diploma-us.pdf"
+      },
+      "fees_en": {
+        "ES": "/assets/dossiers/dossier-dual-diploma-es-en.pdf",
+        "MX": "/assets/dossiers/dossier-dual-diploma-mx-en.pdf",
+        "PA": "/assets/dossiers/dossier-dual-diploma-pa-en.pdf"
+      }
+    },
+    "diagnostico": {
+      "initial": {
+        "es": "/assets/dossiers/initial/diagnostico-es.pdf",
+        "en": "/assets/dossiers/initial/diagnostico-en.pdf"
+      },
+      "complete": {},
+      "fees": {}
+    },
+    "life_skills": {
+      "initial": {
+        "es": "/assets/dossiers/initial/life-skills-es.pdf",
+        "en": "/assets/dossiers/initial/life-skills-en.pdf"
+      },
+      "complete": {
+        "en": "/assets/dossiers/complete/life-skills-en.pdf"
+      },
+      "fees": {}
+    },
+    "general": {
+      "initial": {
+        "es": "/assets/dossiers/initial/general-es.pdf",
+        "en": "/assets/dossiers/initial/general-en.pdf"
+      },
+      "complete": {},
+      "fees": {}
+    },
+    "florida_pep_ema": {
+      "initial": {
+        "es": "/assets/dossiers/initial/florida-heip-es.pdf",
+        "en": "/assets/dossiers/initial/florida-heip-en.pdf"
+      },
+      "complete": {},
+      "fees": {}
+    },
+    "alabama_choose": {
+      "initial": {
+        "es": "/assets/dossiers/initial/alabama-choose-es.pdf",
+        "en": "/assets/dossiers/initial/alabama-choose-en.pdf"
+      },
+      "complete": {},
+      "fees": {}
+    }
+  }
+}

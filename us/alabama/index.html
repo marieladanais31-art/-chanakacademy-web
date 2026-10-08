@@ -95,10 +95,22 @@ document.querySelectorAll('.information-request').forEach(form => {
     button.disabled = true;
     result.textContent = 'Enviando / Sending…';
     try {
-      const response = await fetch(form.action, {method: 'POST', body: new FormData(form)});
+      const formData = new FormData(form);
+      formData.set('country_code', 'US');
+      formData.set('language', typeof currentLang !== 'undefined' ? currentLang : (document.documentElement.lang || 'es'));
+      const response = await fetch(form.action, {method: 'POST', body: formData});
       const data = await response.json();
       if (!response.ok || !(data.ok || data.success)) throw new Error('Request failed');
       result.textContent = 'Solicitud recibida. Nuestro equipo te contactará. / Request received. Our team will contact you.';
+      if (data.dossier) {
+        const dossier = new URL(data.dossier, location.origin);
+        if (dossier.origin === location.origin && dossier.pathname.startsWith('/assets/dossiers/')) {
+          const link = document.createElement('a');
+          link.href = dossier.href; link.target = '_blank'; link.rel = 'noopener';
+          link.textContent = ' Descargar dossier / Download information pack';
+          result.appendChild(link);
+        }
+      }
       form.reset();
     } catch {
       result.textContent = 'No pudimos confirmar el envío. Intenta nuevamente o escribe a offcampus@chanakacademy.org. / Unable to confirm submission. Please retry or email us.';
