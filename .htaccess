@@ -19,6 +19,14 @@ RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L]
 
+# Redirecciones oficiales a las URLs de los estados aprobados (sin /scholarships/)
+RewriteRule ^scholarships/utah(/.*)?$ /utah$1 [R=301,L]
+RewriteRule ^scholarships/wyoming(/.*)?$ /wyoming$1 [R=301,L]
+RewriteRule ^scholarships/arizona(/.*)?$ /arizona$1 [R=301,L]
+RewriteRule ^scholarships/alabama(/.*)?$ /alabama$1 [R=301,L]
+RewriteRule ^scholarships/south-carolina(/.*)?$ /south-carolina$1 [R=301,L]
+RewriteRule ^scholarships/new-hampshire(/.*)?$ /new-hampshire$1 [R=301,L]
+
 # Carpeta privada (leads, logs, claves): nunca accesible desde la web.
 RewriteRule ^_private(/|$) - [F,L]
 
