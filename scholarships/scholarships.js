@@ -93,6 +93,12 @@
       cat_ment_price: "$150 / month",
       cat_ment_desc: "One-on-one pedagogical mentoring, weekly accountability check-ins, study habit coaching, and specialized academic support.",
 
+      // Odyssey Hero Texts
+      hero_ut_title: "Approved Nonpublic Online K–12 School & Tuition for Utah Families",
+      hero_ut_lead: "Fund up to $8,000 of your student's accredited private school education, comprehensive curriculum, and diagnostic evaluations through Utah Fits All using the Odyssey portal with zero personal out-of-pocket expenses.",
+      hero_wy_title: "Approved Nonpublic K–12 Tuition & Distance Learning for Wyoming Families",
+      hero_wy_lead: "Utilize up to $7,000 in state education funds to cover 100% of your student's remote tuition, elective courseware, and standardized testing via the Wyoming ESA Odyssey marketplace.",
+
       // Callout Alert
       alert_title: "⚠️ ATTENTION CLASSWALLET SCHOLARSHIP FAMILIES (ARIZONA, ALABAMA, SC, NH):",
       alert_body: "Do not pay out-of-pocket with personal credit/debit cards if you are using your state ESA funds. Upon submitting this form, our administration will issue and email your OFFICIAL ITEMIZED PDF INVOICE compliant with state regulations. You will then upload this invoice directly to your ClassWallet portal under 'Pay Vendor' by selecting 'CHANAK TRAINUP EDUCATION INC' for direct state disbursement.",
@@ -238,6 +244,12 @@
       cat_ment_price: "$150 / mes",
       cat_ment_desc: "Acompañamiento pedagógico individualizado, reuniones semanales de seguimiento, hábitos de estudio y apoyo académico continuo.",
 
+      // Odyssey Hero Texts
+      hero_ut_title: "Educación Privada Online K–12 Aprobada con Fondos Utah Fits All",
+      hero_ut_lead: "Financia hasta $8,000 de la colegiatura, currículo integral y evaluaciones diagnósticas de tu estudiante mediante la beca Utah Fits All en la plataforma Odyssey sin desembolsos personales.",
+      hero_wy_title: "Colegiatura K–12 y Aprendizaje a Distancia Aprobado para Familias de Wyoming",
+      hero_wy_lead: "Aprovecha hasta $7,000 de fondos estatales de educación para cubrir el 100% de la colegiatura a distancia, cursos electivos y evaluaciones mediante el marketplace de Odyssey para Wyoming ESA.",
+
       // Callout Alert
       alert_title: "⚠️ AVISO PARA FAMILIAS CON BECAS ESTATALES EN CLASSWALLET (ARIZONA, ALABAMA, SC, NH):",
       alert_body: "No realice pagos con tarjeta personal ni fondos propios si va a utilizar su beca estatal. Al completar este formulario, nuestro equipo de admisiones generará su FACTURA OFICIAL EN PDF con la codificación requerida por su estado. Podrá cargar dicha factura directamente en su portal de ClassWallet seleccionando 'Pay Vendor' y buscando a 'CHANAK TRAINUP EDUCATION INC' para desembolso directo del estado.",
@@ -336,7 +348,73 @@
   // APPLY LANGUAGE TO DOM
   function applyLanguage(lang) {
     document.documentElement.setAttribute("lang", lang);
-    var dict = I18N[lang] || I18N.en;
+    currentLang = lang;
+    var baseDict = I18N[lang] || I18N.en;
+    var dict = Object.assign({}, baseDict);
+
+    if (document.body.getAttribute("data-platform") === "odyssey") {
+      if (lang === "es") {
+        dict.topbar_text = "Proveedor Oficial Escolar No Público · Proveedor Aprobado en Odyssey";
+        dict.nav_sub = "Programas Aprobados en Odyssey";
+        dict.trust_directpay = "100% Pago Directo en Odyssey (Sin Gastos Propios)";
+        dict.guide_title = "Cómo Pagar o Inscribirse mediante Odyssey en 4 Pasos";
+        dict.guide_badge = "Proceso 100% Desembolso Estatal";
+        dict.guide_lead = "Como proveedor aprobado en Odyssey, Chanak permite a familias elegibles financiar colegiatura y servicios educativos directamente con fondos de beca sin adelantar dinero personal.";
+        dict.step1_title = "1. Solicitar Factura Oficial / Matrícula";
+        dict.step1_desc = "Completa el formulario inferior con el nombre legal del alumno y selecciona los cursos deseados.";
+        dict.step2_title = "2. Ingresar a Odyssey";
+        dict.step2_desc = "Accede a tu portal de familia en Odyssey (Utah Fits All o Wyoming ESA en withodyssey.com) con tus credenciales.";
+        dict.step3_title = "3. Buscar a Chanak en el Directorio";
+        dict.step3_desc = "En el Marketplace o Directorio de Proveedores, busca a nuestra entidad aprobada:";
+        dict.step3_vendor = "CHANAK TRAINUP EDUCATION INC";
+        dict.step4_title = "4. Autorizar Desembolso Directo";
+        dict.step4_desc = "Selecciona el servicio correspondiente o sube tu factura oficial para autorizar el desembolso directo desde tu saldo de beca sin pagar nada de tu bolsillo.";
+        dict.alert_title = "⚠️ AVISO PARA FAMILIAS DE UTAH Y WYOMING (ODYSSEY ESA):";
+        dict.alert_body = "No realice pagos de matrícula con su tarjeta personal si va a utilizar los fondos de Utah Fits All o Wyoming ESA. Al completar este formulario, nuestro departamento de admisiones procesará su orden y le guiará para autorizar el pago directo dentro del portal de Odyssey a nombre de 'CHANAK TRAINUP EDUCATION INC'.";
+        dict.calc_state_coverage = "Elegible para 100% de desembolso directo mediante el Marketplace de Odyssey";
+        dict.pay_opt_cw_title = "Fondos de Beca Estatal (Odyssey Direct Pay)";
+        dict.pay_opt_cw_desc = "Sin adelanto de dinero personal. Emitimos la factura oficial y te asistimos para autorizar el pago en Odyssey a nombre de CHANAK TRAINUP EDUCATION INC.";
+        dict.btn_submit_cw = "Inscribirse con Fondos de Odyssey";
+        dict.success_title = "¡Solicitud de Matrícula y Factura Recibida!";
+        dict.success_p1 = "Gracias por registrar a su estudiante en Chanak International Academy (operado por CHANAK TRAINUP EDUCATION INC).";
+        dict.success_p2 = "Nuestro departamento de admisiones está revisando la información y preparando la confirmación de matrícula para Odyssey.";
+        dict.success_steps_title = "Siguientes Pasos en Odyssey:";
+        dict.success_s1 = "En menos de 24h laborables recibirá su factura oficial en PDF y confirmación por correo.";
+        dict.success_s2 = "Ingrese a su portal de familia en Odyssey (withodyssey.com).";
+        dict.success_s3 = "En el Marketplace o directorio busque a CHANAK TRAINUP EDUCATION INC.";
+        dict.success_s4 = "Seleccione el servicio o suba la factura para autorizar el pago directo del estado.";
+      } else {
+        dict.topbar_text = "Official Nonpublic School Provider · Odyssey Approved Partner";
+        dict.nav_sub = "Odyssey Approved Programs";
+        dict.trust_directpay = "100% Direct Pay via Odyssey (No Out-of-Pocket)";
+        dict.guide_title = "How to Pay via Odyssey in 4 Steps";
+        dict.guide_badge = "100% State Disbursement Process";
+        dict.guide_lead = "As an approved Odyssey provider, Chanak allows eligible families to fund tuition and educational services directly with state scholarship funds without personal upfront payments.";
+        dict.step1_title = "1. Request Official Invoice / Placement";
+        dict.step1_desc = "Complete our step-by-step enrollment form below with the student's legal name and select your courses.";
+        dict.step2_title = "2. Log In to Odyssey";
+        dict.step2_desc = "Access your state parent portal (Utah Fits All or Wyoming ESA at withodyssey.com) with your family credentials.";
+        dict.step3_title = "3. Search for Chanak in Provider Directory";
+        dict.step3_desc = "In the Marketplace / Provider Directory, search for our approved entity:";
+        dict.step3_vendor = "CHANAK TRAINUP EDUCATION INC";
+        dict.step4_title = "4. Authorize Direct Disbursement";
+        dict.step4_desc = "Select the corresponding service or upload your official invoice to approve direct disbursement from your scholarship balance with zero out-of-pocket expense.";
+        dict.alert_title = "⚠️ ATTENTION UTAH & WYOMING ODYSSEY ESA FAMILIES:";
+        dict.alert_body = "Do not pay out-of-pocket with personal debit/credit cards if you are utilizing Utah Fits All or Wyoming ESA funds. Upon submitting this enrollment form, our team will coordinate your placement and guide you to approve direct payment within the Odyssey portal under 'CHANAK TRAINUP EDUCATION INC'.";
+        dict.calc_state_coverage = "Eligible for 100% Direct Disbursement via Odyssey Marketplace";
+        dict.pay_opt_cw_title = "State Scholarship Funds (Odyssey Direct Pay)";
+        dict.pay_opt_cw_desc = "Zero personal upfront cost. We emit the official itemized invoice and assist you in approving direct payment in Odyssey to CHANAK TRAINUP EDUCATION INC.";
+        dict.btn_submit_cw = "Enroll with Odyssey Funds";
+        dict.success_title = "Official Enrollment & Invoice Request Received!";
+        dict.success_p1 = "Thank you for enrolling with Chanak International Academy (operated by CHANAK TRAINUP EDUCATION INC).";
+        dict.success_p2 = "Our admissions department is reviewing your student's details and generating your compliant Odyssey documentation.";
+        dict.success_steps_title = "Next Steps to Finalize in Odyssey:";
+        dict.success_s1 = "Check your email for the official PDF invoice within 24 business hours.";
+        dict.success_s2 = "Log in to your state Odyssey parent portal (withodyssey.com).";
+        dict.success_s3 = "In the marketplace, search for CHANAK TRAINUP EDUCATION INC.";
+        dict.success_s4 = "Select the service or upload the invoice to authorize direct state disbursement.";
+      }
+    }
 
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
@@ -476,8 +554,15 @@
 
     var dict = I18N[currentLang] || I18N.en;
     var isPrivate = document.getElementById("pay_private") && document.getElementById("pay_private").checked;
+    var isOdyssey = document.body.getAttribute("data-platform") === "odyssey";
 
-    btnSubmit.textContent = isPrivate ? dict.btn_submit_priv : dict.btn_submit_cw;
+    if (isPrivate) {
+      btnSubmit.textContent = dict.btn_submit_priv;
+    } else {
+      btnSubmit.textContent = isOdyssey
+        ? (currentLang === "es" ? "Inscribirse con Fondos de Odyssey" : "Enroll with Odyssey Funds")
+        : dict.btn_submit_cw;
+    }
   }
 
   // CALCULATOR LOGIC

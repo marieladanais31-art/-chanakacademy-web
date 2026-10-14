@@ -6,7 +6,7 @@ function chanak_normalize(string $value): string {
 }
 function chanak_route_from_value(string $value): string {
     $v=chanak_normalize($value);
-    if (preg_match('/classwallet|scholarship|arizona|estf|efa/', $v)) return 'classwallet';
+    if (preg_match('/classwallet|odyssey|scholarship|arizona|utah|wyoming|ufa|estf|efa/', $v)) return 'classwallet';
     if (preg_match('/alabama|choose/', $v)) return 'alabama_choose';
     if (preg_match('/florida-heip|florida.*(ema|pep|home|heip)|^florida$|^ema$|^pep$/', $v)) return 'florida_pep_ema';
     if (preg_match('/dual|adult.high.school/', $v)) return 'dual';
