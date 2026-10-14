@@ -36,9 +36,9 @@ $CONFIG = [
         'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'dossier' => '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709b', 'brevo_list' => 4],
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
-        'florida_pep_ema' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'FLORIDA PEP EMA', 'landing' => '/us/florida/pep/', 'dossier' => '/assets/docs/florida-home-education/Dossier_Familias_Florida_Chanak_2026-2027.pdf', 'brevo_list' => 3],
         'life_skills' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'LIFE SKILLS', 'landing' => '/', 'brevo_list' => 3],
         'alabama_choose' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'ALABAMA CHOOSE', 'landing' => '/us/alabama/', 'brevo_list' => 3],
+        'classwallet' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'CLASSWALLET DIRECT PAY', 'landing' => '/scholarships/', 'dossier' => '', 'brevo_list' => 3],
         'general'     => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
         // Sin lista propia en Brevo: va a la lista General (6).
@@ -119,6 +119,22 @@ $AUTOREPLY = [
     'alabama_choose' => [
         'subject' => 'Información recibida · Alabama CHOOSE | Chanak Academy',
         'body' => "Hola / Hello {nombre},\n\nGracias por tu interés / Thank you for your interest.\nNuestro equipo te contactará para confirmar el servicio, requisitos y cotización en USD. / Our team will contact you to confirm the service, requirements and USD quote.\n\nInformación / Information: {landing}\nLa solicitud de información no confirma matrícula, elegibilidad ni autorización de pago. / This inquiry does not confirm enrollment, eligibility or payment authorization.\n\nEquipo Chanak International Academy",
+    ],
+    'classwallet' => [
+        'subject' => 'Official Invoice Request Received · ClassWallet Direct Pay | Chanak Academy',
+        'body' => "Dear {nombre},\n\n"
+            . "Thank you for submitting your enrollment and direct pay invoice request with Chanak International Academy (operated by CHANAK TRAINUP EDUCATION INC)!\n\n"
+            . "What happens next:\n"
+            . "1. Our admissions team is generating your OFFICIAL ITEMIZED PDF INVOICE compliant with your state scholarship regulations (Arizona ESA, Alabama CHOOSE, SC ESTF, or NH EFA).\n"
+            . "2. You will receive this invoice via email within 24 business hours.\n"
+            . "3. Upload the invoice to your ClassWallet parent portal under 'Pay Vendor' by searching for our approved provider entity:\n"
+            . "   CHANAK TRAINUP EDUCATION INC\n"
+            . "4. Submit the invoice amount for direct state disbursement (no out-of-pocket payment required).\n\n"
+            . "If you need immediate assistance or have questions regarding your state ESA account, you can reply directly to this email or reach us at offcampus@chanakacademy.org.\n\n"
+            . "Kind regards,\n"
+            . "Admissions & State Scholarship Billing\n"
+            . "Chanak International Academy · CHANAK TRAINUP EDUCATION INC\n"
+            . "FLDOE #134620 · 501(c)(3) Nonprofit",
     ],
     'general' => [
         'subject' => 'Hemos recibido tu solicitud | Chanak Academy',

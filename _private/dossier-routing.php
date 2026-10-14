@@ -6,6 +6,7 @@ function chanak_normalize(string $value): string {
 }
 function chanak_route_from_value(string $value): string {
     $v=chanak_normalize($value);
+    if (preg_match('/classwallet|scholarship|arizona|estf|efa/', $v)) return 'classwallet';
     if (preg_match('/alabama|choose/', $v)) return 'alabama_choose';
     if (preg_match('/florida-heip|florida.*(ema|pep|home|heip)|^florida$|^ema$|^pep$/', $v)) return 'florida_pep_ema';
     if (preg_match('/dual|adult.high.school/', $v)) return 'dual';
@@ -19,9 +20,9 @@ function chanak_resolve_route(array $data, string $referer): string {
     // State selection wins over generic program names; country is never a program.
     $state = (string)($data['state_program'] ?? $data['programa_estatal'] ?? '');
     $stateRoute=chanak_route_from_value($state);
-    if (in_array($stateRoute,['florida_pep_ema','alabama_choose'],true)) return $stateRoute;
+    if (in_array($stateRoute,['florida_pep_ema','alabama_choose','classwallet'],true)) return $stateRoute;
     $need=chanak_route_from_value((string)($data['necesidad'] ?? ''));
-    if (in_array($need,['florida_pep_ema','alabama_choose'],true)) return $need;
+    if (in_array($need,['florida_pep_ema','alabama_choose','classwallet'],true)) return $need;
     foreach (['program','programa','service','servicio','programa_ema'] as $key) {
         $route=chanak_route_from_value((string)($data[$key] ?? ''));
         if ($route !== '') return $route;
@@ -45,7 +46,7 @@ function chanak_information_pack(string $route, array $data, string $referer, st
     $country=strtoupper(trim($rawCountry));
     $aliases=['espana'=>'ES','spain'=>'ES','espanya'=>'ES','espagne'=>'ES','mexico'=>'MX','panama'=>'PA','colombia'=>'CO','estados unidos'=>'US','united states'=>'US','usa'=>'US','etats-unis'=>'US','estats units'=>'US'];
     $country=$aliases[chanak_normalize($rawCountry)] ?? $country;
-    if (in_array($route,['florida_pep_ema','alabama_choose'],true)) $country='US';
+    if (in_array($route,['florida_pep_ema','alabama_choose','classwallet'],true)) $country='US';
     $country=isset($entry['countries'][$country]) ? $country : ($country ?: 'GLOBAL');
     $path=$entry['single'][$language] ?? $entry['countries'][$country][$language] ?? $entry['countries']['GLOBAL'][$language] ?? null;
     if (!$path) return null;
