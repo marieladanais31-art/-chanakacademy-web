@@ -130,7 +130,7 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: '70 €/mes', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', monthly: '70 €/mes', description: 'Currículo estadounidense completo, créditos y expediente emitidos por Chanak, colegio registrado en Florida (FLDOE #134620).' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Libros y material curricular no incluidos; son adquiridos directamente por los padres (coste orientativo de referencia para España y Europa: 500-600 €/año según nivel y editorial; calcular siempre gastos de envío adicionales según destino).'
+        footnote: 'Mensualidad única para todos los niveles. Libros y material curricular no incluidos; adquiridos directamente por los padres. Coste orientativo para España/Europa con distribuidor oficial CEE: A.C.E. 700–880 €/año en grados 1–4 y 530–680 €/año en grados 5–12 (kit ABCs lectoescritura: 690–760 € al incluir manuales maestros y Score Keys); o alternativas cristocéntricas como Christian Light (CLE) 360–400 €/año (lectura 165 €) o LIFEPAC 405–455 €/año (lectura 100 €). Calcular siempre gastos de envío adicionales según destino.'
       },
 
       dual_diploma: {
@@ -270,7 +270,7 @@ window.CHANAK_PRICING = {
           { key: 'high',        title: 'High School (9-12)',          monthly: '$365 USD', totalYear: '$3,945 USD',
             description: 'Graduation track with College & Career Readiness, SAT prep and counseling.' }
         ],
-        footnote: 'Annual tuition includes enrollment plus ten monthly payments. Direct-pay school tuition is separate from EMA and CHOOSE service listings. State funding is limited to approved services and eligible families. Curriculum and materials not included; each family chooses and purchases their own (estimated cost $300-500 USD/year).'
+        footnote: 'Annual tuition includes enrollment plus ten monthly payments. State scholarship funding is subject to approved service and student eligibility. Textbooks and curriculum materials are not included and are purchased directly by parents from U.S. publishers. Reference cost in the U.S.: A.C.E. $460–$530 USD/year in grades 1–4 and $320–$390 USD in grades 5–12 (ABCs reading kit: $380–$440 USD); or options like Christian Light Education (CLE) $390–$430 USD/year (reading package $177 USD) or AOP LIFEPAC $440–$490 USD/year (reading package $108 USD).'
       },
 
       // PROGRAMA SECUNDARIO: Adult High School Completion (desde $2,500 USD)
