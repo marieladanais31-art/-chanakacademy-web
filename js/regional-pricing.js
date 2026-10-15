@@ -130,7 +130,7 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: '70 €/mes', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', monthly: '70 €/mes', description: 'Currículo estadounidense completo, créditos y expediente emitidos por Chanak, colegio registrado en Florida (FLDOE #134620).' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos.'
+        footnote: 'Mensualidad única para todos los niveles. Libros y material curricular no incluidos; son adquiridos directamente por los padres (coste orientativo de referencia para España y Europa: 500-600 €/año según nivel y editorial; calcular siempre gastos de envío adicionales según destino).'
       },
 
       dual_diploma: {
@@ -177,7 +177,7 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: '$3,500 MXN/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', monthly: '$3,500 MXN/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos.'
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por los padres (coste orientativo de referencia equivalente; calcular siempre gastos de envío adicionales según destino).'
       },
 
       dual_diploma: {
@@ -222,7 +222,7 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$70/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$70/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo US$550-650/año, equivalente al de España).'
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo directamente (coste orientativo US$550-650/año, de referencia equivalente al de España; calcular siempre gastos de envío adicionales según destino).'
       },
 
       dual_diploma: {
