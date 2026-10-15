@@ -47,7 +47,7 @@
             "name": "¿Se puede pagar este servicio con mis fondos de Wyoming ESA?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta."
+              "text": "Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta."
             }
           },
           {
@@ -71,7 +71,7 @@
             "name": "¿Cuáles son los horarios y zonas horarias de las clases en vivo?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Las sesiones en vivo de Life Skills y las tutorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario."
+              "text": "Las sesiones en vivo de Life Skills y las mentorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario."
             }
           },
           {
@@ -87,7 +87,7 @@
             "name": "¿Cuál es la política de cancelación y reembolso?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. Si corresponde un reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias privadas."
+              "text": "Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. El pago se libera después de prestar el servicio [VERIFICAR]. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias privadas."
             }
           },
           {
@@ -105,7 +105,7 @@
   </script>
 
   <style>
-    /* CSS VARIABLES - CHANAK DESIGN TOKENS */
+    /* TOKENS DE DISEÑO DE CHANAK */
     :root {
       --navy: #0c2d48;
       --navy-dark: #07192a;
@@ -154,7 +154,7 @@
       overflow-x: hidden;
     }
 
-    /* TYPOGRAPHY */
+    /* TIPOGRAFÍA */
     h1, h2, h3, h4 {
       font-family: var(--font-serif);
       color: var(--navy);
@@ -181,25 +181,16 @@
       margin: 0 auto 2.5rem;
     }
 
-    p {
-      margin-bottom: 1rem;
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
 
     a {
       color: var(--blue);
       text-decoration: underline;
       transition: color 0.2s;
     }
+    a:hover { color: var(--teal); }
 
-    a:hover {
-      color: var(--teal);
-    }
-
-    /* CONTAINER */
     .container {
       width: 100%;
       max-width: 1140px;
@@ -207,15 +198,10 @@
       padding: 0 1.25rem;
     }
 
-    .section {
-      padding: 4.5rem 0;
-    }
+    .section { padding: 4.5rem 0; }
+    .section-alt { background-color: var(--bg-light); }
 
-    .section-alt {
-      background-color: var(--bg-light);
-    }
-
-    /* SINGLE UNIFIED PRIMARY CTA */
+    /* BOTÓN CTA PRINCIPAL UNIFICADO */
     .btn-cta {
       display: inline-flex;
       align-items: center;
@@ -257,10 +243,7 @@
       padding: 0.5rem 0.75rem;
       min-height: 44px;
     }
-
-    .link-secondary:hover {
-      color: var(--blue);
-    }
+    .link-secondary:hover { color: var(--blue); }
 
     /* 1. HEADER FIJO */
     .site-header {
@@ -318,11 +301,7 @@
       gap: 0.85rem;
     }
 
-    /* State selector dropdown */
-    .state-dropdown {
-      position: relative;
-    }
-
+    .state-dropdown { position: relative; }
     .state-select {
       font-family: var(--font-sans);
       font-size: 0.9rem;
@@ -336,12 +315,10 @@
       cursor: pointer;
       min-height: 44px;
     }
-
     .state-select:focus {
       outline: 2px solid var(--blue);
       border-color: var(--blue);
     }
-
     .state-dropdown::after {
       content: "▾";
       position: absolute;
@@ -353,7 +330,6 @@
       color: var(--text-muted);
     }
 
-    /* Language Switcher */
     .lang-toggle {
       display: inline-flex;
       align-items: center;
@@ -388,14 +364,9 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
-    .header-cta {
-      display: none;
-    }
-
+    .header-cta { display: none; }
     @media (min-width: 900px) {
-      .header-cta {
-        display: inline-flex;
-      }
+      .header-cta { display: inline-flex; }
     }
 
     /* 2. HERO */
@@ -411,11 +382,7 @@
       text-align: center;
     }
 
-    .hero-h1 {
-      color: var(--navy);
-      margin-bottom: 1rem;
-    }
-
+    .hero-h1 { color: var(--navy); margin-bottom: 1rem; }
     .hero-subtitle {
       font-size: 1.15rem;
       color: var(--text-muted);
@@ -434,7 +401,6 @@
       margin-bottom: 2.25rem;
     }
 
-    /* Credentials Row */
     .credentials-row {
       display: inline-flex;
       align-items: center;
@@ -450,16 +416,8 @@
       font-weight: 600;
       color: var(--navy);
     }
-
-    .cred-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .cred-dot {
-      color: var(--teal);
-    }
+    .cred-item { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .cred-dot { color: var(--teal); }
 
     /* 3. QUÉ RECIBE TU HIJO CADA MES (4 CARDS) */
     .features-grid {
@@ -467,17 +425,11 @@
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-
     @media (min-width: 640px) {
-      .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (min-width: 1024px) {
-      .features-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      .features-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     .feature-card {
@@ -490,13 +442,11 @@
       display: flex;
       flex-direction: column;
     }
-
     .feature-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
       border-color: var(--teal);
     }
-
     .feature-icon {
       width: 48px;
       height: 48px;
@@ -509,7 +459,6 @@
       font-size: 1.5rem;
       margin-bottom: 1.25rem;
     }
-
     .feature-title {
       font-family: var(--font-serif);
       font-size: 1.2rem;
@@ -517,7 +466,6 @@
       color: var(--navy);
       margin-bottom: 0.6rem;
     }
-
     .feature-desc {
       font-size: 0.95rem;
       color: var(--text-muted);
@@ -531,11 +479,8 @@
       gap: 1.5rem;
       margin-bottom: 2.5rem;
     }
-
     @media (min-width: 768px) {
-      .pricing-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .pricing-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     .pricing-card {
@@ -548,12 +493,10 @@
       box-shadow: var(--shadow-sm);
       position: relative;
     }
-
     .pricing-card.featured {
       border-color: var(--blue);
       box-shadow: var(--shadow-md);
     }
-
     .pricing-badge {
       position: absolute;
       top: -12px;
@@ -568,7 +511,6 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
-
     .pricing-tier {
       font-family: var(--font-serif);
       font-size: 1.35rem;
@@ -576,21 +518,18 @@
       color: var(--navy);
       margin-bottom: 0.5rem;
     }
-
     .pricing-name {
       font-size: 0.9rem;
       color: var(--text-muted);
       margin-bottom: 1.25rem;
       min-height: 2.7rem;
     }
-
     .pricing-price {
       display: flex;
       align-items: baseline;
       gap: 0.35rem;
       margin-bottom: 0.5rem;
     }
-
     .price-num {
       font-family: var(--font-serif);
       font-size: 2.75rem;
@@ -598,13 +537,11 @@
       color: var(--navy);
       line-height: 1;
     }
-
     .price-period {
       font-size: 1rem;
       color: var(--text-muted);
       font-weight: 500;
     }
-
     .pricing-reg {
       background: var(--bg-light);
       border-radius: var(--radius-sm);
@@ -615,13 +552,11 @@
       margin-bottom: 1.5rem;
       border-left: 3px solid var(--teal);
     }
-
     .pricing-features {
       list-style: none;
       margin-bottom: 2rem;
       flex-grow: 1;
     }
-
     .pricing-features li {
       font-size: 0.9rem;
       margin-bottom: 0.65rem;
@@ -630,41 +565,20 @@
       gap: 0.5rem;
       line-height: 1.45;
     }
+    .pricing-features li.inc { color: var(--text-main); }
+    .pricing-features li.not-inc { color: var(--text-light); }
+    .icon-check { color: #059669; font-weight: bold; flex-shrink: 0; }
+    .icon-cross { color: #dc2626; font-weight: bold; flex-shrink: 0; }
 
-    .pricing-features li.inc {
-      color: var(--text-main);
-    }
-
-    .pricing-features li.not-inc {
-      color: var(--text-light);
-    }
-
-    .icon-check {
-      color: #059669;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-
-    .icon-cross {
-      color: #dc2626;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-
-    /* Secondary Pricing Cards */
     .secondary-pricing-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.25rem;
       margin-bottom: 2rem;
     }
-
     @media (min-width: 640px) {
-      .secondary-pricing-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .secondary-pricing-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     .secondary-card {
       background: var(--bg-white);
       border: 1px solid var(--border);
@@ -675,7 +589,6 @@
       justify-content: space-between;
       gap: 1rem;
     }
-
     .secondary-card-title {
       font-family: var(--font-serif);
       font-size: 1.15rem;
@@ -683,19 +596,16 @@
       color: var(--navy);
       margin-bottom: 0.35rem;
     }
-
     .secondary-card-desc {
       font-size: 0.9rem;
       color: var(--text-muted);
       margin-bottom: 0.5rem;
     }
-
     .secondary-card-price {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--navy);
     }
-
     .badge-soon {
       display: inline-block;
       background: var(--bg-alt);
@@ -708,7 +618,6 @@
       letter-spacing: 0.03em;
     }
 
-    /* Disclaimers & Notes Box */
     .disclaimer-box {
       background: var(--gold-light);
       border: 1px solid #fcd34d;
@@ -719,11 +628,7 @@
       line-height: 1.55;
       margin-top: 1.5rem;
     }
-
-    .disclaimer-box strong {
-      color: #92400e;
-    }
-
+    .disclaimer-box strong { color: #92400e; }
     .legal-notice {
       margin-top: 1rem;
       font-size: 0.85rem;
@@ -738,14 +643,12 @@
       gap: 1.5rem;
       position: relative;
     }
-
     @media (min-width: 900px) {
       .timeline {
         grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
       }
     }
-
     .step-card {
       background: var(--bg-white);
       border: 1px solid var(--border);
@@ -754,7 +657,6 @@
       position: relative;
       box-shadow: var(--shadow-sm);
     }
-
     .step-number {
       width: 38px;
       height: 38px;
@@ -768,7 +670,6 @@
       font-size: 1.1rem;
       margin-bottom: 1rem;
     }
-
     .step-title {
       font-family: var(--font-serif);
       font-size: 1.15rem;
@@ -776,7 +677,6 @@
       color: var(--navy);
       margin-bottom: 0.5rem;
     }
-
     .step-role {
       display: inline-block;
       font-size: 0.75rem;
@@ -787,17 +687,8 @@
       border-radius: var(--radius-sm);
       margin-bottom: 0.75rem;
     }
-
-    .role-family {
-      background: #e0f2fe;
-      color: #0369a1;
-    }
-
-    .role-chanak {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
+    .role-family { background: #e0f2fe; color: #0369a1; }
+    .role-chanak { background: #fef3c7; color: #92400e; }
     .step-desc {
       font-size: 0.9rem;
       color: var(--text-muted);
@@ -813,7 +704,6 @@
       box-shadow: var(--shadow-sm);
       background: var(--bg-white);
     }
-
     .schedule-table {
       width: 100%;
       border-collapse: collapse;
@@ -821,7 +711,6 @@
       font-size: 0.95rem;
       min-width: 600px;
     }
-
     .schedule-table th {
       background: var(--navy);
       color: #ffffff;
@@ -830,34 +719,22 @@
       font-weight: 600;
       letter-spacing: 0.02em;
     }
-
     .schedule-table td {
       padding: 1rem 1.25rem;
       border-bottom: 1px solid var(--border);
       color: var(--text-main);
     }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:nth-child(even) td { background-color: var(--bg-light); }
 
-    .schedule-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .schedule-table tr:nth-child(even) td {
-      background-color: var(--bg-light);
-    }
-
-    /* PEI 3-Step Flow */
     .pei-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-
     @media (min-width: 768px) {
-      .pei-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .pei-grid { grid-template-columns: repeat(3, 1fr); }
     }
-
     .pei-card {
       background: var(--bg-white);
       border: 1px solid var(--border);
@@ -866,7 +743,6 @@
       border-top: 4px solid var(--teal);
       box-shadow: var(--shadow-sm);
     }
-
     .pei-step-num {
       font-size: 0.8rem;
       font-weight: 700;
@@ -875,14 +751,12 @@
       letter-spacing: 0.05em;
       margin-bottom: 0.35rem;
     }
-
     .pei-title {
       font-family: var(--font-serif);
       font-size: 1.2rem;
       color: var(--navy);
       margin-bottom: 0.6rem;
     }
-
     .pei-desc {
       font-size: 0.925rem;
       color: var(--text-muted);
@@ -896,31 +770,22 @@
       gap: 2.5rem;
       align-items: center;
     }
-
     @media (min-width: 840px) {
-      .about-wrap {
-        grid-template-columns: 1.2fr 1fr;
-      }
+      .about-wrap { grid-template-columns: 1.2fr 1fr; }
     }
-
-    .about-text h2 {
-      text-align: left;
-    }
-
+    .about-text h2 { text-align: left; }
     .about-p {
       font-size: 1.05rem;
       color: var(--text-main);
       line-height: 1.65;
       margin-bottom: 1.25rem;
     }
-
     .about-img-wrap {
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow-md);
       border: 1px solid var(--border);
     }
-
     .about-img {
       width: 100%;
       height: auto;
@@ -928,7 +793,7 @@
       object-fit: cover;
     }
 
-    /* 8. FAQ (ACCORDION) */
+    /* 8. FAQ (ACORDEÓN) */
     .faq-list {
       max-width: 800px;
       margin: 0 auto;
@@ -936,7 +801,6 @@
       flex-direction: column;
       gap: 1rem;
     }
-
     .faq-item {
       background: var(--bg-white);
       border: 1px solid var(--border);
@@ -945,11 +809,7 @@
       box-shadow: var(--shadow-sm);
       transition: border-color 0.2s;
     }
-
-    .faq-item[open] {
-      border-color: var(--blue);
-    }
-
+    .faq-item[open] { border-color: var(--blue); }
     .faq-question {
       font-family: var(--font-serif);
       font-size: 1.1rem;
@@ -965,22 +825,14 @@
       user-select: none;
       min-height: 48px;
     }
-
-    .faq-question::-webkit-details-marker {
-      display: none;
-    }
-
+    .faq-question::-webkit-details-marker { display: none; }
     .faq-icon {
       font-size: 1.25rem;
       color: var(--blue);
       transition: transform 0.2s ease;
       flex-shrink: 0;
     }
-
-    .faq-item[open] .faq-icon {
-      transform: rotate(45deg);
-    }
-
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
     .faq-answer {
       padding: 0 1.5rem 1.25rem;
       font-size: 0.95rem;
@@ -988,7 +840,7 @@
       line-height: 1.6;
     }
 
-    /* 9. FORMULARIO CORTO + WHATSAPP + EMAIL */
+    /* 9. FORMULARIO CORTO */
     .form-wrap {
       max-width: 640px;
       margin: 0 auto;
@@ -998,17 +850,10 @@
       padding: 2.25rem 2rem;
       box-shadow: var(--shadow-md);
     }
-
     @media (max-width: 480px) {
-      .form-wrap {
-        padding: 1.5rem 1.25rem;
-      }
+      .form-wrap { padding: 1.5rem 1.25rem; }
     }
-
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
+    .form-group { margin-bottom: 1.25rem; }
     .form-label {
       display: block;
       font-size: 0.9rem;
@@ -1016,7 +861,6 @@
       color: var(--navy);
       margin-bottom: 0.4rem;
     }
-
     .form-input, .form-select {
       width: 100%;
       padding: 0.75rem 0.9rem;
@@ -1029,19 +873,16 @@
       min-height: 44px;
       transition: border-color 0.2s;
     }
-
     .form-input:focus, .form-select:focus {
       outline: 2px solid var(--blue);
       border-color: var(--blue);
     }
-
     .consent-group {
       display: flex;
       align-items: flex-start;
       gap: 0.65rem;
       margin: 1.25rem 0 1.75rem;
     }
-
     .consent-input {
       margin-top: 0.25rem;
       width: 18px;
@@ -1050,20 +891,16 @@
       accent-color: var(--blue);
       cursor: pointer;
     }
-
     .consent-label {
       font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.45;
     }
-
     .form-submit-btn {
       width: 100%;
       font-size: 1.1rem;
       padding: 0.95rem;
     }
-
-    /* Confirmation Box */
     .confirmation-box {
       display: none;
       text-align: center;
@@ -1073,17 +910,8 @@
       border-radius: var(--radius);
       color: #065f46;
     }
-
-    .confirmation-box.active {
-      display: block;
-    }
-
-    .conf-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      line-height: 1;
-    }
-
+    .confirmation-box.active { display: block; }
+    .conf-icon { font-size: 3rem; margin-bottom: 1rem; line-height: 1; }
     .conf-title {
       font-family: var(--font-serif);
       font-size: 1.5rem;
@@ -1092,28 +920,24 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Direct Contact Channels */
     .direct-contacts {
       margin-top: 2rem;
       padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       text-align: center;
     }
-
     .direct-contacts-title {
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-muted);
       margin-bottom: 1rem;
     }
-
     .direct-channels-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
     }
-
     .channel-link {
       display: inline-flex;
       align-items: center;
@@ -1129,7 +953,6 @@
       min-height: 44px;
       transition: background 0.2s;
     }
-
     .channel-link:hover {
       background: #e2e8f0;
       color: var(--navy);
@@ -1143,7 +966,6 @@
       font-size: 0.9rem;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
-
     .footer-inner {
       display: flex;
       flex-direction: column;
@@ -1151,20 +973,17 @@
       align-items: center;
       text-align: center;
     }
-
     .footer-entity {
       color: #ffffff;
       font-weight: 700;
       font-size: 1rem;
     }
-
     .footer-creds {
       color: #cbd5e1;
       font-size: 0.85rem;
       max-width: 750px;
       line-height: 1.5;
     }
-
     .footer-links {
       display: flex;
       flex-wrap: wrap;
@@ -1172,7 +991,6 @@
       gap: 1.5rem;
       list-style: none;
     }
-
     .footer-links a {
       color: #cbd5e1;
       text-decoration: none;
@@ -1181,12 +999,10 @@
       display: inline-flex;
       align-items: center;
     }
-
     .footer-links a:hover {
       color: #ffffff;
       text-decoration: underline;
     }
-
     .footer-compliance-disclaimer {
       font-size: 0.8rem;
       color: #94a3b8;
@@ -1195,7 +1011,6 @@
       border-top: 1px solid rgba(255,255,255,0.1);
       padding-top: 1.5rem;
     }
-
     .footer-copy {
       font-size: 0.8rem;
       color: #64748b;
@@ -1276,28 +1091,24 @@
       <p class="section-desc" data-i18n="feat_section_desc">Acompañamiento estructurado y personalizado para fortalecer la autonomía educativa de tu familia.</p>
 
       <div class="features-grid">
-        <!-- Card 1 -->
         <div class="feature-card">
           <div class="feature-icon">👩‍🏫</div>
           <h3 class="feature-title" data-i18n="feat_1_title">Mentora asignada</h3>
           <p class="feature-desc" data-i18n="feat_1_desc">Acompañamiento cercano y seguimiento académico bilingüe continuo adaptado al ritmo de tu hijo.</p>
         </div>
 
-        <!-- Card 2 -->
         <div class="feature-card">
           <div class="feature-icon">⏱️</div>
           <h3 class="feature-title" data-i18n="feat_2_title">Revisión y feedback</h3>
           <p class="feature-desc" data-i18n="feat_2_desc">2 horas al mes de revisión, feedback y registro de avance según el Plan Individual de Aprendizaje (PEI).</p>
         </div>
 
-        <!-- Card 3 -->
         <div class="feature-card">
           <div class="feature-icon">🌟</div>
           <h3 class="feature-title" data-i18n="feat_3_title">Life Skills en vivo</h3>
           <p class="feature-desc" data-i18n="feat_3_desc">4 sesiones de 60 minutos al mes de liderazgo y formación de carácter en grupos reducidos de hasta 7 alumnos.</p>
         </div>
 
-        <!-- Card 4 -->
         <div class="feature-card">
           <div class="feature-icon">📋</div>
           <h3 class="feature-title" data-i18n="feat_4_title">Informe mensual</h3>
@@ -1313,7 +1124,6 @@
       <h2 data-i18n="pricing_section_title">Inversión y planes mensuales</h2>
       <p class="section-desc" data-i18n="pricing_section_desc">Tarifas transparentes. Mismo precio para familias con fondos estatales y de pago privado.</p>
 
-      <!-- 3 Tier Cards -->
       <div class="pricing-grid">
         <!-- K-5 -->
         <div class="pricing-card">
@@ -1386,7 +1196,7 @@
         </div>
       </div>
 
-      <!-- Secondary Services -->
+      <!-- Servicios Secundarios -->
       <div class="secondary-pricing-grid">
         <div class="secondary-card">
           <div>
@@ -1425,10 +1235,9 @@
   <section class="section section-alt">
     <div class="container">
       <h2 data-i18n="steps_section_title">Cómo pagar con tus fondos en 4 pasos</h2>
-      <p class="section-desc" data-i18n="steps_section_desc">Proceso simple a través de la plataforma oficial Odyssey para familias de Wyoming.</p>
+      <p class="section-desc" data-i18n="steps_section_desc">Proceso simple a través de la plataforma oficial Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.</p>
 
       <div class="timeline">
-        <!-- Paso 1 -->
         <div class="step-card">
           <div class="step-number">1</div>
           <span class="step-role role-family" data-i18n="role_family">Acción de la familia</span>
@@ -1436,7 +1245,6 @@
           <p class="step-desc" data-i18n="step_1_desc">Completa el formulario de contacto para que nuestro equipo confirme el grado de tu hijo, resuelva dudas y reserve tu plaza.</p>
         </div>
 
-        <!-- Paso 2 -->
         <div class="step-card">
           <div class="step-number">2</div>
           <span class="step-role role-family" data-i18n="role_family">Acción de la familia</span>
@@ -1444,20 +1252,18 @@
           <p class="step-desc" data-i18n="step_2_desc">Accede a tu portal oficial de Wyoming ESA en withodyssey.com. Recuerda que Chanak nunca te pedirá tus contraseñas ni accesos.</p>
         </div>
 
-        <!-- Paso 3 -->
         <div class="step-card">
           <div class="step-number">3</div>
           <span class="step-role role-family" data-i18n="role_family">Acción de la familia</span>
           <h3 class="step-title" data-i18n="step_3_title">Busca a Chanak</h3>
-          <p class="step-desc" data-i18n="step_3_desc">En el Marketplace de proveedores aprobados, busca por la entidad legal: <strong>CHANAK TRAINUP EDUCATION INC</strong> y elige el servicio acordado.</p>
+          <p class="step-desc" data-i18n="step_3_desc">En el Marketplace de proveedores aprobados, busca por la entidad legal: <strong>CHANAK TRAINUP EDUCATION INC</strong> o por nuestro código de catálogo (CHK-...) [VERIFICAR].</p>
         </div>
 
-        <!-- Paso 4 -->
         <div class="step-card">
           <div class="step-number">4</div>
           <span class="step-role role-chanak" data-i18n="role_chanak">Familia y Chanak</span>
           <h3 class="step-title" data-i18n="step_4_title">Autoriza el pago</h3>
-          <p class="step-desc" data-i18n="step_4_desc">Autorizas el pago del servicio con tu saldo disponible. Chanak emite el comprobante oficial y coordinamos la sesión inicial de diagnóstico.</p>
+          <p class="step-desc" data-i18n="step_4_desc">Autorizas el servicio en Odyssey con tu saldo disponible. El pago se libera después de prestar el servicio [VERIFICAR]; Chanak emite el comprobante y coordinamos las sesiones.</p>
         </div>
       </div>
     </div>
@@ -1469,7 +1275,6 @@
       <h2 data-i18n="how_section_title">Cómo funciona el acompañamiento</h2>
       <p class="section-desc" data-i18n="how_section_desc">Estructura semanal equilibrada para la familia y seguimiento basado en dominio del aprendizaje.</p>
 
-      <!-- Semana Tipo -->
       <div class="schedule-wrap">
         <table class="schedule-table">
           <thead>
@@ -1504,13 +1309,12 @@
         </table>
       </div>
 
-      <!-- PEI en 3 pasos -->
       <h3 style="text-align: center; margin-bottom: 2rem;" data-i18n="pei_heading">Plan Individual de Aprendizaje (PEI) en 3 pasos</h3>
       <div class="pei-grid">
         <div class="pei-card">
           <div class="pei-step-num" data-i18n="pei_1_tag">Paso 1</div>
-          <h4 class="pei-title" data-i18n="pei_1_title">Evaluación diagnóstica bilingüe</h4>
-          <p class="pei-desc" data-i18n="pei_1_desc">Initial Academic Assessment ($295, pago único). Diagnóstico formativo inicial no clínico para identificar el punto de partida y necesidades pedagógicas reales.</p>
+          <h4 class="pei-title" data-i18n="pei_1_title">Evaluación inicial bilingüe</h4>
+          <p class="pei-desc" data-i18n="pei_1_desc">Initial Academic Assessment ($295, pago único). Evaluación académica inicial no clínica para identificar el punto de partida y necesidades pedagógicas reales.</p>
         </div>
 
         <div class="pei-card">
@@ -1558,18 +1362,16 @@
       <p class="section-desc" data-i18n="faq_desc">Respuestas claras a las dudas más habituales de las familias con fondos educativos.</p>
 
       <div class="faq-list">
-        <!-- FAQ 1 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q1">¿Se puede pagar este servicio con mis fondos de Wyoming ESA?</span>
             <span class="faq-icon">+</span>
           </summary>
           <div class="faq-answer">
-            <p data-i18n="faq_a1">Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.</p>
+            <p data-i18n="faq_a1">Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.</p>
           </div>
         </details>
 
-        <!-- FAQ 2 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q2">¿Qué no incluye este servicio?</span>
@@ -1580,7 +1382,6 @@
           </div>
         </details>
 
-        <!-- FAQ 3 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q3">¿Este programa otorga créditos oficiales o diploma de High School?</span>
@@ -1591,18 +1392,16 @@
           </div>
         </details>
 
-        <!-- FAQ 4 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q4">¿Cuáles son los horarios y zonas horarias de las clases en vivo?</span>
             <span class="faq-icon">+</span>
           </summary>
           <div class="faq-answer">
-            <p data-i18n="faq_a4">Las sesiones en vivo de Life Skills y las tutorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario.</p>
+            <p data-i18n="faq_a4">Las sesiones en vivo de Life Skills y las mentorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario.</p>
           </div>
         </details>
 
-        <!-- FAQ 5 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q5">¿Cómo se adquieren los materiales y libros de estudio?</span>
@@ -1613,18 +1412,16 @@
           </div>
         </details>
 
-        <!-- FAQ 6 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q6">¿Cuál es la política de cancelación y reembolso?</span>
             <span class="faq-icon">+</span>
           </summary>
           <div class="faq-answer">
-            <p data-i18n="faq_a6">Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. Si corresponde un reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias a cuentas privadas.</p>
+            <p data-i18n="faq_a6">Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. El pago se libera después de prestar el servicio [VERIFICAR]. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias a cuentas privadas.</p>
           </div>
         </details>
 
-        <!-- FAQ 7 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q7">¿En qué idioma se imparten las sesiones y el apoyo?</span>
@@ -1656,25 +1453,21 @@
 
         <!-- Formulario -->
         <form id="contactForm" onsubmit="handleFormSubmit(event)">
-          <!-- Nombre padre/madre -->
           <div class="form-group">
             <label for="parentName" class="form-label" data-i18n="lbl_parent_name">Nombre del padre / madre *</label>
             <input type="text" id="parentName" name="parent_name" class="form-input" required autocomplete="name" placeholder="Ej. María Pérez" data-i18n-ph="ph_parent_name"/>
           </div>
 
-          <!-- Correo -->
           <div class="form-group">
             <label for="parentEmail" class="form-label" data-i18n="lbl_email">Correo electrónico *</label>
             <input type="email" id="parentEmail" name="email" class="form-input" required autocomplete="email" placeholder="correo@ejemplo.com" data-i18n-ph="ph_email"/>
           </div>
 
-          <!-- WhatsApp / Teléfono -->
           <div class="form-group">
             <label for="parentPhone" class="form-label" data-i18n="lbl_phone">WhatsApp / Teléfono *</label>
             <input type="tel" id="parentPhone" name="phone" class="form-input" required autocomplete="tel" placeholder="+1 (307) 000-0000" data-i18n-ph="ph_phone"/>
           </div>
 
-          <!-- Estado -->
           <div class="form-group">
             <label for="formState" class="form-label" data-i18n="lbl_state">Estado de residencia *</label>
             <select id="formState" name="state" class="form-select" required>
@@ -1688,7 +1481,6 @@
             </select>
           </div>
 
-          <!-- Grado del Alumno -->
           <div class="form-group">
             <label for="studentGrade" class="form-label" data-i18n="lbl_grade">Grado del alumno *</label>
             <select id="studentGrade" name="student_grade" class="form-select" required>
@@ -1699,7 +1491,6 @@
             </select>
           </div>
 
-          <!-- Servicio de Interés -->
           <div class="form-group">
             <label for="serviceInterest" class="form-label" data-i18n="lbl_service">Servicio de interés *</label>
             <select id="serviceInterest" name="service_interest" class="form-select" required>
@@ -1709,7 +1500,6 @@
             </select>
           </div>
 
-          <!-- Consentimiento y Privacidad -->
           <div class="consent-group">
             <input type="checkbox" id="consentCheck" name="consent" class="consent-input" required/>
             <label for="consentCheck" class="consent-label" data-i18n="lbl_consent">
@@ -1720,7 +1510,6 @@
           <button type="submit" class="btn-cta form-submit-btn" id="submitBtn" data-i18n="cta_main">Solicitar orientación</button>
         </form>
 
-        <!-- Canales Directos -->
         <div class="direct-contacts">
           <div class="direct-contacts-title" data-i18n="contacts_title">¿Prefieres escribirnos directamente?</div>
           <div class="direct-channels-grid">
@@ -1812,7 +1601,7 @@
         mat_text: "Materiales no incluidos. Costo orientativo del currículo: entre $300 y $700 por alumno al año, según grado y currículo. La familia los compra directamente; tras la evaluación inicial le damos la lista recomendada. Los materiales de Life Skills de Chanak están incluidos.",
         pricing_legal_notice: "Aviso legal: Este servicio NO otorga créditos, expediente ni diploma. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta. Mismo precio para familias con fondos y de pago privado.",
         steps_section_title: "Cómo pagar con tus fondos en 4 pasos",
-        steps_section_desc: "Proceso simple a través de la plataforma oficial Odyssey para familias de Wyoming.",
+        steps_section_desc: "Proceso simple a través de la plataforma oficial Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
         role_family: "Acción de la familia",
         role_chanak: "Familia y Chanak",
         step_1_title: "Solicita orientación",
@@ -1820,9 +1609,9 @@
         step_2_title: "Ingresa a Odyssey",
         step_2_desc: "Accede a tu portal oficial de Wyoming ESA en withodyssey.com. Recuerda que Chanak nunca te pedirá tus contraseñas ni accesos.",
         step_3_title: "Busca a Chanak",
-        step_3_desc: "En el Marketplace de proveedores aprobados, busca por la entidad legal: CHANAK TRAINUP EDUCATION INC y elige el servicio acordado.",
+        step_3_desc: "En el Marketplace de proveedores aprobados, busca por la entidad legal: CHANAK TRAINUP EDUCATION INC o por nuestro código de catálogo (CHK-...) [VERIFICAR].",
         step_4_title: "Autoriza el pago",
-        step_4_desc: "Autorizas el pago del servicio con tu saldo disponible. Chanak emite el comprobante oficial y coordinamos la sesión inicial de diagnóstico.",
+        step_4_desc: "Autorizas el servicio en Odyssey con tu saldo disponible. El pago se libera después de prestar el servicio [VERIFICAR]; Chanak emite el comprobante y coordinamos las sesiones.",
         how_section_title: "Cómo funciona el acompañamiento",
         how_section_desc: "Estructura semanal equilibrada para la familia y seguimiento basado en dominio del aprendizaje.",
         tbl_day: "Día / Frecuencia",
@@ -1842,8 +1631,8 @@
         sch_d4_lead: "Mentora para la Familia",
         pei_heading: "Plan Individual de Aprendizaje (PEI) en 3 pasos",
         pei_1_tag: "Paso 1",
-        pei_1_title: "Evaluación diagnóstica bilingüe",
-        pei_1_desc: "Initial Academic Assessment ($295, pago único). Diagnóstico formativo inicial no clínico para identificar el punto de partida y necesidades pedagógicas reales.",
+        pei_1_title: "Evaluación inicial bilingüe",
+        pei_1_desc: "Initial Academic Assessment ($295, pago único). Evaluación académica inicial no clínica para identificar el punto de partida y necesidades pedagógicas reales.",
         pei_2_tag: "Paso 2",
         pei_2_title: "Diseño del Plan Individual (PEI)",
         pei_2_desc: "Reunión de devolución con los padres para trazar metas personalizadas, ritmo de estudio sugerido y recomendaciones de materiales acordes a la familia.",
@@ -1857,17 +1646,17 @@
         faq_title: "Preguntas frecuentes",
         faq_desc: "Respuestas claras a las dudas más habituales de las familias con fondos educativos.",
         faq_q1: "¿Se puede pagar este servicio con mis fondos de Wyoming ESA?",
-        faq_a1: "Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
+        faq_a1: "Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
         faq_q2: "¿Qué no incluye este servicio?",
         faq_a2: "No incluye los libros ni materiales del currículo general (la familia los adquiere directamente con un costo orientativo de $300 a $700 al año por alumno). Tampoco incluye supervisión presencial ni cuidado de niños.",
         faq_q3: "¿Este programa otorga créditos oficiales o diploma de High School?",
         faq_a3: "No. Este servicio es un acompañamiento y tutoría para educación en el hogar y no otorga créditos, expediente oficial ni diploma. Si buscas un programa escolar privado completo K–12 con registro escolar y diploma, consulta nuestro <a href=\"https://www.chanakacademy.org/hogar/\">Programa Escolar K–12</a>.",
         faq_q4: "¿Cuáles son los horarios y zonas horarias de las clases en vivo?",
-        faq_a4: "Las sesiones en vivo de Life Skills y las tutorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario.",
+        faq_a4: "Las sesiones en vivo de Life Skills y las mentorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario.",
         faq_q5: "¿Cómo se adquieren los materiales y libros de estudio?",
         faq_a5: "La familia compra directamente los materiales curriculares tras recibir la lista recomendada en la evaluación inicial. Los materiales propios del programa de Life Skills de Chanak sí están incluidos sin costo adicional.",
         faq_q6: "¿Cuál es la política de cancelación y reembolso?",
-        faq_a6: "Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. Si corresponde un reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias a cuentas privadas.",
+        faq_a6: "Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. El pago se libera después de prestar el servicio [VERIFICAR]. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias a cuentas privadas.",
         faq_q7: "¿En qué idioma se imparten las sesiones y el apoyo?",
         faq_a7: "El acompañamiento es completamente bilingüe. Las mentorías, la evaluación PEI y la comunicación con los padres se realizan en español o inglés según la preferencia de la familia. Las clases grupales de Life Skills fomentan el liderazgo bilingüe.",
         form_title: "Solicitar orientación",
@@ -1942,7 +1731,7 @@
         mat_text: "Materials not included. Estimated curriculum cost: $300 to $700 per student/year, depending on grade and curriculum. The family purchases them directly; we provide the recommended list following the initial assessment. Chanak Life Skills materials are included.",
         pricing_legal_notice: "Legal disclaimer: This service does NOT grant school credits, official transcripts, or a diploma. Fund usage depends on service eligibility and available account balance. Identical pricing for scholarship and private-pay families.",
         steps_section_title: "How to Pay with Your Funds in 4 Steps",
-        steps_section_desc: "Simple process through the official Odyssey platform for Wyoming families.",
+        steps_section_desc: "Simple process through the official Odyssey platform for families who have already been awarded the ESA [VERIFICAR]. Fund payment depends on service eligibility and available account balance.",
         role_family: "Family Action",
         role_chanak: "Family & Chanak",
         step_1_title: "Request Guidance",
@@ -1950,9 +1739,9 @@
         step_2_title: "Log into Odyssey",
         step_2_desc: "Log into your official Wyoming ESA account at withodyssey.com. Chanak will never ask for your account credentials.",
         step_3_title: "Find Chanak",
-        step_3_desc: "In the approved vendor directory/marketplace, search by legal entity: CHANAK TRAINUP EDUCATION INC and choose the service.",
+        step_3_desc: "In the approved vendor directory/marketplace, search by legal entity: CHANAK TRAINUP EDUCATION INC or by our catalog code (CHK-...) [VERIFICAR].",
         step_4_title: "Authorize Payment",
-        step_4_desc: "Authorize payment using your available scholarship balance. Chanak issues the receipt and schedules the initial assessment.",
+        step_4_desc: "Authorize the service on Odyssey with your available balance. Payment is released after service delivery [VERIFICAR]; Chanak issues the receipt and coordinates sessions.",
         how_section_title: "How Academic Support Works",
         how_section_desc: "Balanced weekly structure for the family and continuous mastery learning tracking.",
         tbl_day: "Day / Frequency",
@@ -1972,7 +1761,7 @@
         sch_d4_lead: "Mentor to Family",
         pei_heading: "Individualized Learning Plan (ILP) in 3 Steps",
         pei_1_tag: "Step 1",
-        pei_1_title: "Bilingual Academic Assessment",
+        pei_1_title: "Initial Bilingual Assessment",
         pei_1_desc: "Initial Academic Assessment ($295, one-time). Formative diagnostic evaluation to identify learning baseline, strengths, and pedagogical needs.",
         pei_2_tag: "Step 2",
         pei_2_title: "ILP Blueprint Design",
@@ -1987,7 +1776,7 @@
         faq_title: "Frequently Asked Questions",
         faq_desc: "Clear answers to essential questions from families utilizing state education funds.",
         faq_q1: "Can I pay for this service using my Wyoming ESA funds?",
-        faq_a1: "Yes. Chanak TrainUp Education Inc. is an approved vendor on the Odyssey platform. Fund usage depends on service eligibility and available account balance.",
+        faq_a1: "Yes. Chanak TrainUp Education Inc. is an approved vendor on the Odyssey platform for families who have already been awarded the ESA [VERIFICAR]. Fund payment depends on service eligibility and available account balance.",
         faq_q2: "What is not included in this service?",
         faq_a2: "It does not include general curriculum textbooks and workbooks (families purchase them directly with an estimated cost of $300 to $700/year per student). It does not include in-person childcare or supervision.",
         faq_q3: "Does this program grant official high school credits or a diploma?",
@@ -1997,7 +1786,7 @@
         faq_q5: "How are curriculum books and study materials purchased?",
         faq_a5: "Families purchase curriculum materials directly after receiving our recommended list during the initial assessment. Chanak Life Skills program materials are provided at no extra cost.",
         faq_q6: "What is the cancellation and refund policy?",
-        faq_a6: "You may cancel with 15 days notice prior to the upcoming month. If a scholarship refund is due for unrendered services, the funds are returned directly to the student's state account in Odyssey; refunds are never disbursed in cash or to private accounts.",
+        faq_a6: "You may cancel with 15 days notice prior to the upcoming month. Payment is released after service delivery [VERIFICAR]. If a scholarship refund is due for unrendered services, funds are returned directly to the student's state account in Odyssey; refunds are never disbursed in cash or to private accounts.",
         faq_q7: "In what language are sessions and academic support delivered?",
         faq_a7: "Support is fully bilingual. Mentoring, ILP assessments, and family communications are offered in Spanish or English according to family preference. Group Life Skills sessions encourage fluent bilingual communication.",
         form_title: "Request Guidance",
@@ -2030,22 +1819,18 @@
       }
     };
 
-    // Función para cambiar idioma
     function switchLanguage(lang) {
       if (!i18nData[lang]) return;
       document.documentElement.lang = lang;
       document.documentElement.setAttribute('data-lang', lang);
 
-      // Actualizar botones de toggle
       document.getElementById('btn-es').classList.toggle('active', lang === 'es');
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-      // Actualizar metas y títulos
       document.title = i18nData[lang].page_title;
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) metaDesc.setAttribute('content', i18nData[lang].page_desc);
 
-      // Actualizar textos con data-i18n
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (i18nData[lang][key] !== undefined) {
@@ -2053,7 +1838,6 @@
         }
       });
 
-      // Actualizar placeholders con data-i18n-ph
       document.querySelectorAll('[data-i18n-ph]').forEach(el => {
         const key = el.getAttribute('data-i18n-ph');
         if (i18nData[lang][key] !== undefined) {
@@ -2066,7 +1850,6 @@
       } catch(e) {}
     }
 
-    // Manejo del formulario de contacto
     function handleFormSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('contactForm');
@@ -2078,11 +1861,9 @@
         return;
       }
 
-      // Deshabilitar botón durante proceso
       submitBtn.disabled = true;
       submitBtn.style.opacity = '0.7';
 
-      // Capturar datos para tracking/envío
       const formData = {
         parent_name: document.getElementById('parentName').value,
         email: document.getElementById('parentEmail').value,
@@ -2094,7 +1875,6 @@
         submitted_at: new Date().toISOString()
       };
 
-      // Si existe endpoint API o webhook configurado
       try {
         fetch('/api/contact-scholarship.php', {
           method: 'POST',
@@ -2103,7 +1883,6 @@
         }).catch(() => {});
       } catch(err) {}
 
-      // Mostrar confirmación en la misma página
       setTimeout(() => {
         form.style.display = 'none';
         conf.classList.add('active');
@@ -2111,7 +1890,6 @@
       }, 300);
     }
 
-    // Inicializar idioma al cargar
     document.addEventListener('DOMContentLoaded', () => {
       let savedLang = 'es';
       try {
