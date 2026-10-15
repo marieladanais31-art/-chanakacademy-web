@@ -1005,3 +1005,636 @@ footer.scholarships-footer {
   margin-bottom: 0;
 }
 
+
+/* ==========================================================================
+   AOP-STYLE COMPONENTS: JUMP NAV, STATE TABLE, DIGITAL WALLETS, BRANDED VIDEOS
+   ========================================================================== */
+
+/* 1. STICKY JUMP NAVIGATION */
+.jump-nav-sticky {
+  position: sticky;
+  top: 60px;
+  background: var(--navy-dark);
+  border-bottom: 2px solid var(--teal);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 95;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+}
+.jump-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.jump-nav-inner::-webkit-scrollbar {
+  display: none;
+}
+.jump-label {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.jump-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+.jump-link-item a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.2s ease;
+}
+.jump-link-item a:hover {
+  background: var(--teal);
+  color: #ffffff;
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+
+/* 2. CONCEPTOS CLAVE (WHAT IS SCHOOL CHOICE) */
+.concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+.concept-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.concept-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--teal);
+}
+.concept-icon {
+  font-size: 2rem;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+.concept-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.concept-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* 3. MASTER STATE TABLE WITH SEARCH */
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 420px;
+}
+.search-input-wrap input {
+  width: 100%;
+  padding: 12px 18px 12px 42px;
+  border-radius: 50px;
+  border: 1.5px solid var(--border);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #ffffff;
+}
+.search-input-wrap input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(27, 159, 170, 0.15);
+}
+.search-input-wrap .search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: var(--text-light);
+  pointer-events: none;
+}
+.table-filter-count {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.state-table-container {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  box-shadow: var(--card-shadow);
+  max-height: 600px;
+  position: relative;
+}
+.state-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 820px;
+}
+.state-table thead {
+  position: sticky;
+  top: 0;
+  background: var(--navy);
+  color: #ffffff;
+  z-index: 5;
+}
+.state-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+.state-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  color: var(--text-main);
+}
+.state-table tbody tr:hover {
+  background: #f8fafc;
+}
+.state-table tbody tr.featured-state-row {
+  background: #fafaf8;
+}
+.state-name-cell {
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #dcfce7;
+  color: #15803d;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.badge-wallet {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #eff6ff;
+  color: #1e40af;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #bfdbfe;
+  white-space: nowrap;
+}
+.btn-table-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--navy);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-table-action:hover {
+  background: var(--teal);
+  color: #ffffff;
+}
+
+/* 4. DIGITAL WALLETS CARDS */
+.wallets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+.wallet-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+.wallet-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+}
+.wallet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.wallet-logo-badge {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wallet-states-pill {
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+.wallet-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.wallet-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.wallet-steps-list {
+  list-style: none;
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-size: 13px;
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wallet-steps-list li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.wallet-steps-list span.step-bullet {
+  background: var(--navy-light);
+  color: #ffffff;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* 5. BRANDED CHANAK VIDEO GALLERY */
+.chanak-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 26px;
+  margin-top: 36px;
+}
+.chanak-video-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.chanak-video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(12, 45, 72, 0.16);
+  border-color: var(--gold);
+}
+.chanak-video-poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #07192a 0%, #0c2d48 55%, #1a5f8a 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  overflow: hidden;
+}
+.chanak-video-poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.video-poster-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.video-chanak-logo {
+  height: 28px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+.video-state-pill {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.video-poster-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chanak-play-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #0c2d48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  animation: chanakPlayPulse 2s infinite;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.chanak-play-btn svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  fill: #0c2d48;
+}
+.chanak-video-card:hover .chanak-play-btn {
+  transform: scale(1.12);
+  background: #ffffff;
+}
+@keyframes chanakPlayPulse {
+  0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+  70% { box-shadow: 0 0 0 16px rgba(245, 158, 11, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+.video-poster-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.video-time-badge {
+  background: rgba(0, 0, 0, 0.65);
+  color: #f1f5f9;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.video-cred-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+.chanak-video-info {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+.chanak-video-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.chanak-video-desc {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.chanak-video-cta {
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+.chanak-video-card:hover .chanak-video-cta {
+  color: var(--gold-hover);
+}
+
+/* 6. VIDEO LIGHTBOX MODAL */
+.chanak-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 15, 25, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.chanak-modal-overlay.active {
+  display: flex;
+}
+.chanak-modal-content {
+  background: var(--navy-dark);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 900px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: modalFadeIn 0.25s ease-out;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.chanak-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+.chanak-modal-title {
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chanak-modal-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.chanak-modal-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+.chanak-modal-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+}
+.chanak-modal-video-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+.chanak-modal-footer {
+  padding: 12px 20px;
+  font-size: 12.5px;
+  color: #94a3b8;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 7. FEATURED GUIDES (BLOGS) */
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+.guide-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+.guide-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--teal);
+  box-shadow: var(--card-hover-shadow);
+}
+.guide-category {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--teal);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.guide-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.guide-card p {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.guide-readmore {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+.guide-readmore:hover {
+  color: var(--gold);
+}
+

@@ -1,817 +1,770 @@
 /**
- * Chanak International Academy · Scholarships, ClassWallet & Odyssey Direct Pay Module
- * Multi-state support: Utah UFA, Wyoming ESA, Arizona ESA, Alabama CHOOSE, SC ESTF, NH EFA
- * Bilingual dynamic switcher (EN / ES) & Interactive 3-Step Enrollment / Quote Calculator
+ * Chanak International Academy · State Education Funds & Scholarships Hub
+ * AOP-Style Hub: Jump Navigation, Master State Table Filter, Branded Video Modal,
+ * Digital Wallets Guide, and 100% Zero-Reload Bilingual Switcher (ES / EN).
  */
 (function () {
   "use strict";
 
-  // I18N DICTIONARIES
+  // BILINGUAL DICTIONARY
   var I18N = {
+    es: {
+      // Topbar & Nav
+      topbar_text: "Proveedor Oficial Escolar No Público · Socio Direct Pay en ClassWallet y Odyssey",
+      topbar_fldoe: "Código FLDOE: #134620 · Organización Sin Ánimo de Lucro 501(c)(3)",
+      nav_sub: "Programas Aprobados en Becas Estatales",
+      nav_cta: "Solicitar Orientación / Factura",
+      state_select_default: "Seleccionar Estado / Programa:",
+
+      // Hero
+      hero_badge: "✦ FONDOS EDUCATIVOS Y ELECCIÓN ESCOLAR · CICLO 2026–2027 ✦",
+      hero_h1: "Fondos Educativos Estatales y Educación K–12 en Casa",
+      hero_lead: "Chanak International Academy es un colegio privado registrado en el FLDOE (#134620), candidato a acreditación MSA-CESS y proveedor no público aprobado en ClassWallet, Odyssey y Step Up / EMA. Las familias elegibles pueden financiar el 100% de la colegiatura, expedientes acumulativos oficiales y convalidaciones sin pagos de su bolsillo.",
+      hero_disclaimer: "* El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
+      pill_entity: "Entidad Aprobada: CHANAK TRAINUP EDUCATION INC",
+      pill_wallets: "Billeteras Oficiales: ClassWallet, Odyssey y EMA",
+      pill_msa: "Acreditación: Candidato Oficial MSA-CESS",
+      pill_transcript: "Validez: Official Transcript y Diploma de High School",
+      btn_explore_states: "Explorar Estados y Billeteras ↓",
+      btn_request_guidance: "Solicitar Orientación Gratuita →",
+
+      // Jump Nav
+      jump_label: "Ir a sección:",
+      jump_states: "Estados Aprobados",
+      jump_wallets: "Billeteras Digitales",
+      jump_videos: "Video-Tutoriales",
+      jump_guides: "Guías Paso a Paso",
+      jump_faq: "Preguntas Frecuentes",
+      jump_advisory: "Asesoría Gratuita",
+
+      // Trust bar
+      trust_fldoe: "Colegio Privado Registrado en FLDOE #134620",
+      trust_msa: "Candidato Oficial a Acreditación MSA-CESS",
+      trust_nonprofit: "Nonprofit 501(c)(3): Chanak TrainUp Education Inc.",
+      trust_directpay: "100% Pago Directo en Billeteras (Sin Desembolso Personal)",
+
+      // Concepts Section
+      concepts_badge: "CONCEPTOS CLAVE DE ELECCIÓN ESCOLAR",
+      concepts_title: "¿Cómo Funcionan los Fondos Estatales para Familias?",
+      concepts_lead: "Las políticas de elección escolar (School Choice) permiten a las familias destinar los fondos públicos asignados a sus hijos a opciones educativas a distancia y personalizadas.",
+      concept1_title: "1. Cuentas de Ahorro para la Educación (ESA / EFA / UFA)",
+      concept1_desc: "Fondos estatales que se depositan en una cuenta o billetera digital a nombre de la familia para cubrir colegiatura, cursos calificados y evaluaciones diagnósticas.",
+      concept2_title: "2. Vouchers y Becas de Elección Escolar",
+      concept2_desc: "Programas creados por leyes estatales (como CHOOSE en Alabama, ESTF en Carolina del Sur o PEP en Florida) para que las familias elijan programas no públicos autorizados.",
+      concept3_title: "3. Billeteras Digitales de Pago Directo",
+      concept3_desc: "Sistemas como ClassWallet u Odyssey donde buscas a CHANAK TRAINUP EDUCATION INC y autorizas el pago mensual directo sin adelantar dinero de tu tarjeta personal.",
+
+      // Table Section
+      table_badge: "DIRECTORIO MAESTRO DE FONDOS",
+      table_title: "¿Ofrece mi Estado Fondos para la Educación en Casa?",
+      table_lead: "Consulta en la tabla interactiva los programas aprobados, la plataforma digital que utiliza tu estado y la cobertura de los programas de Chanak. Usa el buscador para filtrar tu estado al instante.",
+      search_placeholder: "Buscar estado (ej. Arizona, Utah, Wyoming, Florida, Alabama...)",
+      table_count_prefix: "Mostrando",
+      table_count_suffix: "programas y estados",
+      th_state: "Estado",
+      th_program: "Programa Oficial de Beca",
+      th_wallet: "Billetera Digital",
+      th_offcampus: "Chanak Off-Campus (K–12)",
+      th_dual: "Chanak Dual Diploma",
+      th_action: "Guía del Estado",
+      badge_approved: "✓ Aprobado",
+      badge_compatible: "✓ Convalidable",
+      badge_consult: "Consultar",
+      btn_view_state: "Ver Landing →",
+
+      // Digital Wallets Section
+      wallets_badge: "BILLETERAS DIGITALES Y DESEMBOLSO",
+      wallets_title: "Cómo Pagar a Chanak en Cada Plataforma Digital",
+      wallets_lead: "Chanak está registrada formalmente en las plataformas oficiales del estado. Sigue el flujo específico de tu billetera para autorizar tus pagos sin complicaciones.",
+      wallet_cw_title: "ClassWallet (Pay Vendor)",
+      wallet_cw_states: "AZ · AL · SC · NH",
+      wallet_cw_desc: "Utilizado por Arizona ESA, Alabama CHOOSE, Carolina del Sur ESTF y New Hampshire EFA.",
+      wallet_cw_s1: "Chanak emite mensualmente la factura oficial en PDF por cada alumno matriculado.",
+      wallet_cw_s2: "Ingresas a tu portal familiar en app.classwallet.com y seleccionas 'Pay Vendor'.",
+      wallet_cw_s3: "Buscas la entidad legal: CHANAK TRAINUP EDUCATION INC.",
+      wallet_cw_s4: "Subes la factura proforma y autorizas el desembolso directo del saldo de tu beca.",
+
+      wallet_ody_title: "Odyssey Marketplace",
+      wallet_ody_states: "Wyoming · Utah",
+      wallet_ody_desc: "Plataforma oficial para Wyoming ESA y Utah Fits All Scholarship (UFA).",
+      wallet_ody_s1: "Accedes con tus credenciales a withodyssey.com en la cuenta asignada a tu familia.",
+      wallet_ody_s2: "Localizas a Chanak TrainUp Education Inc. en el catálogo o directorio de proveedores.",
+      wallet_ody_s3: "Formalizas la inscripción de tu hijo y vinculas la oferta de servicio aprobada.",
+      wallet_ody_s4: "El desembolso se libera tras la prestación efectiva del servicio académico mensual.",
+
+      wallet_ema_title: "Step Up for Students (EMA)",
+      wallet_ema_states: "Florida (PEP & FES-UA)",
+      wallet_ema_desc: "Portal oficial del estado de Florida para cuentas de educación personalizada.",
+      wallet_ema_s1: "Ingresas al portal EMA (Education Market Assistant) de Step Up for Students.",
+      wallet_ema_s2: "Buscas a Chanak International Academy dentro de los servicios autorizados K–12.",
+      wallet_ema_s3: "Seleccionas los módulos de acompañamiento educativo y materias troncales.",
+      wallet_ema_s4: "Autorizas el pago con el saldo de tu beca PEP o FES-UA sin gastos personales.",
+
+      // Video Gallery Section
+      videos_badge: "TUTORIALES OFICIALES CHANAK",
+      videos_title: "Video-Tutoriales: Cómo Usar tus Fondos Paso a Paso",
+      videos_lead: "Aprende de forma visual y guiada cómo ingresar a tu plataforma, buscar a Chanak y autorizar el pago con fondos estatales. Cada video cuenta con la garantía y orientación de Chanak Academy.",
+      video_btn_watch: "Ver Video Tutorial ▶",
+      video_modal_close: "Cerrar",
+      video_modal_hint: "Presiona la tecla ESC o haz clic fuera del reproductor para cerrar.",
+
+      v1_title: "ClassWallet: Cómo buscar a CHANAK TRAINUP EDUCATION INC y pagar mediante Pay Vendor",
+      v1_desc: "Tutorial paso a paso para familias con cuenta ClassWallet: cómo localizar nuestra entidad legal, subir tu factura oficial en PDF y autorizar el pago directo.",
+      v1_time: "3:30 min",
+
+      v2_title: "Arizona ESA: Uso de fondos en ClassWallet para Chanak K–12 y Dual Diploma",
+      v2_desc: "Guía completa para familias de Arizona con beca ESA: cobertura aprobada, emisión mensual de facturas y convalidación de créditos.",
+      v2_time: "4:15 min",
+
+      v3_title: "Florida Step Up / EMA: Cómo seleccionar servicios de Chanak en el Marketplace",
+      v3_desc: "Paso a paso para familias de Florida con beca PEP o FES-UA: navegación en el portal EMA y solicitud de servicios educativos autorizados.",
+      v3_time: "3:50 min",
+
+      v4_title: "Wyoming & Utah Odyssey: Guía de inscripción y liberación de fondos",
+      v4_desc: "Aprende cómo funciona el flujo de Odyssey para Wyoming ESA y Utah Fits All: vinculación de oferta y desembolso post-servicio.",
+      v4_time: "4:00 min",
+
+      v5_title: "New Hampshire EFA: Mentoría académica y facturación directa en ClassWallet",
+      v5_desc: "Instrucciones para familias de New Hampshire gestionadas por CSF NH: clasificación como servicio de mentoría y reporte legal de notas.",
+      v5_time: "3:20 min",
+
+      v6_title: "Alabama CHOOSE Act: Facturación mensual por alumno con Pay Vendor",
+      v6_desc: "Cómo aplicar los fondos de la ley CHOOSE en Alabama sin trámites de reembolso directo y con evaluación diagnóstica inicial.",
+      v6_time: "3:45 min",
+
+      // Guides Section
+      guides_badge: "ARTÍCULOS Y DOCUMENTACIÓN OFICIAL",
+      guides_title: "Guías Prácticas para Familias con Fondos",
+      guides_lead: "Recursos informativos redactados por nuestro equipo legal y académico para que aproveches al máximo los beneficios de tu estado.",
+      g1_cat: "FACTURACIÓN Y PAGOS",
+      g1_title: "Requisitos de una Factura Aprobada en ClassWallet y Odyssey",
+      g1_desc: "Descubre qué datos obligatorios debe incluir tu factura (nombre legal del alumno, código de proveedor, desglose por conceptos) para evitar rechazos.",
+      g2_cat: "LEGALIDAD Y CUMPLIMIENTO",
+      g2_title: "Cumplimiento Estatal K–12: Evaluaciones Anuales y PEI",
+      g2_desc: "Cómo Chanak estructura las pruebas estandarizadas anuales y el Plan Educativo Individualizado requeridos por las leyes de elección escolar.",
+      g3_cat: "TITULACIÓN Y HOMOLOGACIÓN",
+      g3_title: "Expediente Oficial (Official Transcript) y American High School Diploma",
+      g3_desc: "Todo lo que necesitas saber sobre la emisión de expedientes acumulativos oficiales y el diploma de secundaria acreditado por Chanak.",
+
+      // Advisory Form Section
+      form_badge: "ASESORÍA PERSONALIZADA SIN COMPROMISO",
+      form_title: "Solicita Orientación Gratuita o tu Factura Oficial",
+      form_lead: "Indícanos los datos de tu familia y el programa de beca de tu estado. Nuestro equipo de admisiones te contactará en menos de 24 horas laborables para guiarte sin coste alguno.",
+      lbl_parent: "Nombre completo del padre, madre o tutor *",
+      lbl_student: "Nombre legal del alumno (como figura en la beca) *",
+      lbl_email: "Correo electrónico *",
+      lbl_phone: "Teléfono / WhatsApp *",
+      lbl_state: "Estado de residencia / Beca *",
+      lbl_program: "Programa de interés *",
+      lbl_privacy: "Acepto la política de privacidad y autorizo a Chanak a contactarme para fines educativos.",
+      opt_prog_k12: "Off-Campus K–12 (Escuela completa / Homeschool)",
+      opt_prog_dual: "Dual Diploma (Doble titulación High School)",
+      opt_prog_info: "Orientación general / Consultar fondos de mi estado",
+      btn_submit_form: "Solicitar Asesoría / Factura Proforma →",
+      form_success: "✓ Solicitud recibida con éxito. Un asesor de Chanak te contactará con los pasos específicos para tu estado y billetera.",
+      form_error: "Por favor, completa todos los campos requeridos y acepta la política de privacidad.",
+
+      // FAQ Section
+      faq_badge: "PREGUNTAS FRECUENTES",
+      faq_title: "Dudas Habituales sobre Fondos Educativos Estatales",
+      faq_lead: "Respuestas claras a las dudas más comunes de familias que utilizan fondos públicos en Chanak International Academy.",
+      faq1_q: "1. ¿Tengo que adelantar dinero de mi bolsillo?",
+      faq1_a: "No en los estados con pago directo activo (como Arizona, Alabama, Carolina del Sur o New Hampshire en ClassWallet, y Wyoming y Utah en Odyssey). Chanak emite la factura oficial y el estado realiza el desembolso directamente a nuestra entidad registrada.",
+      faq2_q: "2. ¿Cómo busca mi familia a Chanak en la plataforma?",
+      faq2_a: "Debes buscar exactamente nuestra entidad legal aprobada: CHANAK TRAINUP EDUCATION INC. En ClassWallet nos encuentras en la sección 'Pay Vendor', y en Odyssey en el directorio oficial de proveedores del estado.",
+      faq3_q: "3. ¿Qué ocurre si me conceden los fondos a mitad de curso?",
+      faq3_a: "Chanak cuenta con matrícula abierta continua. Si recibes la aprobación de tus fondos en cualquier momento del ciclo escolar, adaptamos el calendario de pagos y el plan de estudios al saldo restante asignado por tu estado.",
+      faq4_q: "4. ¿Los fondos no utilizados se acumulan o se pueden transferir a otro hermano?",
+      faq4_a: "Cada estado tiene su propia normativa. En general, los fondos asignados a un alumno no pueden transferirse a otro hermano, pero muchas cuentas ESA permiten que el saldo remanente se acumule para el siguiente ciclo escolar. Te asesoramos según la ley de tu estado.",
+      faq5_q: "5. ¿Incluye Chanak el expediente oficial (transcript) y el diploma?",
+      faq5_a: "Sí. Para todos los alumnos matriculados en los programas completos de Chanak en los estados participantes, el servicio incluye la apertura y custodia de expediente oficial, report cards periódicos, official transcript y American High School Diploma de Florida (FLDOE #134620).",
+      faq6_q: "6. ¿Es compatible con el homeschooling o con el colegio habitual?",
+      faq6_a: "Totalmente. Chanak ofrece dos modalidades: Off-Campus K–12 para educación completa a distancia en casa, y Dual Diploma para alumnos que asisten a su colegio habitual pero cursan la titulación estadounidense oficial en paralelo."
+    },
+
     en: {
       // Topbar & Nav
       topbar_text: "Official Nonpublic School Provider · ClassWallet & Odyssey Approved Partner",
       topbar_fldoe: "FLDOE Private School Code: #134620 · 501(c)(3) Nonprofit",
       nav_sub: "Approved State Scholarship Programs",
-      nav_select_state: "Change State / Program:",
-      nav_cta: "Request Quote / Invoice",
-      
-      // Hero Badges & Pills
-      pill_approved_vendor: "Approved Entity:",
-      pill_platform: "Platform / Method:",
-      pill_funding: "Funding Coverage:",
-      pill_legal_status: "Legal Status:",
-      btn_hero_cta: "Request Official Invoice",
-      btn_hero_guide: "How Direct Pay Works",
+      nav_cta: "Request Guidance / Invoice",
+      state_select_default: "Select State / Program:",
 
-      // Trust Bar
+      // Hero
+      hero_badge: "✦ STATE EDUCATION FUNDS & SCHOOL CHOICE · 2026–2027 CYCLE ✦",
+      hero_h1: "State Education Funds & K–12 Distance Learning",
+      hero_lead: "Chanak International Academy is an FLDOE-registered private school (#134620), MSA-CESS candidate for accreditation, and approved nonpublic provider on ClassWallet, Odyssey, and Step Up / EMA. Eligible families can fund 100% of tuition, official cumulative transcripts, and accreditation without personal out-of-pocket costs.",
+      hero_disclaimer: "* Payment with state funds is subject to service eligibility and available account balance.",
+      pill_entity: "Approved Entity: CHANAK TRAINUP EDUCATION INC",
+      pill_wallets: "Official Wallets: ClassWallet, Odyssey & EMA",
+      pill_msa: "Accreditation: MSA-CESS Official Candidate",
+      pill_transcript: "Validity: Official Transcript & High School Diploma",
+      btn_explore_states: "Explore States & Wallets ↓",
+      btn_request_guidance: "Request Free Guidance →",
+
+      // Jump Nav
+      jump_label: "Jump to section:",
+      jump_states: "Approved States",
+      jump_wallets: "Digital Wallets",
+      jump_videos: "Video Tutorials",
+      jump_guides: "Step-by-Step Guides",
+      jump_faq: "Frequently Asked Questions",
+      jump_advisory: "Free Consultation",
+
+      // Trust bar
       trust_fldoe: "FLDOE Registered Private School #134620",
       trust_msa: "MSA-CESS Official Candidate for Accreditation",
       trust_nonprofit: "501(c)(3) Nonprofit: Chanak TrainUp Education Inc.",
-      trust_directpay: "100% Direct Pay via ClassWallet & Odyssey (No Out-of-Pocket)",
+      trust_directpay: "100% Direct Pay via State Wallets (Zero Out-of-Pocket)",
 
-      // 4-Step Direct Pay Guide
-      guide_title: "How to Pay via Direct Pay in 4 Steps",
-      guide_badge: "Zero Out-of-Pocket Process",
-      guide_lead: "As an approved nonpublic school provider, Chanak allows eligible families to fund tuition and educational services directly with state scholarship funds without personal upfront payments.",
-      step1_title: "1. Request Official Invoice",
-      step1_desc: "Complete our step-by-step enrollment form below with the student's legal name and select your courses.",
-      step2_title: "2. Log In to State Parent Portal",
-      step2_desc: "Access your state parent portal in ClassWallet or Odyssey with your family credentials.",
-      step3_title: "3. Search for Chanak in Provider Directory",
-      step3_desc: "In the marketplace or 'Pay Vendor' section, search for our registered legal entity:",
-      step3_vendor: "CHANAK TRAINUP EDUCATION INC",
-      step4_title: "4. Authorize Direct Disbursement",
-      step4_desc: "Attach the official itemized invoice sent by Chanak and submit the total amount for 100% direct state disbursement.",
+      // Concepts Section
+      concepts_badge: "SCHOOL CHOICE ESSENTIALS",
+      concepts_title: "How Do State Education Funds Work for Families?",
+      concepts_lead: "School choice policies allow families to apply public education funding toward customized distance-learning programs for their children, including nonpublic options like Chanak.",
+      concept1_title: "1. Education Savings Accounts (ESA / EFA / UFA)",
+      concept1_desc: "State-funded accounts managed through a digital platform where families spend authorized amounts on qualifying nonpublic tuition, curriculum, and diagnostic benchmarks.",
+      concept2_title: "2. State Vouchers & Scholarships",
+      concept2_desc: "Legislative school choice programs (such as AL CHOOSE, SC ESTF, or FL PEP) designed to empower parents to choose accredited private school providers.",
+      concept3_title: "3. Direct-Pay Digital Wallets",
+      concept3_desc: "Approved platforms like ClassWallet or Odyssey where you find CHANAK TRAINUP EDUCATION INC and authorize monthly disbursements directly from your state award.",
 
-      // Video Section
-      video_badge: "Step-by-Step Tutorial",
-      video_title: "Watch: How to Submit an Invoice in ClassWallet",
-      video_lead: "Follow this step-by-step official tutorial on using the 'Pay Vendor' feature in your ClassWallet portal.",
-      video_caption: "Official ClassWallet Tutorial: Submitting vendor invoices for direct payment.",
+      // Table Section
+      table_badge: "STATE FUNDING DIRECTORY",
+      table_title: "Does My State Offer Funds for Distance Education?",
+      table_lead: "Explore approved programs, state digital platforms, and Chanak service coverage in our interactive table. Use the instant search bar to find your state.",
+      search_placeholder: "Search state (e.g. Arizona, Utah, Wyoming, Florida, Alabama...)",
+      table_count_prefix: "Showing",
+      table_count_suffix: "programs and states",
+      th_state: "State",
+      th_program: "Official Scholarship Program",
+      th_wallet: "Digital Wallet",
+      th_offcampus: "Chanak Off-Campus (K–12)",
+      th_dual: "Chanak Dual Diploma",
+      th_action: "State Guide",
+      badge_approved: "✓ Approved",
+      badge_compatible: "✓ Transferable",
+      badge_consult: "Inquire",
+      btn_view_state: "View Landing →",
 
-      // Catalog Badges & Fees
-      catalog_badge: "Approved Line Items & Rates",
-      catalog_title: "Academic Catalog & Official Fee Schedule",
-      catalog_lead: "Unified, state-audited line items for 2026–2027. All tuition packages include digital resources, LMS platform, and annual standardized testing.",
-      
-      badge_mandatory_line: "Mandatory Annual Line Item",
-      badge_core_prog: "Core Academic Program",
-      badge_tuit_line: "K–12 Monthly Tuition",
-      badge_diag_line: "Assessment Line Item",
-      badge_elect_line: "Electives & Mentorship",
-      badge_spec_inst: "Approved Specialized Instruction",
+      // Digital Wallets Section
+      wallets_badge: "DIGITAL PLATFORMS & DISBURSEMENT",
+      wallets_title: "How to Pay Chanak in Each Digital Platform",
+      wallets_lead: "Chanak is formally registered as an approved vendor. Follow the specific workflow of your digital wallet to authorize direct state disbursements seamlessly.",
+      wallet_cw_title: "ClassWallet (Pay Vendor)",
+      wallet_cw_states: "AZ · AL · SC · NH",
+      wallet_cw_desc: "Used by Arizona ESA, Alabama CHOOSE, South Carolina ESTF, and New Hampshire EFA.",
+      wallet_cw_s1: "Chanak issues an itemized official PDF invoice per enrolled student each month.",
+      wallet_cw_s2: "Log in to your parent portal at app.classwallet.com and select 'Pay Vendor'.",
+      wallet_cw_s3: "Search for our approved legal entity: CHANAK TRAINUP EDUCATION INC.",
+      wallet_cw_s4: "Upload the PDF invoice and submit for 100% direct state fund disbursement.",
 
-      cat_reg_title: "Annual Registration & Enrollment Fee",
-      cat_reg_tech: "Annual Nonpublic School Registration & Enrollment Fee",
-      cat_reg_price: "$295",
-      cat_reg_period: "one-time / school year",
-      cat_reg_desc: "Mandatory annual fee to establish and maintain the official cumulative student record, state compliance verification, grade reporting, and official transcripts.",
-      cat_reg_f1: "Opening & legal custody of official student record",
-      cat_reg_f2: "Official semester report cards & graduation transcripts",
-      cat_reg_f3: "Annual state scholarship reporting & compliance verification",
-      cat_reg_f4: "Dedicated school counselor assignment",
+      wallet_ody_title: "Odyssey Marketplace",
+      wallet_ody_states: "Wyoming · Utah",
+      wallet_ody_desc: "Official platform for Wyoming ESA and Utah Fits All Scholarship (UFA).",
+      wallet_ody_s1: "Log in with your family credentials to withodyssey.com on your awarded account.",
+      wallet_ody_s2: "Locate Chanak TrainUp Education Inc. in the provider directory or marketplace.",
+      wallet_ody_s3: "Complete your student's enrollment and link the approved monthly service listing.",
+      wallet_ody_s4: "Funds are released directly following monthly delivery of educational services.",
 
-      cat_tuit_title: "Online K–12 School Tuition",
-      cat_tuit_tech: "Nonpublic Online K-12 School Tuition",
-      cat_tuit_period: "/ month (10 installments)",
-      cat_tuit_elem: "Elementary (Grades K–5): $275 / month ($2,750 / year)",
-      cat_tuit_mid: "Middle School (Grades 6–8): $320 / month ($3,200 / year)",
-      cat_tuit_high: "High School (Grades 9–12): $365 / month ($3,650 / year)",
-      cat_tuit_desc: "Comprehensive accredited online education blending core academics with cultural identity and character development.",
-      cat_tuit_c1: "60% Core US Curriculum (English, Math, Science, Social Studies under Mastery Learning)",
-      cat_tuit_c2: "20% Local Studies Extension (History & Geography of student's heritage: Spain/LOMLOE, Mexico, Colombia, Panama, or US General)",
-      cat_tuit_c3: "20% Life Skills & Leadership (Character, financial literacy, productivity)",
-      cat_tuit_f1: "Annual Standardized Testing INCLUDED (meets state ESA accountability rules)",
-      cat_tuit_f2: "Digital learning resources & LMS access 100% INCLUDED ($0 extra)",
-      cat_tuit_f3: "Continuous progress tracking with certified teachers",
+      wallet_ema_title: "Step Up for Students (EMA)",
+      wallet_ema_states: "Florida (PEP & FES-UA)",
+      wallet_ema_desc: "Florida's official portal for personalized education savings accounts.",
+      wallet_ema_s1: "Log in to the EMA (Education Market Assistant) portal at Step Up for Students.",
+      wallet_ema_s2: "Search for Chanak International Academy under authorized K–12 service providers.",
+      wallet_ema_s3: "Select authorized core academic courses and pedagogical mentoring options.",
+      wallet_ema_s4: "Authorize payment using your PEP or FES-UA scholarship balance with zero personal upfront cost.",
 
-      cat_diag_title: "Diagnostic Placement Evaluation",
-      cat_diag_tech: "Diagnostic Academic Placement & Learning Evaluation",
-      cat_diag_price: "$200",
-      cat_diag_period: "one-time evaluation",
-      cat_diag_desc: "Comprehensive diagnostic assessment across reading, writing, and mathematics to detect learning gaps and tailor an Individualized Education Plan (IEP).",
-      cat_diag_f1: "Multi-subject standardized diagnostic benchmark",
-      cat_diag_f2: "Learning gap detection and remediation plan",
-      cat_diag_f3: "Individualized Education Plan (IEP / PEI) blueprint",
+      // Video Gallery Section
+      videos_badge: "OFFICIAL CHANAK TUTORIALS",
+      videos_title: "Video Tutorials: How to Use Your Funds Step-by-Step",
+      videos_lead: "Visual walkthroughs explaining how to log in, search for Chanak, and authorize state payments. Every video carries Chanak Academy's official trust and branding.",
+      video_btn_watch: "Watch Video Tutorial ▶",
+      video_modal_close: "Close",
+      video_modal_hint: "Press ESC or click outside the video player to close.",
 
-      cat_elect_title: "Single Elective Courses",
-      cat_elect_desc: "Independent credit courses for standalone enrichment or courseware expansion.",
-      cat_span_tech: "World Language Elective Course: Spanish Language Instruction",
-      cat_span_price: "$120 / month",
-      cat_span_desc: "Grammar, literature, writing, and Hispanic cultural heritage for native and non-native learners.",
-      cat_life_tech: "Applied Life Skills & Leadership Development Course",
-      cat_life_price: "$85 / month",
-      cat_life_desc: "Available in English Track or Spanish Track. 5 core pillars: 1) Character & ethics; 2) Goal setting & productivity; 3) Practical financial stewardship; 4) Servant leadership; 5) Real-world decision making.",
-      
-      cat_ment_title: "Academic Mentorship & Support",
-      cat_ment_tech: "Individualized Academic Mentorship & Learning Support Service",
-      cat_ment_price: "$150 / month",
-      cat_ment_desc: "One-on-one pedagogical mentoring, weekly accountability check-ins, study habit coaching, and specialized academic support.",
+      v1_title: "ClassWallet: How to search CHANAK TRAINUP EDUCATION INC and pay via Pay Vendor",
+      v1_desc: "Step-by-step tutorial for ClassWallet families: finding our legal entity, uploading your official PDF invoice, and authorizing direct disbursement.",
+      v1_time: "3:30 min",
 
-      // Callout Alert
-      alert_title: "⚠️ ATTENTION STATE SCHOLARSHIP FAMILIES (ODYSSEY & CLASSWALLET):",
-      alert_body: "Do not pay out-of-pocket with personal credit/debit cards if you are using your state ESA funds. Upon submitting this form, our administration will issue and email your OFFICIAL ITEMIZED PDF INVOICE compliant with state regulations. You will then upload this invoice directly to your portal under 'Pay Vendor' by selecting 'CHANAK TRAINUP EDUCATION INC' for direct state disbursement.",
+      v2_title: "Arizona ESA: Using ClassWallet funds for Chanak K–12 and Dual Diploma",
+      v2_desc: "Complete walkthrough for Arizona ESA parents: approved coverage, monthly invoices, and credit convalidation.",
+      v2_time: "4:15 min",
 
-      // Form Steps
-      form_title: "Enrollment & Official Invoice Request",
-      form_lead: "Fill out student details, select desired services, and receive your itemized PDF invoice for Direct Pay.",
-      form_step1: "1. Student & Family",
-      form_step2: "2. Services & Live Quote",
-      form_step3: "3. Payment & Submit",
+      v3_title: "Florida Step Up / EMA: How to select Chanak services on the Marketplace",
+      v3_desc: "Step-by-step guide for Florida PEP and FES-UA families navigating the EMA portal and booking authorized educational services.",
+      v3_time: "3:50 min",
 
-      lbl_student_name: "Student Full Legal Name (as on ESA account) *",
-      lbl_student_dob: "Student Date of Birth *",
-      lbl_student_grade: "Grade Level for 2026–2027 *",
-      lbl_guardian_name: "Parent / Guardian Legal Name *",
-      lbl_guardian_email: "Parent Email (where invoice will be sent) *",
-      lbl_guardian_phone: "Parent Phone Number *",
-      lbl_program_state: "State Scholarship / Program *",
+      v4_title: "Wyoming & Utah Odyssey: Enrollment and fund disbursement guide",
+      v4_desc: "Understand the Odyssey workflow for Wyoming ESA and Utah Fits All: linking service listings and post-service disbursement.",
+      v4_time: "4:00 min",
 
-      cat_select_title: "Select Academic Program & Courses:",
-      srv_reg_badge: "$295 (One-time mandatory)",
-      srv_tuit_badge: "10 Monthly Installments",
-      srv_grade_lbl: "Select Tuition Level:",
-      srv_elem_opt: "Elementary (Grades K–5): $275 / month",
-      srv_mid_opt: "Middle School (Grades 6–8): $320 / month",
-      srv_high_opt: "High School (Grades 9–12): $365 / month",
-      srv_diag_badge: "+$200 (One-time)",
-      srv_span_badge: "+$120 / month",
-      srv_life_badge: "+$85 / month",
-      srv_ment_badge: "+$150 / month",
+      v5_title: "New Hampshire EFA: Academic mentorship and direct invoicing in ClassWallet",
+      v5_desc: "Guidance for New Hampshire families with CSF NH accounts: approved mentoring classifications and official grade reporting.",
+      v5_time: "3:20 min",
 
-      lbl_local_studies: "Local Studies Extension: Select Country/Region for History & Geography *",
-      opt_select_country: "-- Select Heritage Curriculum --",
-      opt_us_general: "United States (General US History & Civics)",
-      opt_spain: "Spain / España (LOMLOE Geografía e Historia)",
-      opt_mexico: "Mexico (Historia y Geografía Nacional)",
-      opt_colombia: "Colombia (Ciencias Sociales y Geografía)",
-      opt_panama: "Panama (Historia, Geografía y Cívica)",
-      opt_other_latam: "Other Latin American Country / International",
+      v6_title: "Alabama CHOOSE Act: Monthly invoicing per student with Pay Vendor",
+      v6_desc: "How Alabama parents use CHOOSE Act funds without out-of-pocket reimbursements, including initial diagnostic assessment.",
+      v6_time: "3:45 min",
 
-      lbl_track_lang: "Applied Life Skills Language Track *",
-      opt_track_en: "English Track",
-      opt_track_es: "Modalidad en Español / Spanish Track",
+      // Guides Section
+      guides_badge: "ARTICLES & OFFICIAL DOCUMENTATION",
+      guides_title: "Practical Guides for Scholarship Families",
+      guides_lead: "In-depth resources compiled by our admissions and legal compliance team to maximize your state scholarship benefits.",
+      g1_cat: "BILLING & DIRECT PAY",
+      g1_title: "Requirements for an Approved Invoice in ClassWallet and Odyssey",
+      g1_desc: "Key elements required on Chanak's itemized invoices (student legal name, vendor EIN, line-item coding) to ensure instant state approval.",
+      g2_cat: "STATE COMPLIANCE",
+      g2_title: "K–12 State Accountability: Standardized Testing & IEP",
+      g2_desc: "How Chanak fulfills required annual standardized testing and provides Individualized Education Plans (IEP) per school choice mandates.",
+      g3_cat: "DIPLOMA & TRANSCRIPTS",
+      g3_title: "Official Cumulative Transcripts and American High School Diploma",
+      g3_desc: "Everything you need to know about accredited Florida high school transcripts, apostilles, and national graduation credentials.",
 
-      calc_title: "Estimated Tuition & Fee Breakdown (USD)",
-      calc_onetime: "One-Time Initial Fees (Registration & Diagnostics):",
-      calc_monthly: "Monthly Tuition & Electives (10 installments):",
-      calc_annual: "Total Estimated School Year Commitment:",
-      calc_state_coverage: "Eligible for 100% Direct Disbursement via State Scholarship Funds",
+      // Advisory Form Section
+      form_badge: "NO-OBLIGATION PERSONALIZED GUIDANCE",
+      form_title: "Request Free Consultation or Your Official Invoice",
+      form_lead: "Provide your family and state scholarship details. Our bilingual admissions team will contact you within 24 business hours to assist you at no cost.",
+      lbl_parent: "Parent / Guardian Full Legal Name *",
+      lbl_student: "Student Full Legal Name (as on ESA account) *",
+      lbl_email: "Email Address *",
+      lbl_phone: "Phone / WhatsApp *",
+      lbl_state: "State of Residence / Scholarship *",
+      lbl_program: "Program of Interest *",
+      lbl_privacy: "I accept the privacy policy and authorize Chanak to contact me regarding educational services.",
+      opt_prog_k12: "Off-Campus K–12 (Full Distance School / Homeschool)",
+      opt_prog_dual: "Dual Diploma (US High School Concurrent Track)",
+      opt_prog_info: "General Guidance / Inquire about My State's Funds",
+      btn_submit_form: "Request Guidance / Proforma Invoice →",
+      form_success: "✓ Request received successfully. A Chanak advisor will contact you with specific guidance for your state and digital wallet.",
+      form_error: "Please complete all required fields and accept the privacy policy.",
 
-      pay_opt_cw_title: "State Scholarship Funds (Direct Pay)",
-      pay_opt_cw_desc: "Zero upfront family payment. We send an itemized PDF invoice for you to upload under 'Pay Vendor' -> CHANAK TRAINUP EDUCATION INC.",
-      pay_opt_priv_title: "Private Payment (Credit Card / Stripe / Bank Wire)",
-      pay_opt_priv_desc: "Direct family payment if you are paying out-of-pocket or seeking standard private enrollment.",
-
-      btn_next: "Next Step →",
-      btn_prev: "← Previous",
-      btn_submit_cw: "Request Official Invoice for Direct Pay",
-      btn_submit_priv: "Proceed with Private Enrollment",
-      btn_submitting: "Processing Request...",
-
-      // FAQ
-      faq_title: "Frequently Asked Questions",
-      faq_lead: "Common questions regarding state scholarship coverage, direct payment, and accreditation.",
-      faq_q1: "Is Chanak International Academy an approved official provider?",
-      faq_a1: "<strong>Yes.</strong> Chanak International Academy is operated by <strong>CHANAK TRAINUP EDUCATION INC</strong>, a 501(c)(3) nonprofit private school entity (Florida DOE Code: #134620, MSA-CESS Candidate for Accreditation) approved in state scholarship marketplaces for qualified nonpublic educational services.",
-      faq_q2: "What educational expenses are covered by the scholarship at Chanak?",
-      faq_a2: "State scholarship funds can cover 100% of the Annual Mandatory Registration ($295), full K–12 monthly tuition (Elementary $275/mo, Middle $320/mo, High School $365/mo), the Diagnostic Placement Evaluation ($200), single elective courses (Spanish $120/mo, Life Skills $85/mo), and individualized academic mentorship ($150/mo). All learning materials, LMS digital access, and required annual testing are fully included.",
-      faq_q3: "Do families have to pay upfront out-of-pocket?",
-      faq_a3: "<strong>No.</strong> Participating scholarship families should <strong>NOT</strong> pay with personal credit/debit cards. Our admissions team prepares compliant documentation and guides you to authorize direct state disbursement to <strong>CHANAK TRAINUP EDUCATION INC</strong>.",
-      faq_q4: "How is the American High School diploma accredited and recognized?",
-      faq_a4: "Chanak is a registered private school with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). Graduating students earn an official U.S. High School Diploma and transcripts eligible for apostille under the Hague Convention, accepted by universities across the U.S. and worldwide.",
-
-      // Footer
-      footer_desc: "A comprehensive K–12 nonpublic online learning academy operated by CHANAK TRAINUP EDUCATION INC, a 501(c)(3) nonprofit educational organization.",
-      footer_fldoe: "Florida Department of Education Code: <strong>#134620</strong><br/>MSA-CESS Official Candidate for Accreditation",
-      footer_programs_title: "State Scholarships & Platforms",
-      footer_contact_title: "Contact & Admissions",
-      footer_admissions_lbl: "Admissions & State Scholarship Office:",
-      footer_billing_lbl: "Official Billing Entity:",
-      footer_legal_text: "© 2026 Chanak International Academy · CHANAK TRAINUP EDUCATION INC. All rights reserved. State scholarship programs are administered through their official platforms. Chanak International Academy is an approved nonpublic online school education service provider. Program approval does not guarantee student eligibility or state funding availability.",
-
-      success_title: "Official Invoice Request Received!",
-      success_p1: "Thank you for enrolling with Chanak International Academy (operated by CHANAK TRAINUP EDUCATION INC).",
-      success_p2: "Our admissions department is reviewing your student's details and generating your compliant, itemized PDF invoice.",
-      success_steps_title: "Next Steps to Finalize Direct Pay:",
-      success_s1: "Check your email for the official PDF invoice within 24 business hours.",
-      success_s2: "Log in to your state parent portal.",
-      success_s3: "Go to 'Pay Vendor' or Marketplace and search for CHANAK TRAINUP EDUCATION INC.",
-      success_s4: "Upload the PDF invoice and submit the total amount for direct disbursement.",
-
-      err_required: "Please complete all required fields correctly before continuing."
-    },
-    es: {
-      // Topbar & Nav
-      topbar_text: "Proveedor Oficial Escolar No Público · Socio Direct Pay en ClassWallet y Odyssey",
-      topbar_fldoe: "Código Escolar FLDOE: #134620 · Organización Sin Ánimo de Lucro 501(c)(3)",
-      nav_sub: "Programas Aprobados en Becas Estatales",
-      nav_select_state: "Cambiar Estado / Programa:",
-      nav_cta: "Solicitar Presupuesto",
-      
-      // Hero Badges & Pills
-      pill_approved_vendor: "Entidad Aprobada:",
-      pill_platform: "Plataforma / Modalidad:",
-      pill_funding: "Cobertura de Fondos:",
-      pill_legal_status: "Estatus Legal:",
-      btn_hero_cta: "Solicitar Presupuesto Oficial",
-      btn_hero_guide: "Ver Cómo Funciona",
-
-      // Trust Bar
-      trust_fldoe: "Colegio Privado Registrado FLDOE #134620",
-      trust_msa: "Candidato Oficial a Acreditación MSA-CESS",
-      trust_nonprofit: "Entidad 501(c)(3): Chanak TrainUp Education Inc.",
-      trust_directpay: "100% Pago Directo en ClassWallet y Odyssey (Sin Gastos Propios)",
-
-      // 4-Step Direct Pay Guide
-      guide_title: "Cómo Pagar con Desembolso Directo en 4 Pasos",
-      guide_badge: "Proceso Sin Desembolso Personal",
-      guide_lead: "Como proveedor escolar no público registrado, Chanak permite a las familias financiar la colegiatura y los servicios educativos directamente con los fondos de la beca estatal, sin adelantos personales.",
-      step1_title: "1. Solicitar Factura Oficial / Presupuesto",
-      step1_desc: "Completa el formulario inferior con el nombre legal del alumno y selecciona los cursos o nivel deseados.",
-      step2_title: "2. Ingresar al Portal de Familia",
-      step2_desc: "Accede al portal oficial de tu estado (ClassWallet u Odyssey) con tus credenciales de familia.",
-      step3_title: "3. Buscar a Chanak en el Directorio",
-      step3_desc: "En el Marketplace o directorio de proveedores ('Pay Vendor'), busca a nuestra entidad registrada:",
-      step3_vendor: "CHANAK TRAINUP EDUCATION INC",
-      step4_title: "4. Autorizar Desembolso Directo",
-      step4_desc: "Adjunta la factura proforma en PDF enviada por Chanak y confirma el desembolso directo sin pagar nada de tu bolsillo.",
-
-      // Video Section
-      video_badge: "Tutorial Paso a Paso",
-      video_title: "Tutorial en Video: Cómo Utilizar ClassWallet Direct Pay",
-      video_lead: "Sigue este tutorial oficial sobre cómo utilizar la función 'Pay Vendor' en tu portal de ClassWallet para autorizar el pago a proveedores escolares aprobados.",
-      video_caption: "Guía oficial para familias: Envío de facturas para pago directo en ClassWallet.",
-
-      // Catalog Badges & Fees
-      catalog_badge: "Conceptos Oficiales y Tarifas",
-      catalog_title: "Catálogo Académico y Tarifas Unificadas",
-      catalog_lead: "Líneas de servicio oficiales aprobadas y auditadas para el ciclo 2026–2027. Todos los paquetes incluyen materiales digitales, plataforma LMS y prueba estandarizada anual.",
-      
-      badge_mandatory_line: "Línea Anual Obligatoria",
-      badge_core_prog: "Programa Académico Principal",
-      badge_tuit_line: "Colegiatura Mensual K–12",
-      badge_diag_line: "Evaluación Inicial",
-      badge_elect_line: "Electivas y Acompañamiento",
-      badge_spec_inst: "Instrucción Especializada Aprobada",
-
-      cat_reg_title: "Matrícula Anual Oficial",
-      cat_reg_tech: "Annual Nonpublic School Registration & Enrollment Fee",
-      cat_reg_price: "$295",
-      cat_reg_period: "pago único / ciclo escolar",
-      cat_reg_desc: "Apertura y custodia de expediente oficial acumulativo, verificación de cumplimiento legal del estado, report cards y transcripts oficiales.",
-      cat_reg_f1: "Apertura y custodia legal de expediente oficial",
-      cat_reg_f2: "Boletines oficiales de notas y transcripts de graduación",
-      cat_reg_f3: "Verificación y reportes de cumplimiento para becas estatales",
-      cat_reg_f4: "Asignación de tutor y orientador académico",
-
-      cat_tuit_title: "Colegiatura Mensual K-12 (10 cuotas)",
-      cat_tuit_tech: "Nonpublic Online K-12 School Tuition",
-      cat_tuit_period: "/ mes (10 mensualidades)",
-      cat_tuit_elem: "Primaria (Grados K–5): $275 / mes ($2,750 / año)",
-      cat_tuit_mid: "Secundaria (Grados 6–8): $320 / mes ($3,200 / año)",
-      cat_tuit_high: "Bachillerato (Grados 9–12): $365 / mes ($3,650 / año)",
-      cat_tuit_desc: "Programa escolar completo online que une el rigor curricular estadounidense con la identidad cultural y formación de carácter.",
-      cat_tuit_c1: "60% Currículo Núcleo de EE. UU. (Inglés, Matemáticas, Ciencias, Estudios Sociales con Mastery Learning)",
-      cat_tuit_c2: "20% Extensión de Estudios Locales (Historia y Geografía del país de origen: España, México, Colombia, Panamá o EE. UU.)",
-      cat_tuit_c3: "20% Life Skills & Leadership (Carácter, finanzas prácticas, liderazgo de servicio)",
-      cat_tuit_f1: "Prueba Estandarizada Anual INCLUIDA (cumple requisitos de becas estatales)",
-      cat_tuit_f2: "Plataforma digital LMS y recursos 100% INCLUIDOS ($0 adicional)",
-      cat_tuit_f3: "Monitoreo continuo de progreso con profesores certificados",
-
-      cat_diag_title: "Evaluación Diagnóstica Inicial",
-      cat_diag_tech: "Diagnostic Academic Placement & Learning Evaluation",
-      cat_diag_price: "$200",
-      cat_diag_period: "pago único de evaluación",
-      cat_diag_desc: "Evaluación exhaustiva en lectura, comprensión, matemáticas y redacción para detectar lagunas de aprendizaje y elaborar el Plan Educativo Individualizado (PEI).",
-      cat_diag_f1: "Evaluación diagnóstica estandarizada en materias clave",
-      cat_diag_f2: "Detección de lagunas curriculares y plan de nivelación",
-      cat_diag_f3: "Elaboración de Plan Educativo Individualizado (PEI)",
-
-      cat_elect_title: "Cursos Electivos Independientes",
-      cat_elect_desc: "Materias optativas acreditables independientes para enriquecimiento curricular.",
-      cat_span_tech: "World Language Elective Course: Spanish Language Instruction",
-      cat_span_price: "$120 / mes",
-      cat_span_desc: "Gramática, literatura, lectoescritura y cultura hispana para hablantes nativos o estudiantes de lengua extranjera.",
-      cat_life_tech: "Applied Life Skills & Leadership Development Course",
-      cat_life_price: "$85 / mes",
-      cat_life_desc: "Disponible en English Track o Modalidad en Español. 5 ejes: 1) Carácter y ética; 2) Metas y productividad; 3) Educación financiera práctica; 4) Liderazgo de servicio; 5) Toma de decisiones para la vida diaria.",
-      
-      cat_ment_title: "Mentoría y Soporte Académico",
-      cat_ment_tech: "Individualized Academic Mentorship & Learning Support Service",
-      cat_ment_price: "$150 / mes",
-      cat_ment_desc: "Acompañamiento pedagógico individualizado, reuniones semanales de seguimiento, hábitos de estudio y apoyo académico continuo.",
-
-      // Callout Alert
-      alert_title: "⚠️ AVISO PARA FAMILIAS CON BECAS ESTATALES:",
-      alert_body: "No realice pagos con tarjeta personal ni fondos propios si va a utilizar su beca estatal. Al completar este formulario, nuestro equipo de admisiones generará su FACTURA OFICIAL EN PDF con la codificación requerida por su estado. Podrá autorizar el desembolso directo a favor de 'CHANAK TRAINUP EDUCATION INC' sin ningún adelanto de su bolsillo.",
-
-      // Form Steps
-      form_title: "Solicitud de Matrícula y Factura Proforma Oficial",
-      form_lead: "Ingresa los datos del estudiante, selecciona los servicios y recibe tu presupuesto oficial desglosado para aprobación estatal.",
-      form_step1: "1. Estudiante y Familia",
-      form_step2: "2. Servicios y Cotizador",
-      form_step3: "3. Vía de Pago y Confirmación",
-
-      lbl_student_name: "Nombre Legal Completo del Alumno (como en la cuenta de beca) *",
-      lbl_student_dob: "Fecha de Nacimiento del Alumno *",
-      lbl_student_grade: "Grado Escolar 2026–2027 *",
-      lbl_guardian_name: "Nombre Completo del Padre, Madre o Tutor Legal *",
-      lbl_guardian_email: "Correo Electrónico (donde enviaremos la factura) *",
-      lbl_guardian_phone: "Teléfono de Contacto (con código de área) *",
-      lbl_program_state: "Programa de Beca Estatal *",
-
-      cat_select_title: "Selecciona el programa académico y servicios:",
-      srv_reg_badge: "$295 (Pago único obligatorio)",
-      srv_tuit_badge: "10 mensualidades escolares",
-      srv_grade_lbl: "Selecciona el nivel escolar:",
-      srv_elem_opt: "Primaria (Elementary, Grados K–5): $275 / mes",
-      srv_mid_opt: "Secundaria (Middle School, Grados 6–8): $320 / mes",
-      srv_high_opt: "Bachillerato (High School, Grados 9–12): $365 / mes",
-      srv_diag_badge: "+$200 (Pago único)",
-      srv_span_badge: "+$120 / mes",
-      srv_life_badge: "+$85 / mes",
-      srv_ment_badge: "+$150 / mes",
-
-      lbl_local_studies: "Extensión Curricular de Estudios Locales: Selecciona País/Región *",
-      opt_select_country: "-- Seleccionar Currículo de Origen --",
-      opt_us_general: "Estados Unidos (Historia de EE. UU. General y Cívica)",
-      opt_spain: "España (LOMLOE Geografía e Historia)",
-      opt_mexico: "México (Historia y Geografía Nacional)",
-      opt_colombia: "Colombia (Ciencias Sociales y Geografía)",
-      opt_panama: "Panamá (Historia, Geografía y Cívica)",
-      opt_other_latam: "Otro País Latinoamericano / Internacional",
-
-      lbl_track_lang: "Modalidad de Idioma para Life Skills *",
-      opt_track_en: "English Track (en Inglés)",
-      opt_track_es: "Modalidad en Español / Spanish Track",
-
-      calc_title: "Presupuesto Desglosado en Tiempo Real (USD)",
-      calc_onetime: "Cargos Únicos Iniciales (Matrícula + Diagnóstico):",
-      calc_monthly: "Colegiatura Mensual y Electivas (10 cuotas):",
-      calc_annual: "Compromiso Total Estimado del Año Escolar:",
-      calc_state_coverage: "Elegible para 100% de desembolso directo mediante Beca Estatal",
-
-      pay_opt_cw_title: "Fondos de Beca Estatal (Direct Pay)",
-      pay_opt_cw_desc: "Sin desembolso personal de su bolsillo. Emitimos la factura oficial proforma y le guiamos para autorizar el pago a nombre de CHANAK TRAINUP EDUCATION INC.",
-      pay_opt_priv_title: "Pago Privado / Familiar",
-      pay_opt_priv_desc: "Pago independiente mediante transferencia ACH o tarjeta bancaria si no dispone de fondos de beca estatal.",
-
-      btn_next: "Continuar al Paso 2 →",
-      btn_prev: "← Volver al Paso Anterior",
-      btn_submit_cw: "Solicitar Factura para Beca Estatal",
-      btn_submit_priv: "Continuar con Matrícula Privada",
-      btn_submitting: "Procesando Solicitud...",
-
-      // FAQ
-      faq_title: "Preguntas Frecuentes sobre la Beca y Servicios",
-      faq_lead: "Respuestas claras sobre aprobación oficial, cobertura de fondos, facturación y validez académica.",
-      faq_q1: "¿Está Chanak International Academy aprobada como proveedor oficial?",
-      faq_a1: "<strong>Sí.</strong> Chanak International Academy está operada por <strong>CHANAK TRAINUP EDUCATION INC</strong>, una entidad escolar privada sin fines de lucro 501(c)(3) (Código FLDOE: #134620, Candidato Oficial a Acreditación MSA-CESS) aprobada en las plataformas estatales de becas como proveedor educativo no público.",
-      faq_q2: "¿Qué gastos educativos cubre la beca en Chanak?",
-      faq_a2: "Los fondos de la beca estatal pueden cubrir el 100% de la Matrícula Anual Obligatoria ($295), la colegiatura mensual completa en Primaria ($275/mes), Secundaria ($320/mes) o Bachillerato ($365/mes), la Evaluación Diagnóstica Inicial ($200), materias electivas (Español $120/mes, Life Skills $85/mes), mentoría académica individual ($150/mes) y las pruebas estandarizadas anuales incluidas.",
-      faq_q3: "¿Deben las familias pagar por adelantado de su propio bolsillo?",
-      faq_a3: "<strong>No.</strong> Las familias participantes con beca <strong>NO</strong> deben realizar pagos con tarjeta personal. Nuestro equipo de admisiones gestiona la orden y factura oficial para que el desembolso sea 100% directo desde sus fondos a favor de <strong>CHANAK TRAINUP EDUCATION INC</strong>.",
-      faq_q4: "¿Cómo está acreditado y reconocido el diploma americano de High School?",
-      faq_a4: "Chanak es un colegio privado registrado en el Departamento de Educación de Florida (FLDOE #134620) y Candidato Oficial a la Acreditación con la Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). Los estudiantes graduados reciben el diploma oficial de High School de EE. UU. y certificados de notas apostillables bajo el Convenio de La Haya, aceptados por universidades en EE. UU. e internacionales.",
-
-      // Footer
-      footer_desc: "Academia integral online K–12 no pública operada por CHANAK TRAINUP EDUCATION INC, organización educativa sin fines de lucro 501(c)(3).",
-      footer_fldoe: "Código del Departamento de Educación de Florida: <strong>#134620</strong><br/>Candidato Oficial a Acreditación MSA-CESS",
-      footer_programs_title: "Becas Estatales y Plataformas",
-      footer_contact_title: "Contacto y Admisiones",
-      footer_admissions_lbl: "Oficina de Admisiones y Becas Estatales:",
-      footer_billing_lbl: "Entidad de Facturación Oficial:",
-      footer_legal_text: "© 2026 Chanak International Academy · CHANAK TRAINUP EDUCATION INC. Todos los derechos reservados. Los programas de becas estatales son administrados mediante sus plataformas oficiales. Chanak International Academy es un proveedor educativo escolar no público aprobado. La aprobación del programa no garantiza la elegibilidad del estudiante ni la disponibilidad de fondos estatales.",
-
-      success_title: "¡Solicitud de Factura Oficial Recibida!",
-      success_p1: "Gracias por registrar a su estudiante en Chanak International Academy (operado por CHANAK TRAINUP EDUCATION INC).",
-      success_p2: "Nuestro departamento de admisiones está revisando la información y preparando la factura proforma desglosada en PDF conforme a las normas de su estado.",
-      success_steps_title: "Próximos Pasos para Finalizar:",
-      success_s1: "En menos de 24h laborables recibirá su factura oficial en PDF en su correo electrónico.",
-      success_s2: "Inicie sesión en el portal de padres de su estado.",
-      success_s3: "En el directorio o 'Pay Vendor', busque a CHANAK TRAINUP EDUCATION INC.",
-      success_s4: "Suba la factura en PDF para autorizar el desembolso estatal directo sin adelantar dinero propio.",
-
-      err_required: "Por favor complete todos los campos obligatorios antes de continuar."
+      // FAQ Section
+      faq_badge: "FREQUENTLY ASKED QUESTIONS",
+      faq_title: "Common Questions About State Education Funds",
+      faq_lead: "Clear answers to the most common questions from families using public school choice funds at Chanak International Academy.",
+      faq1_q: "1. Do I need to pay anything out-of-pocket?",
+      faq1_a: "No in participating direct-pay states (such as Arizona, Alabama, South Carolina, or New Hampshire on ClassWallet, and Wyoming and Utah on Odyssey). Chanak issues the official invoice and the state disburses payment directly to our registered entity.",
+      faq2_q: "2. How does my family locate Chanak in our portal?",
+      faq2_a: "Search for our exact approved legal entity: CHANAK TRAINUP EDUCATION INC. In ClassWallet, look under 'Pay Vendor'; in Odyssey, locate our profile in the official state provider directory.",
+      faq3_q: "3. What if my child's scholarship is approved mid-year?",
+      faq3_a: "Chanak maintains rolling admissions throughout the year. If your state funds are awarded midway through the school year, we adjust your monthly billing schedule and curriculum plan to match your remaining available balance.",
+      faq4_q: "4. Do unused funds roll over or transfer to another sibling?",
+      faq4_a: "Policies vary by state. Generally, funds awarded to one student cannot be transferred to a sibling, but many state ESAs allow unused balances to roll over into subsequent academic years. Our team provides state-specific rules.",
+      faq5_q: "5. Does Chanak include official cumulative transcripts and diploma?",
+      faq5_a: "Yes. For all students enrolled in full Chanak programs in participating states, services include opening and custody of cumulative records, regular grade reports, official graduation transcripts, and an accredited American High School Diploma from Florida (FLDOE #134620).",
+      faq6_q: "6. Is Chanak compatible with homeschooling or local schooling?",
+      faq6_a: "Completely. We offer two distinct tracks: Off-Campus K–12 for complete distance education at home, and Dual Diploma for students attending their regular local school while earning an official U.S. high school diploma in parallel."
     }
   };
 
-  var currentLang = "es";
-  var currentStep = 1;
-
-  // INITIALIZE
-  function init() {
-    var urlParams = new URLSearchParams(window.location.search);
-    var urlLang = urlParams.get("lang");
-    if (urlLang === "en") {
-      currentLang = "en";
-    } else if (urlLang === "es") {
-      currentLang = "es";
-    } else {
-      var savedLang = localStorage.getItem("chanak_scholarship_lang");
-      currentLang = (savedLang === "en" && urlParams.has("lang")) ? "en" : "es";
+  // STATE DIRECTORY DATA FOR MASTER TABLE
+  var STATE_ROWS = [
+    {
+      stateName: { es: "Utah", en: "Utah" },
+      flag: "🏔️",
+      programName: { es: "Utah Fits All Scholarship (UFA)", en: "Utah Fits All Scholarship (UFA)" },
+      programUrl: "https://www.utaheducationfitsall.org/",
+      wallet: "Odyssey",
+      walletClass: "odyssey",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "/utah/",
+      featured: true
+    },
+    {
+      stateName: { es: "Wyoming", en: "Wyoming" },
+      flag: "🦬",
+      programName: { es: "Wyoming Education Savings Account (ESA)", en: "Wyoming Education Savings Account (ESA)" },
+      programUrl: "https://edu.wyoming.gov/parents/education-savings-accounts/",
+      wallet: "Odyssey",
+      walletClass: "odyssey",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "/wyoming/",
+      featured: true
+    },
+    {
+      stateName: { es: "Arizona", en: "Arizona" },
+      flag: "🌵",
+      programName: { es: "Empowerment Scholarship Account (ESA)", en: "Empowerment Scholarship Account (ESA)" },
+      programUrl: "https://www.azed.gov/esa/",
+      wallet: "ClassWallet",
+      walletClass: "classwallet",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "/arizona/",
+      featured: true
+    },
+    {
+      stateName: { es: "Alabama", en: "Alabama" },
+      flag: "🌲",
+      programName: { es: "The CHOOSE Act of 2024", en: "The CHOOSE Act of 2024" },
+      programUrl: "https://classwallet.com/alchoose/",
+      wallet: "ClassWallet",
+      walletClass: "classwallet",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "/alabama/",
+      featured: true
+    },
+    {
+      stateName: { es: "South Carolina", en: "South Carolina" },
+      flag: "🌴",
+      programName: { es: "Education Scholarship Trust Fund (ESTF)", en: "Education Scholarship Trust Fund (ESTF)" },
+      programUrl: "https://sc-estf-program.com/en/",
+      wallet: "ClassWallet",
+      walletClass: "classwallet",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "/south-carolina/",
+      featured: true
+    },
+    {
+      stateName: { es: "New Hampshire", en: "New Hampshire" },
+      flag: "🍁",
+      programName: { es: "Education Freedom Account (EFA)", en: "Education Freedom Account (EFA)" },
+      programUrl: "https://nh.scholarshipfund.org/apply/nh-education-freedom-accounts/",
+      wallet: "ClassWallet",
+      walletClass: "classwallet",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "/new-hampshire/",
+      featured: true
+    },
+    {
+      stateName: { es: "Florida", en: "Florida" },
+      flag: "☀️",
+      programName: { es: "Step Up for Students (PEP & FES-UA)", en: "Step Up for Students (PEP & FES-UA)" },
+      programUrl: "https://www.stepupforstudents.org/",
+      wallet: "EMA Marketplace",
+      walletClass: "ema",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "/florida-home-education/",
+      featured: true
+    },
+    {
+      stateName: { es: "Arkansas", en: "Arkansas" },
+      flag: "🏛️",
+      programName: { es: "Educational Freedom Account (EFA)", en: "Educational Freedom Account (EFA)" },
+      programUrl: "https://dese.ade.arkansas.gov/",
+      wallet: "ClassWallet",
+      walletClass: "classwallet",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "#asesoria",
+      featured: false
+    },
+    {
+      stateName: { es: "Georgia", en: "Georgia" },
+      flag: "🍑",
+      programName: { es: "Georgia Promise Scholarship", en: "Georgia Promise Scholarship" },
+      programUrl: "https://www.georgiapolicy.org/",
+      wallet: "Digital Portal",
+      walletClass: "other",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "#asesoria",
+      featured: false
+    },
+    {
+      stateName: { es: "North Carolina", en: "North Carolina" },
+      flag: "🌊",
+      programName: { es: "Opportunity Scholarship Program", en: "Opportunity Scholarship Program" },
+      programUrl: "https://www.ncseaa.edu/k12/esa/",
+      wallet: "ClassWallet",
+      walletClass: "classwallet",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "#asesoria",
+      featured: false
+    },
+    {
+      stateName: { es: "Oklahoma", en: "Oklahoma" },
+      flag: "🦅",
+      programName: { es: "Parental Choice Tax Credit", en: "Parental Choice Tax Credit" },
+      programUrl: "https://oklahoma.gov/tax.html",
+      wallet: "Tax Credit",
+      walletClass: "other",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "#asesoria",
+      featured: false
+    },
+    {
+      stateName: { es: "West Virginia", en: "West Virginia" },
+      flag: "⛰️",
+      programName: { es: "Hope Scholarship (ESA)", en: "Hope Scholarship (ESA)" },
+      programUrl: "https://www.hopescholarshipwv.com/",
+      wallet: "Digital Portal",
+      walletClass: "other",
+      offCampus: true,
+      dualDiploma: true,
+      landingUrl: "#asesoria",
+      featured: false
     }
-    applyLanguage(currentLang);
+  ];
 
-    // Setup language buttons
-    document.querySelectorAll(".lang-btn").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var lang = this.getAttribute("data-lang");
-        if (lang) {
-          currentLang = lang;
-          localStorage.setItem("chanak_scholarship_lang", lang);
-          applyLanguage(lang);
-        }
-      });
+  // VIDEO REPOSITORY & PLACEHOLDER EMBEDS
+  var VIDEO_DATABASE = {
+    v1: {
+      title: {
+        es: "ClassWallet: Cómo buscar a CHANAK TRAINUP EDUCATION INC y pagar mediante Pay Vendor",
+        en: "ClassWallet: How to search CHANAK TRAINUP EDUCATION INC and pay via Pay Vendor"
+      },
+      videoUrl: "https://www.youtube-nocookie.com/embed/fYr6kyaQ5V8?rel=0&autoplay=1&modestbranding=1",
+      provider: "ClassWallet Official Walkthrough"
+    },
+    v2: {
+      title: {
+        es: "Arizona ESA: Uso de fondos en ClassWallet para Chanak K–12 y Dual Diploma",
+        en: "Arizona ESA: Using ClassWallet funds for Chanak K–12 and Dual Diploma"
+      },
+      videoUrl: "https://www.youtube-nocookie.com/embed/W0ehmfxVGa8?rel=0&autoplay=1&modestbranding=1",
+      provider: "Arizona ESA · ClassWallet Guide"
+    },
+    v3: {
+      title: {
+        es: "Florida Step Up / EMA: Cómo seleccionar servicios de Chanak en el Marketplace",
+        en: "Florida Step Up / EMA: How to select Chanak services on the Marketplace"
+      },
+      videoUrl: "https://www.youtube-nocookie.com/embed/Z_7NG-FQq9g?rel=0&autoplay=1&modestbranding=1",
+      provider: "Florida Step Up · EMA Marketplace"
+    },
+    v4: {
+      title: {
+        es: "Wyoming & Utah Odyssey: Guía de inscripción y liberación de fondos",
+        en: "Wyoming & Utah Odyssey: Enrollment and fund disbursement guide"
+      },
+      videoUrl: "https://www.youtube-nocookie.com/embed/fYr6kyaQ5V8?rel=0&autoplay=1&modestbranding=1",
+      provider: "Odyssey Parent Portal Guide"
+    },
+    v5: {
+      title: {
+        es: "New Hampshire EFA: Mentoría académica y facturación directa en ClassWallet",
+        en: "New Hampshire EFA: Academic mentorship and direct invoicing in ClassWallet"
+      },
+      videoUrl: "https://www.youtube-nocookie.com/embed/7IadCPX-uRA?rel=0&autoplay=1&modestbranding=1",
+      provider: "New Hampshire EFA Guide"
+    },
+    v6: {
+      title: {
+        es: "Alabama CHOOSE Act: Facturación mensual por alumno con Pay Vendor",
+        en: "Alabama CHOOSE Act: Monthly invoicing per student with Pay Vendor"
+      },
+      videoUrl: "https://www.youtube-nocookie.com/embed/fYr6kyaQ5V8?rel=0&autoplay=1&modestbranding=1",
+      provider: "Alabama CHOOSE · ClassWallet Guide"
+    }
+  };
+
+  // CURRENT LANGUAGE STATE
+  var currentLang = "es";
+  try {
+    var savedLang = localStorage.getItem("chanak_lang");
+    if (savedLang === "en" || savedLang === "es") {
+      currentLang = savedLang;
+    }
+  } catch (e) {}
+
+  // RENDER MASTER TABLE
+  function renderStateTable(filterQuery) {
+    var tbody = document.getElementById("stateTableBody");
+    var counterEl = document.getElementById("tableFilterCount");
+    if (!tbody) return;
+
+    var query = (filterQuery || "").toLowerCase().trim();
+    var dict = I18N[currentLang];
+    var filtered = STATE_ROWS.filter(function (row) {
+      if (!query) return true;
+      var sName = row.stateName[currentLang].toLowerCase();
+      var pName = row.programName[currentLang].toLowerCase();
+      var wName = row.wallet.toLowerCase();
+      return sName.indexOf(query) !== -1 || pName.indexOf(query) !== -1 || wName.indexOf(query) !== -1;
     });
 
-    setupForm();
-    setupCalculator();
-    calculateTotals();
+    tbody.innerHTML = "";
+    filtered.forEach(function (row) {
+      var tr = document.createElement("tr");
+      if (row.featured) tr.className = "featured-state-row";
+
+      var stateTd = document.createElement("td");
+      stateTd.className = "state-name-cell";
+      stateTd.innerHTML = "<span>" + row.flag + "</span> <strong>" + row.stateName[currentLang] + "</strong>";
+
+      var progTd = document.createElement("td");
+      progTd.innerHTML = '<a href="' + row.programUrl + '" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px">' + row.programName[currentLang] + ' ↗</a>';
+
+      var walletTd = document.createElement("td");
+      walletTd.innerHTML = '<span class="badge-wallet badge-' + row.walletClass + '">💳 ' + row.wallet + '</span>';
+
+      var offCampusTd = document.createElement("td");
+      offCampusTd.innerHTML = row.offCampus ? '<span class="badge-check">' + dict.badge_approved + '</span>' : '<span style="color:#94a3b8">--</span>';
+
+      var dualTd = document.createElement("td");
+      dualTd.innerHTML = row.dualDiploma ? '<span class="badge-check" style="background:#e0f2fe;color:#0369a1">' + dict.badge_compatible + '</span>' : '<span style="color:#94a3b8">--</span>';
+
+      var actionTd = document.createElement("td");
+      var isDirectLanding = row.landingUrl.startsWith("/");
+      var btnText = isDirectLanding ? dict.btn_view_state : (currentLang === "es" ? "Consultar →" : "Inquire →");
+      actionTd.innerHTML = '<a href="' + row.landingUrl + '" class="btn-table-action">' + btnText + '</a>';
+
+      tr.appendChild(stateTd);
+      tr.appendChild(progTd);
+      tr.appendChild(walletTd);
+      tr.appendChild(offCampusTd);
+      tr.appendChild(dualTd);
+      tr.appendChild(actionTd);
+      tbody.appendChild(tr);
+    });
+
+    if (counterEl) {
+      counterEl.textContent = dict.table_count_prefix + " " + filtered.length + " " + dict.table_count_suffix;
+    }
   }
 
   // APPLY LANGUAGE TO DOM
   function applyLanguage(lang) {
-    document.documentElement.setAttribute("lang", lang);
     currentLang = lang;
-    var baseDict = I18N[lang] || I18N.es;
-    var dict = Object.assign({}, baseDict);
+    try {
+      localStorage.setItem("chanak_lang", lang);
+    } catch (e) {}
 
-    var isOdyssey = document.body.getAttribute("data-platform") === "odyssey";
-    var stateSlug = document.body.getAttribute("data-state") || "";
+    document.documentElement.setAttribute("lang", lang);
+    document.documentElement.setAttribute("data-lang", lang);
 
-    if (isOdyssey) {
-      if (lang === "es") {
-        dict.topbar_text = "Proveedor Oficial Escolar No Público · Proveedor Aprobado en Odyssey";
-        dict.nav_sub = "Programas Aprobados en Odyssey";
-        dict.trust_directpay = "100% Pago Directo en Odyssey (Sin Gastos Propios)";
-        dict.guide_title = "Cómo Pagar o Inscribirse mediante Odyssey en 4 Pasos";
-        dict.guide_badge = "Proceso 100% Desembolso Estatal";
-        dict.guide_lead = "Como proveedor aprobado en Odyssey, Chanak permite a familias elegibles financiar colegiatura y servicios educativos directamente con fondos de beca sin adelantar dinero personal.";
-        dict.step1_title = "1. Solicitar Factura Oficial / Presupuesto";
-        dict.step1_desc = "Completa el formulario inferior con el nombre legal del alumno y selecciona los cursos deseados.";
-        dict.step2_title = "2. Ingresar a Odyssey";
-        dict.step2_desc = "Accede a tu portal de familia en Odyssey (withodyssey.com) con tus credenciales.";
-        dict.step3_title = "3. Buscar a Chanak en el Directorio";
-        dict.step3_desc = "En el Marketplace o Directorio de Proveedores, busca a nuestra entidad aprobada:";
-        dict.step3_vendor = "CHANAK TRAINUP EDUCATION INC";
-        dict.step4_title = "4. Autorizar Desembolso Directo";
-        dict.step4_desc = "Selecciona el servicio correspondiente o sube tu factura oficial para autorizar el desembolso directo desde tu saldo de beca sin pagar nada de tu bolsillo.";
-        dict.calc_state_coverage = "Elegible para 100% de desembolso directo mediante el Marketplace de Odyssey";
-        dict.pay_opt_cw_title = "Fondos de Beca Estatal (Odyssey Direct Pay)";
-        dict.pay_opt_cw_desc = "Sin adelanto de dinero personal. Emitimos la confirmación oficial y le guiamos para autorizar el pago en Odyssey a nombre de CHANAK TRAINUP EDUCATION INC.";
-        dict.btn_submit_cw = "Inscribirse con Fondos de Odyssey";
-        dict.btn_hero_cta = "Inscribirse con Fondos de Odyssey";
-        dict.btn_hero_guide = "Ver Cómo Funciona Odyssey";
-      } else {
-        dict.topbar_text = "Official Nonpublic School Provider · Odyssey Approved Partner";
-        dict.nav_sub = "Odyssey Approved Programs";
-        dict.trust_directpay = "100% Direct Pay via Odyssey (No Out-of-Pocket)";
-        dict.guide_title = "How to Pay via Odyssey in 4 Steps";
-        dict.guide_badge = "100% State Disbursement Process";
-        dict.guide_lead = "As an approved Odyssey provider, Chanak allows eligible families to fund tuition and educational services directly with state scholarship funds without personal upfront payments.";
-        dict.step1_title = "1. Request Official Invoice / Placement";
-        dict.step1_desc = "Complete our step-by-step enrollment form below with the student's legal name and select your courses.";
-        dict.step2_title = "2. Log In to Odyssey";
-        dict.step2_desc = "Access your state parent portal in Odyssey (withodyssey.com) with your family credentials.";
-        dict.step3_title = "3. Search for Chanak in Provider Directory";
-        dict.step3_desc = "In the Marketplace / Provider Directory, search for our approved entity:";
-        dict.step3_vendor = "CHANAK TRAINUP EDUCATION INC";
-        dict.step4_title = "4. Authorize Direct Disbursement";
-        dict.step4_desc = "Select the corresponding service or upload your official invoice to approve direct disbursement from your scholarship balance with zero out-of-pocket expense.";
-        dict.calc_state_coverage = "Eligible for 100% Direct Disbursement via Odyssey Marketplace";
-        dict.pay_opt_cw_title = "State Scholarship Funds (Odyssey Direct Pay)";
-        dict.pay_opt_cw_desc = "Zero personal upfront cost. We emit the official itemized invoice and assist you in approving direct payment in Odyssey to CHANAK TRAINUP EDUCATION INC.";
-        dict.btn_submit_cw = "Enroll with Odyssey Funds";
-        dict.btn_hero_cta = "Enroll with Odyssey Funds";
-        dict.btn_hero_guide = "How Odyssey Works";
-      }
-    } else {
-      if (lang === "es") {
-        dict.btn_hero_cta = "Solicitar Factura para ClassWallet";
-        dict.btn_hero_guide = "Ver Guía de ClassWallet";
-      } else {
-        dict.btn_hero_cta = "Request Invoice for ClassWallet";
-        dict.btn_hero_guide = "How ClassWallet Works";
-      }
-    }
+    var dict = I18N[lang];
+    if (!dict) return;
 
-    // State specific dynamic titles
-    if (stateSlug === "utah") {
-      dict.hero_title = lang === "en" ? "Approved Nonpublic Online K–12 School & Tuition for Utah Families (UFA)" : "Educación Privada Online K–12 Aprobada con Fondos Utah Fits All";
-      dict.hero_lead = lang === "en" ? "Fund up to $8,000 of your student's accredited private school education, comprehensive curriculum, and diagnostic evaluations through Utah Fits All using the Odyssey portal with zero personal out-of-pocket expenses." : "Financia hasta $8,000 de la colegiatura, currículo integral y evaluaciones diagnósticas de tu estudiante mediante la beca Utah Fits All en la plataforma Odyssey sin desembolsos personales.";
-    } else if (stateSlug === "wyoming") {
-      dict.hero_title = lang === "en" ? "Approved Nonpublic K–12 Tuition & Distance Learning for Wyoming Families (ESA)" : "Educación Escolar No Pública K–12 para Familias de Wyoming (ESA)";
-      dict.hero_lead = lang === "en" ? "Utilize up to $7,000 in state education funds to cover 100% of your student's remote tuition, elective courseware, and standardized testing via the Wyoming ESA Odyssey marketplace." : "Financia hasta $7,000 de la colegiatura online, cursos electivos y evaluaciones estandarizadas de tu estudiante mediante Wyoming ESA en Odyssey sin desembolsos personales.";
-    } else if (stateSlug === "arizona") {
-      dict.hero_title = lang === "en" ? "Approved Nonpublic Online K–12 School & Tuition for Arizona Families (ESA)" : "Colegio Privado Online Aprobado K–12 para Familias de Arizona (ESA)";
-      dict.hero_lead = lang === "en" ? "Fund 100% of your student's tuition, curriculum, and diagnostic evaluations through your Arizona ESA account using ClassWallet Direct Pay with zero personal out-of-pocket expenses." : "Financia el 100% de la colegiatura, currículo y evaluaciones diagnósticas de tu estudiante mediante tu cuenta de Arizona ESA a través de ClassWallet Direct Pay sin pagos de tu bolsillo.";
-    } else if (stateSlug === "alabama") {
-      dict.hero_title = lang === "en" ? "Approved Nonpublic Online K–12 School for Alabama Families (CHOOSE Act)" : "Colegio Privado Online Aprobado K–12 para Familias de Alabama (CHOOSE Act)";
-      dict.hero_lead = lang === "en" ? "Fund 100% of your student's tuition and approved academic services through the CHOOSE Act program via ClassWallet Direct Pay with zero personal upfront payments." : "Financia el 100% de la colegiatura y servicios académicos aprobados mediante la beca CHOOSE Act a través de ClassWallet Direct Pay sin pagos personales por adelantado.";
-    } else if (stateSlug === "south-carolina") {
-      dict.hero_title = lang === "en" ? "Approved Nonpublic Online K–12 School for South Carolina Families (ESTF)" : "Colegio Privado Online Aprobado K–12 para Familias de South Carolina (ESTF)";
-      dict.hero_lead = lang === "en" ? "Utilize your ESTF account funds in ClassWallet Direct Pay to cover 100% of nonpublic tuition, curriculum, and diagnostic evaluations with zero out-of-pocket costs." : "Utiliza los fondos de tu cuenta ESTF en ClassWallet Direct Pay para financiar el 100% de la colegiatura no pública, currículo y evaluaciones diagnósticas de tu estudiante.";
-    } else if (stateSlug === "new-hampshire") {
-      dict.hero_title = lang === "en" ? "Approved Nonpublic Online K–12 School for New Hampshire Families (EFA)" : "Colegio Privado Online Aprobado K–12 para Familias de New Hampshire (EFA)";
-      dict.hero_lead = lang === "en" ? "Fund 100% of your student's accredited online K–12 tuition, language electives, and standardized diagnostics using your EFA grant via ClassWallet Direct Pay." : "Cubre el 100% de la colegiatura online K–12, electivas de idiomas y evaluaciones diagnósticas mediante tus fondos EFA en ClassWallet Direct Pay sin desembolsos personales.";
-    }
-
+    // Toggle button active states
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
     });
 
+    // Replace data-i18n elements
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var key = el.getAttribute("data-i18n");
-      if (dict[key] !== undefined) {
-        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
-          el.placeholder = dict[key];
-        } else {
-          el.innerHTML = dict[key];
+      if (dict[key]) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    // Replace data-i18n-placeholder elements
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-placeholder");
+      if (dict[key]) {
+        el.setAttribute("placeholder", dict[key]);
+      }
+    });
+
+    // Re-render table with new language
+    var searchInput = document.getElementById("stateSearchInput");
+    var q = searchInput ? searchInput.value : "";
+    renderStateTable(q);
+  }
+
+  // VIDEO MODAL LOGIC
+  function initVideoModal() {
+    var modal = document.getElementById("chanakVideoModal");
+    var titleEl = document.getElementById("chanakModalTitle");
+    var iframe = document.getElementById("chanakModalIframe");
+    var closeBtn = document.getElementById("chanakModalClose");
+
+    if (!modal || !iframe) return;
+
+    function openModal(videoKey) {
+      var vid = VIDEO_DATABASE[videoKey];
+      if (!vid) return;
+
+      var titleText = vid.title[currentLang] || vid.title.es;
+      if (titleEl) titleEl.textContent = titleText;
+      iframe.setAttribute("src", vid.videoUrl);
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.classList.remove("active");
+      iframe.setAttribute("src", "");
+      document.body.style.overflow = "";
+    }
+
+    // Attach click to video cards
+    document.querySelectorAll("[data-video-key]").forEach(function (card) {
+      card.addEventListener("click", function (e) {
+        e.preventDefault();
+        var key = card.getAttribute("data-video-key");
+        openModal(key);
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    }
+
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+      }
+    });
+  }
+
+  // INITIALIZATION ON DOM READY
+  document.addEventListener("DOMContentLoaded", function () {
+    // 1. Language Toggle Listeners
+    document.querySelectorAll(".lang-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var targetLang = btn.getAttribute("data-lang");
+        if (targetLang && targetLang !== currentLang) {
+          applyLanguage(targetLang);
         }
-      }
+      });
     });
 
-    updateSubmitButtonText();
-    calculateTotals();
-  }
+    // 2. State Table Search Filter
+    var searchInput = document.getElementById("stateSearchInput");
+    if (searchInput) {
+      searchInput.addEventListener("input", function (e) {
+        renderStateTable(e.target.value);
+      });
+    }
 
-  // FORM CONTROLLER
-  function setupForm() {
-    var form = document.getElementById("enrollmentForm");
-    if (!form) return;
+    // 3. Form Submission Simulation & Validation
+    var form = document.getElementById("advisoryForm");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var alertSuccess = document.getElementById("formAlertSuccess");
+        var alertError = document.getElementById("formAlertError");
+        var privacyChecked = document.getElementById("fPrivacy") && document.getElementById("fPrivacy").checked;
 
-    var btnNext = document.getElementById("btnStepNext");
-    var btnPrev = document.getElementById("btnStepPrev");
-
-    if (btnNext) {
-      btnNext.addEventListener("click", function () {
-        if (validateStep(currentStep)) {
-          goToStep(currentStep + 1);
+        if (!privacyChecked) {
+          if (alertError) {
+            alertError.textContent = I18N[currentLang].form_error;
+            alertError.style.display = "block";
+          }
+          if (alertSuccess) alertSuccess.style.display = "none";
+          return;
         }
-      });
-    }
 
-    if (btnPrev) {
-      btnPrev.addEventListener("click", function () {
-        goToStep(currentStep - 1);
-      });
-    }
-
-    form.addEventListener("submit", handleFormSubmit);
-
-    document.querySelectorAll("input[name='payment_method']").forEach(function (radio) {
-      radio.addEventListener("change", function () {
-        document.querySelectorAll(".payment-opt-card").forEach(function (c) {
-          c.classList.remove("selected");
-        });
-        var card = this.closest(".payment-opt-card");
-        if (card) card.classList.add("selected");
-        updateSubmitButtonText();
-      });
-    });
-
-    var gradeSelect = document.getElementById("f_grade");
-    if (gradeSelect) {
-      gradeSelect.addEventListener("change", function () {
-        var tuitionGrade = document.getElementById("f_tuition_grade");
-        if (tuitionGrade) {
-          tuitionGrade.value = this.value;
-          calculateTotals();
-        }
-      });
-    }
-  }
-
-  function goToStep(step) {
-    if (step < 1 || step > 3) return;
-    currentStep = step;
-
-    document.querySelectorAll(".form-step-section").forEach(function (sec) {
-      var s = parseInt(sec.getAttribute("data-step"), 10);
-      sec.style.display = s === currentStep ? "block" : "none";
-    });
-
-    document.querySelectorAll(".form-step-item").forEach(function (ind) {
-      var s = parseInt(ind.getAttribute("data-step"), 10);
-      ind.classList.toggle("active", s === currentStep);
-      ind.classList.toggle("done", s < currentStep);
-    });
-
-    var btnNext = document.getElementById("btnStepNext");
-    var btnPrev = document.getElementById("btnStepPrev");
-    var btnSubmit = document.getElementById("btnSubmitInvoice");
-
-    if (btnPrev) btnPrev.style.display = currentStep > 1 ? "inline-flex" : "none";
-    if (btnNext) btnNext.style.display = currentStep < 3 ? "inline-flex" : "none";
-    if (btnSubmit) btnSubmit.style.display = currentStep === 3 ? "inline-flex" : "none";
-
-    var formBox = document.getElementById("enrollmentSection");
-    if (formBox) {
-      formBox.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }
-
-  function validateStep(step) {
-    var errorEl = document.getElementById("formAlertError");
-    if (errorEl) errorEl.style.display = "none";
-
-    var currentSec = document.querySelector(".form-step-section[data-step='" + step + "']");
-    if (!currentSec) return true;
-
-    var inputs = currentSec.querySelectorAll("input[required], select[required]");
-    var valid = true;
-
-    inputs.forEach(function (input) {
-      if (!input.checkValidity()) {
-        valid = false;
-        input.reportValidity();
-      }
-    });
-
-    if (!valid && errorEl) {
-      errorEl.textContent = (I18N[currentLang] || I18N.es).err_required;
-      errorEl.style.display = "block";
-    }
-
-    return valid;
-  }
-
-  function updateSubmitButtonText() {
-    var btnSubmit = document.getElementById("btnSubmitInvoice");
-    if (!btnSubmit) return;
-
-    var dict = I18N[currentLang] || I18N.es;
-    var isPrivate = document.getElementById("pay_private") && document.getElementById("pay_private").checked;
-    var isOdyssey = document.body.getAttribute("data-platform") === "odyssey";
-
-    if (isPrivate) {
-      btnSubmit.textContent = dict.btn_submit_priv;
-    } else {
-      btnSubmit.textContent = isOdyssey
-        ? (currentLang === "es" ? "Inscribirse con Fondos de Odyssey" : "Enroll with Odyssey Funds")
-        : dict.btn_submit_cw;
-    }
-  }
-
-  // CALCULATOR LOGIC
-  function setupCalculator() {
-    var triggers = [
-      "srv_tuition",
-      "f_tuition_grade",
-      "srv_diagnostic",
-      "srv_spanish",
-      "srv_lifeskills",
-      "srv_mentorship"
-    ];
-
-    triggers.forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) {
-        el.addEventListener("change", function () {
-          if (id === "srv_tuition") {
-            var localBox = document.getElementById("localStudiesBox");
-            if (localBox) localBox.style.display = el.checked ? "block" : "none";
-            var card = el.closest(".service-check-card");
-            if (card) card.classList.toggle("selected", el.checked);
-          }
-          if (id === "srv_lifeskills") {
-            var card = el.closest(".service-check-card");
-            if (card) card.classList.toggle("selected", el.checked);
-            var trackBox = document.getElementById("lifeSkillsTrackBox");
-            if (trackBox) trackBox.style.display = el.checked ? "block" : "none";
-          }
-          if (id === "srv_diagnostic" || id === "srv_spanish" || id === "srv_mentorship") {
-            var card = el.closest(".service-check-card");
-            if (card) card.classList.toggle("selected", el.checked);
-          }
-          calculateTotals();
-        });
-      }
-    });
-  }
-
-  function calculateTotals() {
-    var regFee = 295;
-    var diagFee = (document.getElementById("srv_diagnostic") && document.getElementById("srv_diagnostic").checked) ? 200 : 0;
-    var oneTimeTotal = regFee + diagFee;
-
-    var monthlyTotal = 0;
-    var tuitionCheck = document.getElementById("srv_tuition");
-    var gradeVal = (document.getElementById("f_tuition_grade") && document.getElementById("f_tuition_grade").value) || "K-5";
-
-    if (tuitionCheck && tuitionCheck.checked) {
-      if (gradeVal === "K-5") monthlyTotal += 275;
-      else if (gradeVal === "6-8") monthlyTotal += 320;
-      else if (gradeVal === "9-12") monthlyTotal += 365;
-    }
-
-    if (document.getElementById("srv_spanish") && document.getElementById("srv_spanish").checked) {
-      monthlyTotal += 120;
-    }
-
-    if (document.getElementById("srv_lifeskills") && document.getElementById("srv_lifeskills").checked) {
-      monthlyTotal += 85;
-    }
-
-    if (document.getElementById("srv_mentorship") && document.getElementById("srv_mentorship").checked) {
-      monthlyTotal += 150;
-    }
-
-    var annualTotal = oneTimeTotal + (monthlyTotal * 10);
-
-    var elOneTime = document.getElementById("calcValOneTime");
-    var elMonthly = document.getElementById("calcValMonthly");
-    var elAnnual = document.getElementById("calcValAnnual");
-
-    if (elOneTime) elOneTime.textContent = "$" + oneTimeTotal.toLocaleString("en-US");
-    if (elMonthly) elMonthly.textContent = "$" + monthlyTotal.toLocaleString("en-US") + (currentLang === "es" ? " / mes (x10)" : " / mo (x10)");
-    if (elAnnual) elAnnual.textContent = "$" + annualTotal.toLocaleString("en-US");
-
-    var hiddenTotal = document.getElementById("f_total_annual_estimate");
-    if (hiddenTotal) hiddenTotal.value = "$" + annualTotal + " ($" + oneTimeTotal + " initial + $" + monthlyTotal + "/mo x 10)";
-  }
-
-  // FORM SUBMISSION AJAX
-  async function handleFormSubmit(e) {
-    e.preventDefault();
-    if (!validateStep(3)) return;
-
-    var form = e.target;
-    var btnSubmit = document.getElementById("btnSubmitInvoice");
-    var alertSuccess = document.getElementById("formAlertSuccess");
-    var alertError = document.getElementById("formAlertError");
-
-    var dict = I18N[currentLang] || I18N.es;
-
-    if (btnSubmit) {
-      btnSubmit.disabled = true;
-      btnSubmit.textContent = dict.btn_submitting;
-    }
-    if (alertError) alertError.style.display = "none";
-    if (alertSuccess) alertSuccess.style.display = "none";
-
-    try {
-      var formData = new FormData(form);
-      formData.append("lang", currentLang);
-
-      var resp = await fetch("/enviar-formulario.php", {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-      });
-
-      var data = {};
-      try {
-        data = await resp.json();
-      } catch (jsonErr) {
-        data = { success: resp.ok };
-      }
-
-      if (resp.ok && data.success !== false) {
+        if (alertError) alertError.style.display = "none";
         if (alertSuccess) {
-          alertSuccess.innerHTML =
-            "<h3>" + dict.success_title + "</h3>" +
-            "<p>" + dict.success_p1 + "</p>" +
-            "<p>" + dict.success_p2 + "</p>" +
-            "<div class='success-steps'>" +
-              "<h4>" + dict.success_steps_title + "</h4>" +
-              "<ol>" +
-                "<li>" + dict.success_s1 + "</li>" +
-                "<li>" + dict.success_s2 + "</li>" +
-                "<li>" + dict.success_s3 + "</li>" +
-                "<li>" + dict.success_s4 + "</li>" +
-              "</ol>" +
-            "</div>";
+          alertSuccess.textContent = I18N[currentLang].form_success;
           alertSuccess.style.display = "block";
-          alertSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
         }
         form.reset();
-        goToStep(1);
-      } else {
-        throw new Error(data.error || "Submission failed");
-      }
-    } catch (err) {
-      if (alertError) {
-        alertError.textContent = (currentLang === "es")
-          ? "Error al procesar la solicitud. Por favor verifique su conexión o contáctenos directamente a offcampus@chanakacademy.org."
-          : "Error processing your request. Please verify your connection or email us directly at offcampus@chanakacademy.org.";
-        alertError.style.display = "block";
-      }
-    } finally {
-      if (btnSubmit) {
-        btnSubmit.disabled = false;
-        updateSubmitButtonText();
-      }
+      });
     }
-  }
 
-  // BOOTSTRAP
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+    // 4. Video Lightbox Modal
+    initVideoModal();
+
+    // 5. Initial Language Apply
+    applyLanguage(currentLang);
+  });
 })();
