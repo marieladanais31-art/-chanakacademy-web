@@ -4,10 +4,10 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title id="page-title">Wyoming ESA: acompañamiento académico virtual | Chanak</title>
-  <meta name="description" id="page-desc" content="Acompañamiento académico virtual y Life Skills para familias de Wyoming con fondos ESA. Proveedor aprobado en Odyssey. Entidad: Chanak TrainUp Education Inc."/>
+  <meta name="description" id="page-desc" content="Acompañamiento académico virtual y Life Skills para familias con fondos Wyoming ESA. Proveedor aprobado en Odyssey. Entidad: Chanak TrainUp Education Inc."/>
   <link rel="canonical" href="https://www.chanakacademy.org/wyoming/"/>
   <meta property="og:title" id="og-title" content="Wyoming ESA: acompañamiento académico virtual | Chanak"/>
-  <meta property="og:description" id="og-desc" content="Mentoría académica bilingüe y Life Skills para familias de Wyoming con fondos ESA. Proveedor aprobado en Odyssey."/>
+  <meta property="og:description" id="og-desc" content="Mentoría académica bilingüe y Life Skills para familias con fondos Wyoming ESA. Proveedor aprobado en Odyssey."/>
   <meta property="og:url" content="https://www.chanakacademy.org/wyoming/"/>
   <meta property="og:type" content="website"/>
   <meta property="og:image" content="https://www.chanakacademy.org/assets/og-image.jpg"/>
@@ -47,7 +47,7 @@
             "name": "¿Se puede pagar este servicio con mis fondos de Wyoming ESA?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta."
+              "text": "Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias con cuenta ESA concedida. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta."
             }
           },
           {
@@ -63,15 +63,15 @@
             "name": "¿Este programa otorga créditos oficiales o diploma de High School?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Este servicio es un acompañamiento y tutoría para educación en el hogar y no otorga créditos, expediente ni diploma. Si buscas el programa escolar K–12 oficial con expediente y diploma, visita https://www.chanakacademy.org/hogar/."
+              "text": "No. Este servicio es un acompañamiento y mentoría académica para educación en el hogar y no otorga créditos, expediente ni diploma. Si buscas el programa escolar K–12 oficial con expediente y diploma, visita https://www.chanakacademy.org/hogar/."
             }
           },
           {
             "@type": "Question",
-            "name": "¿Cuáles son los horarios y zonas horarias de las clases en vivo?",
+            "name": "¿Cuáles son los horarios de las clases en vivo?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Las sesiones en vivo de Life Skills y las mentorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario."
+              "text": "Las sesiones en vivo de Life Skills y las reuniones de mentoría se coordinan en horarios flexibles acordados con la familia, facilitando la rutina del hogar sin interferir con el estudio diario."
             }
           },
           {
@@ -87,7 +87,7 @@
             "name": "¿Cuál es la política de cancelación y reembolso?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. El pago se libera después de prestar el servicio [VERIFICAR]. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias privadas."
+              "text": "Puedes cancelar el servicio notificando con anticipación al mes siguiente. El pago se libera después de prestar el servicio. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias privadas."
             }
           },
           {
@@ -245,7 +245,7 @@
     }
     .link-secondary:hover { color: var(--blue); }
 
-    /* 1. HEADER FIJO */
+    /* 1. HEADER FIJO - RESPONSIVE 360 PX */
     .site-header {
       position: sticky;
       top: 0;
@@ -260,27 +260,27 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
-      gap: 1rem;
+      height: 70px;
+      gap: 0.5rem;
     }
 
     .header-brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
       text-decoration: none;
       flex-shrink: 0;
     }
 
     .header-logo {
-      height: 42px;
+      height: 38px;
       width: auto;
       display: block;
     }
 
     .brand-title {
       font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--navy);
       line-height: 1.1;
@@ -289,7 +289,7 @@
     .brand-badge {
       display: block;
       font-family: var(--font-sans);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: var(--teal);
       letter-spacing: 0.02em;
@@ -298,22 +298,23 @@
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.5rem;
     }
 
     .state-dropdown { position: relative; }
     .state-select {
       font-family: var(--font-sans);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--navy);
       background-color: var(--bg-light);
       border: 1px solid var(--border);
-      padding: 0.55rem 2rem 0.55rem 0.85rem;
+      padding: 0.45rem 1.8rem 0.45rem 0.65rem;
       border-radius: var(--radius-sm);
       appearance: none;
       cursor: pointer;
       min-height: 44px;
+      max-width: 145px;
     }
     .state-select:focus {
       outline: 2px solid var(--blue);
@@ -322,11 +323,11 @@
     .state-dropdown::after {
       content: "▾";
       position: absolute;
-      right: 0.75rem;
+      right: 0.6rem;
       top: 50%;
       transform: translateY(-50%);
       pointer-events: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
@@ -336,7 +337,7 @@
       background: var(--bg-alt);
       border: 1px solid var(--border);
       border-radius: var(--radius-pill);
-      padding: 3px;
+      padding: 2px;
       min-height: 44px;
     }
 
@@ -344,15 +345,15 @@
       background: none;
       border: none;
       font-family: var(--font-sans);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-muted);
-      padding: 0.35rem 0.65rem;
+      padding: 0.25rem 0.55rem;
       border-radius: var(--radius-pill);
       cursor: pointer;
       transition: all 0.2s;
       min-height: 36px;
-      min-width: 36px;
+      min-width: 32px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -367,6 +368,16 @@
     .header-cta { display: none; }
     @media (min-width: 900px) {
       .header-cta { display: inline-flex; }
+    }
+
+    /* Adaptación extrema a 360px */
+    @media (max-width: 400px) {
+      .header-inner { height: 60px; padding: 0 0.5rem; }
+      .header-logo { height: 32px; }
+      .brand-title { font-size: 0.95rem; }
+      .brand-badge { display: none; }
+      .state-select { max-width: 115px; font-size: 0.75rem; padding: 0.35rem 1.4rem 0.35rem 0.45rem; }
+      .lang-btn { padding: 0.2rem 0.4rem; min-width: 28px; font-size: 0.75rem; }
     }
 
     /* 2. HERO */
@@ -419,7 +430,7 @@
     .cred-item { display: inline-flex; align-items: center; gap: 0.4rem; }
     .cred-dot { color: var(--teal); }
 
-    /* 3. QUÉ RECIBE TU HIJO CADA MES (4 CARDS) */
+    /* 3. QUÉ RECIBE TU HIJO CADA MES (4 CARDS CON ICONOS SVG) */
     .features-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -447,7 +458,7 @@
       box-shadow: var(--shadow-md);
       border-color: var(--teal);
     }
-    .feature-icon {
+    .feature-icon-svg {
       width: 48px;
       height: 48px;
       border-radius: var(--radius-sm);
@@ -456,8 +467,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
       margin-bottom: 1.25rem;
+      flex-shrink: 0;
+    }
+    .feature-icon-svg svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
     .feature-title {
       font-family: var(--font-serif);
@@ -485,31 +505,13 @@
 
     .pricing-card {
       background: var(--bg-white);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-sm);
       position: relative;
-    }
-    .pricing-card.featured {
-      border-color: var(--blue);
-      box-shadow: var(--shadow-md);
-    }
-    .pricing-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--blue);
-      color: #ffffff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.85rem;
-      border-radius: var(--radius-pill);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
     }
     .pricing-tier {
       font-family: var(--font-serif);
@@ -570,52 +572,44 @@
     .icon-check { color: #059669; font-weight: bold; flex-shrink: 0; }
     .icon-cross { color: #dc2626; font-weight: bold; flex-shrink: 0; }
 
-    .secondary-pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      margin-bottom: 2rem;
-    }
-    @media (min-width: 640px) {
-      .secondary-pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .secondary-pricing-single {
+      max-width: 620px;
+      margin: 0 auto 2rem;
     }
     .secondary-card {
       background: var(--bg-white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.5rem;
+      padding: 1.75rem 1.5rem;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       gap: 1rem;
+      box-shadow: var(--shadow-sm);
     }
     .secondary-card-title {
       font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--navy);
       margin-bottom: 0.35rem;
     }
     .secondary-card-desc {
-      font-size: 0.9rem;
+      font-size: 0.925rem;
       color: var(--text-muted);
       margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    .secondary-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     .secondary-card-price {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--navy);
-    }
-    .badge-soon {
-      display: inline-block;
-      background: var(--bg-alt);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      font-weight: 700;
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-pill);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
     }
 
     .disclaimer-box {
@@ -911,7 +905,21 @@
       color: #065f46;
     }
     .confirmation-box.active { display: block; }
-    .conf-icon { font-size: 3rem; margin-bottom: 1rem; line-height: 1; }
+    .conf-icon-svg {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      color: #059669;
+    }
+    .conf-icon-svg svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
     .conf-title {
       font-family: var(--font-serif);
       font-size: 1.5rem;
@@ -1023,7 +1031,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="header-brand" aria-label="Chanak International Academy Inicio">
-        <img src="/assets/chanak-logo.png" alt="Chanak International Academy Logo" class="header-logo" width="160" height="42"/>
+        <img src="/assets/chanak-logo.png" alt="Chanak International Academy Logo" class="header-logo" width="160" height="38"/>
         <div>
           <div class="brand-title">Chanak Academy</div>
           <span class="brand-badge" data-i18n="header_badge">Fondos Escolares ESA</span>
@@ -1059,7 +1067,7 @@
   <!-- 2. HERO -->
   <section class="hero-section">
     <div class="container hero-content">
-      <h1 class="hero-h1" data-i18n="hero_h1">Acompañamiento académico virtual para familias de Wyoming con fondos Wyoming ESA</h1>
+      <h1 class="hero-h1" data-i18n="hero_h1">Acompañamiento académico virtual para familias con fondos Wyoming ESA</h1>
       <p class="hero-subtitle" data-i18n="hero_subtitle">Mentora académica dedicada + Life Skills en español e inglés para potenciar el aprendizaje en el hogar.</p>
       
       <div class="hero-actions">
@@ -1091,26 +1099,38 @@
       <p class="section-desc" data-i18n="feat_section_desc">Acompañamiento estructurado y personalizado para fortalecer la autonomía educativa de tu familia.</p>
 
       <div class="features-grid">
+        <!-- Tarjeta 1: Mentora asignada -->
         <div class="feature-card">
-          <div class="feature-icon">👩‍🏫</div>
+          <div class="feature-icon-svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 14c-4.418 0-8 2.239-8 5v2h16v-2c0-2.761-3.582-5-8-5z"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
           <h3 class="feature-title" data-i18n="feat_1_title">Mentora asignada</h3>
           <p class="feature-desc" data-i18n="feat_1_desc">Acompañamiento cercano y seguimiento académico bilingüe continuo adaptado al ritmo de tu hijo.</p>
         </div>
 
+        <!-- Tarjeta 2: Revisión y feedback -->
         <div class="feature-card">
-          <div class="feature-icon">⏱️</div>
+          <div class="feature-icon-svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
           <h3 class="feature-title" data-i18n="feat_2_title">Revisión y feedback</h3>
           <p class="feature-desc" data-i18n="feat_2_desc">2 horas al mes de revisión, feedback y registro de avance según el Plan Individual de Aprendizaje (PEI).</p>
         </div>
 
+        <!-- Tarjeta 3: Life Skills en vivo -->
         <div class="feature-card">
-          <div class="feature-icon">🌟</div>
+          <div class="feature-icon-svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
           <h3 class="feature-title" data-i18n="feat_3_title">Life Skills en vivo</h3>
           <p class="feature-desc" data-i18n="feat_3_desc">4 sesiones de 60 minutos al mes de liderazgo y formación de carácter en grupos reducidos de hasta 7 alumnos.</p>
         </div>
 
+        <!-- Tarjeta 4: Informe mensual -->
         <div class="feature-card">
-          <div class="feature-icon">📋</div>
+          <div class="feature-icon-svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
           <h3 class="feature-title" data-i18n="feat_4_title">Informe mensual</h3>
           <p class="feature-desc" data-i18n="feat_4_desc">Reporte detallado para la familia con evidencia de logros, progreso por objetivos y siguientes pasos.</p>
         </div>
@@ -1149,8 +1169,7 @@
         </div>
 
         <!-- 6-8 -->
-        <div class="pricing-card featured">
-          <div class="pricing-badge" data-i18n="badge_popular">Middle School</div>
+        <div class="pricing-card">
           <h3 class="pricing-tier">Grades 6–8</h3>
           <div class="pricing-name" data-i18n="plan_name_68">Virtual Guided Learning Support – Grades 6–8 (One Month)</div>
           <div class="pricing-price">
@@ -1196,26 +1215,16 @@
         </div>
       </div>
 
-      <!-- Servicios Secundarios -->
-      <div class="secondary-pricing-grid">
+      <!-- Servicio Secundario Único: Life Skills Suelto -->
+      <div class="secondary-pricing-single">
         <div class="secondary-card">
           <div>
             <h3 class="secondary-card-title">Life Skills and Leadership Classes – One Month</h3>
             <p class="secondary-card-desc" data-i18n="sec_ls_desc">Servicio independiente para alumnos que no tienen el servicio mensual. Incluye 4 clases en vivo de 60 minutos en grupos reducidos de hasta 7 alumnos.</p>
           </div>
-          <div>
-            <div class="secondary-card-price">$120 <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);" data-i18n="price_per_month">/ mes</span></div>
+          <div class="secondary-card-footer">
+            <div class="secondary-card-price">$120 <span style="font-size: 0.95rem; font-weight: normal; color: var(--text-muted);" data-i18n="price_per_month">/ mes</span></div>
             <a href="#formulario" class="link-secondary" data-i18n="cta_main">Solicitar orientación →</a>
-          </div>
-        </div>
-
-        <div class="secondary-card">
-          <div>
-            <h3 class="secondary-card-title" data-i18n="sec_spanish_title">Clases de Español</h3>
-            <p class="secondary-card-desc" data-i18n="sec_spanish_desc">Programa electivo bilingüe de profundización en gramática, conversación y literatura hispana.</p>
-          </div>
-          <div>
-            <span class="badge-soon" data-i18n="badge_coming_soon">Próximamente</span>
           </div>
         </div>
       </div>
@@ -1235,7 +1244,8 @@
   <section class="section section-alt">
     <div class="container">
       <h2 data-i18n="steps_section_title">Cómo pagar con tus fondos en 4 pasos</h2>
-      <p class="section-desc" data-i18n="steps_section_desc">Proceso simple a través de la plataforma oficial Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.</p>
+      <!-- VERIFICAR: dirigido a familias que ya tienen la cuenta de Wyoming ESA concedida -->
+      <p class="section-desc" data-i18n="steps_section_desc">Proceso simple a través de la plataforma oficial Odyssey para familias con cuenta ESA concedida. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.</p>
 
       <div class="timeline">
         <div class="step-card">
@@ -1249,6 +1259,7 @@
           <div class="step-number">2</div>
           <span class="step-role role-family" data-i18n="role_family">Acción de la familia</span>
           <h3 class="step-title" data-i18n="step_2_title">Ingresa a Odyssey</h3>
+          <!-- VERIFICAR: URL oficial de acceso a Wyoming ESA en withodyssey.com -->
           <p class="step-desc" data-i18n="step_2_desc">Accede a tu portal oficial de Wyoming ESA en withodyssey.com. Recuerda que Chanak nunca te pedirá tus contraseñas ni accesos.</p>
         </div>
 
@@ -1256,14 +1267,16 @@
           <div class="step-number">3</div>
           <span class="step-role role-family" data-i18n="role_family">Acción de la familia</span>
           <h3 class="step-title" data-i18n="step_3_title">Busca a Chanak</h3>
-          <p class="step-desc" data-i18n="step_3_desc">En el Marketplace de proveedores aprobados, busca por la entidad legal: <strong>CHANAK TRAINUP EDUCATION INC</strong> o por nuestro código de catálogo (CHK-...) [VERIFICAR].</p>
+          <!-- VERIFICAR: búsqueda exacta de la entidad legal en marketplace de Odyssey -->
+          <p class="step-desc" data-i18n="step_3_desc">En el Marketplace de proveedores aprobados, busca la entidad legal <strong>CHANAK TRAINUP EDUCATION INC</strong> y elige el servicio acordado.</p>
         </div>
 
         <div class="step-card">
           <div class="step-number">4</div>
           <span class="step-role role-chanak" data-i18n="role_chanak">Familia y Chanak</span>
           <h3 class="step-title" data-i18n="step_4_title">Autoriza el pago</h3>
-          <p class="step-desc" data-i18n="step_4_desc">Autorizas el servicio en Odyssey con tu saldo disponible. El pago se libera después de prestar el servicio [VERIFICAR]; Chanak emite el comprobante y coordinamos las sesiones.</p>
+          <!-- VERIFICAR: el pago se libera tras la prestación mensual del servicio según reglas de Wyoming/Odyssey -->
+          <p class="step-desc" data-i18n="step_4_desc">Autorizas el servicio en Odyssey con tu saldo disponible. El pago se libera después de prestar el servicio; Chanak emite el comprobante y coordinamos las sesiones.</p>
         </div>
       </div>
     </div>
@@ -1362,16 +1375,18 @@
       <p class="section-desc" data-i18n="faq_desc">Respuestas claras a las dudas más habituales de las familias con fondos educativos.</p>
 
       <div class="faq-list">
+        <!-- FAQ 1 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q1">¿Se puede pagar este servicio con mis fondos de Wyoming ESA?</span>
             <span class="faq-icon">+</span>
           </summary>
           <div class="faq-answer">
-            <p data-i18n="faq_a1">Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.</p>
+            <p data-i18n="faq_a1">Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias con cuenta ESA concedida. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.</p>
           </div>
         </details>
 
+        <!-- FAQ 2 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q2">¿Qué no incluye este servicio?</span>
@@ -1382,26 +1397,30 @@
           </div>
         </details>
 
+        <!-- FAQ 3 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q3">¿Este programa otorga créditos oficiales o diploma de High School?</span>
             <span class="faq-icon">+</span>
           </summary>
           <div class="faq-answer">
-            <p data-i18n="faq_a3">No. Este servicio es un acompañamiento y tutoría para educación en el hogar y no otorga créditos, expediente oficial ni diploma. Si buscas un programa escolar privado completo K–12 con registro escolar y diploma, consulta nuestro <a href="https://www.chanakacademy.org/hogar/">Programa Escolar K–12</a>.</p>
+            <p data-i18n="faq_a3">No. Este servicio es un acompañamiento y mentoría académica para educación en el hogar y no otorga créditos, expediente oficial ni diploma. Si buscas un programa escolar privado completo K–12 con registro escolar y diploma, consulta nuestro <a href="https://www.chanakacademy.org/hogar/">Programa Escolar K–12</a>.</p>
           </div>
         </details>
 
+        <!-- FAQ 4 -->
         <details class="faq-item">
           <summary class="faq-question">
-            <span data-i18n="faq_q4">¿Cuáles son los horarios y zonas horarias de las clases en vivo?</span>
+            <span data-i18n="faq_q4">¿Cuáles son los horarios de las clases en vivo?</span>
             <span class="faq-icon">+</span>
           </summary>
           <div class="faq-answer">
-            <p data-i18n="faq_a4">Las sesiones en vivo de Life Skills y las mentorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario.</p>
+            <!-- VERIFICAR: horarios flexibles coordinados individualmente con las familias -->
+            <p data-i18n="faq_a4">Las sesiones en vivo de Life Skills y las reuniones de mentoría se coordinan en horarios flexibles acordados con la familia, facilitando la rutina del hogar sin interferir con el estudio diario.</p>
           </div>
         </details>
 
+        <!-- FAQ 5 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q5">¿Cómo se adquieren los materiales y libros de estudio?</span>
@@ -1412,16 +1431,19 @@
           </div>
         </details>
 
+        <!-- FAQ 6 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q6">¿Cuál es la política de cancelación y reembolso?</span>
             <span class="faq-icon">+</span>
           </summary>
           <div class="faq-answer">
-            <p data-i18n="faq_a6">Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. El pago se libera después de prestar el servicio [VERIFICAR]. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias a cuentas privadas.</p>
+            <!-- VERIFICAR: política contractual de aviso previo y liberación post-servicio -->
+            <p data-i18n="faq_a6">Puedes cancelar el servicio notificando con anticipación al mes siguiente. El pago se libera después de prestar el servicio. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias a cuentas privadas.</p>
           </div>
         </details>
 
+        <!-- FAQ 7 -->
         <details class="faq-item">
           <summary class="faq-question">
             <span data-i18n="faq_q7">¿En qué idioma se imparten las sesiones y el apoyo?</span>
@@ -1444,9 +1466,11 @@
           Completa este breve formulario y una mentora de Chanak te contactará para guiarte paso a paso con tus fondos de Wyoming ESA.
         </p>
 
-        <!-- Mensaje de confirmación -->
+        <!-- Mensaje de confirmación con icono SVG -->
         <div id="confirmationBox" class="confirmation-box">
-          <div class="conf-icon">✅</div>
+          <div class="conf-icon-svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
           <h3 class="conf-title" data-i18n="conf_title">¡Solicitud recibida con éxito!</h3>
           <p data-i18n="conf_desc">Gracias por confiar en Chanak. Una mentora académica bilingüe se comunicará contigo por WhatsApp o correo en menos de 24 horas laborables para orientarte con tu cuenta de Wyoming ESA.</p>
         </div>
@@ -1465,6 +1489,7 @@
 
           <div class="form-group">
             <label for="parentPhone" class="form-label" data-i18n="lbl_phone">WhatsApp / Teléfono *</label>
+            <!-- VERIFICAR: formato de teléfono preferido para familias de Wyoming -->
             <input type="tel" id="parentPhone" name="phone" class="form-input" required autocomplete="tel" placeholder="+1 (307) 000-0000" data-i18n-ph="ph_phone"/>
           </div>
 
@@ -1502,6 +1527,7 @@
 
           <div class="consent-group">
             <input type="checkbox" id="consentCheck" name="consent" class="consent-input" required/>
+            <!-- VERIFICAR: URL activa de la política de privacidad -->
             <label for="consentCheck" class="consent-label" data-i18n="lbl_consent">
               Acepto que Chanak me contacte para orientarme sobre el uso de fondos educativos según la <a href="/privacidad/" target="_blank" rel="noopener">Política de Privacidad</a>.
             </label>
@@ -1513,6 +1539,7 @@
         <div class="direct-contacts">
           <div class="direct-contacts-title" data-i18n="contacts_title">¿Prefieres escribirnos directamente?</div>
           <div class="direct-channels-grid">
+            <!-- VERIFICAR: número de WhatsApp corporativo oficial -->
             <a href="https://wa.me/13054972583?text=Hola,%20solicito%20orientaci%C3%B3n%20sobre%20el%20acompa%C3%B1amiento%20acad%C3%A9mico%20de%20Chanak%20con%20fondos%20Wyoming%20ESA." target="_blank" rel="noopener" class="channel-link">
               <span>💬</span> WhatsApp: +1 (305) 497-2583
             </a>
@@ -1544,7 +1571,7 @@
       </ul>
 
       <div class="footer-compliance-disclaimer" data-i18n="ft_compliance">
-        La aprobación como proveedor no garantiza la elegibilidad del alumno ni la disponibilidad de fondos. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta. Este servicio de acompañamiento y tutoría en el hogar NO otorga créditos académicos, expediente oficial ni diploma de High School.
+        La aprobación como proveedor no garantiza la elegibilidad del alumno ni la disponibilidad de fondos. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta. Este servicio de acompañamiento y mentoría en el hogar NO otorga créditos académicos, expediente oficial ni diploma de High School.
       </div>
 
       <div class="footer-copy">
@@ -1555,14 +1582,14 @@
 
   <!-- JAVASCRIPT BILINGÜE & INTERACTIVO -->
   <script>
-    // DICCIONARIO BILINGÜE COMPLETO (ES / EN)
+    // DICCIONARIO BILINGÜE COMPLETO (ES / EN) - 100% SINCRONIZADO CON EL HTML
     const i18nData = {
       es: {
         page_title: "Wyoming ESA: acompañamiento académico virtual | Chanak",
-        page_desc: "Acompañamiento académico virtual y Life Skills para familias de Wyoming con fondos ESA. Proveedor aprobado en Odyssey. Entidad: Chanak TrainUp Education Inc.",
+        page_desc: "Acompañamiento académico virtual y Life Skills para familias con fondos Wyoming ESA. Proveedor aprobado en Odyssey. Entidad: Chanak TrainUp Education Inc.",
         header_badge: "Fondos Escolares ESA",
         cta_main: "Solicitar orientación",
-        hero_h1: "Acompañamiento académico virtual para familias de Wyoming con fondos Wyoming ESA",
+        hero_h1: "Acompañamiento académico virtual para familias con fondos Wyoming ESA",
         hero_subtitle: "Mentora académica dedicada + Life Skills en español e inglés para potenciar el aprendizaje en el hogar.",
         hero_link_pricing: "Ver precios ↓",
         cred_fldoe: "Registrada FLDOE #134620",
@@ -1585,7 +1612,6 @@
         plan_name_912: "Virtual Guided Learning Support – Grades 9–12 (One Month)",
         price_per_month: "/ mes",
         pricing_reg_fee: "+ $295 matrícula inicial: Evaluación académica bilingüe y PEI (pago único)",
-        badge_popular: "Middle School",
         inc_mentor: "Mentora académica asignada",
         inc_feedback: "2 h/mes de revisión y feedback PEI",
         inc_lifeskills: "4 clases en vivo Life Skills (60 min)",
@@ -1594,14 +1620,11 @@
         not_materials: "Libros del currículo general no incluidos",
         not_credits: "Sin créditos oficiales ni diploma escolar",
         sec_ls_desc: "Servicio independiente para alumnos que no tienen el servicio mensual. Incluye 4 clases en vivo de 60 minutos en grupos reducidos de hasta 7 alumnos.",
-        sec_spanish_title: "Clases de Español",
-        sec_spanish_desc: "Programa electivo bilingüe de profundización en gramática, conversación y literatura hispana.",
-        badge_coming_soon: "Próximamente",
         mat_title: "Información sobre materiales:",
         mat_text: "Materiales no incluidos. Costo orientativo del currículo: entre $300 y $700 por alumno al año, según grado y currículo. La familia los compra directamente; tras la evaluación inicial le damos la lista recomendada. Los materiales de Life Skills de Chanak están incluidos.",
         pricing_legal_notice: "Aviso legal: Este servicio NO otorga créditos, expediente ni diploma. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta. Mismo precio para familias con fondos y de pago privado.",
         steps_section_title: "Cómo pagar con tus fondos en 4 pasos",
-        steps_section_desc: "Proceso simple a través de la plataforma oficial Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
+        steps_section_desc: "Proceso simple a través de la plataforma oficial Odyssey para familias con cuenta ESA concedida. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
         role_family: "Acción de la familia",
         role_chanak: "Familia y Chanak",
         step_1_title: "Solicita orientación",
@@ -1609,9 +1632,9 @@
         step_2_title: "Ingresa a Odyssey",
         step_2_desc: "Accede a tu portal oficial de Wyoming ESA en withodyssey.com. Recuerda que Chanak nunca te pedirá tus contraseñas ni accesos.",
         step_3_title: "Busca a Chanak",
-        step_3_desc: "En el Marketplace de proveedores aprobados, busca por la entidad legal: CHANAK TRAINUP EDUCATION INC o por nuestro código de catálogo (CHK-...) [VERIFICAR].",
+        step_3_desc: "En el Marketplace de proveedores aprobados, busca la entidad legal <strong>CHANAK TRAINUP EDUCATION INC</strong> y elige el servicio acordado.",
         step_4_title: "Autoriza el pago",
-        step_4_desc: "Autorizas el servicio en Odyssey con tu saldo disponible. El pago se libera después de prestar el servicio [VERIFICAR]; Chanak emite el comprobante y coordinamos las sesiones.",
+        step_4_desc: "Autorizas el servicio en Odyssey con tu saldo disponible. El pago se libera después de prestar el servicio; Chanak emite el comprobante y coordinamos las sesiones.",
         how_section_title: "Cómo funciona el acompañamiento",
         how_section_desc: "Estructura semanal equilibrada para la familia y seguimiento basado en dominio del aprendizaje.",
         tbl_day: "Día / Frecuencia",
@@ -1646,17 +1669,17 @@
         faq_title: "Preguntas frecuentes",
         faq_desc: "Respuestas claras a las dudas más habituales de las familias con fondos educativos.",
         faq_q1: "¿Se puede pagar este servicio con mis fondos de Wyoming ESA?",
-        faq_a1: "Sí. Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias que ya tienen la ESA concedida [VERIFICAR]. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
+        faq_a1: "Chanak TrainUp Education Inc. está aprobada como proveedor en la plataforma Odyssey para familias con cuenta ESA concedida. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
         faq_q2: "¿Qué no incluye este servicio?",
         faq_a2: "No incluye los libros ni materiales del currículo general (la familia los adquiere directamente con un costo orientativo de $300 a $700 al año por alumno). Tampoco incluye supervisión presencial ni cuidado de niños.",
         faq_q3: "¿Este programa otorga créditos oficiales o diploma de High School?",
-        faq_a3: "No. Este servicio es un acompañamiento y tutoría para educación en el hogar y no otorga créditos, expediente oficial ni diploma. Si buscas un programa escolar privado completo K–12 con registro escolar y diploma, consulta nuestro <a href=\"https://www.chanakacademy.org/hogar/\">Programa Escolar K–12</a>.",
-        faq_q4: "¿Cuáles son los horarios y zonas horarias de las clases en vivo?",
-        faq_a4: "Las sesiones en vivo de Life Skills y las mentorías se coordinan en horarios de tarde accesibles en Mountain Time (MT) y Eastern Time (ET), facilitando la rutina familiar sin interferir con el estudio diario.",
+        faq_a3: "No. Este servicio es un acompañamiento y mentoría académica para educación en el hogar y no otorga créditos, expediente oficial ni diploma. Si buscas un programa escolar privado completo K–12 con registro escolar y diploma, consulta nuestro <a href=\"https://www.chanakacademy.org/hogar/\">Programa Escolar K–12</a>.",
+        faq_q4: "¿Cuáles son los horarios de las clases en vivo?",
+        faq_a4: "Las sesiones en vivo de Life Skills y las reuniones de mentoría se coordinan en horarios flexibles acordados con la familia, facilitando la rutina del hogar sin interferir con el estudio diario.",
         faq_q5: "¿Cómo se adquieren los materiales y libros de estudio?",
         faq_a5: "La familia compra directamente los materiales curriculares tras recibir la lista recomendada en la evaluación inicial. Los materiales propios del programa de Life Skills de Chanak sí están incluidos sin costo adicional.",
         faq_q6: "¿Cuál es la política de cancelación y reembolso?",
-        faq_a6: "Puedes cancelar el servicio notificando con 15 días de anticipación al mes siguiente. El pago se libera después de prestar el servicio [VERIFICAR]. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias a cuentas privadas.",
+        faq_a6: "Puedes cancelar el servicio notificando con anticipación al mes siguiente. El pago se libera después de prestar el servicio. Si corresponde un ajuste o reembolso de fondos de beca por servicios no prestados, el importe se acredita directamente a la cuenta estatal del alumno en Odyssey; nunca se entrega dinero en efectivo ni transferencias a cuentas privadas.",
         faq_q7: "¿En qué idioma se imparten las sesiones y el apoyo?",
         faq_a7: "El acompañamiento es completamente bilingüe. Las mentorías, la evaluación PEI y la comunicación con los padres se realizan en español o inglés según la preferencia de la familia. Las clases grupales de Life Skills fomentan el liderazgo bilingüe.",
         form_title: "Solicitar orientación",
@@ -1685,14 +1708,14 @@
         ft_terms: "Términos y Condiciones",
         ft_legal: "Aviso Legal",
         ft_k12: "Programa Escolar K–12",
-        ft_compliance: "La aprobación como proveedor no garantiza la elegibilidad del alumno ni la disponibilidad de fondos. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta. Este servicio de acompañamiento y tutoría en el hogar NO otorga créditos académicos, expediente oficial ni diploma de High School."
+        ft_compliance: "La aprobación como proveedor no garantiza la elegibilidad del alumno ni la disponibilidad de fondos. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta. Este servicio de acompañamiento y mentoría en el hogar NO otorga créditos académicos, expediente oficial ni diploma de High School."
       },
       en: {
         page_title: "Wyoming ESA: Virtual Guided Learning Support | Chanak",
-        page_desc: "Virtual guided learning support and Life Skills for Wyoming families with ESA funds. Approved vendor on Odyssey. Entity: Chanak TrainUp Education Inc.",
+        page_desc: "Virtual guided learning support and Life Skills for families with Wyoming ESA funds. Approved vendor on Odyssey. Entity: Chanak TrainUp Education Inc.",
         header_badge: "State ESA Funds",
         cta_main: "Request Guidance",
-        hero_h1: "Virtual Guided Learning Support for Wyoming Families with Wyoming ESA Funds",
+        hero_h1: "Virtual Guided Learning Support for Families with Wyoming ESA Funds",
         hero_subtitle: "Dedicated academic mentor + Life Skills in Spanish and English to empower home education.",
         hero_link_pricing: "View Pricing ↓",
         cred_fldoe: "Registered FLDOE #134620",
@@ -1715,7 +1738,6 @@
         plan_name_912: "Virtual Guided Learning Support – Grades 9–12 (One Month)",
         price_per_month: "/ month",
         pricing_reg_fee: "+ $295 initial registration: Bilingual assessment & ILP blueprint (one-time)",
-        badge_popular: "Middle School",
         inc_mentor: "Assigned academic mentor",
         inc_feedback: "2 hrs/mo ILP review and feedback",
         inc_lifeskills: "4 live Life Skills classes (60 min)",
@@ -1724,14 +1746,11 @@
         not_materials: "General curriculum books not included",
         not_credits: "No official school credits or diploma",
         sec_ls_desc: "Standalone service for students not enrolled in monthly support. Includes 4 live 60-minute classes in cohorts up to 7.",
-        sec_spanish_title: "Spanish Classes",
-        sec_spanish_desc: "Elective bilingual program focusing on Spanish grammar, conversational fluency, and Hispanic literature.",
-        badge_coming_soon: "Coming Soon",
         mat_title: "Materials Notice:",
         mat_text: "Materials not included. Estimated curriculum cost: $300 to $700 per student/year, depending on grade and curriculum. The family purchases them directly; we provide the recommended list following the initial assessment. Chanak Life Skills materials are included.",
         pricing_legal_notice: "Legal disclaimer: This service does NOT grant school credits, official transcripts, or a diploma. Fund usage depends on service eligibility and available account balance. Identical pricing for scholarship and private-pay families.",
         steps_section_title: "How to Pay with Your Funds in 4 Steps",
-        steps_section_desc: "Simple process through the official Odyssey platform for families who have already been awarded the ESA [VERIFICAR]. Fund payment depends on service eligibility and available account balance.",
+        steps_section_desc: "Simple process through the official Odyssey platform for families with an awarded ESA account. Fund payment depends on service eligibility and available account balance.",
         role_family: "Family Action",
         role_chanak: "Family & Chanak",
         step_1_title: "Request Guidance",
@@ -1739,9 +1758,9 @@
         step_2_title: "Log into Odyssey",
         step_2_desc: "Log into your official Wyoming ESA account at withodyssey.com. Chanak will never ask for your account credentials.",
         step_3_title: "Find Chanak",
-        step_3_desc: "In the approved vendor directory/marketplace, search by legal entity: CHANAK TRAINUP EDUCATION INC or by our catalog code (CHK-...) [VERIFICAR].",
+        step_3_desc: "In the approved vendor directory/marketplace, search for the legal entity <strong>CHANAK TRAINUP EDUCATION INC</strong> and choose the agreed service.",
         step_4_title: "Authorize Payment",
-        step_4_desc: "Authorize the service on Odyssey with your available balance. Payment is released after service delivery [VERIFICAR]; Chanak issues the receipt and coordinates sessions.",
+        step_4_desc: "Authorize the service on Odyssey with your available balance. Payment is released after service delivery; Chanak issues the receipt and coordinates sessions.",
         how_section_title: "How Academic Support Works",
         how_section_desc: "Balanced weekly structure for the family and continuous mastery learning tracking.",
         tbl_day: "Day / Frequency",
@@ -1776,17 +1795,17 @@
         faq_title: "Frequently Asked Questions",
         faq_desc: "Clear answers to essential questions from families utilizing state education funds.",
         faq_q1: "Can I pay for this service using my Wyoming ESA funds?",
-        faq_a1: "Yes. Chanak TrainUp Education Inc. is an approved vendor on the Odyssey platform for families who have already been awarded the ESA [VERIFICAR]. Fund payment depends on service eligibility and available account balance.",
+        faq_a1: "Chanak TrainUp Education Inc. is an approved vendor on the Odyssey platform for families with an awarded ESA account. Fund payment depends on service eligibility and available account balance.",
         faq_q2: "What is not included in this service?",
         faq_a2: "It does not include general curriculum textbooks and workbooks (families purchase them directly with an estimated cost of $300 to $700/year per student). It does not include in-person childcare or supervision.",
         faq_q3: "Does this program grant official high school credits or a diploma?",
-        faq_a3: "No. This service provides home education guidance and tutoring and does NOT grant credits, official transcripts, or a diploma. If you seek our complete private K–12 school program with transcripts and a diploma, please visit our <a href=\"https://www.chanakacademy.org/hogar/\">K–12 School Program</a>.",
-        faq_q4: "What are the live class schedules and time zones?",
-        faq_a4: "Live Life Skills workshops and mentoring sessions are scheduled during afternoon blocks in Mountain Time (MT) and Eastern Time (ET), easily fitting into family routines without interrupting daytime lessons.",
+        faq_a3: "No. This service provides home education guidance and academic mentoring and does NOT grant credits, official transcripts, or a diploma. If you seek our complete private K–12 school program with transcripts and a diploma, please visit our <a href=\"https://www.chanakacademy.org/hogar/\">K–12 School Program</a>.",
+        faq_q4: "What are the live class schedules?",
+        faq_a4: "Live Life Skills workshops and mentoring meetings are scheduled during flexible hours coordinated with the family, accommodating the home routine without interrupting daily study.",
         faq_q5: "How are curriculum books and study materials purchased?",
         faq_a5: "Families purchase curriculum materials directly after receiving our recommended list during the initial assessment. Chanak Life Skills program materials are provided at no extra cost.",
         faq_q6: "What is the cancellation and refund policy?",
-        faq_a6: "You may cancel with 15 days notice prior to the upcoming month. Payment is released after service delivery [VERIFICAR]. If a scholarship refund is due for unrendered services, funds are returned directly to the student's state account in Odyssey; refunds are never disbursed in cash or to private accounts.",
+        faq_a6: "You may cancel with advance notice prior to the upcoming month. Payment is released after service delivery. If a scholarship refund is due for unrendered services, funds are returned directly to the student's state account in Odyssey; refunds are never disbursed in cash or to private accounts.",
         faq_q7: "In what language are sessions and academic support delivered?",
         faq_a7: "Support is fully bilingual. Mentoring, ILP assessments, and family communications are offered in Spanish or English according to family preference. Group Life Skills sessions encourage fluent bilingual communication.",
         form_title: "Request Guidance",
