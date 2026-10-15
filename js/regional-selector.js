@@ -104,6 +104,50 @@
       el.style.display = countryCode === 'ES' ? '' : 'none';
     });
 
+    // Alternar paneles de tarifas por país (estricto aislamiento por país)
+    var paneTargets = document.querySelectorAll('[data-country-pane]');
+    if (paneTargets.length > 0) {
+      var matchedPane = false;
+      paneTargets.forEach(function(pane) {
+        if (pane.getAttribute('data-country-pane') === countryCode) {
+          pane.style.display = 'block';
+          pane.removeAttribute('hidden');
+          matchedPane = true;
+        } else {
+          pane.style.display = 'none';
+          pane.setAttribute('hidden', 'hidden');
+        }
+      });
+      if (!matchedPane) {
+        var fallbackPane = document.querySelector('[data-country-pane="GLOBAL"]') || document.querySelector('[data-country-pane="ES"]');
+        if (fallbackPane) {
+          fallbackPane.style.display = 'block';
+          fallbackPane.removeAttribute('hidden');
+        }
+      }
+    }
+
+    // Actualizar estado de las pestañas de selección de país
+    document.querySelectorAll('[data-country-tab]').forEach(function(tab) {
+      var tabCode = tab.getAttribute('data-country-tab');
+      var isAct = (tabCode === countryCode) || (!document.querySelector('[data-country-pane="' + countryCode + '"]') && tabCode === 'GLOBAL');
+      tab.classList.toggle('active', isAct);
+      tab.setAttribute('aria-selected', isAct ? 'true' : 'false');
+      if (isAct) {
+        tab.style.background = 'var(--navy)';
+        tab.style.color = '#ffffff';
+        tab.style.borderColor = 'var(--gold)';
+        tab.style.boxShadow = '0 4px 14px rgba(15,23,42,0.18)';
+        tab.style.transform = 'translateY(-1px)';
+      } else {
+        tab.style.background = '#ffffff';
+        tab.style.color = 'var(--navy)';
+        tab.style.borderColor = 'var(--border)';
+        tab.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)';
+        tab.style.transform = 'none';
+      }
+    });
+
     document.querySelectorAll('[data-chanak-dossier-program]').forEach(function(link) {
       var program = link.getAttribute('data-chanak-dossier-program');
       var suffix = countryCode.toLowerCase()+'-'+(document.documentElement.lang.indexOf('en')===0?'en':'es');

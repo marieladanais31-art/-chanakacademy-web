@@ -798,176 +798,657 @@ html{scroll-padding-top:90px}
 </section><details class="home-details"><summary data-i18n="rd_prices">Ver tarifas de mi país</summary><section style="padding:80px 0;background:#ffffff" id="tarifas">
 <div class="wrap">
 <div class="fi" style="text-align:center;margin-bottom:2.5rem">
-<div class="lbl" style="color:var(--teal);letter-spacing:.2em;font-weight:700">✦ PLANES DE INVERSIÓN ACADÉMICA ✦</div>
-<h2 class="ttl" style="margin:0 auto .75rem;font-size:clamp(2rem,3.8vw,2.8rem)">Colegiaturas Oficiales y Transparentes</h2>
-<p class="sub" style="margin:0 auto 1.5rem;max-width:680px">Tarifas adaptadas a tu región de residencia. Selecciona tu país en la barra superior o en el recuadro inferior para ver los importes en tu moneda local.</p>
+  <div class="lbl" style="color:var(--teal);letter-spacing:.2em;font-weight:700">✦ PLANES DE INVERSIÓN ACADÉMICA ✦</div>
+  <h2 class="ttl" style="margin:0 auto .75rem;font-size:clamp(2rem,3.8vw,2.8rem)">Colegiaturas Oficiales por País</h2>
+  <p class="sub" style="margin:0 auto 1.5rem;max-width:680px">Tarifas y condiciones exclusivas para tu lugar de residencia. Selecciona tu país para consultar el plan académico en tu moneda local.</p>
 
-<div style="display:inline-flex;align-items:center;gap:10px;background:var(--off);border:1px solid var(--border);border-radius:50px;padding:8px 20px;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:1.2rem">
-  <span>Región activa:</span>
-  <span class="current-region-flag">🇪🇸</span>
-  <span class="current-region-name">España / Europa</span>
-  <span class="current-region-currency" style="color:var(--gold);font-weight:bold">(EUR)</span>
-</div>
-
-<div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:2rem;flex-wrap:wrap">
-  <button type="button" class="btn-country-switch" onclick="window.setCurrentCountry('ES')" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:50px;border:1.5px solid var(--border);background:#fff;color:var(--navy);font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all .2s"><span>🇪🇸</span> España (EUR)</button>
-  <button type="button" class="btn-country-switch" onclick="window.setCurrentCountry('MX')" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:50px;border:1.5px solid var(--border);background:#fff;color:var(--navy);font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all .2s"><span>🇲🇽</span> México (MXN)</button>
-  <button type="button" class="btn-country-switch" onclick="window.setCurrentCountry('PA')" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:50px;border:1.5px solid var(--border);background:#fff;color:var(--navy);font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all .2s"><span>🇵🇦</span> Panamá (USD)</button>
-</div>
-</div>
-
-<div class="aud-cards fi" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1100px;margin:0 auto 2.5rem">
-  <!-- Tarjeta 1: Off-Campus K-5 -->
-  <div style="background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:2rem;box-shadow:var(--sh);display:flex;flex-direction:column;justify-content:space-between">
-    <div>
-      <span class="badge badge-t" style="font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">PRIMARIA K-5</span>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">Off-Campus K-5</h3>
-      <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Colegio estadounidense completo en casa con Plan Educativo Individualizado (PEI) y seguimiento oficial de Chanak (FLDOE #134620).</p>
-      <div id="price-offcampus-elementary" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)"><strong>Consultar tarifa de mi país</strong></div>
-      <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.6rem;font-size:.85rem;color:var(--text)">
-        <li>✓ <strong>Revisión y orientación del mentor con la familia</strong> (1 hora al mes)</li>
-        <li>✓ <strong>Acceso continuo a plataforma</strong> LMS y portal SIS</li>
-        <li>✓ <strong>Plan Educativo Individualizado (PEI)</strong></li>
-        <li>✓ Report cards y expediente oficial emitidos por Chanak</li>
-      </ul>
-      <p style="font-size:.78rem;color:var(--muted);margin-top:-.8rem;margin-bottom:1.2rem;line-height:1.45" data-i18n="rd_off_mat_card_note"><em>* Libros y currículo adquiridos directamente por la familia (coste orientativo ref. España/Europa: 500–600 €/año; calcular más gastos de envío).</em></p>
-    </div>
-    <a class="btn btn-t" style="width:100%;justify-content:center;font-size:.9rem" data-sis-program="off_campus" data-sis-grade="elementary" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=elementary">Iniciar matrícula (SIS) →</a>
-  </div>
-
-  <!-- Tarjeta 2: Off-Campus 6-12 -->
-  <div data-pricing-card="offcampus-secondary" style="background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:2rem;box-shadow:var(--sh);display:flex;flex-direction:column;justify-content:space-between;position:relative">
-    <div>
-      <span class="badge" style="background:rgba(232,160,32,0.15);color:var(--gold);font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">SECUNDARIA Y HIGH SCHOOL</span>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">Off-Campus 6-12</h3>
-      <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Secundaria y Bachillerato estadounidense completo con créditos oficiales y High School Diploma emitido por Chanak.</p>
-      <div id="price-offcampus-secondary" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)"><strong>Consultar tarifa de mi país</strong></div>
-      <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.6rem;font-size:.85rem;color:var(--text)">
-        <li>✓ <strong>Revisión y orientación del mentor con la familia</strong> (1 hora al mes)</li>
-        <li>✓ <strong>Acceso continuo a plataforma</strong> LMS y portal SIS</li>
-        <li>✓ <strong>Plan Educativo Individualizado (PEI)</strong></li>
-        <li>✓ Créditos oficiales, transcript y American High School Diploma</li>
-      </ul>
-      <p style="font-size:.78rem;color:var(--muted);margin-top:-.8rem;margin-bottom:1.2rem;line-height:1.45" data-i18n="rd_off_mat_card_note"><em>* Libros y currículo adquiridos directamente por la familia (coste orientativo ref. España/Europa: 500–600 €/año; calcular más gastos de envío).</em></p>
-    </div>
-    <a class="btn btn-gold" style="width:100%;justify-content:center;font-size:.9rem" data-sis-program="off_campus" data-sis-grade="middle_high" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=middle_high">Iniciar matrícula (SIS) →</a>
-  </div>
-
-  <!-- Tarjeta 3: Dual Diploma -->
-  <div data-pricing-card="dual-diploma" style="background:linear-gradient(to bottom,#ffffff,#fefcf6);border:2px solid var(--gold);border-radius:18px;padding:2rem;box-shadow:var(--sh);display:flex;flex-direction:column;justify-content:space-between;position:relative">
-    <div>
-      <span class="badge badge-t" style="font-size:.75rem;padding:.3rem .8rem;margin-bottom:1rem;display:inline-block">DOBLE TITULACIÓN</span>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem">Dual Diploma</h3>
-      <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem">Doble titulación estadounidense en paralelo al colegio habitual. Compatible con Bachillerato, Secundaria y Preparatoria.</p>
-      <div id="price-dual-diploma" style="margin-bottom:1.2rem;font-size:1.1rem;color:var(--navy)"><strong>Consultar tarifa de mi país</strong></div>
-      <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.6rem;font-size:.85rem;color:var(--text)">
-        <li>✓ <strong>1 hora semanal de Inglés académico en vivo</strong></li>
-        <li>✓ <strong>1 hora semanal de Life Skills &amp; Leadership en vivo</strong></li>
-        <li>✓ <strong>3 horas semanales de trabajo individual</strong> en plataforma o módulos a elección (5 h/sem total)</li>
-        <li>✓ Convalidación de créditos y High School Diploma oficial de Florida</li>
-      </ul>
-    </div>
-    <a class="btn btn-nv" style="width:100%;justify-content:center;font-size:.9rem" data-sis-program="dual_diploma" data-sis-grade="standard" href="https://sis.chanakacademy.org/matricula?program=dual_diploma&grade=standard">Iniciar matrícula (SIS) →</a>
+  <!-- Barra de Selección de País (Pill Tabs) -->
+  <div role="tablist" aria-label="Selecciona tu país" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#f1f5f9;border:1px solid var(--border);border-radius:60px;padding:6px;max-width:100%;flex-wrap:wrap;box-shadow:inset 0 1px 3px rgba(0,0,0,0.04)">
+    <button type="button" role="tab" data-country-tab="ES" class="btn-country-tab active" onclick="window.setCurrentCountry('ES')" style="display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:50px;border:1.5px solid var(--gold);background:var(--navy);color:#ffffff;font-weight:700;font-size:13.5px;cursor:pointer;box-shadow:0 4px 14px rgba(15,23,42,0.18);transition:all .2s">
+      <span style="font-size:1.15rem">🇪🇸</span> <span>España / Europa (EUR)</span>
+    </button>
+    <button type="button" role="tab" data-country-tab="MX" class="btn-country-tab" onclick="window.setCurrentCountry('MX')" style="display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:50px;border:1.5px solid var(--border);background:#ffffff;color:var(--navy);font-weight:700;font-size:13.5px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all .2s">
+      <span style="font-size:1.15rem">🇲🇽</span> <span>México (MXN)</span>
+    </button>
+    <button type="button" role="tab" data-country-tab="PA" class="btn-country-tab" onclick="window.setCurrentCountry('PA')" style="display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:50px;border:1.5px solid var(--border);background:#ffffff;color:var(--navy);font-weight:700;font-size:13.5px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all .2s">
+      <span style="font-size:1.15rem">🇵🇦</span> <span>Panamá (USD)</span>
+    </button>
+    <button type="button" role="tab" data-country-tab="US" class="btn-country-tab" onclick="window.setCurrentCountry('US')" style="display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:50px;border:1.5px solid var(--border);background:#ffffff;color:var(--navy);font-weight:700;font-size:13.5px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all .2s">
+      <span style="font-size:1.15rem">🇺🇸</span> <span>Estados Unidos (USD)</span>
+    </button>
+    <button type="button" role="tab" data-country-tab="GLOBAL" class="btn-country-tab" onclick="window.setCurrentCountry('GLOBAL')" style="display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:50px;border:1.5px solid var(--border);background:#ffffff;color:var(--navy);font-weight:700;font-size:13.5px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all .2s">
+      <span style="font-size:1.15rem">🌐</span> <span>Otros Países (USD)</span>
+    </button>
   </div>
 </div>
 
-<!-- Tabla Comparativa de Colegiaturas: España, México y Panamá -->
-<div class="tblwrap" style="max-width:1100px;margin:0 auto 1.5rem;background:#fff;box-shadow:var(--sh);border-radius:14px;overflow:hidden;border:1px solid var(--border)">
-  <div style="background:var(--navy);color:#fff;padding:16px 20px;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-    <span>Tarifas Oficiales y Detalle de Inclusión (España · México · Panamá)</span>
-    <span style="font-size:.82rem;font-weight:500;color:#94a3b8">Ciclo 2026-2027</span>
-  </div>
-  <table style="width:100%;font-size:.88rem">
-    <thead>
-      <tr style="background:#f8fafc">
-        <th style="padding:14px">Programa</th>
-        <th style="padding:14px">🇪🇸 España</th>
-        <th style="padding:14px">🇲🇽 México</th>
-        <th style="padding:14px">🇵🇦 Panamá</th>
-        <th style="padding:14px">Servicio Incluido</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:14px"><strong>Off-Campus (K–12)</strong><br/><small style="color:var(--muted)">Homeschooling oficial</small></td>
-        <td style="padding:14px"><strong>70 €/mes</strong><br/><small style="color:var(--muted)">Matrícula: 180 €<br/>(250 € al formalizar)</small></td>
-        <td style="padding:14px"><strong>$3,500 MXN/mes</strong><br/><small style="color:var(--muted)">Matrícula: $4,500 MXN<br/>(o US$70/mes)</small></td>
-        <td style="padding:14px"><strong>US$70/mes</strong><br/><small style="color:var(--muted)">Matrícula: US$180<br/>(US$250 al formalizar)</small></td>
-        <td style="padding:14px;color:#334155;font-size:.83rem">
-          • Revisión y orientación del mentor con la familia (1 h/mes)<br/>
-          • Acceso a plataforma LMS y SIS<br/>
-          • Plan Educativo Individualizado (PEI)<br/>
-          • Expediente y diploma FLDOE #134620
-        </td>
-      </tr>
-      <tr style="background:#fafbfc">
-        <td style="padding:14px"><strong>Dual Diploma</strong><br/><small style="color:var(--muted)">Doble Titulación High School</small></td>
-        <td style="padding:14px"><strong>desde 110 €/mes</strong><br/><small style="color:var(--muted)">10 cuotas (110 € a 167 €)<br/>Matrícula: 210 € · Diag.: 35 €</small></td>
-        <td style="padding:14px"><strong>desde $3,400 MXN/mes</strong><br/><small style="color:var(--muted)">10 cuotas ($3,400 a $6,500)<br/>Matrícula: $4,300 · Eval.: $850</small></td>
-        <td style="padding:14px"><strong>desde US$140/mes</strong><br/><small style="color:var(--muted)">10 cuotas (desde US$1,400/año)<br/>Matrícula: US$250 · Eval.: US$50</small></td>
-        <td style="padding:14px;color:#334155;font-size:.83rem">
-          • 1 h/semana Inglés académico en vivo<br/>
-          • 1 h/semana Life Skills &amp; Leadership en vivo<br/>
-          • 3 h de trabajo individual en plataforma o módulos a elección (5 h/sem total)<br/>
-          • Mentoría, convalidación y High School Diploma oficial
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Nota de referencia sobre material y currículo: España / Europa y Estados Unidos -->
-<div class="fi" style="max-width:1100px;margin:1.5rem auto 0;background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--teal);border-radius:14px;padding:22px 24px;box-shadow:0 2px 8px rgba(0,0,0,0.03)">
-  <div style="font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px;font-size:1.02rem">
-    <span style="font-size:1.25rem">📦</span>
-    <span data-i18n="rd_mat_note_ttl">Guía de Referencia de Materiales y Libros Curriculares</span>
-  </div>
-  <p style="margin:0 0 16px;font-size:.88rem;color:#475569;line-height:1.6" data-i18n="rd_mat_note_intro">
-    La colegiatura mensual de Chanak incluye el acompañamiento pedagógico, orientación mensual del mentor con la familia (1 h/mes), Plan Educativo Individualizado (PEI), acceso continuo a la plataforma (LMS/SIS) y la certificación oficial con expediente emitido en Florida (FLDOE #134620). <strong>Los libros y materiales curriculares no están incluidos en la colegiatura y son adquiridos directamente por los padres</strong> según el plan formativo y la editorial elegida.
-  </p>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;">
-    <!-- Columna España / Europa -->
-    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;font-size:.85rem;line-height:1.6;color:#334155">
-      <div style="font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:8px;display:flex;align-items:center;gap:6px">
-        <span>🇪🇸</span> <span data-i18n="rd_mat_es_ttl">España y Europa (distribuidor europeo CEE / GBP / EUR)</span>
+<!-- ==================== PANE 1: ESPAÑA Y EUROPA ==================== -->
+<div data-country-pane="ES" class="country-pane">
+  <div style="background:linear-gradient(135deg,rgba(15,23,42,0.03),rgba(13,148,136,0.06));border:1px solid #cbd5e1;border-radius:16px;padding:16px 24px;margin-bottom:2.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:2rem">🇪🇸</span>
+      <div>
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy)">Colegiaturas Oficiales · España y Europa</h3>
+        <p style="margin:0;font-size:.84rem;color:var(--muted)">Moneda oficial: Euro (€ / EUR) · Ciclo Académico 2026-2027</p>
       </div>
-      <p style="margin:0 0 8px;font-size:.82rem;color:var(--muted)" data-i18n="rd_mat_es_desc">
-        Comprar A.C.E. en Europa mediante el distribuidor oficial (Christian Education Europe) fija precios en libras (£/GBP), aranceles e IVA europeo, requiriendo Score Keys individuales en primaria:
-      </p>
-      <ul style="margin:0 0 10px;padding-left:18px;font-size:.83rem;color:#334155">
-        <li><strong>Lectura inicial (ABCs / K–1)</strong>: <strong>690 € – 760 €</strong> (~$750 – $820 USD) con manuales completos del maestro y PACEs.</li>
-        <li><strong>Grados 1 a 4 (5 materias + 60 Score Keys)</strong>: <strong>700 € – 880 € / año</strong> (~$760 – $950 USD).</li>
-        <li><strong>Grados 5 a 12 (5 materias + 20 Score Keys)</strong>: <strong>530 € – 680 € / año</strong> (~$570 – $740 USD).</li>
-        <li><strong>Alternativas de menor inversión</strong>: Christian Light Education (CLE) ~<strong>165 €</strong> en lectura y <strong>360 € – 400 € / año</strong> en 1–12; o AOP LIFEPAC ~<strong>100 €</strong> en lectura y <strong>405 € – 455 € / año</strong>.</li>
-      </ul>
-      <div style="font-size:.78rem;color:#b91c1c;font-weight:600" data-i18n="rd_mat_shipping_es">
-        ⚠️ <em>Calcular siempre gastos de envío adicionales según destino.</em>
+    </div>
+    <div style="background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:6px 14px;border-radius:30px;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:6px">
+      <span>✓</span> Official Transcripts y American High School Diploma incluidos (FLDOE #134620)
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:2rem;max-width:1150px;margin:0 auto">
+    <!-- Off-Campus K-12 España -->
+    <div style="background:#ffffff;border:1.5px solid var(--border);border-radius:20px;padding:2.2rem;box-shadow:0 4px 20px rgba(0,0,0,0.05);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-t" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700">K-12 · HOMESCHOOLING COMPLETO</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--teal)">Primaria a Bachillerato</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Off-Campus K-12</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Colegio estadounidense completo en el hogar con Plan Educativo Individualizado (PEI) y seguimiento oficial de Chanak (FLDOE #134620).</p>
+        
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">70 €</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mes</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            Matrícula anual: <strong>180 €</strong><br>
+            <span style="color:var(--navy);font-weight:600">Al formalizar se abonan 250 €</span> (matrícula de 180 € + primera mensualidad de 70 €).
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Revisión y orientación del mentor con la familia</strong> (1 hora al mes)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Acceso continuo a plataforma</strong> LMS y portal SIS</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Plan Educativo Individualizado (PEI)</strong> con ritmo adaptado</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Expediente oficial (Official Transcripts)</strong> emitido por Chanak</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>American High School Diploma</strong> al completar créditos de secundaria</span>
+          </li>
+        </ul>
+
+        <div style="background:#fffbeb;border:1px solid #fef3c7;border-left:3px solid var(--gold);padding:12px 14px;border-radius:10px;font-size:.8rem;color:#92400e;line-height:1.55;margin-bottom:1.5rem">
+          <strong>📦 Libros y material curricular:</strong> No están incluidos en la colegiatura mensual y son adquiridos directamente por los padres según el plan formativo y la editorial elegida.<br>
+          <span style="display:block;margin-top:4px">• Coste orientativo de referencia para España y Europa: <strong>500 € – 600 € al año</strong> (o kits oficiales con distribuidor europeo CEE: 700–880 €/año en 1-4 y 530–680 €/año en 5-12; o alternativas cristocéntricas CLE ~360–400 €/año o LIFEPAC ~405–455 €/año).</span>
+          <span style="display:block;margin-top:4px;color:#b91c1c;font-weight:700">⚠️ Calcular siempre gastos de envío adicionales según destino.</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-t" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=elementary&country=ES&currency=EUR">Iniciar matrícula Off-Campus (SIS) →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="/assets/dossiers/family/off-campus-es-es.pdf?v=20261008editorial" target="_blank">Descargar Dossier Off-Campus (PDF)</a>
       </div>
     </div>
 
-    <!-- Columna Estados Unidos -->
-    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;font-size:.85rem;line-height:1.6;color:#334155">
-      <div style="font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:8px;display:flex;align-items:center;gap:6px">
-        <span>🇺🇸</span> <span data-i18n="rd_mat_us_ttl">Estados Unidos (adquisición directa en USD)</span>
+    <!-- Dual Diploma España -->
+    <div style="background:linear-gradient(to bottom,#ffffff,#fefcf6);border:2px solid var(--gold);border-radius:20px;padding:2.2rem;box-shadow:0 4px 25px rgba(232,160,32,0.12);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-gold" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700;background:rgba(232,160,32,0.18);color:#b45309">DOBLE TITULACIÓN OFICIAL</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--gold)">3.º ESO a 2.º Bach · FP</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Dual Diploma</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Doble titulación estadounidense cursada en paralelo al colegio o instituto habitual. Convalidación de asignaturas y titulación oficial.</p>
+        
+        <div style="background:#ffffff;border:1px solid #fde68a;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">desde 110 €</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mes</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            <strong>10 mensualidades</strong> fijadas al ingresar (Ruta 4 años: 110 € · 3 años: 129 € · 2 años: 148 € · Intensiva: 167 €/mes)<br>
+            Matrícula: <strong>210 €</strong> · Examen diagnóstico de inglés: <strong>35 €</strong>
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>1 hora semanal de Inglés académico en vivo</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>1 hora semanal de Life Skills &amp; Leadership en vivo</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>3 horas semanales de trabajo individual</strong> en plataforma o módulos a elección (5 h/semana total)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Convalidación curricular</strong> de hasta el 75% de créditos de la escuela española</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Official Transcripts</strong> y <strong>American High School Diploma</strong> oficial de Florida</span>
+          </li>
+        </ul>
       </div>
-      <p style="margin:0 0 8px;font-size:.82rem;color:var(--muted)" data-i18n="rd_mat_us_desc">
-        Adquirido directamente en editoriales de EE. UU. (School of Tomorrow, CLE, AOP):
-      </p>
-      <ul style="margin:0 0 10px;padding-left:18px;font-size:.83rem;color:#334155">
-        <li><strong>Lectura inicial (ABCs / K–1)</strong>: <strong>$380 – $440 USD</strong> (~350 € – 410 €) para el kit oficial completo.</li>
-        <li><strong>Grados 1 a 4 (5 materias + Keys)</strong>: <strong>$460 – $530 USD / año</strong> (~425 € – 490 €).</li>
-        <li><strong>Grados 5 a 12 (5 materias + Keys)</strong>: <strong>$320 – $390 USD / año</strong> (~295 € – 360 €).</li>
-        <li><strong>Alternativas cristocéntricas</strong>: Christian Light Education (CLE) <strong>$177 USD</strong> en lectura y <strong>$390 – $430 USD / año</strong> en 1–12; o AOP LIFEPAC <strong>$108 USD</strong> en lectura y <strong>$440 – $490 USD / año</strong>.</li>
-      </ul>
-      <div style="font-size:.78rem;color:var(--muted)" data-i18n="rd_mat_us_note">
-        💡 <em>Los gastos de material pueden ser subvencionables con fondos de becas estatales según elegibilidad de la familia.</em>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-nv" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=dual_diploma&grade=standard&country=ES&currency=EUR">Iniciar matrícula Dual Diploma (SIS) →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="/assets/dossiers/family/dual-diploma-es-es.pdf?v=20261008editorial" target="_blank">Descargar Dossier Dual Diploma (PDF)</a>
       </div>
     </div>
   </div>
-</div></div>
+</div>
 
+<!-- ==================== PANE 2: MÉXICO ==================== -->
+<div data-country-pane="MX" class="country-pane" style="display:none" hidden>
+  <div style="background:linear-gradient(135deg,rgba(15,23,42,0.03),rgba(13,148,136,0.06));border:1px solid #cbd5e1;border-radius:16px;padding:16px 24px;margin-bottom:2.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:2rem">🇲🇽</span>
+      <div>
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy)">Colegiaturas Oficiales · México</h3>
+        <p style="margin:0;font-size:.84rem;color:var(--muted)">Moneda oficial: Pesos Mexicanos ($ MXN) · Ciclo Académico 2026-2027</p>
+      </div>
+    </div>
+    <div style="background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:6px 14px;border-radius:30px;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:6px">
+      <span>✓</span> Official Transcripts y American High School Diploma incluidos (FLDOE #134620)
+    </div>
+  </div>
 
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:2rem;max-width:1150px;margin:0 auto">
+    <!-- Off-Campus K-12 México -->
+    <div style="background:#ffffff;border:1.5px solid var(--border);border-radius:20px;padding:2.2rem;box-shadow:0 4px 20px rgba(0,0,0,0.05);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-t" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700">K-12 · HOMESCHOOLING COMPLETO</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--teal)">Primaria a Preparatoria</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Off-Campus K-12</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Colegio estadounidense completo en casa con Plan Educativo Individualizado (PEI) y seguimiento oficial en México.</p>
+        
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">$3,500 MXN</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mes</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            Matrícula anual: <strong>$4,500 MXN</strong> (o US$70/mes en USD)<br>
+            <span style="color:var(--navy);font-weight:600">Al formalizar se abonan $8,000 MXN</span> (matrícula de $4,500 MXN + primer mes de $3,500 MXN).
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Revisión y orientación del mentor con la familia</strong> (1 hora al mes)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Acceso continuo a plataforma</strong> LMS y portal SIS</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Plan Educativo Individualizado (PEI)</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Expediente oficial (Official Transcripts)</strong> emitido por Chanak</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>American High School Diploma</strong> al completar créditos de preparatoria</span>
+          </li>
+        </ul>
+
+        <div style="background:#fffbeb;border:1px solid #fef3c7;border-left:3px solid var(--gold);padding:12px 14px;border-radius:10px;font-size:.8rem;color:#92400e;line-height:1.55;margin-bottom:1.5rem">
+          <strong>📦 Libros y material curricular:</strong> No están incluidos en la colegiatura mensual y son adquiridos directamente por los padres según el plan formativo y la editorial elegida.<br>
+          <span style="display:block;margin-top:4px">• Las familias eligen su currículo cristiano o estadounidense de preferencia con orientación de Chanak.</span>
+          <span style="display:block;margin-top:4px;color:#b91c1c;font-weight:700">⚠️ Calcular siempre gastos de envío adicionales según destino en la República Mexicana.</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-t" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=elementary&country=MX&currency=USD">Iniciar matrícula Off-Campus (SIS) →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="/assets/dossiers/family/off-campus-mx-es.pdf?v=20261008editorial" target="_blank">Descargar Dossier México (PDF)</a>
+      </div>
+    </div>
+
+    <!-- Dual Diploma México -->
+    <div style="background:linear-gradient(to bottom,#ffffff,#fefcf6);border:2px solid var(--gold);border-radius:20px;padding:2.2rem;box-shadow:0 4px 25px rgba(232,160,32,0.12);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-gold" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700;background:rgba(232,160,32,0.18);color:#b45309">DOBLE TITULACIÓN OFICIAL</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--gold)">3.º Sec a Prepa</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Dual Diploma</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Doble titulación estadounidense cursada en paralelo a la secundaria o preparatoria local. Sin sobrecostes de intermediación escolar.</p>
+        
+        <div style="background:#ffffff;border:1px solid #fde68a;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">desde $3,400 MXN</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mes</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            <strong>10 mensualidades</strong> fijadas al ingresar (Ruta 4 años: $3,400 MXN · 3 años: $4,100 MXN · 2 años: $5,800 MXN · Acelerada: $6,500 MXN/mes)<br>
+            Matrícula: <strong>$4,300 MXN</strong> · Evaluación académica: <strong>$850 MXN</strong>
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>1 hora semanal de Inglés académico en vivo</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>1 hora semanal de Life Skills &amp; Leadership en vivo</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>3 horas semanales de trabajo individual</strong> en plataforma o módulos a elección (5 h/sem total)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Convalidación de materias</strong> mexicanas con el marco curricular de EE. UU.</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Official Transcripts</strong> y <strong>American High School Diploma</strong> de Florida</span>
+          </li>
+        </ul>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-nv" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=dual_diploma&grade=standard&country=MX&currency=USD">Iniciar matrícula Dual Diploma (SIS) →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="/assets/dossiers/family/dual-diploma-mx-es.pdf?v=20261008editorial" target="_blank">Descargar Dossier Dual Diploma (PDF)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PANE 3: PANAMÁ ==================== -->
+<div data-country-pane="PA" class="country-pane" style="display:none" hidden>
+  <div style="background:linear-gradient(135deg,rgba(15,23,42,0.03),rgba(13,148,136,0.06));border:1px solid #cbd5e1;border-radius:16px;padding:16px 24px;margin-bottom:2.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:2rem">🇵🇦</span>
+      <div>
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy)">Colegiaturas Oficiales · Panamá</h3>
+        <p style="margin:0;font-size:.84rem;color:var(--muted)">Moneda oficial: Dólares Estadounidenses (US$ / USD) · Ciclo Académico 2026-2027</p>
+      </div>
+    </div>
+    <div style="background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:6px 14px;border-radius:30px;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:6px">
+      <span>✓</span> Official Transcripts y American High School Diploma incluidos (FLDOE #134620)
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:2rem;max-width:1150px;margin:0 auto">
+    <!-- Off-Campus K-12 Panamá -->
+    <div style="background:#ffffff;border:1.5px solid var(--border);border-radius:20px;padding:2.2rem;box-shadow:0 4px 20px rgba(0,0,0,0.05);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-t" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700">K-12 · HOMESCHOOLING COMPLETO</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--teal)">Primaria a Media</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Off-Campus K-12</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Colegio estadounidense completo en casa con Plan Educativo Individualizado (PEI) y seguimiento oficial en Panamá.</p>
+        
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">US$70</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mes</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            Matrícula anual: <strong>US$180</strong><br>
+            <span style="color:var(--navy);font-weight:600">Al formalizar se abonan US$250</span> (matrícula de US$180 + primer mes de US$70).
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Revisión y orientación del mentor con la familia</strong> (1 hora al mes)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Acceso continuo a plataforma</strong> LMS y portal SIS</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Plan Educativo Individualizado (PEI)</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Expediente oficial (Official Transcripts)</strong> emitido por Chanak</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>American High School Diploma</strong> al completar créditos</span>
+          </li>
+        </ul>
+
+        <div style="background:#fffbeb;border:1px solid #fef3c7;border-left:3px solid var(--gold);padding:12px 14px;border-radius:10px;font-size:.8rem;color:#92400e;line-height:1.55;margin-bottom:1.5rem">
+          <strong>📦 Libros y material curricular:</strong> No están incluidos en la colegiatura mensual y son adquiridos directamente por la familia según la editorial elegida.<br>
+          <span style="display:block;margin-top:4px">• Coste orientativo referencial: US$550 – US$650 al año (según nivel y editorial).</span>
+          <span style="display:block;margin-top:4px;color:#b91c1c;font-weight:700">⚠️ Calcular siempre gastos de envío adicionales según destino.</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-t" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=elementary&country=PA&currency=USD">Iniciar matrícula Off-Campus (SIS) →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="/assets/dossiers/family/off-campus-pa-es.pdf?v=20261008editorial" target="_blank">Descargar Dossier Panamá (PDF)</a>
+      </div>
+    </div>
+
+    <!-- Dual Diploma Panamá -->
+    <div style="background:linear-gradient(to bottom,#ffffff,#fefcf6);border:2px solid var(--gold);border-radius:20px;padding:2.2rem;box-shadow:0 4px 25px rgba(232,160,32,0.12);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-gold" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700;background:rgba(232,160,32,0.18);color:#b45309">DOBLE TITULACIÓN OFICIAL</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--gold)">Media · Grados 9 a 12</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Dual Diploma</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Doble titulación estadounidense cursada en paralelo al colegio panameño habitual. Admisión directa para familias sin convenios previos.</p>
+        
+        <div style="background:#ffffff;border:1px solid #fde68a;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">desde US$140</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mes</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            <strong>10 mensualidades</strong> (inversión anual desde US$1,400 según grado de entrada)<br>
+            Matrícula: <strong>US$250</strong> · Evaluación diagnóstica inicial: <strong>US$50</strong>
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>1 hora semanal de Inglés académico en vivo</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>1 hora semanal de Life Skills &amp; Leadership en vivo</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>3 horas semanales de trabajo individual</strong> en plataforma o módulos a elección (5 h/sem total)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Convalidación curricular</strong> de créditos cursados en Panamá</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Official Transcripts</strong> y <strong>American High School Diploma</strong> de Florida</span>
+          </li>
+        </ul>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-nv" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=dual_diploma&grade=standard&country=PA&currency=USD">Iniciar matrícula Dual Diploma (SIS) →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="/assets/dossiers/family/dual-diploma-pa-es.pdf?v=20261008editorial" target="_blank">Descargar Dossier Dual Diploma (PDF)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PANE 4: ESTADOS UNIDOS ==================== -->
+<div data-country-pane="US" class="country-pane" style="display:none" hidden>
+  <div style="background:linear-gradient(135deg,rgba(15,23,42,0.03),rgba(13,148,136,0.06));border:1px solid #cbd5e1;border-radius:16px;padding:16px 24px;margin-bottom:2.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:2rem">🇺🇸</span>
+      <div>
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy)">Official Tuition &amp; Programs · United States</h3>
+        <p style="margin:0;font-size:.84rem;color:var(--muted)">Florida Registered Private School (FLDOE #134620) · Currency: USD ($)</p>
+      </div>
+    </div>
+    <div style="background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:6px 14px;border-radius:30px;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:6px">
+      <span>✓</span> State Scholarships Eligible (EMA, PEP, ESA, CHOOSE, etc.)
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:2rem;max-width:1150px;margin:0 auto">
+    <!-- U.S. K-12 Off-Campus -->
+    <div style="background:#ffffff;border:1.5px solid var(--border);border-radius:20px;padding:2.2rem;box-shadow:0 4px 20px rgba(0,0,0,0.05);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-t" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700">K-12 · UMBRELLA SCHOOL</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--teal)">Elementary to High School</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">U.S. K-12 Off-Campus</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Full American distance education umbrella with Individualized Education Plan (IEP), official Florida transcripts, and diploma.</p>
+        
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">from $275 USD</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mo</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            <strong>10 monthly payments:</strong> Elementary (K-5): $275 USD/mo · Middle (6-8): $320 USD/mo · High School (9-12): $365 USD/mo<br>
+            Enrollment fee: <strong>$295 USD</strong> (includes diagnostic &amp; IEP)
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Included Services:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Dedicated mentor and academic supervision</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Full LMS &amp; SIS portal access</strong> (sis.chanakacademy.org / portal.chanakacademy.org)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Individualized Education Plan (IEP / PEI)</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Official Transcripts</strong> issued under FLDOE #134620</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>American High School Diploma</strong> upon graduation</span>
+          </li>
+        </ul>
+
+        <div style="background:#fffbeb;border:1px solid #fef3c7;border-left:3px solid var(--gold);padding:12px 14px;border-radius:10px;font-size:.8rem;color:#92400e;line-height:1.55;margin-bottom:1.5rem">
+          <strong>📦 Textbooks &amp; Curriculum:</strong> Purchased directly by parents from U.S. publishers (reference: $320–$530 USD/year depending on grade).<br>
+          <span style="display:block;margin-top:4px;color:#047857;font-weight:700">💡 Tuition and curriculum expenses may be eligible for direct payment or reimbursement via state scholarship programs (Florida PEP/EMA, Utah UFA, etc.).</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-t" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=elementary&country=US&currency=USD">Enroll in U.S. Off-Campus →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="/assets/dossiers/family/off-campus-us-en.pdf?v=20261008editorial" target="_blank">Download U.S. Dossier (PDF)</a>
+      </div>
+    </div>
+
+    <!-- Adult High School Completion -->
+    <div style="background:linear-gradient(to bottom,#ffffff,#fefcf6);border:2px solid var(--gold);border-radius:20px;padding:2.2rem;box-shadow:0 4px 25px rgba(232,160,32,0.12);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-gold" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700;background:rgba(232,160,32,0.18);color:#b45309">ADULT COMPLETION</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--gold)">Accelerated Track</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Finaliza tu High School</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Vía acelerada para adultos y jóvenes que desean completar sus créditos pendientes y graduarse con su High School Diploma oficial.</p>
+        
+        <div style="background:#ffffff;border:1px solid #fde68a;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">desde $2,500 USD</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            <strong>Plan modular acelerado de 1 año:</strong> Precio final ajustado tras la evaluación diagnóstica de créditos previos.<br>
+            Evaluación diagnóstica y revisión de expediente: <strong>$58 USD</strong>
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Revisión personalizada de créditos previos</strong> nacionales e internacionales</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Vía flexible 100% online 24/7</strong> compatible con trabajo y vida familiar</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Acompañamiento de tutor asignado</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>American High School Diploma oficial</strong> emitido por Chanak Academy</span>
+          </li>
+        </ul>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-nv" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="/matricula/?programa=adult_completion&pais=US">Solicitar evaluación diagnóstica →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="/assets/dossiers/family/dual-diploma-us-en.pdf?v=20261008editorial" target="_blank">Download Program Guide (PDF)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PANE 5: OTROS PAÍSES / INTERNACIONAL ==================== -->
+<div data-country-pane="GLOBAL" class="country-pane" style="display:none" hidden>
+  <div style="background:linear-gradient(135deg,rgba(15,23,42,0.03),rgba(13,148,136,0.06));border:1px solid #cbd5e1;border-radius:16px;padding:16px 24px;margin-bottom:2.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:2rem">🌐</span>
+      <div>
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy)">Colegiaturas Oficiales · Internacional</h3>
+        <p style="margin:0;font-size:.84rem;color:var(--muted)">Moneda de referencia: Dólares Estadounidenses (US$ / USD) · Ciclo Académico 2026-2027</p>
+      </div>
+    </div>
+    <div style="background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:6px 14px;border-radius:30px;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:6px">
+      <span>✓</span> Official Transcripts y American High School Diploma incluidos (FLDOE #134620)
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:2rem;max-width:1150px;margin:0 auto">
+    <!-- Off-Campus K-12 Internacional -->
+    <div style="background:#ffffff;border:1.5px solid var(--border);border-radius:20px;padding:2.2rem;box-shadow:0 4px 20px rgba(0,0,0,0.05);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-t" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700">K-12 · DISTANCIA INTERNACIONAL</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--teal)">Primaria a High School</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Off-Campus Internacional</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Educación estadounidense a distancia para familias en cualquier país, con expediente oficial y seguimiento individualizado.</p>
+        
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">US$70</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mes</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            Matrícula anual: <strong>US$180</strong> · Al formalizar se abonan <strong>US$250</strong> (matrícula de US$180 + primer mes de US$70).
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Revisión y orientación del mentor con la familia</strong> (1 hora al mes)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Acceso continuo a plataforma</strong> LMS y portal SIS</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Plan Educativo Individualizado (PEI)</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--teal);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Official Transcripts</strong> y American High School Diploma de Florida</span>
+          </li>
+        </ul>
+
+        <div style="background:#fffbeb;border:1px solid #fef3c7;border-left:3px solid var(--gold);padding:12px 14px;border-radius:10px;font-size:.8rem;color:#92400e;line-height:1.55;margin-bottom:1.5rem">
+          <strong>📦 Libros y material curricular:</strong> Adquiridos directamente por los padres según el plan elegido.<br>
+          <span style="display:block;margin-top:4px;color:#b91c1c;font-weight:700">⚠️ Calcular siempre gastos de envío adicionales según destino internacional.</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-t" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=off_campus&grade=elementary&country=GLOBAL&currency=USD">Iniciar matrícula en el SIS →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="#dossier">Solicitar orientación internacional</a>
+      </div>
+    </div>
+
+    <!-- Dual Diploma Internacional -->
+    <div style="background:linear-gradient(to bottom,#ffffff,#fefcf6);border:2px solid var(--gold);border-radius:20px;padding:2.2rem;box-shadow:0 4px 25px rgba(232,160,32,0.12);display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+          <span class="badge badge-gold" style="font-size:.78rem;padding:.35rem .85rem;font-weight:700;background:rgba(232,160,32,0.18);color:#b45309">DOBLE TITULACIÓN OFICIAL</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--gold)">High School Internacional</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.4rem">Dual Diploma Internacional</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem">Programa de doble titulación estadounidense cursado en paralelo a cualquier escuela local del mundo.</p>
+        
+        <div style="background:#ffffff;border:1px solid #fde68a;border-radius:14px;padding:16px;margin-bottom:1.5rem">
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;color:var(--navy)">desde US$140</span>
+            <span style="color:var(--muted);font-size:1rem;font-weight:600">/ mes</span>
+          </div>
+          <div style="font-size:.83rem;color:#475569;margin-top:6px;line-height:1.45">
+            <strong>10 mensualidades</strong> (desde US$1,400 al año según grado de entrada)<br>
+            Matrícula: <strong>US$250</strong> · Evaluación diagnóstica inicial: <strong>US$50</strong>
+          </div>
+        </div>
+
+        <div style="font-weight:700;font-size:.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem">Servicios incluidos:</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.7rem;font-size:.88rem;color:var(--text)">
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>1 hora semanal de Inglés académico en vivo</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>1 hora semanal de Life Skills &amp; Leadership en vivo</strong></span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>3 horas semanales de trabajo individual</strong> en plataforma o módulos a elección (5 h/sem total)</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Convalidación de créditos</strong> del colegio de origen</span>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:var(--gold);font-weight:bold;font-size:1.1rem;line-height:1">✓</span>
+            <span><strong>Official Transcripts</strong> y American High School Diploma de Florida</span>
+          </li>
+        </ul>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a class="btn btn-nv" style="width:100%;justify-content:center;font-size:.92rem;padding:.75rem" href="https://sis.chanakacademy.org/matricula?program=dual_diploma&grade=standard&country=GLOBAL&currency=USD">Iniciar matrícula Dual Diploma (SIS) →</a>
+        <a class="btn btn-out" style="width:100%;justify-content:center;font-size:.84rem;padding:.6rem" href="#dossier">Solicitar orientación</a>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 </section></details><section class="doss-sec" id="dossier">
 <div class="wrap"><div class="doss-g">
@@ -1240,50 +1721,7 @@ Chanak nació de esta visión: la educación es transmisión de valores, fe y ca
 </div>
 <!-- Currículos por marca eliminados a propósito: nos basamos en el Aprendizaje por Dominio, sin promocionar editoriales concretas. -->
 <p class="fi" data-i18n="cur_checks" style="text-align:center;font-size:.85rem;color:var(--muted);margin-top:1.5rem;font-weight:600">✓ Cristianos · ✓ Core americano · ✓ Aprendizaje por Dominio · ✓ Individualizados · ✓ Ritmo propio · ✓ Participación de la familia</p>
-<!-- Tabla Comparativa de Costes de Currículo: España/Europa vs. EE. UU. -->
-<div class="tblwrap fi" style="max-width:1050px;margin:2.5rem auto 2rem;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh);overflow:hidden">
-  <div style="background:var(--navy);color:#fff;padding:16px 20px;font-weight:700;font-size:.98rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-    <span data-i18n="cur_tbl_title">Comparativa de Costes de Currículo Anual (Alumno + Maestro)</span>
-    <span style="font-size:.82rem;font-weight:400;color:#94a3b8" data-i18n="cur_tbl_sub">5 Materias Troncales + Claves de Respuestas</span>
-  </div>
-  <table style="width:100%;font-size:.86rem">
-    <thead>
-      <tr style="background:#f8fafc">
-        <th style="padding:14px">Nivel Escolar</th>
-        <th style="padding:14px">🇪🇸 A.C.E. en Europa (CEE)</th>
-        <th style="padding:14px">🇺🇸 A.C.E. en EE. UU.</th>
-        <th style="padding:14px">Christian Light (CLE)</th>
-        <th style="padding:14px">AOP (LIFEPAC)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:14px"><strong>Programa Inicial de Lectura (ABCs / K–1)</strong></td>
-        <td style="padding:14px;color:#b91c1c;font-weight:600">690 € – 760 €<br><small style="color:var(--muted);font-weight:normal">$750 – $820 USD</small></td>
-        <td style="padding:14px"><strong>$380 – $440 USD</strong><br><small style="color:var(--muted)">350 € – 410 €</small></td>
-        <td style="padding:14px"><strong>$177 USD</strong><br><small style="color:var(--muted)">~165 €</small></td>
-        <td style="padding:14px"><strong>$108 USD</strong><br><small style="color:var(--muted)">~100 €</small></td>
-      </tr>
-      <tr style="background:#fafbfc">
-        <td style="padding:14px"><strong>Grados 1 al 4 (5 materias + Keys)</strong></td>
-        <td style="padding:14px;color:#b91c1c;font-weight:600">700 € – 880 €<br><small style="color:var(--muted);font-weight:normal">$760 – $950 USD</small></td>
-        <td style="padding:14px"><strong>$460 – $530 USD</strong><br><small style="color:var(--muted)">425 € – 490 €</small></td>
-        <td style="padding:14px"><strong>$390 – $420 USD</strong><br><small style="color:var(--muted)">360 € – 390 €</small></td>
-        <td style="padding:14px"><strong>$440 – $480 USD</strong><br><small style="color:var(--muted)">405 € – 445 €</small></td>
-      </tr>
-      <tr>
-        <td style="padding:14px"><strong>Grados 5 al 12 (5 materias + Keys)</strong></td>
-        <td style="padding:14px;color:#334155;font-weight:600">530 € – 680 €<br><small style="color:var(--muted);font-weight:normal">$570 – $740 USD</small></td>
-        <td style="padding:14px"><strong>$320 – $390 USD</strong><br><small style="color:var(--muted)">295 € – 360 €</small></td>
-        <td style="padding:14px"><strong>$390 – $430 USD</strong><br><small style="color:var(--muted)">360 € – 400 €</small></td>
-        <td style="padding:14px"><strong>$450 – $490 USD</strong><br><small style="color:var(--muted)">415 € – 455 €</small></td>
-      </tr>
-    </tbody>
-  </table>
-  <div style="padding:12px 20px;background:#f8fafc;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);line-height:1.55" data-i18n="cur_tbl_footer">
-    * En Europa, A.C.E. se adquiere a través del distribuidor oficial europeo (Christian Education Europe) con precios fijados en Libras Esterlinas (£/GBP), sumando aranceles, aduanas e IVA. En primaria (grados 1–4) requiere 1 Score Key obligatoria por cada PACE individual (60 claves). En España y Europa, calcular siempre los gastos de envío adicionales según destino.
-  </div>
-</div>
+
 
 <div class="fi" style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:var(--r);padding:2.25rem;margin-top:2rem;color:#fff">
 <h3 data-i18n="cur_box_ttl" style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:.75rem">Tu familia elige el material. Chanak organiza el camino.</h3>
