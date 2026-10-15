@@ -68,16 +68,6 @@ window.SUPPORTED_REGIONS = {
     locale: 'en-US',
     phonePrefix: '+1'
   },
-  CO: {
-    code: 'CO',
-    name: 'Colombia',
-    shortName: 'Colombia',
-    flag: '🇨🇴',
-    currency: 'COP',
-    symbol: '$',
-    locale: 'es-CO',
-    phonePrefix: '+57'
-  },
   GLOBAL: {
     code: 'GLOBAL',
     name: 'Internacional',
@@ -128,20 +118,19 @@ window.CHANAK_PRICING = {
         description: 'Evaluación completa de nivel (149 preguntas) y propuesta de programa. Servicio independiente para familias que aún no han elegido programa.'
       },
 
-      // Off-Campus en España: plan personalizado sin importes fijos públicos (on_request)
       off_campus: {
-        status: 'on_request',
+        status: 'published',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: null,
+        enrollmentFee: '180 €',
         enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
-        installments: 'plan personalizado',
-        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
-        note: 'El alumno queda registrado en una escuela privada americana bajo supervisión central desde Florida; la familia conserva la responsabilidad legal educativa local según su país de residencia.',
+        installments: 'mensual',
+        includes: 'Revisión y orientación del mentor con la familia (1 hora al mes) · Acceso a plataforma LMS y SIS · Plan Educativo Individualizado (PEI)',
+        note: 'Al formalizar se abonan 250 €: matrícula de 180 € más la primera mensualidad de 70 €.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', description: 'Currículo estadounidense completo, créditos y expediente emitidos por Chanak, colegio registrado en Florida (FLDOE #134620).' }
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: '70 €/mes', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', monthly: '70 €/mes', description: 'Currículo estadounidense completo, créditos y expediente emitidos por Chanak, colegio registrado en Florida (FLDOE #134620).' }
         ],
-        footnote: 'Plan de colegiatura adaptado a las necesidades de cada estudiante y familia. Material y currículo no incluidos.'
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos.'
       },
 
       dual_diploma: {
@@ -151,7 +140,7 @@ window.CHANAK_PRICING = {
         assessmentLabel: 'Examen diagnóstico de inglés',
         enrollmentFee: '210 €',
         installments: '10 mensualidades',
-        includes: 'Compatible con Bachillerato y Formación Profesional (FP) · Mentoría semanal · LMS y SIS · evaluaciones · SAT Prep Hub · Test de Dones · transcript oficial',
+        includes: '1 hora semanal de Inglés académico en vivo · 1 hora semanal de Life Skills & Leadership en vivo · 3 horas de trabajo individual en plataforma o módulos a elección · Compatible con Bachillerato y FP · Mentoría · LMS y SIS · transcript oficial',
         routes: [
           { key: 'r4', title: 'Ruta 4 años', level: '3.º ESO · Grade 9', hours: '3-5 h/sem', monthly: '110 €', totalFirstYear: '1.310 €' },
           { key: 'r3', title: 'Ruta 3 años', level: '4.º ESO · Grade 10', hours: '3-5 h/sem', monthly: '129 €', totalFirstYear: '1.500 €' },
@@ -177,18 +166,18 @@ window.CHANAK_PRICING = {
       },
 
       off_campus: {
-        status: 'on_request',
+        status: 'published',
         title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: null,
+        enrollmentFee: '$4,500 MXN',
         enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
-        installments: 'plan personalizado',
-        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
-        note: 'La familia recibe una propuesta personalizada según el grado y expediente del estudiante.',
+        installments: 'mensual',
+        includes: 'Revisión y orientación del mentor con la familia (1 hora al mes) · Acceso a plataforma LMS y SIS · Plan Educativo Individualizado (PEI)',
+        note: 'Al formalizar se abonan $8,000 MXN: matrícula de $4,500 MXN más la primera mensualidad de $3,500 MXN.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: '$3,500 MXN/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', monthly: '$3,500 MXN/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
-        footnote: 'Plan de colegiatura adaptado a las necesidades de cada estudiante y familia. Material y currículo no incluidos.'
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos.'
       },
 
       dual_diploma: {
@@ -198,7 +187,7 @@ window.CHANAK_PRICING = {
         assessmentLabel: 'Evaluación académica',
         enrollmentFee: '$4,300 MXN',
         installments: '10 mensualidades',
-        includes: 'Plan de Ruta · SIS · LMS · clases semanales en vivo · mentoría personalizada',
+        includes: '1 hora semanal de Inglés académico en vivo · 1 hora semanal de Life Skills & Leadership en vivo · 3 horas de trabajo individual en plataforma o módulos a elección · Plan de Ruta · SIS · LMS · mentoría personalizada',
         routes: [
           { key: 'r4', title: 'Ruta 4 años', level: '3.º Secundaria · Grade 9', hours: '3-4 h/sem', monthly: '$3,400 MXN', totalYear: '$34,000 MXN' },
           { key: 'r3', title: 'Ruta 3 años', level: 'Inicio Prepa · Grade 10', hours: '4-5 h/sem', monthly: '$4,100 MXN', totalYear: '$41,000 MXN' },
@@ -226,12 +215,12 @@ window.CHANAK_PRICING = {
         title: 'Off-Campus · Escuela completa K-12 a distancia',
         enrollmentFee: 'US$180',
         enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
-        installments: 'mensualidad',
-        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
+        installments: 'mensual',
+        includes: 'Revisión y orientación del mentor con la familia (1 hora al mes) · Acceso a plataforma LMS y SIS · Plan Educativo Individualizado (PEI)',
         note: 'Al formalizar se abonan US$250: matrícula de US$180 más la primera mensualidad de US$70.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$70', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$70', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$70/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$70/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
         footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo US$550-650/año, equivalente al de España).'
       },
@@ -243,44 +232,11 @@ window.CHANAK_PRICING = {
         assessmentLabel: 'Evaluación académica inicial',
         enrollmentFee: 'US$250',
         installments: '10 mensualidades',
-        includes: 'Plan de Ruta · SIS · LMS · mentoría · Life Skills & Leadership',
+        includes: '1 hora semanal de Inglés académico en vivo · 1 hora semanal de Life Skills & Leadership en vivo · 3 horas de trabajo individual en plataforma o módulos a elección · Plan de Ruta · SIS · LMS · mentoría',
         routes: [
-          { key: 'from', title: 'Según grado de entrada', level: 'Grade 9 a Grade 12', hours: '3-6 h/sem', monthly: null, totalYear: 'desde US$1,400 al año' }
+          { key: 'from', title: 'Según grado de entrada', level: 'Grade 9 a Grade 12', hours: '3-6 h/sem', monthly: 'US$140', totalYear: 'desde US$1,400 al año' }
         ],
         footnote: 'Inversión anual desde US$1,400 según el grado de entrada. La tabla completa por ruta se entrega con el Plan de Ruta personalizado, antes de formalizar la matrícula.'
-      }
-    },
-
-    /* ---------------------------------------------------------------- CO */
-    CO: {
-      currency: 'COP',
-      symbol: '$',
-
-      diagnostic: {
-        status: 'on_request',
-        title: 'Evaluación académica',
-        description: 'Revisión de expediente y recomendación inicial.'
-      },
-
-      off_campus: {
-        status: 'published',
-        title: 'Off-Campus · Escuela completa K-12 a distancia',
-        enrollmentFee: '$575.000 COP',
-        enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
-        installments: 'mensualidad',
-        includes: 'Plataforma SIS (sis.chanakacademy.org) · Portal de seguimiento (portal.chanakacademy.org) · LMS · mentor asignado · grupos virtuales de refuerzo de idioma',
-        note: 'Al formalizar se abonan $800.000 COP: matrícula de $575.000 COP más la primera mensualidad de $225.000 COP.',
-        tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', monthly: '$225.000 COP', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: '$225.000 COP', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
-        ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo (coste orientativo $1.800.000-2.050.000 COP/año, equivalente al de España).'
-      },
-
-      dual_diploma: {
-        status: 'on_request',
-        title: 'Chanak Dual Diploma',
-        routes: []
       }
     },
 
