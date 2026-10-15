@@ -628,22 +628,29 @@ html{scroll-padding-top:90px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.home-program{transition:none}.home-program:hover{transform:none}}
 .home-program-icon{display:flex;gap:12px;align-items:center}.home-program-icon svg{width:26px;height:26px;color:var(--teal)}
 @media(min-width:960px) and (max-width:1100px){.nav-links{display:none}.hb-btn{display:flex}.nav-i{justify-content:space-between}.nav-r{margin-left:auto}}
-.home-state-strip{background:#fafbfc;border-top:1px solid #edf2f7;border-bottom:1px solid #edf2f7;padding:11px 0}
-.state-strip-box{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.state-strip-header{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.state-strip-badge{display:inline-block;padding:2px 8px;background:rgba(12,45,72,.05);color:var(--navy);border-radius:50px;font-size:9.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
-.state-strip-text{font-size:.78rem;color:#64748b;font-weight:500}
-.state-strip-pills{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.state-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:50px;text-decoration:none;color:#475569;font-size:.78rem;transition:all .18s;line-height:1.2}
-.state-pill:hover,.state-pill:focus-visible{border-color:#94a3b8;background:#f8fafc;color:var(--navy);transform:translateY(-1px);box-shadow:0 2px 8px rgba(12,45,72,.04)}
-.state-pill .pill-st{display:inline-block;padding:1px 4px;background:#f1f5f9;color:#64748b;border-radius:3px;font-size:9.5px;font-weight:700}
-.state-pill strong{font-weight:600;color:#1e293b}
-.state-pill small{color:#94a3b8;font-size:.71rem}
-.state-pill-all{background:#fff;border:1px solid #cbd5e1;color:var(--teal)}
-.state-pill-all:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
-.state-pill-all:hover small{color:rgba(255,255,255,.9)}
+.home-state-strip{background:linear-gradient(90deg,#f8fafc 0%,#f1f5f9 50%,#f8fafc 100%);border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:10px 0 7px;overflow:hidden;position:relative}
+.state-strip-inner{display:flex;align-items:center;gap:14px;width:100%;max-width:1440px;margin:0 auto;padding:0 16px}
+.state-strip-lead{display:flex;align-items:center;gap:8px;flex-shrink:0;z-index:2;background:linear-gradient(90deg,#f8fafc 75%,rgba(248,250,252,0));padding-right:12px}
+.state-strip-badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:#0c2d48;color:#fff;border-radius:50px;font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;box-shadow:0 2px 6px rgba(12,45,72,.15)}
+.badge-pulse{width:6px;height:6px;border-radius:50%;background:#e8a020;box-shadow:0 0 0 0 rgba(232,160,32,.7);animation:pulseGold 2s infinite}
+@keyframes pulseGold{0%{box-shadow:0 0 0 0 rgba(232,160,32,.7)}70%{box-shadow:0 0 0 6px rgba(232,160,32,0)}100%{box-shadow:0 0 0 0 rgba(232,160,32,0)}}
+.state-strip-text{font-size:.78rem;color:#334155;font-weight:600;white-space:nowrap}
+.state-strip-marquee-wrap{flex-grow:1;overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent 0%,black 24px,black calc(100% - 24px),transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 24px,black calc(100% - 24px),transparent 100%)}
+.state-strip-track{display:flex;align-items:center;gap:8px;width:max-content;animation:stateStripTicker 30s linear infinite}
+.state-strip-marquee-wrap:hover .state-strip-track,.state-strip-track:focus-within{animation-play-state:paused}
+@keyframes stateStripTicker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.state-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;background:#fff;border:1px solid #cbd5e1;border-radius:50px;text-decoration:none;color:#334155;font-size:.78rem;line-height:1.2;white-space:nowrap;box-shadow:0 1px 3px rgba(12,45,72,.04);transition:all .2s ease;flex-shrink:0}
+.state-pill:hover,.state-pill:focus-visible{border-color:#1a5f8a;background:#fff;color:#0c2d48;transform:translateY(-1.5px);box-shadow:0 4px 10px rgba(12,45,72,.1)}
+.state-pill .pill-st{display:inline-block;padding:1px 5px;background:#e2e8f0;color:#0c2d48;border-radius:4px;font-size:9.5px;font-weight:700}
+.state-pill strong{font-weight:700;color:#0f172a}
+.state-pill small{color:#64748b;font-size:.71rem}
+.state-pill-all{background:#fef7ec;border:1px solid #fcd34d;color:#92400e}
+.state-pill-all strong{color:#92400e}
+.state-pill-all:hover{background:#e8a020;border-color:#e8a020;color:#07192a}
+.state-pill-all:hover strong,.state-pill-all:hover small{color:#07192a}
 .state-strip-note{font-size:.7rem;color:#94a3b8;margin-top:6px;text-align:center}
-@media(max-width:900px){.state-strip-box{flex-direction:column;align-items:flex-start;gap:10px}}
+@media(max-width:860px){.state-strip-inner{flex-direction:column;align-items:center;gap:8px}.state-strip-lead{padding-right:0;background:transparent}.state-strip-marquee-wrap{width:100%}}
+@media(prefers-reduced-motion:reduce){.state-strip-track{animation:none;overflow-x:auto}}
 /* Chanak brand and editorial support refresh — 2026-10-08 */
 .nav{box-shadow:0 3px 22px rgba(12,45,72,.06);border-bottom:1px solid #dce8e9}
 .portal-label{display:none}
@@ -767,7 +774,7 @@ html{scroll-padding-top:90px}
 </div></div>
 </div>
 <div class="wrap"><p class="home-note" data-i18n="rd_candidate">Candidato oficial MSA-CESS. La candidatura no equivale todavía a acreditación.</p></div>
-<section class="home-state-strip" id="becas-estatales" aria-label="Becas y Cuentas ESA Estatales en EE. UU."><div class="wrap"><div class="state-strip-box"><div class="state-strip-header"><span class="state-strip-badge">Becas Estatales EE. UU.</span><span class="state-strip-text">Proveedor escolar K-12 aprobado (desembolso directo 100%):</span></div><div class="state-strip-pills"><a class="state-pill" href="/florida-home-education/"><span class="pill-st">FL</span> <strong>Florida</strong> <small>EMA / Step Up</small></a><a class="state-pill" href="/utah/"><span class="pill-st">UT</span> <strong>Utah</strong> <small>Odyssey UFA</small></a><a class="state-pill" href="/wyoming/"><span class="pill-st">WY</span> <strong>Wyoming</strong> <small>Odyssey ESA</small></a><a class="state-pill" href="/arizona/"><span class="pill-st">AZ</span> <strong>Arizona</strong> <small>ClassWallet</small></a><a class="state-pill" href="/alabama/"><span class="pill-st">AL</span> <strong>Alabama</strong> <small>CHOOSE</small></a><a class="state-pill" href="/south-carolina/"><span class="pill-st">SC</span> <strong>South Carolina</strong> <small>ESTF</small></a><a class="state-pill" href="/new-hampshire/"><span class="pill-st">NH</span> <strong>New Hampshire</strong> <small>EFA</small></a><a class="state-pill state-pill-all" href="/scholarships/"><strong>Ver directorio</strong> <small>Cotizador →</small></a></div></div><p class="state-strip-note">La utilización de fondos de becas está sujeta al servicio aprobado, a la elegibilidad de la familia y a las normas del programa.</p></div></section>
+<section class="home-state-strip" id="becas-estatales" aria-label="Becas y Cuentas ESA Estatales en EE. UU."><div class="state-strip-inner"><div class="state-strip-lead"><span class="state-strip-badge"><span class="badge-pulse"></span> Becas Estatales EE. UU.</span><span class="state-strip-text">Proveedor escolar K-12 aprobado:</span></div><div class="state-strip-marquee-wrap"><div class="state-strip-track"><a class="state-pill" href="/florida-home-education/"><span class="pill-st">FL</span> <strong>Florida</strong> <small>EMA / Step Up</small></a><a class="state-pill" href="/utah/"><span class="pill-st">UT</span> <strong>Utah</strong> <small>Odyssey UFA</small></a><a class="state-pill" href="/wyoming/"><span class="pill-st">WY</span> <strong>Wyoming</strong> <small>Odyssey ESA</small></a><a class="state-pill" href="/arizona/"><span class="pill-st">AZ</span> <strong>Arizona</strong> <small>ClassWallet</small></a><a class="state-pill" href="/alabama/"><span class="pill-st">AL</span> <strong>Alabama</strong> <small>CHOOSE</small></a><a class="state-pill" href="/south-carolina/"><span class="pill-st">SC</span> <strong>South Carolina</strong> <small>ESTF</small></a><a class="state-pill" href="/new-hampshire/"><span class="pill-st">NH</span> <strong>New Hampshire</strong> <small>EFA</small></a><a class="state-pill state-pill-all" href="/scholarships/"><strong>Ver directorio</strong> <small>Cotizador →</small></a><a class="state-pill" href="/florida-home-education/"><span class="pill-st">FL</span> <strong>Florida</strong> <small>EMA / Step Up</small></a><a class="state-pill" href="/utah/"><span class="pill-st">UT</span> <strong>Utah</strong> <small>Odyssey UFA</small></a><a class="state-pill" href="/wyoming/"><span class="pill-st">WY</span> <strong>Wyoming</strong> <small>Odyssey ESA</small></a><a class="state-pill" href="/arizona/"><span class="pill-st">AZ</span> <strong>Arizona</strong> <small>ClassWallet</small></a><a class="state-pill" href="/alabama/"><span class="pill-st">AL</span> <strong>Alabama</strong> <small>CHOOSE</small></a><a class="state-pill" href="/south-carolina/"><span class="pill-st">SC</span> <strong>South Carolina</strong> <small>ESTF</small></a><a class="state-pill" href="/new-hampshire/"><span class="pill-st">NH</span> <strong>New Hampshire</strong> <small>EFA</small></a><a class="state-pill state-pill-all" href="/scholarships/"><strong>Ver directorio</strong> <small>Cotizador →</small></a></div></div></div><p class="state-strip-note">La utilización de fondos de becas está sujeta al servicio aprobado, a la elegibilidad de la familia y a las normas del programa.</p></section>
 <!-- AUDIENCE / 3D INTERACTIVE SHOWCASE (LIGHT LUXURY THEME) -->
 <section class="home-section" id="objetivo"><div class="wrap">
 <div class="home-heading"><div class="lbl" data-i18n="rd_family">PARA TU FAMILIA</div><h2 class="ttl" data-i18n="rd_programs">Elige el camino de tu estudiante</h2><p class="sub" data-i18n="rd_intro">Tres propuestas con objetivos distintos. Te ayudamos a encontrar la que encaja con tu familia.</p></div>
