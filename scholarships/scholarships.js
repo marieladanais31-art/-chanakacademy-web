@@ -53,6 +53,9 @@
       concept2_desc: "Programas creados por leyes estatales (como CHOOSE en Alabama, ESTF en Carolina del Sur o PEP en Florida) para que las familias elijan programas no públicos autorizados.",
       concept3_title: "3. Billeteras Digitales de Pago Directo",
       concept3_desc: "Sistemas como ClassWallet u Odyssey donde buscas a CHANAK TRAINUP EDUCATION INC y autorizas el pago mensual directo sin adelantar dinero de tu tarjeta personal.",
+      curric_cost_title: "Costes Aproximados de Materiales Curriculares en EE. UU.",
+      curric_cost_lead: "En Estados Unidos, los libros y cuadernillos curriculares son adquiridos directamente por la familia a las editoriales oficiales según el plan formativo acordado en el PEI. Los costes directos de editorial en EE. UU. son muy accesibles:",
+      curric_cost_footer: "* Los materiales del programa Life Skills & Leadership de Chanak están incluidos en la colegiatura sin coste adicional.",
 
       // Table Section
       table_badge: "DIRECTORIO MAESTRO DE FONDOS",
@@ -227,6 +230,9 @@
       concept2_desc: "Legislative school choice programs (such as AL CHOOSE, SC ESTF, or FL PEP) designed to empower parents to choose accredited private school providers.",
       concept3_title: "3. Direct-Pay Digital Wallets",
       concept3_desc: "Approved platforms like ClassWallet or Odyssey where you find CHANAK TRAINUP EDUCATION INC and authorize monthly disbursements directly from your state award.",
+      curric_cost_title: "Approximate Curriculum Material Costs in the U.S.",
+      curric_cost_lead: "In the United States, curriculum books and worktexts are purchased directly by families from official publishers according to the student's Individualized Education Plan (IEP). Direct U.S. publisher costs are very affordable:",
+      curric_cost_footer: "* Chanak Life Skills & Leadership materials are included in tuition at no extra charge.",
 
       // Table Section
       table_badge: "STATE FUNDING DIRECTORY",

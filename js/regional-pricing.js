@@ -177,7 +177,7 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: '$3,500 MXN/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', monthly: '$3,500 MXN/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por los padres (coste orientativo de referencia equivalente; calcular siempre gastos de envío adicionales según destino).'
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por los padres de editoriales en EE. UU. Precios orientativos de referencia: AOP LIFEPAC (~$45–$50 USD por materia o $440–$485 USD año completo), Christian Light Education / CLE (~$55 USD por materia o $390–$430 USD año completo con guías) o A.C.E. ($320–$390 USD/año secundaria y $460–$530 USD/año primaria). Calcular siempre gastos de envío según destino.'
       },
 
       dual_diploma: {
@@ -222,7 +222,7 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$70/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$70/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; cada familia elige y adquiere el suyo directamente (coste orientativo US$550-650/año, de referencia equivalente al de España; calcular siempre gastos de envío adicionales según destino).'
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por la familia de las editoriales en EE. UU. Precios orientativos de referencia en EE. UU.: AOP LIFEPAC (~$45–$50 USD por materia individual o $440–$485 USD/año set completo de 5 materias), Christian Light Education / CLE (~$55 USD por materia o $390–$430 USD/año con guías de maestro) o A.C.E. ($320–$390 USD/año en secundaria y $460–$530 USD/año en primaria). Calcular siempre gastos de envío internacional según destino.'
       },
 
       dual_diploma: {
@@ -270,7 +270,7 @@ window.CHANAK_PRICING = {
           { key: 'high',        title: 'High School (9-12)',          monthly: '$365 USD', totalYear: '$3,945 USD',
             description: 'Graduation track with College & Career Readiness, SAT prep and counseling.' }
         ],
-        footnote: 'Annual tuition includes enrollment plus ten monthly payments. State scholarship funding is subject to approved service and student eligibility. Textbooks and curriculum materials are not included and are purchased directly by parents from U.S. publishers. Reference cost in the U.S.: A.C.E. $460–$530 USD/year in grades 1–4 and $320–$390 USD in grades 5–12 (ABCs reading kit: $380–$440 USD); or options like Christian Light Education (CLE) $390–$430 USD/year (reading package $177 USD) or AOP LIFEPAC $440–$490 USD/year (reading package $108 USD).'
+        footnote: 'Annual tuition includes enrollment plus ten monthly payments. State scholarship funding is subject to approved service and student eligibility. Textbooks and curriculum materials are not included and are purchased directly by parents from U.S. publishers. Reference cost in the U.S.: AOP LIFEPAC (~$45–$50 USD per subject or $440–$485 USD/year for 5-subject boxed set with teacher guides; Grade 1 reading $108 USD); Christian Light Education / CLE (~$55 USD per subject, $277 USD/year student worktexts or $390–$430 USD/year with teacher guides; reading package $177 USD); or A.C.E. ($320–$390 USD/year in grades 5–12 and $460–$530 USD/year in grades 1–4; ABCs kit $380–$440 USD). Chanak Life Skills materials are included at no extra cost.'
       },
 
       // PROGRAMA SECUNDARIO: Adult High School Completion (desde $2,500 USD)

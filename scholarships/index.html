@@ -12,8 +12,93 @@
 <meta content="https://www.chanakacademy.org/assets/og-image.jpg" property="og:image"/>
 <link href="https://www.chanakacademy.org/scholarships/" rel="canonical"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="/scholarships/scholarships.css" rel="stylesheet"/>
+<link href="/scholarships/scholarships.css?v=20261015c" rel="stylesheet"/>
 <link href="/assets/favicon-32x32.png" rel="shortcut icon" type="image/png"/>
+<style>
+/* CRITICAL JUMP NAV STYLES (INLINE PROTECTION) */
+.jump-nav-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 60px;
+  background: #0a192f;
+  background: rgba(10, 25, 47, 0.98);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 95;
+  padding: 10px 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.jump-nav-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.jump-nav-inner::-webkit-scrollbar { display: none; }
+.jump-label {
+  color: #d4af37 !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.jump-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-wrap: wrap !important;
+}
+.jump-link-item {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block !important;
+}
+.jump-link-item a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 7px 15px !important;
+  border-radius: 9999px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #f1f5f9 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  transition: all 0.2s ease !important;
+}
+.jump-link-item a:hover {
+  background: #0d9488 !important;
+  color: #ffffff !important;
+  border-color: #14b8a6 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35) !important;
+}
+.jump-link-item a.cta-jump {
+  background: linear-gradient(135deg, #e5b552 0%, #d4af37 100%) !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  border: 1px solid #d4af37 !important;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35) !important;
+}
+.jump-link-item a.cta-jump:hover {
+  background: #fcd34d !important;
+  color: #000000 !important;
+  transform: translateY(-1px) !important;
+}
+</style>
 </head>
 <body>
 
@@ -63,16 +148,16 @@
 </header>
 
 <!-- JUMP NAVIGATION (ESTILO AOP) -->
-<nav class="jump-nav-sticky" aria-label="Navegación de secciones">
-  <div class="wrap jump-nav-inner">
-    <span class="jump-label"><span>⚡</span> <span data-i18n="jump_label">Ir a sección:</span></span>
-    <ul class="jump-links">
-      <li class="jump-link-item"><a href="#estados"><span>📍</span> <span data-i18n="jump_states">Estados Aprobados</span></a></li>
-      <li class="jump-link-item"><a href="#billeteras"><span>💳</span> <span data-i18n="jump_wallets">Billeteras Digitales</span></a></li>
-      <li class="jump-link-item"><a href="#videos"><span>🎬</span> <span data-i18n="jump_videos">Video-Tutoriales</span></a></li>
-      <li class="jump-link-item"><a href="#guias"><span>📖</span> <span data-i18n="jump_guides">Guías Paso a Paso</span></a></li>
-      <li class="jump-link-item"><a href="#faq"><span>❓</span> <span data-i18n="jump_faq">Preguntas Frecuentes</span></a></li>
-      <li class="jump-link-item"><a href="#asesoria" style="background:var(--gold);color:#0f172a;border-color:var(--gold)"><span>✍️</span> <span data-i18n="jump_advisory">Asesoría Gratuita</span></a></li>
+<nav class="jump-nav-sticky" aria-label="Navegación de secciones" style="position:-webkit-sticky;position:sticky;top:60px;background:#0a192f;background:rgba(10,25,47,0.98);border-bottom:1px solid rgba(212,175,55,0.35);box-shadow:0 4px 20px rgba(0,0,0,0.3);z-index:95;padding:10px 0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
+  <div class="wrap jump-nav-inner" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;overflow-x:auto;">
+    <span class="jump-label" style="color:#d4af37;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.5px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;"><span>⚡</span> <span data-i18n="jump_label">Ir a sección:</span></span>
+    <ul class="jump-links" style="display:flex;align-items:center;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap;">
+      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#estados" style="display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:9999px;background:rgba(255,255,255,0.08);color:#f1f5f9;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,0.18);"><span>📍</span> <span data-i18n="jump_states">Estados Aprobados</span></a></li>
+      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#billeteras" style="display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:9999px;background:rgba(255,255,255,0.08);color:#f1f5f9;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,0.18);"><span>💳</span> <span data-i18n="jump_wallets">Billeteras Digitales</span></a></li>
+      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#videos" style="display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:9999px;background:rgba(255,255,255,0.08);color:#f1f5f9;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,0.18);"><span>🎬</span> <span data-i18n="jump_videos">Video-Tutoriales</span></a></li>
+      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#guias" style="display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:9999px;background:rgba(255,255,255,0.08);color:#f1f5f9;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,0.18);"><span>📖</span> <span data-i18n="jump_guides">Guías Paso a Paso</span></a></li>
+      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#faq" style="display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:9999px;background:rgba(255,255,255,0.08);color:#f1f5f9;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,0.18);"><span>❓</span> <span data-i18n="jump_faq">Preguntas Frecuentes</span></a></li>
+      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#asesoria" class="cta-jump" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:9999px;background:linear-gradient(135deg,#e5b552 0%,#d4af37 100%);color:#0f172a;font-size:13px;font-weight:700;text-decoration:none;border:1px solid #d4af37;box-shadow:0 2px 10px rgba(212,175,55,0.35);"><span>✍️</span> <span data-i18n="jump_advisory">Asesoría Gratuita</span></a></li>
     </ul>
   </div>
 </nav>
@@ -136,6 +221,46 @@
           <h3 data-i18n="concept3_title">3. Billeteras Digitales de Pago Directo</h3>
           <p data-i18n="concept3_desc">Sistemas como ClassWallet u Odyssey donde buscas a CHANAK TRAINUP EDUCATION INC y autorizas el pago mensual directo sin adelantar dinero de tu tarjeta personal.</p>
         </div>
+      </div>
+
+      <!-- BANNER INFORMATIVO SOBRE MATERIALES Y CURRÍCULOS EN EE. UU. -->
+      <div style="margin-top: 32px; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1.5px solid #cbd5e1; border-left: 4px solid var(--teal); border-radius: 14px; padding: 22px 26px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span style="font-size:1.4rem;">📦</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy-dark);margin:0;" data-i18n="curric_cost_title">Costes Aproximados de Materiales Curriculares en EE. UU.</h3>
+        </div>
+        <p style="font-size:0.92rem;color:#334155;line-height:1.6;margin-bottom:12px;" data-i18n="curric_cost_lead">
+          En Estados Unidos, los libros y cuadernillos curriculares son adquiridos directamente por la familia a las editoriales oficiales según el plan formativo acordado en el PEI. Los costes directos de editorial en EE. UU. son muy accesibles:
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px;">
+          <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;">
+            <div style="font-weight:700;color:var(--navy-dark);font-size:0.95rem;margin-bottom:4px;">📘 AOP LIFEPAC</div>
+            <div style="font-size:0.86rem;color:#475569;line-height:1.5;">
+              <strong>~$45 – $50 USD</strong> por materia individual (10 worktexts + solucionario).<br>
+              Set completo de 5 materias: <strong>$440 – $485 USD / año</strong>.<br>
+              Lectoescritura Grado 1 (Language Arts): $108 USD.
+            </div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;">
+            <div style="font-weight:700;color:var(--navy-dark);font-size:0.95rem;margin-bottom:4px;">📖 Christian Light (CLE)</div>
+            <div style="font-size:0.86rem;color:#475569;line-height:1.5;">
+              <strong>~$55 USD</strong> por materia ($5.50 por LightUnit; $277 USD/año en alumno).<br>
+              Set con guías y solucionarios: <strong>$390 – $430 USD / año</strong>.<br>
+              Lectoescritura (Learning to Read): $177 USD.
+            </div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;">
+            <div style="font-weight:700;color:var(--navy-dark);font-size:0.95rem;margin-bottom:4px;">✝️ A.C.E. School of Tomorrow</div>
+            <div style="font-size:0.86rem;color:#475569;line-height:1.5;">
+              Secundaria (5–12): <strong>$320 – $390 USD / año</strong> (60 PACEs + Keys).<br>
+              Primaria (1–4): <strong>$460 – $530 USD / año</strong>.<br>
+              Kit inicial ABCs with Ace and Christi: $380 – $440 USD.
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.83rem;color:#64748b;margin:12px 0 0;font-style:italic;" data-i18n="curric_cost_footer">
+          * Los materiales del programa Life Skills &amp; Leadership de Chanak están incluidos en la colegiatura sin coste adicional.
+        </p>
       </div>
     </div>
   </section>
@@ -634,6 +759,6 @@
   </div>
 </footer>
 
-<script src="/scholarships/scholarships.js"></script>
+<script src="/scholarships/scholarships.js?v=20261015c"></script>
 </body>
 </html>
