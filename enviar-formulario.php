@@ -129,7 +129,7 @@ $AUTOREPLY = [
             . "2. You will receive this invoice via email within 24 business hours.\n"
             . "3. Upload the invoice to your ClassWallet parent portal under 'Pay Vendor' by searching for our approved provider entity:\n"
             . "   CHANAK TRAINUP EDUCATION INC\n"
-            . "4. Submit the invoice amount for direct state disbursement (no out-of-pocket payment required).\n\n"
+            . "4. Submit the invoice for payment authorization with your available program funds.\n\n"
             . "If you need immediate assistance or have questions regarding your state ESA account, you can reply directly to this email or reach us at offcampus@chanakacademy.org.\n\n"
             . "Kind regards,\n"
             . "Admissions & State Scholarship Billing\n"

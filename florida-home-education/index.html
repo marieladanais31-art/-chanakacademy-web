@@ -187,12 +187,12 @@ footer a{color:#cbd5e1;text-decoration:none}
     </div>
 
     <div class="info-banner" style="line-height:1.65;font-size:14px;">
-      <strong style="color:var(--navy);">Aviso sobre Materiales Curriculares / Curriculum Materials (EE. UU.):</strong> Los materiales y libros curriculares no están incluidos en la colegiatura mensual y son adquiridos directamente por la familia a las editoriales en EE. UU. según el PEI / IEP.
+      <strong style="color:var(--navy);">Aviso sobre Materiales Curriculares / Curriculum Materials (EE. UU.):</strong> Los materiales y libros curriculares no están incluidos en la colegiatura mensual y son adquiridos directamente por la familia a las editoriales en EE. UU. según el plan formativo.
       <div style="margin-top:8px;font-size:13px;color:#334155;">
         <strong>Precios Orientativos de Referencia en EE. UU. / Approximate Reference Costs (U.S.):</strong><br>
-        • <strong>AOP LIFEPAC:</strong> ~$45 – $50 USD por materia individual (o $440 – $485 USD/año el set completo de 5 materias con guías del maestro; lectoescritura Grado 1: $108 USD).<br>
-        • <strong>Christian Light Education (CLE):</strong> ~$55 USD por materia ($277 USD/año en cuadernillos alumno, o $390 – $430 USD/año con guías y solucionarios de maestro; paquete de lectura inicial: $177 USD).<br>
-        • <strong>A.C.E. School of Tomorrow:</strong> $320 – $390 USD/año en secundaria (grados 5–12) y $460 – $530 USD/año en primaria (grados 1–4) con PACEs y Score Keys; kit ABCs: $380 – $440 USD.<br>
+        • <a href="https://www.aop.com/curriculum/shop-lifepac" target="_blank" rel="noopener"><strong>AOP LIFEPAC:</strong></a> ~$45 – $50 USD por materia individual (o $440 – $485 USD/año el set completo de 5 materias con guías del maestro; lectoescritura Grado 1: $108 USD).<br>
+        • <a href="https://christianlight.org/curriculum/by-grade" target="_blank" rel="noopener"><strong>Christian Light Education (CLE):</strong></a> ~$55 USD por materia ($277 USD/año en cuadernillos alumno, o $390 – $430 USD/año con guías y solucionarios de maestro; paquete de lectura inicial: $177 USD).<br>
+        • <a href="https://www.aceschooloftomorrow.com/curriculum" target="_blank" rel="noopener"><strong>A.C.E. School of Tomorrow:</strong></a> $320 – $390 USD/año en secundaria (grados 5–12) y $460 – $530 USD/año en primaria (grados 1–4) con PACEs y Score Keys; kit ABCs: $380 – $440 USD.<br>
         • <em>Los materiales de Life Skills de Chanak están incluidos sin costo adicional.</em>
       </div>
     </div>
@@ -283,23 +283,41 @@ footer a{color:#cbd5e1;text-decoration:none}
 <input type="hidden" name="necesidad" value="florida_home_education"/>
 <input type="hidden" name="origen" value="Florida Home Education · Información"/>
 <input type="hidden" name="pais" value="Estados Unidos"/>
+<input type="hidden" name="state" value="Florida"/>
 <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off"/>
-<label>Nombre del padre, madre o tutor / Parent or guardian name<input name="nombre" autocomplete="name" required/></label>
-<label>Email<input type="email" name="email" autocomplete="email" required/></label>
-<label>Teléfono / Phone<input type="tel" name="whatsapp" autocomplete="tel"/></label>
-<label>Servicio o nivel de interés / Service or level<select name="programa"><option value="Florida HEIP K-5">Elementary K–5</option><option value="Florida HEIP 6-8">Middle School 6–8</option><option value="Florida HEIP 9-12">High School 9–12</option></select></label>
+<label>Nombre del padre, madre o tutor / Parent or guardian name *<input name="nombre" autocomplete="name" required placeholder="Ej. Maria Perez"/></label>
+<label>Email *<input type="email" name="email" autocomplete="email" required placeholder="correo@ejemplo.com"/></label>
+<label>Teléfono / Phone (Opcional)<input type="tel" name="whatsapp" autocomplete="tel" placeholder="+1 (305) 000-0000"/></label>
+<label>Servicio o nivel de interés / Service or level (Opcional)<select name="programa"><option value="Florida HEIP K-5">Elementary K–5 (EMA 20172869)</option><option value="Florida HEIP 6-8">Middle School 6–8 (EMA 20169280)</option><option value="Florida HEIP 9-12">High School 9–12 (EMA 20172870)</option></select></label>
+<label>Preferencia horaria y zona horaria / Schedule &amp; Time Zone (Opcional)<select name="preferred_schedule"><option value="Flexible">Cualquier horario / Flexible</option><option value="Morning ET">Mañana / Morning (Eastern Time - ET)</option><option value="Afternoon ET">Tarde / Afternoon (Eastern Time - ET)</option><option value="Morning CT">Mañana / Morning (Central Time - CT)</option><option value="Afternoon CT">Tarde / Afternoon (Central Time - CT)</option></select></label>
+
+<div style="display:flex;align-items:flex-start;gap:8px;margin:12px 0 6px;">
+  <input type="checkbox" id="flConsent" name="consent" required style="width:18px;height:18px;margin-top:3px;accent-color:var(--gold);flex-shrink:0;"/>
+  <label for="flConsent" style="font-size:12px;color:#cbd5e1;line-height:1.45;margin-bottom:0;">Acepto que Chanak me contacte para orientarme sobre el programa según la <a href="/privacidad/" target="_blank" rel="noopener" style="color:#fde047;text-decoration:underline;">Política de Privacidad</a>. *</label>
+</div>
+
+<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:16px;">
+  <input type="checkbox" id="flNewsletter" name="newsletter" style="width:18px;height:18px;margin-top:3px;accent-color:var(--gold);flex-shrink:0;"/>
+  <label for="flNewsletter" style="font-size:12px;color:#cbd5e1;line-height:1.45;margin-bottom:0;">Deseo recibir actualizaciones y novedades educativas de Chanak (opcional).</label>
+</div>
+
 <button type="submit">Pedir información / Request information</button>
 <p class="information-result" role="status" aria-live="polite"></p>
 <p>Contacto / Contact: <a href="mailto:offcampus@chanakacademy.org">offcampus@chanakacademy.org</a></p>
 </form></div></section></main>
 
 <section class="section" style="padding:32px 20px;max-width:1000px;margin:auto">
-<h2>Inscripción y programas por estado / State programs</h2>
-<p>Florida: solicite inscripción directamente en el SIS. El envío de la solicitud no confirma admisión ni pago de beca. El servicio de evaluación inicial y puesta en marcha de 295 USD se cotiza por separado; su pago mediante beca requiere verificar la aprobación específica del servicio. / Submission does not confirm admission or scholarship payment. The separate 295 USD assessment and setup fee requires service-specific eligibility verification.</p>
-<p><a href="https://sis.chanakacademy.org/matricula?program=florida-heip">Florida · Solicitar inscripción / Apply</a></p>
-<p><a href="/us/alabama/">Alabama · CHOOSE: Homeschool Guiado, Life Skills, Diagnóstico Académico y Tutorías / Guided homeschool, life skills, academic assessment and tutoring</a>. Servicios y tarifa sujetos a confirmación individual. / Services and fees require individual confirmation.</p>
-<p>Texas: solicitud de proveedor en trámite. Arizona, New Hampshire, Arkansas, Georgia e Indiana: registro no iniciado. Estos enlaces son listas de interés; no confirman aprobación ni uso de fondos de beca. / Interest lists only; provider approval and scholarship use are not yet available.</p>
-<p><a href="https://sis.chanakacademy.org/matricula?program=tx-interest">Texas · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=az-interest">Arizona · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=nh-interest">New Hampshire · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=ar-interest">Arkansas · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=ga-interest">Georgia · Lista de interés / Interest list</a> · <a href="https://sis.chanakacademy.org/matricula?program=in-interest">Indiana · Lista de interés / Interest list</a></p>
+<h2>Programas y becas estatales en EE. UU. / State Programs &amp; Scholarships</h2>
+<p>Chanak ofrece servicios de acompañamiento académico y Life Skills autorizados en múltiples estados para familias beneficiarias de programas de elección escolar. Conoce los detalles de cada programa o consulta nuestro <a href="/scholarships/" style="font-weight:700;color:var(--navy);">directorio general de becas estatales</a>.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;">
+  <a href="/scholarships/" class="btn-action" style="padding:8px 16px;font-size:13.5px;text-decoration:none;">Ver Directorio de Becas (/scholarships/) →</a>
+  <a href="/alabama/" class="btn-action" style="background:#fff;color:var(--navy);border:1px solid var(--border);padding:8px 16px;font-size:13.5px;text-decoration:none;">Alabama (CHOOSE)</a>
+  <a href="/arizona/" class="btn-action" style="background:#fff;color:var(--navy);border:1px solid var(--border);padding:8px 16px;font-size:13.5px;text-decoration:none;">Arizona (ESA)</a>
+  <a href="/utah/" class="btn-action" style="background:#fff;color:var(--navy);border:1px solid var(--border);padding:8px 16px;font-size:13.5px;text-decoration:none;">Utah (Fits All)</a>
+  <a href="/wyoming/" class="btn-action" style="background:#fff;color:var(--navy);border:1px solid var(--border);padding:8px 16px;font-size:13.5px;text-decoration:none;">Wyoming (ESA)</a>
+  <a href="/new-hampshire/" class="btn-action" style="background:#fff;color:var(--navy);border:1px solid var(--border);padding:8px 16px;font-size:13.5px;text-decoration:none;">New Hampshire (EFA)</a>
+  <a href="/south-carolina/" class="btn-action" style="background:#fff;color:var(--navy);border:1px solid var(--border);padding:8px 16px;font-size:13.5px;text-decoration:none;">South Carolina (ESTF)</a>
+</div>
 </section>
 <footer>
   <div class="wrap" style="text-align:center;">
