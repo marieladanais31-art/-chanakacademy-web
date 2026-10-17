@@ -16,7 +16,7 @@
       // Topbar & Nav
       topbar_text: "Official Nonpublic Educational Provider · Direct Pay Partner on ClassWallet & Odyssey",
       topbar_fldoe: "FLDOE Private School Code: #134620 · 501(c)(3) Nonprofit (EIN 36-5154011)",
-      nav_sub: "Approved State Scholarship Programs",
+      nav_sub: "Approved State ESA & Choice Programs",
       nav_cta: "Request Guidance / Itemized Invoice",
       state_select_default: "Select State / Program:",
 
@@ -53,7 +53,7 @@
       concepts_lead: "School choice policies allow families to apply state-allocated public education funding toward authorized customized distance-learning support services for their children.",
       concept1_title: "1. Education Savings Accounts (ESA / EFA / UFA)",
       concept1_desc: "State-funded accounts managed through a digital platform where families spend authorized amounts on qualifying educational services, curriculum, and diagnostic benchmarks.",
-      concept2_title: "2. State Scholarships & School Choice Funds",
+      concept2_title: "2. State ESA & School Choice Funds",
       concept2_desc: "Legislative school choice programs (such as AL CHOOSE, SC ESTF, or FL PEP) designed to empower parents to contract approved educational providers.",
       concept3_title: "3. Direct-Pay Digital Platforms",
       concept3_desc: "Approved platforms like ClassWallet or Odyssey where you find CHANAK TRAINUP EDUCATION INC and request payment authorization with your available program funds.",
@@ -110,7 +110,7 @@
       wallet_ema_s1: "Log in to the EMA portal at Step Up for Students.",
       wallet_ema_s2: "Search for Chanak International Academy under authorized instructional service providers.",
       wallet_ema_s3: "Select authorized Florida Home Education Instructional Program (HEIP) services.",
-      wallet_ema_s4: "Authorize payment using your PEP or FES-UA scholarship balance in accordance with EMA rules.",
+      wallet_ema_s4: "Authorize payment using your PEP or FES-UA account balance in accordance with EMA rules.",
 
       // Video Gallery Section
       videos_badge: "OFFICIAL CHANAK TUTORIALS",
@@ -146,8 +146,8 @@
 
       // Guides Section
       guides_badge: "ARTICLES & OFFICIAL DOCUMENTATION",
-      guides_title: "Practical Guides for Scholarship Families",
-      guides_lead: "In-depth resources compiled by our admissions and compliance team to maximize your state scholarship benefits.",
+      guides_title: "Practical Guides for ESA & State Choice Families",
+      guides_lead: "In-depth resources compiled by our admissions and compliance team to maximize your state ESA benefits within program rules.",
       g1_cat: "BILLING & DIRECT PAY",
       g1_title: "Requirements for an Approved Invoice in ClassWallet and Odyssey",
       g1_desc: "Key elements required on Chanak's itemized invoices (student legal name, vendor EIN, line-item service coding) to ensure compliant state processing.",
@@ -160,7 +160,7 @@
 
       // Advisory Form Section
       form_badge: "INITIAL INQUIRY & GUIDANCE",
-      form_title: "Request Information on State Scholarship Services",
+      form_title: "Request Information on State ESA Services",
       form_lead: "Submit your details below and our bilingual academic advisory team will follow up to assist you with state-specific guidelines and invoice requirements.",
       lbl_parent: "Parent / Guardian Name *",
       ph_parent: "e.g. Maria Perez",
@@ -169,7 +169,7 @@
       lbl_phone: "Phone / WhatsApp (Optional)",
       ph_phone: "+1 (555) 000-0000",
       lbl_state: "State of Residence *",
-      lbl_program_name: "Scholarship Program (Optional)",
+      lbl_program_name: "ESA / State Program (Optional)",
       ph_program_name: "e.g. Arizona ESA, Utah Fits All, PEP...",
       lbl_grade: "Student Grade Band (Optional)",
       opt_select_grade: "-- Select Grade / Age Band --",
@@ -180,7 +180,7 @@
       opt_serv_support: "Virtual Guided Learning Support (Monthly Mentoring + Life Skills)",
       opt_serv_eval: "Initial Academic Assessment and Learning Plan Setup ($295)",
       opt_serv_ls: "Standalone Life Skills & Leadership ($120/mo, subject to confirmation)",
-      opt_serv_info: "General State Scholarship Information",
+      opt_serv_info: "General State ESA Information",
       lbl_schedule: "Preferred Contact Window & Time Zone (Optional)",
       opt_sched_any: "Any time / Flexible",
       opt_sched_m_et: "Morning (Eastern Time - ET)",
@@ -202,28 +202,28 @@
       faq_badge: "FREQUENTLY ASKED QUESTIONS",
       faq_title: "Common Questions About State Education Funds",
       faq_lead: "Clear answers to the most common questions from families using public school choice funds at Chanak International Academy.",
-      faq1_q: "1. How does payment work with state scholarship funds?",
+      faq1_q: "1. How does payment work with state ESA / choice funds?",
       faq1_a: "Eligible families may request payment for authorized services using available program funds. Approval depends on the service, student, and applicable program rules. In direct-pay states (such as Arizona, Alabama, South Carolina, or New Hampshire on ClassWallet, and Utah and Wyoming on Odyssey), Chanak provides the itemized quote or invoice for the family to submit directly through their platform.",
       faq2_q: "2. How does my family locate Chanak in our portal?",
       faq2_a: "Search for our exact approved legal entity: CHANAK TRAINUP EDUCATION INC. In ClassWallet, look under 'Pay Vendor'; in Odyssey, locate our profile in the official state provider directory.",
-      faq3_q: "3. What if my child's scholarship is approved mid-year?",
+      faq3_q: "3. What if my child's ESA / funding is approved mid-year?",
       faq3_a: "Chanak maintains rolling admissions throughout the academic year. If your state funds are awarded midway through the year, we establish an individualized service plan and payment schedule aligned with your remaining available balance.",
       faq4_q: "4. Do unused funds roll over or transfer to another sibling?",
       faq4_a: "Policies vary by state. Generally, funds awarded to one student cannot be transferred to a sibling, but many state ESAs allow unused balances to roll over into subsequent academic years. Our team provides state-specific rules.",
       faq5_q: "5. Does this support package include official cumulative transcripts and diploma?",
       faq5_a: "This support package provides academic progress records, monthly progress reports, and pedagogical tracking of the contracted services. It does not constitute full school enrollment or independently award graduation credits or a High School diploma. Different full-enrollment academic pathways require their own contract, prerequisites, and program eligibility.",
-      faq6_q: "6. How are state scholarship services distinguished from private academic programs?",
-      faq6_a: "State scholarship funds are applied to contract specific authorized educational services (virtual guided support, academic mentoring, Life Skills cohorts, diagnostic assessment). Formal full-enrollment academic programs (such as private K-12 umbrella schooling or international dual diploma programs) operate under independent private contractual tracks."
+      faq6_q: "6. How are state ESA services distinguished from private academic programs?",
+      faq6_a: "State ESA funds are applied to contract specific authorized educational services (virtual guided support, academic mentoring, Life Skills cohorts, diagnostic assessment). Formal full-enrollment academic programs (such as private K-12 umbrella schooling or international dual diploma programs) operate under independent private contractual tracks.",
     },
 
     es: {
       page_title: "Fondos Educativos Estatales y Apoyo Educativo K–12 | Chanak International Academy",
-      page_desc: "Chanak International Academy: Apoyo pedagógico guiado, mentoría y Life Skills para familias con becas y fondos estatales de elección escolar (ESA, EFA, UFA, PEP, CHOOSE, ESTF).",
+      page_desc: "Chanak International Academy: Apoyo pedagógico guiado, mentoría y Life Skills para familias con fondos ESA y programas de elección escolar (ESA, EFA, UFA, PEP, CHOOSE, ESTF).",
 
       // Topbar & Nav
       topbar_text: "Proveedor Oficial Escolar No Público · Socio Direct Pay en ClassWallet y Odyssey",
       topbar_fldoe: "Código FLDOE: #134620 · Organización Sin Ánimo de Lucro 501(c)(3) (EIN 36-5154011)",
-      nav_sub: "Programas Aprobados en Becas Estatales",
+      nav_sub: "Programas y Servicios Aprobados con Fondos ESA",
       nav_cta: "Solicitar Orientación / Factura Proforma",
       state_select_default: "Seleccionar Estado / Programa:",
 
@@ -260,7 +260,7 @@
       concepts_lead: "Las políticas de elección escolar (School Choice) permiten a las familias destinar los fondos públicos asignados a sus hijos a contratar servicios educativos personalizados de apoyo.",
       concept1_title: "1. Cuentas de Ahorro para la Educación (ESA / EFA / UFA)",
       concept1_desc: "Fondos estatales gestionados en una plataforma digital donde las familias autorizan pagos para servicios calificados de apoyo pedagógico, currículo y evaluaciones diagnósticas.",
-      concept2_title: "2. Becas y Programas de Elección Escolar",
+      concept2_title: "2. Fondos ESA y Programas de Elección Escolar",
       concept2_desc: "Programas creados por leyes estatales (como CHOOSE en Alabama, ESTF en Carolina del Sur o PEP en Florida) para que las familias elijan proveedores autorizados.",
       concept3_title: "3. Plataformas Digitales de Pago Directo",
       concept3_desc: "Sistemas como ClassWallet u Odyssey donde buscas a CHANAK TRAINUP EDUCATION INC y solicitas la autorización de pago mensual con tus fondos disponibles según las reglas del programa.",
@@ -301,7 +301,7 @@
       wallet_cw_s1: "Chanak emite mensualmente la cotización o factura oficial en PDF por cada alumno para el servicio autorizado.",
       wallet_cw_s2: "Ingresas a tu portal familiar en app.classwallet.com y seleccionas 'Pay Vendor'.",
       wallet_cw_s3: "Buscas la entidad legal aprobada: CHANAK TRAINUP EDUCATION INC.",
-      wallet_cw_s4: "Subes la factura y solicitas la autorización del pago con el saldo disponible de tu beca.",
+      wallet_cw_s4: "Subes la factura y solicitas la autorización del pago con el saldo disponible de tus fondos ESA.",
 
       wallet_ody_title: "Odyssey Marketplace",
       wallet_ody_states: "Wyoming · Utah",
@@ -317,7 +317,7 @@
       wallet_ema_s1: "Ingresas al portal EMA (Education Market Assistant) de Step Up for Students.",
       wallet_ema_s2: "Buscas a Chanak International Academy dentro de los servicios autorizados de instrucción en el hogar.",
       wallet_ema_s3: "Seleccionas los módulos autorizados del programa Florida Home Education Instructional Program (HEIP).",
-      wallet_ema_s4: "Autorizas el pago con el saldo de tu beca PEP o FES-UA conforme a las reglas de EMA.",
+      wallet_ema_s4: "Autorizas el pago con el saldo de tus fondos PEP o FES-UA conforme a las reglas de EMA.",
 
       // Video Gallery Section
       videos_badge: "TUTORIALES OFICIALES CHANAK",
@@ -332,11 +332,11 @@
       v1_time: "3:30 min",
 
       v2_title: "Arizona ESA: Uso de fondos en ClassWallet para Servicios de Apoyo K–12",
-      v2_desc: "Guía para familias de Arizona con beca ESA: cobertura del servicio de apoyo, facturación mensual y registro académico en ClassWallet.",
+      v2_desc: "Guía para familias de Arizona con fondos ESA: cobertura del servicio de apoyo, facturación mensual y registro académico en ClassWallet.",
       v2_time: "4:15 min",
 
       v3_title: "Florida Step Up / EMA: Cómo seleccionar servicios de Chanak en el Marketplace",
-      v3_desc: "Paso a paso para familias de Florida con beca PEP o FES-UA: navegación en el portal EMA y solicitud de servicios educativos autorizados.",
+      v3_desc: "Paso a paso para familias de Florida con fondos PEP o FES-UA: navegación en el portal EMA y solicitud de servicios educativos autorizados.",
       v3_time: "3:50 min",
 
       v4_title: "Wyoming & Utah Odyssey: Guía de inscripción y liberación de fondos",
@@ -376,7 +376,7 @@
       lbl_phone: "Teléfono / WhatsApp (Opcional)",
       ph_phone: "+1 (555) 000-0000",
       lbl_state: "Estado de residencia *",
-      lbl_program_name: "Programa de beca (Opcional)",
+      lbl_program_name: "Programa o fondo estatal (Opcional)",
       ph_program_name: "Ej. Arizona ESA, Utah Fits All, PEP...",
       lbl_grade: "Grado o etapa escolar (Opcional)",
       opt_select_grade: "-- Seleccionar Grado / Edad --",
@@ -409,7 +409,7 @@
       faq_badge: "PREGUNTAS FRECUENTES",
       faq_title: "Dudas Habituales sobre Fondos Educativos Estatales",
       faq_lead: "Respuestas claras a las dudas más comunes de familias que utilizan fondos públicos en Chanak International Academy.",
-      faq1_q: "1. ¿Cómo funciona el pago con los fondos de mi beca estatal?",
+      faq1_q: "1. ¿Cómo funciona el pago con mis fondos ESA / fondos estatales?",
       faq1_a: "Las familias elegibles pueden solicitar el pago de servicios autorizados con los fondos disponibles de su programa. La aprobación depende del servicio, del estudiante y de las reglas aplicables. En estados con pago directo activo (como Arizona, Alabama, Carolina del Sur o New Hampshire en ClassWallet, y Wyoming y Utah en Odyssey), Chanak emite la cotización o factura oficial para que la familia la tramite directamente a través de su plataforma.",
       faq2_q: "2. ¿Cómo busca mi familia a Chanak en la plataforma?",
       faq2_a: "Debes buscar exactamente nuestra entidad legal aprobada: CHANAK TRAINUP EDUCATION INC. En ClassWallet nos encuentras en la sección 'Pay Vendor', y en Odyssey en el directorio oficial de proveedores del estado.",
@@ -419,8 +419,8 @@
       faq4_a: "Cada estado tiene su propia normativa. En general, los fondos asignados a un alumno no pueden transferirse a otro hermano, pero muchas cuentas ESA permiten que el saldo remanente se acumule para el siguiente ciclo escolar. Te asesoramos según la ley de tu estado.",
       faq5_q: "5. ¿Este paquete de apoyo incluye expediente oficial y diploma de High School?",
       faq5_a: "Este paquete de apoyo proporciona un registro pedagógico de avance, informes mensuales de progreso y seguimiento pedagógico del servicio contratado. No constituye una matrícula escolar formal completa ni confiere de forma independiente créditos de graduación o un diploma de High School. Las diferentes modalidades de escolarización completa requieren contrato, requisitos y elegibilidad propios.",
-      faq6_q: "6. ¿Qué diferencia hay entre los servicios con fondos de becas y los programas académicos privados?",
-      faq6_a: "Con los fondos de becas estatales las familias contratan servicios educativos autorizados específicos (apoyo pedagógico guiado, mentoría quincenal, clases grupales de Life Skills, diagnóstico de nivel). Los programas académicos de matriculación escolar completa (como la Umbrella School privada K–12 o el Dual Diploma internacional) operan bajo vías contractuales privadas independientes."
+      faq6_q: "6. ¿Qué diferencia hay entre los servicios con fondos ESA y los programas académicos privados?",
+      faq6_a: "Con los fondos ESA y programas estatales de elección escolar, las familias contratan servicios educativos autorizados específicos (apoyo pedagógico guiado, mentoría quincenal, clases grupales de Life Skills, diagnóstico de nivel). Los programas académicos de matriculación escolar completa (como la Umbrella School privada K–12 o el Dual Diploma internacional) operan bajo vías contractuales privadas independientes.",
     }
   };
 
