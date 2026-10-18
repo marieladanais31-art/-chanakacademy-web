@@ -565,11 +565,11 @@
 
               <div class="form-group">
                 <label for="serviceSelect" class="form-label"><span data-i18n="lbl_service">Authorized Service Offering</span> <span class="req">*</span></label>
-                <select id="serviceSelect" name="service" class="form-control" onchange="handleServiceChange()">
-                  <option value="support-k5">Virtual Guided Learning Support – Grades K–5 ($275/mo)</option>
-                  <option value="support-68">Virtual Guided Learning Support – Grades 6–8 ($320/mo)</option>
-                  <option value="support-912">Virtual Guided Learning Support – Grades 9–12 ($365/mo)</option>
-                  <option value="diagnostic">Initial Academic Assessment &amp; Learning Plan Setup ($295 one-time)</option>
+                <select id="serviceSelect" name="service" class="form-control" onchange="handleServiceChange()" data-loaded-hub="FL-STEPUP-EMA" data-loaded-lang="en">
+                  <option value="support-k5">Home Education Instructional Program · Grades K–5 · $275/mo (EMA ID: 20172869)</option>
+                  <option value="support-68">Home Education Instructional Program · Grades 6–8 · $320/mo (EMA ID: 20169280)</option>
+                  <option value="support-912">Home Education Instructional Program · Grades 9–12 · $365/mo (EMA ID: 20172870)</option>
+                  <option value="diagnostic">Additional Annual Fee: $295/yr (In Review in EMA · Item: 20174498)</option>
                   <option value="lifeskills">Standalone Life Skills &amp; Leadership Classes ($120/mo)</option>
                 </select>
               </div>
@@ -579,14 +579,14 @@
             <div class="service-summary-card" id="serviceSummaryBox">
               <div class="ss-header">
                 <div>
-                  <div class="ss-title" id="ssTitle">Virtual Guided Learning Support – Grades K–5</div>
+                  <div class="ss-title" id="ssTitle">Home Education Instructional Program · Grades K–5 (EMA Catalog Item ID: 20172869)</div>
                   <div style="font-size: 12px; color: var(--muted);" id="ssHub">Administrative Hub: FL-STEPUP-EMA · EMA Marketplace</div>
                 </div>
                 <div class="ss-price" id="ssPrice">$275 <span>/ month</span></div>
               </div>
 
               <div class="ss-setup" id="ssSetup">
-                + $295 Initial Academic Assessment &amp; Learning Plan Setup (one-time fee; explained separately from monthly support)
+                <strong>Additional annual fee:</strong> $295 — currently under EMA review and not available for EMA payment unless approved.
               </div>
 
               <ul class="ss-features" id="ssFeatures">
@@ -1010,18 +1010,62 @@
       updateServiceSummary();
     }
 
+    function updateServiceDropdownOptions(hubId, isEs) {
+      var select = document.getElementById('serviceSelect');
+      if (!select) return;
+      var curHub = select.getAttribute('data-loaded-hub');
+      var curLang = select.getAttribute('data-loaded-lang');
+      var targetLang = isEs ? 'es' : 'en';
+      if (curHub === hubId && curLang === targetLang) return;
+
+      var curVal = select.value;
+      if (hubId === 'FL-STEPUP-EMA') {
+        select.innerHTML = '' +
+          '<option value="support-k5">' + (isEs ? 'Home Education Instructional Program · Grados K–5 · $275/mes (ID EMA: 20172869)' : 'Home Education Instructional Program · Grades K–5 · $275/mo (EMA ID: 20172869)') + '</option>' +
+          '<option value="support-68">' + (isEs ? 'Home Education Instructional Program · Grados 6–8 · $320/mes (ID EMA: 20169280)' : 'Home Education Instructional Program · Grades 6–8 · $320/mo (EMA ID: 20169280)') + '</option>' +
+          '<option value="support-912">' + (isEs ? 'Home Education Instructional Program · Grados 9–12 · $365/mes (ID EMA: 20172870)' : 'Home Education Instructional Program · Grades 9–12 · $365/mo (EMA ID: 20172870)') + '</option>' +
+          '<option value="diagnostic">' + (isEs ? 'Cuota anual adicional: $295/año (En revisión en EMA · Item: 20174498)' : 'Additional Annual Fee: $295/yr (In Review in EMA · Item: 20174498)') + '</option>' +
+          '<option value="lifeskills">' + (isEs ? 'Clases de Life Skills y Liderazgo ($120/mes)' : 'Standalone Life Skills & Leadership Classes ($120/mo)') + '</option>';
+      } else {
+        select.innerHTML = '' +
+          '<option value="support-k5">' + (isEs ? 'Acompañamiento Académico Virtual – Grados K–5 ($275/mes)' : 'Virtual Guided Learning Support – Grades K–5 ($275/mo)') + '</option>' +
+          '<option value="support-68">' + (isEs ? 'Acompañamiento Académico Virtual – Grados 6–8 ($320/mes)' : 'Virtual Guided Learning Support – Grades 6–8 ($320/mo)') + '</option>' +
+          '<option value="support-912">' + (isEs ? 'Acompañamiento Académico Virtual – Grados 9–12 ($365/mes)' : 'Virtual Guided Learning Support – Grades 9–12 ($365/mo)') + '</option>' +
+          '<option value="diagnostic">' + (isEs ? 'Evaluación Académica Inicial y Plan ILP ($295 único)' : 'Initial Academic Assessment & Learning Plan Setup ($295 one-time)') + '</option>' +
+          '<option value="lifeskills">' + (isEs ? 'Clases de Life Skills y Liderazgo ($120/mes)' : 'Standalone Life Skills & Leadership Classes ($120/mo)') + '</option>';
+      }
+      select.setAttribute('data-loaded-hub', hubId);
+      select.setAttribute('data-loaded-lang', targetLang);
+      if (curVal && select.querySelector('option[value="' + curVal + '"]')) {
+        select.value = curVal;
+      }
+    }
+
     function updateServiceSummary() {
       var hubId = document.getElementById('stateHubSelect').value;
-      var serv = document.getElementById('serviceSelect').value;
       var isEs = currentLang === 'es';
 
-      var titles = {
-        'support-k5': isEs ? "Acompañamiento Académico Virtual – Grados K–5" : "Virtual Guided Learning Support – Grades K–5",
-        'support-68': isEs ? "Acompañamiento Académico Virtual – Grados 6–8" : "Virtual Guided Learning Support – Grades 6–8",
-        'support-912': isEs ? "Acompañamiento Académico Virtual – Grados 9–12" : "Virtual Guided Learning Support – Grades 9–12",
-        'diagnostic': isEs ? "Evaluación Académica Inicial y Plan ILP" : "Initial Academic Assessment and Learning Plan Setup",
-        'lifeskills': isEs ? "Clases de Life Skills y Liderazgo (Mensual)" : "Standalone Life Skills & Leadership Classes"
-      };
+      updateServiceDropdownOptions(hubId, isEs);
+      var serv = document.getElementById('serviceSelect').value;
+
+      var titles;
+      if (hubId === 'FL-STEPUP-EMA') {
+        titles = {
+          'support-k5': isEs ? "Home Education Instructional Program · Grados K–5 (ID EMA: 20172869)" : "Home Education Instructional Program · Grades K–5 (EMA Catalog Item ID: 20172869)",
+          'support-68': isEs ? "Home Education Instructional Program · Grados 6–8 (ID EMA: 20169280)" : "Home Education Instructional Program · Grades 6–8 (EMA Catalog Item ID: 20169280)",
+          'support-912': isEs ? "Home Education Instructional Program · Grados 9–12 (ID EMA: 20172870)" : "Home Education Instructional Program · Grades 9–12 (EMA Catalog Item ID: 20172870)",
+          'diagnostic': isEs ? "Cuota Anual Adicional ($295 · En revisión en EMA · Item: 20174498)" : "Additional Annual Setup Fee ($295 · In Review in EMA · Item: 20174498)",
+          'lifeskills': isEs ? "Clases de Life Skills y Liderazgo (Mensual)" : "Standalone Life Skills & Leadership Classes"
+        };
+      } else {
+        titles = {
+          'support-k5': isEs ? "Acompañamiento Académico Virtual – Grados K–5" : "Virtual Guided Learning Support – Grades K–5",
+          'support-68': isEs ? "Acompañamiento Académico Virtual – Grados 6–8" : "Virtual Guided Learning Support – Grades 6–8",
+          'support-912': isEs ? "Acompañamiento Académico Virtual – Grados 9–12" : "Virtual Guided Learning Support – Grades 9–12",
+          'diagnostic': isEs ? "Evaluación Académica Inicial y Plan ILP" : "Initial Academic Assessment and Learning Plan Setup",
+          'lifeskills': isEs ? "Clases de Life Skills y Liderazgo (Mensual)" : "Standalone Life Skills & Leadership Classes"
+        };
+      }
 
       var prices = {
         'support-k5': "$275",
@@ -1035,7 +1079,7 @@
         'support-k5': isEs ? " / mes" : " / month",
         'support-68': isEs ? " / mes" : " / month",
         'support-912': isEs ? " / mes" : " / month",
-        'diagnostic': isEs ? " (pago único)" : " (one-time)",
+        'diagnostic': isEs ? (hubId === 'FL-STEPUP-EMA' ? " (pago anual)" : " (pago único)") : (hubId === 'FL-STEPUP-EMA' ? " (annual fee)" : " (one-time)"),
         'lifeskills': isEs ? " / mes" : " / month"
       };
 
@@ -1054,13 +1098,26 @@
       document.getElementById('ssPrice').innerHTML = (prices[serv] || "$275") + " <span>" + (periods[serv] || " / month") + "</span>";
 
       var setupBox = document.getElementById('ssSetup');
-      if (serv === 'diagnostic') {
-        setupBox.style.display = 'none';
-      } else {
+      if (hubId === 'FL-STEPUP-EMA') {
         setupBox.style.display = 'block';
-        setupBox.textContent = isEs
-          ? "+ $295 Configuración Inicial: Evaluación Diagnóstica y Plan ILP (pago único; cargo independiente del soporte mensual)"
-          : "+ $295 Initial Setup: Diagnostic Assessment and Learning Plan Setup (one-time fee; explained separately from monthly support)";
+        if (serv === 'diagnostic') {
+          setupBox.innerHTML = isEs
+            ? "<strong>Aviso de EMA:</strong> Cuota anual adicional: $295 — actualmente en revisión en EMA y no disponible para pago mediante EMA hasta su aprobación."
+            : "<strong>EMA Notice:</strong> Additional annual fee: $295 — currently under EMA review and not available for EMA payment unless approved.";
+        } else {
+          setupBox.innerHTML = isEs
+            ? "<strong>Cuota anual adicional:</strong> $295 — actualmente en revisión en EMA y no disponible para pago mediante EMA hasta su aprobación."
+            : "<strong>Additional annual fee:</strong> $295 — currently under EMA review and not available for EMA payment unless approved.";
+        }
+      } else {
+        if (serv === 'diagnostic') {
+          setupBox.style.display = 'none';
+        } else {
+          setupBox.style.display = 'block';
+          setupBox.textContent = isEs
+            ? "+ $295 Configuración Inicial: Evaluación Diagnóstica y Plan ILP (pago único; cargo independiente del soporte mensual)"
+            : "+ $295 Initial Setup: Diagnostic Assessment and Learning Plan Setup (one-time fee; explained separately from monthly support)";
+        }
       }
     }
 

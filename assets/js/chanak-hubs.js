@@ -19,8 +19,8 @@
       url: "/florida-home-education/",
       rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120 },
       services: [
-        { id: "support", name_es: "Acompañamiento Virtual Mensual (K-5 / 6-8 / 9-12)", name_en: "Virtual Guided Support (Monthly Mentoring + Life Skills)", base_rate: 275 },
-        { id: "diagnostic", name_es: "Evaluación Académica Inicial y Plan ILP ($295)", name_en: "Initial Academic Assessment and Learning Plan Setup ($295)", base_rate: 295 },
+        { id: "support", name_es: "Home Education Instructional Program (K-5: 20172869 · 6-8: 20169280 · 9-12: 20172870)", name_en: "Home Education Instructional Program (K-5: 20172869 · 6-8: 20169280 · 9-12: 20172870)", base_rate: 275 },
+        { id: "diagnostic", name_es: "Cuota anual adicional ($295 · En revisión en EMA · Item: 20174498)", name_en: "Additional annual fee ($295 · In Review in EMA · Item: 20174498)", base_rate: 295 },
         { id: "lifeskills", name_es: "Clases de Life Skills y Liderazgo ($120/mes)", name_en: "Standalone Life Skills & Leadership ($120/mo)", base_rate: 120 }
       ],
       billing_status: "approved_provider_authorized_service_billing_enabled",
