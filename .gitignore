@@ -7,3 +7,5 @@ _descartados/
 _private/leads.csv
 _private/mail-errors.log
 _private/brevo-key.php
+scratch/
+
