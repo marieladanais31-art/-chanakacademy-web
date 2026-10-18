@@ -35,7 +35,22 @@
           price=baseD?((isEn?'From ':'Desde ')+fmtMo(baseD)):(data.routes[0].totalYear||price);
         }
       }
-      mount.innerHTML='<div class="eyebrow">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+region.name.toUpperCase()+'</div><div class="price-value">'+price+'</div><p>'+(data.includes||data.note||(isEn?'The academic route and final investment are confirmed in writing after reviewing the student file.':'La ruta y la inversión final se confirman por escrito después de revisar el caso.'))+'</p><p class="small">'+(data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'))+'</p>';
+      var rawIncludes = data.includes || data.note;
+      var includesHtml = '';
+      if(rawIncludes){
+        var items = rawIncludes.split('·').map(function(s){return s.trim();}).filter(Boolean);
+        if(items.length > 1){
+          includesHtml = '<ul class="program-includes-list" style="list-style:none;padding:0;margin:14px 0 18px;display:flex;flex-direction:column;gap:8px;font-size:0.92rem;color:#334155;text-align:left;">' +
+            items.map(function(it){
+              return '<li style="display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--teal,#087a80);font-weight:bold;line-height:1.2;">✓</span><span>'+it+'</span></li>';
+            }).join('') + '</ul>';
+        } else {
+          includesHtml = '<p style="margin:12px 0 16px;">' + rawIncludes + '</p>';
+        }
+      } else {
+        includesHtml = '<p style="margin:12px 0 16px;">' + (isEn?'The academic route and final investment are confirmed in writing after reviewing the student file.':'La ruta y la inversión final se confirman por escrito después de revisar el caso.') + '</p>';
+      }
+      mount.innerHTML='<div class="eyebrow">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+region.name.toUpperCase()+'</div><div class="price-value">'+price+'</div>'+includesHtml+'<p class="small">'+(data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'))+'</p>';
     }
     var pay=$('#approved-payment'),payLink=paymentUrl(c);if(pay){if(payLink){pay.classList.remove('hide');pay.href=payLink;pay.dataset.chanakDirectPayment='1'}else{pay.classList.add('hide');pay.removeAttribute('href')}}
     $$('input[name="pais"]').forEach(function(i){i.value=c});

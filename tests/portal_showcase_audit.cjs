@@ -27,7 +27,8 @@ const PAGES = [
   'florida-home-education/index.html',
   'us/florida/index.html',
   'off-campus/index.html',
-  'off-campus/en/index.html'
+  'off-campus/en/index.html',
+  'index.html'
 ];
 
 console.log('=== 1. VERIFYING IMAGE ASSETS ON DISK ===');
