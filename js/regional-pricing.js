@@ -374,7 +374,7 @@ window.CHANAK_PRICING = {
           description: dd.footnote || dd.note || '',
           enrollmentFee: ddPublished ? (dd.enrollmentFee || '') : '',
           monthlyFee: ddPublished
-            ? (firstRoute.monthly ? ('desde ' + firstRoute.monthly + '/mes') : (firstRoute.totalYear || firstRoute.totalFirstYear || onRequest))
+            ? (firstRoute.monthly ? ('desde ' + (/\/(mes|mo|month)/i.test(firstRoute.monthly) ? firstRoute.monthly : firstRoute.monthly + '/mes')) : (firstRoute.totalYear || firstRoute.totalFirstYear || onRequest))
             : onRequest,
           installments: ddPublished ? (dd.installments || '') : '',
           totalYear: ddPublished ? (firstRoute.totalFirstYear || firstRoute.totalYear || '') : '',

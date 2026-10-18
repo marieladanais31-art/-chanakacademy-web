@@ -15,12 +15,27 @@
     var market=window.CHANAK_PRICING&&window.CHANAK_PRICING.markets&&(window.CHANAK_PRICING.markets[c]||window.CHANAK_PRICING.markets.GLOBAL);
     var data=market&&(program==='off-campus'?market.off_campus:market.dual_diploma);
     var mount=$('#regional-price');if(mount&&data){
-      var price='Plan personalizado tras revisión';
-      if(data.status==='published'){
-        if(program==='off-campus'&&data.tiers&&data.tiers.length){price=data.tiers[0].monthly?(data.tiers.length>1&&data.tiers.some(function(t){return t.monthly!==data.tiers[0].monthly})?'Desde ':'')+data.tiers[0].monthly+'/mes':price}
-        if(program==='dual-diploma'&&data.routes&&data.routes.length){price=data.routes[0].monthly?('Desde '+data.routes[0].monthly+'/mes'):(data.routes[0].totalYear||price)}
+      var isEn=document.documentElement.lang&&document.documentElement.lang.indexOf('en')===0;
+      var price=isEn?'Personalized plan upon review':'Plan personalizado tras revisión';
+      function fmtMo(val){
+        if(!val) return '';
+        var clean=val.toString().trim();
+        if(/\/(mes|mo|month)/i.test(clean)){
+          return isEn?clean.replace(/\/mes/i,'/month'):clean;
+        }
+        return clean+(isEn?' / month':'/mes');
       }
-      mount.innerHTML='<div class="eyebrow">INFORMACIÓN PARA '+region.name.toUpperCase()+'</div><div class="price-value">'+price+'</div><p>'+(data.includes||data.note||'La ruta y la inversión final se confirman por escrito después de revisar el caso.')+'</p><p class="small">'+(data.footnote||'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.')+'</p>';
+      if(data.status==='published'){
+        if(program==='off-campus'&&data.tiers&&data.tiers.length){
+          var baseM=data.tiers[0].monthly;
+          price=baseM?(data.tiers.length>1&&data.tiers.some(function(t){return t.monthly!==baseM})?(isEn?'From ':'Desde '):'')+fmtMo(baseM):price;
+        }
+        if(program==='dual-diploma'&&data.routes&&data.routes.length){
+          var baseD=data.routes[0].monthly;
+          price=baseD?((isEn?'From ':'Desde ')+fmtMo(baseD)):(data.routes[0].totalYear||price);
+        }
+      }
+      mount.innerHTML='<div class="eyebrow">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+region.name.toUpperCase()+'</div><div class="price-value">'+price+'</div><p>'+(data.includes||data.note||(isEn?'The academic route and final investment are confirmed in writing after reviewing the student file.':'La ruta y la inversión final se confirman por escrito después de revisar el caso.'))+'</p><p class="small">'+(data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'))+'</p>';
     }
     var pay=$('#approved-payment'),payLink=paymentUrl(c);if(pay){if(payLink){pay.classList.remove('hide');pay.href=payLink;pay.dataset.chanakDirectPayment='1'}else{pay.classList.add('hide');pay.removeAttribute('href')}}
     $$('input[name="pais"]').forEach(function(i){i.value=c});

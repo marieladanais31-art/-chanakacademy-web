@@ -565,7 +565,7 @@
 
               <div class="form-group">
                 <label for="serviceSelect" class="form-label"><span data-i18n="lbl_service">Authorized Service Offering</span> <span class="req">*</span></label>
-                <select id="serviceSelect" name="service" class="form-control" onchange="updateServiceSummary()">
+                <select id="serviceSelect" name="service" class="form-control" onchange="handleServiceChange()">
                   <option value="support-k5">Virtual Guided Learning Support – Grades K–5 ($275/mo)</option>
                   <option value="support-68">Virtual Guided Learning Support – Grades 6–8 ($320/mo)</option>
                   <option value="support-912">Virtual Guided Learning Support – Grades 9–12 ($365/mo)</option>
@@ -986,10 +986,23 @@
       updateLiveFolio();
     }
 
+    function handleServiceChange() {
+      var serv = document.getElementById('serviceSelect').value;
+      var gradeSelect = document.getElementById('studentGrade');
+      if (serv === 'support-k5') {
+        gradeSelect.value = 'K-5';
+      } else if (serv === 'support-68') {
+        gradeSelect.value = '6-8';
+      } else if (serv === 'support-912') {
+        gradeSelect.value = '9-12';
+      }
+      updateServiceSummary();
+    }
+
     function handleGradeSync() {
       var grade = document.getElementById('studentGrade').value;
       var servSelect = document.getElementById('serviceSelect');
-      if (servSelect.value.indexOf('support-') === 0) {
+      if (servSelect.value.indexOf('support-') === 0 || servSelect.value === 'support') {
         if (grade === 'K-5') servSelect.value = 'support-k5';
         else if (grade === '6-8') servSelect.value = 'support-68';
         else if (grade === '9-12') servSelect.value = 'support-912';
@@ -1135,12 +1148,37 @@
         document.getElementById('preselectedNotice').style.display = 'flex';
       }
 
-      if (servParam) {
-        if (servParam === 'lifeskills') document.getElementById('serviceSelect').value = 'lifeskills';
-        else if (servParam === 'diagnostic') document.getElementById('serviceSelect').value = 'diagnostic';
-        else if (servParam === 'support') {
-          // keep grade sync or default
+      var gradeParam = params.get('grade');
+      if (gradeParam) {
+        var gUpper = gradeParam.toUpperCase();
+        if (gUpper === 'K-5' || gUpper === 'K5' || gUpper === 'ELEMENTARY') {
+          document.getElementById('studentGrade').value = 'K-5';
+        } else if (gUpper === '6-8' || gUpper === '68' || gUpper === 'MIDDLE') {
+          document.getElementById('studentGrade').value = '6-8';
+        } else if (gUpper === '9-12' || gUpper === '912' || gUpper === 'HIGH') {
+          document.getElementById('studentGrade').value = '9-12';
         }
+      }
+
+      if (servParam) {
+        if (servParam === 'lifeskills') {
+          document.getElementById('serviceSelect').value = 'lifeskills';
+        } else if (servParam === 'diagnostic') {
+          document.getElementById('serviceSelect').value = 'diagnostic';
+        } else if (servParam === 'support-k5') {
+          document.getElementById('serviceSelect').value = 'support-k5';
+          document.getElementById('studentGrade').value = 'K-5';
+        } else if (servParam === 'support-68') {
+          document.getElementById('serviceSelect').value = 'support-68';
+          document.getElementById('studentGrade').value = '6-8';
+        } else if (servParam === 'support-912') {
+          document.getElementById('serviceSelect').value = 'support-912';
+          document.getElementById('studentGrade').value = '9-12';
+        } else if (servParam === 'support') {
+          handleGradeSync();
+        }
+      } else if (gradeParam) {
+        handleGradeSync();
       }
 
       handleCountryChange();
@@ -1152,10 +1190,15 @@
       e.preventDefault();
       var form = document.getElementById('enrollmentForm');
       var submitBtn = document.getElementById('submitBtn');
+      var errBox = document.getElementById('matriculaErrorBox');
 
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
+      }
+
+      if (errBox) {
+        errBox.style.display = 'none';
       }
 
       submitBtn.disabled = true;
@@ -1175,17 +1218,34 @@
           method: 'POST',
           body: formData
         });
-        var result = await response.json();
+        var result = null;
+        try {
+          result = await response.json();
+        } catch(jsonErr) {}
 
-        if (result && (result.ok || result.success)) {
+        if (response.ok && result && (result.ok || result.success)) {
           showConfirmation(result.folio || document.getElementById('hiddenFolio').value);
         } else {
-          // Even if backend fails, lead is confirmed locally with client folio
-          showConfirmation(document.getElementById('hiddenFolio').value);
+          var errorMsg = (result && result.message) ? result.message :
+            (currentLang === 'es'
+              ? 'No se pudo procesar la solicitud en el servidor. Por favor verifica tus datos o inténtalo nuevamente.'
+              : 'Unable to process your application on the server. Please verify your details or try again.');
+          throw new Error(errorMsg);
         }
       } catch(err) {
-        // Fallback for offline / demo environments: show receipt with guaranteed client folio
-        showConfirmation(document.getElementById('hiddenFolio').value);
+        submitBtn.disabled = false;
+        submitBtn.textContent = currentLang === 'es' ? 'Enviar Solicitud al Hub del SIS →' : 'Submit Application to SIS Hub →';
+        if (!errBox) {
+          errBox = document.createElement('div');
+          errBox.id = 'matriculaErrorBox';
+          errBox.style.cssText = 'background:#fee2e2;color:#991b1b;padding:14px 18px;border-radius:10px;margin-bottom:20px;font-size:0.95rem;border:1px solid #f87171;font-weight:500;';
+          form.insertBefore(errBox, form.firstChild);
+        }
+        errBox.style.display = 'block';
+        errBox.textContent = err.message || (currentLang === 'es'
+          ? 'Error de conexión o de red. No se han perdido tus datos. Por favor revisa tu conexión e inténtalo de nuevo.'
+          : 'Network or connection error. Your information is preserved. Please check your connection and try again.');
+        errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
 
