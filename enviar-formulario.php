@@ -38,6 +38,7 @@ $CONFIG = [
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
         'life_skills' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'LIFE SKILLS', 'landing' => '/', 'brevo_list' => 3],
         'alabama_choose' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'ALABAMA CHOOSE', 'landing' => '/us/alabama/', 'brevo_list' => 3],
+        'florida_pep_ema' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'FLORIDA PEP (EMA)', 'landing' => '/scholarships/florida/', 'dossier' => '', 'brevo_list' => 3],
         'classwallet' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'CLASSWALLET DIRECT PAY', 'landing' => '/scholarships/', 'dossier' => '', 'brevo_list' => 3],
         'general'     => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
@@ -167,10 +168,48 @@ $AUTOREPLY = [
             . "Nuestro equipo institucional revisará tu mensaje y te contactará para abrir la conversación.\n\n"
             . "Un saludo,\nEquipo Chanak International Academy",
     ],
-    // Autorespuesta específica cuando el lead llega desde /matricula/ (alta intención).
+    // Autorespuesta específica cuando el lead llega desde /matricula/ (alta intención y continuidad con SIS).
     'matricula' => [
-        'subject' => 'Solicitud de incorporación recibida | Chanak Academy',
-        'body' => "Hola {nombre},\n\nRecibimos tu solicitud. El equipo de tu programa confirmará expediente, plan y cotización aplicable antes de la admisión o el pago.\n\nResponde a este correo para contactar con tu equipo.\nChanak International Academy",
+        'subject' => '[Folio {folio}] Solicitud de incorporación recibida | Chanak Academy',
+        'body' => "Hola {nombre},\n\n"
+            . "Hemos recibido correctamente la solicitud de incorporación para {estudiante}.\n\n"
+            . "DATOS REGISTRADOS:\n"
+            . "· Folio de referencia: {folio}\n"
+            . "· Programa / Servicio: {servicio}\n"
+            . "· Hub estatal: {hub}\n\n"
+            . "ESTADO DE SEGUIMIENTO (3 Vías de Control SIS):\n"
+            . "1. Vía Admisión: En revisión de expediente y documentación académica previa.\n"
+            . "2. Vía Académica: Asignación de mentor y verificación de plan pedagógico 60/20/20.\n"
+            . "3. Vía Financiera: Validación de método de abono / portal estatal aplicable.\n\n"
+            . "Qué pasará ahora:\n"
+            . "· En las próximas 24 horas laborables nuestro equipo de admisiones te contactará para coordinar los siguientes pasos.\n"
+            . "· La solicitud de incorporación no constituye admisión definitiva ni autoriza cargos hasta la validación del expediente.\n\n"
+            . "Puedes responder directamente a este correo si deseas aportar documentación complementaria o realizar alguna consulta.\n\n"
+            . "Atentamente,\n"
+            . "Equipo de Admisiones y Registro Académico\n"
+            . "Chanak International Academy\n"
+            . "FLDOE #134620 · MSA-CESS Official Candidate · 501(c)(3) Nonprofit",
+    ],
+    'matricula_en' => [
+        'subject' => '[Folio {folio}] Enrollment Application Received | Chanak Academy',
+        'body' => "Dear {nombre},\n\n"
+            . "We have successfully received the enrollment application for {estudiante}.\n\n"
+            . "APPLICATION DETAILS:\n"
+            . "· Folio Reference: {folio}\n"
+            . "· Program / Service: {servicio}\n"
+            . "· State Hub: {hub}\n\n"
+            . "THREE-TRACK PROGRESS STATUS (SIS Control):\n"
+            . "1. Admissions Track: Reviewing preliminary documents and prior student records.\n"
+            . "2. Academic Track: Mentor matching and 60/20/20 instructional plan alignment.\n"
+            . "3. Financial / Billing Track: Verifying billing method and state portal account authorization.\n\n"
+            . "What happens next:\n"
+            . "· Our admissions team will review your application and reach out within 24 business hours to guide you through the next steps.\n"
+            . "· Submitting an application does not constitute final admission nor authorize charges until student records are verified.\n\n"
+            . "You can reply directly to this email to provide documentation or inquire about your application status.\n\n"
+            . "Kind regards,\n"
+            . "Admissions & Academic Records Team\n"
+            . "Chanak International Academy\n"
+            . "FLDOE #134620 · MSA-CESS Official Candidate · 501(c)(3) Nonprofit",
     ],
     // Autorespuesta en inglés para leads UAE/Dubai del Dual Diploma
     // (International Admissions). Placeholders: {nombre}, {landing},
@@ -510,6 +549,12 @@ $utmCampaign = first_value($data, ['utm_campaign']);
 $utmContent  = first_value($data, ['utm_content']);
 $utmTerm     = first_value($data, ['utm_term']);
 
+$folio       = first_value($data, ['folio', 'application_id', 'folio_id']);
+$hub         = first_value($data, ['hub', 'hub_id', 'state_hub', 'hub_name']);
+$studentName = first_value($data, ['student_name', 'estudiante_nombre', 'studentFullName', 'student_first_name']);
+$service     = first_value($data, ['service', 'servicio', 'programa', 'program']);
+$lang        = strtolower(first_value($data, ['language', 'lang', 'idioma'])) ?: 'es';
+
 /* ── Enrutamiento por producto ──
    1º el campo explícito 'necesidad' del formulario de la home;
    2º detección por texto (landings compiladas y rutas antiguas). */
@@ -571,7 +616,14 @@ if ($fh) {
         if ($isNew) {
             fputcsv($fh, ['fecha', 'programa', 'nombre', 'email', 'telefono', 'pais', 'origen']);
         }
-        fputcsv($fh, [date('Y-m-d H:i:s T'), $label, $name, $email, $phone, $country, clean_value($origin)]);
+        $originLog = clean_value($origin);
+        if ($folio !== '') {
+            $originLog .= ' [Folio: ' . $folio . ']';
+        }
+        if ($hub !== '' && $hub !== 'NONE') {
+            $originLog .= ' [Hub: ' . $hub . ']';
+        }
+        fputcsv($fh, [date('Y-m-d H:i:s T'), $label, $name, $email, $phone, $country, $originLog]);
         fflush($fh);
         flock($fh, LOCK_UN);
         $leadSaved = true;
@@ -619,7 +671,8 @@ if ($utmContent !== '') {
 brevo_add_contact($email, $name, $phone, $brevoLists, $brevoExtraAttributes);
 
 /* ── 2) CORREO INTERNO al equipo ── */
-$subjectInterno = 'Solicitud web [' . $label . '] — ' . ($name !== '' ? $name : $email) . ($country !== '' ? ' (' . $country . ')' : '');
+$folioPrefix = $folio !== '' ? '[' . $folio . '] ' : '';
+$subjectInterno = $folioPrefix . 'Solicitud web [' . $label . '] — ' . ($name !== '' ? $name : $email) . ($country !== '' ? ' (' . $country . ')' : '');
 
 $lines = [
     'Nueva solicitud recibida desde chanakacademy.org',
@@ -627,9 +680,18 @@ $lines = [
     'Programa: ' . $label,
     'Pagina de origen: ' . clean_value($origin),
     'IP: ' . ($_SERVER['REMOTE_ADDR'] ?? ''),
-    '',
-    'DATOS DEL FORMULARIO',
 ];
+if ($folio !== '') {
+    $lines[] = 'FOLIO SIS: ' . $folio;
+}
+if ($studentName !== '') {
+    $lines[] = 'ESTUDIANTE: ' . $studentName;
+}
+if ($hub !== '' && $hub !== 'NONE') {
+    $lines[] = 'HUB ESTATAL: ' . $hub;
+}
+$lines[] = '';
+$lines[] = 'DATOS DEL FORMULARIO';
 foreach ($data as $key => $value) {
     if (in_array($key, ['website', 'url', 'company_website'], true)) {
         continue;
@@ -658,22 +720,33 @@ if (!$sentInterno) {
 }
 
 /* ── 3) AUTORESPUESTA a la familia ── */
+$isEn = (strpos($lang, 'en') === 0 || (isset($pack['language']) && $pack['language'] === 'en'));
 $autoreplyKey = $commercialRegion === 'Dubai' ? 'dual_dubai' : ($commercialRegion === 'UAE' ? 'dual_uae' : $route);
-$reply = $esMatricula ? $AUTOREPLY['matricula'] : ($AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general']);
-/* A single contextual dossier for inquiries and legacy enrollment requests. */
-if ($commercialRegion === '' && $pack) {
-    $en=$pack['language']==='en';
-    $subject=$esMatricula ? ($en ? 'Your application request' : 'Tu solicitud de incorporación') : ($en ? 'Your program dossier' : 'Tu dossier del programa');
-    $reply=[
-        'subject'=>$subject.' | Chanak - '.$routeCfg['label'],
-        'body'=>($en ? "Hello {nombre},\n\nThank you for contacting Chanak.\nYour program dossier, including applicable fees and next steps: {dossier}\n\n" : "Hola {nombre},\n\nGracias por contactar con Chanak.\nTu dossier del programa, con las tarifas aplicables y los próximos pasos: {dossier}\n\n")
-        . ($esMatricula ? ($en ? "We have received your application request. Our team will review your records and confirm the individual plan and quote before admission or payment.\n" : "Recibimos tu solicitud de incorporación. Revisaremos el expediente y confirmaremos plan y cotización antes de formalizar la admisión o el pago.\n") : ($en ? "Our team will review your inquiry and contact you. Requesting information does not enroll a student or authorize a payment.\n" : "Nuestro equipo revisará tu consulta y te contactará. Pedir información no matricula al estudiante ni autoriza un pago.\n"))
-        . ($en ? "\nReply to this email to contact your program team.\nChanak International Academy" : "\nResponde a este correo para contactar con el equipo de tu programa.\nChanak International Academy"),
-    ];
+if ($esMatricula) {
+    $reply = $isEn ? $AUTOREPLY['matricula_en'] : $AUTOREPLY['matricula'];
+} else {
+    $reply = $AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general'];
+    if ($commercialRegion === '' && $pack) {
+        $en = $pack['language'] === 'en';
+        $subject = $en ? 'Your program dossier' : 'Tu dossier del programa';
+        $reply = [
+            'subject' => $subject . ' | Chanak - ' . $routeCfg['label'],
+            'body'    => ($en ? "Hello {nombre},\n\nThank you for contacting Chanak.\nYour program dossier, including applicable fees and next steps: {dossier}\n\nOur team will review your inquiry and contact you. Requesting information does not enroll a student or authorize a payment.\n\nReply to this email to contact your program team.\nChanak International Academy" : "Hola {nombre},\n\nGracias por contactar con Chanak.\nTu dossier del programa, con las tarifas aplicables y los próximos pasos: {dossier}\n\nNuestro equipo revisará tu consulta y te contactará. Pedir información no matricula al estudiante ni autoriza un pago.\n\nResponde a este correo para contactar con el equipo de tu programa.\nChanak International Academy"),
+        ];
+    }
 }
 
+$replySubject = strtr($reply['subject'], [
+    '{folio}'            => $folio !== '' ? $folio : 'PENDING',
+    '{nombre}'           => $name !== '' ? $name : ($isEn ? 'Family' : 'familia'),
+]);
+
 $replyBody = strtr($reply['body'], [
-    '{nombre}'           => $name !== '' ? $name : 'familia',
+    '{nombre}'           => $name !== '' ? $name : ($isEn ? 'Family' : 'familia'),
+    '{estudiante}'       => $studentName !== '' ? $studentName : ($isEn ? 'your student' : 'tu hijo/a'),
+    '{folio}'            => $folio !== '' ? $folio : 'PENDING',
+    '{hub}'              => ($hub !== '' && $hub !== 'NONE') ? $hub : ($isEn ? 'Direct Enrollment (No state hub)' : 'Matrícula Directa (Sin hub estatal)'),
+    '{servicio}'         => $service !== '' ? $service : $label,
     '{landing}'          => $landing,
     '{dossier}'          => $dossier,
     '{dossier_offcampus}' => $dossierLinks['offcampus'],
@@ -684,7 +757,7 @@ $replyBody = strtr($reply['body'], [
 ]);
 $sentAuto = send_email(
     [$email],
-    $reply['subject'],
+    $replySubject,
     $replyBody,
     $CONFIG['from_email'],
     $CONFIG['from_name'],
@@ -700,9 +773,13 @@ respond_json(200, [
     'ok'      => true,
     'success' => true,
     'message' => 'Solicitud recibida.',
+    'folio'   => $folio,
+    'hub'     => $hub,
+    'service' => $service,
+    'student' => $studentName,
     'dossier' => $dossier,
     'dossiers' => $commercialRegion === '' && $pack ? ['program' => $pack['dossier']] : ($route === 'general' ? $dossierLinks : array_filter([$route => $dossier])),
     'email_status' => ['internal_accepted' => $sentInterno, 'family_accepted' => $sentAuto],
-    'language' => $pack['language'] ?? 'es',
+    'language' => $pack['language'] ?? $lang,
 ]);
 

@@ -6,9 +6,9 @@ function chanak_normalize(string $value): string {
 }
 function chanak_route_from_value(string $value): string {
     $v=chanak_normalize($value);
-    if (preg_match('/classwallet|odyssey|scholarship|arizona|utah|wyoming|ufa|estf|efa/', $v)) return 'classwallet';
-    if (preg_match('/alabama|choose/', $v)) return 'alabama_choose';
-    if (preg_match('/florida-heip|florida.*(ema|pep|home|heip)|^florida$|^ema$|^pep$/', $v)) return 'florida_pep_ema';
+    if (preg_match('/alabama|choose|al-choose/', $v)) return 'alabama_choose';
+    if (preg_match('/florida-heip|florida.*(ema|pep|home|heip)|^florida$|^ema$|^pep$|stepup|fl-stepup/', $v)) return 'florida_pep_ema';
+    if (preg_match('/classwallet|odyssey|scholarship|arizona|utah|wyoming|new-hampshire|south-carolina|ufa|estf|efa|cw|ody|esa/', $v)) return 'classwallet';
     if (preg_match('/dual|adult.high.school/', $v)) return 'dual';
     if (preg_match('/off.?campus|homeschool|educacion en casa/', $v)) return 'offcampus';
     if (preg_match('/life.?skills/', $v)) return 'life_skills';
@@ -17,8 +17,13 @@ function chanak_route_from_value(string $value): string {
     return '';
 }
 function chanak_resolve_route(array $data, string $referer): string {
-    // State selection wins over generic program names; country is never a program.
-    $state = (string)($data['state_program'] ?? $data['programa_estatal'] ?? '');
+    // 1º Hub selection wins (e.g. from /matricula/ or state landings)
+    $hub = (string)($data['hub'] ?? $data['hub_id'] ?? '');
+    $hubRoute = chanak_route_from_value($hub);
+    if (in_array($hubRoute, ['florida_pep_ema','alabama_choose','classwallet'], true)) return $hubRoute;
+
+    // 2º State selection wins over generic program names; country is never a program.
+    $state = (string)($data['state_program'] ?? $data['programa_estatal'] ?? $data['state'] ?? '');
     $stateRoute=chanak_route_from_value($state);
     if (in_array($stateRoute,['florida_pep_ema','alabama_choose','classwallet'],true)) return $stateRoute;
     $need=chanak_route_from_value((string)($data['necesidad'] ?? ''));

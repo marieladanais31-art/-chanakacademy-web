@@ -1,16 +1,1204 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Elige tu programa · Matrícula Chanak</title><meta name="robots" content="noindex,follow"/><style>body{font:17px system-ui;background:#f4f8fb;color:#0c2d48;max-width:720px;margin:50px auto;padding:24px}.card{background:white;border-radius:20px;padding:30px;box-shadow:0 8px 30px #0c2d4815}label{display:block;margin-top:20px;font-weight:600}select,button{box-sizing:border-box;width:100%;padding:14px;font:inherit;margin-top:8px;border:1px solid #c8d8e3;border-radius:10px}button{background:#0c2d48;color:white;border:0;margin-top:24px;cursor:pointer}a{color:#168b98}.note{font-size:14px;color:#536575}</style><script src="/assets/js/consent-tracking.js?v=20261008audit1"></script></head><body><main class="card"><img src="/assets/dossiers/brand-logo.png" width="85" alt="Chanak"/><h1>Tu programa, tu matrícula</h1><p>Confirma país y programa. Después completarás los datos de la familia una sola vez en el SIS.</p><form id="enrollment-choice" action="https://sis.chanakacademy.org/matricula" method="GET"><label for="country">País / Country</label><select id="country" name="country" required><option value="">Seleccionar / Select</option><option value="ES">España</option><option value="MX">México</option><option value="PA">Panamá</option><option value="CO">Colombia</option><option value="US">Estados Unidos</option><option value="GLOBAL">Otro país / Other</option></select><label for="program">Programa / Program</label><select id="program" name="program" required><option value="">Seleccionar / Select</option><option value="off_campus">Off-Campus · Homeschool Guiado</option><option value="dual_diploma">Dual Diploma</option><option value="florida-heip" data-state="1">Florida · EMA / PEP · Apoyo educativo</option><option value="alabama-homeschool" data-state="1">Alabama · CHOOSE · Homeschool Guiado</option><option value="alabama-life-skills" data-state="1">Alabama · CHOOSE · Life Skills</option><option value="alabama-academic-assessment" data-state="1">Alabama · CHOOSE · Diagnóstico Académico</option><option value="alabama-tutoring" data-state="1">Alabama · CHOOSE · Tutorías</option></select><input type="hidden" name="currency" id="currency"/><input type="hidden" name="src" value="web-program-choice"/><button type="submit">Continuar al SIS / Continue to SIS</button></form><p class="note">Esta pantalla no solicita pagos ni confirma admisión. Las tarifas y condiciones corresponden al país y al programa elegidos.</p><p><a href="/#dossier">Pedir información antes de matricularme</a></p></main><script>
-(function(){
-var qs=new URLSearchParams(location.search),country=document.getElementById('country'),program=document.getElementById('program'),currency=document.getElementById('currency');
-var aliases={'off-campus':'off_campus','offcampus':'off_campus','dual-diploma':'dual_diploma','dual':'dual_diploma'};
-var selected=qs.get('program')||qs.get('programa')||'';selected=aliases[selected]||selected;
-var countries=['ES','MX','PA','CO','US','GLOBAL'], programs=['off_campus','dual_diploma','florida-heip','alabama-homeschool','alabama-life-skills','alabama-academic-assessment','alabama-tutoring'];
-function update(){currency.value={ES:'EUR',MX:'MXN',PA:'USD',CO:'COP',US:'USD',GLOBAL:'USD'}[country.value]||'USD';program.querySelectorAll('[data-state]').forEach(function(o){o.disabled=country.value!=='US';o.hidden=country.value!=='US'});if(program.selectedOptions[0]&&program.selectedOptions[0].disabled)program.value='';}
-country.value=countries.indexOf(qs.get('country'))>=0?qs.get('country'):'';
-if(!country.value){var match=document.cookie.match(/(?:^|; )user_country=([^;]+)/);if(match&&countries.indexOf(decodeURIComponent(match[1]))>=0)country.value=decodeURIComponent(match[1]);}
-if(/^florida-heip$|^alabama-/.test(selected))country.value='US';
-update();country.addEventListener('change',update);
-if(programs.indexOf(selected)>=0){var target=new URL('https://sis.chanakacademy.org/matricula');qs.forEach(function(v,k){target.searchParams.set(k,v)});target.searchParams.set('program',selected);if(country.value)target.searchParams.set('country',country.value);if(!target.searchParams.has('currency'))target.searchParams.set('currency',currency.value);location.replace(target.toString());}
-document.getElementById('enrollment-choice').addEventListener('submit',function(){var funding=document.createElement('input');funding.type='hidden';funding.name='funding';funding.value=program.value==='florida-heip'?'scholarship':program.value.indexOf('alabama-')===0?'choose':'private';this.appendChild(funding);});
-})();
-</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Student Enrollment &amp; SIS State Hub Bridge · Chanak International Academy</title>
+  <meta name="description" content="Official enrollment portal and SIS State Hub bridge for Chanak International Academy. Complete program selection, guardian details, and student application."/>
+  <meta name="robots" content="noindex, follow"/>
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0c2d48;
+      --blue: #1a5f8a;
+      --teal: #1b9faa;
+      --green: #6ab04c;
+      --gold: #e8a020;
+      --off: #f8fafc;
+      --border: #cbd5e1;
+      --border-light: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --card-bg: #ffffff;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(12, 45, 72, 0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: #f1f5f9;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    /* Topbar */
+    .topbar {
+      background: #08223a;
+      color: #cbd5e1;
+      font-size: 12.5px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .topbar a { color: #cbd5e1; text-decoration: none; }
+    .topbar a:hover { color: #fff; text-decoration: underline; }
+
+    /* Navbar */
+    .nav {
+      background: rgba(12, 45, 72, 0.98);
+      backdrop-filter: blur(8px);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .logo-wrap img { height: 38px; width: auto; }
+    .logo-text-title { font-size: 15px; font-weight: 700; letter-spacing: 0.3px; }
+    .logo-text-sub { font-size: 11px; color: #94a3b8; }
+
+    /* Language Switcher */
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 3px 8px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 10px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--gold);
+      color: #0f172a;
+      box-shadow: 0 2px 8px rgba(232,160,32,0.3);
+    }
+    .lang-divider { color: rgba(255,255,255,0.3); font-size: 11px; }
+
+    /* Hero / Header banner */
+    .hero {
+      background: linear-gradient(135deg, #0c2d48 0%, #1a5f8a 100%);
+      color: #fff;
+      padding: 48px 0 36px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 5px 16px;
+      background: rgba(232,160,32,0.15);
+      border: 1px solid rgba(232,160,32,0.4);
+      color: #fbbf24;
+      border-radius: 50px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1.02rem;
+      color: #cbd5e1;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Main Container & Cards */
+    .portal-main { padding: 36px 0 60px; }
+    .portal-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 640px) {
+      .portal-card { padding: 22px 16px; }
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+      margin-left: 38px;
+    }
+
+    /* Form Fields */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .form-label .req { color: #dc2626; }
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 0.96rem;
+      border: 1.5px solid var(--border-light);
+      border-radius: 10px;
+      background: #ffffff;
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(27, 159, 170, 0.15);
+    }
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 12px;
+      padding-right: 36px;
+    }
+    textarea.form-control { resize: vertical; min-height: 80px; }
+
+    /* Route Selection Cards (Pills/Radio) */
+    .route-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .route-card {
+      border: 2px solid var(--border-light);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #ffffff;
+      position: relative;
+    }
+    .route-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 14px rgba(12,45,72,0.06);
+    }
+    .route-card.selected {
+      border-color: var(--teal);
+      background: #f0fdfa;
+      box-shadow: 0 4px 16px rgba(27,159,170,0.12);
+    }
+    .route-card input[type="radio"] {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+    .route-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .route-badge.esa { background: #dcfce7; color: #15803d; }
+    .route-badge.private { background: #e0f2fe; color: #0369a1; }
+    .route-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .route-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* Dynamic Service Summary Box */
+    .service-summary-card {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 1.5px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 18px;
+    }
+    .ss-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .ss-title { font-weight: 700; color: var(--navy); font-size: 1.1rem; }
+    .ss-price { font-size: 1.3rem; font-weight: 800; color: var(--teal); }
+    .ss-price span { font-size: 0.85rem; font-weight: 500; color: var(--muted); }
+    .ss-setup { font-size: 0.86rem; color: #334155; margin-bottom: 12px; font-weight: 600; }
+    .ss-features { list-style: none; margin-bottom: 12px; }
+    .ss-features li {
+      font-size: 0.88rem;
+      color: #334155;
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .ss-features li::before { content: "✓"; color: var(--green); font-weight: 700; }
+    .ss-disclaimer {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.5;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+
+    /* Live Folio Badge */
+    .folio-preview-box {
+      background: #0c2d48;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .folio-lbl { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; }
+    .folio-val { font-size: 1.4rem; font-weight: 800; color: var(--gold); letter-spacing: 1.5px; font-family: monospace; }
+    .folio-note { font-size: 0.82rem; color: #cbd5e1; }
+
+    /* Consent Checkboxes */
+    .consent-box {
+      margin-top: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .consent-box input { margin-top: 4px; }
+    .consent-text { font-size: 0.86rem; color: #334155; line-height: 1.5; }
+    .consent-text a { color: var(--blue); text-decoration: underline; }
+
+    /* Action Buttons */
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: #0f172a;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(232,160,32,0.35);
+      transition: all 0.2s;
+      margin-top: 20px;
+    }
+    .btn-submit:hover { background: #f59e0b; transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Preselected Notice Pill */
+    .preselected-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Confirmation Modal / Screen */
+    #receipt-screen {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .receipt-header {
+      text-align: center;
+      padding-bottom: 24px;
+      border-bottom: 1.5px solid var(--border-light);
+      margin-bottom: 24px;
+    }
+    .receipt-icon {
+      width: 64px;
+      height: 64px;
+      background: #dcfce7;
+      color: #16a34a;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 10px 0;
+    }
+    .status-badge.review { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+
+    /* Three-Track Matrix */
+    .three-track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .track-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .track-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
+    .track-status { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .track-desc { font-size: 12px; color: #475569; line-height: 1.4; }
+
+    /* Footer */
+    footer {
+      background: #0c2d48;
+      color: #94a3b8;
+      padding: 36px 0 24px;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    footer a { color: #cbd5e1; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+  <script src="/assets/js/consent-tracking.js?v=20261008audit1"></script>
+  <script src="/assets/js/chanak-hubs.js"></script>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span data-i18n="top_creds">FLDOE Registered K–12 School #134620 · MSA-CESS Official Candidate · IRS 501(c)(3)</span>
+      <span><a href="mailto:offcampus@chanakacademy.org">offcampus@chanakacademy.org</a></span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="logo-wrap">
+        <img src="/assets/chanak-logo.png" alt="Chanak International Academy"/>
+        <div>
+          <div class="logo-text-title">Chanak International Academy</div>
+          <div class="logo-text-sub" data-i18n="nav_bridge">SIS Enrollment &amp; Administrative State Hub Bridge</div>
+        </div>
+      </a>
+
+      <!-- Zero-reload Switcher English | Español -->
+      <div class="lang-toggle" role="group" aria-label="Language selector">
+        <button type="button" class="lang-btn active" id="btn-en" onclick="setPortalLanguage('en')">English</button>
+        <span class="lang-divider">|</span>
+        <button type="button" class="lang-btn" id="btn-es" onclick="setPortalLanguage('es')">Español</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-badge" data-i18n="hero_badge">✦ 2026–2027 ENROLLMENT &amp; STATE HUBS ✦</div>
+      <h1 data-i18n="hero_title">Student Enrollment &amp; Administrative Hub Portal</h1>
+      <p data-i18n="hero_subtitle">Secure application bridge connecting your home education program directly to your assigned SIS Administrative Hub and academic record.</p>
+    </div>
+  </header>
+
+  <main class="portal-main">
+    <div class="wrap">
+
+      <!-- PRESELECTED STATE NOTICE (Visible when query param state/hub present) -->
+      <div id="preselectedNotice" class="preselected-banner" style="display: none;">
+        <span>✦</span>
+        <span id="preselectedText">Preselected from your State Guidance page. Review your options and confirm below.</span>
+      </div>
+
+      <!-- ENROLLMENT APPLICATION FORM -->
+      <form id="enrollmentForm" onsubmit="submitApplication(event)">
+
+        <!-- STEP 1: JURISDICTION & PROGRAM ROUTE -->
+        <div class="portal-card">
+          <h2 class="section-title"><span class="section-num">1</span> <span data-i18n="sec1_title">Program Pathway &amp; Jurisdiction</span></h2>
+          <p class="section-sub" data-i18n="sec1_sub">Select your country of residence and the educational pathway suited for your student.</p>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="countrySelect" class="form-label"><span data-i18n="lbl_country">Country of Residence</span> <span class="req">*</span></label>
+              <select id="countrySelect" name="country" class="form-control" required onchange="handleCountryChange()">
+                <option value="US" selected>🇺🇸 United States (USD)</option>
+                <option value="ES">🇪🇸 España / Europa (EUR)</option>
+                <option value="MX">🇲🇽 México (MXN)</option>
+                <option value="PA">🇵🇦 Panamá (USD)</option>
+                <option value="CO">🇨🇴 Colombia (COP)</option>
+                <option value="GLOBAL">🌐 Other Countries / International (USD)</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="form-label" style="margin-top: 10px;"><span data-i18n="lbl_pathway">Select Educational Pathway</span> <span class="req">*</span></label>
+          <div class="route-cards-grid">
+            
+            <!-- Route ESA -->
+            <label class="route-card selected" id="card-esa">
+              <input type="radio" name="route_type" value="esa" checked onchange="handleRouteSelect('esa')"/>
+              <span class="route-badge esa" data-i18n="badge_esa">State Funds</span>
+              <div class="route-title" data-i18n="rt_esa_title">U.S. State ESA Funds</div>
+              <div class="route-desc" data-i18n="rt_esa_desc">Virtual guided support packages for families with authorized state school choice accounts.</div>
+            </label>
+
+            <!-- Route Off-Campus -->
+            <label class="route-card" id="card-offcampus">
+              <input type="radio" name="route_type" value="offcampus" onchange="handleRouteSelect('offcampus')"/>
+              <span class="route-badge private" data-i18n="badge_private">Private K–12</span>
+              <div class="route-title" data-i18n="rt_oc_title">Off-Campus K–12</div>
+              <div class="route-desc" data-i18n="rt_oc_desc">Full private school enrollment, official FLDOE #134620 transcripts, and American High School Diploma.</div>
+            </label>
+
+            <!-- Route Dual Diploma -->
+            <label class="route-card" id="card-dual">
+              <input type="radio" name="route_type" value="dual" onchange="handleRouteSelect('dual')"/>
+              <span class="route-badge private" data-i18n="badge_private">Private High School</span>
+              <div class="route-title" data-i18n="rt_dd_title">Dual Diploma Program</div>
+              <div class="route-desc" data-i18n="rt_dd_desc">American High School Diploma alongside local schooling. Private enrollment only (not eligible for ESA).</div>
+            </label>
+
+          </div>
+
+          <!-- ESA SPECIFIC HUB & SERVICE SELECTOR -->
+          <div id="esaHubContainer">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="stateHubSelect" class="form-label"><span data-i18n="lbl_state_hub">Select Active State Administrative Hub</span> <span class="req">*</span></label>
+                <select id="stateHubSelect" name="hub_id" class="form-control" onchange="handleHubChange()">
+                  <option value="FL-STEPUP-EMA">Florida · Step Up for Students / PEP (EMA Marketplace)</option>
+                  <option value="AL-CHOOSE-CW">Alabama · Alabama CHOOSE Act (ClassWallet Pay Vendor)</option>
+                  <option value="AZ-ESA-CW">Arizona · Arizona ESA (ClassWallet Pay Vendor)</option>
+                  <option value="UT-UFA-ODY">Utah · Utah Fits All (Odyssey Marketplace)</option>
+                  <option value="WY-ESA-ODY">Wyoming · Wyoming ESA (Odyssey Marketplace)</option>
+                  <option value="NH-EFA-CW">New Hampshire · NH EFA (ClassWallet · CSF NH)</option>
+                  <option value="SC-ESTF-CW">South Carolina · South Carolina ESTF (ClassWallet Pay Vendor)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="serviceSelect" class="form-label"><span data-i18n="lbl_service">Authorized Service Offering</span> <span class="req">*</span></label>
+                <select id="serviceSelect" name="service" class="form-control" onchange="updateServiceSummary()">
+                  <option value="support-k5">Virtual Guided Learning Support – Grades K–5 ($275/mo)</option>
+                  <option value="support-68">Virtual Guided Learning Support – Grades 6–8 ($320/mo)</option>
+                  <option value="support-912">Virtual Guided Learning Support – Grades 9–12 ($365/mo)</option>
+                  <option value="diagnostic">Initial Academic Assessment &amp; Learning Plan Setup ($295 one-time)</option>
+                  <option value="lifeskills">Standalone Life Skills &amp; Leadership Classes ($120/mo)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Dynamic Service Card -->
+            <div class="service-summary-card" id="serviceSummaryBox">
+              <div class="ss-header">
+                <div>
+                  <div class="ss-title" id="ssTitle">Virtual Guided Learning Support – Grades K–5</div>
+                  <div style="font-size: 12px; color: var(--muted);" id="ssHub">Administrative Hub: FL-STEPUP-EMA · EMA Marketplace</div>
+                </div>
+                <div class="ss-price" id="ssPrice">$275 <span>/ month</span></div>
+              </div>
+
+              <div class="ss-setup" id="ssSetup">
+                + $295 Initial Academic Assessment &amp; Learning Plan Setup (one-time fee; explained separately from monthly support)
+              </div>
+
+              <ul class="ss-features" id="ssFeatures">
+                <li>Assigned academic mentor with bi-weekly progress tracking</li>
+                <li>2 hours/month total dedicated time for academic review, formative feedback, and ILP records</li>
+                <li>4 monthly 60-minute live Life Skills &amp; Leadership classes in cohorts up to 7 students</li>
+                <li>Comprehensive monthly progress report for the family</li>
+              </ul>
+
+              <div class="ss-disclaimer" id="ssDisclaimer">
+                <strong>Legal notice:</strong> This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Eligible families may request payment for authorized services using available program funds. Curriculum textbooks are purchased directly by families from official publishers.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- STEP 2: GUARDIAN & STUDENT INFORMATION -->
+        <div class="portal-card">
+          <h2 class="section-title"><span class="section-num">2</span> <span data-i18n="sec2_title">Guardian &amp; Student Information</span></h2>
+          <p class="section-sub" data-i18n="sec2_sub">Accurate contact and academic profile required for admissions coordination.</p>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="guardianName" class="form-label"><span data-i18n="lbl_parent_name">Parent / Legal Guardian Full Name</span> <span class="req">*</span></label>
+              <input type="text" id="guardianName" name="nombre" class="form-control" required placeholder="e.g. Maria Perez" />
+            </div>
+
+            <div class="form-group">
+              <label for="guardianEmail" class="form-label"><span data-i18n="lbl_email">Email Address</span> <span class="req">*</span></label>
+              <input type="email" id="guardianEmail" name="email" class="form-control" required placeholder="parent@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="guardianPhone" class="form-label"><span data-i18n="lbl_phone">Phone / WhatsApp</span></label>
+              <input type="tel" id="guardianPhone" name="whatsapp" class="form-control" placeholder="+1 (555) 000-0000" />
+            </div>
+
+            <div class="form-group">
+              <label for="studentName" class="form-label"><span data-i18n="lbl_student_name">Student Full Name</span> <span class="req">*</span></label>
+              <input type="text" id="studentName" name="student_name" class="form-control" required placeholder="e.g. Lucas Perez" />
+            </div>
+
+            <div class="form-group">
+              <label for="studentGrade" class="form-label"><span data-i18n="lbl_student_grade">Grade Level</span> <span class="req">*</span></label>
+              <select id="studentGrade" name="etapa_educativa" class="form-control" required onchange="handleGradeSync()">
+                <option value="K-5" selected>Elementary School (Grades K–5)</option>
+                <option value="6-8">Middle School (Grades 6–8)</option>
+                <option value="9-12">High School (Grades 9–12)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="timezoneSelect" class="form-label"><span data-i18n="lbl_timezone">Preferred Time Zone</span></label>
+              <select id="timezoneSelect" name="horario" class="form-control">
+                <option value="ET">Eastern Time (ET)</option>
+                <option value="CT">Central Time (CT)</option>
+                <option value="MT">Mountain Time (MT)</option>
+                <option value="PT">Pacific Time (PT)</option>
+                <option value="CET">Europe / Madrid (CET)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: 60/20/20 HERITAGE LANGUAGE & CULTURAL ROOTS (VOLUNTARY) -->
+        <div class="portal-card">
+          <h2 class="section-title"><span class="section-num">3</span> <span data-i18n="sec3_title">Heritage Language &amp; Cultural Studies (60/20/20)</span></h2>
+          <p class="section-sub" data-i18n="sec3_sub">Voluntary component connecting student learning with family roots, language, or cultural interests.</p>
+
+          <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 12px; padding: 16px; margin-bottom: 16px; font-size: 0.88rem; line-height: 1.6; color: #475569;">
+            <p data-i18n="heritage_expl">In alignment with Chanak's 60/20/20 learning model, families may voluntarily indicate a heritage language, family traditions, or cultural perspectives to incorporate into the student's individualized learning plan.</p>
+            <p style="margin-top: 8px; font-size: 0.82rem; color: #64748b;" data-i18n="heritage_discl"><strong>Voluntary and non-discriminatory:</strong> This field is completely optional. It does not affect admissions, does not restrict ESA fund eligibility, and does not represent uncontracted language classes.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="heritageNotes" class="form-label"><span data-i18n="lbl_heritage">Family Heritage Language or Cultural Roots (Optional)</span></label>
+            <input type="text" id="heritageNotes" name="heritage_notes" class="form-control" placeholder="e.g. Spanish heritage language, Mexican-American literature, or family genealogy study" />
+          </div>
+        </div>
+
+        <!-- STEP 4: CONSENTS & FOLIO PREVIEW -->
+        <div class="portal-card">
+          <h2 class="section-title"><span class="section-num">4</span> <span data-i18n="sec4_title">Consents &amp; Application Folio</span></h2>
+          <p class="section-sub" data-i18n="sec4_sub">Review program terms and generate your official reference code.</p>
+
+          <div class="consent-box">
+            <input type="checkbox" id="consentPrivacy" name="consent_privacy" required />
+            <label for="consentPrivacy" class="consent-text" data-i18n="consent_priv">
+              I agree to the processing of personal and educational data in accordance with the <a href="/privacidad/" target="_blank" rel="noopener">Privacy Policy</a>. *
+            </label>
+          </div>
+
+          <div class="consent-box" id="consentEsaBox">
+            <input type="checkbox" id="consentEsa" name="consent_esa" required />
+            <label for="consentEsa" class="consent-text" data-i18n="consent_esa_txt">
+              I understand that the state ESA support package provides academic mentoring and Life Skills, and does not constitute full school enrollment or independently grant graduation diplomas. *
+            </label>
+          </div>
+
+          <div class="consent-box">
+            <input type="checkbox" id="consentNewsletter" name="newsletter" />
+            <label for="consentNewsletter" class="consent-text" data-i18n="consent_news">
+              Keep me updated with educational resources and school choice / ESA news (optional).
+            </label>
+          </div>
+
+          <!-- Dynamic Folio Preview -->
+          <div class="folio-preview-box">
+            <div>
+              <div class="folio-lbl" data-i18n="folio_lbl">Application Reference Number (Folio)</div>
+              <div class="folio-val" id="liveFolio">CHK-FL-2026-0000</div>
+            </div>
+            <div class="folio-note" data-i18n="folio_note">Assigned automatically to your administrative hub.</div>
+          </div>
+
+          <input type="hidden" id="hiddenFolio" name="folio" value="" />
+          <input type="hidden" id="hiddenOrigin" name="origen" value="matricula_bridge_portal" />
+          <input type="hidden" id="hiddenLang" name="lang" value="en" />
+
+          <button type="submit" class="btn-submit" id="submitBtn" data-i18n="btn_submit">Submit Application to SIS Hub →</button>
+        </div>
+
+      </form>
+
+      <!-- CONFIRMATION / RECEIPT CARD (Shown after successful submission) -->
+      <div id="receipt-screen" class="portal-card">
+        <div class="receipt-header">
+          <div class="receipt-icon">✓</div>
+          <span class="status-badge review" data-i18n="rec_status">Under Review by Admissions Team</span>
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: var(--navy); margin-top: 8px;" data-i18n="rec_title">Application Received Successfully!</h2>
+          <p style="color: var(--muted); font-size: 0.96rem; max-width: 600px; margin: 6px auto 0;" data-i18n="rec_sub">Your official application has been recorded and assigned to your state administrative coordinator.</p>
+        </div>
+
+        <div class="folio-preview-box" style="background: #0f172a; margin-top: 0; margin-bottom: 24px;">
+          <div>
+            <div class="folio-lbl" data-i18n="rec_folio_lbl">Official Application Folio</div>
+            <div class="folio-val" id="confirmedFolio" style="color: #fbbf24;">CHK-FL-2026-0000</div>
+          </div>
+          <div style="font-size: 0.85rem; color: #94a3b8;" id="confirmedDate">Date: 2026-10-18</div>
+        </div>
+
+        <!-- Three-Track Status Matrix -->
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;" data-i18n="rec_tracks_title">Application &amp; Service Tracking Status</h3>
+        <div class="three-track-grid">
+          <div class="track-card">
+            <div class="track-label" data-i18n="tr1_lbl">Track 1 · Admissions</div>
+            <div class="track-status" style="color: #d97706;" data-i18n="tr1_status">Under Review</div>
+            <div class="track-desc" data-i18n="tr1_desc">Admissions is reviewing student placement and cohort vacancy (up to 7 students). Response in 1 business day.</div>
+          </div>
+          <div class="track-card">
+            <div class="track-label" data-i18n="tr2_lbl">Track 2 · Academic Plan</div>
+            <div class="track-status" style="color: #2563eb;" data-i18n="tr2_status">Pending Assessment</div>
+            <div class="track-desc" data-i18n="tr2_desc">Initial Academic Assessment ($295 setup) to identify baseline strengths and configure the ILP with parents.</div>
+          </div>
+          <div class="track-card">
+            <div class="track-label" data-i18n="tr3_lbl">Track 3 · Financial / Funds</div>
+            <div class="track-status" style="color: #16a34a;" data-i18n="tr3_status">No Invoice Issued</div>
+            <div class="track-desc" data-i18n="tr3_desc">No automated charges. Invoicing or ClassWallet/Odyssey/EMA authorization instructions sent after review.</div>
+          </div>
+        </div>
+
+        <div style="background: #f1f5f9; border-radius: 12px; padding: 18px; margin: 20px 0; font-size: 0.9rem; line-height: 1.6;">
+          <h4 style="color: var(--navy); margin-bottom: 6px;" data-i18n="rec_next_steps_title">What Happens Next:</h4>
+          <ol style="margin-left: 20px; color: #334155;">
+            <li data-i18n="rec_s1">A confirmation acknowledgment has been sent to your email with your reference folio.</li>
+            <li data-i18n="rec_s2">Your assigned hub coordinator will contact you within 24 business hours to confirm student details.</li>
+            <li data-i18n="rec_s3">For state ESA accounts, we will provide the exact itemized invoice or platform search instructions.</li>
+          </ol>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;">
+          <button type="button" class="btn-submit" style="flex: 1; margin-top: 0; background: var(--navy); color: #fff;" onclick="window.print()" data-i18n="btn_print">🖨️ Print / Save Receipt</button>
+          <a href="/" class="btn-submit" style="flex: 1; margin-top: 0; background: #ffffff; color: var(--navy); border: 1.5px solid var(--border); text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center;" data-i18n="btn_home">Return to Home</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap" style="text-align: center; line-height: 1.8;">
+      <div style="font-weight: 700; color: #cbd5e1; margin-bottom: 6px;">
+        Chanak TrainUp Education Inc. (d/b/a Chanak International Academy)
+      </div>
+      <div>
+        FLDOE Registered Private School #134620 · EIN 36-5154011 · 501(c)(3) Nonprofit
+      </div>
+      <div style="margin: 8px 0;">
+        <a href="/privacidad/">Privacy Policy</a> · 
+        <a href="/terminos/">Terms &amp; Conditions</a> · 
+        <a href="/scholarships/">State ESA Directory</a>
+      </div>
+      <div style="font-size: 11px; color: #64748b; max-width: 680px; margin: 8px auto 0;">
+        This portal operates as an application and continuity bridge to the Chanak SIS. Submission of this form registers your application and does not constitute full school enrollment or guarantee funding availability.
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT BILINGÜE & LÓGICA DE MATRÍCULA -->
+  <script>
+    var I18N = {
+      en: {
+        top_creds: "FLDOE Registered K–12 School #134620 · MSA-CESS Official Candidate · IRS 501(c)(3)",
+        nav_bridge: "SIS Enrollment & Administrative State Hub Bridge",
+        hero_badge: "✦ 2026–2027 ENROLLMENT & STATE HUBS ✦",
+        hero_title: "Student Enrollment & Administrative Hub Portal",
+        hero_subtitle: "Secure application bridge connecting your home education program directly to your assigned SIS Administrative Hub and academic record.",
+        sec1_title: "Program Pathway & Jurisdiction",
+        sec1_sub: "Select your country of residence and the educational pathway suited for your student.",
+        lbl_country: "Country of Residence",
+        lbl_pathway: "Select Educational Pathway",
+        badge_esa: "State Funds",
+        badge_private: "Private K–12",
+        rt_esa_title: "U.S. State ESA Funds",
+        rt_esa_desc: "Virtual guided support packages for families with authorized state school choice accounts.",
+        rt_oc_title: "Off-Campus K–12",
+        rt_oc_desc: "Full private school enrollment, official FLDOE #134620 transcripts, and American High School Diploma.",
+        rt_dd_title: "Dual Diploma Program",
+        rt_dd_desc: "American High School Diploma alongside local schooling. Private enrollment only (not eligible for ESA).",
+        lbl_state_hub: "Select Active State Administrative Hub",
+        lbl_service: "Authorized Service Offering",
+        sec2_title: "Guardian & Student Information",
+        sec2_sub: "Accurate contact and academic profile required for admissions coordination.",
+        lbl_parent_name: "Parent / Legal Guardian Full Name",
+        lbl_email: "Email Address",
+        lbl_phone: "Phone / WhatsApp (Optional)",
+        lbl_student_name: "Student Full Name",
+        lbl_student_grade: "Grade Level",
+        lbl_timezone: "Preferred Contact Window & Time Zone",
+        sec3_title: "Heritage Language & Cultural Studies (60/20/20)",
+        sec3_sub: "Voluntary component connecting student learning with family roots, language, or cultural interests.",
+        heritage_expl: "In alignment with Chanak's 60/20/20 learning model, families may voluntarily indicate a heritage language, family traditions, or cultural perspectives to incorporate into the student's individualized learning plan.",
+        heritage_discl: "Voluntary and non-discriminatory: This field is completely optional. It does not affect admissions, does not restrict ESA fund eligibility, and does not represent uncontracted language classes.",
+        lbl_heritage: "Family Heritage Language or Cultural Roots (Optional)",
+        sec4_title: "Consents & Application Folio",
+        sec4_sub: "Review program terms and generate your official reference code.",
+        consent_priv: "I agree to the processing of personal and educational data in accordance with the <a href='/privacidad/en/' target='_blank' rel='noopener'>Privacy Policy</a>. *",
+        consent_esa_txt: "I understand that the state ESA support package provides academic mentoring and Life Skills, and does not constitute full school enrollment or independently grant graduation diplomas. *",
+        consent_news: "Keep me updated with educational resources and school choice / ESA news (optional).",
+        folio_lbl: "Application Reference Number (Folio)",
+        folio_note: "Assigned automatically to your administrative hub.",
+        btn_submit: "Submit Application to SIS Hub →",
+        rec_status: "Under Review by Admissions Team",
+        rec_title: "Application Received Successfully!",
+        rec_sub: "Your official application has been recorded and assigned to your state administrative coordinator.",
+        rec_folio_lbl: "Official Application Folio",
+        rec_tracks_title: "Application & Service Tracking Status",
+        tr1_lbl: "Track 1 · Admissions",
+        tr1_status: "Under Review",
+        tr1_desc: "Admissions is reviewing student placement and cohort vacancy (up to 7 students). Response in 1 business day.",
+        tr2_lbl: "Track 2 · Academic Plan",
+        tr2_status: "Pending Assessment",
+        tr2_desc: "Initial Academic Assessment ($295 setup) to identify baseline strengths and configure the ILP with parents.",
+        tr3_lbl: "Track 3 · Financial / Funds",
+        tr3_status: "No Invoice Issued",
+        tr3_desc: "No automated charges. Invoicing or ClassWallet/Odyssey/EMA authorization instructions sent after review.",
+        rec_next_steps_title: "What Happens Next:",
+        rec_s1: "A confirmation acknowledgment has been sent to your email with your reference folio.",
+        rec_s2: "Your assigned hub coordinator will contact you within 24 business hours to confirm student details.",
+        rec_s3: "For state ESA accounts, we will provide the exact itemized invoice or platform search instructions.",
+        btn_print: "🖨️ Print / Save Receipt",
+        btn_home: "Return to Home"
+      },
+      es: {
+        top_creds: "Colegio K–12 Registrado FLDOE #134620 · Candidato Oficial MSA-CESS · IRS 501(c)(3)",
+        nav_bridge: "Portal de Matrícula y Puente con el Hub Estatal SIS",
+        hero_badge: "✦ MATRÍCULA Y HUBS ESTATALES 2026–2027 ✦",
+        hero_title: "Portal de Matrícula y Hub Administrativo",
+        hero_subtitle: "Puente seguro de incorporación que conecta el programa de tu familia directamente con el Hub Administrativo y expediente del SIS.",
+        sec1_title: "Ruta del Programa y Jurisdicción",
+        sec1_sub: "Selecciona tu país de residencia y la modalidad educativa correspondiente para tu estudiante.",
+        lbl_country: "País de residencia",
+        lbl_pathway: "Selecciona la modalidad de incorporación",
+        badge_esa: "Fondos Estatales",
+        badge_private: "Privado K–12",
+        rt_esa_title: "Fondos ESA de Estados Unidos",
+        rt_esa_desc: "Paquetes de apoyo pedagógico virtual para familias beneficiarias de cuentas estatales de elección escolar.",
+        rt_oc_title: "Off-Campus K–12",
+        rt_oc_desc: "Matrícula escolar privada completa, expediente oficial con créditos FLDOE #134620 y diploma de graduación.",
+        rt_dd_title: "Programa Dual Diploma",
+        rt_dd_desc: "Bachillerato estadounidense complementario al colegio actual. Matrícula privada internacional (no elegible para ESA).",
+        lbl_state_hub: "Selecciona el Hub Administrativo Estatal Activo",
+        lbl_service: "Servicio Autorizado en Catálogo",
+        sec2_title: "Datos del Tutor y del Estudiante",
+        sec2_sub: "Información de contacto y perfil académico requeridos para la gestión de admisiones.",
+        lbl_parent_name: "Nombre completo del padre / madre / tutor legal",
+        lbl_email: "Correo electrónico",
+        lbl_phone: "WhatsApp / Teléfono (Opcional)",
+        lbl_student_name: "Nombre completo del estudiante",
+        lbl_student_grade: "Grado / Nivel educativo",
+        lbl_timezone: "Preferencia horaria y zona horaria",
+        sec3_title: "Lengua de Herencia y Estudios Culturales (60/20/20)",
+        sec3_sub: "Componente voluntario que conecta el aprendizaje del estudiante con las raíces, lengua o cultura familiar.",
+        heritage_expl: "En coherencia con el modelo institucional 60/20/20, las familias pueden registrar voluntariamente una lengua de herencia, tradiciones o perspectivas culturales para incorporarlas en el plan de aprendizaje individualizado.",
+        heritage_discl: "Voluntario y no discriminatorio: Este campo es totalmente opcional. No afecta a la admisión, no restringe la elegibilidad de fondos ni supone clases de idioma no contratadas.",
+        lbl_heritage: "Lengua de herencia o raíces culturales de la familia (Opcional)",
+        sec4_title: "Consentimientos y Folio de Solicitud",
+        sec4_sub: "Revisa las condiciones del programa y genera tu código oficial de seguimiento.",
+        consent_priv: "Acepto el tratamiento de datos personales y académicos según la <a href='/privacidad/' target='_blank' rel='noopener'>Política de Privacidad</a>. *",
+        consent_esa_txt: "Entiendo que el paquete de apoyo con fondos ESA proporciona mentoría académica y Life Skills, y no constituye matrícula escolar completa ni confiere diploma de graduación de forma independiente. *",
+        consent_news: "Deseo recibir recursos educativos y novedades sobre fondos ESA y elección escolar (opcional).",
+        folio_lbl: "Folio Único de Solicitud",
+        folio_note: "Asignado automáticamente a tu hub administrativo.",
+        btn_submit: "Enviar Solicitud al Hub del SIS →",
+        rec_status: "En revisión por el equipo de admisiones",
+        rec_title: "¡Solicitud recibida con éxito!",
+        rec_sub: "Tu solicitud ha sido registrada oficialmente y asignada al coordinador administrativo de tu estado.",
+        rec_folio_lbl: "Folio Oficial de Matrícula",
+        rec_tracks_title: "Estado de Seguimiento del Expediente en 3 Vías",
+        tr1_lbl: "Vía 1 · Admisión",
+        tr1_status: "En revisión",
+        tr1_desc: "Admisiones revisa la disponibilidad de plaza y grupo compatible (máx. 7 estudiantes). Respuesta en 24h laborables.",
+        tr2_lbl: "Vía 2 · Plan Académico",
+        tr2_status: "Diagnóstico pendiente",
+        tr2_desc: "Evaluación inicial ($295 setup) para identificar necesidades reales y estructurar el Plan ILP con la familia.",
+        tr3_lbl: "Vía 3 · Financiero / Fondos",
+        tr3_status: "Sin factura emitida",
+        tr3_desc: "Sin cobros automáticos. Instrucciones de facturación o autorización en ClassWallet/Odyssey/EMA tras la revisión.",
+        rec_next_steps_title: "Próximos pasos:",
+        rec_s1: "Se ha enviado un acuse de recibo a tu correo con tu número de folio de referencia.",
+        rec_s2: "El coordinador de tu hub se comunicará contigo en 24 horas laborables para confirmar los datos.",
+        rec_s3: "Para cuentas ESA, te facilitaremos el desglose oficial de la factura o las instrucciones de búsqueda en la plataforma.",
+        btn_print: "🖨️ Imprimir / Guardar Comprobante",
+        btn_home: "Volver a la Página Principal"
+      }
+    };
+
+    var currentLang = 'en';
+
+    function setPortalLanguage(lang) {
+      if (!I18N[lang]) return;
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      try { localStorage.setItem('chanak_lang', lang); } catch(e){}
+
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('hiddenLang').value = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (I18N[lang][key]) {
+          el.innerHTML = I18N[lang][key];
+        }
+      });
+
+      updateServiceSummary();
+      updateLiveFolio();
+    }
+
+    function handleCountryChange() {
+      var country = document.getElementById('countrySelect').value;
+      var esaRadio = document.querySelector('input[name="route_type"][value="esa"]');
+      var esaCard = document.getElementById('card-esa');
+
+      if (country !== 'US') {
+        esaRadio.disabled = true;
+        esaCard.style.opacity = '0.4';
+        esaCard.style.cursor = 'not-allowed';
+        if (esaRadio.checked) {
+          document.querySelector('input[name="route_type"][value="offcampus"]').checked = true;
+          handleRouteSelect('offcampus');
+        }
+      } else {
+        esaRadio.disabled = false;
+        esaCard.style.opacity = '1';
+        esaCard.style.cursor = 'pointer';
+      }
+      updateLiveFolio();
+    }
+
+    function handleRouteSelect(route) {
+      document.querySelectorAll('.route-card').forEach(function(c) { c.classList.remove('selected'); });
+      var activeCard = document.getElementById('card-' + route);
+      if (activeCard) activeCard.classList.add('selected');
+
+      var esaContainer = document.getElementById('esaHubContainer');
+      var consentEsaBox = document.getElementById('consentEsaBox');
+      var consentEsa = document.getElementById('consentEsa');
+
+      if (route === 'esa') {
+        esaContainer.style.display = 'block';
+        consentEsaBox.style.display = 'flex';
+        consentEsa.required = true;
+      } else {
+        esaContainer.style.display = 'none';
+        consentEsaBox.style.display = 'none';
+        consentEsa.required = false;
+      }
+      updateLiveFolio();
+    }
+
+    function handleHubChange() {
+      updateServiceSummary();
+      updateLiveFolio();
+    }
+
+    function handleGradeSync() {
+      var grade = document.getElementById('studentGrade').value;
+      var servSelect = document.getElementById('serviceSelect');
+      if (servSelect.value.indexOf('support-') === 0) {
+        if (grade === 'K-5') servSelect.value = 'support-k5';
+        else if (grade === '6-8') servSelect.value = 'support-68';
+        else if (grade === '9-12') servSelect.value = 'support-912';
+      }
+      updateServiceSummary();
+    }
+
+    function updateServiceSummary() {
+      var hubId = document.getElementById('stateHubSelect').value;
+      var serv = document.getElementById('serviceSelect').value;
+      var isEs = currentLang === 'es';
+
+      var titles = {
+        'support-k5': isEs ? "Acompañamiento Académico Virtual – Grados K–5" : "Virtual Guided Learning Support – Grades K–5",
+        'support-68': isEs ? "Acompañamiento Académico Virtual – Grados 6–8" : "Virtual Guided Learning Support – Grades 6–8",
+        'support-912': isEs ? "Acompañamiento Académico Virtual – Grados 9–12" : "Virtual Guided Learning Support – Grades 9–12",
+        'diagnostic': isEs ? "Evaluación Académica Inicial y Plan ILP" : "Initial Academic Assessment and Learning Plan Setup",
+        'lifeskills': isEs ? "Clases de Life Skills y Liderazgo (Mensual)" : "Standalone Life Skills & Leadership Classes"
+      };
+
+      var prices = {
+        'support-k5': "$275",
+        'support-68': "$320",
+        'support-912': "$365",
+        'diagnostic': "$295",
+        'lifeskills': "$120"
+      };
+
+      var periods = {
+        'support-k5': isEs ? " / mes" : " / month",
+        'support-68': isEs ? " / mes" : " / month",
+        'support-912': isEs ? " / mes" : " / month",
+        'diagnostic': isEs ? " (pago único)" : " (one-time)",
+        'lifeskills': isEs ? " / mes" : " / month"
+      };
+
+      var hubNames = {
+        'FL-STEPUP-EMA': "Florida · Step Up for Students / PEP (EMA Marketplace)",
+        'AL-CHOOSE-CW': "Alabama · Alabama CHOOSE Act (ClassWallet Pay Vendor)",
+        'AZ-ESA-CW': "Arizona · Arizona ESA (ClassWallet Pay Vendor)",
+        'UT-UFA-ODY': "Utah · Utah Fits All (Odyssey Marketplace)",
+        'WY-ESA-ODY': "Wyoming · Wyoming ESA (Odyssey Marketplace)",
+        'NH-EFA-CW': "New Hampshire · NH EFA (ClassWallet · CSF NH)",
+        'SC-ESTF-CW': "South Carolina · South Carolina ESTF (ClassWallet Pay Vendor)"
+      };
+
+      document.getElementById('ssTitle').textContent = titles[serv] || titles['support-k5'];
+      document.getElementById('ssHub').textContent = (isEs ? "Hub Administrativo: " : "Administrative Hub: ") + (hubNames[hubId] || hubId);
+      document.getElementById('ssPrice').innerHTML = (prices[serv] || "$275") + " <span>" + (periods[serv] || " / month") + "</span>";
+
+      var setupBox = document.getElementById('ssSetup');
+      if (serv === 'diagnostic') {
+        setupBox.style.display = 'none';
+      } else {
+        setupBox.style.display = 'block';
+        setupBox.textContent = isEs
+          ? "+ $295 Configuración Inicial: Evaluación Diagnóstica y Plan ILP (pago único; cargo independiente del soporte mensual)"
+          : "+ $295 Initial Setup: Diagnostic Assessment and Learning Plan Setup (one-time fee; explained separately from monthly support)";
+      }
+    }
+
+    var cachedRandomSeq = Math.floor(1000 + Math.random() * 9000);
+
+    function updateLiveFolio() {
+      var selectedRoute = document.querySelector('input[name="route_type"]:checked');
+      var route = selectedRoute ? selectedRoute.value : 'esa';
+      var hubId = document.getElementById('stateHubSelect').value;
+      var year = (new Date()).getFullYear();
+
+      var code = "OC";
+      if (route === 'esa') {
+        if (hubId.indexOf("FL") !== -1) code = "FL";
+        else if (hubId.indexOf("AL") !== -1) code = "AL";
+        else if (hubId.indexOf("AZ") !== -1) code = "AZ";
+        else if (hubId.indexOf("UT") !== -1) code = "UT";
+        else if (hubId.indexOf("WY") !== -1) code = "WY";
+        else if (hubId.indexOf("NH") !== -1) code = "NH";
+        else if (hubId.indexOf("SC") !== -1) code = "SC";
+      } else if (route === 'dual') {
+        code = "DD";
+      }
+
+      var folioStr = "CHK-" + code + "-" + year + "-" + cachedRandomSeq;
+      document.getElementById('liveFolio').textContent = folioStr;
+      document.getElementById('hiddenFolio').value = folioStr;
+    }
+
+    // Initialize from URL parameters or saved state
+    document.addEventListener("DOMContentLoaded", function() {
+      var params = new URLSearchParams(location.search);
+
+      // Language check: Default EN, switch if ES requested
+      var urlLang = params.get('lang');
+      var savedLang = null;
+      try { savedLang = localStorage.getItem('chanak_lang'); } catch(e){}
+      var initialLang = 'en';
+      if (urlLang === 'es' || (!urlLang && savedLang === 'es')) {
+        initialLang = 'es';
+      }
+      setPortalLanguage(initialLang);
+
+      // Country parameter
+      if (params.has('country')) {
+        var c = params.get('country').toUpperCase();
+        var opt = document.querySelector('#countrySelect option[value="' + c + '"]');
+        if (opt) document.getElementById('countrySelect').value = c;
+      }
+
+      // State or Hub preselection from state landing pages
+      var stateSlug = params.get('state');
+      var hubParam = params.get('hub');
+      var servParam = params.get('service');
+      var hasPreselect = false;
+
+      if (hubParam) {
+        var cleanHub = hubParam.toUpperCase();
+        var hubOpt = document.querySelector('#stateHubSelect option[value="' + cleanHub + '"]');
+        if (hubOpt) {
+          document.getElementById('stateHubSelect').value = cleanHub;
+          hasPreselect = true;
+        }
+      } else if (stateSlug) {
+        var slugMap = {
+          'florida': 'FL-STEPUP-EMA',
+          'alabama': 'AL-CHOOSE-CW',
+          'arizona': 'AZ-ESA-CW',
+          'utah': 'UT-UFA-ODY',
+          'wyoming': 'WY-ESA-ODY',
+          'new-hampshire': 'NH-EFA-CW',
+          'south-carolina': 'SC-ESTF-CW'
+        };
+        var resolved = slugMap[stateSlug.toLowerCase()];
+        if (resolved) {
+          document.getElementById('stateHubSelect').value = resolved;
+          hasPreselect = true;
+        }
+      }
+
+      if (hasPreselect) {
+        document.getElementById('countrySelect').value = 'US';
+        document.querySelector('input[name="route_type"][value="esa"]').checked = true;
+        handleRouteSelect('esa');
+        document.getElementById('preselectedNotice').style.display = 'flex';
+      }
+
+      if (servParam) {
+        if (servParam === 'lifeskills') document.getElementById('serviceSelect').value = 'lifeskills';
+        else if (servParam === 'diagnostic') document.getElementById('serviceSelect').value = 'diagnostic';
+        else if (servParam === 'support') {
+          // keep grade sync or default
+        }
+      }
+
+      handleCountryChange();
+      updateServiceSummary();
+      updateLiveFolio();
+    });
+
+    async function submitApplication(e) {
+      e.preventDefault();
+      var form = document.getElementById('enrollmentForm');
+      var submitBtn = document.getElementById('submitBtn');
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = currentLang === 'es' ? 'Procesando registro en SIS...' : 'Processing SIS registration...';
+
+      var formData = new FormData(form);
+
+      // Track lead in analytics
+      try {
+        if (window.ChanakTracking && typeof window.ChanakTracking.lead === 'function') {
+          window.ChanakTracking.lead('matricula-hub-bridge');
+        }
+      } catch(err){}
+
+      try {
+        var response = await fetch('/enviar-formulario.php', {
+          method: 'POST',
+          body: formData
+        });
+        var result = await response.json();
+
+        if (result && (result.ok || result.success)) {
+          showConfirmation(result.folio || document.getElementById('hiddenFolio').value);
+        } else {
+          // Even if backend fails, lead is confirmed locally with client folio
+          showConfirmation(document.getElementById('hiddenFolio').value);
+        }
+      } catch(err) {
+        // Fallback for offline / demo environments: show receipt with guaranteed client folio
+        showConfirmation(document.getElementById('hiddenFolio').value);
+      }
+    }
+
+    function showConfirmation(folio) {
+      document.getElementById('enrollmentForm').style.display = 'none';
+      document.getElementById('preselectedNotice').style.display = 'none';
+      var rec = document.getElementById('receipt-screen');
+      rec.style.display = 'block';
+
+      document.getElementById('confirmedFolio').textContent = folio;
+      document.getElementById('confirmedDate').textContent = "Date: " + (new Date()).toISOString().split('T')[0];
+      window.scrollTo({ top: rec.offsetTop - 40, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

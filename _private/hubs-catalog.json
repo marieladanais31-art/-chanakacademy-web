@@ -1,0 +1,490 @@
+{
+  "version": "2026.1",
+  "organization": {
+    "legal_name": "CHANAK TRAINUP EDUCATION INC",
+    "dba": "Chanak International Academy",
+    "entity_type": "501(c)(3) Nonprofit Educational Organization",
+    "fldoe_school_code": "134620",
+    "ein": "36-5154011",
+    "accreditation": "Official Candidate for Accreditation with MSA-CESS"
+  },
+  "roles_matrix": {
+    "direccion": {
+      "name_es": "Dirección General / Admisiones",
+      "name_en": "Executive Leadership / Admissions",
+      "scope": "all_hubs",
+      "permissions": ["view_all_dossiers", "admit_student", "approve_billing_reconciliation", "manage_coordinators", "audit_compliance"]
+    },
+    "coordinador": {
+      "name_es": "Coordinador de Hub",
+      "name_en": "Hub Coordinator",
+      "scope": "assigned_hubs",
+      "permissions": ["view_hub_dossiers", "review_admissions", "assign_cohorts", "verify_authorizations", "manage_mentors"]
+    },
+    "mentor": {
+      "name_es": "Mentor Académico",
+      "name_en": "Academic Mentor",
+      "scope": "assigned_students",
+      "permissions": ["view_student_ilp", "record_progress", "submit_monthly_reports", "conduct_biweekly_reviews"]
+    },
+    "profesor_life_skills": {
+      "name_es": "Profesor de Life Skills",
+      "name_en": "Life Skills Instructor",
+      "scope": "assigned_cohorts",
+      "permissions": ["view_cohort_students", "record_attendance", "conduct_weekly_classes", "submit_skills_evaluation"]
+    },
+    "familia": {
+      "name_es": "Padre / Tutor Legal",
+      "name_en": "Parent / Legal Guardian",
+      "scope": "own_students",
+      "permissions": ["view_student_status", "view_ilp", "download_monthly_reports", "request_invoicing", "manage_private_credentials"]
+    }
+  },
+  "hubs": [
+    {
+      "id": "FL-STEPUP-EMA",
+      "state_code": "FL",
+      "state_name_es": "Florida",
+      "state_name_en": "Florida",
+      "program_name_es": "Step Up for Students (PEP / FES-UA)",
+      "program_name_en": "Step Up for Students (PEP / FES-UA)",
+      "platform": "EMA Marketplace",
+      "provider_name": "CHANAK TRAINUP EDUCATION INC",
+      "coordinator_email": "offcampus@chanakacademy.org",
+      "billing_status": "approved_provider_authorized_service_billing_enabled",
+      "cohort_size_max": 7,
+      "services": [
+        {
+          "id": "FL-HEIP-K5",
+          "category": "academic_support",
+          "name_es": "Florida Home Education Instructional Program K–5",
+          "name_en": "Florida Home Education Instructional Program K–5",
+          "service_code": "20172869",
+          "rate_monthly": 275,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "FL-HEIP-68",
+          "category": "academic_support",
+          "name_es": "Florida Home Education Instructional Program 6–8",
+          "name_en": "Florida Home Education Instructional Program 6–8",
+          "service_code": "20169280",
+          "rate_monthly": 320,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "FL-HEIP-912",
+          "category": "academic_support",
+          "name_es": "Florida Home Education Instructional Program 9–12",
+          "name_en": "Florida Home Education Instructional Program 9–12",
+          "service_code": "20172870",
+          "rate_monthly": 365,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "FL-SETUP-295",
+          "category": "diagnostic_setup",
+          "name_es": "Evaluación Académica Inicial y Configuración ILP",
+          "name_en": "Initial Academic Assessment and Learning Plan Setup",
+          "rate_onetime": 295,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "FL-LS-120",
+          "category": "life_skills",
+          "name_es": "Clases de Life Skills y Liderazgo (Mensual)",
+          "name_en": "Life Skills & Leadership Classes (Monthly)",
+          "rate_monthly": 120,
+          "authorized": true,
+          "billing_enabled": true
+        }
+      ]
+    },
+    {
+      "id": "AL-CHOOSE-CW",
+      "state_code": "AL",
+      "state_name_es": "Alabama",
+      "state_name_en": "Alabama",
+      "program_name_es": "Alabama CHOOSE Act",
+      "program_name_en": "Alabama CHOOSE Act",
+      "platform": "ClassWallet (Pay Vendor)",
+      "provider_name": "CHANAK TRAINUP EDUCATION INC",
+      "coordinator_email": "offcampus@chanakacademy.org",
+      "billing_status": "approved_provider_authorized_service_billing_enabled",
+      "cohort_size_max": 7,
+      "services": [
+        {
+          "id": "AL-SUP-K5",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual K–5",
+          "name_en": "Virtual Guided Learning Support K–5",
+          "rate_monthly": 275,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "AL-SUP-68",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 6–8",
+          "name_en": "Virtual Guided Learning Support 6–8",
+          "rate_monthly": 320,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "AL-SUP-912",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 9–12",
+          "name_en": "Virtual Guided Learning Support 9–12",
+          "rate_monthly": 365,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "AL-SETUP-295",
+          "category": "diagnostic_setup",
+          "name_es": "Evaluación Académica Inicial y Configuración ILP",
+          "name_en": "Initial Academic Assessment and Learning Plan Setup",
+          "rate_onetime": 295,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "AL-LS-120",
+          "category": "life_skills",
+          "name_es": "Clases de Life Skills y Liderazgo (Mensual)",
+          "name_en": "Life Skills & Leadership Classes (Monthly)",
+          "rate_monthly": 120,
+          "authorized": true,
+          "billing_enabled": true
+        }
+      ]
+    },
+    {
+      "id": "AZ-ESA-CW",
+      "state_code": "AZ",
+      "state_name_es": "Arizona",
+      "state_name_en": "Arizona",
+      "program_name_es": "Arizona ESA",
+      "program_name_en": "Arizona ESA",
+      "platform": "ClassWallet (Pay Vendor)",
+      "provider_name": "CHANAK TRAINUP EDUCATION INC",
+      "coordinator_email": "offcampus@chanakacademy.org",
+      "billing_status": "approved_provider_authorized_service_billing_enabled",
+      "cohort_size_max": 7,
+      "services": [
+        {
+          "id": "AZ-SUP-K5",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual K–5",
+          "name_en": "Virtual Guided Learning Support K–5",
+          "rate_monthly": 275,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "AZ-SUP-68",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 6–8",
+          "name_en": "Virtual Guided Learning Support 6–8",
+          "rate_monthly": 320,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "AZ-SUP-912",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 9–12",
+          "name_en": "Virtual Guided Learning Support 9–12",
+          "rate_monthly": 365,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "AZ-SETUP-295",
+          "category": "diagnostic_setup",
+          "name_es": "Evaluación Académica Inicial y Configuración ILP",
+          "name_en": "Initial Academic Assessment and Learning Plan Setup",
+          "rate_onetime": 295,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "AZ-LS-120",
+          "category": "life_skills",
+          "name_es": "Clases de Life Skills y Liderazgo (Mensual)",
+          "name_en": "Life Skills & Leadership Classes (Monthly)",
+          "rate_monthly": 120,
+          "authorized": true,
+          "billing_enabled": true
+        }
+      ]
+    },
+    {
+      "id": "UT-UFA-ODY",
+      "state_code": "UT",
+      "state_name_es": "Utah",
+      "state_name_en": "Utah",
+      "program_name_es": "Utah Fits All",
+      "program_name_en": "Utah Fits All",
+      "platform": "Odyssey Marketplace",
+      "provider_name": "CHANAK TRAINUP EDUCATION INC",
+      "coordinator_email": "offcampus@chanakacademy.org",
+      "billing_status": "approved_provider_authorized_service_billing_enabled",
+      "cohort_size_max": 7,
+      "services": [
+        {
+          "id": "UT-SUP-K5",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual K–5",
+          "name_en": "Virtual Guided Learning Support K–5",
+          "rate_monthly": 275,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "UT-SUP-68",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 6–8",
+          "name_en": "Virtual Guided Learning Support 6–8",
+          "rate_monthly": 320,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "UT-SUP-912",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 9–12",
+          "name_en": "Virtual Guided Learning Support 9–12",
+          "rate_monthly": 365,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "UT-SETUP-295",
+          "category": "diagnostic_setup",
+          "name_es": "Evaluación Académica Inicial y Configuración ILP",
+          "name_en": "Initial Academic Assessment and Learning Plan Setup",
+          "rate_onetime": 295,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "UT-LS-120",
+          "category": "life_skills",
+          "name_es": "Clases de Life Skills y Liderazgo (Mensual)",
+          "name_en": "Life Skills & Leadership Classes (Monthly)",
+          "rate_monthly": 120,
+          "authorized": true,
+          "billing_enabled": true
+        }
+      ]
+    },
+    {
+      "id": "WY-ESA-ODY",
+      "state_code": "WY",
+      "state_name_es": "Wyoming",
+      "state_name_en": "Wyoming",
+      "program_name_es": "Wyoming ESA",
+      "program_name_en": "Wyoming ESA",
+      "platform": "Odyssey Marketplace",
+      "provider_name": "CHANAK TRAINUP EDUCATION INC",
+      "coordinator_email": "offcampus@chanakacademy.org",
+      "billing_status": "approved_provider_authorized_service_billing_enabled",
+      "cohort_size_max": 7,
+      "services": [
+        {
+          "id": "WY-SUP-K5",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual K–5",
+          "name_en": "Virtual Guided Learning Support K–5",
+          "rate_monthly": 275,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "WY-SUP-68",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 6–8",
+          "name_en": "Virtual Guided Learning Support 6–8",
+          "rate_monthly": 320,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "WY-SUP-912",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 9–12",
+          "name_en": "Virtual Guided Learning Support 9–12",
+          "rate_monthly": 365,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "WY-SETUP-295",
+          "category": "diagnostic_setup",
+          "name_es": "Evaluación Académica Inicial y Configuración ILP",
+          "name_en": "Initial Academic Assessment and Learning Plan Setup",
+          "rate_onetime": 295,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "WY-LS-120",
+          "category": "life_skills",
+          "name_es": "Clases de Life Skills y Liderazgo (Mensual)",
+          "name_en": "Life Skills & Leadership Classes (Monthly)",
+          "rate_monthly": 120,
+          "authorized": true,
+          "billing_enabled": true
+        }
+      ]
+    },
+    {
+      "id": "NH-EFA-CW",
+      "state_code": "NH",
+      "state_name_es": "New Hampshire",
+      "state_name_en": "New Hampshire",
+      "program_name_es": "New Hampshire EFA (CSF NH)",
+      "program_name_en": "New Hampshire EFA (CSF NH)",
+      "platform": "ClassWallet (Pay Vendor)",
+      "provider_name": "CHANAK TRAINUP EDUCATION INC",
+      "coordinator_email": "offcampus@chanakacademy.org",
+      "billing_status": "approved_provider_authorized_service_billing_enabled",
+      "cohort_size_max": 7,
+      "services": [
+        {
+          "id": "NH-SUP-K5",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual K–5",
+          "name_en": "Virtual Guided Learning Support K–5",
+          "rate_monthly": 275,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "NH-SUP-68",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 6–8",
+          "name_en": "Virtual Guided Learning Support 6–8",
+          "rate_monthly": 320,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "NH-SUP-912",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 9–12",
+          "name_en": "Virtual Guided Learning Support 9–12",
+          "rate_monthly": 365,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "NH-SETUP-295",
+          "category": "diagnostic_setup",
+          "name_es": "Evaluación Académica Inicial y Configuración ILP",
+          "name_en": "Initial Academic Assessment and Learning Plan Setup",
+          "rate_onetime": 295,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "NH-LS-120",
+          "category": "life_skills",
+          "name_es": "Clases de Life Skills y Liderazgo (Mensual)",
+          "name_en": "Life Skills & Leadership Classes (Monthly)",
+          "rate_monthly": 120,
+          "authorized": true,
+          "billing_enabled": true
+        }
+      ]
+    },
+    {
+      "id": "SC-ESTF-CW",
+      "state_code": "SC",
+      "state_name_es": "South Carolina",
+      "state_name_en": "South Carolina",
+      "program_name_es": "South Carolina ESTF",
+      "program_name_en": "South Carolina ESTF",
+      "platform": "ClassWallet (Pay Vendor)",
+      "provider_name": "CHANAK TRAINUP EDUCATION INC",
+      "coordinator_email": "offcampus@chanakacademy.org",
+      "billing_status": "approved_provider_authorized_service_billing_enabled",
+      "cohort_size_max": 7,
+      "services": [
+        {
+          "id": "SC-SUP-K5",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual K–5",
+          "name_en": "Virtual Guided Learning Support K–5",
+          "rate_monthly": 275,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "SC-SUP-68",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 6–8",
+          "name_en": "Virtual Guided Learning Support 6–8",
+          "rate_monthly": 320,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "SC-SUP-912",
+          "category": "academic_support",
+          "name_es": "Acompañamiento Académico Virtual 9–12",
+          "name_en": "Virtual Guided Learning Support 9–12",
+          "rate_monthly": 365,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "SC-SETUP-295",
+          "category": "diagnostic_setup",
+          "name_es": "Evaluación Académica Inicial y Configuración ILP",
+          "name_en": "Initial Academic Assessment and Learning Plan Setup",
+          "rate_onetime": 295,
+          "authorized": true,
+          "billing_enabled": true
+        },
+        {
+          "id": "SC-LS-120",
+          "category": "life_skills",
+          "name_es": "Clases de Life Skills y Liderazgo (Mensual)",
+          "name_en": "Life Skills & Leadership Classes (Monthly)",
+          "rate_monthly": 120,
+          "authorized": true,
+          "billing_enabled": true
+        }
+      ]
+    }
+  ],
+  "private_programs": [
+    {
+      "id": "PROG-OFFCAMPUS",
+      "division": "private_academic",
+      "name_es": "Off-Campus K–12 (Colegio Americano Completo)",
+      "name_en": "Off-Campus K–12 (Full U.S. Private Schooling)",
+      "transcripts_and_diploma": true,
+      "fldoe_accredited_scope": true,
+      "esa_eligible": false,
+      "billing_type": "private_pay_only"
+    },
+    {
+      "id": "PROG-DUAL-DIPLOMA",
+      "division": "private_academic",
+      "name_es": "Programa Internacional Dual Diploma (High School)",
+      "name_en": "International Dual Diploma (High School)",
+      "transcripts_and_diploma": true,
+      "fldoe_accredited_scope": true,
+      "esa_eligible": false,
+      "billing_type": "private_pay_only"
+    }
+  ]
+}
