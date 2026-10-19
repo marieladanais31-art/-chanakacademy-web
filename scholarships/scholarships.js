@@ -647,54 +647,54 @@
     }
   ];
 
-  // VIDEO REPOSITORY & PLACEHOLDER EMBEDS
+  // VIDEO REPOSITORY & OFFICIAL TUTORIAL EMBEDS
   var VIDEO_DATABASE = {
     v1: {
       title: {
         en: "ClassWallet: How to search CHANAK TRAINUP EDUCATION INC and pay via Pay Vendor",
         es: "ClassWallet: Cómo buscar a CHANAK TRAINUP EDUCATION INC y pagar mediante Pay Vendor"
       },
-      videoUrl: "https://www.youtube-nocookie.com/embed/fYr6kyaQ5V8?rel=0&autoplay=1&modestbranding=1",
-      provider: "ClassWallet Vendor Guide"
+      videoUrl: "https://www.youtube-nocookie.com/embed/vt0oLysesB4?rel=0&autoplay=1&modestbranding=1",
+      provider: "ClassWallet DirectPay Guide"
     },
     v2: {
       title: {
         en: "Arizona ESA: Using ClassWallet funds for Chanak K–12 Academic Support",
         es: "Arizona ESA: Uso de fondos en ClassWallet para Servicios de Apoyo K–12"
       },
-      videoUrl: "https://www.youtube-nocookie.com/embed/g2qJgW98Z7s?rel=0&autoplay=1&modestbranding=1",
-      provider: "Arizona ESA Support Guide"
+      videoUrl: "https://www.youtube-nocookie.com/embed/fYr6kyaQ5V8?rel=0&autoplay=1&modestbranding=1",
+      provider: "Arizona ESA · ClassWallet Guide"
     },
     v3: {
       title: {
         en: "Florida Step Up / EMA: How to select Chanak services on the Marketplace",
         es: "Florida Step Up / EMA: Cómo seleccionar servicios de Chanak en el Marketplace"
       },
-      videoUrl: "https://www.youtube-nocookie.com/embed/rX3_pA2wI5A?rel=0&autoplay=1&modestbranding=1",
-      provider: "Florida Step Up · EMA Guide"
+      videoUrl: "https://www.youtube-nocookie.com/embed/TLh5h9nJ_Sk?rel=0&autoplay=1&modestbranding=1",
+      provider: "Step Up for Students · EMA Marketplace"
     },
     v4: {
       title: {
         en: "Wyoming & Utah Odyssey: Enrollment and fund disbursement guide",
         es: "Wyoming & Utah Odyssey: Guía de inscripción y liberación de fondos"
       },
-      videoUrl: "https://www.youtube-nocookie.com/embed/Vp4iRkE3_0c?rel=0&autoplay=1&modestbranding=1",
-      provider: "Odyssey Parent Portal"
+      videoUrl: "https://www.youtube-nocookie.com/embed/-SmCEaC3uUY?rel=0&autoplay=1&modestbranding=1",
+      provider: "WithOdyssey Parent Portal"
     },
     v5: {
       title: {
         en: "New Hampshire EFA: Academic mentorship and direct invoicing in ClassWallet",
         es: "New Hampshire EFA: Mentoría académica y facturación directa en ClassWallet"
       },
-      videoUrl: "https://www.youtube-nocookie.com/embed/7IadCPX-uRA?rel=0&autoplay=1&modestbranding=1",
-      provider: "New Hampshire EFA Guide"
+      videoUrl: "https://www.youtube-nocookie.com/embed/KOIGl69V5ck?rel=0&autoplay=1&modestbranding=1",
+      provider: "New Hampshire EFA · ClassWallet Guide"
     },
     v6: {
       title: {
         en: "Alabama CHOOSE Act: Monthly invoicing per student with Pay Vendor",
         es: "Alabama CHOOSE Act: Facturación mensual por alumno con Pay Vendor"
       },
-      videoUrl: "https://www.youtube-nocookie.com/embed/fYr6kyaQ5V8?rel=0&autoplay=1&modestbranding=1",
+      videoUrl: "https://www.youtube-nocookie.com/embed/GOfSXG4xwm0?rel=0&autoplay=1&modestbranding=1",
       provider: "Alabama CHOOSE · ClassWallet Guide"
     }
   };
