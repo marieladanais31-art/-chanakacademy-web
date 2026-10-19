@@ -999,11 +999,11 @@
     function handleServiceChange() {
       var serv = document.getElementById('serviceSelect').value;
       var gradeSelect = document.getElementById('studentGrade');
-      if (serv === 'support-k5') {
+      if (serv === 'support-k5' || serv === 'ft-15' || serv === 'support-15') {
         gradeSelect.value = 'K-5';
-      } else if (serv === 'support-68') {
+      } else if (serv === 'support-68' || serv === 'ft-68') {
         gradeSelect.value = '6-8';
-      } else if (serv === 'support-912') {
+      } else if (serv === 'support-912' || serv === 'ft-912') {
         gradeSelect.value = '9-12';
       }
       updateServiceSummary();
@@ -1012,8 +1012,13 @@
     function handleGradeSync() {
       var grade = document.getElementById('studentGrade').value;
       var servSelect = document.getElementById('serviceSelect');
-      if (servSelect.value.indexOf('support-') === 0 || servSelect.value === 'support') {
-        if (grade === 'K-5') servSelect.value = 'support-k5';
+      var hubId = document.getElementById('stateHubSelect').value;
+      if (hubId === 'AZ-ESA-CW') {
+        if (grade === 'K-5') servSelect.value = 'ft-15';
+        else if (grade === '6-8') servSelect.value = 'ft-68';
+        else if (grade === '9-12') servSelect.value = 'ft-912';
+      } else if (servSelect.value.indexOf('support-') === 0 || servSelect.value === 'support') {
+        if (grade === 'K-5') servSelect.value = (hubId === 'FL-STEPUP-EMA') ? 'support-k5' : 'support-15';
         else if (grade === '6-8') servSelect.value = 'support-68';
         else if (grade === '9-12') servSelect.value = 'support-912';
       }
@@ -1028,10 +1033,30 @@
       var curLang = select.getAttribute('data-loaded-lang');
       var targetLang = isEs ? 'es' : 'en';
 
-      // Show frequency selector for ClassWallet hubs
+      // Configure frequency selector
       var isClassWallet = (hubId === 'AZ-ESA-CW' || hubId === 'AL-CHOOSE-CW' || hubId === 'SC-ESTF-CW' || hubId === 'NH-EFA-CW');
       if (freqGroup) {
-        freqGroup.style.display = isClassWallet ? 'block' : 'none';
+        if (hubId === 'AZ-ESA-CW') {
+          freqGroup.style.display = 'block';
+          var freqSelect = document.getElementById('billingFreqSelect');
+          if (freqSelect && freqSelect.getAttribute('data-mode') !== 'az') {
+            freqSelect.innerHTML = '' +
+              '<option value="quarterly" selected>' + (isEs ? 'Cuotas Trimestrales (4 cuotas · Pago principal)' : 'Quarterly Installments (4 Installments · Primary)') + '</option>' +
+              '<option value="annual">' + (isEs ? 'Pago Anual Completo' : 'Full Annual Payment') + '</option>';
+            freqSelect.setAttribute('data-mode', 'az');
+          }
+        } else if (isClassWallet) {
+          freqGroup.style.display = 'block';
+          var freqSelect = document.getElementById('billingFreqSelect');
+          if (freqSelect && freqSelect.getAttribute('data-mode') !== 'std') {
+            freqSelect.innerHTML = '' +
+              '<option value="monthly" selected>' + (isEs ? 'Facturación Mensual' : 'Monthly Billing') + '</option>' +
+              '<option value="quarterly">' + (isEs ? 'Facturación Trimestral (3 Meses)' : 'Quarterly Billing (3 Months)') + '</option>';
+            freqSelect.setAttribute('data-mode', 'std');
+          }
+        } else {
+          freqGroup.style.display = 'none';
+        }
       }
 
       if (curHub === hubId && curLang === targetLang) return;
@@ -1039,17 +1064,16 @@
       var curVal = select.value;
       if (hubId === 'AZ-ESA-CW') {
         select.innerHTML = '' +
-          '<option value="ft-15">' + (isEs ? 'Escuela Online Full-Time – Primaria (Grados 1–5 · $4,500/año)' : 'Full-Time Online School – Elementary (Grades 1–5 · $4,500/yr)') + '</option>' +
-          '<option value="ft-68">' + (isEs ? 'Escuela Online Full-Time – Secundaria (Grados 6–8 · $4,950/año)' : 'Full-Time Online School – Middle School (Grades 6–8 · $4,950/yr)') + '</option>' +
-          '<option value="ft-912">' + (isEs ? 'Escuela Online Full-Time – Preparatoria (Grados 9–12 · $5,400/año)' : 'Full-Time Online School – High School (Grades 9–12 · $5,400/yr)') + '</option>' +
-          '<option value="support-15">' + (isEs ? 'Apoyo Académico Virtual – Primaria (Grados 1–5 · $275/mes u $825/trim)' : 'Virtual Academic Support – Elementary (Grades 1–5 · $275/mo or $825/qtr)') + '</option>' +
-          '<option value="support-68">' + (isEs ? 'Apoyo Académico Virtual – Secundaria (Grados 6–8 · $320/mes u $960/trim)' : 'Virtual Academic Support – Middle School (Grades 6–8 · $320/mo or $960/qtr)') + '</option>' +
-          '<option value="support-912">' + (isEs ? 'Apoyo Académico Virtual – Preparatoria (Grados 9–12 · $365/mes u $1,095/trim)' : 'Virtual Academic Support – High School (Grades 9–12 · $365/mo or $1,095/qtr)') + '</option>' +
-          '<option value="abc">' + (isEs ? 'Curso Intensivo de Lectoescritura ABC ($1,110/mes · máx 3 alumnos)' : 'ABC Early Reading & Literacy Intensive Course ($1,110/mo · max 3 students)') + '</option>' +
-          '<option value="lifeskills">' + (isEs ? 'Curso de Liderazgo y Educación Financiera ($120/mes · máx 7 alumnos)' : 'Academic Leadership & Financial Literacy Course ($120/mo · max 7 students)') + '</option>' +
-          '<option value="languages">' + (isEs ? 'Clases en Vivo de Español o Inglés Académico ($240/mes)' : 'Spanish or Academic English Live Classes ($240/mo)') + '</option>' +
-          '<option value="bundle">' + (isEs ? 'Paquete Intensivo de Idiomas y Liderazgo ($520/mes)' : 'Language & Leadership Classes Bundle ($520/mo)') + '</option>' +
-          '<option value="assessment">' + (isEs ? 'Inscripción Anual, Evaluación Educativa Inicial y Plan ILP ($295)' : 'Annual Registration, Educational Assessment & ILP Setup ($295)') + '</option>';
+          '<option value="ft-15">' + (isEs ? 'Escuela Online Full-Time – Primaria (Grados 1–5 · $1,125/trim · Anual $4,500)' : 'Full-Time Online School – Elementary (Grades 1–5 · $1,125/qtr · Annual $4,500)') + '</option>' +
+          '<option value="ft-68">' + (isEs ? 'Escuela Online Full-Time – Secundaria (Grados 6–8 · $1,237.50/trim · Anual $4,950)' : 'Full-Time Online School – Middle School (Grades 6–8 · $1,237.50/qtr · Annual $4,950)') + '</option>' +
+          '<option value="ft-912">' + (isEs ? 'Escuela Online Full-Time – Preparatoria (Grados 9–12 · $1,350/trim · Anual $5,400)' : 'Full-Time Online School – High School (Grades 9–12 · $1,350/qtr · Annual $5,400)') + '</option>' +
+          '<option value="assessment">' + (isEs ? 'Matrícula Anual y Evaluación Inicial ($295)' : 'Annual Registration & Initial Assessment ($295)') + '</option>';
+        if (curVal !== 'ft-15' && curVal !== 'ft-68' && curVal !== 'ft-912' && curVal !== 'assessment') {
+          var grade = document.getElementById('studentGrade').value;
+          if (grade === '6-8') curVal = 'ft-68';
+          else if (grade === '9-12') curVal = 'ft-912';
+          else curVal = 'ft-15';
+        }
       } else if (hubId === 'FL-STEPUP-EMA') {
         select.innerHTML = '' +
           '<option value="support-k5">' + (isEs ? 'Home Education Instructional Program · Grados K–5 · $275/mes (ID EMA: 20172869)' : 'Home Education Instructional Program · Grades K–5 · $275/mo (EMA ID: 20172869)') + '</option>' +
@@ -1088,8 +1112,8 @@
 
       var isClassWallet = (hubId === 'AZ-ESA-CW' || hubId === 'AL-CHOOSE-CW' || hubId === 'SC-ESTF-CW' || hubId === 'NH-EFA-CW');
       var freqSelect = document.getElementById('billingFreqSelect');
-      var freq = freqSelect ? freqSelect.value : 'monthly';
-      var isQuarterly = (isClassWallet && freq === 'quarterly');
+      var freq = freqSelect ? freqSelect.value : (hubId === 'AZ-ESA-CW' ? 'quarterly' : 'monthly');
+      var isQuarterly = (hubId === 'AZ-ESA-CW') ? (freq !== 'annual') : (isClassWallet && freq === 'quarterly');
 
       var titles = {
         'ft-15': isEs ? "Escuela Online Full-Time – Primaria (Grados 1–5)" : "Full-Time Online School – Elementary (Grades 1–5)",
@@ -1124,9 +1148,9 @@
       };
 
       var periods = {
-        'ft-15': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / año" : " / year"),
-        'ft-68': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / año" : " / year"),
-        'ft-912': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / año" : " / year"),
+        'ft-15': isQuarterly ? (isEs ? " / cuota trimestral" : " / quarterly installment") : (isEs ? " / año" : " / year"),
+        'ft-68': isQuarterly ? (isEs ? " / cuota trimestral" : " / quarterly installment") : (isEs ? " / año" : " / year"),
+        'ft-912': isQuarterly ? (isEs ? " / cuota trimestral" : " / quarterly installment") : (isEs ? " / año" : " / year"),
         'support-15': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
         'support-68': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
         'support-912': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
@@ -1141,7 +1165,7 @@
       var hubNames = {
         'FL-STEPUP-EMA': "Florida · Step Up for Students / PEP (EMA Marketplace)",
         'AL-CHOOSE-CW': "Alabama · Alabama CHOOSE Act (ClassWallet Pay Vendor)",
-        'AZ-ESA-CW': "Arizona · Arizona ESA (ClassWallet Pay Vendor)",
+        'AZ-ESA-CW': "Arizona · Arizona ESA (ClassWallet Pay Vendor · Tuition & Fees)",
         'UT-UFA-ODY': "Utah · Utah Fits All (Odyssey Marketplace)",
         'WY-ESA-ODY': "Wyoming · Wyoming ESA (Odyssey Marketplace)",
         'NH-EFA-CW': "New Hampshire · NH EFA (ClassWallet · CSF NH)",
@@ -1179,6 +1203,15 @@
             ? "<strong>Cuota anual adicional:</strong> $295 — actualmente en revisión en EMA y no disponible para pago mediante EMA hasta su aprobación."
             : "<strong>Additional annual fee:</strong> $295 — currently under EMA review and not available for EMA payment unless approved.";
         }
+      } else if (hubId === 'AZ-ESA-CW') {
+        if (serv === 'assessment') {
+          setupBox.style.display = 'none';
+        } else {
+          setupBox.style.display = 'block';
+          setupBox.innerHTML = isEs
+            ? "<strong>Matrícula Anual y Evaluación Inicial:</strong> $295 anual, facturado por separado (abre expediente formal, registros y evaluación diagnóstica inicial)."
+            : "<strong>Annual Registration & Initial Assessment:</strong> $295/yr, billed separately (formal record opening, registration & initial educational assessment).";
+        }
       } else {
         if (serv === 'assessment') {
           setupBox.style.display = 'none';
@@ -1189,6 +1222,47 @@
             : "Annual Registration, Educational Assessment & ILP Setup: $295, billed separately.";
         }
       }
+
+      var featuresList = document.getElementById('ssFeatures');
+      var disclaimerBox = document.getElementById('ssDisclaimer');
+      if (isFullTime) {
+        if (featuresList) {
+          featuresList.innerHTML = isEs
+            ? '<li>Matrícula escolar oficial y expediente acumulativo bajo código FLDOE #134620 (Candidato a acreditación MSA-CESS)</li>' +
+              '<li>Planificación académica integral, supervisión continua, evaluaciones formativas y acceso 24/7 a LMS y SIS</li>' +
+              '<li>2 horas al mes de trabajo dedicado del mentor y revisión de avances</li>' +
+              '<li>4 horas al mes de clases en vivo de Life Skills y Liderazgo (máx. 7 alumnos) y 1 hora mensual de mentoría familiar</li>' +
+              '<li>Clases en vivo de Inglés o Español Académico incluidas sin costo adicional</li>' +
+              '<li>Expediente oficial y Diploma de High School americano al graduarse (Libros y licencias curriculares se adquieren por separado)</li>'
+            : '<li>Formal school enrollment & student records under FLDOE #134620 (Official Candidate for MSA-CESS accreditation)</li>' +
+              '<li>Comprehensive academic planning, oversight, formative assessments & 24/7 LMS and SIS access</li>' +
+              '<li>2 hours/month dedicated mentor work, progress reviews and ILP tracking</li>' +
+              '<li>4 hours/month live Life Skills & Leadership classes (max 7 students) + 1 hour/month family mentoring</li>' +
+              '<li>Live Academic English or Spanish language classes included at no extra cost</li>' +
+              '<li>Cumulative official academic records & American High School diploma upon graduation (Books purchased separately)</li>';
+        }
+        if (disclaimerBox) {
+          disclaimerBox.innerHTML = isEs
+            ? '<strong>Aviso de Matrícula Escolar:</strong> Este programa confiere matrícula escolar formal bajo el código escolar FLDOE #134620. Al graduarse, el alumno recibe su expediente acumulativo oficial y diploma de High School americano. Los libros de texto y licencias curriculares se adquieren por separado. Los servicios comienzan una vez recibido y conciliado el pago en la cuenta bancaria de Chanak y confirmado el horario con la familia.'
+            : '<strong>Formal School Enrollment Notice:</strong> This program provides formal school enrollment under FLDOE #134620. Cumulative official academic records and an American High School diploma are awarded upon graduation. Books and curriculum licenses are purchased separately. Services begin after payment has been received and reconciled in Chanak’s bank account and the schedule has been confirmed with the family.';
+        }
+      } else {
+        if (featuresList) {
+          featuresList.innerHTML = isEs
+            ? '<li>Mentor académico asignado con seguimiento de progreso quincenal</li>' +
+              '<li>2 horas/mes de tiempo total dedicado para revisión académica, retroalimentación formativa y registros ILP</li>' +
+              '<li>4 clases mensuales de 60 minutos en vivo de Life Skills y Liderazgo en grupos reducidos (máx. 7 estudiantes)</li>' +
+              '<li>Reporte mensual comprensivo de progreso para la familia</li>'
+            : '<li>Assigned academic mentor with bi-weekly progress tracking</li>' +
+              '<li>2 hours/month total dedicated time for academic review, formative feedback, and ILP records</li>' +
+              '<li>4 monthly 60-minute live Life Skills &amp; Leadership classes in cohorts up to 7 students</li>' +
+              '<li>Comprehensive monthly progress report for the family</li>';
+        }
+        if (disclaimerBox) {
+          disclaimerBox.innerHTML = isEs
+            ? '<strong>Aviso legal:</strong> Este paquete de apoyo educativo no constituye matrícula escolar completa ni confiere créditos o diplomas de graduación de forma independiente. Las familias elegibles pueden solicitar el pago de servicios autorizados con fondos de su programa estatal. Los libros y materiales curriculares son adquiridos directamente por la familia. Los servicios comienzan una vez recibido y conciliado el pago en la cuenta bancaria de Chanak y confirmado el horario con la familia.'
+            : '<strong>Legal notice:</strong> This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Eligible families may request payment for authorized services using available program funds. Curriculum textbooks are purchased directly by families from official publishers. Services begin after payment has been received and reconciled in Chanak’s bank account and the schedule has been confirmed with the family.';
+        }
     }
 
     var cachedRandomSeq = Math.floor(1000 + Math.random() * 9000);

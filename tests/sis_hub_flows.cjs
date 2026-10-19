@@ -64,8 +64,13 @@ test('Catalog contains all 7 required state hubs with compliant provider and dir
     const setupService = hub.services.find(s => s.category === 'diagnostic_setup' || s.id.includes('SETUP'));
     assert(setupService && setupService.rate_onetime === 295, 'Setup fee must be $295');
     
-    const supportK5 = hub.services.find(s => s.rate_monthly === 275);
-    assert(supportK5, 'Monthly support K-5 must be $275');
+    if (hubId === 'AZ-ESA-CW') {
+      const ftK5 = hub.services.find(s => s.rate_quarterly === 1125 && s.rate_annual === 4500);
+      assert(ftK5, 'Arizona Full-Time K-5 quarterly rate must be $1,125 ($4,500 annual)');
+    } else {
+      const supportK5 = hub.services.find(s => s.rate_monthly === 275);
+      assert(supportK5, 'Monthly support K-5 must be $275');
+    }
   });
 });
 

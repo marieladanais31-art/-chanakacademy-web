@@ -136,20 +136,29 @@ runTest('Exact state approval strings in state landing pages', () => {
   assert(wy.includes('Odyssey Marketplace') || wy.includes('Wyoming ESA'), 'Wyoming missing Odyssey / WY ESA info');
 });
 
-// 5. ARIZONA FULL-TIME ONLINE SCHOOL SPECIFICS
-runTest('Arizona Full-Time Online School & Support offerings with Monthly/Quarterly toggle', () => {
+// 5. ARIZONA FULL-TIME ONLINE SCHOOL EXCLUSIVELY
+runTest('Arizona Full-Time Online School presented exclusively with quarterly pricing', () => {
   const az = fs.readFileSync(path.join(projectRoot, 'arizona/index.html'), 'utf8');
   assert(az.includes('Tuition and Fees'), 'Arizona must specify ClassWallet category "Tuition and Fees"');
-  assert(az.includes('$4,500'), 'Arizona missing $4,500 elementary annual fee');
-  assert(az.includes('$4,950'), 'Arizona missing $4,950 middle annual fee');
-  assert(az.includes('$5,400'), 'Arizona missing $5,400 high annual fee');
-  assert(az.includes('$1,125'), 'Arizona missing $1,125 quarterly fee');
-  assert(az.includes('$1,237.50'), 'Arizona missing $1,237.50 quarterly fee');
-  assert(az.includes('$1,350'), 'Arizona missing $1,350 quarterly fee');
-  assert(az.includes('setSupportFrequency'), 'Arizona missing setSupportFrequency function');
-  assert(az.includes('Request monthly payment options') || az.includes('Solicitar opciones de pago mensual'), 'Arizona missing monthly payment request note');
-  assert(az.includes('ABC Early Reading'), 'Arizona missing ABC Early Reading course');
-  assert(az.includes('Academic Leadership &amp; Financial Literacy') || az.includes('Academic Leadership & Financial Literacy'), 'Arizona missing Leadership course');
+  assert(az.includes('Full-Time Online K–12 Tuition &amp; Academic Support') || az.includes('Full-Time Online K–12 Tuition & Academic Support'), 'Arizona missing Full-Time program title');
+  // Quarterly prices as primary
+  assert(az.includes('$1,125'), 'Arizona missing $1,125 elementary quarterly installment');
+  assert(az.includes('$1,237.50'), 'Arizona missing $1,237.50 middle quarterly installment');
+  assert(az.includes('$1,350'), 'Arizona missing $1,350 high quarterly installment');
+  // Annual reference
+  assert(az.includes('$4,500'), 'Arizona missing $4,500 elementary annual fee reference');
+  assert(az.includes('$4,950'), 'Arizona missing $4,950 middle annual fee reference');
+  assert(az.includes('$5,400'), 'Arizona missing $5,400 high annual fee reference');
+  // Registration fee
+  assert(az.includes('$295'), 'Arizona missing $295 registration fee');
+  // Zero support packages of $275 / $320 / $365 in Arizona
+  assert(!az.includes('$275'), 'Arizona must NOT contain $275 support rate');
+  assert(!az.includes('$320'), 'Arizona must NOT contain $320 support rate');
+  assert(!az.includes('$365'), 'Arizona must NOT contain $365 support rate');
+  assert(!az.includes('from $275/mo'), 'Arizona must NOT contain "from $275/mo"');
+  // Exact start policy
+  assert(az.includes('Services begin after payment has been received and reconciled in Chanak’s bank account and the schedule has been confirmed with the family.'), 'Arizona missing exact English start policy');
+  assert(az.includes('Los servicios comienzan una vez recibido y conciliado el pago en la cuenta bancaria de Chanak y confirmado el horario con la familia.'), 'Arizona missing exact Spanish start policy');
 });
 
 // 6. CLASSWALLET STATES TOGGLE (AL, SC, NH)
@@ -247,7 +256,7 @@ runTest('Homepage (index.html) state scholarships section updated correctly', ()
     home.includes('Annual Registration, Educational Assessment &amp; ILP Setup: <strong>$295 USD</strong> (billed separately)'),
     'index.html missing updated setup fee in state block'
   );
-  assert(home.includes('/arizona/#full-time'), 'index.html missing link to Arizona Full-Time school');
+  assert(home.includes('/arizona/#tuition'), 'index.html missing link to Arizona Full-Time school');
   assert(
     home.includes('Each program administrator determines which expenses are eligible.'),
     'index.html missing mandatory phrase in state notice'
