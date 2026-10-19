@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>State Education Funds & K–12 Educational Support | Chanak International Academy</title>
-  <meta name="description" content="Chanak International Academy: Virtual guided academic support, mentoring, and Life Skills for families using state school choice funds (ESA, EFA, UFA, PEP, CHOOSE, ESTF)."/>
+  <title>ESA State Education Funds, ClassWallet &amp; Odyssey | Bilingual Christian Guided Support | Chanak International Academy</title>
+  <meta name="description" content="State education funds (ESA, EFA, UFA, Step Up) on ClassWallet and Odyssey. Bilingual Christian guided academic support and Mastery Learning for homeschooling families."/>
   <link rel="canonical" href="https://www.chanakacademy.org/scholarships/"/>
   <link rel="alternate" hreflang="en" href="https://www.chanakacademy.org/scholarships/?lang=en"/>
   <link rel="alternate" hreflang="es" href="https://www.chanakacademy.org/scholarships/?lang=es"/>
   <link rel="alternate" hreflang="x-default" href="https://www.chanakacademy.org/scholarships/"/>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="State Education Funds & K–12 Educational Support | Chanak International Academy"/>
-  <meta property="og:description" content="Approved state scholarship programs on ClassWallet, Odyssey, and Step Up / EMA. Virtual guided support and Life Skills for homeschooling families."/>
+  <meta property="og:title" content="ESA State Education Funds, ClassWallet &amp; Odyssey | Bilingual Christian Guided Support | Chanak International Academy"/>
+  <meta property="og:description" content="Approved state scholarship programs on ClassWallet, Odyssey, and Step Up / EMA. Bilingual Christian guided academic support and Mastery Learning for homeschooling families."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://www.chanakacademy.org/scholarships/"/>
   <meta property="og:image" content="https://www.chanakacademy.org/assets/og-image.jpg"/>
@@ -23,7 +23,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 
   <!-- External Stylesheet with cache-busting -->
-  <link rel="stylesheet" href="/scholarships/scholarships.css?v=20261017a"/>
+  <link rel="stylesheet" href="/scholarships/scholarships.css?v=20261019a"/>
+
+  <!-- JSON-LD Structured Data: EducationalOrganization (Strictly candidate status) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Chanak International Academy",
+    "legalName": "Chanak TrainUp Education Inc.",
+    "taxID": "36-5154011",
+    "url": "https://www.chanakacademy.org/scholarships/",
+    "identifier": "FLDOE #134620",
+    "description": "Virtual guided academic support, bilingual mentoring (English and Spanish), Christian worldview education and Mastery Learning for families using state education funds (ESA, ClassWallet, Odyssey, Step Up / EMA). Candidate for MSA-CESS accreditation.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7901 4th St N Ste 300",
+      "addressLocality": "St. Petersburg",
+      "addressRegion": "FL",
+      "postalCode": "33702",
+      "addressCountry": "US"
+    }
+  }
+  </script>
 
   <!-- Critical embedded styles for jump-nav & language toggle -->
   <style>
@@ -59,6 +81,7 @@
     text-decoration: none !important;
     border: 1px solid rgba(255, 255, 255, 0.18) !important;
     transition: all 0.2s ease !important;
+    white-space: nowrap !important;
   }
   .jump-link-item a:hover {
     background: #0d9488 !important;
@@ -116,11 +139,10 @@
 <div class="topbar">
   <div class="wrap topbar-inner">
     <div class="topbar-info">
-      <span class="topbar-badge">Direct Pay Partner</span>
-      <span data-i18n="topbar_text">Official Nonpublic Educational Provider · Direct Pay Partner on ClassWallet & Odyssey</span>
+      <span data-i18n="topbar_text">Approved provider in the programs listed in the states table</span>
     </div>
     <div class="topbar-cred">
-      <span data-i18n="topbar_fldoe">FLDOE Private School Code: #134620 · 501(c)(3) Nonprofit (EIN 36-5154011)</span>
+      <span data-i18n="topbar_fldoe">Registered with the Florida DOE, code #134620 · 501(c)(3) Nonprofit (EIN 36-5154011)</span>
     </div>
   </div>
 </div>
@@ -128,50 +150,59 @@
 <!-- NAVBAR -->
 <header class="nav-header">
   <div class="wrap nav-inner">
-    <a href="/" class="logo-group">
-      <img src="/assets/chanak-logo.png" alt="Chanak International Academy"/>
-      <div class="logo-text">
-        <span class="logo-title">Chanak International Academy</span>
-        <span class="logo-sub" data-i18n="nav_sub">Approved State Scholarship Programs</span>
+    <div class="nav-brand">
+      <a href="/" style="display:flex;align-items:center;text-decoration:none">
+        <img src="/assets/chanak-logo.png" alt="Chanak International Academy" style="height:36px;width:auto"/>
+      </a>
+      <div class="nav-brand-text">
+        <span class="nav-school-name">Chanak International Academy</span>
+        <span class="nav-school-sub" data-i18n="nav_sub">Approved State ESA &amp; Choice Programs</span>
       </div>
-    </a>
+    </div>
+
     <div class="nav-actions">
-      <div class="state-dropdown">
-        <select class="state-select" onchange="if(this.value) window.location.href=this.value;" aria-label="Select State">
-          <option value="/scholarships/" selected data-i18n="state_select_default">Select State / Program:</option>
-          <option value="/utah/">Utah (Fits All · Odyssey)</option>
-          <option value="/wyoming/">Wyoming (ESA · Odyssey)</option>
-          <option value="/arizona/">Arizona (ESA · ClassWallet)</option>
-          <option value="/alabama/">Alabama (CHOOSE · ClassWallet)</option>
-          <option value="/south-carolina/">South Carolina (ESTF · ClassWallet)</option>
-          <option value="/new-hampshire/">New Hampshire (EFA · ClassWallet)</option>
-          <option value="/florida-home-education/">Florida (Step Up · EMA)</option>
+      <!-- Quick State Selector Dropdown -->
+      <div class="nav-state-select-wrap">
+        <select id="headerStateSelect" class="nav-state-select" onchange="if(this.value) window.location.href=this.value;" aria-label="Select State">
+          <option value="" data-i18n="state_select_default">Select State / Program:</option>
+          <option value="/utah/">Utah · Odyssey (UFA)</option>
+          <option value="/wyoming/">Wyoming · Odyssey (ESA)</option>
+          <option value="/arizona/">Arizona · ClassWallet (ESA)</option>
+          <option value="/alabama/">Alabama · ClassWallet (CHOOSE)</option>
+          <option value="/south-carolina/">South Carolina · ClassWallet (ESTF)</option>
+          <option value="/new-hampshire/">New Hampshire · ClassWallet (EFA)</option>
+          <option value="/florida-home-education/">Florida · Step Up / EMA (PEP)</option>
         </select>
       </div>
 
-      <!-- Visible English | Español switcher -->
+      <!-- Zero-Reload Language Switcher -->
       <div class="lang-toggle-wrapper" aria-label="Language Selector">
-        <button type="button" class="lang-btn active" data-lang="en">English</button>
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
         <span class="lang-sep">|</span>
-        <button type="button" class="lang-btn" data-lang="es">Español</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
       </div>
 
-      <a href="#asesoria" class="btn btn-gold" data-i18n="nav_cta">Request Guidance / Itemized Invoice</a>
+      <a href="#asesoria" class="btn btn-gold btn-sm" data-i18n="nav_cta">Request Guidance / Itemized Invoice</a>
     </div>
   </div>
 </header>
 
-<!-- JUMP NAVIGATION -->
+<!-- STICKY JUMP NAVIGATION -->
 <nav class="jump-nav-sticky" aria-label="Section Navigation" style="position:-webkit-sticky;position:sticky;top:60px;background:#0a192f;background:rgba(10,25,47,0.98);border-bottom:1px solid rgba(212,175,55,0.35);box-shadow:0 4px 20px rgba(0,0,0,0.3);z-index:95;padding:10px 0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
-  <div class="wrap jump-nav-inner" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;overflow-x:auto;">
-    <span class="jump-label" style="color:#d4af37;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.5px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;"><span>⚡</span> <span data-i18n="jump_label">Jump to section:</span></span>
-    <ul class="jump-links" style="display:flex;align-items:center;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap;">
-      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#estados"><span>📍</span> <span data-i18n="jump_states">Approved States</span></a></li>
-      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#billeteras"><span>💳</span> <span data-i18n="jump_wallets">Digital Platforms</span></a></li>
-      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#videos"><span>🎬</span> <span data-i18n="jump_videos">Video Tutorials</span></a></li>
-      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#guias"><span>📖</span> <span data-i18n="jump_guides">Step-by-Step Guides</span></a></li>
-      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#faq"><span>❓</span> <span data-i18n="jump_faq">Frequently Asked Questions</span></a></li>
-      <li class="jump-link-item" style="list-style:none;margin:0;padding:0;"><a href="#asesoria" class="cta-jump"><span>✍️</span> <span data-i18n="jump_advisory">Free Consultation</span></a></li>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+      <span style="color:#d4af37;font-weight:700;font-size:13px;letter-spacing:0.5px" data-i18n="jump_label">Jump to section:</span>
+    </div>
+    <ul class="jump-links" style="display:flex;align-items:center;gap:8px;margin:0;padding:0;list-style:none;flex-wrap:nowrap">
+      <li class="jump-link-item"><a href="#modelo"><span>🎯</span> <span data-i18n="jump_model">60/20/20 Model</span></a></li>
+      <li class="jump-link-item"><a href="#servicios-precios"><span>🏷️</span> <span data-i18n="jump_pricing">Services &amp; Pricing</span></a></li>
+      <li class="jump-link-item"><a href="#estados"><span>🏛️</span> <span data-i18n="jump_states">Approved States</span></a></li>
+      <li class="jump-link-item"><a href="#billeteras"><span>💳</span> <span data-i18n="jump_wallets">Digital Platforms</span></a></li>
+      <li class="jump-link-item"><a href="#videos"><span>🎬</span> <span data-i18n="jump_videos">Video Tutorials</span></a></li>
+      <li class="jump-link-item"><a href="#guias"><span>📖</span> <span data-i18n="jump_guides">Step-by-Step Guides</span></a></li>
+      <li class="jump-link-item"><a href="#faq"><span>❓</span> <span data-i18n="jump_faq">Frequently Asked Questions</span></a></li>
+      <li class="jump-link-item"><a href="#curriculo"><span>📦</span> <span data-i18n="jump_curric">Curriculum Costs</span></a></li>
+      <li class="jump-link-item"><a href="#asesoria" class="cta-jump"><span>✍️</span> <span data-i18n="jump_advisory">Free Consultation</span></a></li>
     </ul>
   </div>
 </nav>
@@ -179,20 +210,20 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <span class="hero-badge" data-i18n="hero_badge">✦ STATE EDUCATION FUNDS & SCHOOL CHOICE · 2026–2027 CYCLE ✦</span>
-    <h1 data-i18n="hero_h1">State Education Funds & K–12 Virtual Guided Learning</h1>
-    <p class="lead" data-i18n="hero_lead">Chanak International Academy is an FLDOE-registered private school (#134620), MSA-CESS candidate for accreditation, and approved nonpublic educational services provider in ClassWallet, Odyssey, and Step Up / EMA. Eligible families may request payment for authorized educational services using available program funds. Approval depends on the service, student, and applicable program rules.</p>
+    <span class="hero-badge" data-i18n="hero_badge">✦ STATE EDUCATION FUNDS &amp; SCHOOL CHOICE · 2026–2027 CYCLE ✦</span>
+    <h1 data-i18n="hero_h1">State Education Funds &amp; K–12 Virtual Guided Learning</h1>
+    <p class="lead" data-i18n="hero_lead">Guided academic support, bilingual (English and Spanish), Christian education and Mastery Learning, for families using state education funds.</p>
     <p style="font-size:0.88rem;color:#fcd34d;margin-top:-14px;margin-bottom:24px;font-weight:600" data-i18n="hero_disclaimer">* This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma.</p>
     
     <div class="hero-pills">
-      <div class="hero-pill"><span class="dot"></span> <span data-i18n="pill_entity">Approved Entity: CHANAK TRAINUP EDUCATION INC</span></div>
-      <div class="hero-pill"><span class="dot"></span> <span data-i18n="pill_wallets">Official Platforms: ClassWallet, Odyssey & EMA</span></div>
-      <div class="hero-pill"><span class="dot"></span> <span data-i18n="pill_msa">Accreditation: MSA-CESS Official Candidate</span></div>
-      <div class="hero-pill"><span class="dot"></span> <span data-i18n="pill_transcript">Deliverables: Academic progress records & monthly reports</span></div>
+      <div class="hero-pill"><span class="dot"></span> <span data-i18n="pill_entity">Entity: Chanak TrainUp Education Inc. d/b/a Chanak International Academy</span></div>
+      <div class="hero-pill"><span class="dot"></span> <span data-i18n="pill_wallets">Platforms: ClassWallet, Odyssey &amp; Step Up / EMA</span></div>
+      <div class="hero-pill"><span class="dot"></span> <span data-i18n="pill_msa">Candidate for MSA-CESS accreditation</span></div>
+      <div class="hero-pill"><span class="dot"></span> <span data-i18n="pill_fldoe">Registered with the Florida DOE, code #134620</span></div>
     </div>
 
     <div class="hero-cta-group">
-      <a href="#estados" class="btn btn-gold" data-i18n="btn_explore_states">Explore States & Platforms ↓</a>
+      <a href="#estados" class="btn btn-gold" data-i18n="btn_explore_states">Explore States &amp; Platforms ↓</a>
       <a href="#asesoria" class="btn btn-outline" data-i18n="btn_request_guidance">Request Free Guidance →</a>
     </div>
   </div>
@@ -201,100 +232,151 @@
 <!-- TRUST BAR -->
 <div class="trustbar">
   <div class="wrap trustbar-items">
-    <div class="trustbar-item"><span>🏛️</span> <span data-i18n="trust_fldoe">FLDOE Registered Private School #134620</span></div>
-    <div class="trustbar-item"><span>🎓</span> <span data-i18n="trust_msa">MSA-CESS Official Candidate for Accreditation</span></div>
-    <div class="trustbar-item"><span>🛡️</span> <span data-i18n="trust_nonprofit">501(c)(3) Nonprofit: Chanak TrainUp Education Inc.</span></div>
-    <div class="trustbar-item"><span>💳</span> <span data-i18n="trust_directpay">Official State Wallet Payment Processing</span></div>
+    <div class="trustbar-item"><span>🏛️</span> <span data-i18n="trust_fldoe">Registered with the Florida DOE, code #134620</span></div>
+    <div class="trustbar-item"><span>🎓</span> <span data-i18n="trust_msa">Candidate for MSA-CESS accreditation</span></div>
+    <div class="trustbar-item"><span>🛡️</span> <span data-i18n="trust_nonprofit">501(c)(3) Nonprofit: Chanak TrainUp Education Inc. (EIN 36-5154011)</span></div>
+    <div class="trustbar-item"><span>💳</span> <span data-i18n="trust_directpay">Official State Platform Payment Processing</span></div>
   </div>
 </div>
 
 <main>
 
-  <!-- 1. BLOQUE EDUCATIVO: CONCEPTOS CLAVE -->
-  <section class="sec" id="conceptos" style="background:#fff">
+  <!-- 1. NUEVA SECCIÓN: MODELO 60/20/20 -->
+  <section class="sec" id="modelo" style="background:#fff">
     <div class="wrap">
       <div class="sec-header">
-        <span class="sec-badge" data-i18n="concepts_badge">SCHOOL CHOICE ESSENTIALS</span>
-        <h2 class="sec-title" data-i18n="concepts_title">How Do State Education Funds Work for Families?</h2>
-        <p class="sec-lead" data-i18n="concepts_lead">School choice policies allow families to apply state-allocated public education funding toward authorized customized distance-learning support services for their children.</p>
+        <span class="sec-badge" data-i18n="model_badge">OUR PEDAGOGICAL MODEL</span>
+        <h2 class="sec-title" data-i18n="model_title">How We Teach: The 60/20/20 Model</h2>
+        <p class="sec-lead" data-i18n="model_lead">A balanced, mastery-based approach combining American academic rigor, heritage language identity, and character-building leadership.</p>
       </div>
 
-      <div class="concepts-grid">
-        <div class="concept-card">
-          <span class="concept-icon">💼</span>
-          <h3 data-i18n="concept1_title">1. Education Savings Accounts (ESA / EFA / UFA)</h3>
-          <p data-i18n="concept1_desc">State-funded accounts managed through a digital platform where families spend authorized amounts on qualifying educational services, curriculum, and diagnostic benchmarks.</p>
+      <div class="model-grid">
+        <div class="model-card">
+          <div class="model-percent">60<span class="percent-symbol">%</span></div>
+          <h3 data-i18n="model_card1_title">Core U.S. Curriculum</h3>
+          <p data-i18n="model_card1_desc">Mastery Learning: students advance upon demonstrating solid mastery of each learning unit.</p>
         </div>
-        <div class="concept-card">
-          <span class="concept-icon">📜</span>
-          <h3 data-i18n="concept2_title">2. State Scholarships & School Choice Funds</h3>
-          <p data-i18n="concept2_desc">Legislative school choice programs (such as AL CHOOSE, SC ESTF, or FL PEP) designed to empower parents to contract approved educational providers.</p>
+        <div class="model-card">
+          <div class="model-percent">20<span class="percent-symbol">%</span></div>
+          <h3 data-i18n="model_card2_title">Heritage Language &amp; Culture</h3>
+          <p data-i18n="model_card2_desc">Spanish and cultural identity: preserving family roots alongside academic English fluency.</p>
         </div>
-        <div class="concept-card">
-          <span class="concept-icon">📱</span>
-          <h3 data-i18n="concept3_title">3. Direct-Pay Digital Platforms</h3>
-          <p data-i18n="concept3_desc">Approved platforms like ClassWallet or Odyssey where you find CHANAK TRAINUP EDUCATION INC and request payment authorization with your available program funds.</p>
+        <div class="model-card">
+          <div class="model-percent">20<span class="percent-symbol">%</span></div>
+          <h3 data-i18n="model_card3_title">Life Skills &amp; Biblical Worldview</h3>
+          <p data-i18n="model_card3_desc">Weekly small group cohort class integrating practical life competencies and a biblical Christian worldview.</p>
         </div>
       </div>
 
-      <!-- BANNER INFORMATIVO SOBRE MATERIALES Y CATÁLOGOS DE EDITORIALES -->
-      <div style="margin-top: 32px; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1.5px solid #cbd5e1; border-left: 4px solid var(--teal); border-radius: 14px; padding: 22px 26px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-          <span style="font-size:1.4rem;">📦</span>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy-dark);margin:0;" data-i18n="curric_cost_title">Curriculum Material Costs & Official Publisher Catalogs</h3>
-        </div>
-        <p style="font-size:0.92rem;color:#334155;line-height:1.6;margin-bottom:12px;" data-i18n="curric_cost_lead">
-          In the United States, curriculum books and worktexts are purchased directly by families from official publishers according to the student's Individualized Learning Plan (ILP). You can verify current prices directly with publishers:
-        </p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px;">
-          <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-              <span style="font-weight:700;color:var(--navy-dark);font-size:0.95rem;">📘 AOP LIFEPAC</span>
-              <a href="https://aop.com/" target="_blank" rel="noopener noreferrer" style="font-size:11.5px;color:var(--blue);font-weight:700;text-decoration:underline">Catalog ↗</a>
-            </div>
-            <div style="font-size:0.86rem;color:#475569;line-height:1.5;">
-              Approx. <strong>~$45 – $50 USD</strong> per individual subject (10 worktexts + teacher guide).<br>
-              5-subject annual set: approx. <strong>$440 – $485 USD</strong>.<br>
-              Grade 1 Learning to Read: approx. $108 USD.
-            </div>
-          </div>
-          <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-              <span style="font-weight:700;color:var(--navy-dark);font-size:0.95rem;">📖 Christian Light (CLE)</span>
-              <a href="https://christianlight.org/" target="_blank" rel="noopener noreferrer" style="font-size:11.5px;color:var(--blue);font-weight:700;text-decoration:underline">Catalog ↗</a>
-            </div>
-            <div style="font-size:0.86rem;color:#475569;line-height:1.5;">
-              Approx. <strong>~$55 USD</strong> per subject (10 LightUnits; $277/yr student worktexts).<br>
-              Complete set with teacher guides: approx. <strong>$390 – $430 USD</strong>.<br>
-              Learning to Read kit: approx. $177 USD.
-            </div>
-          </div>
-          <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-              <span style="font-weight:700;color:var(--navy-dark);font-size:0.95rem;">✝️ A.C.E. School of Tomorrow</span>
-              <a href="https://www.aceschooloftomorrow.com/" target="_blank" rel="noopener noreferrer" style="font-size:11.5px;color:var(--blue);font-weight:700;text-decoration:underline">Catalog ↗</a>
-            </div>
-            <div style="font-size:0.86rem;color:#475569;line-height:1.5;">
-              Middle & High School (5–12): approx. <strong>$320 – $390 USD / year</strong>.<br>
-              Elementary (1–4): approx. <strong>$460 – $530 USD / year</strong>.<br>
-              ABCs with Ace and Christi reading kit: $380 – $440 USD.
-            </div>
-          </div>
-        </div>
-        <p style="font-size:0.83rem;color:#64748b;margin:12px 0 0;font-style:italic;" data-i18n="curric_cost_footer">
-          * Chanak Life Skills &amp; Leadership materials are included in the monthly support package at no extra charge.
-        </p>
+      <div class="model-badges-strip">
+        <div class="model-badge-item"><span class="badge-icon">🌐</span> <span data-i18n="model_seal1">Bilingual Support English–Spanish</span></div>
+        <div class="model-badge-item"><span class="badge-icon">✝️</span> <span data-i18n="model_seal2">Christian Education</span></div>
+        <div class="model-badge-item"><span class="badge-icon">🎯</span> <span data-i18n="model_seal3">Mastery Learning</span></div>
       </div>
     </div>
   </section>
 
-  <!-- 2. DIRECTORIO MAESTRO DE FONDOS -->
-  <section class="sec" id="estados" style="background:#f8fafc;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <!-- 2. NUEVA SECCIÓN: SERVICIOS Y PRECIOS -->
+  <section class="sec" id="servicios-precios" style="background:#f8fafc;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="wrap">
+      <div class="sec-header">
+        <span class="sec-badge" data-i18n="pricing_badge">AUTHORIZED SERVICES &amp; PRICING</span>
+        <h2 class="sec-title" data-i18n="pricing_title">Services &amp; Pricing</h2>
+        <p class="sec-lead" data-i18n="pricing_lead">Identical transparent pricing for scholarship families and direct-pay families. Itemized billing aligned with state guidelines.</p>
+      </div>
+
+      <div class="pricing-section-wrap">
+        <!-- Setup / Assessment Card -->
+        <div class="pricing-single-card">
+          <div class="pricing-single-body">
+            <span class="pricing-single-tag" data-i18n="serv_setup_tag">Initial Setup &amp; Academic Plan</span>
+            <h3 data-i18n="serv_setup_title">Enrollment, Initial Assessment and ILP Setup</h3>
+            <p data-i18n="serv_setup_desc">Includes comprehensive initial academic assessment and the individualized learning plan (ILP) setup per student.</p>
+          </div>
+          <div class="pricing-single-price">
+            <div class="pricing-single-amount" data-i18n="serv_setup_amount">$295</div>
+            <div class="pricing-single-period" data-i18n="serv_setup_period">one-time fee / initial payment</div>
+          </div>
+        </div>
+
+        <!-- Monthly Support Grid -->
+        <!-- [CONFIRMAR CON MARIELA ANTES DE PUBLICAR: los tres precios mensuales; si cambian, usar los nuevos.] -->
+        <div class="pricing-monthly-grid">
+          <!-- Elementary K-5 -->
+          <div class="pricing-monthly-card">
+            <div class="pricing-monthly-header">
+              <span class="pricing-monthly-band" data-i18n="serv_monthly_badge">Monthly Guided Academic Support</span>
+              <h3 data-i18n="grade_k5_title">Elementary School (Grades K–5)</h3>
+              <div class="pricing-monthly-rate">
+                <span class="pricing-monthly-number" data-i18n="grade_k5_rate">$275</span>
+                <span class="pricing-monthly-unit" data-i18n="rate_month_unit">/ month</span>
+              </div>
+            </div>
+            <ul class="pricing-features-list">
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_mentor">Assigned academic mentor with weekly progress tracking</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_lifeskills">One weekly Life Skills class in small cohorts (60 min)</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_coordination">Academic coordination aligned with the family's chosen curriculum</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_bilingual">Bilingual support and mentoring in English and Spanish</span></li>
+            </ul>
+            <a href="#asesoria" class="btn btn-outline" style="width:100%;justify-content:center" data-i18n="btn_request_guidance">Request Free Guidance →</a>
+          </div>
+
+          <!-- Middle School 6-8 -->
+          <div class="pricing-monthly-card" style="border-color:var(--teal)">
+            <div class="pricing-monthly-header">
+              <span class="pricing-monthly-band" style="color:var(--teal)" data-i18n="serv_monthly_badge">Monthly Guided Academic Support</span>
+              <h3 data-i18n="grade_68_title">Middle School (Grades 6–8)</h3>
+              <div class="pricing-monthly-rate">
+                <span class="pricing-monthly-number" data-i18n="grade_68_rate">$320</span>
+                <span class="pricing-monthly-unit" data-i18n="rate_month_unit">/ month</span>
+              </div>
+            </div>
+            <ul class="pricing-features-list">
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_mentor">Assigned academic mentor with weekly progress tracking</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_lifeskills">One weekly Life Skills class in small cohorts (60 min)</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_coordination">Academic coordination aligned with the family's chosen curriculum</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_bilingual">Bilingual support and mentoring in English and Spanish</span></li>
+            </ul>
+            <a href="#asesoria" class="btn btn-gold" style="width:100%;justify-content:center" data-i18n="btn_request_guidance">Request Free Guidance →</a>
+          </div>
+
+          <!-- High School 9-12 -->
+          <div class="pricing-monthly-card">
+            <div class="pricing-monthly-header">
+              <span class="pricing-monthly-band" data-i18n="serv_monthly_badge">Monthly Guided Academic Support</span>
+              <h3 data-i18n="grade_912_title">High School (Grades 9–12)</h3>
+              <div class="pricing-monthly-rate">
+                <span class="pricing-monthly-number" data-i18n="grade_912_rate">$365</span>
+                <span class="pricing-monthly-unit" data-i18n="rate_month_unit">/ month</span>
+              </div>
+            </div>
+            <ul class="pricing-features-list">
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_mentor">Assigned academic mentor with weekly progress tracking</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_lifeskills">One weekly Life Skills class in small cohorts (60 min)</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_coordination">Academic coordination aligned with the family's chosen curriculum</span></li>
+              <li><span class="feat-check">✓</span> <span data-i18n="feat_bilingual">Bilingual support and mentoring in English and Spanish</span></li>
+            </ul>
+            <a href="#asesoria" class="btn btn-outline" style="width:100%;justify-content:center" data-i18n="btn_request_guidance">Request Free Guidance →</a>
+          </div>
+        </div>
+
+        <!-- Itemized invoice note -->
+        <div class="pricing-invoice-note">
+          <span style="font-size:1.3rem;">🧾</span>
+          <span data-i18n="pricing_invoice_note">We invoice each service with an itemized invoice. If the platform assesses a processing fee, it appears as a separate line item.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. DIRECTORIO MAESTRO DE FONDOS (TABLA DE 7 ESTADOS) -->
+  <section class="sec" id="estados" style="background:#fff">
     <div class="wrap">
       <div class="sec-header">
         <span class="sec-badge" data-i18n="table_badge">STATE FUNDING DIRECTORY</span>
-        <h2 class="sec-title" data-i18n="table_title">Approved States, Platforms & Service Status</h2>
+        <h2 class="sec-title" data-i18n="table_title">Approved States, Platforms &amp; Service Status</h2>
         <p class="sec-lead" data-i18n="table_lead">Explore approved programs, management platforms, provider status, and authorized Chanak support services. Use the instant search bar to find your state.</p>
+        <p style="font-size:0.88rem;color:#b45309;background:#fef3c7;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:6px;margin-top:14px;font-weight:600" data-i18n="table_disclaimer">Approval depends on each state's program, the specific service, and the student. Chanak does not guarantee coverage or funding amounts.</p>
       </div>
 
       <!-- Buscador y Contador -->
@@ -306,7 +388,7 @@
         <div class="table-filter-count" id="tableFilterCount">Showing 7 programs and states</div>
       </div>
 
-      <!-- Tabla Contenedor con 6 columnas analíticas -->
+      <!-- Tabla Contenedor con 7 Filas Pre-Renderizadas Directamente en HTML -->
       <div class="state-table-container">
         <table class="state-table">
           <thead>
@@ -321,18 +403,114 @@
             </tr>
           </thead>
           <tbody id="stateTableBody">
-            <!-- Renderizado dinámico vía scholarships.js -->
+            <!-- Row 1: Utah -->
+            <tr class="featured-state-row">
+              <td class="state-name-cell"><span>🏔️</span> <strong>Utah</strong></td>
+              <td><a href="https://www.utaheducationfitsall.org/" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px">Utah Fits All Scholarship (UFA) ↗</a></td>
+              <td><span class="badge-wallet badge-odyssey">💳 Odyssey</span></td>
+              <td><span class="badge-check">Qualified Vendor on Odyssey</span></td>
+              <td>
+                <div style="font-weight:600;color:var(--navy);font-size:13.5px">Academic Support &amp; Mentoring</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">Grades K–12 Monthly Support</div>
+              </td>
+              <td><span style="font-size:12.5px;color:#047857;font-weight:600">✓ Direct Invoicing via Odyssey</span></td>
+              <td><a href="/utah/" class="btn-table-action" data-i18n="btn_view_state">View State Guide →</a></td>
+            </tr>
+
+            <!-- Row 2: Wyoming -->
+            <tr class="featured-state-row">
+              <td class="state-name-cell"><span>🦬</span> <strong>Wyoming</strong></td>
+              <td><a href="https://edu.wyoming.gov/parents/education-savings-accounts/" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px">Wyoming Education Savings Account (ESA) ↗</a></td>
+              <td><span class="badge-wallet badge-odyssey">💳 Odyssey</span></td>
+              <td><span class="badge-check">Approved Vendor on Odyssey</span></td>
+              <td>
+                <div style="font-weight:600;color:var(--navy);font-size:13.5px">Academic Support &amp; Mentoring</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">Grades K–12 Monthly Support</div>
+              </td>
+              <td><span style="font-size:12.5px;color:#047857;font-weight:600">✓ Direct Invoicing via Odyssey</span></td>
+              <td><a href="/wyoming/" class="btn-table-action" data-i18n="btn_view_state">View State Guide →</a></td>
+            </tr>
+
+            <!-- Row 3: Arizona -->
+            <tr class="featured-state-row">
+              <td class="state-name-cell"><span>🌵</span> <strong>Arizona</strong></td>
+              <td><a href="https://www.azed.gov/esa/" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px">Empowerment Scholarship Account (ESA) ↗</a></td>
+              <td><span class="badge-wallet badge-classwallet">💳 ClassWallet</span></td>
+              <td><span class="badge-check">Registered Vendor on ClassWallet</span></td>
+              <td>
+                <div style="font-weight:600;color:var(--navy);font-size:13.5px">Academic Support &amp; Mentoring</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">Grades K–12 Monthly Support</div>
+              </td>
+              <td><span style="font-size:12.5px;color:#047857;font-weight:600">✓ Direct Pay via Pay Vendor</span></td>
+              <td><a href="/arizona/" class="btn-table-action" data-i18n="btn_view_state">View State Guide →</a></td>
+            </tr>
+
+            <!-- Row 4: Alabama -->
+            <tr class="featured-state-row">
+              <td class="state-name-cell"><span>🌲</span> <strong>Alabama</strong></td>
+              <td><a href="https://classwallet.com/alchoose/" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px">The CHOOSE Act of 2024 ↗</a></td>
+              <td><span class="badge-wallet badge-classwallet">💳 ClassWallet</span></td>
+              <td><span class="badge-check">Registered Vendor on ClassWallet</span></td>
+              <td>
+                <div style="font-weight:600;color:var(--navy);font-size:13.5px">Academic Support &amp; Mentoring</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">Grades K–12 Monthly Support</div>
+              </td>
+              <td><span style="font-size:12.5px;color:#047857;font-weight:600">✓ Direct Pay via Pay Vendor</span></td>
+              <td><a href="/alabama/" class="btn-table-action" data-i18n="btn_view_state">View State Guide →</a></td>
+            </tr>
+
+            <!-- Row 5: South Carolina -->
+            <tr class="featured-state-row">
+              <td class="state-name-cell"><span>🌴</span> <strong>South Carolina</strong></td>
+              <td><a href="https://sc-estf-program.com/en/" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px">Education Scholarship Trust Fund (ESTF) ↗</a></td>
+              <td><span class="badge-wallet badge-classwallet">💳 ClassWallet</span></td>
+              <td><span class="badge-check">Registered Vendor on ClassWallet</span></td>
+              <td>
+                <div style="font-weight:600;color:var(--navy);font-size:13.5px">Academic Support &amp; Mentoring</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">Grades K–12 Monthly Support</div>
+              </td>
+              <td><span style="font-size:12.5px;color:#047857;font-weight:600">✓ Direct Pay via Pay Vendor</span></td>
+              <td><a href="/south-carolina/" class="btn-table-action" data-i18n="btn_view_state">View State Guide →</a></td>
+            </tr>
+
+            <!-- Row 6: New Hampshire -->
+            <tr class="featured-state-row">
+              <td class="state-name-cell"><span>🍁</span> <strong>New Hampshire</strong></td>
+              <td><a href="https://nh.scholarshipfund.org/apply/nh-education-freedom-accounts/" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px">Education Freedom Account (EFA) ↗</a></td>
+              <td><span class="badge-wallet badge-classwallet">💳 ClassWallet</span></td>
+              <td><span class="badge-check">Registered Vendor on ClassWallet</span></td>
+              <td>
+                <div style="font-weight:600;color:var(--navy);font-size:13.5px">Academic Support &amp; Mentoring</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">Grades K–12 Monthly Support</div>
+              </td>
+              <td><span style="font-size:12.5px;color:#047857;font-weight:600">✓ Direct Pay via Pay Vendor</span></td>
+              <td><a href="/new-hampshire/" class="btn-table-action" data-i18n="btn_view_state">View State Guide →</a></td>
+            </tr>
+
+            <!-- Row 7: Florida -->
+            <tr class="featured-state-row">
+              <td class="state-name-cell"><span>☀️</span> <strong>Florida</strong></td>
+              <td><a href="https://www.stepupforstudents.org/" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px">Step Up for Students (PEP &amp; FES-UA) ↗</a></td>
+              <td><span class="badge-wallet badge-ema">💳 EMA Marketplace</span></td>
+              <td><span class="badge-check">Authorized Provider (HEIP)</span></td>
+              <td>
+                <div style="font-weight:600;color:var(--navy);font-size:13.5px">Home Education Instructional Program</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">Monthly Tuition · EMA Catalog Item IDs: 20172869 (K–5), 20169280 (6–8), 20172870 (9–12)</div>
+              </td>
+              <td><span style="font-size:12.5px;color:#047857;font-weight:600">✓ Direct Payment via EMA</span></td>
+              <td><a href="/florida-home-education/" class="btn-table-action" data-i18n="btn_view_state">View State Guide →</a></td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- 3. SECCIÓN BILLETERAS DIGITALES (DIGITAL PLATFORMS) -->
-  <section class="sec" id="billeteras" style="background:#fff">
+  <!-- 4. SECCIÓN BILLETERAS DIGITALES (DIGITAL PLATFORMS) -->
+  <section class="sec" id="billeteras" style="background:#f8fafc;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="wrap">
       <div class="sec-header">
-        <span class="sec-badge" data-i18n="wallets_badge">DIGITAL PLATFORMS & INVOICING</span>
+        <span class="sec-badge" data-i18n="wallets_badge">DIGITAL PLATFORMS &amp; INVOICING</span>
         <h2 class="sec-title" data-i18n="wallets_title">How Payment is Managed in Each Platform</h2>
         <p class="sec-lead" data-i18n="wallets_lead">Chanak is formally registered under its legal non-profit entity: CHANAK TRAINUP EDUCATION INC. Follow the workflow of your state platform to request payment authorizations smoothly.</p>
       </div>
@@ -382,7 +560,7 @@
           <div>
             <div class="wallet-header">
               <span class="badge-wallet badge-ema">☀️ Step Up / EMA</span>
-              <span class="wallet-states" data-i18n="wallet_ema_states">Florida (PEP & FES-UA)</span>
+              <span class="wallet-states" data-i18n="wallet_ema_states">Florida (PEP &amp; FES-UA)</span>
             </div>
             <h3 data-i18n="wallet_ema_title">Step Up for Students (EMA)</h3>
             <p data-i18n="wallet_ema_desc">Florida's official portal for personalized education savings accounts.</p>
@@ -390,18 +568,24 @@
               <li data-i18n="wallet_ema_s1">Log in to the EMA portal at Step Up for Students.</li>
               <li data-i18n="wallet_ema_s2">Search for Chanak International Academy under authorized instructional service providers.</li>
               <li data-i18n="wallet_ema_s3">Select authorized Florida Home Education Instructional Program (HEIP) services.</li>
-              <li data-i18n="wallet_ema_s4">Authorize payment using your PEP or FES-UA scholarship balance in accordance with EMA rules.</li>
+              <li data-i18n="wallet_ema_s4">Authorize payment using your PEP or FES-UA account balance in accordance with EMA rules.</li>
             </ol>
           </div>
           <a href="https://www.stepupforstudents.org/ema/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:14px;width:100%;justify-content:center">Go to EMA Portal ↗</a>
         </div>
 
       </div>
+
+      <!-- Security Notice -->
+      <div style="margin-top:24px;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:0.9rem;color:#92400e;font-weight:600;">
+        <span style="font-size:1.2rem;">🔒</span>
+        <span data-i18n="wallets_security_note">Important security notice: Chanak never asks families for their digital wallet passwords or login credentials (ClassWallet, Odyssey, Step Up / EMA).</span>
+      </div>
     </div>
   </section>
 
-  <!-- 4. GALERÍA DE VIDEO-TUTORIALES -->
-  <section class="sec" id="videos" style="background:#f8fafc;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <!-- 5. GALERÍA DE VIDEO-TUTORIALES (CABECERAS VISUALES TEMÁTICAS) -->
+  <section class="sec" id="videos" style="background:#fff">
     <div class="wrap">
       <div class="sec-header">
         <span class="sec-badge" data-i18n="videos_badge">OFFICIAL CHANAK TUTORIALS</span>
@@ -411,12 +595,15 @@
 
       <div class="videos-grid">
         
-        <!-- Video 1 -->
+        <!-- Video 1: ClassWallet -->
         <div class="chanak-video-card" data-video-key="v1">
-          <div class="chanak-video-thumb-wrap">
-            <img src="/assets/img/quienes-somos.webp" alt="ClassWallet Tutorial" class="chanak-video-thumb" loading="lazy"/>
-            <span class="chanak-play-btn" aria-hidden="true">▶</span>
-            <span class="chanak-video-duration" data-i18n="v1_time">3:30 min</span>
+          <div class="chanak-video-thumb-wrap theme-cw">
+            <span class="chanak-video-badge-top">💳 <span data-i18n="v1_badge">ClassWallet Guide</span></span>
+            <span class="chanak-video-center-play" aria-hidden="true">▶</span>
+            <div class="chanak-video-footer-meta">
+              <span>Pay Vendor Tutorial</span>
+              <span class="chanak-video-duration-pill" data-i18n="v1_time">3:30 min</span>
+            </div>
           </div>
           <div class="chanak-video-body">
             <h3 class="chanak-video-title" data-i18n="v1_title">ClassWallet: How to search CHANAK TRAINUP EDUCATION INC and pay via Pay Vendor</h3>
@@ -425,12 +612,15 @@
           </div>
         </div>
 
-        <!-- Video 2 -->
+        <!-- Video 2: Arizona ESA -->
         <div class="chanak-video-card" data-video-key="v2">
-          <div class="chanak-video-thumb-wrap">
-            <img src="/assets/img/quienes-somos.webp" alt="Arizona ESA Tutorial" class="chanak-video-thumb" loading="lazy"/>
-            <span class="chanak-play-btn" aria-hidden="true">▶</span>
-            <span class="chanak-video-duration" data-i18n="v2_time">4:15 min</span>
+          <div class="chanak-video-thumb-wrap theme-az">
+            <span class="chanak-video-badge-top">🌵 <span data-i18n="v2_badge">Arizona ESA</span></span>
+            <span class="chanak-video-center-play" aria-hidden="true">▶</span>
+            <div class="chanak-video-footer-meta">
+              <span>ClassWallet Arizona</span>
+              <span class="chanak-video-duration-pill" data-i18n="v2_time">4:15 min</span>
+            </div>
           </div>
           <div class="chanak-video-body">
             <h3 class="chanak-video-title" data-i18n="v2_title">Arizona ESA: Using ClassWallet funds for Chanak K–12 Academic Support</h3>
@@ -439,12 +629,15 @@
           </div>
         </div>
 
-        <!-- Video 3 -->
+        <!-- Video 3: Florida Step Up -->
         <div class="chanak-video-card" data-video-key="v3">
-          <div class="chanak-video-thumb-wrap">
-            <img src="/assets/img/quienes-somos.webp" alt="Florida Step Up Tutorial" class="chanak-video-thumb" loading="lazy"/>
-            <span class="chanak-play-btn" aria-hidden="true">▶</span>
-            <span class="chanak-video-duration" data-i18n="v3_time">3:50 min</span>
+          <div class="chanak-video-thumb-wrap theme-fl">
+            <span class="chanak-video-badge-top">☀️ <span data-i18n="v3_badge">Florida Step Up</span></span>
+            <span class="chanak-video-center-play" aria-hidden="true">▶</span>
+            <div class="chanak-video-footer-meta">
+              <span>EMA Marketplace (PEP)</span>
+              <span class="chanak-video-duration-pill" data-i18n="v3_time">3:50 min</span>
+            </div>
           </div>
           <div class="chanak-video-body">
             <h3 class="chanak-video-title" data-i18n="v3_title">Florida Step Up / EMA: How to select Chanak services on the Marketplace</h3>
@@ -453,26 +646,32 @@
           </div>
         </div>
 
-        <!-- Video 4 -->
+        <!-- Video 4: Wyoming & Utah -->
         <div class="chanak-video-card" data-video-key="v4">
-          <div class="chanak-video-thumb-wrap">
-            <img src="/assets/img/quienes-somos.webp" alt="Wyoming & Utah Tutorial" class="chanak-video-thumb" loading="lazy"/>
-            <span class="chanak-play-btn" aria-hidden="true">▶</span>
-            <span class="chanak-video-duration" data-i18n="v4_time">4:00 min</span>
+          <div class="chanak-video-thumb-wrap theme-ody">
+            <span class="chanak-video-badge-top">🦬 🏔️ <span data-i18n="v4_badge">Wyoming &amp; Utah</span></span>
+            <span class="chanak-video-center-play" aria-hidden="true">▶</span>
+            <div class="chanak-video-footer-meta">
+              <span>Odyssey Portal Guide</span>
+              <span class="chanak-video-duration-pill" data-i18n="v4_time">4:00 min</span>
+            </div>
           </div>
           <div class="chanak-video-body">
-            <h3 class="chanak-video-title" data-i18n="v4_title">Wyoming & Utah Odyssey: Enrollment and fund disbursement guide</h3>
+            <h3 class="chanak-video-title" data-i18n="v4_title">Wyoming &amp; Utah Odyssey: Enrollment and fund disbursement guide</h3>
             <p class="chanak-video-meta" data-i18n="v4_desc">Understand the Odyssey workflow for Wyoming ESA and Utah Fits All: linking service listings and post-service disbursement.</p>
             <span class="chanak-btn-play-trigger" data-i18n="video_btn_watch">Watch Video Tutorial ▶</span>
           </div>
         </div>
 
-        <!-- Video 5 -->
+        <!-- Video 5: New Hampshire EFA -->
         <div class="chanak-video-card" data-video-key="v5">
-          <div class="chanak-video-thumb-wrap">
-            <img src="/assets/img/quienes-somos.webp" alt="New Hampshire Tutorial" class="chanak-video-thumb" loading="lazy"/>
-            <span class="chanak-play-btn" aria-hidden="true">▶</span>
-            <span class="chanak-video-duration" data-i18n="v5_time">3:20 min</span>
+          <div class="chanak-video-thumb-wrap theme-nh">
+            <span class="chanak-video-badge-top">🍁 <span data-i18n="v5_badge">New Hampshire EFA</span></span>
+            <span class="chanak-video-center-play" aria-hidden="true">▶</span>
+            <div class="chanak-video-footer-meta">
+              <span>CSF NH ClassWallet</span>
+              <span class="chanak-video-duration-pill" data-i18n="v5_time">3:20 min</span>
+            </div>
           </div>
           <div class="chanak-video-body">
             <h3 class="chanak-video-title" data-i18n="v5_title">New Hampshire EFA: Academic mentorship and direct invoicing in ClassWallet</h3>
@@ -481,16 +680,19 @@
           </div>
         </div>
 
-        <!-- Video 6 -->
+        <!-- Video 6: Alabama CHOOSE -->
         <div class="chanak-video-card" data-video-key="v6">
-          <div class="chanak-video-thumb-wrap">
-            <img src="/assets/img/quienes-somos.webp" alt="Alabama CHOOSE Tutorial" class="chanak-video-thumb" loading="lazy"/>
-            <span class="chanak-play-btn" aria-hidden="true">▶</span>
-            <span class="chanak-video-duration" data-i18n="v6_time">3:45 min</span>
+          <div class="chanak-video-thumb-wrap theme-al">
+            <span class="chanak-video-badge-top">🌲 <span data-i18n="v6_badge">Alabama CHOOSE</span></span>
+            <span class="chanak-video-center-play" aria-hidden="true">▶</span>
+            <div class="chanak-video-footer-meta">
+              <span>CHOOSE Act Pay Vendor</span>
+              <span class="chanak-video-duration-pill" data-i18n="v6_time">3:45 min</span>
+            </div>
           </div>
           <div class="chanak-video-body">
             <h3 class="chanak-video-title" data-i18n="v6_title">Alabama CHOOSE Act: Monthly invoicing per student with Pay Vendor</h3>
-            <p class="chanak-video-meta" data-i18n="v6_desc">How Alabama parents use CHOOSE Act funds via Pay Vendor with itemized monthly invoices and initial diagnostic assessment.</p>
+            <p class="chanak-video-meta" data-i18n="v6_desc">How Alabama parents use CHOOSE Act funds via Pay Vendor with itemized monthly invoices and initial assessment.</p>
             <span class="chanak-btn-play-trigger" data-i18n="video_btn_watch">Watch Video Tutorial ▶</span>
           </div>
         </div>
@@ -499,11 +701,11 @@
     </div>
   </section>
 
-  <!-- 5. GUÍAS PASO A PASO -->
-  <section class="sec" id="guias" style="background:#fff">
+  <!-- 6. GUÍAS PASO A PASO -->
+  <section class="sec" id="guias" style="background:#f8fafc;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="wrap">
       <div class="sec-header">
-        <span class="sec-badge" data-i18n="guides_badge">ARTICLES & OFFICIAL DOCUMENTATION</span>
+        <span class="sec-badge" data-i18n="guides_badge">ARTICLES &amp; OFFICIAL DOCUMENTATION</span>
         <h2 class="sec-title" data-i18n="guides_title">Practical Guides for Scholarship Families</h2>
         <p class="sec-lead" data-i18n="guides_lead">In-depth resources compiled by our admissions and compliance team to maximize your state scholarship benefits.</p>
       </div>
@@ -511,7 +713,7 @@
       <div class="guides-grid">
         <div class="guide-card">
           <span class="guide-num">GUIDE 01</span>
-          <span class="guide-cat" data-i18n="g1_cat">BILLING & DIRECT PAY</span>
+          <span class="guide-cat" data-i18n="g1_cat">BILLING &amp; DIRECT PAY</span>
           <h3 data-i18n="g1_title">Requirements for an Approved Invoice in ClassWallet and Odyssey</h3>
           <p data-i18n="g1_desc">Key elements required on Chanak's itemized invoices (student legal name, vendor EIN, line-item service coding) to ensure compliant state processing.</p>
         </div>
@@ -519,30 +721,30 @@
         <div class="guide-card">
           <span class="guide-num">GUIDE 02</span>
           <span class="guide-cat" data-i18n="g2_cat">STATE COMPLIANCE</span>
-          <h3 data-i18n="g2_title">K–12 State Accountability: Standardized Testing & ILP</h3>
+          <h3 data-i18n="g2_title">K–12 State Accountability: Standardized Testing &amp; ILP</h3>
           <p data-i18n="g2_desc">How Chanak structures annual standardized testing options and Individualized Learning Plans (ILP) aligned with school choice accountability requirements.</p>
         </div>
 
         <div class="guide-card">
           <span class="guide-num">GUIDE 03</span>
           <span class="guide-cat" data-i18n="g3_cat">ACADEMIC PROGRESS</span>
-          <h3 data-i18n="g3_title">Academic Progress Records & Monthly Service Reports</h3>
+          <h3 data-i18n="g3_title">Academic Progress Records &amp; Monthly Service Reports</h3>
           <p data-i18n="g3_desc">How Chanak documents student milestones, reviews learning mastery, and issues monthly progress reports for the contracted support services.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. FORMULARIO DE CONSULTA INICIAL -->
-  <section class="sec" id="asesoria" style="background:#f8fafc;border-top:1px solid var(--border)">
+  <!-- 7. FORMULARIO DE CONSULTA INICIAL -->
+  <section class="sec" id="asesoria" style="background:#fff">
     <div class="wrap">
       <div class="sec-header">
-        <span class="sec-badge" data-i18n="form_badge">INITIAL INQUIRY & GUIDANCE</span>
+        <span class="sec-badge" data-i18n="form_badge">INITIAL INQUIRY &amp; GUIDANCE</span>
         <h2 class="sec-title" data-i18n="form_title">Request Information on State Scholarship Services</h2>
         <p class="sec-lead" data-i18n="form_lead">Submit your details below and our bilingual academic advisory team will follow up to assist you with state-specific guidelines and invoice requirements.</p>
       </div>
 
-      <div style="max-width:760px;margin:0 auto;background:#fff;padding:36px;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--card-shadow)">
+      <div style="max-width:760px;margin:0 auto;background:#fff;padding:36px;border-radius:var(--radius);border:1.5px solid var(--border);box-shadow:var(--card-shadow)">
         <div id="formAlertSuccess" class="form-alert form-alert-success" style="display:none"></div>
         <div id="formAlertError" class="form-alert form-alert-error" style="display:none"></div>
 
@@ -602,31 +804,39 @@
             <div>
               <label style="display:block;font-weight:700;font-size:13.5px;color:var(--navy);margin-bottom:6px" for="fProgram" data-i18n="lbl_service">Service of Interest (Optional)</label>
               <select id="fProgram" name="service_interest" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:#fff;outline:none">
-                <option value="virtual_support" data-i18n="opt_serv_support">Virtual Guided Learning Support (Monthly Mentoring + Life Skills)</option>
-                <option value="initial_eval" data-i18n="opt_serv_eval">Initial Academic Assessment and Learning Plan Setup ($295)</option>
-                <option value="lifeskills_only" data-i18n="opt_serv_ls">Standalone Life Skills & Leadership ($120/mo, subject to confirmation)</option>
+                <option value="virtual_support" data-i18n="opt_serv_support">Monthly Guided Academic Support ($275–$365/mo)</option>
+                <option value="initial_eval" data-i18n="opt_serv_eval">Enrollment, Initial Assessment and ILP Setup ($295)</option>
                 <option value="general_info" data-i18n="opt_serv_info">General State Scholarship Information</option>
               </select>
             </div>
             <div>
-              <label style="display:block;font-weight:700;font-size:13.5px;color:var(--navy);margin-bottom:6px" for="fSchedule" data-i18n="lbl_schedule">Preferred Contact Window & Time Zone (Optional)</label>
-              <select id="fSchedule" name="preferred_schedule" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:#fff;outline:none">
-                <option value="Flexible" data-i18n="opt_sched_any">Any time / Flexible</option>
-                <option value="Morning ET" data-i18n="opt_sched_m_et">Morning (Eastern Time - ET)</option>
-                <option value="Afternoon ET" data-i18n="opt_sched_a_et">Afternoon (Eastern Time - ET)</option>
-                <option value="Morning CT" data-i18n="opt_sched_m_ct">Morning (Central Time - CT)</option>
-                <option value="Afternoon CT" data-i18n="opt_sched_a_ct">Afternoon (Central Time - CT)</option>
-                <option value="Morning MT" data-i18n="opt_sched_m_mt">Morning (Mountain Time - MT)</option>
-                <option value="Afternoon MT" data-i18n="opt_sched_a_mt">Afternoon (Mountain Time - MT)</option>
-                <option value="Morning PT" data-i18n="opt_sched_m_pt">Morning (Pacific Time - PT)</option>
-                <option value="Afternoon PT" data-i18n="opt_sched_a_pt">Afternoon (Pacific Time - PT)</option>
+              <label style="display:block;font-weight:700;font-size:13.5px;color:var(--navy);margin-bottom:6px" for="fPrefLang" data-i18n="lbl_pref_lang">Preferred Communication Language (Optional)</label>
+              <select id="fPrefLang" name="preferred_language" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:#fff;outline:none">
+                <option value="es" data-i18n="opt_lang_es">Español</option>
+                <option value="en" data-i18n="opt_lang_en">English</option>
+                <option value="both" data-i18n="opt_lang_both">Ambos / Both (Bilingual)</option>
               </select>
             </div>
           </div>
 
-          <!-- Required Response Consent -->
+          <div>
+            <label style="display:block;font-weight:700;font-size:13.5px;color:var(--navy);margin-bottom:6px" for="fSchedule" data-i18n="lbl_schedule">Preferred Contact Window &amp; Time Zone (Optional)</label>
+            <select id="fSchedule" name="preferred_schedule" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:#fff;outline:none">
+              <option value="Flexible" data-i18n="opt_sched_any">Any time / Flexible</option>
+              <option value="Morning ET" data-i18n="opt_sched_m_et">Morning (Eastern Time - ET)</option>
+              <option value="Afternoon ET" data-i18n="opt_sched_a_et">Afternoon (Eastern Time - ET)</option>
+              <option value="Morning CT" data-i18n="opt_sched_m_ct">Morning (Central Time - CT)</option>
+              <option value="Afternoon CT" data-i18n="opt_sched_a_ct">Afternoon (Central Time - CT)</option>
+              <option value="Morning MT" data-i18n="opt_sched_m_mt">Morning (Mountain Time - MT)</option>
+              <option value="Afternoon MT" data-i18n="opt_sched_a_mt">Afternoon (Mountain Time - MT)</option>
+              <option value="Morning PT" data-i18n="opt_sched_m_pt">Morning (Pacific Time - PT)</option>
+              <option value="Afternoon PT" data-i18n="opt_sched_a_pt">Afternoon (Pacific Time - PT)</option>
+            </select>
+          </div>
+
+          <!-- Required Response Consent with name attribute -->
           <div style="display:flex;align-items:flex-start;gap:10px;margin-top:6px">
-            <input type="checkbox" id="fPrivacy" required style="margin-top:3px;accent-color:var(--teal);width:16px;height:16px"/>
+            <input type="checkbox" id="fPrivacy" name="consentimiento_consulta" value="si" required style="margin-top:3px;accent-color:var(--teal);width:16px;height:16px"/>
             <label for="fPrivacy" style="font-size:12.5px;color:var(--text-muted);line-height:1.5">
               <span data-i18n="lbl_privacy">I agree to be contacted by Chanak regarding this inquiry in accordance with the <a href="/privacidad/en/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600;text-decoration:underline">Privacy Policy</a>. *</span>
             </label>
@@ -634,7 +844,7 @@
 
           <!-- Separate Optional Newsletter Opt-In -->
           <div style="display:flex;align-items:flex-start;gap:10px;margin-top:0">
-            <input type="checkbox" id="fNewsletter" style="margin-top:3px;accent-color:var(--teal);width:16px;height:16px"/>
+            <input type="checkbox" id="fNewsletter" name="newsletter_opt_in" value="si" style="margin-top:3px;accent-color:var(--teal);width:16px;height:16px"/>
             <label for="fNewsletter" style="font-size:12.5px;color:var(--text-muted);line-height:1.5">
               <span data-i18n="lbl_newsletter">Keep me updated with educational resources and school choice updates (optional).</span>
             </label>
@@ -646,8 +856,8 @@
     </div>
   </section>
 
-  <!-- 7. PREGUNTAS FRECUENTES (FAQ ACORDEÓN) -->
-  <section class="sec" id="faq" style="background:#fff">
+  <!-- 8. PREGUNTAS FRECUENTES (FAQ ACORDEÓN) -->
+  <section class="sec" id="faq" style="background:#f8fafc;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="wrap">
       <div class="sec-header">
         <span class="sec-badge" data-i18n="faq_badge">FREQUENTLY ASKED QUESTIONS</span>
@@ -658,12 +868,12 @@
       <div class="faq-grid">
         <div class="faq-card">
           <h3 class="faq-q"><span class="faq-q-icon">?</span> <span data-i18n="faq1_q">1. How does payment work with state scholarship funds?</span></h3>
-          <div class="faq-a"><p data-i18n="faq1_a">Eligible families may request payment for authorized services using available program funds. Approval depends on the service, student, and applicable program rules. In direct-pay states (such as Arizona, Alabama, South Carolina, or New Hampshire on ClassWallet, and Utah and Wyoming on Odyssey), Chanak provides the itemized quote or invoice for the family to submit directly through their platform.</p></div>
+          <div class="faq-a"><p data-i18n="faq1_a">Eligible families may request payment for authorized services using available program funds. Approval depends on each state's program, the specific service, and the student. Chanak does not guarantee coverage or funding amounts. In direct-pay states (such as Arizona, Alabama, South Carolina, or New Hampshire on ClassWallet, and Utah and Wyoming on Odyssey), Chanak provides the itemized quote or invoice for the family to submit directly through their platform.</p></div>
         </div>
 
         <div class="faq-card">
           <h3 class="faq-q"><span class="faq-q-icon">?</span> <span data-i18n="faq2_q">2. How does my family locate Chanak in our portal?</span></h3>
-          <div class="faq-a"><p data-i18n="faq2_a">Search for our exact approved legal entity: CHANAK TRAINUP EDUCATION INC. In ClassWallet, look under 'Pay Vendor'; in Odyssey, locate our profile in the official state provider directory.</p></div>
+          <div class="faq-a"><p data-i18n="faq2_a">Search for our exact approved legal entity: CHANAK TRAINUP EDUCATION INC. In ClassWallet, look under 'Pay Vendor'; in Odyssey, locate our profile in the official state provider directory; in Florida EMA, select Chanak International Academy under Home Education Instructional Program.</p></div>
         </div>
 
         <div class="faq-card">
@@ -673,17 +883,97 @@
 
         <div class="faq-card">
           <h3 class="faq-q"><span class="faq-q-icon">?</span> <span data-i18n="faq4_q">4. Do unused funds roll over or transfer to another sibling?</span></h3>
-          <div class="faq-a"><p data-i18n="faq4_a">Policies vary by state. Generally, funds awarded to one student cannot be transferred to a sibling, but many state ESAs allow unused balances to roll over into subsequent academic years. Our team provides state-specific rules.</p></div>
+          <div class="faq-a"><p data-i18n="faq4_a">Policies vary by state. Generally, funds awarded to one student cannot be transferred to a sibling, but many state programs allow unused balances to roll over into subsequent academic years. Our team provides state-specific rules.</p></div>
         </div>
 
         <div class="faq-card">
           <h3 class="faq-q"><span class="faq-q-icon">?</span> <span data-i18n="faq5_q">5. Does this support package include official cumulative transcripts and diploma?</span></h3>
-          <div class="faq-a"><p data-i18n="faq5_a">This support package provides academic progress records, monthly progress reports, and pedagogical tracking of the contracted services. It does not constitute full school enrollment or independently award graduation credits or a High School diploma. Different full-enrollment academic pathways require their own contract, prerequisites, and program eligibility.</p></div>
+          <div class="faq-a"><p data-i18n="faq5_a">This support package provides academic progress records, monthly progress reports, and pedagogical tracking of the contracted services. It does not constitute full school enrollment or independently award graduation credits or a High School diploma. Formal full-time enrollment programs with diploma operate under separate contractual pathways.</p></div>
         </div>
 
         <div class="faq-card">
           <h3 class="faq-q"><span class="faq-q-icon">?</span> <span data-i18n="faq6_q">6. How are state scholarship services distinguished from private academic programs?</span></h3>
-          <div class="faq-a"><p data-i18n="faq6_a">State scholarship funds are applied to contract specific authorized educational services (virtual guided support, academic mentoring, Life Skills cohorts, diagnostic assessment). Formal full-enrollment academic programs (such as private K-12 umbrella schooling or international dual diploma programs) operate under independent private contractual tracks.</p></div>
+          <div class="faq-a"><p data-i18n="faq6_a">State scholarship funds are applied to contract specific authorized educational services (virtual guided academic support, weekly mentoring, Life Skills cohorts, initial assessment). Formal full-enrollment academic programs (such as private K-12 umbrella schooling or international dual diploma programs) operate under independent private contractual tracks.</p></div>
+        </div>
+
+        <div class="faq-card">
+          <h3 class="faq-q"><span class="faq-q-icon">?</span> <span data-i18n="faq7_q">7. Does Chanak teach with Christian values?</span></h3>
+          <div class="faq-a"><p data-i18n="faq7_a">Yes: a biblical Christian worldview is integrated into the 20% Life Skills component and mentorship sessions, using materials from Christian publishers chosen by the family (such as LIFEPAC, Christian Light, or A.C.E.).</p></div>
+        </div>
+
+        <div class="faq-card">
+          <h3 class="faq-q"><span class="faq-q-icon">?</span> <span data-i18n="faq8_q">8. Do you provide support in Spanish?</span></h3>
+          <div class="faq-a"><p data-i18n="faq8_a">Yes: all guided academic support, mentoring sessions, parent communications, and advisement are fully offered in both English and Spanish.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. COSTOS DE CURRÍCULO (REUBICADA AL FINAL ANTES DEL FOOTER) -->
+  <section class="sec" id="curriculo" style="background:#fff">
+    <div class="wrap">
+      <div class="curric-section-wrap">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <span style="font-size:1.6rem;">📦</span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy-dark);margin:0;" data-i18n="curric_cost_title">Curriculum costs (not charged by Chanak)</h2>
+        </div>
+        <p style="font-size:0.95rem;color:#334155;line-height:1.65;margin-bottom:14px;" data-i18n="curric_cost_lead">
+          These costs belong to the publishers, are paid directly to them, and are independent of Chanak's enrollment and academic support. They are approximate; please verify current prices in each publisher's catalog.
+        </p>
+
+        <div class="curric-grid">
+          <!-- AOP LIFEPAC -->
+          <div class="curric-publisher-card">
+            <div>
+              <div class="curric-card-header">
+                <span class="curric-pub-title" data-i18n="curric_aop_title">📘 AOP LIFEPAC</span>
+                <a href="https://aop.com/" target="_blank" rel="noopener noreferrer" class="curric-catalog-link" data-i18n="curric_aop_catalog">Catalog ↗</a>
+              </div>
+              <div class="curric-prices-body" data-i18n="curric_aop_desc">
+                Approx. <strong>~$45 – $50 USD</strong> per subject (10 worktexts + teacher guide).<br>
+                5-subject annual set: approx. <strong>$440 – $485 USD</strong>.<br>
+                Grade 1 Learning to Read: approx. $108 USD.
+              </div>
+            </div>
+          </div>
+
+          <!-- Christian Light -->
+          <div class="curric-publisher-card">
+            <div>
+              <div class="curric-card-header">
+                <span class="curric-pub-title" data-i18n="curric_cle_title">📖 Christian Light (CLE)</span>
+                <a href="https://christianlight.org/" target="_blank" rel="noopener noreferrer" class="curric-catalog-link" data-i18n="curric_cle_catalog">Catalog ↗</a>
+              </div>
+              <div class="curric-prices-body" data-i18n="curric_cle_desc">
+                Approx. <strong>~$55 USD</strong> per subject (10 LightUnits; $277/yr student worktexts).<br>
+                Complete set with teacher guides: approx. <strong>$390 – $430 USD</strong>.<br>
+                Learning to Read kit: approx. $177 USD.
+              </div>
+            </div>
+          </div>
+
+          <!-- A.C.E. School of Tomorrow -->
+          <div class="curric-publisher-card">
+            <div>
+              <div class="curric-card-header">
+                <span class="curric-pub-title" data-i18n="curric_ace_title">✝️ A.C.E. School of Tomorrow</span>
+                <a href="https://www.aceschooloftomorrow.com/" target="_blank" rel="noopener noreferrer" class="curric-catalog-link" data-i18n="curric_ace_catalog">Catalog ↗</a>
+              </div>
+              <div class="curric-prices-body" data-i18n="curric_ace_desc">
+                Middle &amp; High School (5–12): approx. <strong>$320 – $390 USD / year</strong>.<br>
+                Elementary (1–4): approx. <strong>$460 – $530 USD / year</strong>.<br>
+                ABCs with Ace and Christi reading kit: $380 – $440 USD.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem;color:var(--navy-dark);font-weight:600;margin-top:14px;" data-i18n="curric_cost_disclaimer">
+          Chanak supports families with any of these options, without requiring you to choose a specific one.
+        </p>
+        <div class="curric-footer-note">
+          <span>ℹ️</span>
+          <span data-i18n="curric_cost_footer">* Chanak Life Skills materials are included in the monthly support package at no extra charge.</span>
         </div>
       </div>
     </div>
@@ -717,8 +1007,8 @@
     <div class="footer-cols">
       <div class="footer-col">
         <h4>Chanak International Academy</h4>
-        <p>American private school registered with the Florida Department of Education (FLDOE #134620). Official Candidate for Accreditation with Middle States Association (MSA-CESS).</p>
-        <p style="margin-top:10px">Operated by Chanak TrainUp Education Inc., a registered 501(c)(3) nonprofit organization (EIN 36-5154011).</p>
+        <p data-i18n="footer_desc">American private school registered with the Florida Department of Education (FLDOE #134620). Candidate for accreditation with Middle States Association (MSA-CESS). Operated by Chanak TrainUp Education Inc., a registered 501(c)(3) nonprofit organization (EIN 36-5154011).</p>
+        <p style="margin-top:10px;font-size:0.86rem;color:#fcd34d;font-weight:600" data-i18n="footer_msa_disclaimer">Chanak International Academy is a candidate for MSA-CESS accreditation. It is not an accredited school.</p>
       </div>
       <div class="footer-col">
         <h4>States &amp; Platforms</h4>
@@ -739,6 +1029,7 @@
           <li><a href="/?country=ES#tarifas">Dual Diploma (Dual Enrollment Track)</a></li>
           <li><a href="#billeteras">Digital Platform Guides</a></li>
           <li><a href="#videos">Video Tutorial Gallery</a></li>
+          <li><a href="#curriculo">Curriculum Publisher Costs</a></li>
           <li><a href="#asesoria">Request Information / Proforma</a></li>
           <li><a href="/privacidad/en/">Privacy Policy</a></li>
         </ul>
@@ -751,11 +1042,11 @@
       </div>
     </div>
     <div class="footer-legal-bar">
-      <p>Chanak TrainUp Education Inc. (d/b/a Chanak International Academy), Florida nonprofit 501(c)(3), FLDOE #134620, MSA-CESS Candidate for Accreditation. State education scholarship usage is subject to student eligibility and individual state program guidelines. All rights reserved &copy; 2026–2027.</p>
+      <p data-i18n="footer_legal">Chanak TrainUp Education Inc. (d/b/a Chanak International Academy), Florida nonprofit 501(c)(3), FLDOE #134620, candidate for MSA-CESS accreditation. State education scholarship usage is subject to student eligibility and individual state program guidelines. All rights reserved &copy; 2026–2027.</p>
     </div>
   </div>
 </footer>
 
-<script src="/scholarships/scholarships.js?v=20261017a"></script>
+<script src="/scholarships/scholarships.js?v=20261019a"></script>
 </body>
 </html>

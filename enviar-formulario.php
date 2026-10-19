@@ -537,10 +537,43 @@ if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     ]);
 }
 
-$name    = first_value($data, ['nombre', 'nombre_padre', 'responsable_nombre', 'guardianFullName', 'guardianName', 'name', 'estudiante_nombre', 'studentFullName']);
+$name    = first_value($data, ['nombre', 'nombre_padre', 'responsable_nombre', 'guardianFullName', 'guardianName', 'name', 'estudiante_nombre', 'studentFullName', 'parent_name']);
 $phone   = first_value($data, ['whatsapp', 'telefono', 'phone', 'guardianPhone', 'tel']);
 $country = first_value($data, ['pais', 'country', 'pais_residencia', 'pais_responsable', 'estudiante_pais']);
 $city    = first_value($data, ['ciudad', 'city']);
+
+/* ── Validación específica en servidor para el Hub de Becas (/scholarships/) ── */
+$isScholarshipsHub = (
+    first_value($data, ['necesidad']) === 'classwallet' ||
+    stripos(first_value($data, ['origen', 'origin']), 'scholarships') !== false ||
+    stripos($_SERVER['HTTP_REFERER'] ?? '', '/scholarships') !== false
+);
+
+if ($isScholarshipsHub) {
+    if (trim($name) === '') {
+        respond_json(422, [
+            'ok'      => false,
+            'success' => false,
+            'message' => 'Por favor indica tu nombre completo.',
+        ]);
+    }
+    $stateVal = first_value($data, ['state', 'estado', 'residence_state']);
+    if (trim($stateVal) === '') {
+        respond_json(422, [
+            'ok'      => false,
+            'success' => false,
+            'message' => 'Por favor selecciona tu estado de residencia.',
+        ]);
+    }
+    $consentVal = strtolower(first_value($data, ['consentimiento_consulta', 'privacy', 'fPrivacy', 'consent']));
+    if (!in_array($consentVal, ['si', 'sí', 'yes', 'on', 'true', '1'], true)) {
+        respond_json(422, [
+            'ok'      => false,
+            'success' => false,
+            'message' => 'Por favor acepta la casilla de consentimiento para continuar.',
+        ]);
+    }
+}
 $situacionEducativa = first_value($data, ['situacion_educativa', 'currentSituation']);
 $etapaEducativa     = first_value($data, ['etapa_educativa', 'educationStage']);
 $utmSource   = first_value($data, ['utm_source']);
@@ -667,6 +700,10 @@ if ($utmCampaign !== '') {
 }
 if ($utmContent !== '') {
     $brevoExtraAttributes['UTM_CONTENT'] = $utmContent;
+}
+$preferredLang = first_value($data, ['preferred_language', 'idioma_atencion']);
+if ($preferredLang !== '') {
+    $brevoExtraAttributes['IDIOMA_PREFERIDO'] = $preferredLang;
 }
 brevo_add_contact($email, $name, $phone, $brevoLists, $brevoExtraAttributes);
 
