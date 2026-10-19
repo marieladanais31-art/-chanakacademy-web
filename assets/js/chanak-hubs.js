@@ -20,7 +20,7 @@
       rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120 },
       services: [
         { id: "support", name_es: "Home Education Instructional Program (K-5: 20172869 · 6-8: 20169280 · 9-12: 20172870)", name_en: "Home Education Instructional Program (K-5: 20172869 · 6-8: 20169280 · 9-12: 20172870)", base_rate: 275 },
-        { id: "diagnostic", name_es: "Cuota anual adicional ($295 · En revisión en EMA · Item: 20174498)", name_en: "Additional annual fee ($295 · In Review in EMA · Item: 20174498)", base_rate: 295 },
+        { id: "assessment", name_es: "Cuota anual adicional ($295 · En revisión en EMA · Item: 20174498)", name_en: "Additional annual fee ($295 · In Review in EMA · Item: 20174498)", base_rate: 295 },
         { id: "lifeskills", name_es: "Clases de Life Skills y Liderazgo ($120/mes)", name_en: "Standalone Life Skills & Leadership ($120/mo)", base_rate: 120 }
       ],
       billing_status: "approved_provider_authorized_service_billing_enabled",
@@ -39,7 +39,7 @@
       rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120 },
       services: [
         { id: "support", name_es: "Acompañamiento Virtual Mensual (K-5 / 6-8 / 9-12)", name_en: "Virtual Guided Support (Monthly Mentoring + Life Skills)", base_rate: 275 },
-        { id: "diagnostic", name_es: "Evaluación Académica Inicial y Plan ILP ($295)", name_en: "Initial Academic Assessment and Learning Plan Setup ($295)", base_rate: 295 },
+        { id: "assessment", name_es: "Inscripción Anual, Evaluación Inicial y Plan ILP ($295)", name_en: "Annual Registration, Educational Assessment & ILP Setup ($295)", base_rate: 295 },
         { id: "lifeskills", name_es: "Clases de Life Skills y Liderazgo ($120/mes)", name_en: "Standalone Life Skills & Leadership ($120/mo)", base_rate: 120 }
       ],
       billing_status: "approved_provider_authorized_service_billing_enabled",
@@ -55,10 +55,15 @@
       program_name_en: "Arizona ESA",
       platform: "ClassWallet (Pay Vendor)",
       url: "/arizona/",
-      rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120 },
+      rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120, ft_15: 4500, ft_68: 4950, ft_912: 5400 },
       services: [
-        { id: "support", name_es: "Acompañamiento Virtual Mensual (K-5 / 6-8 / 9-12)", name_en: "Virtual Guided Support (Monthly Mentoring + Life Skills)", base_rate: 275 },
-        { id: "diagnostic", name_es: "Evaluación Académica Inicial y Plan ILP ($295)", name_en: "Initial Academic Assessment and Learning Plan Setup ($295)", base_rate: 295 },
+        { id: "ft-15", name_es: "Escuela Online Full-Time – Primaria (Grados 1–5 · $4,500/año o $1,125/trim)", name_en: "Full-Time Online School – Elementary (Grades 1–5 · $4,500/yr or $1,125/qtr)", base_rate: 1125 },
+        { id: "ft-68", name_es: "Escuela Online Full-Time – Secundaria (Grados 6–8 · $4,950/año o $1,237.50/trim)", name_en: "Full-Time Online School – Middle School (Grades 6–8 · $4,950/yr or $1,237.50/qtr)", base_rate: 1237.5 },
+        { id: "ft-912", name_es: "Escuela Online Full-Time – Preparatoria (Grados 9–12 · $5,400/año o $1,350/trim)", name_en: "Full-Time Online School – High School (Grades 9–12 · $5,400/yr or $1,350/qtr)", base_rate: 1350 },
+        { id: "support-15", name_es: "Apoyo Académico Virtual – Primaria (Grados 1–5 · $275/mes u $825/trim)", name_en: "Virtual Academic Support – Elementary (Grades 1–5 · $275/mo or $825/qtr)", base_rate: 275 },
+        { id: "support-68", name_es: "Apoyo Académico Virtual – Secundaria (Grados 6–8 · $320/mes u $960/trim)", name_en: "Virtual Academic Support – Middle School (Grades 6–8 · $320/mo or $960/qtr)", base_rate: 320 },
+        { id: "support-912", name_es: "Apoyo Académico Virtual – Preparatoria (Grados 9–12 · $365/mes u $1,095/trim)", name_en: "Virtual Academic Support – High School (Grades 9–12 · $365/mo or $1,095/qtr)", base_rate: 365 },
+        { id: "assessment", name_es: "Inscripción Anual, Evaluación Inicial y Plan ILP ($295)", name_en: "Annual Registration, Educational Assessment & ILP Setup ($295)", base_rate: 295 },
         { id: "lifeskills", name_es: "Clases de Life Skills y Liderazgo ($120/mes)", name_en: "Standalone Life Skills & Leadership ($120/mo)", base_rate: 120 }
       ],
       billing_status: "approved_provider_authorized_service_billing_enabled",
@@ -77,7 +82,7 @@
       rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120 },
       services: [
         { id: "support", name_es: "Acompañamiento Virtual Mensual (K-5 / 6-8 / 9-12)", name_en: "Virtual Guided Support (Monthly Mentoring + Life Skills)", base_rate: 275 },
-        { id: "diagnostic", name_es: "Evaluación Académica Inicial y Plan ILP ($295)", name_en: "Initial Academic Assessment and Learning Plan Setup ($295)", base_rate: 295 },
+        { id: "assessment", name_es: "Inscripción Anual, Evaluación Inicial y Plan ILP ($295)", name_en: "Annual Registration, Educational Assessment & ILP Setup ($295)", base_rate: 295 },
         { id: "lifeskills", name_es: "Clases de Life Skills y Liderazgo ($120/mes)", name_en: "Standalone Life Skills & Leadership ($120/mo)", base_rate: 120 }
       ],
       billing_status: "approved_provider_authorized_service_billing_enabled",
@@ -96,7 +101,7 @@
       rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120 },
       services: [
         { id: "support", name_es: "Acompañamiento Virtual Mensual (K-5 / 6-8 / 9-12)", name_en: "Virtual Guided Support (Monthly Mentoring + Life Skills)", base_rate: 275 },
-        { id: "diagnostic", name_es: "Evaluación Académica Inicial y Plan ILP ($295)", name_en: "Initial Academic Assessment and Learning Plan Setup ($295)", base_rate: 295 },
+        { id: "assessment", name_es: "Inscripción Anual, Evaluación Inicial y Plan ILP ($295)", name_en: "Annual Registration, Educational Assessment & ILP Setup ($295)", base_rate: 295 },
         { id: "lifeskills", name_es: "Clases de Life Skills y Liderazgo ($120/mes)", name_en: "Standalone Life Skills & Leadership ($120/mo)", base_rate: 120 }
       ],
       billing_status: "approved_provider_authorized_service_billing_enabled",
@@ -115,7 +120,7 @@
       rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120 },
       services: [
         { id: "support", name_es: "Acompañamiento Virtual Mensual (K-5 / 6-8 / 9-12)", name_en: "Virtual Guided Support (Monthly Mentoring + Life Skills)", base_rate: 275 },
-        { id: "diagnostic", name_es: "Evaluación Académica Inicial y Plan ILP ($295)", name_en: "Initial Academic Assessment and Learning Plan Setup ($295)", base_rate: 295 },
+        { id: "assessment", name_es: "Inscripción Anual, Evaluación Inicial y Plan ILP ($295)", name_en: "Annual Registration, Educational Assessment & ILP Setup ($295)", base_rate: 295 },
         { id: "lifeskills", name_es: "Clases de Life Skills y Liderazgo ($120/mes)", name_en: "Standalone Life Skills & Leadership ($120/mo)", base_rate: 120 }
       ],
       billing_status: "approved_provider_authorized_service_billing_enabled",
@@ -134,7 +139,7 @@
       rates: { k5: 275, g68: 320, g912: 365, setup: 295, lifeskills: 120 },
       services: [
         { id: "support", name_es: "Acompañamiento Virtual Mensual (K-5 / 6-8 / 9-12)", name_en: "Virtual Guided Support (Monthly Mentoring + Life Skills)", base_rate: 275 },
-        { id: "diagnostic", name_es: "Evaluación Académica Inicial y Plan ILP ($295)", name_en: "Initial Academic Assessment and Learning Plan Setup ($295)", base_rate: 295 },
+        { id: "assessment", name_es: "Inscripción Anual, Evaluación Inicial y Plan ILP ($295)", name_en: "Annual Registration, Educational Assessment & ILP Setup ($295)", base_rate: 295 },
         { id: "lifeskills", name_es: "Clases de Life Skills y Liderazgo ($120/mes)", name_en: "Standalone Life Skills & Leadership ($120/mo)", base_rate: 120 }
       ],
       billing_status: "approved_provider_authorized_service_billing_enabled",
@@ -225,7 +230,7 @@
 
       if (serviceType === 'lifeskills') {
         monthly = rates.lifeskills;
-      } else if (serviceType === 'diagnostic') {
+      } else if (serviceType === 'assessment') {
         monthly = 0;
         setupFee = 295;
       } else {

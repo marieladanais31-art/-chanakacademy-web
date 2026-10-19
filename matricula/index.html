@@ -569,8 +569,16 @@
                   <option value="support-k5">Home Education Instructional Program · Grades K–5 · $275/mo (EMA ID: 20172869)</option>
                   <option value="support-68">Home Education Instructional Program · Grades 6–8 · $320/mo (EMA ID: 20169280)</option>
                   <option value="support-912">Home Education Instructional Program · Grades 9–12 · $365/mo (EMA ID: 20172870)</option>
-                  <option value="diagnostic">Additional Annual Fee: $295/yr (In Review in EMA · Item: 20174498)</option>
+                  <option value="assessment">Additional Annual Fee: $295/yr (In Review in EMA · Item: 20174498)</option>
                   <option value="lifeskills">Standalone Life Skills &amp; Leadership Classes ($120/mo)</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="billingFreqGroup" style="display:none;">
+                <label for="billingFreqSelect" class="form-label"><span>Billing Frequency</span> <span class="req">*</span></label>
+                <select id="billingFreqSelect" name="billing_frequency" class="form-control" onchange="handleFrequencyChange()">
+                  <option value="monthly" selected>Monthly Billing</option>
+                  <option value="quarterly">Quarterly Billing (3 Months)</option>
                 </select>
               </div>
             </div>
@@ -827,6 +835,7 @@
         sec4_sub: "Review program terms and generate your official reference code.",
         consent_priv: "I agree to the processing of personal and educational data in accordance with the <a href='/privacidad/en/' target='_blank' rel='noopener'>Privacy Policy</a>. *",
         consent_esa_txt: "I understand that the state ESA support package provides academic mentoring and Life Skills, and does not constitute full school enrollment or independently grant graduation diplomas. *",
+        consent_ft_txt: "I understand that the Arizona Full-Time Online School program provides formal school enrollment under FLDOE #134620, cumulative student academic records, and an American High School diploma upon graduation. *",
         consent_news: "Keep me updated with educational resources and school choice / ESA news (optional).",
         folio_lbl: "Application Reference Number (Folio)",
         folio_note: "Assigned automatically to your administrative hub.",
@@ -889,6 +898,7 @@
         sec4_sub: "Revisa las condiciones del programa y genera tu código oficial de seguimiento.",
         consent_priv: "Acepto el tratamiento de datos personales y académicos según la <a href='/privacidad/' target='_blank' rel='noopener'>Política de Privacidad</a>. *",
         consent_esa_txt: "Entiendo que el paquete de apoyo con fondos ESA proporciona mentoría académica y Life Skills, y no constituye matrícula escolar completa ni confiere diploma de graduación de forma independiente. *",
+        consent_ft_txt: "Entiendo que el programa de Escuela Online Full-Time de Arizona confiere matrícula escolar formal bajo el código FLDOE #134620, expediente académico acumulativo y diploma de High School al graduarse. *",
         consent_news: "Deseo recibir recursos educativos y novedades sobre fondos ESA y elección escolar (opcional).",
         folio_lbl: "Folio Único de Solicitud",
         folio_note: "Asignado automáticamente a tu hub administrativo.",
@@ -902,7 +912,7 @@
         tr1_status: "En revisión",
         tr1_desc: "Admisiones revisa la disponibilidad de plaza y grupo compatible (máx. 7 estudiantes). Respuesta en 24h laborables.",
         tr2_lbl: "Vía 2 · Plan Académico",
-        tr2_status: "Diagnóstico pendiente",
+        tr2_status: "Evaluación pendiente",
         tr2_desc: "Evaluación inicial ($295 setup) para identificar necesidades reales y estructurar el Plan ILP con la familia.",
         tr3_lbl: "Vía 3 · Financiero / Fondos",
         tr3_status: "Sin factura emitida",
@@ -1012,33 +1022,61 @@
 
     function updateServiceDropdownOptions(hubId, isEs) {
       var select = document.getElementById('serviceSelect');
+      var freqGroup = document.getElementById('billingFreqGroup');
       if (!select) return;
       var curHub = select.getAttribute('data-loaded-hub');
       var curLang = select.getAttribute('data-loaded-lang');
       var targetLang = isEs ? 'es' : 'en';
+
+      // Show frequency selector for ClassWallet hubs
+      var isClassWallet = (hubId === 'AZ-ESA-CW' || hubId === 'AL-CHOOSE-CW' || hubId === 'SC-ESTF-CW' || hubId === 'NH-EFA-CW');
+      if (freqGroup) {
+        freqGroup.style.display = isClassWallet ? 'block' : 'none';
+      }
+
       if (curHub === hubId && curLang === targetLang) return;
 
       var curVal = select.value;
-      if (hubId === 'FL-STEPUP-EMA') {
+      if (hubId === 'AZ-ESA-CW') {
+        select.innerHTML = '' +
+          '<option value="ft-15">' + (isEs ? 'Escuela Online Full-Time – Primaria (Grados 1–5 · $4,500/año)' : 'Full-Time Online School – Elementary (Grades 1–5 · $4,500/yr)') + '</option>' +
+          '<option value="ft-68">' + (isEs ? 'Escuela Online Full-Time – Secundaria (Grados 6–8 · $4,950/año)' : 'Full-Time Online School – Middle School (Grades 6–8 · $4,950/yr)') + '</option>' +
+          '<option value="ft-912">' + (isEs ? 'Escuela Online Full-Time – Preparatoria (Grados 9–12 · $5,400/año)' : 'Full-Time Online School – High School (Grades 9–12 · $5,400/yr)') + '</option>' +
+          '<option value="support-15">' + (isEs ? 'Apoyo Académico Virtual – Primaria (Grados 1–5 · $275/mes u $825/trim)' : 'Virtual Academic Support – Elementary (Grades 1–5 · $275/mo or $825/qtr)') + '</option>' +
+          '<option value="support-68">' + (isEs ? 'Apoyo Académico Virtual – Secundaria (Grados 6–8 · $320/mes u $960/trim)' : 'Virtual Academic Support – Middle School (Grades 6–8 · $320/mo or $960/qtr)') + '</option>' +
+          '<option value="support-912">' + (isEs ? 'Apoyo Académico Virtual – Preparatoria (Grados 9–12 · $365/mes u $1,095/trim)' : 'Virtual Academic Support – High School (Grades 9–12 · $365/mo or $1,095/qtr)') + '</option>' +
+          '<option value="abc">' + (isEs ? 'Curso Intensivo de Lectoescritura ABC ($1,110/mes · máx 3 alumnos)' : 'ABC Early Reading & Literacy Intensive Course ($1,110/mo · max 3 students)') + '</option>' +
+          '<option value="lifeskills">' + (isEs ? 'Curso de Liderazgo y Educación Financiera ($120/mes · máx 7 alumnos)' : 'Academic Leadership & Financial Literacy Course ($120/mo · max 7 students)') + '</option>' +
+          '<option value="languages">' + (isEs ? 'Clases en Vivo de Español o Inglés Académico ($240/mes)' : 'Spanish or Academic English Live Classes ($240/mo)') + '</option>' +
+          '<option value="bundle">' + (isEs ? 'Paquete Intensivo de Idiomas y Liderazgo ($520/mes)' : 'Language & Leadership Classes Bundle ($520/mo)') + '</option>' +
+          '<option value="assessment">' + (isEs ? 'Inscripción Anual, Evaluación Educativa Inicial y Plan ILP ($295)' : 'Annual Registration, Educational Assessment & ILP Setup ($295)') + '</option>';
+      } else if (hubId === 'FL-STEPUP-EMA') {
         select.innerHTML = '' +
           '<option value="support-k5">' + (isEs ? 'Home Education Instructional Program · Grados K–5 · $275/mes (ID EMA: 20172869)' : 'Home Education Instructional Program · Grades K–5 · $275/mo (EMA ID: 20172869)') + '</option>' +
           '<option value="support-68">' + (isEs ? 'Home Education Instructional Program · Grados 6–8 · $320/mes (ID EMA: 20169280)' : 'Home Education Instructional Program · Grades 6–8 · $320/mo (EMA ID: 20169280)') + '</option>' +
           '<option value="support-912">' + (isEs ? 'Home Education Instructional Program · Grados 9–12 · $365/mes (ID EMA: 20172870)' : 'Home Education Instructional Program · Grades 9–12 · $365/mo (EMA ID: 20172870)') + '</option>' +
-          '<option value="diagnostic">' + (isEs ? 'Cuota anual adicional: $295/año (En revisión en EMA · Item: 20174498)' : 'Additional Annual Fee: $295/yr (In Review in EMA · Item: 20174498)') + '</option>' +
-          '<option value="lifeskills">' + (isEs ? 'Clases de Life Skills y Liderazgo ($120/mes)' : 'Standalone Life Skills & Leadership Classes ($120/mo)') + '</option>';
+          '<option value="assessment">' + (isEs ? 'Cuota anual adicional: $295/año (En revisión en EMA · Item: 20174498)' : 'Additional Annual Fee: $295/yr (In Review in EMA · Item: 20174498)') + '</option>' +
+          '<option value="lifeskills">' + (isEs ? 'Clases de Life Skills y Liderazgo ($120/mes · máx 7 alumnos)' : 'Standalone Life Skills & Leadership Classes ($120/mo · max 7 students)') + '</option>';
       } else {
         select.innerHTML = '' +
-          '<option value="support-k5">' + (isEs ? 'Acompañamiento Académico Virtual – Grados K–5 ($275/mes)' : 'Virtual Guided Learning Support – Grades K–5 ($275/mo)') + '</option>' +
-          '<option value="support-68">' + (isEs ? 'Acompañamiento Académico Virtual – Grados 6–8 ($320/mes)' : 'Virtual Guided Learning Support – Grades 6–8 ($320/mo)') + '</option>' +
-          '<option value="support-912">' + (isEs ? 'Acompañamiento Académico Virtual – Grados 9–12 ($365/mes)' : 'Virtual Guided Learning Support – Grades 9–12 ($365/mo)') + '</option>' +
-          '<option value="diagnostic">' + (isEs ? 'Evaluación Académica Inicial y Plan ILP ($295 único)' : 'Initial Academic Assessment & Learning Plan Setup ($295 one-time)') + '</option>' +
-          '<option value="lifeskills">' + (isEs ? 'Clases de Life Skills y Liderazgo ($120/mes)' : 'Standalone Life Skills & Leadership Classes ($120/mo)') + '</option>';
+          '<option value="support-15">' + (isEs ? 'Apoyo Académico Virtual – Primaria (Grados 1–5 · $275/mes)' : 'Virtual Academic Support – Elementary (Grades 1–5 · $275/mo)') + '</option>' +
+          '<option value="support-68">' + (isEs ? 'Apoyo Académico Virtual – Secundaria (Grados 6–8 · $320/mes)' : 'Virtual Academic Support – Middle School (Grades 6–8 · $320/mo)') + '</option>' +
+          '<option value="support-912">' + (isEs ? 'Apoyo Académico Virtual – Preparatoria (Grados 9–12 · $365/mes)' : 'Virtual Academic Support – High School (Grades 9–12 · $365/mo)') + '</option>' +
+          '<option value="abc">' + (isEs ? 'Curso Intensivo de Lectoescritura ABC ($1,110/mes · máx 3 alumnos)' : 'ABC Early Reading & Literacy Intensive Course ($1,110/mo · max 3 students)') + '</option>' +
+          '<option value="lifeskills">' + (isEs ? 'Curso de Liderazgo y Educación Financiera ($120/mes · máx 7 alumnos)' : 'Academic Leadership & Financial Literacy Course ($120/mo · max 7 students)') + '</option>' +
+          '<option value="languages">' + (isEs ? 'Clases en Vivo de Español o Inglés Académico ($240/mes)' : 'Spanish or Academic English Live Classes ($240/mo)') + '</option>' +
+          '<option value="bundle">' + (isEs ? 'Paquete Intensivo de Idiomas y Liderazgo ($520/mes)' : 'Language & Leadership Classes Bundle ($520/mo)') + '</option>' +
+          '<option value="assessment">' + (isEs ? 'Inscripción Anual, Evaluación Educativa Inicial y Plan ILP ($295)' : 'Annual Registration, Educational Assessment & ILP Setup ($295)') + '</option>';
       }
       select.setAttribute('data-loaded-hub', hubId);
       select.setAttribute('data-loaded-lang', targetLang);
       if (curVal && select.querySelector('option[value="' + curVal + '"]')) {
         select.value = curVal;
       }
+    }
+
+    function handleFrequencyChange() {
+      updateServiceSummary();
     }
 
     function updateServiceSummary() {
@@ -1048,39 +1086,56 @@
       updateServiceDropdownOptions(hubId, isEs);
       var serv = document.getElementById('serviceSelect').value;
 
-      var titles;
-      if (hubId === 'FL-STEPUP-EMA') {
-        titles = {
-          'support-k5': isEs ? "Home Education Instructional Program · Grados K–5 (ID EMA: 20172869)" : "Home Education Instructional Program · Grades K–5 (EMA Catalog Item ID: 20172869)",
-          'support-68': isEs ? "Home Education Instructional Program · Grados 6–8 (ID EMA: 20169280)" : "Home Education Instructional Program · Grades 6–8 (EMA Catalog Item ID: 20169280)",
-          'support-912': isEs ? "Home Education Instructional Program · Grados 9–12 (ID EMA: 20172870)" : "Home Education Instructional Program · Grades 9–12 (EMA Catalog Item ID: 20172870)",
-          'diagnostic': isEs ? "Cuota Anual Adicional ($295 · En revisión en EMA · Item: 20174498)" : "Additional Annual Setup Fee ($295 · In Review in EMA · Item: 20174498)",
-          'lifeskills': isEs ? "Clases de Life Skills y Liderazgo (Mensual)" : "Standalone Life Skills & Leadership Classes"
-        };
-      } else {
-        titles = {
-          'support-k5': isEs ? "Acompañamiento Académico Virtual – Grados K–5" : "Virtual Guided Learning Support – Grades K–5",
-          'support-68': isEs ? "Acompañamiento Académico Virtual – Grados 6–8" : "Virtual Guided Learning Support – Grades 6–8",
-          'support-912': isEs ? "Acompañamiento Académico Virtual – Grados 9–12" : "Virtual Guided Learning Support – Grades 9–12",
-          'diagnostic': isEs ? "Evaluación Académica Inicial y Plan ILP" : "Initial Academic Assessment and Learning Plan Setup",
-          'lifeskills': isEs ? "Clases de Life Skills y Liderazgo (Mensual)" : "Standalone Life Skills & Leadership Classes"
-        };
-      }
+      var isClassWallet = (hubId === 'AZ-ESA-CW' || hubId === 'AL-CHOOSE-CW' || hubId === 'SC-ESTF-CW' || hubId === 'NH-EFA-CW');
+      var freqSelect = document.getElementById('billingFreqSelect');
+      var freq = freqSelect ? freqSelect.value : 'monthly';
+      var isQuarterly = (isClassWallet && freq === 'quarterly');
+
+      var titles = {
+        'ft-15': isEs ? "Escuela Online Full-Time – Primaria (Grados 1–5)" : "Full-Time Online School – Elementary (Grades 1–5)",
+        'ft-68': isEs ? "Escuela Online Full-Time – Secundaria (Grados 6–8)" : "Full-Time Online School – Middle School (Grades 6–8)",
+        'ft-912': isEs ? "Escuela Online Full-Time – Preparatoria (Grados 9–12)" : "Full-Time Online School – High School (Grades 9–12)",
+        'support-15': isEs ? "Apoyo Académico Virtual – Primaria (Grados 1–5)" : "Virtual Academic Support – Elementary (Grades 1–5)",
+        'support-68': isEs ? "Apoyo Académico Virtual – Secundaria (Grados 6–8)" : "Virtual Academic Support – Middle School (Grades 6–8)",
+        'support-912': isEs ? "Apoyo Académico Virtual – Preparatoria (Grados 9–12)" : "Virtual Academic Support – High School (Grades 9–12)",
+        'support-k5': isEs ? (hubId === 'FL-STEPUP-EMA' ? "Home Education Instructional Program · Grados K–5 (ID EMA: 20172869)" : "Apoyo Académico Virtual – Grados K–5") : (hubId === 'FL-STEPUP-EMA' ? "Home Education Instructional Program · Grades K–5 (EMA Catalog Item ID: 20172869)" : "Virtual Academic Support – Grades K–5"),
+        'abc': isEs ? "Curso Intensivo de Lectoescritura ABC" : "ABC Early Reading & Literacy Intensive Course",
+        'lifeskills': isEs ? "Curso de Liderazgo y Educación Financiera" : "Academic Leadership & Financial Literacy Course",
+        'languages': isEs ? "Clases en Vivo de Español o Inglés Académico" : "Spanish or Academic English Live Classes",
+        'bundle': isEs ? "Paquete Intensivo de Idiomas y Liderazgo" : "Language & Leadership Classes Bundle",
+        'assessment': hubId === 'FL-STEPUP-EMA'
+          ? (isEs ? "Cuota Anual Adicional ($295 · En revisión en EMA · Item: 20174498)" : "Additional Annual Setup Fee ($295 · In Review in EMA · Item: 20174498)")
+          : (isEs ? "Inscripción Anual, Evaluación Educativa Inicial y Plan ILP ($295)" : "Annual Registration, Educational Assessment & ILP Setup ($295)")
+      };
 
       var prices = {
-        'support-k5': "$275",
-        'support-68': "$320",
-        'support-912': "$365",
-        'diagnostic': "$295",
-        'lifeskills': "$120"
+        'ft-15': isQuarterly ? "$1,125" : "$4,500",
+        'ft-68': isQuarterly ? "$1,237.50" : "$4,950",
+        'ft-912': isQuarterly ? "$1,350" : "$5,400",
+        'support-15': isQuarterly ? "$825" : "$275",
+        'support-68': isQuarterly ? "$960" : "$320",
+        'support-912': isQuarterly ? "$1,095" : "$365",
+        'support-k5': isQuarterly ? "$825" : "$275",
+        'abc': "$1,110",
+        'lifeskills': "$120",
+        'languages': "$240",
+        'bundle': "$520",
+        'assessment': "$295"
       };
 
       var periods = {
-        'support-k5': isEs ? " / mes" : " / month",
-        'support-68': isEs ? " / mes" : " / month",
-        'support-912': isEs ? " / mes" : " / month",
-        'diagnostic': isEs ? (hubId === 'FL-STEPUP-EMA' ? " (pago anual)" : " (pago único)") : (hubId === 'FL-STEPUP-EMA' ? " (annual fee)" : " (one-time)"),
-        'lifeskills': isEs ? " / mes" : " / month"
+        'ft-15': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / año" : " / year"),
+        'ft-68': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / año" : " / year"),
+        'ft-912': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / año" : " / year"),
+        'support-15': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
+        'support-68': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
+        'support-912': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
+        'support-k5': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
+        'abc': isEs ? " / mes" : " / month",
+        'lifeskills': isEs ? " / mes" : " / month",
+        'languages': isEs ? " / mes" : " / month",
+        'bundle': isEs ? " / mes" : " / month",
+        'assessment': hubId === 'FL-STEPUP-EMA' ? (isEs ? " (cuota anual)" : " (annual fee)") : (isEs ? " (facturado por separado)" : " (billed separately)")
       };
 
       var hubNames = {
@@ -1093,14 +1148,29 @@
         'SC-ESTF-CW': "South Carolina · South Carolina ESTF (ClassWallet Pay Vendor)"
       };
 
-      document.getElementById('ssTitle').textContent = titles[serv] || titles['support-k5'];
+      // Update dynamic consent depending on whether Full-Time or Support is selected
+      var consentEsaLabel = document.querySelector('label[for="consentEsa"]');
+      var isFullTime = (serv && serv.indexOf('ft-') === 0);
+      if (consentEsaLabel) {
+        if (isFullTime) {
+          consentEsaLabel.innerHTML = isEs
+            ? I18N.es.consent_ft_txt
+            : I18N.en.consent_ft_txt;
+        } else {
+          consentEsaLabel.innerHTML = isEs
+            ? I18N.es.consent_esa_txt
+            : I18N.en.consent_esa_txt;
+        }
+      }
+
+      document.getElementById('ssTitle').textContent = titles[serv] || titles['support-15'] || titles['support-k5'];
       document.getElementById('ssHub').textContent = (isEs ? "Hub Administrativo: " : "Administrative Hub: ") + (hubNames[hubId] || hubId);
       document.getElementById('ssPrice').innerHTML = (prices[serv] || "$275") + " <span>" + (periods[serv] || " / month") + "</span>";
 
       var setupBox = document.getElementById('ssSetup');
       if (hubId === 'FL-STEPUP-EMA') {
         setupBox.style.display = 'block';
-        if (serv === 'diagnostic') {
+        if (serv === 'assessment') {
           setupBox.innerHTML = isEs
             ? "<strong>Aviso de EMA:</strong> Cuota anual adicional: $295 — actualmente en revisión en EMA y no disponible para pago mediante EMA hasta su aprobación."
             : "<strong>EMA Notice:</strong> Additional annual fee: $295 — currently under EMA review and not available for EMA payment unless approved.";
@@ -1110,13 +1180,13 @@
             : "<strong>Additional annual fee:</strong> $295 — currently under EMA review and not available for EMA payment unless approved.";
         }
       } else {
-        if (serv === 'diagnostic') {
+        if (serv === 'assessment') {
           setupBox.style.display = 'none';
         } else {
           setupBox.style.display = 'block';
           setupBox.textContent = isEs
-            ? "+ $295 Configuración Inicial: Evaluación Diagnóstica y Plan ILP (pago único; cargo independiente del soporte mensual)"
-            : "+ $295 Initial Setup: Diagnostic Assessment and Learning Plan Setup (one-time fee; explained separately from monthly support)";
+            ? "Inscripción anual, evaluación educativa inicial y plan ILP: $295, facturado por separado."
+            : "Annual Registration, Educational Assessment & ILP Setup: $295, billed separately.";
         }
       }
     }
@@ -1218,12 +1288,22 @@
       }
 
       if (servParam) {
-        if (servParam === 'lifeskills') {
+        if (servParam === 'lifeskills' || servParam.indexOf('lifeskills-') === 0) {
           document.getElementById('serviceSelect').value = 'lifeskills';
-        } else if (servParam === 'diagnostic') {
-          document.getElementById('serviceSelect').value = 'diagnostic';
-        } else if (servParam === 'support-k5') {
-          document.getElementById('serviceSelect').value = 'support-k5';
+        } else if (servParam === 'assessment' || servParam === 'setup-295' || servParam === 'setup' || servParam.indexOf('diag') !== -1) {
+          document.getElementById('serviceSelect').value = 'assessment';
+        } else if (servParam === 'fulltime-15' || servParam === 'ft-15') {
+          document.getElementById('serviceSelect').value = 'ft-15';
+          document.getElementById('studentGrade').value = 'K-5';
+        } else if (servParam === 'fulltime-68' || servParam === 'ft-68') {
+          document.getElementById('serviceSelect').value = 'ft-68';
+          document.getElementById('studentGrade').value = '6-8';
+        } else if (servParam === 'fulltime-912' || servParam === 'ft-912') {
+          document.getElementById('serviceSelect').value = 'ft-912';
+          document.getElementById('studentGrade').value = '9-12';
+        } else if (servParam === 'support-15' || servParam === 'support-k5') {
+          var opt15 = document.querySelector('#serviceSelect option[value="support-15"]');
+          document.getElementById('serviceSelect').value = opt15 ? 'support-15' : 'support-k5';
           document.getElementById('studentGrade').value = 'K-5';
         } else if (servParam === 'support-68') {
           document.getElementById('serviceSelect').value = 'support-68';
@@ -1231,6 +1311,12 @@
         } else if (servParam === 'support-912') {
           document.getElementById('serviceSelect').value = 'support-912';
           document.getElementById('studentGrade').value = '9-12';
+        } else if (servParam === 'abc' || servParam === 'abc-reading') {
+          document.getElementById('serviceSelect').value = 'abc';
+        } else if (servParam === 'spanish-live' || servParam === 'english-live' || servParam === 'languages') {
+          document.getElementById('serviceSelect').value = 'languages';
+        } else if (servParam === 'bundle-live' || servParam === 'classes-bundle' || servParam === 'bundle') {
+          document.getElementById('serviceSelect').value = 'bundle';
         } else if (servParam === 'support') {
           handleGradeSync();
         }
