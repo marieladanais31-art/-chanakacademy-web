@@ -571,6 +571,99 @@
       margin: 0 auto;
     }
 
+    .pricing-pending-banner {
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      border-left: 5px solid #d97706;
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+    .pricing-pending-banner-icon {
+      font-size: 1.35rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .pricing-pending-banner-title {
+      font-weight: 700;
+      color: #92400e;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .pricing-pending-banner-text {
+      font-size: 0.88rem;
+      color: #78350f;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .pricing-category-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      margin-bottom: 0.5rem;
+      align-self: flex-start;
+    }
+    .pricing-pending-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+    }
+    .pricing-age-grade {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+    .pricing-card-subdisclaimer {
+      font-size: 0.74rem;
+      color: var(--text-light);
+      line-height: 1.4;
+      margin-top: 0.65rem;
+      text-align: center;
+    }
+    .pricing-group-heading {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--navy);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .pricing-group-heading:first-of-type {
+      margin-top: 1rem;
+    }
+    .pricing-group-badge {
+      font-size: 0.75rem;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      background: var(--bg-light);
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
     /* 5. CÓMO PAGAR (TIMELINE) */
     .timeline {
       display: grid;
@@ -1160,91 +1253,334 @@
       <h2 data-i18n="pricing_section_title">Investment &amp; Monthly Plans</h2>
       <p class="section-desc" data-i18n="pricing_section_desc">Transparent rates. Identical pricing for state-funded and private pay families.</p>
 
+      <!-- Odyssey Pending Approval Status Banner -->
+      <div class="pricing-pending-banner">
+        <span class="pricing-pending-banner-icon">⏳</span>
+        <div>
+          <div class="pricing-pending-banner-title" data-i18n="pending_banner_title">Odyssey Marketplace Status: Offerings Submitted &amp; Pending Approval</div>
+          <p class="pricing-pending-banner-text" data-i18n="pending_banner_desc">These offerings correspond exactly to the options submitted to Odyssey and are currently pending formal approval. Payment using scholarship funds is subject to program requirements and offering approval.</p>
+        </div>
+      </div>
+
+      <!-- GROUP 1: MONTHLY ACADEMIC SUPPORT (GRADES 1-12) -->
+      <div class="pricing-group-heading">
+        <span data-i18n="group_support_title">1. Monthly Virtual Academic Support Packages</span>
+        <span class="pricing-group-badge" data-i18n="group_support_badge">Grades 1-12 · Monthly Packages</span>
+      </div>
+
       <div class="pricing-grid">
-        <!-- K-5 -->
+        <!-- 1. Monthly Virtual Academic Support Package - Grades 1-5 (Elementary) -->
         <div class="pricing-card">
-          <h3 class="pricing-tier">Grades K–5</h3>
-          <div class="pricing-name" data-i18n="plan_name_k5">Virtual Guided Learning Support – Grades K–5 (One Month)</div>
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_sup_15">Grades 1-5 (Elementary)</h3>
+          <div class="pricing-age-grade" data-i18n="age_sup_15">Grades 1-5 · Ages 6-11</div>
+          <div class="pricing-name" data-i18n="name_sup_15">Monthly Virtual Academic Support Package - Grades 1-5 (Elementary)</div>
           <div class="pricing-price">
             <span class="price-num">$275</span>
             <span class="price-period" data-i18n="price_per_month">/ month</span>
           </div>
-          <div class="pricing-reg" data-i18n="pricing_reg_fee">+ $295 initial setup: Initial Academic Assessment and Learning Plan Setup (one-time fee; explained separately from monthly support)</div>
+          <div class="pricing-reg" data-i18n="pricing_reg_fee">+ $295 initial setup: Initial Academic Assessment &amp; Individualized Learning Plan (ILP) Setup (one-time fee; explained separately from monthly support)</div>
 
           <ul class="pricing-features">
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor">Assigned academic mentor</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_feedback">Two total monthly hours of academic review, feedback, and student records</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_lifeskills">Four monthly 60-minute Life Skills sessions in cohorts of up to seven</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_report">Monthly progress report and record of growth</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_materials">Proprietary Chanak Life Skills materials included</span></li>
-            <li class="not-inc"><span class="icon-cross">✗</span> <span data-i18n="not_materials">General curriculum textbooks purchased separately by the family</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor_dedicated">Assigned academic mentor for personalized guidance</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor_hours">Two hours per month of mentor time per student (about 30 minutes per week)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_lifeskills_cohort">Four monthly 60-minute Life Skills sessions in cohorts of up to seven</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_sis_growth_report">Monthly progress report and record of growth in SIS</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_materials_included">Proprietary Chanak Life Skills materials included</span></li>
+            <li class="not-inc"><span class="icon-cross">✗</span> <span data-i18n="not_curriculum_textbooks">General curriculum textbooks purchased separately by the family</span></li>
           </ul>
 
-          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=support-k5&amp;grade=K-5" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=support-15&amp;grade=1-5" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
           <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
         </div>
 
-        <!-- 6-8 -->
+        <!-- 2. Monthly Virtual Academic Support Package - Grades 6-8 (Middle School) -->
         <div class="pricing-card">
-          <h3 class="pricing-tier">Grades 6–8</h3>
-          <div class="pricing-name" data-i18n="plan_name_68">Virtual Guided Learning Support – Grades 6–8 (One Month)</div>
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_sup_68">Grades 6-8 (Middle School)</h3>
+          <div class="pricing-age-grade" data-i18n="age_sup_68">Grades 6-8 · Ages 11-14</div>
+          <div class="pricing-name" data-i18n="name_sup_68">Monthly Virtual Academic Support Package - Grades 6-8 (Middle School)</div>
           <div class="pricing-price">
             <span class="price-num">$320</span>
             <span class="price-period" data-i18n="price_per_month">/ month</span>
           </div>
-          <div class="pricing-reg" data-i18n="pricing_reg_fee">+ $295 initial setup: Initial Academic Assessment and Learning Plan Setup (one-time fee; explained separately from monthly support)</div>
+          <div class="pricing-reg" data-i18n="pricing_reg_fee">+ $295 initial setup: Initial Academic Assessment &amp; Individualized Learning Plan (ILP) Setup (one-time fee; explained separately from monthly support)</div>
 
           <ul class="pricing-features">
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor">Assigned academic mentor</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_feedback">Two total monthly hours of academic review, feedback, and student records</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_lifeskills">Four monthly 60-minute Life Skills sessions in cohorts of up to seven</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_report">Monthly progress report and record of growth</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_materials">Proprietary Chanak Life Skills materials included</span></li>
-            <li class="not-inc"><span class="icon-cross">✗</span> <span data-i18n="not_materials">General curriculum textbooks purchased separately by the family</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor_dedicated">Assigned academic mentor for personalized guidance</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor_hours">Two hours per month of mentor time per student (about 30 minutes per week)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_lifeskills_cohort">Four monthly 60-minute Life Skills sessions in cohorts of up to seven</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_sis_growth_report">Monthly progress report and record of growth in SIS</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_materials_included">Proprietary Chanak Life Skills materials included</span></li>
+            <li class="not-inc"><span class="icon-cross">✗</span> <span data-i18n="not_curriculum_textbooks">General curriculum textbooks purchased separately by the family</span></li>
           </ul>
 
           <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=support-68&amp;grade=6-8" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
           <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
         </div>
 
-        <!-- 9-12 -->
+        <!-- 3. Monthly Virtual Academic Support Package - Grades 9-12 (High School) -->
         <div class="pricing-card">
-          <h3 class="pricing-tier">Grades 9–12</h3>
-          <div class="pricing-name" data-i18n="plan_name_912">Virtual Guided Learning Support – Grades 9–12 (One Month)</div>
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_sup_912">Grades 9-12 (High School)</h3>
+          <div class="pricing-age-grade" data-i18n="age_sup_912">Grades 9-12 · Ages 14-18</div>
+          <div class="pricing-name" data-i18n="name_sup_912">Monthly Virtual Academic Support Package - Grades 9-12 (High School)</div>
           <div class="pricing-price">
             <span class="price-num">$365</span>
             <span class="price-period" data-i18n="price_per_month">/ month</span>
           </div>
-          <div class="pricing-reg" data-i18n="pricing_reg_fee">+ $295 initial setup: Initial Academic Assessment and Learning Plan Setup (one-time fee; explained separately from monthly support)</div>
+          <div class="pricing-reg" data-i18n="pricing_reg_fee">+ $295 initial setup: Initial Academic Assessment &amp; Individualized Learning Plan (ILP) Setup (one-time fee; explained separately from monthly support)</div>
 
           <ul class="pricing-features">
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor">Assigned academic mentor</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_feedback">Two total monthly hours of academic review, feedback, and student records</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_lifeskills">Four monthly 60-minute Life Skills sessions in cohorts of up to seven</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_report">Monthly progress report and record of growth</span></li>
-            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_materials">Proprietary Chanak Life Skills materials included</span></li>
-            <li class="not-inc"><span class="icon-cross">✗</span> <span data-i18n="not_materials">General curriculum textbooks purchased separately by the family</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor_dedicated">Assigned academic mentor for personalized guidance</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_mentor_hours">Two hours per month of mentor time per student (about 30 minutes per week)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_lifeskills_cohort">Four monthly 60-minute Life Skills sessions in cohorts of up to seven</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_sis_growth_report">Monthly progress report and record of growth in SIS</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_materials_included">Proprietary Chanak Life Skills materials included</span></li>
+            <li class="not-inc"><span class="icon-cross">✗</span> <span data-i18n="not_curriculum_textbooks">General curriculum textbooks purchased separately by the family</span></li>
           </ul>
 
           <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=support-912&amp;grade=9-12" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
           <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
         </div>
       </div>
 
-      <!-- Secondary Service: Life Skills -->
-      <div class="secondary-pricing-single">
-        <div class="secondary-card">
-          <div>
-            <h3 class="secondary-card-title">Life Skills and Leadership Classes – One Month</h3>
-            <p class="secondary-card-desc" data-i18n="sec_ls_desc">Standalone service for students not enrolled in monthly support. Includes 4 live 60-minute classes in cohorts up to 7 students. Subject to cohort confirmation.</p>
+      <!-- GROUP 2: INITIAL ASSESSMENT & ILP SETUP (ONE-TIME SETUP) -->
+      <div class="pricing-group-heading">
+        <span data-i18n="group_setup_title">2. Initial Academic Assessment &amp; ILP Setup</span>
+        <span class="pricing-group-badge" data-i18n="group_setup_badge">Grades K-12 · One-Time Setup</span>
+      </div>
+
+      <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <!-- 4. Initial Academic Assessment & Individualized Learning Plan (ILP) Setup -->
+        <div class="pricing-card" style="border-left: 4px solid var(--blue);">
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_eval_ilp">Grades K-12</h3>
+          <div class="pricing-age-grade" data-i18n="age_eval_ilp">Grades K-12 · Ages 5-18</div>
+          <div class="pricing-name" data-i18n="name_eval_ilp">Initial Academic Assessment &amp; Individualized Learning Plan (ILP) Setup</div>
+          <div class="pricing-price">
+            <span class="price-num">$295</span>
+            <span class="price-period" data-i18n="price_onetime_fee">one-time fee</span>
           </div>
-          <div class="secondary-card-footer">
-            <div class="secondary-card-price">$120 <span style="font-size: 0.95rem; font-weight: normal; color: var(--text-muted);" data-i18n="price_per_month">/ month</span></div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-              <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=lifeskills" class="btn-cta" style="padding:8px 16px;font-size:0.9rem;" data-i18n="cta_enroll">Apply in SIS →</a>
-              <a href="#formulario" class="link-secondary" data-i18n="cta_main">Request Guidance →</a>
-            </div>
+          <div class="pricing-reg" data-i18n="desc_eval_reg">One-time foundational assessment required prior to starting ongoing monthly academic support packages.</div>
+
+          <ul class="pricing-features">
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_eval_baseline">Comprehensive baseline academic assessment and learning style analysis</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_eval_roadmap">Parent consultation and customized learning roadmap (ILP)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_eval_sis_setup">Student dossier configuration and record opening in SIS</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_eval_prereq">Essential prerequisite for ongoing monthly academic support packages</span></li>
+          </ul>
+
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=setup-295" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
+        </div>
+      </div>
+
+      <!-- GROUP 3: EARLY LITERACY (ABC READING) -->
+      <div class="pricing-group-heading">
+        <span data-i18n="group_reading_title">3. Foundational Early Literacy Online Classes (ABC Reading)</span>
+        <span class="pricing-group-badge" data-i18n="group_reading_badge">Grades K-1 (Ages 5-6) · Monthly Intensive</span>
+      </div>
+
+      <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <!-- 5. ABC Reading Online Classes - Grades K-1 (Ages 5-6) - Monthly -->
+        <div class="pricing-card" style="border-left: 4px solid var(--blue);">
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_abc_reading">Grades K-1</h3>
+          <div class="pricing-age-grade" data-i18n="age_abc_reading">Grades K-1 · Ages 5-6</div>
+          <div class="pricing-name" data-i18n="name_abc_reading">ABC Reading Online Classes - Grades K-1 (Ages 5-6) - Monthly</div>
+          <div class="pricing-price">
+            <span class="price-num">$1,600</span>
+            <span class="price-period" data-i18n="price_per_month">/ month</span>
           </div>
+          <div class="pricing-reg" data-i18n="desc_abc_reg">Live online literacy intensive for early readers (ages 5-6).</div>
+
+          <ul class="pricing-features">
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_abc_phonics">Systematic phonics instruction and letter-sound mastery</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_abc_fluency">Early reading fluency and oral language comprehension</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_abc_cohort">Small interactive cohorts with specialized early literacy educator</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_abc_sis">Formative tracking and literacy growth records in SIS</span></li>
+          </ul>
+
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=abc-reading&amp;grade=K-1" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
+        </div>
+      </div>
+
+      <!-- GROUP 4: LIFE SKILLS & LEADERSHIP WORKSHOPS (1X/WEEK) -->
+      <div class="pricing-group-heading">
+        <span data-i18n="group_lifeskills_title">4. Weekly Life Skills &amp; Leadership Workshops</span>
+        <span class="pricing-group-badge" data-i18n="group_lifeskills_badge">1x/week Workshops · Small Cohorts (max 7)</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- 6. Elementary Life Skills, Character & Habits Workshop (1x/week) - Grades K-5 -->
+        <div class="pricing-card">
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_ls_k5">Grades K-5</h3>
+          <div class="pricing-age-grade" data-i18n="age_ls_k5">Grades K-5 · Ages 5-11</div>
+          <div class="pricing-name" data-i18n="name_ls_k5">Elementary Life Skills, Character &amp; Habits Workshop (1x/week) - Grades K-5</div>
+          <div class="pricing-price">
+            <span class="price-num">$120</span>
+            <span class="price-period" data-i18n="price_per_month">/ month</span>
+          </div>
+          <div class="pricing-reg" data-i18n="desc_ls_k5_reg">Standalone weekly live workshop for elementary students (4 sessions/month).</div>
+
+          <ul class="pricing-features">
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_k5_sessions">4 monthly live 60-minute sessions (1x per week)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_k5_cohort">Age-matched small cohorts of up to 7 students</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_k5_habits">Character formation, emotional intelligence, positive habits, and teamwork</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_k5_materials">Proprietary Chanak Life Skills workshop materials included</span></li>
+          </ul>
+
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=lifeskills-k5&amp;grade=K-5" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
+        </div>
+
+        <!-- 7. Middle School Leadership & Practical Life Skills Workshop (1x/week) - Grades 6-8 -->
+        <div class="pricing-card">
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_ls_68">Grades 6-8</h3>
+          <div class="pricing-age-grade" data-i18n="age_ls_68">Grades 6-8 · Ages 11-14</div>
+          <div class="pricing-name" data-i18n="name_ls_68">Middle School Leadership &amp; Practical Life Skills Workshop (1x/week) - Grades 6-8</div>
+          <div class="pricing-price">
+            <span class="price-num">$120</span>
+            <span class="price-period" data-i18n="price_per_month">/ month</span>
+          </div>
+          <div class="pricing-reg" data-i18n="desc_ls_68_reg">Standalone weekly live workshop for middle school students (4 sessions/month).</div>
+
+          <ul class="pricing-features">
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_68_sessions">4 monthly live 60-minute sessions (1x per week)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_68_cohort">Middle school cohorts of up to 7 students</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_68_topics">Time management, assertive communication, problem solving, and leadership</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_68_materials">Proprietary Chanak materials and practical guides included</span></li>
+          </ul>
+
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=lifeskills-68&amp;grade=6-8" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
+        </div>
+
+        <!-- 8. High School Leadership, Ethics & Career Readiness Workshop (1x/week) - Grades 9-12 -->
+        <div class="pricing-card">
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_ls_912">Grades 9-12</h3>
+          <div class="pricing-age-grade" data-i18n="age_ls_912">Grades 9-12 · Ages 14-18</div>
+          <div class="pricing-name" data-i18n="name_ls_912">High School Leadership, Ethics &amp; Career Readiness Workshop (1x/week) - Grades 9-12</div>
+          <div class="pricing-price">
+            <span class="price-num">$120</span>
+            <span class="price-period" data-i18n="price_per_month">/ month</span>
+          </div>
+          <div class="pricing-reg" data-i18n="desc_ls_912_reg">Standalone weekly live workshop for high school students (4 sessions/month).</div>
+
+          <ul class="pricing-features">
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_912_sessions">4 monthly live 60-minute sessions (1x per week)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_912_cohort">Pre-college discussion cohorts of up to 7 students</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_912_topics">Critical thinking, ethical decision making, basic finance, and future vision</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_ls_912_materials">Proprietary Chanak study materials and case studies included</span></li>
+          </ul>
+
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=lifeskills-912&amp;grade=9-12" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
+        </div>
+      </div>
+
+      <!-- GROUP 5: LIVE LANGUAGES & BUNDLE -->
+      <div class="pricing-group-heading">
+        <span data-i18n="group_languages_title">5. Live Language Classes &amp; Interactive Bundles</span>
+        <span class="pricing-group-badge" data-i18n="group_languages_badge">Grades K-12 · 2x/week Live &amp; Multi-Subject Bundles</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- 9. Spanish Language & Literacy Live Classes (2x/week) - Monthly -->
+        <div class="pricing-card">
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_spanish">Grades K-12</h3>
+          <div class="pricing-age-grade" data-i18n="age_spanish">Grades K-12 · Ages 5-18</div>
+          <div class="pricing-name" data-i18n="name_spanish">Spanish Language &amp; Literacy Live Classes (2x/week) - Monthly</div>
+          <div class="pricing-price">
+            <span class="price-num">$240</span>
+            <span class="price-period" data-i18n="price_per_month">/ month</span>
+          </div>
+          <div class="pricing-reg" data-i18n="desc_spanish_reg">Live interactive Spanish instruction twice a week (8 sessions/month).</div>
+
+          <ul class="pricing-features">
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_spanish_freq">2 live interactive sessions per week (8 classes per month)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_spanish_skills">Grammar, spelling, structured composition, and reading comprehension</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_spanish_fluency">Oral fluency, rich vocabulary expansion, and cultural heritage</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_spanish_report">Continuous formative assessment and monthly growth report in SIS</span></li>
+          </ul>
+
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=spanish-live" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
+        </div>
+
+        <!-- 10. Academic English & Literacy Live Classes (2x/week) - Monthly -->
+        <div class="pricing-card">
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_english">Grades K-12</h3>
+          <div class="pricing-age-grade" data-i18n="age_english">Grades K-12 · Ages 5-18</div>
+          <div class="pricing-name" data-i18n="name_english">Academic English &amp; Literacy Live Classes (2x/week) - Monthly</div>
+          <div class="pricing-price">
+            <span class="price-num">$240</span>
+            <span class="price-period" data-i18n="price_per_month">/ month</span>
+          </div>
+          <div class="pricing-reg" data-i18n="desc_english_reg">Live interactive English Language Arts instruction twice a week (8 sessions/month).</div>
+
+          <ul class="pricing-features">
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_english_freq">2 live interactive sessions per week (8 classes per month)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_english_skills">Reading comprehension, essay composition, mechanics, and grammar</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_english_vocab">Academic vocabulary expansion and effective formal communication</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_english_report">Continuous formative assessment and monthly growth report in SIS</span></li>
+          </ul>
+
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=english-live" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
+        </div>
+
+        <!-- 11. Live Interactive Classes Bundle: Spanish, English & Life Skills - Monthly -->
+        <div class="pricing-card popular" style="border-width:2px;border-color:var(--blue);">
+          <span class="pricing-category-badge"><span data-i18n="cat_prefix">Category in Odyssey:</span> <strong>Educational Classes</strong></span>
+          <span class="pricing-pending-pill" data-i18n="card_pending_status">Pending approval in Odyssey</span>
+          <h3 class="pricing-tier" data-i18n="tier_bundle">Grades K-12</h3>
+          <div class="pricing-age-grade" data-i18n="age_bundle">Grades K-12 · Ages 5-18</div>
+          <div class="pricing-name" data-i18n="name_bundle">Live Interactive Classes Bundle: Spanish, English &amp; Life Skills - Monthly</div>
+          <div class="pricing-price">
+            <span class="price-num">$520</span>
+            <span class="price-period" data-i18n="price_per_month">/ month</span>
+          </div>
+          <div class="pricing-reg" data-i18n="desc_bundle_reg">All-inclusive live classes bundle (5 live sessions/week: Spanish 2x, English 2x, Life Skills 1x).</div>
+
+          <ul class="pricing-features">
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_bundle_all">Comprehensive bilingual package with 5 live sessions per week</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_bundle_spanish">2 weekly classes of Spanish (literacy, grammar, and composition)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_bundle_english">2 weekly classes of Academic English (language and comprehension)</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_bundle_lifeskills">1 weekly Life Skills &amp; Leadership workshop in cohorts up to 7</span></li>
+            <li class="inc"><span class="icon-check">✓</span> <span data-i18n="inc_bundle_report">Workshop materials included and unified monthly growth report in SIS</span></li>
+          </ul>
+
+          <a href="/matricula/?country=US&amp;state=utah&amp;hub=UT-UFA-ODY&amp;service=bundle-live" class="btn-cta" style="width: 100%;margin-bottom:8px;" data-i18n="cta_enroll">Apply / Enroll in SIS →</a>
+          <a href="#formulario" class="link-secondary" style="display:block;text-align:center;font-size:0.9rem;" data-i18n="cta_or_guidance">Or Request Guidance</a>
+          <p class="pricing-card-subdisclaimer" data-i18n="card_sub_disclaimer">Payment using scholarship funds is subject to program requirements and offering approval.</p>
         </div>
       </div>
 
@@ -1254,7 +1590,7 @@
       </div>
 
       <p class="legal-notice" data-i18n="pricing_legal_notice">
-        <strong>Legal notice:</strong> This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Eligible families may request payment for authorized services using available program funds. Approval depends on the service, student, and applicable program rules. Identical pricing for state-funded and private-pay families.
+        <strong>Legal notice:</strong> These offerings correspond to services submitted and pending approval on Odyssey. Payment using scholarship funds is subject to program requirements and offering approval. This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Eligible families may request payment for authorized services using available program funds. Identical pricing for state-funded and private-pay families.
       </p>
     </div>
   </section>
@@ -1324,8 +1660,8 @@
               <td data-i18n="sch_d2_lead">Chanak Mentor</td>
             </tr>
             <tr>
-              <td><strong data-i18n="sch_d3_day">Bi-weekly (2 hrs/mo)</strong></td>
-              <td data-i18n="sch_d3_act">Academic review, formative feedback, and progress records aligned with ILP goals (2 hrs/mo total dedicated time).</td>
+              <td><strong data-i18n="sch_d3_day">Weekly / Bi-weekly (2 hrs/mo)</strong></td>
+              <td data-i18n="sch_d3_act">Two hours per month of mentor time per student (about 30 minutes per week). Academic review, formative feedback, and student records in SIS.</td>
               <td data-i18n="sch_d3_lead">Mentor &amp; Student</td>
             </tr>
             <tr>
@@ -1341,8 +1677,8 @@
       <div class="pei-grid">
         <div class="pei-card">
           <div class="pei-step-num" data-i18n="pei_1_tag">Step 1</div>
-          <h4 class="pei-title" data-i18n="pei_1_title">Initial Academic Assessment</h4>
-          <p class="pei-desc" data-i18n="pei_1_desc">Initial Academic Assessment ($295, one-time). Diagnostic review to identify learning baseline, strengths, and pedagogical needs.</p>
+          <h4 class="pei-title" data-i18n="pei_1_title">Initial Academic Assessment &amp; ILP Setup</h4>
+          <p class="pei-desc" data-i18n="pei_1_desc">Initial Academic Assessment ($295, one-time). Comprehensive baseline assessment to identify learning baseline, strengths, and pedagogical needs.</p>
         </div>
 
         <div class="pei-card">
@@ -1530,18 +1866,23 @@
               <label for="studentGrade" class="form-label" data-i18n="lbl_grade">Student Grade Band (Optional)</label>
               <select id="studentGrade" name="student_grade" class="form-select">
                 <option value="" selected data-i18n="opt_select_grade">Select student grade</option>
-                <option value="K-5" data-i18n="opt_grade_k5">Elementary School (Grades K–5)</option>
+                <option value="1-5" data-i18n="opt_grade_15">Elementary School (Grades 1–5)</option>
                 <option value="6-8" data-i18n="opt_grade_68">Middle School (Grades 6–8)</option>
                 <option value="9-12" data-i18n="opt_grade_912">High School (Grades 9–12)</option>
+                <option value="K-1" data-i18n="opt_grade_k1">Early Literacy (Grades K–1)</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="serviceInterest" class="form-label" data-i18n="lbl_service">Service of Interest (Optional)</label>
               <select id="serviceInterest" name="service_interest" class="form-select">
-                <option value="Acompañamiento Mensual Completo" selected data-i18n="opt_serv_full">Virtual Guided Support (Monthly Mentoring + Life Skills)</option>
-                <option value="Initial Assessment y ILP" data-i18n="opt_serv_eval">Initial Academic Assessment and Learning Plan Setup ($295)</option>
-                <option value="Life Skills suelto" data-i18n="opt_serv_ls">Standalone Life Skills &amp; Leadership ($120/mo, subject to confirmation)</option>
+                <option value="Monthly Virtual Academic Support" selected data-i18n="opt_serv_full">Monthly Virtual Academic Support Package (Grades 1-5 / 6-8 / 9-12)</option>
+                <option value="Initial Academic Assessment & ILP Setup" data-i18n="opt_serv_eval">Initial Academic Assessment &amp; ILP Setup ($295)</option>
+                <option value="ABC Reading Online Classes" data-i18n="opt_serv_abc">ABC Reading Online Classes (Grades K-1, $1,600/mo)</option>
+                <option value="Life Skills Workshop" data-i18n="opt_serv_ls">Life Skills &amp; Leadership Workshop ($120/mo)</option>
+                <option value="Spanish Live Classes" data-i18n="opt_serv_spanish">Spanish Language &amp; Literacy Live Classes ($240/mo)</option>
+                <option value="English Live Classes" data-i18n="opt_serv_english">Academic English &amp; Literacy Live Classes ($240/mo)</option>
+                <option value="Live Classes Bundle" data-i18n="opt_serv_bundle">Live Interactive Classes Bundle: Spanish, English &amp; Life Skills ($520/mo)</option>
               </select>
             </div>
           </div>
@@ -1615,7 +1956,7 @@
       </ul>
 
       <div class="footer-compliance-disclaimer" data-i18n="ft_compliance">
-        Vendor approval does not guarantee student eligibility or fund availability. Fund payment depends on service eligibility and available account balance. This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Identical pricing for state-funded and private-pay families.
+        Vendor approval on the listed platforms does not guarantee student eligibility or the approval of individual offerings. These offerings are currently in review and pending approval on Odyssey. Payment using scholarship funds is subject to program requirements and offering approval. This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Identical pricing for state-funded and private-pay families.
       </div>
     </div>
   </footer>
@@ -1647,21 +1988,130 @@
         feat_4_desc: "Reporte detallado para la familia con evidencia de logros, progreso por objetivos y siguientes pasos.",
         pricing_section_title: "Inversión y planes mensuales",
         pricing_section_desc: "Tarifas transparentes. Mismo precio para familias con fondos estatales y de pago privado.",
-        plan_name_k5: "Virtual Guided Learning Support – Grades K–5 (One Month)",
-        plan_name_68: "Virtual Guided Learning Support – Grades 6–8 (One Month)",
-        plan_name_912: "Virtual Guided Learning Support – Grades 9–12 (One Month)",
+
+        // Odyssey Category & Pending Disclaimers
+        cat_prefix: "Categoría en Odyssey:",
+        pending_banner_title: "Estado en Odyssey Marketplace: Ofertas cargadas pendientes de aprobación",
+        pending_banner_desc: "Estas ofertas corresponden exactamente a las opciones presentadas en Odyssey y están pendientes de aprobación formal. El pago con fondos de la beca está sujeto a los requisitos del programa y a la aprobación de la oferta.",
+        card_pending_status: "Pendiente de aprobación en Odyssey",
+        card_sub_disclaimer: "El pago con fondos de la beca está sujeto a los requisitos del programa y a la aprobación de la oferta.",
         price_per_month: "/ mes",
-        pricing_reg_fee: "+ $295 configuración inicial: Evaluación Académica Inicial y Plan ILP (pago único; explicado de forma independiente del acompañamiento mensual)",
-        inc_mentor: "Mentora académica asignada",
-        inc_feedback: "Dos horas mensuales totales de revisión, feedback y registro académico por estudiante",
-        inc_lifeskills: "Cuatro sesiones mensuales de Life Skills de 60 minutos, en grupos de hasta siete",
-        inc_report: "Informe mensual y registro del progreso",
-        inc_ls_materials: "Materiales propios de Life Skills incluidos",
-        not_materials: "Libros del currículo general adquiridos por separado",
-        sec_ls_desc: "Servicio independiente para alumnos que no tienen el servicio mensual. Incluye 4 clases en vivo de 60 minutos en grupos reducidos de hasta 7 alumnos. Sujeto a confirmación de cupo.",
+        price_onetime_fee: "pago único",
+
+        // Group Headings
+        group_support_title: "1. Acompañamiento Académico Virtual Mensual",
+        group_support_badge: "Grados 1-12 · Paquetes Mensuales",
+        group_setup_title: "2. Evaluación Inicial y Configuración ILP",
+        group_setup_badge: "Grados K-12 · Configuración Pago Único",
+        group_reading_title: "3. Clases de Lectoescritura Inicial Online (ABC Reading)",
+        group_reading_badge: "Grados K-1 (Edades 5-6) · Intensivo Mensual",
+        group_lifeskills_title: "4. Talleres Semanales de Habilidades para la Vida (Life Skills)",
+        group_lifeskills_badge: "Talleres 1x/semana · Grupos reducidos (máx. 7)",
+        group_languages_title: "5. Clases en Vivo de Idiomas y Paquetes Combinados",
+        group_languages_badge: "Grados K-12 · 2x/semana y Bundles Multidisciplinares",
+
+        // Offerings 1-3: Monthly Support
+        tier_sup_15: "Grades 1-5 (Elementary)",
+        age_sup_15: "Grados 1-5 · Edades 6-11",
+        name_sup_15: "Monthly Virtual Academic Support Package - Grades 1-5 (Elementary)",
+        tier_sup_68: "Grades 6-8 (Middle School)",
+        age_sup_68: "Grados 6-8 · Edades 11-14",
+        name_sup_68: "Monthly Virtual Academic Support Package - Grades 6-8 (Middle School)",
+        tier_sup_912: "Grades 9-12 (High School)",
+        age_sup_912: "Grados 9-12 · Edades 14-18",
+        name_sup_912: "Monthly Virtual Academic Support Package - Grades 9-12 (High School)",
+        pricing_reg_fee: "+ $295 configuración inicial: Evaluación Académica Inicial y Configuración ILP (pago único; explicado de forma independiente del acompañamiento mensual)",
+        inc_mentor_dedicated: "Mentora académica asignada para acompañamiento personalizado",
+        inc_mentor_hours: "Dos horas al mes de tiempo de mentoría por estudiante (aproximadamente 30 minutos a la semana)",
+        inc_lifeskills_cohort: "Cuatro sesiones mensuales de Life Skills de 60 minutos en grupos reducidos de hasta 7",
+        inc_sis_growth_report: "Informe mensual de progreso y registro de crecimiento en SIS",
+        inc_ls_materials_included: "Materiales propios de Life Skills de Chanak incluidos",
+        not_curriculum_textbooks: "Libros del currículo general adquiridos directamente por la familia",
+
+        // Offering 4: Assessment & ILP
+        tier_eval_ilp: "Grades K-12",
+        age_eval_ilp: "Grados K-12 · Edades 5-18",
+        name_eval_ilp: "Initial Academic Assessment & Individualized Learning Plan (ILP) Setup",
+        desc_eval_reg: "Evaluación inicial fundamental requerida antes de comenzar los paquetes de acompañamiento mensual.",
+        inc_eval_baseline: "Evaluación inicial de nivel de partida y análisis pedagógico personalizado",
+        inc_eval_roadmap: "Consulta con los padres y diseño del plan formativo personalizado (ILP)",
+        inc_eval_sis_setup: "Apertura de expediente y configuración del estudiante en la plataforma SIS",
+        inc_eval_prereq: "Requisito previo indispensable para los paquetes de acompañamiento mensual",
+
+        // Offering 5: ABC Reading
+        tier_abc_reading: "Grades K-1",
+        age_abc_reading: "Grados K-1 · Edades 5-6",
+        name_abc_reading: "ABC Reading Online Classes - Grades K-1 (Ages 5-6) - Monthly",
+        desc_abc_reg: "Programa intensivo online de lectoescritura temprana para lectores iniciales (edades 5-6).",
+        inc_abc_phonics: "Instrucción sistemática de fonética y reconocimiento de letras y sonidos",
+        inc_abc_fluency: "Desarrollo temprano de fluidez lectora y comprensión oral",
+        inc_abc_cohort: "Grupos reducidos interactivos con docente especializada en alfabetización",
+        inc_abc_sis: "Seguimiento formativo y registro de avance fonético en SIS",
+
+        // Offering 6: Life Skills K-5
+        tier_ls_k5: "Grades K-5",
+        age_ls_k5: "Grados K-5 · Edades 5-11",
+        name_ls_k5: "Elementary Life Skills, Character & Habits Workshop (1x/week) - Grades K-5",
+        desc_ls_k5_reg: "Taller semanal en vivo para primaria (4 sesiones de 60 min al mes en grupos de hasta 7).",
+        inc_ls_k5_sessions: "4 sesiones mensuales en vivo de 60 minutos (1 vez por semana)",
+        inc_ls_k5_cohort: "Grupos reducidos por edad de hasta 7 alumnos",
+        inc_ls_k5_habits: "Formación de carácter, inteligencia emocional, hábitos positivos y trabajo en equipo",
+        inc_ls_k5_materials: "Materiales exclusivos de los talleres Life Skills de Chanak incluidos",
+
+        // Offering 7: Life Skills 6-8
+        tier_ls_68: "Grades 6-8",
+        age_ls_68: "Grados 6-8 · Edades 11-14",
+        name_ls_68: "Middle School Leadership & Practical Life Skills Workshop (1x/week) - Grades 6-8",
+        desc_ls_68_reg: "Taller semanal en vivo para secundaria media (4 sesiones de 60 min al mes en grupos de hasta 7).",
+        inc_ls_68_sessions: "4 sesiones mensuales en vivo de 60 minutos (1 vez por semana)",
+        inc_ls_68_cohort: "Grupos reducidos de secundaria media de hasta 7 alumnos",
+        inc_ls_68_topics: "Gestión del tiempo, comunicación asertiva, resolución de problemas y liderazgo",
+        inc_ls_68_materials: "Materiales y guías prácticas de Chanak incluidos",
+
+        // Offering 8: Life Skills 9-12
+        tier_ls_912: "Grades 9-12",
+        age_ls_912: "Grados 9-12 · Edades 14-18",
+        name_ls_912: "High School Leadership, Ethics & Career Readiness Workshop (1x/week) - Grades 9-12",
+        desc_ls_912_reg: "Taller semanal en vivo para secundaria alta (4 sesiones de 60 min al mes en grupos de hasta 7).",
+        inc_ls_912_sessions: "4 sesiones mensuales en vivo de 60 minutos (1 vez por semana)",
+        inc_ls_912_cohort: "Grupos de discusión y formación preuniversitaria de hasta 7 alumnos",
+        inc_ls_912_topics: "Pensamiento crítico, toma de decisiones éticas, finanzas básicas y visión vocacional",
+        inc_ls_912_materials: "Materiales de estudio y casos prácticos de Chanak incluidos",
+
+        // Offering 9: Spanish Live
+        tier_spanish: "Grades K-12",
+        age_spanish: "Grados K-12 · Edades 5-18",
+        name_spanish: "Spanish Language & Literacy Live Classes (2x/week) - Monthly",
+        desc_spanish_reg: "Clases interactivas de lengua española en vivo dos veces por semana (8 sesiones/mes).",
+        inc_spanish_freq: "2 sesiones interactivas en vivo por semana (8 clases al mes)",
+        inc_spanish_skills: "Gramática, ortografía, redacción estructurada y comprensión lectora",
+        inc_spanish_fluency: "Desarrollo de fluidez oral y enriquecimiento léxico y cultural",
+        inc_spanish_report: "Evaluación formativa continua y reporte mensual en SIS",
+
+        // Offering 10: English Live
+        tier_english: "Grades K-12",
+        age_english: "Grados K-12 · Edades 5-18",
+        name_english: "Academic English & Literacy Live Classes (2x/week) - Monthly",
+        desc_english_reg: "Clases interactivas de inglés académico en vivo dos veces por semana (8 sesiones/mes).",
+        inc_english_freq: "2 sesiones interactivas en vivo por semana (8 clases al mes)",
+        inc_english_skills: "Comprensión lectora, redacción de ensayos, mecánica y gramática en inglés",
+        inc_english_vocab: "Ampliación de vocabulario académico y comunicación formal efectiva",
+        inc_english_report: "Evaluación formativa continua y reporte mensual en SIS",
+
+        // Offering 11: Bundle Live
+        tier_bundle: "Grades K-12",
+        age_bundle: "Grados K-12 · Edades 5-18",
+        name_bundle: "Live Interactive Classes Bundle: Spanish, English & Life Skills - Monthly",
+        desc_bundle_reg: "Paquete completo de clases en vivo (5 sesiones/semana: Español 2x, Inglés 2x, Life Skills 1x).",
+        inc_bundle_all: "Paquete formativo integral bilingüe de 5 sesiones en vivo a la semana",
+        inc_bundle_spanish: "2 clases semanales de Español (lectura, gramática y redacción)",
+        inc_bundle_english: "2 clases semanales de Academic English (lenguaje y comprensión)",
+        inc_bundle_lifeskills: "1 taller semanal de Life Skills y Liderazgo en grupo de hasta 7",
+        inc_bundle_report: "Materiales incluidos y reporte unificado de crecimiento mensual en SIS",
+
         mat_title: "Información sobre materiales curriculares:",
         mat_text: "Materiales no incluidos en el servicio mensual; adquiridos directamente por la familia de editoriales oficiales en EE. UU. según el plan formativo. Precios de referencia en EE. UU.: <a href=\"https://www.aop.com/curriculum/shop-lifepac\" target=\"_blank\" rel=\"noopener\"><strong>AOP LIFEPAC</strong></a> (~$45–$50 USD por materia individual o $440–$485 USD/año el set completo de 5 materias con guías; lectoescritura Grado 1: $108 USD); <a href=\"https://christianlight.org/curriculum/by-grade\" target=\"_blank\" rel=\"noopener\"><strong>Christian Light Education / CLE</strong></a> (~$55 USD por materia, $277 USD/año en cuadernillos alumno o $390–$430 USD/año con guías de maestro; paquete de lectura inicial: $177 USD); <a href=\"https://www.aceschooloftomorrow.com/curriculum\" target=\"_blank\" rel=\"noopener\"><strong>A.C.E. School of Tomorrow</strong></a> ($320–$390 USD/year en secundaria y $460–$530 USD/año en primaria con Score Keys; kit ABCs: $380–$440 USD). Los materiales del programa Life Skills de Chanak están incluidos sin costo adicional.",
-        pricing_legal_notice: "<strong>Aviso legal:</strong> Este paquete de apoyo no constituye una matrícula escolar completa ni confiere de forma independiente créditos de graduación o un diploma de High School. Las familias elegibles pueden solicitar el pago de servicios autorizados con los fondos disponibles de su programa. La aprobación depende del servicio, del estudiante y de las reglas aplicables. Mismo precio para familias con fondos y de pago privado.",
+        pricing_legal_notice: "<strong>Aviso legal:</strong> Estas ofertas corresponden a servicios presentados y pendientes de aprobación en Odyssey. El pago con fondos de la beca está sujeto a los requisitos del programa y a la aprobación de la oferta. Este paquete de apoyo no constituye una matrícula escolar completa ni confiere de forma independiente créditos de graduación o un diploma de High School. Las familias elegibles pueden solicitar el pago de servicios autorizados con los fondos disponibles de su programa. Mismo precio para familias con fondos y de pago privado.",
         steps_section_title: "Cómo pagar con tus fondos en 4 pasos",
         steps_section_desc: "Proceso simple a través de la plataforma oficial Odyssey para familias con cuenta de fondos estatales concedida. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta.",
         role_family: "Acción de la familia",
@@ -1685,16 +2135,16 @@
         sch_d2_day: "Semanal (60 min)",
         sch_d2_act: "Sesión en vivo de Life Skills y Liderazgo en grupo reducido (máx. 7 alumnos por edad).",
         sch_d2_lead: "Mentora de Chanak",
-        sch_d3_day: "Quincenal (2 h/mes)",
-        sch_d3_act: "Revisión personalizada, retroalimentación formativa y registro de avance pedagógico según metas del ILP (2 hrs/mes de dedicación total).",
+        sch_d3_day: "Semanal / Quincenal (2 h/mes)",
+        sch_d3_act: "Dos horas al mes de tiempo de mentoría por estudiante (aproximadamente 30 minutos a la semana) dedicadas a revisión académica, retroalimentación formativa y registro de avance en SIS según metas del ILP.",
         sch_d3_lead: "Mentora y Estudiante",
         sch_d4_day: "Fin de Mes",
         sch_d4_act: "Entrega de informe mensual formal para la familia con registro de logros y próximos hitos.",
         sch_d4_lead: "Mentora para la Familia",
         pei_heading: "Plan Individual de Aprendizaje (ILP) en 3 pasos",
         pei_1_tag: "Paso 1",
-        pei_1_title: "Evaluación inicial académica",
-        pei_1_desc: "Initial Academic Assessment ($295, pago único). Evaluación diagnóstica inicial para identificar el punto de partida y necesidades pedagógicas reales.",
+        pei_1_title: "Evaluación inicial académica y plan ILP",
+        pei_1_desc: "Initial Academic Assessment ($295, pago único). Evaluación inicial integral para identificar el punto de partida y necesidades pedagógicas reales.",
         pei_2_tag: "Paso 2",
         pei_2_title: "Configuración del Plan ILP",
         pei_2_desc: "Consulta con los padres para trazar metas personalizadas, ritmo de estudio sugerido y recomendaciones de materiales acordes a la familia.",
@@ -1734,13 +2184,18 @@
         lbl_state: "Estado de residencia *",
         lbl_grade: "Grado del alumno (Opcional)",
         opt_select_grade: "Selecciona el grado escolar",
-        opt_grade_k5: "Elementary School (Grades K–5)",
+        opt_grade_15: "Elementary School (Grades 1–5)",
         opt_grade_68: "Middle School (Grades 6–8)",
         opt_grade_912: "High School (Grades 9–12)",
+        opt_grade_k1: "Early Literacy (Grades K–1)",
         lbl_service: "Servicio de interés (Opcional)",
-        opt_serv_full: "Acompañamiento Virtual Mensual (K-5 / 6-8 / 9-12)",
-        opt_serv_eval: "Evaluación Académica Inicial y Plan ILP ($295)",
-        opt_serv_ls: "Clases de Life Skills y Liderazgo ($120/mes, sujeto a cupo)",
+        opt_serv_full: "Acompañamiento Virtual Mensual (Grados 1-5 / 6-8 / 9-12)",
+        opt_serv_eval: "Evaluación Académica Inicial y Configuración ILP ($295)",
+        opt_serv_abc: "ABC Reading Online Classes (Grados K-1, $1,600/mes)",
+        opt_serv_ls: "Talleres de Life Skills y Liderazgo ($120/mes)",
+        opt_serv_spanish: "Clases en Vivo de Español y Lectoescritura ($240/mes)",
+        opt_serv_english: "Clases en Vivo de Academic English ($240/mes)",
+        opt_serv_bundle: "Bundle de Clases en Vivo: Español + Inglés + Life Skills ($520/mes)",
         lbl_schedule: "Preferencia horaria y zona horaria (Opcional)",
         opt_sched_any: "Cualquier horario / Flexible",
         opt_sched_m_et: "Mañana (Hora del Este - ET)",
@@ -1759,7 +2214,7 @@
         ft_legal: "Aviso Legal",
         ft_k12: "Programa Escolar K–12",
         ft_scholarships: "Directorio de Fondos ESA",
-        ft_compliance: "La aprobación como proveedor no garantiza la elegibilidad del alumno ni la disponibilidad de fondos. El pago con fondos depende de la elegibilidad del servicio y del saldo disponible en tu cuenta. Este paquete de apoyo no constituye una matrícula escolar completa ni confiere de forma independiente créditos de graduación o un diploma de High School. Mismo precio para familias con fondos y de pago privado.",
+        ft_compliance: "La aprobación como proveedor en las plataformas indicadas no garantiza la elegibilidad del alumno ni la aprobación de ofertas individuales. Estas ofertas se encuentran en proceso de revisión y aprobación en Odyssey. El pago con fondos de la beca está sujeto a los requisitos del programa y a la aprobación de la oferta. Este paquete de apoyo no constituye una matrícula escolar completa ni confiere de forma independiente créditos de graduación o un diploma de High School. Mismo precio para familias con fondos y de pago privado.",
         portal_badge: "Campus Digital Chanak",
         portal_main_title: "Acompaña el aprendizaje de tu hijo",
         portal_main_intro: "Conoce las herramientas que Chanak utiliza para organizar el aprendizaje, compartir avances académicos y conectar a estudiantes, familias y su equipo educativo.",
@@ -1805,21 +2260,130 @@
         feat_4_desc: "Comprehensive monthly report for the family documenting milestones achieved, progress, and next steps.",
         pricing_section_title: "Investment & Monthly Plans",
         pricing_section_desc: "Transparent rates. Identical pricing for state-funded and private pay families.",
-        plan_name_k5: "Virtual Guided Learning Support – Grades K–5 (One Month)",
-        plan_name_68: "Virtual Guided Learning Support – Grades 6–8 (One Month)",
-        plan_name_912: "Virtual Guided Learning Support – Grades 9–12 (One Month)",
+
+        // Odyssey Category & Pending Disclaimers
+        cat_prefix: "Category in Odyssey:",
+        pending_banner_title: "Odyssey Marketplace Status: Offerings Submitted & Pending Approval",
+        pending_banner_desc: "These offerings correspond exactly to the options submitted to Odyssey and are currently pending formal approval. Payment using scholarship funds is subject to program requirements and offering approval.",
+        card_pending_status: "Pending approval in Odyssey",
+        card_sub_disclaimer: "Payment using scholarship funds is subject to program requirements and offering approval.",
         price_per_month: "/ month",
-        pricing_reg_fee: "+ $295 initial setup: Initial Academic Assessment and Learning Plan Setup (one-time fee; explained separately from monthly support)",
-        inc_mentor: "Assigned academic mentor",
-        inc_feedback: "Two total monthly hours of academic review, feedback, and student records",
-        inc_lifeskills: "Four monthly 60-minute Life Skills sessions in cohorts of up to seven",
-        inc_report: "Monthly progress report and record of growth",
-        inc_ls_materials: "Proprietary Chanak Life Skills materials included",
-        not_materials: "General curriculum textbooks purchased separately by the family",
-        sec_ls_desc: "Standalone service for students not enrolled in monthly support. Includes 4 live 60-minute classes in cohorts up to 7 students. Subject to cohort confirmation.",
+        price_onetime_fee: "one-time fee",
+
+        // Group Headings
+        group_support_title: "1. Monthly Virtual Academic Support Packages",
+        group_support_badge: "Grades 1-12 · Monthly Packages",
+        group_setup_title: "2. Initial Academic Assessment & ILP Setup",
+        group_setup_badge: "Grades K-12 · One-Time Setup",
+        group_reading_title: "3. Foundational Early Literacy Online Classes (ABC Reading)",
+        group_reading_badge: "Grades K-1 (Ages 5-6) · Monthly Intensive",
+        group_lifeskills_title: "4. Weekly Life Skills & Leadership Workshops",
+        group_lifeskills_badge: "1x/week Workshops · Small Cohorts (max 7)",
+        group_languages_title: "5. Live Language Classes & Interactive Bundles",
+        group_languages_badge: "Grades K-12 · 2x/week Live & Multi-Subject Bundles",
+
+        // Offerings 1-3: Monthly Support
+        tier_sup_15: "Grades 1-5 (Elementary)",
+        age_sup_15: "Grades 1-5 · Ages 6-11",
+        name_sup_15: "Monthly Virtual Academic Support Package - Grades 1-5 (Elementary)",
+        tier_sup_68: "Grades 6-8 (Middle School)",
+        age_sup_68: "Grades 6-8 · Ages 11-14",
+        name_sup_68: "Monthly Virtual Academic Support Package - Grades 6-8 (Middle School)",
+        tier_sup_912: "Grades 9-12 (High School)",
+        age_sup_912: "Grades 9-12 · Ages 14-18",
+        name_sup_912: "Monthly Virtual Academic Support Package - Grades 9-12 (High School)",
+        pricing_reg_fee: "+ $295 initial setup: Initial Academic Assessment & Individualized Learning Plan (ILP) Setup (one-time fee; explained separately from monthly support)",
+        inc_mentor_dedicated: "Assigned academic mentor for personalized guidance",
+        inc_mentor_hours: "Two hours per month of mentor time per student (about 30 minutes per week)",
+        inc_lifeskills_cohort: "Four monthly 60-minute Life Skills sessions in cohorts of up to seven",
+        inc_sis_growth_report: "Monthly progress report and record of growth in SIS",
+        inc_ls_materials_included: "Proprietary Chanak Life Skills materials included",
+        not_curriculum_textbooks: "General curriculum textbooks purchased separately by the family",
+
+        // Offering 4: Assessment & ILP
+        tier_eval_ilp: "Grades K-12",
+        age_eval_ilp: "Grades K-12 · Ages 5-18",
+        name_eval_ilp: "Initial Academic Assessment & Individualized Learning Plan (ILP) Setup",
+        desc_eval_reg: "One-time foundational assessment required prior to starting ongoing monthly academic support packages.",
+        inc_eval_baseline: "Comprehensive baseline academic assessment and learning style analysis",
+        inc_eval_roadmap: "Parent consultation and customized learning roadmap (ILP)",
+        inc_eval_sis_setup: "Student dossier configuration and record opening in SIS",
+        inc_eval_prereq: "Essential prerequisite for ongoing monthly academic support packages",
+
+        // Offering 5: ABC Reading
+        tier_abc_reading: "Grades K-1",
+        age_abc_reading: "Grades K-1 · Ages 5-6",
+        name_abc_reading: "ABC Reading Online Classes - Grades K-1 (Ages 5-6) - Monthly",
+        desc_abc_reg: "Live online literacy intensive for early readers (ages 5-6).",
+        inc_abc_phonics: "Systematic phonics instruction and letter-sound mastery",
+        inc_abc_fluency: "Early reading fluency and oral language comprehension",
+        inc_abc_cohort: "Small interactive cohorts with specialized early literacy educator",
+        inc_abc_sis: "Formative tracking and literacy growth records in SIS",
+
+        // Offering 6: Life Skills K-5
+        tier_ls_k5: "Grades K-5",
+        age_ls_k5: "Grades K-5 · Ages 5-11",
+        name_ls_k5: "Elementary Life Skills, Character & Habits Workshop (1x/week) - Grades K-5",
+        desc_ls_k5_reg: "Standalone weekly live workshop for elementary students (4 sessions/month).",
+        inc_ls_k5_sessions: "4 monthly live 60-minute sessions (1x per week)",
+        inc_ls_k5_cohort: "Age-matched small cohorts of up to 7 students",
+        inc_ls_k5_habits: "Character formation, emotional intelligence, positive habits, and teamwork",
+        inc_ls_k5_materials: "Proprietary Chanak Life Skills workshop materials included",
+
+        // Offering 7: Life Skills 6-8
+        tier_ls_68: "Grades 6-8",
+        age_ls_68: "Grades 6-8 · Ages 11-14",
+        name_ls_68: "Middle School Leadership & Practical Life Skills Workshop (1x/week) - Grades 6-8",
+        desc_ls_68_reg: "Standalone weekly live workshop for middle school students (4 sessions/month).",
+        inc_ls_68_sessions: "4 monthly live 60-minute sessions (1x per week)",
+        inc_ls_68_cohort: "Middle school cohorts of up to 7 students",
+        inc_ls_68_topics: "Time management, assertive communication, problem solving, and leadership",
+        inc_ls_68_materials: "Proprietary Chanak materials and practical guides included",
+
+        // Offering 8: Life Skills 9-12
+        tier_ls_912: "Grades 9-12",
+        age_ls_912: "Grades 9-12 · Ages 14-18",
+        name_ls_912: "High School Leadership, Ethics & Career Readiness Workshop (1x/week) - Grades 9-12",
+        desc_ls_912_reg: "Standalone weekly live workshop for high school students (4 sessions/month).",
+        inc_ls_912_sessions: "4 monthly live 60-minute sessions (1x per week)",
+        inc_ls_912_cohort: "Pre-college discussion cohorts of up to 7 students",
+        inc_ls_912_topics: "Critical thinking, ethical decision making, basic finance, and future vision",
+        inc_ls_912_materials: "Proprietary Chanak study materials and case studies included",
+
+        // Offering 9: Spanish Live
+        tier_spanish: "Grades K-12",
+        age_spanish: "Grades K-12 · Ages 5-18",
+        name_spanish: "Spanish Language & Literacy Live Classes (2x/week) - Monthly",
+        desc_spanish_reg: "Live interactive Spanish instruction twice a week (8 sessions/month).",
+        inc_spanish_freq: "2 live interactive sessions per week (8 classes per month)",
+        inc_spanish_skills: "Grammar, spelling, structured composition, and reading comprehension",
+        inc_spanish_fluency: "Oral fluency, rich vocabulary expansion, and cultural heritage",
+        inc_spanish_report: "Continuous formative assessment and monthly growth report in SIS",
+
+        // Offering 10: English Live
+        tier_english: "Grades K-12",
+        age_english: "Grades K-12 · Ages 5-18",
+        name_english: "Academic English & Literacy Live Classes (2x/week) - Monthly",
+        desc_english_reg: "Live interactive English Language Arts instruction twice a week (8 sessions/month).",
+        inc_english_freq: "2 live interactive sessions per week (8 classes per month)",
+        inc_english_skills: "Reading comprehension, essay composition, mechanics, and grammar",
+        inc_english_vocab: "Academic vocabulary expansion and effective formal communication",
+        inc_english_report: "Continuous formative assessment and monthly growth report in SIS",
+
+        // Offering 11: Bundle Live
+        tier_bundle: "Grades K-12",
+        age_bundle: "Grades K-12 · Ages 5-18",
+        name_bundle: "Live Interactive Classes Bundle: Spanish, English & Life Skills - Monthly",
+        desc_bundle_reg: "All-inclusive live classes bundle (5 live sessions/week: Spanish 2x, English 2x, Life Skills 1x).",
+        inc_bundle_all: "Comprehensive bilingual package with 5 live sessions per week",
+        inc_bundle_spanish: "2 weekly classes of Spanish (literacy, grammar, and composition)",
+        inc_bundle_english: "2 weekly classes of Academic English (language and comprehension)",
+        inc_bundle_lifeskills: "1 weekly Life Skills & Leadership workshop in cohorts up to 7",
+        inc_bundle_report: "Workshop materials included and unified monthly growth report in SIS",
+
         mat_title: "Information regarding curriculum materials:",
         mat_text: "Materials are not included in monthly support; they are purchased directly by families from official U.S. publishers according to the student's learning plan. Realistic U.S. reference costs: <a href=\"https://www.aop.com/curriculum/shop-lifepac\" target=\"_blank\" rel=\"noopener\"><strong>AOP LIFEPAC</strong></a> (~$45–$50 USD per subject or $440–$485 USD/year for the 5-subject boxed set with teacher guides; Grade 1 reading kit: $108 USD); <a href=\"https://christianlight.org/curriculum/by-grade\" target=\"_blank\" rel=\"noopener\"><strong>Christian Light Education (CLE)</strong></a> (~$55 USD per subject, $277 USD/year student worktexts or $390–$430 USD/year with teacher guides; learning to read: $177 USD); <a href=\"https://www.aceschooloftomorrow.com/curriculum\" target=\"_blank\" rel=\"noopener\"><strong>A.C.E. School of Tomorrow</strong></a> ($320–$390 USD/year Middle/High School and $460–$530 USD/year Elementary with Score Keys; ABCs kit: $380–$440 USD). Chanak Life Skills program materials are included at no additional cost.",
-        pricing_legal_notice: "<strong>Legal notice:</strong> This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Eligible families may request payment for authorized services using available program funds. Approval depends on the service, student, and applicable program rules. Identical pricing for state-funded and private-pay families.",
+        pricing_legal_notice: "<strong>Legal notice:</strong> These offerings correspond to services submitted and pending approval on Odyssey. Payment using scholarship funds is subject to program requirements and offering approval. This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Eligible families may request payment for authorized services using available program funds. Identical pricing for state-funded and private-pay families.",
         steps_section_title: "How to Pay with Your Funds in 4 Steps",
         steps_section_desc: "Simple process through the official Odyssey platform for families with an awarded state funds account. Fund payment depends on service eligibility and available account balance.",
         role_family: "Family Action",
@@ -1843,16 +2407,16 @@
         sch_d2_day: "Weekly (60 min)",
         sch_d2_act: "Live Life Skills & Leadership group workshop in cohorts of up to 7 students per age band.",
         sch_d2_lead: "Chanak Mentor",
-        sch_d3_day: "Bi-weekly (2 hrs/mo)",
-        sch_d3_act: "Academic review, formative feedback, and progress records aligned with ILP goals (2 hrs/mo total dedicated time).",
+        sch_d3_day: "Weekly / Bi-weekly (2 hrs/mo)",
+        sch_d3_act: "Two hours per month of mentor time per student (about 30 minutes per week). Academic review, formative feedback, and student records in SIS.",
         sch_d3_lead: "Mentor & Student",
         sch_d4_day: "End of Month",
         sch_d4_act: "Delivery of official monthly progress report for the family documenting milestones.",
         sch_d4_lead: "Mentor to Family",
         pei_heading: "Individualized Learning Plan (ILP) in 3 Steps",
         pei_1_tag: "Step 1",
-        pei_1_title: "Initial Academic Assessment",
-        pei_1_desc: "Initial Academic Assessment ($295, one-time). Diagnostic review to identify learning baseline, strengths, and pedagogical needs.",
+        pei_1_title: "Initial Academic Assessment & Learning Plan Setup",
+        pei_1_desc: "Initial Academic Assessment ($295, one-time). Comprehensive baseline assessment to identify learning baseline, strengths, and pedagogical needs.",
         pei_2_tag: "Step 2",
         pei_2_title: "Individualized Learning Plan Setup",
         pei_2_desc: "Consultation with parents to establish personalized milestones, recommended pace, and tailored curriculum choices.",
@@ -1892,13 +2456,18 @@
         lbl_state: "State of Residence *",
         lbl_grade: "Student Grade Band (Optional)",
         opt_select_grade: "Select student grade",
-        opt_grade_k5: "Elementary School (Grades K–5)",
+        opt_grade_15: "Elementary School (Grades 1–5)",
         opt_grade_68: "Middle School (Grades 6–8)",
         opt_grade_912: "High School (Grades 9–12)",
+        opt_grade_k1: "Early Literacy (Grades K–1)",
         lbl_service: "Service of Interest (Optional)",
-        opt_serv_full: "Virtual Guided Support (Monthly Mentoring + Life Skills)",
-        opt_serv_eval: "Initial Academic Assessment and Learning Plan Setup ($295)",
-        opt_serv_ls: "Standalone Life Skills & Leadership ($120/mo, subject to confirmation)",
+        opt_serv_full: "Monthly Virtual Academic Support Package (Grades 1-5 / 6-8 / 9-12)",
+        opt_serv_eval: "Initial Academic Assessment & ILP Setup ($295)",
+        opt_serv_abc: "ABC Reading Online Classes (Grades K-1, $1,600/mo)",
+        opt_serv_ls: "Life Skills & Leadership Workshop ($120/mo)",
+        opt_serv_spanish: "Spanish Language & Literacy Live Classes ($240/mo)",
+        opt_serv_english: "Academic English & Literacy Live Classes ($240/mo)",
+        opt_serv_bundle: "Live Interactive Classes Bundle: Spanish, English & Life Skills ($520/mo)",
         lbl_schedule: "Preferred Contact Window & Time Zone (Optional)",
         opt_sched_any: "Any time / Flexible",
         opt_sched_m_et: "Morning (Eastern Time - ET)",
@@ -1917,7 +2486,7 @@
         ft_legal: "Legal Notice",
         ft_k12: "K–12 School Program",
         ft_scholarships: "State ESA Directory",
-        ft_compliance: "Vendor approval does not guarantee student eligibility or fund availability. Fund payment depends on service eligibility and available account balance. This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Identical pricing for state-funded and private-pay families.",
+        ft_compliance: "Vendor approval on listed platforms does not guarantee student eligibility or the approval of individual offerings. These offerings are currently under review and pending approval on Odyssey. Payment using scholarship funds is subject to program requirements and offering approval. This support package does not constitute full school enrollment or independently award graduation credits or a High School diploma. Identical pricing for state-funded and private-pay families.",
         portal_badge: "Chanak Digital Campus",
         portal_main_title: "Stay Connected to Your Child’s Learning",
         portal_main_intro: "Explore the tools Chanak uses to organize learning, share academic updates and connect students, families and their educational team.",
