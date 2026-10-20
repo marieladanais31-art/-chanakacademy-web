@@ -78,7 +78,7 @@ const EXPECTED_OFFERINGS = [
   {
     num: 5,
     name: 'ABC Reading Online Classes - Grades K-1 (Ages 5-6) - Monthly',
-    price: '$1,600',
+    price: '$1,110',
     grades: 'Grades K-1',
     ages: 'Ages 5-6',
     utahCat: 'Educational Classes',

@@ -911,6 +911,62 @@
       border-top: 1px solid rgba(255,255,255,0.1);
       padding-top: 1.2rem;
     }
+
+    /* Standalone Courses Section */
+    .standalone-courses-section {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 1.75rem;
+      margin-top: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .standalone-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 2rem;
+    }
+    .standalone-courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .standalone-course-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .course-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .course-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+    .course-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+    .course-price {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
   </style>
 </head>
 <body data-state="arizona" data-platform="classwallet">
@@ -1462,11 +1518,15 @@
             </div>
 
             <div class="form-group">
-              <label for="serviceInterest" class="form-label" data-i18n="lbl_service">Full-Time Program of Interest *</label>
+              <label for="serviceInterest" class="form-label" data-i18n="lbl_service">Program Pathway or Course of Interest *</label>
               <select id="serviceInterest" name="service_interest" class="form-select" required>
                 <option value="Full-Time Online School (Grades 1-5)" data-i18n="opt_serv_ft_15">Full-Time Online School – Elementary (Grades 1–5) · $1,125 / quarter</option>
                 <option value="Full-Time Online School (Grades 6-8)" data-i18n="opt_serv_ft_68">Full-Time Online School – Middle School (Grades 6–8) · $1,237.50 / quarter</option>
                 <option value="Full-Time Online School (Grades 9-12)" data-i18n="opt_serv_ft_912">Full-Time Online School – High School (Grades 9–12) · $1,350 / quarter</option>
+                <option value="ABC Early Reading Intensive Course ($1,110/mo)" data-i18n="opt_serv_abc">ABC Early Reading &amp; Literacy Intensive Course ($1,110/mo)</option>
+                <option value="Spanish Language &amp; Literacy Live Classes ($240/mo)" data-i18n="opt_serv_spanish">Spanish Language &amp; Literacy Live Classes ($240/mo)</option>
+                <option value="Academic English &amp; Literacy Live Classes ($240/mo)" data-i18n="opt_serv_english">Academic English &amp; Literacy Live Classes ($240/mo)</option>
+                <option value="Academic Leadership &amp; Financial Literacy Course ($120/mo)" data-i18n="opt_serv_ls">Academic Leadership &amp; Financial Literacy Course ($120/mo)</option>
               </select>
             </div>
           </div>
@@ -1695,10 +1755,28 @@
         opt_grade_15: "Primaria (Grados 1–5)",
         opt_grade_68: "Secundaria (Grados 6–8)",
         opt_grade_912: "Preparatoria (Grados 9–12)",
-        lbl_service: "Programa Full-Time de Interés *",
+        lbl_service: "Programa o Curso de Interés *",
         opt_serv_ft_15: "Escuela Online Full-Time – Primaria (Grados 1–5) · $1,125 / trimestre",
         opt_serv_ft_68: "Escuela Online Full-Time – Secundaria (Grados 6–8) · $1,237.50 / trimestre",
         opt_serv_ft_912: "Escuela Online Full-Time – Preparatoria (Grados 9–12) · $1,350 / trimestre",
+        standalone_section_title: "Cursos Independientes — No Requieren Matrícula Escolar Completa",
+        standalone_section_desc: "Cursos intensivos especializados con inscripción directa. Las clases de Liderazgo (4 hrs/mes) y el acceso a Lengua Académica ya están incluidos en la Escuela Online Full-Time; no los contrate por separado si está matriculado a tiempo completo.",
+        abc_title: "Curso Intensivo de Lectoescritura ABC",
+        abc_desc: "20 sesiones en vivo de 60 minutos al mes en grupos de hasta 3 alumnos. Fonética intensiva, conciencia fonémica, decodificación y vocabulario temprano.",
+        spanish_title: "Clases en Vivo de Español y Lectoescritura",
+        spanish_desc: "8 sesiones en vivo de 60 minutos al mes. Fluidez conversacional, comprensión lectora y raíces culturales de herencia.",
+        english_title: "Clases en Vivo de Inglés Académico y Redacción",
+        english_desc: "8 sesiones en vivo de 60 minutos al mes. Mecánica de escritura, lectura académica, análisis literario y composición.",
+        ls_standalone_title: "Curso de Liderazgo y Educación Financiera",
+        ls_standalone_desc: "4 sesiones grupales en vivo de 60 minutos al mes en grupos de hasta 7 alumnos. Liderazgo práctico, finanzas y desarrollo del carácter. (Ya incluido sin cargo adicional en la matrícula Full-Time).",
+        standalone_included_note_bold: "Incluido en Full-Time:",
+        standalone_included_note_text: "Las sesiones de Liderazgo (4 hrs/mes) y el acceso a Lengua Académica ya están incluidos dentro de la colegiatura Full-Time. Los cursos independientes están dirigidos a familias que solo desean materias específicas sin escolarización completa.",
+        opt_serv_abc: "Curso Intensivo de Lectoescritura ABC ($1,110/mes)",
+        opt_serv_spanish: "Clases en Vivo de Español y Lectoescritura ($240/mes)",
+        opt_serv_english: "Clases en Vivo de Inglés Académico y Redacción ($240/mes)",
+        opt_serv_ls: "Curso de Liderazgo y Educación Financiera ($120/mes)",
+        price_per_month: "/ mes",
+
         lbl_schedule: "Preferencia de Horario de Contacto (Opcional)",
         opt_sched_any: "Cualquier horario / Flexible",
         opt_sched_m_mt: "Mañana (Hora de la Montaña - MT)",
@@ -1859,10 +1937,28 @@
         opt_grade_15: "Elementary School (Grades 1–5)",
         opt_grade_68: "Middle School (Grades 6–8)",
         opt_grade_912: "High School (Grades 9–12)",
-        lbl_service: "Full-Time Program of Interest *",
+        lbl_service: "Program Pathway or Course of Interest *",
         opt_serv_ft_15: "Full-Time Online School – Elementary (Grades 1–5) · $1,125 / quarter",
         opt_serv_ft_68: "Full-Time Online School – Middle School (Grades 6–8) · $1,237.50 / quarter",
         opt_serv_ft_912: "Full-Time Online School – High School (Grades 9–12) · $1,350 / quarter",
+        standalone_section_title: "Standalone Courses — No Full-Time Enrollment Required",
+        standalone_section_desc: "Specialized intensive courses with direct enrollment. Leadership workshops (4 hrs/mo) and Academic Language access are already included in Full-Time enrollment; do not purchase them separately if enrolled in Full-Time.",
+        abc_title: "ABC Early Reading & Literacy Intensive Course",
+        abc_desc: "20 live sessions of 60 minutes per month in groups of up to 3 students. Intensive phonics, phonemic awareness, decoding, and early vocabulary.",
+        spanish_title: "Spanish Language & Literacy Live Classes",
+        spanish_desc: "8 live 60-minute sessions per month. Conversational fluency, reading comprehension, and heritage cultural roots for homeschoolers.",
+        english_title: "Academic English & Literacy Live Classes",
+        english_desc: "8 live 60-minute sessions per month. Writing mechanics, academic reading, literature analysis, and composition.",
+        ls_standalone_title: "Academic Leadership & Financial Literacy Course",
+        ls_standalone_desc: "4 live 60-minute group sessions per month in cohorts of up to 7 students. Practical leadership, financial literacy and character development. (Already included at no additional charge in Full-Time enrollment).",
+        standalone_included_note_bold: "Included in Full-Time:",
+        standalone_included_note_text: "Leadership workshops (4 hrs/mo) and Academic Language access are already included within the Full-Time Online School tuition. Standalone course enrollment is intended for families who only require individual courses without full-time schooling.",
+        opt_serv_abc: "ABC Early Reading & Literacy Intensive Course ($1,110/mo)",
+        opt_serv_spanish: "Spanish Language & Literacy Live Classes ($240/mo)",
+        opt_serv_english: "Academic English & Literacy Live Classes ($240/mo)",
+        opt_serv_ls: "Academic Leadership & Financial Literacy Course ($120/mo)",
+        price_per_month: "/ month",
+
         lbl_schedule: "Preferred Contact Window & Time Zone (Optional)",
         opt_sched_any: "Any time / Flexible",
         opt_sched_m_mt: "Morning (Mountain Time - MT)",

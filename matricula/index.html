@@ -641,9 +641,10 @@
             <div class="form-group">
               <label for="studentGrade" class="form-label"><span data-i18n="lbl_student_grade">Grade Level</span> <span class="req">*</span></label>
               <select id="studentGrade" name="etapa_educativa" class="form-control" required onchange="handleGradeSync()">
-                <option value="K-5" selected>Elementary School (Grades K–5)</option>
+                <option value="1-5" selected>Elementary School (Grades 1–5)</option>
                 <option value="6-8">Middle School (Grades 6–8)</option>
                 <option value="9-12">High School (Grades 9–12)</option>
+                <option value="K-5">Elementary School (Grades K–5 · Florida EMA)</option>
               </select>
             </div>
 
@@ -729,13 +730,15 @@
           <p style="color: var(--muted); font-size: 0.96rem; max-width: 600px; margin: 6px auto 0;" data-i18n="rec_sub">Your official application has been recorded and assigned to your state administrative coordinator.</p>
         </div>
 
-        <div class="folio-preview-box" style="background: #0f172a; margin-top: 0; margin-bottom: 24px;">
+        <div class="folio-preview-box" style="background: #0f172a; margin-top: 0; margin-bottom: 20px;">
           <div>
             <div class="folio-lbl" data-i18n="rec_folio_lbl">Official Application Folio</div>
             <div class="folio-val" id="confirmedFolio" style="color: #fbbf24;">CHK-FL-2026-0000</div>
           </div>
           <div style="font-size: 0.85rem; color: #94a3b8;" id="confirmedDate">Date: 2026-10-18</div>
         </div>
+
+        <div id="recSelectedSummary" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px 18px; margin-bottom: 24px; font-size: 0.95rem; color: #1e293b; line-height: 1.6;"></div>
 
         <!-- Three-Track Status Matrix -->
         <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;" data-i18n="rec_tracks_title">Application &amp; Service Tracking Status</h3>
@@ -999,13 +1002,16 @@
     function handleServiceChange() {
       var serv = document.getElementById('serviceSelect').value;
       var gradeSelect = document.getElementById('studentGrade');
-      if (serv === 'support-k5' || serv === 'ft-15' || serv === 'support-15') {
+      if (serv === 'support-k5') {
         gradeSelect.value = 'K-5';
+      } else if (serv === 'ft-15' || serv === 'support-15') {
+        gradeSelect.value = '1-5';
       } else if (serv === 'support-68' || serv === 'ft-68') {
         gradeSelect.value = '6-8';
       } else if (serv === 'support-912' || serv === 'ft-912') {
         gradeSelect.value = '9-12';
       }
+      // For abc, lifeskills, spanish-live, english-live, bundle, assessment, preserve studentGrade!
       updateServiceSummary();
     }
 
@@ -1014,14 +1020,18 @@
       var servSelect = document.getElementById('serviceSelect');
       var hubId = document.getElementById('stateHubSelect').value;
       if (hubId === 'AZ-ESA-CW') {
-        if (grade === 'K-5') servSelect.value = 'ft-15';
-        else if (grade === '6-8') servSelect.value = 'ft-68';
-        else if (grade === '9-12') servSelect.value = 'ft-912';
+        if (servSelect.value.indexOf('ft-') === 0) {
+          if (grade === '1-5' || grade === 'K-5') servSelect.value = 'ft-15';
+          else if (grade === '6-8') servSelect.value = 'ft-68';
+          else if (grade === '9-12') servSelect.value = 'ft-912';
+        }
       } else if (servSelect.value.indexOf('support-') === 0 || servSelect.value === 'support') {
         if (grade === 'K-5') servSelect.value = (hubId === 'FL-STEPUP-EMA') ? 'support-k5' : 'support-15';
+        else if (grade === '1-5') servSelect.value = (hubId === 'FL-STEPUP-EMA') ? 'support-k5' : 'support-15';
         else if (grade === '6-8') servSelect.value = 'support-68';
         else if (grade === '9-12') servSelect.value = 'support-912';
       }
+      // For abc, lifeskills, spanish-live, english-live, etc., do not overwrite service on grade change
       updateServiceSummary();
     }
 
@@ -1067,8 +1077,12 @@
           '<option value="ft-15">' + (isEs ? 'Escuela Online Full-Time – Primaria (Grados 1–5 · $1,125/trim · Anual $4,500)' : 'Full-Time Online School – Elementary (Grades 1–5 · $1,125/qtr · Annual $4,500)') + '</option>' +
           '<option value="ft-68">' + (isEs ? 'Escuela Online Full-Time – Secundaria (Grados 6–8 · $1,237.50/trim · Anual $4,950)' : 'Full-Time Online School – Middle School (Grades 6–8 · $1,237.50/qtr · Annual $4,950)') + '</option>' +
           '<option value="ft-912">' + (isEs ? 'Escuela Online Full-Time – Preparatoria (Grados 9–12 · $1,350/trim · Anual $5,400)' : 'Full-Time Online School – High School (Grades 9–12 · $1,350/qtr · Annual $5,400)') + '</option>' +
+          '<option value="abc">' + (isEs ? 'Curso Intensivo de Lectoescritura ABC ($1,110/mes · máx 3 alumnos)' : 'ABC Early Reading & Literacy Intensive Course ($1,110/mo · max 3 students)') + '</option>' +
+          '<option value="spanish-live">' + (isEs ? 'Clases en Vivo de Español y Lectoescritura ($240/mes)' : 'Spanish Language & Literacy Live Classes ($240/mo)') + '</option>' +
+          '<option value="english-live">' + (isEs ? 'Clases en Vivo de Inglés Académico y Redacción ($240/mes)' : 'Academic English & Literacy Live Classes ($240/mo)') + '</option>' +
+          '<option value="lifeskills">' + (isEs ? 'Curso de Liderazgo y Educación Financiera ($120/mes · máx 7 alumnos)' : 'Academic Leadership & Financial Literacy Course ($120/mo · max 7 students)') + '</option>' +
           '<option value="assessment">' + (isEs ? 'Matrícula Anual y Evaluación Inicial ($295)' : 'Annual Registration & Initial Assessment ($295)') + '</option>';
-        if (curVal !== 'ft-15' && curVal !== 'ft-68' && curVal !== 'ft-912' && curVal !== 'assessment') {
+        if (curVal !== 'ft-15' && curVal !== 'ft-68' && curVal !== 'ft-912' && curVal !== 'abc' && curVal !== 'spanish-live' && curVal !== 'english-live' && curVal !== 'lifeskills' && curVal !== 'assessment') {
           var grade = document.getElementById('studentGrade').value;
           if (grade === '6-8') curVal = 'ft-68';
           else if (grade === '9-12') curVal = 'ft-912';
@@ -1087,8 +1101,9 @@
           '<option value="support-68">' + (isEs ? 'Apoyo Académico Virtual – Secundaria (Grados 6–8 · $320/mes)' : 'Virtual Academic Support – Middle School (Grades 6–8 · $320/mo)') + '</option>' +
           '<option value="support-912">' + (isEs ? 'Apoyo Académico Virtual – Preparatoria (Grados 9–12 · $365/mes)' : 'Virtual Academic Support – High School (Grades 9–12 · $365/mo)') + '</option>' +
           '<option value="abc">' + (isEs ? 'Curso Intensivo de Lectoescritura ABC ($1,110/mes · máx 3 alumnos)' : 'ABC Early Reading & Literacy Intensive Course ($1,110/mo · max 3 students)') + '</option>' +
+          '<option value="spanish-live">' + (isEs ? 'Clases en Vivo de Español y Lectoescritura ($240/mes)' : 'Spanish Language & Literacy Live Classes ($240/mo)') + '</option>' +
+          '<option value="english-live">' + (isEs ? 'Clases en Vivo de Inglés Académico y Redacción ($240/mes)' : 'Academic English & Literacy Live Classes ($240/mo)') + '</option>' +
           '<option value="lifeskills">' + (isEs ? 'Curso de Liderazgo y Educación Financiera ($120/mes · máx 7 alumnos)' : 'Academic Leadership & Financial Literacy Course ($120/mo · max 7 students)') + '</option>' +
-          '<option value="languages">' + (isEs ? 'Clases en Vivo de Español o Inglés Académico ($240/mes)' : 'Spanish or Academic English Live Classes ($240/mo)') + '</option>' +
           '<option value="bundle">' + (isEs ? 'Paquete Intensivo de Idiomas y Liderazgo ($520/mes)' : 'Language & Leadership Classes Bundle ($520/mo)') + '</option>' +
           '<option value="assessment">' + (isEs ? 'Inscripción Anual, Evaluación Educativa Inicial y Plan ILP ($295)' : 'Annual Registration, Educational Assessment & ILP Setup ($295)') + '</option>';
       }
@@ -1124,6 +1139,8 @@
         'support-912': isEs ? "Apoyo Académico Virtual – Preparatoria (Grados 9–12)" : "Virtual Academic Support – High School (Grades 9–12)",
         'support-k5': isEs ? (hubId === 'FL-STEPUP-EMA' ? "Home Education Instructional Program · Grados K–5 (ID EMA: 20172869)" : "Apoyo Académico Virtual – Grados K–5") : (hubId === 'FL-STEPUP-EMA' ? "Home Education Instructional Program · Grades K–5 (EMA Catalog Item ID: 20172869)" : "Virtual Academic Support – Grades K–5"),
         'abc': isEs ? "Curso Intensivo de Lectoescritura ABC" : "ABC Early Reading & Literacy Intensive Course",
+        'spanish-live': isEs ? "Clases en Vivo de Español y Lectoescritura" : "Spanish Language & Literacy Live Classes",
+        'english-live': isEs ? "Clases en Vivo de Inglés Académico y Redacción" : "Academic English & Literacy Live Classes",
         'lifeskills': isEs ? "Curso de Liderazgo y Educación Financiera" : "Academic Leadership & Financial Literacy Course",
         'languages': isEs ? "Clases en Vivo de Español o Inglés Académico" : "Spanish or Academic English Live Classes",
         'bundle': isEs ? "Paquete Intensivo de Idiomas y Liderazgo" : "Language & Leadership Classes Bundle",
@@ -1141,6 +1158,8 @@
         'support-912': isQuarterly ? "$1,095" : "$365",
         'support-k5': isQuarterly ? "$825" : "$275",
         'abc': "$1,110",
+        'spanish-live': "$240",
+        'english-live': "$240",
         'lifeskills': "$120",
         'languages': "$240",
         'bundle': "$520",
@@ -1156,6 +1175,8 @@
         'support-912': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
         'support-k5': isQuarterly ? (isEs ? " / trimestre" : " / quarter") : (isEs ? " / mes" : " / month"),
         'abc': isEs ? " / mes" : " / month",
+        'spanish-live': isEs ? " / mes" : " / month",
+        'english-live': isEs ? " / mes" : " / month",
         'lifeskills': isEs ? " / mes" : " / month",
         'languages': isEs ? " / mes" : " / month",
         'bundle': isEs ? " / mes" : " / month",
@@ -1352,8 +1373,16 @@
       var gradeParam = params.get('grade');
       if (gradeParam) {
         var gUpper = gradeParam.toUpperCase();
-        if (gUpper === 'K-5' || gUpper === 'K5' || gUpper === 'ELEMENTARY') {
-          document.getElementById('studentGrade').value = 'K-5';
+        if (gUpper === '1-5' || gUpper === '15' || gUpper === 'G1-5') {
+          document.getElementById('studentGrade').value = '1-5';
+        } else if (gUpper === 'K-5' || gUpper === 'K5' || gUpper === 'ELEMENTARY' || gUpper === 'K-1' || gUpper === 'K1') {
+          var stateVal = params.get('state');
+          var hubVal = params.get('hub');
+          if (hubVal === 'FL-STEPUP-EMA' || (stateVal && stateVal.toLowerCase().indexOf('florida') !== -1)) {
+            document.getElementById('studentGrade').value = 'K-5';
+          } else {
+            document.getElementById('studentGrade').value = '1-5';
+          }
         } else if (gUpper === '6-8' || gUpper === '68' || gUpper === 'MIDDLE') {
           document.getElementById('studentGrade').value = '6-8';
         } else if (gUpper === '9-12' || gUpper === '912' || gUpper === 'HIGH') {
@@ -1368,7 +1397,7 @@
           document.getElementById('serviceSelect').value = 'assessment';
         } else if (servParam === 'fulltime-15' || servParam === 'ft-15') {
           document.getElementById('serviceSelect').value = 'ft-15';
-          document.getElementById('studentGrade').value = 'K-5';
+          document.getElementById('studentGrade').value = '1-5';
         } else if (servParam === 'fulltime-68' || servParam === 'ft-68') {
           document.getElementById('serviceSelect').value = 'ft-68';
           document.getElementById('studentGrade').value = '6-8';
@@ -1376,9 +1405,9 @@
           document.getElementById('serviceSelect').value = 'ft-912';
           document.getElementById('studentGrade').value = '9-12';
         } else if (servParam === 'support-15' || servParam === 'support-k5') {
-          var opt15 = document.querySelector('#serviceSelect option[value="support-15"]');
-          document.getElementById('serviceSelect').value = opt15 ? 'support-15' : 'support-k5';
-          document.getElementById('studentGrade').value = 'K-5';
+          var isFL = (document.getElementById('stateHubSelect').value === 'FL-STEPUP-EMA');
+          document.getElementById('serviceSelect').value = isFL ? 'support-k5' : 'support-15';
+          document.getElementById('studentGrade').value = isFL ? 'K-5' : '1-5';
         } else if (servParam === 'support-68') {
           document.getElementById('serviceSelect').value = 'support-68';
           document.getElementById('studentGrade').value = '6-8';
@@ -1387,8 +1416,12 @@
           document.getElementById('studentGrade').value = '9-12';
         } else if (servParam === 'abc' || servParam === 'abc-reading') {
           document.getElementById('serviceSelect').value = 'abc';
-        } else if (servParam === 'spanish-live' || servParam === 'english-live' || servParam === 'languages') {
-          document.getElementById('serviceSelect').value = 'languages';
+        } else if (servParam === 'spanish-live' || servParam === 'spanish') {
+          document.getElementById('serviceSelect').value = 'spanish-live';
+        } else if (servParam === 'english-live' || servParam === 'english') {
+          document.getElementById('serviceSelect').value = 'english-live';
+        } else if (servParam === 'languages') {
+          document.getElementById('serviceSelect').value = 'spanish-live';
         } else if (servParam === 'bundle-live' || servParam === 'classes-bundle' || servParam === 'bundle') {
           document.getElementById('serviceSelect').value = 'bundle';
         } else if (servParam === 'support') {
@@ -1422,6 +1455,10 @@
       submitBtn.textContent = currentLang === 'es' ? 'Procesando registro en SIS...' : 'Processing SIS registration...';
 
       var formData = new FormData(form);
+      var servSelect = document.getElementById('serviceSelect');
+      if (servSelect && servSelect.options[servSelect.selectedIndex]) {
+        formData.append('service_name', servSelect.options[servSelect.selectedIndex].text);
+      }
 
       // Track lead in analytics
       try {
@@ -1474,6 +1511,21 @@
 
       document.getElementById('confirmedFolio').textContent = folio;
       document.getElementById('confirmedDate').textContent = "Date: " + (new Date()).toISOString().split('T')[0];
+
+      // Service, Hub & Grade Summary on Receipt
+      var servSelect = document.getElementById('serviceSelect');
+      var selServiceText = servSelect.options[servSelect.selectedIndex] ? servSelect.options[servSelect.selectedIndex].text : servSelect.value;
+      var hubSelect = document.getElementById('stateHubSelect');
+      var selHubText = hubSelect.options[hubSelect.selectedIndex] ? hubSelect.options[hubSelect.selectedIndex].text : hubSelect.value;
+      var gradeSelect = document.getElementById('studentGrade');
+      var selGradeText = gradeSelect.options[gradeSelect.selectedIndex] ? gradeSelect.options[gradeSelect.selectedIndex].text : gradeSelect.value;
+
+      var recSummary = document.getElementById('recSelectedSummary');
+      if (recSummary) {
+        recSummary.innerHTML = '<strong>' + (currentLang === 'es' ? 'Servicio Seleccionado: ' : 'Selected Service: ') + '</strong>' + selServiceText + '<br>' +
+          '<strong>' + (currentLang === 'es' ? 'Programa / Estado: ' : 'State Program / Hub: ') + '</strong>' + selHubText + '<br>' +
+          '<strong>' + (currentLang === 'es' ? 'Grado Escolar: ' : 'Grade Level: ') + '</strong>' + selGradeText;
+      }
       window.scrollTo({ top: rec.offsetTop - 40, behavior: 'smooth' });
     }
   </script>

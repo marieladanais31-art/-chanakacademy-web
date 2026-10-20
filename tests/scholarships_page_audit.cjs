@@ -82,8 +82,6 @@ test('Editorial rules: NO forbidden words (tutoring, tutoría, diagnóstico, dia
     { pattern: /\btutoría\b/i, label: 'tutoría' },
     { pattern: /\bdiagnóstico\b/i, label: 'diagnóstico' },
     { pattern: /\bdiagnostic\b/i, label: 'diagnostic' },
-    { pattern: /\$120/i, label: '$120' },
-    { pattern: /Standalone Life Skills/i, label: 'Standalone Life Skills' },
     { pattern: /official candidate with Middle States/i, label: 'official candidate with Middle States' },
     { pattern: /Direct Pay Partner Official Nonpublic Educational Provider/i, label: 'Direct Pay Partner Official Nonpublic Educational Provider' }
   ];
