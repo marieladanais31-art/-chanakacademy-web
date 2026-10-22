@@ -10,8 +10,22 @@
   // BILINGUAL DICTIONARY (EN is primary, ES is complete - 100% key parity)
   var I18N = {
     en: {
-      page_title: "ESA State Education Funds, ClassWallet & Odyssey | Bilingual Christian Guided Support | Chanak International Academy",
-      page_desc: "State education funds (ESA, EFA, UFA, Step Up) on ClassWallet and Odyssey. Bilingual Christian guided academic support and Mastery Learning for homeschooling families.",
+      page_title: "Chanak Flex & State Education Funding | ClassWallet, Odyssey & EMA",
+      page_desc: "Chanak Flex digital units, downloadable lessons in development, optional topic-based live classes, and state education funding.",
+
+      flex_badge: "PRIMARY LEARNING PATHWAY",
+      flex_title: "Chanak Flex · Learn at Your Own Pace",
+      flex_lead: "Our digital learning pathway is being expanded with organized learning units in the student platform and downloadable lessons. Students progress through academic activities and assessments with follow-up according to their program.",
+      flex_card1_title: "Digital Learning Units",
+      flex_card1_desc: "Access learning units in the Chanak student platform; downloadable lesson materials are being added progressively.",
+      flex_card2_title: "Learning & Academic Records",
+      flex_card2_desc: "Progress tracking, assessments and reports. School records and official transcripts apply to formally enrolled school students, not standalone support services.",
+      flex_card3_title: "Optional Topic-Based Live Classes",
+      flex_card3_desc: "Live classes may be scheduled by topic as optional sessions. A sequential video-lesson library is planned, not yet available.",
+      flex_seal1: "Family support in English & Spanish",
+      flex_seal2: "Alternative curriculum options: A.C.E., LIFEPAC & CLE",
+      flex_seal3: "Optional Life Skills, Character & Leadership access",
+      flex_note: "A.C.E., LIFEPAC and CLE are optional third-party curriculum choices; their materials and licenses are not automatically included. Chanak Flex is Chanak's developing digital learning pathway. Specific services and scholarship eligibility vary by state; optional enrichment is not represented as a scholarship-funded expense.",
 
       // Topbar & Nav
       topbar_text: "Approved provider in the programs listed in the states table",
@@ -22,7 +36,7 @@
 
       // Jump Nav
       jump_label: "Jump to section:",
-      jump_model: "60/20/20 Model",
+      jump_model: "Chanak Flex",
       jump_pricing: "Services & Pricing",
       jump_states: "Approved States",
       jump_wallets: "Digital Platforms",
@@ -34,8 +48,8 @@
 
       // Hero
       hero_badge: "✦ STATE EDUCATION FUNDS & SCHOOL CHOICE · 2026–2027 CYCLE ✦",
-      hero_h1: "State Education Funds & K–12 Virtual Guided Learning",
-      hero_lead: "Guided academic support, bilingual (English and Spanish), Christian education and Mastery Learning, for families using state education funds.",
+      hero_h1: "Chanak Flex · Digital K–12 Learning & State Education Funds",
+      hero_lead: "Digital learning units in our platform, downloadable lessons being added progressively, academic follow-up and optional topic-based live classes. Family support in English and Spanish.",
       hero_disclaimer: "* Full-Time Online School (Arizona) provides formal enrollment and diploma; Virtual Academic Support packages provide mentoring without conferring diploma or transcript. Each program administrator determines which expenses are eligible.",
       pill_entity: "Entity: Chanak TrainUp Education Inc. d/b/a Chanak International Academy",
       pill_wallets: "Platforms: ClassWallet, Odyssey & Step Up / EMA",
@@ -295,8 +309,22 @@
     },
 
     es: {
-      page_title: "Fondos Educativos Estatales ESA, ClassWallet y Odyssey | Apoyo Bilingüe y Educación Cristiana | Chanak International Academy",
-      page_desc: "Fondos educativos estatales (ESA, EFA, UFA, Step Up) en ClassWallet y Odyssey. Acompañamiento académico guiado bilingüe, educación cristiana y Mastery Learning.",
+      page_title: "Chanak Flex y financiación educativa estatal | ClassWallet, Odyssey y EMA",
+      page_desc: "Unidades digitales Chanak Flex, lecciones descargables en desarrollo, clases opcionales por temas y financiación educativa estatal.",
+
+      flex_badge: "RUTA PRINCIPAL DE APRENDIZAJE",
+      flex_title: "Chanak Flex · Aprende a tu ritmo",
+      flex_lead: "Estamos ampliando nuestra ruta digital con unidades de aprendizaje organizadas en la plataforma estudiantil y lecciones descargables. Cada estudiante avanza con actividades, evaluaciones y seguimiento según su programa.",
+      flex_card1_title: "Unidades de aprendizaje digitales",
+      flex_card1_desc: "Acceso a unidades en la plataforma de Chanak; incorporamos progresivamente las lecciones descargables.",
+      flex_card2_title: "Aprendizaje y registros académicos",
+      flex_card2_desc: "Seguimiento, evaluaciones e informes. Los expedientes escolares y transcripts oficiales corresponden a estudiantes formalmente matriculados, no a servicios de apoyo independientes.",
+      flex_card3_title: "Clases opcionales en vivo por temas",
+      flex_card3_desc: "Se podrán programar sesiones en vivo por temas como actividad opcional. La biblioteca de vídeos secuenciales está prevista, pero aún no disponible.",
+      flex_seal1: "Atención familiar en inglés y español",
+      flex_seal2: "Currículos alternativos: A.C.E., LIFEPAC y CLE",
+      flex_seal3: "Acceso opcional a Life Skills, Character & Leadership",
+      flex_note: "A.C.E., LIFEPAC y CLE son alternativas curriculares de terceros; sus materiales y licencias no están incluidos automáticamente. Chanak Flex es nuestra ruta digital en desarrollo. Los servicios y la elegibilidad de becas varían por estado; los complementos opcionales no se presentan como gastos financiados.",
 
       // Topbar & Nav
       topbar_text: "Proveedor aprobado en los programas indicados en la tabla de estados",
@@ -307,7 +335,7 @@
 
       // Jump Nav
       jump_label: "Ir a sección:",
-      jump_model: "Modelo 60/20/20",
+      jump_model: "Chanak Flex",
       jump_pricing: "Servicios y Precios",
       jump_states: "Estados Aprobados",
       jump_wallets: "Plataformas Digitales",
@@ -319,8 +347,8 @@
 
       // Hero
       hero_badge: "✦ FONDOS EDUCATIVOS Y ELECCIÓN ESCOLAR · CICLO 2026–2027 ✦",
-      hero_h1: "Fondos Educativos Estatales y Apoyo Virtual Guiado K–12",
-      hero_lead: "Acompañamiento académico guiado, bilingüe (inglés y español), con educación cristiana y Mastery Learning, para familias con fondos estatales.",
+      hero_h1: "Chanak Flex · Aprendizaje digital K–12 y fondos estatales",
+      hero_lead: "Unidades educativas digitales en nuestra plataforma, lecciones descargables que estamos incorporando, seguimiento académico y clases opcionales en vivo por temas. Atención a familias en español e inglés.",
       hero_disclaimer: "* La Escuela Online Full-Time (Arizona) confiere matrícula escolar formal y diploma; los paquetes de apoyo virtual ofrecen mentoría sin otorgar diploma escolar. Cada administrador del programa determina qué gastos son elegibles.",
       pill_entity: "Entidad: Chanak TrainUp Education Inc. d/b/a Chanak International Academy",
       pill_wallets: "Plataformas: ClassWallet, Odyssey y Step Up / EMA",
