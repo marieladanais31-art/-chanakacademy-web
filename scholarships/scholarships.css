@@ -2061,3 +2061,25 @@ footer.scholarships-footer {
 }
 
 
+
+/* Compact existing funding tutorials: all six videos and modal behavior retained. */
+#videos .videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+#videos .chanak-video-card { max-width: 340px; border-radius: 12px; }
+#videos .chanak-video-thumb-wrap { aspect-ratio: 16 / 9; padding: 10px 12px; }
+#videos .chanak-video-body { padding: 12px 13px; }
+#videos .chanak-video-title { font-size: .89rem; line-height: 1.4; }
+#videos .chanak-video-meta { font-size: .78rem; line-height: 1.45; }
+#videos .chanak-video-footer-meta { font-size: .72rem; }
+@media(max-width:540px) {
+  #videos .videos-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; }
+  #videos .chanak-video-card { width: 100%; }
+  #videos .chanak-video-body { padding: 9px; }
+  #videos .chanak-video-meta { display: none; }
+  #videos .chanak-video-title { font-size: .76rem; }
+  #videos .chanak-video-thumb-wrap { padding: 8px; }
+}
