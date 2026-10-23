@@ -38,6 +38,18 @@
       benefits_curr_text: "Chanak Flex digital learning units are being added to the platform, with downloadable lessons introduced progressively. A.C.E., LIFEPAC and CLE are optional external curricula and their books, PACEs and licenses are purchased separately if chosen; they are not included in tuition unless explicitly contracted.",
       benefits_video_note: "Sequential recorded lesson videos are planned for a future phase and are not currently included. Funding and service approval vary by state.",
       benefits_pricing_note: "Existing state tuition and support prices remain unchanged. Optional Life Skills, Character & Leadership is not automatically a state-funded expense.",
+      school_primary_badge: "OUR PRIMARY OFFERING",
+      school_primary_title: "Chanak Flex · Full-Time Private Online School",
+      school_primary_intro: "More than tutoring: formal private school enrollment with flexible learning units, academic oversight and official school records. Program eligibility and payment options depend on the state.",
+      school_card1_title: "Private School Enrollment",
+      school_card1_text: "Full-Time students are enrolled at Chanak International Academy, a Florida-registered private school. Grades, verified credits and official transcripts are issued for completed academic work; the diploma requires meeting graduation requirements.",
+      school_card2_title: "Chanak Flex Digital Learning",
+      school_card2_text: "Online units and downloadable lessons being added progressively, individualized learning plans and academic monitoring. Topic-based live classes are optional; sequential video lessons are planned for later.",
+      school_card3_title: "Curriculum & Other Services",
+      school_card3_text: "A.C.E., LIFEPAC and CLE are optional publisher curricula purchased separately if selected. Life Skills, Character & Leadership is an optional complement where permitted. Support-only students receive progress reports, not school transcripts or diplomas.",
+      school_prices_title: "Arizona ESA · Full-Time Tuition (existing prices)",
+      school_prices_note: "The existing $295 registration/setup charge is separate. Other states retain their approved offerings; vendor category School does not guarantee tuition reimbursement.",
+      school_prices_link: "View Arizona school tuition →",
       // Topbar & Nav
       topbar_text: "Approved provider in the programs listed in the states table",
       topbar_fldoe: "Registered with the Florida DOE, code #134620 · 501(c)(3) Nonprofit (EIN 36-5154011)",
@@ -47,7 +59,7 @@
 
       // Jump Nav
       jump_label: "Jump to section:",
-      jump_model: "Chanak Flex",
+      jump_model: "Private Online School",
       jump_pricing: "Services & Pricing",
       jump_states: "Approved States",
       jump_wallets: "Digital Platforms",
@@ -59,8 +71,8 @@
 
       // Hero
       hero_badge: "✦ STATE EDUCATION FUNDS & SCHOOL CHOICE · 2026–2027 CYCLE ✦",
-      hero_h1: "Chanak Flex · Digital K–12 Learning & State Education Funds",
-      hero_lead: "Digital learning units in our platform, downloadable lessons being added progressively, academic follow-up and optional topic-based live classes. Family support in English and Spanish.",
+      hero_h1: "Chanak Flex · Full-Time Private Online School & State Scholarships",
+      hero_lead: "A Florida-registered private online school offering formal K–12 enrollment, official academic records and flexible Chanak Flex digital learning. Optional topic-based live classes and family support in English and Spanish.",
       hero_disclaimer: "* Full-Time Online School (Arizona) provides formal enrollment and diploma; Virtual Academic Support packages provide mentoring without conferring diploma or transcript. Each program administrator determines which expenses are eligible.",
       pill_entity: "Entity: Chanak TrainUp Education Inc. d/b/a Chanak International Academy",
       pill_wallets: "Platforms: ClassWallet, Odyssey & Step Up / EMA",
@@ -348,6 +360,18 @@
       benefits_curr_text: "Las unidades digitales de Chanak Flex se están incorporando a la plataforma y sus lecciones descargables estarán disponibles progresivamente. A.C.E., LIFEPAC y CLE son currículos externos opcionales: si la familia los elige, paga sus libros, PACEs y licencias aparte; no forman parte de la cuota salvo contratación expresa.",
       benefits_video_note: "Los vídeos secuenciales de lecciones están previstos para una fase posterior y todavía no están incluidos. La financiación depende del estado y del servicio autorizado.",
       benefits_pricing_note: "Los precios actuales por estado no se modifican. Life Skills, Character & Leadership es opcional y no se presume financiable con fondos estatales.",
+      school_primary_badge: "NUESTRA OFERTA PRINCIPAL",
+      school_primary_title: "Chanak Flex · Escuela privada online Full-Time",
+      school_primary_intro: "Más que tutorías: matrícula escolar formal, unidades flexibles, seguimiento académico y expediente escolar. La elegibilidad de las ayudas y la forma de pago dependen del estado.",
+      school_card1_title: "Matrícula escolar privada",
+      school_card1_text: "Los estudiantes Full-Time están formalmente matriculados en Chanak International Academy, escuela privada registrada en Florida. Se emiten notas, créditos verificados y transcripts de estudios cursados; el diploma requiere completar los requisitos de graduación.",
+      school_card2_title: "Aprendizaje digital Chanak Flex",
+      school_card2_text: "Unidades online y lecciones descargables que se incorporan progresivamente, plan individualizado y seguimiento académico. Las clases en vivo por temas son opcionales; los vídeos secuenciales llegarán más adelante.",
+      school_card3_title: "Currículos y otros servicios",
+      school_card3_text: "A.C.E., LIFEPAC y CLE son currículos editoriales opcionales que se compran aparte si se eligen. Life Skills, Character & Leadership es complemento opcional cuando se permite. Los estudiantes de apoyo reciben informes de progreso, no transcripts escolares ni diploma.",
+      school_prices_title: "Arizona ESA · Matrícula Full-Time (precios actuales)",
+      school_prices_note: "La cuota actual de matrícula/configuración de $295 se factura aparte. Los demás estados conservan sus servicios autorizados; aparecer como School no garantiza financiación Full-Time.",
+      school_prices_link: "Ver colegiatura escolar de Arizona →",
       // Topbar & Nav
       topbar_text: "Proveedor aprobado en los programas indicados en la tabla de estados",
       topbar_fldoe: "Registrada ante el FLDOE, código #134620 · Organización Sin Ánimo de Lucro 501(c)(3) (EIN 36-5154011)",
@@ -357,7 +381,7 @@
 
       // Jump Nav
       jump_label: "Ir a sección:",
-      jump_model: "Chanak Flex",
+      jump_model: "Escuela privada online",
       jump_pricing: "Servicios y Precios",
       jump_states: "Estados Aprobados",
       jump_wallets: "Plataformas Digitales",
@@ -369,8 +393,8 @@
 
       // Hero
       hero_badge: "✦ FONDOS EDUCATIVOS Y ELECCIÓN ESCOLAR · CICLO 2026–2027 ✦",
-      hero_h1: "Chanak Flex · Aprendizaje digital K–12 y fondos estatales",
-      hero_lead: "Unidades educativas digitales en nuestra plataforma, lecciones descargables que estamos incorporando, seguimiento académico y clases opcionales en vivo por temas. Atención a familias en español e inglés.",
+      hero_h1: "Chanak Flex · Escuela privada online y becas estatales",
+      hero_lead: "Escuela privada registrada en Florida con matrícula formal K–12, expediente escolar y aprendizaje digital flexible mediante Chanak Flex. Clases en vivo por temas opcionales y atención familiar en español e inglés.",
       hero_disclaimer: "* La Escuela Online Full-Time (Arizona) confiere matrícula escolar formal y diploma; los paquetes de apoyo virtual ofrecen mentoría sin otorgar diploma escolar. Cada administrador del programa determina qué gastos son elegibles.",
       pill_entity: "Entidad: Chanak TrainUp Education Inc. d/b/a Chanak International Academy",
       pill_wallets: "Plataformas: ClassWallet, Odyssey y Step Up / EMA",
