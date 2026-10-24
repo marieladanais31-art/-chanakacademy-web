@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var state = { analytics: false, marketing: false };
-  var googleLoaded = false, metaLoaded = false;
+  var googleLoaded = false, metaLoaded = false, metricoolLoaded = false;
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () {
     if (arguments[0] === 'event' && !state.analytics && !state.marketing) return;
@@ -26,6 +26,19 @@
       window.gtag('config', 'AW-18109980849', page);
       window.gtag('config', 'GT-NSSXS5N6', page);
       script('https://www.googletagmanager.com/gtag/js?id=AW-18109980849');
+    }
+    if (analytics && !metricoolLoaded) {
+      metricoolLoaded = true;
+      var metricool = document.createElement('script');
+      metricool.async = true;
+      metricool.src = 'https://tracker.metricool.com/resources/be.js';
+      metricool.onload = function () {
+        if (state.analytics && window.beTracker) {
+          window.beTracker.t({ hash: '617f1097e16ce3e91a578751ab193b02' });
+        }
+      };
+      metricool.onerror = function () { metricoolLoaded = false; };
+      document.head.appendChild(metricool);
     }
     if (marketing && !metaLoaded) {
       metaLoaded = true;
@@ -64,7 +77,7 @@
       var box = document.createElement('div'); box.id = 'chanak-tracking-consent'; box.setAttribute('role', 'region');
       box.setAttribute('aria-label', en ? 'Cookie preferences' : 'Preferencias de cookies');
       box.style.cssText = 'position:fixed;bottom:40px;left:16px;right:16px;max-width:620px;z-index:2000;background:#fff;color:#0c2d48;border:1px solid #d8e6ee;border-radius:12px;padding:20px;box-shadow:0 4px 24px #0002;font:15px/1.5 sans-serif';
-      var text = document.createElement('p'); text.textContent = en ? 'With your permission, Google and Meta help us measure inquiries and advertising. You can decline and still use the website and enrollment form.' : 'Con tu permiso, Google y Meta nos ayudan a medir consultas y publicidad. Puedes rechazarlas y seguir usando la web y la matrícula.';
+      var text = document.createElement('p'); text.textContent = en ? 'With your permission, Google, Meta and Metricool help us measure visits, inquiries and advertising. You can decline and still use the website and enrollment form.' : 'Con tu permiso, Google, Meta y Metricool nos ayudan a medir visitas, consultas y publicidad. Puedes rechazarlas y seguir usando la web y la matrícula.';
       box.appendChild(text);
       ['none', 'all'].forEach(function (value) {
         var btn = document.createElement('button'); btn.type = 'button';
