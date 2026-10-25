@@ -67,7 +67,7 @@
       jump_guides: "Step-by-Step Guides",
       jump_faq: "Frequently Asked Questions",
       jump_curric: "Curriculum Costs",
-      jump_advisory: "Free Consultation",
+      jump_advisory: "Request Guidance",
 
       // Hero
       hero_badge: "✦ STATE EDUCATION FUNDS & SCHOOL CHOICE · 2026–2027 CYCLE ✦",
@@ -79,7 +79,7 @@
       pill_msa: "Candidate for MSA-CESS accreditation",
       pill_fldoe: "Registered with the Florida DOE, code #134620",
       btn_explore_states: "Explore States & Platforms ↓",
-      btn_request_guidance: "Request Free Guidance →",
+      btn_request_guidance: "Request Guidance →",
 
       // Trust bar
       trust_fldoe: "Registered with the Florida DOE, code #134620",
