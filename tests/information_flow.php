@@ -14,6 +14,7 @@ $cases=[
  [['necesidad'=>'life_skills','pais'=>'MX'],'life_skills','MX','es','life-skills-es'],
  [['necesidad'=>'offcampus','pais'=>'Estats Units'],'offcampus','US','es','off-campus-us-es'],
  [['necesidad'=>'dual','country_code'=>'ZZ'],'dual','ZZ','es','dual-diploma-global-es'],
+ [['programa_interes'=>'Florida PEP (Step Up · EMA)','pais'=>'Estados Unidos'],'florida_pep_ema','US','es','florida-heip-es'],
 ];
 foreach($cases as [$data,$route,$country,$lang,$file]){
  $actual=chanak_resolve_route($data,'https://www.chanakacademy.org/');

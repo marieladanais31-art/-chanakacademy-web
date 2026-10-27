@@ -576,8 +576,9 @@ footer a{color:#cbd5e1;text-decoration:none}
         <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:8px;text-align:center;">Talk to Admissions</h3>
         <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;">We review the student's grade, records, English level and goals, and send you a written plan with the exact tuition before you enroll.</p>
         <form action="/enviar-formulario.php" method="POST">
-          <input type="hidden" name="programa" value="offcampus"/>
-          <input type="hidden" name="necesidad" value="offcampus"/>
+          <input type="hidden" id="fl_programa" name="programa" value="offcampus"/>
+          <input type="hidden" id="fl_necesidad" name="necesidad" value="offcampus"/>
+          <input type="hidden" id="fl_hub" name="hub_id" value=""/>
           <input type="hidden" name="detected_country" value="US"/>
           <input type="hidden" name="pais" value="Estados Unidos"/>
           <input type="hidden" name="origen" value="Landing US Florida"/>
@@ -602,16 +603,46 @@ footer a{color:#cbd5e1;text-decoration:none}
           </select>
 
           <label for="f_prog">Program of interest</label>
-          <select id="f_prog" name="programa_interes">
-            <option value="U.S. K-12 full-time">U.S. K-12 full-time</option>
+          <select id="f_prog" name="programa_interes" onchange="if(this.value.indexOf('PEP')!==-1){document.getElementById('f_funding').value='florida_pep_ema';handleFundingChange('florida_pep_ema');}">
+            <option value="U.S. K-12 full-time">U.S. K-12 full-time (Umbrella School)</option>
+            <option value="Florida PEP (Step Up · EMA)">Florida PEP (Step Up For Students · EMA)</option>
             <option value="Finaliza tu High School">Finaliza tu High School (Adult High School)</option>
             <option value="Academic English">Academic English Pathway</option>
             <option value="Life Skills">Life Skills &amp; Leadership</option>
             <option value="Not sure yet">Not sure yet</option>
           </select>
 
+          <label for="f_funding">Funding source / Vía de pago</label>
+          <select id="f_funding" name="funding" onchange="handleFundingChange(this.value)">
+            <option value="private">Private tuition / Pago privado</option>
+            <option value="florida_pep_ema">Florida PEP · Step Up For Students (EMA)</option>
+          </select>
+
           <button type="submit">Request information</button>
         </form>
+        <script>
+          function handleFundingChange(val) {
+            var nec = document.getElementById('fl_necesidad');
+            var prog = document.getElementById('fl_programa');
+            var hub = document.getElementById('fl_hub');
+            if (val === 'florida_pep_ema') {
+              if (nec) nec.value = 'florida_pep_ema';
+              if (prog) prog.value = 'florida_pep_ema';
+              if (hub) hub.value = 'FL-STEPUP-EMA';
+            } else {
+              var progSel = document.getElementById('f_prog');
+              if (progSel && progSel.value.indexOf('PEP') !== -1) {
+                if (nec) nec.value = 'florida_pep_ema';
+                if (prog) prog.value = 'florida_pep_ema';
+                if (hub) hub.value = 'FL-STEPUP-EMA';
+              } else {
+                if (nec) nec.value = 'offcampus';
+                if (prog) prog.value = 'offcampus';
+                if (hub) hub.value = '';
+              }
+            }
+          }
+        </script>
       </div>
     </div>
   </section>

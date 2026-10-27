@@ -28,7 +28,7 @@ function chanak_resolve_route(array $data, string $referer): string {
     if (in_array($stateRoute,['florida_pep_ema','alabama_choose','classwallet'],true)) return $stateRoute;
     $need=chanak_route_from_value((string)($data['necesidad'] ?? ''));
     if (in_array($need,['florida_pep_ema','alabama_choose','classwallet'],true)) return $need;
-    foreach (['program','programa','service','servicio','programa_ema'] as $key) {
+    foreach (['program','programa','service','servicio','programa_ema','programa_interes','funding','funding_source'] as $key) {
         $route=chanak_route_from_value((string)($data[$key] ?? ''));
         if ($route !== '') return $route;
     }
