@@ -9,7 +9,7 @@ function chanak_route_from_value(string $value): string {
     if (preg_match('/alabama|choose|al-choose/', $v)) return 'alabama_choose';
     if (preg_match('/florida-heip|florida.*(ema|pep|home|heip)|^florida$|^ema$|^pep$|stepup|fl-stepup/', $v)) return 'florida_pep_ema';
     if (preg_match('/classwallet|odyssey|scholarship|arizona|utah|wyoming|new-hampshire|south-carolina|arkansas|ufa|estf|efa|cw|ody|esa/', $v)) return 'classwallet';
-    if (preg_match('/dual|adult.high.school/', $v)) return 'dual';
+    if (preg_match('/dual|adult/', $v)) return 'dual';
     if (preg_match('/off.?campus|homeschool|educacion en casa/', $v)) return 'offcampus';
     if (preg_match('/life.?skills/', $v)) return 'life_skills';
     if (preg_match('/diagnost|evaluacion|academic.assessment/', $v)) return 'diagnostico';
