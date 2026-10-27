@@ -113,16 +113,17 @@ const otherStateFiles = [
   'scholarships/utah/index.html',
   'scholarships/wyoming/index.html',
   'scholarships/new-hampshire/index.html',
-  'scholarships/south-carolina/index.html',
-  'us/florida/index.html'
+  'scholarships/south-carolina/index.html'
 ];
 
-check('The other 6 states and private school (us/florida/index.html) remain strictly untouched', () => {
+check('The other 6 states remain strictly untouched and Florida landing offers PEP', () => {
   const { execSync } = require('child_process');
   for (const relPath of otherStateFiles) {
     const fullPath = path.join(ROOT, relPath);
     assert(fs.existsSync(fullPath), `File ${relPath} must exist`);
   }
+  const usFlHtml = fs.readFileSync(path.join(ROOT, 'us/florida/index.html'), 'utf8');
+  assert(usFlHtml.includes('20172869') && usFlHtml.includes('florida_pep_ema'), 'us/florida/index.html must offer Florida PEP');
   // Check git diff on other states to ensure 0 changes
   const diffOutput = execSync(`GIT_CONFIG_GLOBAL=/dev/null git status --porcelain ${otherStateFiles.join(' ')}`, { cwd: ROOT, encoding: 'utf8' }).trim();
   assert.strictEqual(diffOutput, '', `Other state pages must have 0 git changes, but found:\n${diffOutput}`);

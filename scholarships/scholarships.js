@@ -749,7 +749,7 @@
       walletClass: "ema",
       approval: { en: "Authorized Provider (HEIP)", es: "Proveedor autorizado (HEIP)" },
       service: { en: "Home Education Instructional Program", es: "Programa de instrucción para educación en el hogar" },
-      offering: { en: "Monthly Tuition · EMA Catalog Item IDs: 20172869 (K–5), 20169280 (6–8), 20172870 (9–12) · Separate assessment/setup fee: confirm EMA eligibility", es: "Cuota mensual · IDs de catálogo en EMA: 20172869 (K–5), 20169280 (6–8), 20172870 (9–12) · Cuota separada de evaluación/alta: confirmar elegibilidad EMA" },
+      offering: { en: "Monthly Tuition · EMA Catalog Item IDs: 20172869 (K–5), 20169280 (6–8), 20172870 (9–12)", es: "Cuota mensual del servicio · IDs del servicio en EMA: 20172869 (K–5), 20169280 (6–8), 20172870 (9–12)" },
       payment: { en: "Direct Payment via EMA", es: "Pago Directo vía EMA" },
       landingUrl: "/florida-home-education/",
       featured: true

@@ -118,6 +118,18 @@ $AUTOREPLY = [
             . "· En EMA nos encuentras buscando: Chanak International Academy (Entidad legal: Chanak TrainUp Education Inc.).\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\nFlorida Home Education Instructional Support",
     ],
+    'florida_pep_ema_en' => [
+        'subject' => 'We have received your application · Florida PEP (EMA) | Chanak Academy',
+        'body' => "Dear {nombre},\n\n"
+            . "Thank you for your interest in Chanak's K-12 instructional support programs approved and active in EMA for Florida PEP families!\n\n"
+            . "What happens next:\n"
+            . "· Within 24 business hours a member of our team will contact you to confirm your student's placement and guide you through the EMA reservation process.\n\n"
+            . "In the meantime:\n"
+            . "· Program details: {landing}\n"
+            . "· Download family dossier (PDF): {dossier}\n"
+            . "· Find us on the EMA portal by searching for: Chanak International Academy (Legal entity: Chanak TrainUp Education Inc.).\n\n"
+            . "Kind regards,\nChanak International Academy\nFlorida Home Education Instructional Support",
+    ],
     'alabama_choose' => [
         'subject' => 'Información recibida · Alabama CHOOSE | Chanak Academy',
         'body' => "Hola / Hello {nombre},\n\nGracias por tu interés / Thank you for your interest.\nNuestro equipo te contactará para confirmar el servicio, requisitos y cotización en USD. / Our team will contact you to confirm the service, requirements and USD quote.\n\nInformación / Information: {landing}\nLa solicitud de información no confirma matrícula, elegibilidad ni autorización de pago. / This inquiry does not confirm enrollment, eligibility or payment authorization.\n\nEquipo Chanak International Academy",
@@ -587,7 +599,7 @@ $folio       = first_value($data, ['folio', 'application_id', 'folio_id']);
 $hub         = first_value($data, ['hub', 'hub_id', 'state_hub', 'hub_name']);
 $studentName = first_value($data, ['student_name', 'estudiante_nombre', 'studentFullName', 'student_first_name']);
 $service     = first_value($data, ['service', 'servicio', 'programa', 'program']);
-$lang        = strtolower(first_value($data, ['language', 'lang', 'idioma'])) ?: 'es';
+$lang        = strtolower(first_value($data, ['language', 'lang', 'idioma', 'idioma_preferido', 'preferred_language'])) ?: 'es';
 
 /* ── Enrutamiento por producto ──
    1º el campo explícito 'necesidad' del formulario de la home;
@@ -758,14 +770,16 @@ if (!$sentInterno) {
 }
 
 /* ── 3) AUTORESPUESTA a la familia ── */
-$isEn = (strpos($lang, 'en') === 0 || (isset($pack['language']) && $pack['language'] === 'en'));
+$isEn = (strpos($lang, 'en') === 0);
 $autoreplyKey = $commercialRegion === 'Dubai' ? 'dual_dubai' : ($commercialRegion === 'UAE' ? 'dual_uae' : $route);
 if ($esMatricula) {
     $reply = $isEn ? $AUTOREPLY['matricula_en'] : $AUTOREPLY['matricula'];
+} elseif ($route === 'florida_pep_ema') {
+    $reply = $isEn ? ($AUTOREPLY['florida_pep_ema_en'] ?? $AUTOREPLY['florida_pep_ema']) : $AUTOREPLY['florida_pep_ema'];
 } else {
     $reply = $AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general'];
     if ($commercialRegion === '' && $pack) {
-        $en = $pack['language'] === 'en';
+        $en = $isEn;
         $subject = $en ? 'Your program dossier' : 'Tu dossier del programa';
         $reply = [
             'subject' => $subject . ' | Chanak - ' . $routeCfg['label'],

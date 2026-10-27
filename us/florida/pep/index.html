@@ -108,8 +108,8 @@ footer a{color:#cbd5e1;text-decoration:none}
     <a href="/us/florida/pep/" class="logo-w">
       <img src="/assets/chanak-logo.png" alt="Chanak International Academy"/>
       <div>
-        <div style="font-weight:700;font-size:14px;">Chanak TrainUp Education Inc.</div>
-        <div style="font-size:11px;color:#cbd5e1;" data-i18n="nav_entity">Chanak International Academy · Florida Home Education</div>
+        <div style="font-weight:700;font-size:16px;">Chanak TrainUp Education Inc.</div>
+        <div style="font-size:12px;color:#cbd5e1;" data-i18n="nav_entity">Chanak International Academy · Florida Home Education</div>
       </div>
     </a>
     <div class="nav-r">
@@ -117,8 +117,8 @@ footer a{color:#cbd5e1;text-decoration:none}
         <button class="lang-btn act" onclick="setLang('es')">ES</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
       </div>
-      <a href="/us/florida/" style="color:#cbd5e1;font-size:13px;text-decoration:none;" data-i18n="nav_umbrella">Programa Escolar Sombrilla</a>
-      <a href="#solicitar" class="btn btn-gold" style="padding:7px 16px;font-size:13px;" data-i18n="nav_cta">Solicitar incorporación</a>
+      <a href="#programas" style="color:#cbd5e1;font-size:16px;font-weight:700;text-decoration:none;" data-i18n="nav_prog">Servicios PEP</a>
+      <a href="/matricula/?programa=esa&amp;hub=FL-STEPUP-EMA" class="btn btn-gold" style="padding:10px 22px;font-size:15px;font-weight:700;" data-i18n="nav_cta">Enrollment / Matrícula PEP</a>
     </div>
   </div>
 </nav>
@@ -387,14 +387,14 @@ footer a{color:#cbd5e1;text-decoration:none}
     <div class="wrap">
       <div class="form-box">
         <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:8px;text-align:center;" data-i18n="form_title">Solicitar incorporación</h3>
-        <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;" data-i18n="form_sub">Elige tu etapa y continúa al formulario oficial del SIS con Florida EMA seleccionado.</p>
+        <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;" data-i18n="form_sub">Elige tu etapa y continúa al formulario oficial con Florida EMA seleccionado.</p>
 
-        <form id="pepForm" action="https://sis.chanakacademy.org/matricula" method="GET">
-          <input type="hidden" name="program" value="florida-heip"/>
-          <input type="hidden" name="funding" value="scholarship"/>
+        <form id="pepForm" action="/matricula/" method="GET">
+          <input type="hidden" name="programa" value="esa"/>
+          <input type="hidden" name="hub" value="FL-STEPUP-EMA"/>
           <input type="hidden" name="src" value="florida-pep-ema"/>
           <label for="f_grade" data-i18n="f_lbl_grade">Etapa del estudiante / Student level *</label>
-          <select id="f_grade" name="gradeBand" required>
+          <select id="f_grade" name="grade" required>
             <option value="" disabled selected data-i18n="opt_select_grade">-- Selecciona la etapa --</option>
             <option value="K-5">Elementary K–5 · EMA 20172869 · 275 USD/mes</option>
             <option value="6-8">Middle Grades 6–8 · EMA 20169280 · 320 USD/mes</option>
@@ -402,13 +402,12 @@ footer a{color:#cbd5e1;text-decoration:none}
           </select>
           <label for="f_pep_status" data-i18n="f_lbl_pep">Situación de fondos PEP / PEP fund status</label>
           <select id="f_pep_status" name="scholarshipStatus">
-            <option value="unknown">No lo sé todavía / Not sure yet</option>
             <option value="approved" data-i18n="pep_opt_1">Fondos aprobados</option>
             <option value="pending" data-i18n="pep_opt_2">Solicitud en proceso</option>
             <option value="not_applied" data-i18n="pep_opt_3">Todavía no he solicitado</option>
           </select>
-          <button type="submit" id="btnSubmitForm" data-i18n="btn_submit_form">Matricular</button>
-          <p style="font-size:13px;color:#cbd5e1;margin-top:14px;" data-i18n="form_handoff">Los datos personales, documentos y consentimiento se completan una sola vez en el SIS. El envío de la solicitud genera un folio; no confirma pago ni aprobación de fondos.</p>
+          <button type="submit" id="btnSubmitForm" data-i18n="btn_submit_form">Enrollment / Matricular →</button>
+          <p style="font-size:13px;color:#cbd5e1;margin-top:14px;" data-i18n="form_handoff">Los datos personales, documentos y consentimiento se completan una sola vez. El envío de la solicitud genera un folio; no confirma pago ni aprobación de fondos.</p>
         </form>
       </div>
     </div>
@@ -422,14 +421,20 @@ footer a{color:#cbd5e1;text-decoration:none}
 <input type="hidden" name="necesidad" value="florida_pep_ema"/>
 <input type="hidden" name="origen" value="Florida EMA · Información"/>
 <input type="hidden" name="pais" value="Estados Unidos"/>
+<input type="hidden" name="hub_id" value="FL-STEPUP-EMA"/>
 <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off"/>
+<label>Idioma principal de comunicación / Primary language
+<select name="language" style="font-weight:600;">
+  <option value="es" selected>Español (Spanish) — Recibir respuesta en español</option>
+  <option value="en">English (Inglés) — Receive response in English</option>
+</select></label>
 <label>Nombre del padre, madre o tutor / Parent or guardian name<input name="nombre" autocomplete="name" required/></label>
 <label>Email<input type="email" name="email" autocomplete="email" required/></label>
 <label>Teléfono / Phone<input type="tel" name="whatsapp" autocomplete="tel"/></label>
-<label>Servicio o nivel de interés / Service or level<select name="programa"><option value="Florida HEIP K-5">Elementary K–5</option><option value="Florida HEIP 6-8">Middle School 6–8</option><option value="Florida HEIP 9-12">High School 9–12</option></select></label>
+<label>Servicio o nivel de interés / Service or level<select name="programa"><option value="Florida HEIP K-5">Elementary K–5 (EMA ID: 20172869)</option><option value="Florida HEIP 6-8">Middle School 6–8 (EMA ID: 20169280)</option><option value="Florida HEIP 9-12">High School 9–12 (EMA ID: 20172870)</option></select></label>
 <button type="submit">Pedir información / Request information</button>
 <p class="information-result" role="status" aria-live="polite"></p>
-<p>Contacto / Contact: <a href="mailto:offcampus@chanakacademy.org">offcampus@chanakacademy.org</a></p>
+<p>Contacto / Contact: <a href="mailto:scholarships@chanakacademy.org">scholarships@chanakacademy.org</a></p>
 </form></div></section></main>
 
 <footer>

@@ -661,6 +661,19 @@
           <p class="section-sub" data-i18n="sec2_sub">Accurate contact and academic profile required for admissions coordination.</p>
 
           <div class="form-grid">
+            <div class="form-group" style="grid-column: 1 / -1; background: #f0fdfa; border: 1.5px solid #5eead4; border-radius: 12px; padding: 16px 18px; margin-bottom: 6px;">
+              <label for="preferredLanguage" class="form-label" style="color: #0f766e; font-size: 0.96rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <span>🌐</span> <span data-i18n="lbl_pref_lang">Idioma principal de comunicación</span> <span class="req">*</span>
+              </label>
+              <select id="preferredLanguage" name="language" class="form-control" required onchange="handleUserLanguageChange(this.value)" style="font-weight: 600; font-size: 1rem; border-color: #14b8a6; background: #ffffff;">
+                <option value="es" selected>Español (Spanish) — Recibir respuesta y dossier en español</option>
+                <option value="en">English (Inglés) — Receive response and dossier in English</option>
+              </select>
+              <div style="font-size: 0.84rem; color: #0d9488; margin-top: 6px;" data-i18n="pref_lang_hint">
+                Las comunicaciones oficiales, acuse de recibo y expediente se enviarán en este idioma.
+              </div>
+            </div>
+
             <div class="form-group">
               <label for="guardianName" class="form-label"><span data-i18n="lbl_parent_name">Parent / Legal Guardian Full Name</span> <span class="req">*</span></label>
               <input type="text" id="guardianName" name="nombre" class="form-control" required placeholder="e.g. Maria Perez" />
@@ -870,6 +883,8 @@
         lbl_service: "Authorized Service Offering",
         sec2_title: "Guardian & Student Information",
         sec2_sub: "Accurate contact and academic profile required for admissions coordination.",
+        lbl_pref_lang: "Primary Communication Language",
+        pref_lang_hint: "Official communications, application acknowledgment, and program dossiers will be delivered in this language.",
         lbl_parent_name: "Parent / Legal Guardian Full Name",
         lbl_email: "Email Address",
         lbl_phone: "Phone / WhatsApp (Optional)",
@@ -937,6 +952,8 @@
         lbl_service: "Servicio Autorizado en Catálogo",
         sec2_title: "Datos del Tutor y del Estudiante",
         sec2_sub: "Información de contacto y perfil académico requeridos para la gestión de admisiones.",
+        lbl_pref_lang: "Idioma principal de comunicación",
+        pref_lang_hint: "Las comunicaciones oficiales, acuse de recibo y expediente se enviarán en este idioma.",
         lbl_parent_name: "Nombre completo del padre / madre / tutor legal",
         lbl_email: "Correo electrónico",
         lbl_phone: "WhatsApp / Teléfono (Opcional)",
@@ -988,9 +1005,14 @@
       document.documentElement.lang = lang;
       try { localStorage.setItem('chanak_lang', lang); } catch(e){}
 
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-      document.getElementById('hiddenLang').value = lang;
+      var btnEn = document.getElementById('btn-en');
+      var btnEs = document.getElementById('btn-es');
+      if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+      if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+      var hiddenL = document.getElementById('hiddenLang');
+      if (hiddenL) hiddenL.value = lang;
+      var prefSelect = document.getElementById('preferredLanguage');
+      if (prefSelect && prefSelect.value !== lang) prefSelect.value = lang;
 
       document.querySelectorAll('[data-i18n]').forEach(function(el) {
         var key = el.getAttribute('data-i18n');
@@ -1001,6 +1023,10 @@
 
       updateServiceSummary();
       updateLiveFolio();
+    }
+
+    function handleUserLanguageChange(lang) {
+      setPortalLanguage(lang);
     }
 
     function handleRouteSelect(route) {
@@ -1544,6 +1570,11 @@
       }
       var selectedRoute = document.querySelector('input[name="route_type"]:checked');
       var route = selectedRoute ? selectedRoute.value : 'offcampus';
+
+      formData.set('language', currentLang);
+      formData.set('lang', currentLang);
+      formData.set('idioma_preferido', currentLang);
+      formData.set('preferred_language', currentLang);
 
       if (route === 'offcampus') {
         var hsCountry = document.getElementById('countrySelectHomeschool').value;

@@ -49,7 +49,13 @@ function chanak_information_pack(string $route, array $data, string $referer, st
     $entry=$catalog['routes'][$route] ?? null;
     if (!$entry) return null;
     $raw=(string)($data['language'] ?? $data['lang'] ?? $data['lang_pref'] ?? $data['preferred_language'] ?? $data['idioma_preferido'] ?? '');
-    $language=strpos(chanak_normalize($raw),'en')===0 || ($raw==='' && strpos($referer,'/en/')!==false) ? 'en' : 'es';
+    if (strpos(chanak_normalize($raw), 'en') === 0) {
+        $language = 'en';
+    } elseif (strpos(chanak_normalize($raw), 'es') === 0) {
+        $language = 'es';
+    } else {
+        $language = ($raw === '' && strpos($referer, '/en/') !== false) ? 'en' : 'es';
+    }
     $rawCountry=(string)($data['country_code'] ?? $data['pais'] ?? $data['country'] ?? $data['detected_country'] ?? '');
     $country=strtoupper(trim($rawCountry));
     $aliases=['espana'=>'ES','spain'=>'ES','espanya'=>'ES','espagne'=>'ES','mexico'=>'MX','panama'=>'PA','colombia'=>'CO','estados unidos'=>'US','united states'=>'US','usa'=>'US','etats-unis'=>'US','estats units'=>'US'];
