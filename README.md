@@ -104,9 +104,14 @@ La landing `/diagnostico/` ya trae Google Ads (AW-18109980849) y Meta Pixel
    está anotado en el comentario, es el mismo de la landing de diagnóstico).
 2. **Google Search Console**: verificar `www.chanakacademy.org` (mejor por
    DNS) y enviar `https://www.chanakacademy.org/sitemap.xml`.
-3. **Google Business Profile**: crear el perfil de Chanak International
-   Academy (categoría: escuela privada / educación online) con la dirección
-   de Florida, el teléfono/WhatsApp y enlace a la web.
+3. **Google Business Profile — no crear para la operación exclusivamente online**:
+   confirmado por la dirección el 27 de octubre de 2026: Chanak no atiende
+   físicamente a familias. Una dirección de representación en St. Petersburg
+   no basta para cumplir el requisito de contacto presencial. No crear una
+   ficha usando una oficina de representación o un buzón como si fuera una
+   sede abierta al público. Reconsiderar únicamente si cambia la operación real
+   y se cumplen las normas de Google: https://support.google.com/business/answer/13763036.
+   Mantener el posicionamiento orgánico, las páginas de programas y la medición web.
 
 ### Prueba obligatoria antes de dar por bueno el deploy
 
