@@ -117,7 +117,7 @@ def final_page(key,lang):
  'Indica país, edad/grado del alumno y servicio de interés. Pedir información y solicitar incorporación son pasos distintos. Enviar un formulario no confirma admisión, elegibilidad para beca ni pago.')
  story.append(link('Contact the team' if en else 'Contactar al equipo','mailto:'+d['contact']))
  story.append(link('View the program' if en else 'Ver el programa','https://www.chanakacademy.org'+d['page']))
- if d['program']:story.append(link('Start an application in the SIS' if en else 'Iniciar solicitud en el SIS','https://sis.chanakacademy.org/matricula?program='+d['program']+'&src=initial-dossier'))
+ if d['program']:story.append(link('Enrollment' if en else 'Matricular','https://www.chanakacademy.org/matricula/?programa='+d['program']+'&src=initial-dossier'))
  elif key=='alabama-choose':story.append(P('Choose your specific service on the Alabama page before opening the SIS application.' if en else 'Elige el servicio concreto en la página de Alabama antes de abrir la solicitud del SIS.'))
  elif key=='life-skills':story.append(P('Contact the team to confirm the standalone service and the correct registration route.' if en else 'Contacta al equipo para confirmar el servicio independiente y su vía de registro.'))
  story+=section('Documents and recognition' if en else 'Documentos y reconocimiento',

@@ -77,10 +77,23 @@
     return target.toString();
   }
   function enrollmentTarget(program,src,sourceHref) {
-    if(program!=='general')return buildSisUrl(program,src,sourceHref);
     var chooser=new URL('/matricula/',location.origin);
-    chooser.searchParams.set('country',window.getCurrentCountry?window.getCurrentCountry():'GLOBAL');
-    chooser.searchParams.set('src',src||'web');
+    if(sourceHref){
+      try{
+        var sUrl = new URL(sourceHref, location.origin);
+        sUrl.searchParams.forEach(function(v,k){ chooser.searchParams.set(k,v); });
+      }catch(e){}
+    }
+    if(program && program!=='general'){
+      var p = (program==='dual_diploma'||program==='dual-diploma'||program==='dual') ? 'dual' :
+              (program==='off_campus'||program==='off-campus'||program==='homeschool') ? 'offcampus' :
+              (/^alabama-|^florida-heip|esa|scholarship/.test(program)) ? 'esa' : program;
+      chooser.searchParams.set('programa', p);
+    }
+    var country=chooser.searchParams.get('country')||(window.getCurrentCountry?window.getCurrentCountry():'GLOBAL');
+    if(/^alabama-|^florida-heip/.test(program||''))country='US';
+    chooser.searchParams.set('country',country);
+    if(src&&!chooser.searchParams.has('src'))chooser.searchParams.set('src',src);
     return chooser.toString();
   }
 
@@ -120,7 +133,7 @@
       cleanTarget(anchor);
       anchor.dataset.chanakFlow = "sis-before-payment";
       if (text.indexOf("pagar") > -1 || text.indexOf("matric") > -1 || text.indexOf("checkout") > -1) {
-        anchor.textContent = "Completar datos y pagar";
+        anchor.textContent = "Matricular";
       }
       return;
     }

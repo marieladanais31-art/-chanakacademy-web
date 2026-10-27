@@ -441,9 +441,10 @@ footer a{color:#cbd5e1;text-decoration:none}
   <section class="sec" id="inquire" style="padding-top:10px;">
     <div class="form-box">
       <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:8px;text-align:center;">Solicitar incorporación / Apply</h3>
-      <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;">Elige tu etapa y continúa al formulario oficial del SIS. / Choose your level and continue to the SIS application.</p>
-      <form action="https://sis.chanakacademy.org/matricula" method="GET">
-        <input type="hidden" name="program" value="florida-heip"/>
+      <p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px;">Elige tu etapa y matricúlate. / Choose your level and enroll.</p>
+      <form action="/matricula/" method="GET">
+        <input type="hidden" name="programa" value="esa"/>
+        <input type="hidden" name="hub" value="FL-STEPUP-EMA"/>
         <input type="hidden" name="src" value="florida-home-education"/>
         <label for="f_grade">Etapa / Student level</label>
         <select id="f_grade" name="gradeBand" required>
@@ -454,7 +455,7 @@ footer a{color:#cbd5e1;text-decoration:none}
         </select>
         <label for="f_funding">Vía de pago / Funding</label>
         <select id="f_funding" name="funding"><option value="scholarship">EMA · Step Up For Students</option><option value="private">Pago privado / Private payment</option></select>
-        <button type="submit">Continuar solicitud en el SIS / Continue application</button>
+        <button type="submit">Matricular / Enroll</button>
         <p style="font-size:13px;color:#cbd5e1;margin-top:14px;">Completarás los datos del alumno y la familia una sola vez en el SIS y recibirás un folio. / Complete student and family details once in the SIS and receive an application number.</p>
       </form>
     </div>

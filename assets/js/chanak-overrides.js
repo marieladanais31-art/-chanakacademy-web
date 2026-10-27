@@ -3,7 +3,7 @@
   "use strict";
 
   var cfg = window.CHANAK_CONFIG || {};
-  var MATRICULA = cfg.matriculaUrl || "https://sis.chanakacademy.org/matricula";
+  var MATRICULA = "/matricula/";
   var path = location.pathname;
 
   function ready(fn) {
@@ -131,7 +131,12 @@
     ["Official Candidate", "Candidato oficial"],
     ["Nonprofit 501(c)(3)", "Organización sin fines de lucro 501(c)(3)"],
     ["Florida Nonprofit", "Entidad sin fines de lucro de Florida"],
-    ["Completar datos y pagar", "Completar datos y continuar en el SIS"],
+    ["Completar datos y pagar", "Matricular"],
+    ["Completar datos y continuar en el SIS", "Matricular"],
+    ["Continuar en el SIS", "Matricular"],
+    ["Iniciar matrícula en el SIS", "Matricular"],
+    ["Completar matrícula en el SIS", "Matricular"],
+    ["Continue in the SIS", "Enrollment"],
     ["Educar con fe, valores y visión internacional", "Una educación flexible, rigurosa y con visión internacional"],
     ["Somos una familia internacional. Chanak nos dio la continuidad académica americana con valores cristianos.", "Somos una familia internacional. Chanak nos dio continuidad académica americana, estructura y acompañamiento."],
     ["Educar con fe, valores y visión internacional sí es posible.", "Construir una trayectoria americana flexible y acompañada sí es posible."],
@@ -202,7 +207,7 @@
   }
 
   function buildMatricula(program, src, href) {
-    var target = new URL(MATRICULA);
+    var target = new URL(MATRICULA, location.origin);
     if (href) {
       try {
         var source = new URL(href, location.origin);
@@ -211,7 +216,12 @@
         });
       } catch (error) {}
     }
-    if (program && !target.searchParams.has("programa")) target.searchParams.set("programa", program);
+    if (program && !target.searchParams.has("programa")) {
+      var p = (program === "dual-diploma" || program === "dual_diploma" || program === "dual") ? "dual" :
+              (program === "off-campus" || program === "off_campus" || program === "homeschool") ? "offcampus" :
+              program;
+      target.searchParams.set("programa", p);
+    }
     if (src && !target.searchParams.has("src")) target.searchParams.set("src", src);
     return target.toString();
   }
@@ -247,7 +257,7 @@
         cleanAnchor(anchor);
         anchor.dataset.chanakFlow = "sis-before-payment";
         if (text.indexOf("pagar") > -1 || text.indexOf("matric") > -1 || text.indexOf("checkout") > -1) {
-          anchor.textContent = "Completar datos y pagar";
+          anchor.textContent = "Matricular";
         }
         return;
       }
@@ -295,7 +305,7 @@
     bar.setAttribute("aria-label", "Matricula 2026-27");
     bar.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0c2d48;color:#fff;display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 14px;font-family:DM Sans,sans-serif;font-size:14px;box-shadow:0 -6px 24px rgba(0,0,0,.25);flex-wrap:wrap;text-align:center";
     bar.innerHTML = '<span style="font-weight:600">Admisiones 2026-2027 abiertas · respuesta en 1 día hábil</span>'
-      + '<a href="' + buildMatricula(program, "sticky-landing") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:8px 18px;font-weight:700;white-space:nowrap">Iniciar matrícula →</a>';
+      + '<a href="' + buildMatricula(program, "sticky-landing") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:8px 18px;font-weight:700;white-space:nowrap">Matricular →</a>';
     document.body.appendChild(bar);
     document.body.style.paddingBottom = "64px";
   }
@@ -323,7 +333,7 @@
       + '<p style="color:#cfdde9;font-size:15px;max-width:640px;margin:0 auto 22px;line-height:1.6">Admisiones 2026-2027 abiertas · revisión académica antes del pago · FLDOE #134620</p>'
       + '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">'
       + '<button type="button" id="chanakCtaOrienta" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit">Solicitar orientación</button>'
-      + '<a href="' + buildMatricula(program, "cta-final") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Iniciar matrícula →</a>'
+      + '<a href="' + buildMatricula(program, "cta-final") + '" style="background:#1b9faa;color:#fff;text-decoration:none;border-radius:50px;padding:12px 26px;font-weight:700;font-size:15px">Matricular →</a>'
       + "</div>" + (extraHtml || "");
     document.body.appendChild(box);
     var button = document.getElementById("chanakCtaOrienta");
@@ -660,10 +670,10 @@
   function regionalSisUrl(program, source) {
     var country = window.getCurrentCountry ? window.getCurrentCountry() : "GLOBAL";
     var region = window.SUPPORTED_REGIONS && window.SUPPORTED_REGIONS[country];
-    var url = new URL(MATRICULA);
+    var url = new URL(MATRICULA, location.origin);
     url.searchParams.set("country", country);
-    url.searchParams.set("program", program === "off-campus" ? "off_campus" : "dual_diploma");
-    url.searchParams.set("programa", program);
+    url.searchParams.set("program", (program === "off-campus" || program === "off_campus") ? "offcampus" : "dual");
+    url.searchParams.set("programa", (program === "off-campus" || program === "off_campus") ? "offcampus" : "dual");
     url.searchParams.set("currency", region ? region.currency : "USD");
     url.searchParams.set("src", source || "landing-commercial");
     return url.toString();
@@ -767,7 +777,7 @@
     }
     var paymentUrl = regionalPaymentUrl(program, country);
     var paymentButton = paymentUrl ? '<a data-chanak-direct-payment="1" href="' + paymentUrl + '" style="display:block;margin-top:9px;background:#fff;color:#0c2d48;text-decoration:none;border:1px solid #9fb5c3;border-radius:8px;padding:10px 14px;font-weight:750;font-size:13px">Ya tengo mi plan aprobado: pagar matrícula →</a>' : '';
-    box.innerHTML = '<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);gap:28px;align-items:center"><div><div style="font-size:11px;letter-spacing:2px;color:#6fd9d1;font-weight:800">TU PAÍS Y TU SIGUIENTE PASO</div><h2 style="font-family:Playfair Display,Georgia,serif;font-size:30px;margin:8px 0 10px">' + region.flag + ' ' + region.name + '</h2><p style="font-size:14px;color:#cbd8e1;line-height:1.65;margin:0 0 9px">La familia completa primero los datos en el SIS. El equipo revisa el expediente o diagnóstico y confirma por escrito la ruta y el importe antes de habilitar el pago.</p><p style="font-size:12px;color:#94a9b8;margin:0">Si ya recibiste la aprobación y el plan económico, utiliza el enlace de pago de tu país.</p></div><div style="background:#fff;color:#0c2d48;border-radius:12px;padding:22px;text-align:center"><div style="font-size:11px;color:#526577;text-transform:uppercase;letter-spacing:1px">Inversión inicial orientativa</div><div style="font-size:22px;font-weight:900;margin:8px 0 14px">' + price + '</div><a data-commercial-enroll href="' + regionalSisUrl(program,"regional-action") + '" style="display:block;background:#1b9faa;color:#fff;text-decoration:none;border-radius:8px;padding:12px 16px;font-weight:800">1. Completar matrícula en el SIS →</a>' + paymentButton + '</div></div>';
+    box.innerHTML = '<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);gap:28px;align-items:center"><div><div style="font-size:11px;letter-spacing:2px;color:#6fd9d1;font-weight:800">TU PAÍS Y TU SIGUIENTE PASO</div><h2 style="font-family:Playfair Display,Georgia,serif;font-size:30px;margin:8px 0 10px">' + region.flag + ' ' + region.name + '</h2><p style="font-size:14px;color:#cbd8e1;line-height:1.65;margin:0 0 9px">La familia completa primero los datos en el SIS. El equipo revisa el expediente o diagnóstico y confirma por escrito la ruta y el importe antes de habilitar el pago.</p><p style="font-size:12px;color:#94a9b8;margin:0">Si ya recibiste la aprobación y el plan económico, utiliza el enlace de pago de tu país.</p></div><div style="background:#fff;color:#0c2d48;border-radius:12px;padding:22px;text-align:center"><div style="font-size:11px;color:#526577;text-transform:uppercase;letter-spacing:1px">Inversión inicial orientativa</div><div style="font-size:22px;font-weight:900;margin:8px 0 14px">' + price + '</div><a data-commercial-enroll href="' + regionalSisUrl(program,"regional-action") + '" style="display:block;background:#1b9faa;color:#fff;text-decoration:none;border-radius:8px;padding:12px 16px;font-weight:800">1. Matricular →</a>' + paymentButton + '</div></div>';
     document.querySelectorAll("[data-commercial-enroll]").forEach(function(a){a.href=regionalSisUrl(program,"commercial-cta");});
     if (!box.dataset.listener) {
       box.dataset.listener = "1";

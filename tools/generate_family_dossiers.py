@@ -73,7 +73,7 @@ def next_steps(d,lang,country,currency):
         params={'program':d['program'],'country':country,'currency':currency,'src':'family-dossier'}
         if d['program']=='off_campus' and country=='US':params['funding']='private'
         if d['program']=='florida-heip':params['funding']='scholarship'
-        s.append(link('Continue in the SIS' if en else 'Continuar en el SIS','https://sis.chanakacademy.org/matricula?'+urlencode(params)))
+        s.append(link('Enroll' if en else 'Matricular','https://www.chanakacademy.org/matricula/?'+urlencode(params)))
     elif d['page']=='/us/alabama/':
         s.append(link('Choose your approved Alabama service' if en else 'Seleccionar el servicio aprobado de Alabama',url))
     s += [P('An inquiry is not an admission or a payment. Your team confirms the applicable requirements before enrollment.' if en else 'La consulta no confirma admisión ni pago. Tu equipo confirma los requisitos aplicables antes de formalizar la incorporación.','small')]
