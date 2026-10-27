@@ -759,7 +759,7 @@
           <input type="hidden" id="hiddenOrigin" name="origen" value="matricula_bridge_portal" />
           <input type="hidden" id="hiddenLang" name="lang" value="en" />
 
-          <button type="submit" class="btn-submit" id="submitBtn" data-i18n="btn_submit">Submit Application to SIS Hub →</button>
+          <button type="submit" class="btn-submit" id="submitBtn" data-i18n="btn_submit">Matricular →</button>
         </div>
 
       </form>
@@ -889,7 +889,7 @@
         consent_news: "Keep me updated with educational resources and school choice / ESA news (optional).",
         folio_lbl: "Application Reference Number (Folio)",
         folio_note: "Assigned automatically to your administrative hub.",
-        btn_submit: "Submit Application to SIS Hub →",
+        btn_submit: "Enroll →",
         rec_status: "Under Review by Admissions Team",
         rec_title: "Application Received Successfully!",
         rec_sub: "Your official application has been recorded and assigned to your state administrative coordinator.",
@@ -956,7 +956,7 @@
         consent_news: "Deseo recibir recursos educativos y novedades sobre fondos ESA y elección escolar (opcional).",
         folio_lbl: "Folio Único de Solicitud",
         folio_note: "Asignado automáticamente a tu hub administrativo.",
-        btn_submit: "Enviar Solicitud al Hub del SIS →",
+        btn_submit: "Matricular →",
         rec_status: "En revisión por el equipo de admisiones",
         rec_title: "¡Solicitud recibida con éxito!",
         rec_sub: "Tu solicitud ha sido registrada oficialmente y asignada al coordinador administrativo de tu estado.",
@@ -1535,7 +1535,7 @@
       }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = currentLang === 'es' ? 'Procesando registro en SIS...' : 'Processing SIS registration...';
+      submitBtn.textContent = currentLang === 'es' ? 'Procesando matrícula...' : 'Processing enrollment...';
 
       var formData = new FormData(form);
       var servSelect = document.getElementById('serviceSelect');
@@ -1600,7 +1600,7 @@
         }
       } catch(err) {
         submitBtn.disabled = false;
-        submitBtn.textContent = currentLang === 'es' ? 'Enviar Solicitud al Hub del SIS →' : 'Submit Application to SIS Hub →';
+        submitBtn.textContent = currentLang === 'es' ? 'Matricular →' : 'Enroll →';
         if (!errBox) {
           errBox = document.createElement('div');
           errBox.id = 'matriculaErrorBox';

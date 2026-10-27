@@ -24,7 +24,10 @@ foreach($cases as [$data,$route,$country,$lang,$file]){
  check(str_ends_with((string)parse_url($p['dossier'],PHP_URL_PATH),$file.'.pdf'),'single dossier '.$file);
  check($p['fees']==='' && $p['complete']==='','no extra dossiers '.$file);
  check(file_exists(__DIR__.'/..'.parse_url($p['dossier'],PHP_URL_PATH)),'PDF exists '.$file);
- check(chanak_route_recipients($actual)===[$route==='dual'?'dualdiploma@chanakacademy.org':'offcampus@chanakacademy.org'],'single internal recipient '.$file);
+ $expectedRecipients = in_array($actual, ['alabama_choose', 'florida_pep_ema', 'classwallet', 'esa'], true)
+   ? ['scholarships@chanakacademy.org']
+   : ($actual === 'dual' ? ['dualdiploma@chanakacademy.org'] : ['offcampus@chanakacademy.org']);
+ check(chanak_route_recipients($actual)===$expectedRecipients,'single internal recipient '.$file);
 }
 check(chanak_resolve_route(['pais'=>'Panama'],'')==='general','country never implies Dual Diploma');
 check(chanak_resolve_route([], 'https://www.chanakacademy.org/dual-diploma/en/')==='dual','referer fallback');
