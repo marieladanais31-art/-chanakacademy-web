@@ -32,8 +32,7 @@
     MX: { url: '/mx/',            label: 'México',         currency: 'pesos mexicanos' },
     PA: { url: '/pa/',            label: 'Panamá',         currency: 'dólares' },
     US: { url: '/us/florida/',    label: 'Estados Unidos', currency: 'dólares' },
-    CO: { url: '/?country=CO',    label: 'Colombia',       currency: 'pesos colombianos' },
-    AE: { url: '/dual-diploma-uae/', label: 'Emiratos',    currency: 'dólares' }
+    CO: { url: '/?country=CO',    label: 'Colombia',       currency: 'pesos colombianos' }
   };
 
   var BOTS = /bot|crawl|spider|slurp|bingpreview|googlebot|duckduck|baidu|yandex|facebookexternalhit|embedly|quora|pinterest|vkshare|whatsapp|telegram|lighthouse|headlesschrome|gptbot|claudebot|oai-searchbot|perplexity/i;

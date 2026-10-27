@@ -69,9 +69,9 @@ $AUTOREPLY = [
             . "Mientras tanto:\n"
             . "· Programa completo: {landing}\n"
             . "· Descargar dossier Off-Campus: {dossier}\n"
-            . "· El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte.\n"
+            . "· El dossier resume las 4 rutas disponibles. Los materiales curriculares se gestionan con las editoriales oficiales.\n"
             . "· Para matricularse: €180 de matrícula + primera mensualidad. Off-Campus inicia desde €250.\n"
-            . "· Referencia internacional para Panamá, Dubái u otros países: aprox. USD $286 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
+            . "· Referencia internacional para Panamá u otros países: aprox. USD $286 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). IRS 501(c)(3).\n"
             . "Al finalizar sus estudios, el estudiante obtiene el diploma de High School Americano con certificado apostillado.",
@@ -86,9 +86,9 @@ $AUTOREPLY = [
             . "Mientras tanto:\n"
             . "· Programa completo: {landing}\n"
             . "· Descargar dossier Dual Diploma: {dossier}\n"
-            . "· El dossier resume las 4 rutas disponibles. Los materiales académicos se gestionan aparte.\n"
+            . "· Programa 100% digital online en plataforma LMS con tutoría académica; no requiere compra de material físico ni libros PACES.\n"
             . "· Diagnóstico académico: €35 (aprox. USD $40). Matrícula: €210 (aprox. USD $240). Mensualidad: desde €110/mes (aprox. USD $126).\n"
-            . "· Total desde €1.310/año en 3.º ESO (aprox. USD $1.494). Referencia USD para Panamá, Dubái u otros países, cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
+            . "· Total desde €1.310/año en 3.º ESO (aprox. USD $1.494). Referencia USD para Panamá u otros países, cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). IRS 501(c)(3).\n"
             . "Tu hijo no cambia de colegio: añade el diploma de High School Americano convalidando hasta el 75% de créditos según expediente.",
@@ -169,7 +169,7 @@ $AUTOREPLY = [
             . "· Matrícula: €180 + primera mensualidad.\n"
             . "· Off-Campus inicia desde €250 (aprox. USD $286).\n"
             . "· Dual Diploma: diagnóstico €35, matrícula €210, mensualidad desde €110/mes (aprox. USD $40 / $240 / $126).\n"
-            . "· Referencia USD para Panamá, Dubái u otros países calculada con cambio BCE 1 EUR = 1.1404 USD, redondeada al alza.\n\n"
+            . "· Referencia USD para Panamá u otros países calculada con cambio BCE 1 EUR = 1.1404 USD, redondeada al alza.\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
             . "Al finalizar sus estudios, el estudiante obtiene el diploma de High School Americano con certificado apostillado.",
