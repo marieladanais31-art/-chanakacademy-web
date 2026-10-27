@@ -1853,7 +1853,10 @@
       } catch(err){}
 
       try {
-        var response = await fetch('/enviar-formulario.php', {
+        var endpoint = (window.location.hostname.indexOf('chanakacademy.org') !== -1)
+          ? 'https://www.chanakacademy.org/enviar-formulario.php'
+          : '/enviar-formulario.php';
+        var response = await fetch(endpoint, {
           method: 'POST',
           body: formData
         });

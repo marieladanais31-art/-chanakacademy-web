@@ -541,7 +541,7 @@ if ($honeypot !== '') {
     respond_json(200, ['ok' => true, 'success' => true, 'message' => 'Solicitud recibida.']);
 }
 
-$email = first_value($data, ['email', 'guardianEmail', 'correo', 'mail']);
+$email = first_value($data, ['email', 'guardianEmail', 'guardian_email', 'tutEmail', 'correo', 'mail']);
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond_json(422, [
         'ok'      => false,
@@ -550,8 +550,8 @@ if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     ]);
 }
 
-$name    = first_value($data, ['nombre', 'nombre_padre', 'responsable_nombre', 'guardianFullName', 'guardianName', 'name', 'estudiante_nombre', 'studentFullName', 'parent_name']);
-$phone   = first_value($data, ['whatsapp', 'telefono', 'phone', 'guardianPhone', 'tel']);
+$name    = first_value($data, ['nombre', 'nombre_padre', 'responsable_nombre', 'guardianFullName', 'guardianName', 'guardian_name', 'tutNombre', 'name', 'estudiante_nombre', 'studentFullName', 'parent_name']);
+$phone   = first_value($data, ['whatsapp', 'telefono', 'phone', 'guardianPhone', 'guardian_phone', 'tutTel', 'tel']);
 $country = first_value($data, ['pais', 'country', 'pais_residencia', 'pais_responsable', 'estudiante_pais']);
 $city    = first_value($data, ['ciudad', 'city']);
 

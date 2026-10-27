@@ -14,6 +14,8 @@ AddDefaultCharset UTF-8
 RewriteEngine On
 
 # Version canonica unica: https + www
+# Excluir peticiones POST para que no se pierdan los datos del formulario por redireccion 301
+RewriteCond %{REQUEST_METHOD} !POST
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
