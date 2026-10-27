@@ -8,7 +8,7 @@ function chanak_route_from_value(string $value): string {
     $v=chanak_normalize($value);
     if (preg_match('/alabama|choose|al-choose/', $v)) return 'alabama_choose';
     if (preg_match('/florida-heip|florida.*(ema|pep|home|heip)|^florida$|^ema$|^pep$|stepup|fl-stepup/', $v)) return 'florida_pep_ema';
-    if (preg_match('/classwallet|odyssey|scholarship|arizona|utah|wyoming|new-hampshire|south-carolina|ufa|estf|efa|cw|ody|esa/', $v)) return 'classwallet';
+    if (preg_match('/classwallet|odyssey|scholarship|arizona|utah|wyoming|new-hampshire|south-carolina|arkansas|ufa|estf|efa|cw|ody|esa/', $v)) return 'classwallet';
     if (preg_match('/dual|adult.high.school/', $v)) return 'dual';
     if (preg_match('/off.?campus|homeschool|educacion en casa/', $v)) return 'offcampus';
     if (preg_match('/life.?skills/', $v)) return 'life_skills';
@@ -37,6 +37,9 @@ function chanak_resolve_route(array $data, string $referer): string {
     return chanak_route_from_value($referer) ?: 'general';
 }
 function chanak_route_recipients(string $route): array {
+    if (in_array($route, ['florida_pep_ema', 'alabama_choose', 'classwallet', 'esa'], true)) {
+        return ['scholarships@chanakacademy.org'];
+    }
     if ($route === 'dual') return ['dualdiploma@chanakacademy.org'];
     if ($route === 'hub') return ['rededucativa@asociacioneducafe.org'];
     return ['offcampus@chanakacademy.org'];

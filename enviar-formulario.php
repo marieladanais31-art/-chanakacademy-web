@@ -37,9 +37,10 @@ $CONFIG = [
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
         'life_skills' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'LIFE SKILLS', 'landing' => '/', 'brevo_list' => 3],
-        'alabama_choose' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'ALABAMA CHOOSE', 'landing' => '/us/alabama/', 'brevo_list' => 3],
-        'florida_pep_ema' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'FLORIDA PEP (EMA)', 'landing' => '/scholarships/florida/', 'dossier' => '', 'brevo_list' => 3],
-        'classwallet' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'CLASSWALLET DIRECT PAY', 'landing' => '/scholarships/', 'dossier' => '', 'brevo_list' => 3],
+        'alabama_choose' => ['to' => ['scholarships@chanakacademy.org'], 'label' => 'ALABAMA CHOOSE', 'landing' => '/us/alabama/', 'brevo_list' => 3],
+        'florida_pep_ema' => ['to' => ['scholarships@chanakacademy.org'], 'label' => 'FLORIDA PEP (EMA)', 'landing' => '/scholarships/florida/', 'dossier' => '', 'brevo_list' => 3],
+        'classwallet' => ['to' => ['scholarships@chanakacademy.org'], 'label' => 'CLASSWALLET DIRECT PAY', 'landing' => '/scholarships/', 'dossier' => '', 'brevo_list' => 3],
+        'esa'         => ['to' => ['scholarships@chanakacademy.org'], 'label' => 'FONDOS ESA', 'landing' => '/scholarships/', 'dossier' => '', 'brevo_list' => 3],
         'general'     => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
         // Sin lista propia en Brevo: va a la lista General (6).
@@ -131,7 +132,7 @@ $AUTOREPLY = [
             . "3. Upload the invoice to your ClassWallet parent portal under 'Pay Vendor' by searching for our approved provider entity:\n"
             . "   CHANAK TRAINUP EDUCATION INC\n"
             . "4. Submit the invoice for payment authorization with your available program funds.\n\n"
-            . "If you need immediate assistance or have questions regarding your state ESA account, you can reply directly to this email or reach us at offcampus@chanakacademy.org.\n\n"
+            . "If you need immediate assistance or have questions regarding your state ESA account, you can reply directly to this email or reach us at scholarships@chanakacademy.org.\n\n"
             . "Kind regards,\n"
             . "Admissions & State Scholarship Billing\n"
             . "Chanak International Academy · CHANAK TRAINUP EDUCATION INC\n"

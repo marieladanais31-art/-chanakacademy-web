@@ -393,7 +393,7 @@
 
       // Hero
       hero_badge: "✦ FONDOS EDUCATIVOS Y ELECCIÓN ESCOLAR · CICLO 2026–2027 ✦",
-      hero_h1: "Chanak Academy · Escuela privada online y becas estatales",
+      hero_h1: "Chanak Academy · Escuela privada online y fondos estatales",
       hero_lead: "Escuela privada registrada en Florida con matrícula formal K–12, expediente escolar y aprendizaje digital flexible mediante Chanak Academy. Clases en vivo por temas opcionales y atención familiar en español e inglés.",
       hero_disclaimer: "* La Escuela Online Full-Time (Arizona) confiere matrícula escolar formal y diploma; los paquetes de apoyo virtual ofrecen mentoría sin otorgar diploma escolar. Cada administrador del programa determina qué gastos son elegibles.",
       pill_entity: "Entidad: Chanak TrainUp Education Inc. d/b/a Chanak International Academy",

@@ -501,71 +501,113 @@
 
         <!-- STEP 1: JURISDICTION & PROGRAM ROUTE -->
         <div class="portal-card">
-          <h2 class="section-title"><span class="section-num">1</span> <span data-i18n="sec1_title">Program Pathway &amp; Jurisdiction</span></h2>
-          <p class="section-sub" data-i18n="sec1_sub">Select your country of residence and the educational pathway suited for your student.</p>
+          <h2 class="section-title"><span class="section-num">1</span> <span data-i18n="sec1_title">Modalidad de Matrícula y Ubicación</span></h2>
+          <p class="section-sub" data-i18n="sec1_sub">Selecciona el programa académico para tu estudiante.</p>
 
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="countrySelect" class="form-label"><span data-i18n="lbl_country">Country of Residence</span> <span class="req">*</span></label>
-              <select id="countrySelect" name="country" class="form-control" required onchange="handleCountryChange()">
-                <option value="US" selected>🇺🇸 United States (USD)</option>
-                <option value="ES">🇪🇸 España / Europa (EUR)</option>
-                <option value="MX">🇲🇽 México (MXN)</option>
-                <option value="PA">🇵🇦 Panamá (USD)</option>
-                <option value="CO">🇨🇴 Colombia (COP)</option>
-                <option value="GLOBAL">🌐 Other Countries / International (USD)</option>
-              </select>
-            </div>
-          </div>
-
-          <label class="form-label" style="margin-top: 10px;"><span data-i18n="lbl_pathway">Select Educational Pathway</span> <span class="req">*</span></label>
+          <label class="form-label" style="margin-top: 10px;"><span data-i18n="lbl_pathway">Elige tu programa:</span> <span class="req">*</span></label>
           <div class="route-cards-grid">
             
-            <!-- Route ESA -->
-            <label class="route-card selected" id="card-esa">
-              <input type="radio" name="route_type" value="esa" checked onchange="handleRouteSelect('esa')"/>
-              <span class="route-badge esa" data-i18n="badge_esa">State Funds</span>
-              <div class="route-title" data-i18n="rt_esa_title">U.S. State ESA Funds</div>
-              <div class="route-desc" data-i18n="rt_esa_desc">Virtual guided support packages for families with authorized state school choice accounts.</div>
-            </label>
-
-            <!-- Route Off-Campus -->
-            <label class="route-card" id="card-offcampus">
-              <input type="radio" name="route_type" value="offcampus" onchange="handleRouteSelect('offcampus')"/>
-              <span class="route-badge private" data-i18n="badge_private">Private K–12</span>
-              <div class="route-title" data-i18n="rt_oc_title">Off-Campus K–12</div>
-              <div class="route-desc" data-i18n="rt_oc_desc">Full private school enrollment, official FLDOE #134620 transcripts, and American High School Diploma.</div>
+            <!-- Route Off-Campus (Homeschool) -->
+            <label class="route-card selected" id="card-offcampus">
+              <input type="radio" name="route_type" value="offcampus" checked onchange="handleRouteSelect('offcampus')"/>
+              <span class="route-badge private" data-i18n="badge_private">Colegio Americano K–12</span>
+              <div class="route-title" data-i18n="rt_oc_title">Homeschool (Off-Campus)</div>
+              <div class="route-desc" data-i18n="rt_oc_desc">Matrícula formal privada con expediente acumulativo FLDOE #134620 y Diploma de High School americano.</div>
             </label>
 
             <!-- Route Dual Diploma -->
             <label class="route-card" id="card-dual">
               <input type="radio" name="route_type" value="dual" onchange="handleRouteSelect('dual')"/>
-              <span class="route-badge private" data-i18n="badge_private">Private High School</span>
-              <div class="route-title" data-i18n="rt_dd_title">Dual Diploma Program</div>
-              <div class="route-desc" data-i18n="rt_dd_desc">American High School Diploma alongside local schooling. Private enrollment only (not eligible for ESA).</div>
+              <span class="route-badge private" data-i18n="badge_private">Bachillerato Internacional</span>
+              <div class="route-title" data-i18n="rt_dd_title">Dual Diploma Internacional</div>
+              <div class="route-desc" data-i18n="rt_dd_desc">Bachillerato estadounidense simultáneo al colegio actual. Convalida hasta 75% y titulación oficial de Florida.</div>
+            </label>
+
+            <!-- Route ESA -->
+            <label class="route-card" id="card-esa">
+              <input type="radio" name="route_type" value="esa" onchange="handleRouteSelect('esa')"/>
+              <span class="route-badge esa" data-i18n="badge_esa">Fondos Estatales EE. UU.</span>
+              <div class="route-title" data-i18n="rt_esa_title">Fondos ESA / Elección Escolar</div>
+              <div class="route-desc" data-i18n="rt_esa_desc">Programas de apoyo pedagógico para familias beneficiarias de cuentas estatales de elección escolar.</div>
             </label>
 
           </div>
 
+          <!-- HOMESCHOOL SUB-SELECTOR: PAÍS -->
+          <div id="homeschoolContainer" style="display:block; margin-top:20px; padding:20px; background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:12px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="countrySelectHomeschool" class="form-label">
+                <span data-i18n="lbl_country_hs">📍 Selecciona tu país de residencia para Homeschool:</span> <span class="req">*</span>
+              </label>
+              <select id="countrySelectHomeschool" name="country_homeschool" class="form-control" onchange="handleCountryChangeHomeschool()">
+                <option value="ES" selected>🇪🇸 España (EUR)</option>
+                <option value="MX">🇲🇽 México (MXN)</option>
+                <option value="PA">🇵🇦 Panamá (USD)</option>
+                <option value="CO">🇨🇴 Colombia (COP)</option>
+                <option value="US">🇺🇸 Estados Unidos (Homeschool privado en USD)</option>
+                <option value="AR">🇦🇷 Argentina (USD)</option>
+                <option value="CL">🇨🇱 Chile (USD)</option>
+                <option value="PE">🇵🇪 Perú (USD)</option>
+                <option value="EC">🇪🇨 Ecuador (USD)</option>
+                <option value="DO">🇩🇴 República Dominicana (USD)</option>
+                <option value="GLOBAL">🌐 Otro país internacional (USD)</option>
+              </select>
+            </div>
+            <div style="margin-top:14px; font-size:0.88rem; color:#334155; line-height:1.6;" data-i18n="hs_info_box">
+              ✓ <strong>Colegio Oficial:</strong> Matrícula formal en colegio americano privado registrado en Florida (FLDOE #134620).<br>
+              ✓ <strong>Expediente Oficial:</strong> Transcripts oficiales y Diploma de High School estadounidense legalizado y apostillado.<br>
+              ✓ <strong>Flexibilidad:</strong> Modelo educativo 60/20/20 con acompañamiento de mentor y seguimiento integral en el SIS.
+            </div>
+          </div>
+
+          <!-- DUAL DIPLOMA SUB-SELECTOR: PAÍS -->
+          <div id="dualContainer" style="display:none; margin-top:20px; padding:20px; background:#f0fdfa; border:1.5px solid #99f6e4; border-radius:12px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="countrySelectDual" class="form-label">
+                <span data-i18n="lbl_country_dd">📍 Selecciona tu país para Dual Diploma Internacional:</span> <span class="req">*</span>
+              </label>
+              <select id="countrySelectDual" name="country_dual" class="form-control" onchange="handleCountryChangeDual()">
+                <option value="ES" selected>🇪🇸 España (EUR)</option>
+                <option value="MX">🇲🇽 México (MXN)</option>
+                <option value="PA">🇵🇦 Panamá (USD)</option>
+                <option value="CO">🇨🇴 Colombia (COP)</option>
+                <option value="AE">🇦🇪 Emiratos Árabes Unidos / Dubái (AED / USD)</option>
+                <option value="AR">🇦🇷 Argentina (USD)</option>
+                <option value="CL">🇨🇱 Chile (USD)</option>
+                <option value="PE">🇵🇪 Perú (USD)</option>
+                <option value="EC">🇪🇨 Ecuador (USD)</option>
+                <option value="DO">🇩🇴 República Dominicana (USD)</option>
+                <option value="US">🇺🇸 Estados Unidos (Adult High School Completion)</option>
+                <option value="GLOBAL">🌐 Otro país internacional (USD)</option>
+              </select>
+            </div>
+            <div style="margin-top:14px; font-size:0.88rem; color:#0f766e; line-height:1.6;" data-i18n="dd_info_box">
+              ✓ <strong>Doble Titulación Internacional:</strong> El estudiante continúa en su colegio habitual y cursa las asignaturas estadounidenses online.<br>
+              ✓ <strong>Convalidación Oficial:</strong> Convalida hasta el 75% de los créditos según su expediente académico local.<br>
+              ✓ <strong>Doble Diploma:</strong> Obtiene el título de Bachillerato estadounidense oficial (High School Diploma) apostillado.
+            </div>
+          </div>
+
           <!-- ESA SPECIFIC HUB & SERVICE SELECTOR -->
-          <div id="esaHubContainer">
+          <div id="esaHubContainer" style="display:none; margin-top:20px; padding:20px; background:#fefce8; border:1.5px solid #fef08a; border-radius:12px;">
             <div class="form-grid">
               <div class="form-group">
-                <label for="stateHubSelect" class="form-label"><span data-i18n="lbl_state_hub">Select Active State Administrative Hub</span> <span class="req">*</span></label>
+                <label for="stateHubSelect" class="form-label"><span data-i18n="lbl_state_hub">Selecciona tu Estado / Programa de Fondos ESA</span> <span class="req">*</span></label>
                 <select id="stateHubSelect" name="hub_id" class="form-control" onchange="handleHubChange()">
-                  <option value="FL-STEPUP-EMA">Florida · Step Up for Students / PEP (EMA Marketplace)</option>
-                  <option value="AL-CHOOSE-CW">Alabama · Alabama CHOOSE Act (ClassWallet Pay Vendor)</option>
-                  <option value="AZ-ESA-CW">Arizona · Arizona ESA (ClassWallet Pay Vendor)</option>
-                  <option value="UT-UFA-ODY">Utah · Utah Fits All (Odyssey Marketplace)</option>
-                  <option value="WY-ESA-ODY">Wyoming · Wyoming ESA (Odyssey Marketplace)</option>
-                  <option value="NH-EFA-CW">New Hampshire · NH EFA (ClassWallet · CSF NH)</option>
-                  <option value="SC-ESTF-CW">South Carolina · South Carolina ESTF (ClassWallet Pay Vendor)</option>
+                  <option value="FL-STEPUP-EMA" selected>🍊 Florida · Step Up for Students / PEP / HEIP (EMA Marketplace)</option>
+                  <option value="AL-CHOOSE-CW">🔴 Alabama · Alabama CHOOSE Act (ClassWallet Pay Vendor)</option>
+                  <option value="AZ-ESA-CW">🌵 Arizona · Arizona ESA (ClassWallet Pay Vendor)</option>
+                  <option value="UT-UFA-ODY">🏔️ Utah · Utah Fits All (Odyssey Marketplace)</option>
+                  <option value="WY-ESA-ODY">🦬 Wyoming · Wyoming ESA (Odyssey Marketplace)</option>
+                  <option value="NH-EFA-CW">🌲 New Hampshire · NH EFA (ClassWallet · CSF NH)</option>
+                  <option value="AR-LEARNS-EFA">🌿 Arkansas · Arkansas LEARNS / EFA</option>
+                  <option value="SC-ESTF-CW">🌊 South Carolina · South Carolina ESTF (ClassWallet Pay Vendor)</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label for="serviceSelect" class="form-label"><span data-i18n="lbl_service">Authorized Service Offering</span> <span class="req">*</span></label>
-                <select id="serviceSelect" name="service" class="form-control" onchange="handleServiceChange()" data-loaded-hub="FL-STEPUP-EMA" data-loaded-lang="en">
+                <label for="serviceSelect" class="form-label"><span data-i18n="lbl_service">Servicio / Paquete Autorizado</span> <span class="req">*</span></label>
+                <select id="serviceSelect" name="service" class="form-control" onchange="handleServiceChange()" data-loaded-hub="FL-STEPUP-EMA" data-loaded-lang="es">
                   <option value="support-k5">Home Education Instructional Program · Grades K–5 · $275/mo (EMA ID: 20172869)</option>
                   <option value="support-68">Home Education Instructional Program · Grades 6–8 · $320/mo (EMA ID: 20169280)</option>
                   <option value="support-912">Home Education Instructional Program · Grades 9–12 · $365/mo (EMA ID: 20172870)</option>
@@ -575,10 +617,10 @@
               </div>
 
               <div class="form-group" id="billingFreqGroup" style="display:none;">
-                <label for="billingFreqSelect" class="form-label"><span>Billing Frequency</span> <span class="req">*</span></label>
+                <label for="billingFreqSelect" class="form-label"><span>Frecuencia de Facturación</span> <span class="req">*</span></label>
                 <select id="billingFreqSelect" name="billing_frequency" class="form-control" onchange="handleFrequencyChange()">
-                  <option value="monthly" selected>Monthly Billing</option>
-                  <option value="quarterly">Quarterly Billing (3 Months)</option>
+                  <option value="monthly" selected>Mensual / Monthly</option>
+                  <option value="quarterly">Trimestral / Quarterly</option>
                 </select>
               </div>
             </div>
@@ -610,6 +652,7 @@
             </div>
           </div>
 
+          <input type="hidden" id="countrySelect" name="country" value="ES" />
         </div>
 
         <!-- STEP 2: GUARDIAN & STUDENT INFORMATION -->
@@ -810,14 +853,18 @@
         sec1_title: "Program Pathway & Jurisdiction",
         sec1_sub: "Select your country of residence and the educational pathway suited for your student.",
         lbl_country: "Country of Residence",
+        lbl_country_hs: "📍 Select your Country of Residence for Homeschool:",
+        lbl_country_dd: "📍 Select your Country of Residence for Dual Diploma:",
+        hs_info_box: "✓ <strong>Official US Private School:</strong> Formal enrollment in a Florida-registered private school (FLDOE #134620).<br>✓ <strong>Official Cumulative Records:</strong> Transferable transcripts and an official apostilled American High School Diploma.<br>✓ <strong>Flexibility:</strong> Proven 60/20/20 learning model with dedicated academic mentoring and SIS tracking.",
+        dd_info_box: "✓ <strong>Dual International Credential:</strong> The student continues at their local school while taking American coursework online.<br>✓ <strong>Official Credit Validation:</strong> Validates up to 75% of credits from prior local school transcripts.<br>✓ <strong>American High School Diploma:</strong> Earn an official Florida High School Diploma with legal certification and apostille.",
         lbl_pathway: "Select Educational Pathway",
         badge_esa: "State Funds",
         badge_private: "Private K–12",
         rt_esa_title: "U.S. State ESA Funds",
         rt_esa_desc: "Virtual guided support packages for families with authorized state school choice accounts.",
-        rt_oc_title: "Off-Campus K–12",
+        rt_oc_title: "Homeschool (Off-Campus)",
         rt_oc_desc: "Full private school enrollment, official FLDOE #134620 transcripts, and American High School Diploma.",
-        rt_dd_title: "Dual Diploma Program",
+        rt_dd_title: "International Dual Diploma",
         rt_dd_desc: "American High School Diploma alongside local schooling. Private enrollment only (not eligible for ESA).",
         lbl_state_hub: "Select Active State Administrative Hub",
         lbl_service: "Authorized Service Offering",
@@ -870,18 +917,22 @@
         hero_badge: "✦ MATRÍCULA Y HUBS ESTATALES 2026–2027 ✦",
         hero_title: "Portal de Matrícula y Hub Administrativo",
         hero_subtitle: "Puente seguro de incorporación que conecta el programa de tu familia directamente con el Hub Administrativo y expediente del SIS.",
-        sec1_title: "Ruta del Programa y Jurisdicción",
-        sec1_sub: "Selecciona tu país de residencia y la modalidad educativa correspondiente para tu estudiante.",
+        sec1_title: "Modalidad de Matrícula y Ubicación",
+        sec1_sub: "Selecciona el programa académico para tu estudiante.",
         lbl_country: "País de residencia",
-        lbl_pathway: "Selecciona la modalidad de incorporación",
+        lbl_country_hs: "📍 Selecciona tu país de residencia para Homeschool:",
+        lbl_country_dd: "📍 Selecciona tu país para Dual Diploma Internacional:",
+        hs_info_box: "✓ <strong>Colegio Oficial:</strong> Matrícula formal en colegio americano privado registrado en Florida (FLDOE #134620).<br>✓ <strong>Expediente Oficial:</strong> Transcripts oficiales y Diploma de High School estadounidense legalizado y apostillado.<br>✓ <strong>Flexibilidad:</strong> Modelo educativo 60/20/20 con acompañamiento de mentor y seguimiento integral en el SIS.",
+        dd_info_box: "✓ <strong>Doble Titulación Internacional:</strong> El estudiante continúa en su colegio habitual y cursa las asignaturas estadounidenses online.<br>✓ <strong>Convalidación Oficial:</strong> Convalida hasta el 75% de los créditos según su expediente académico local.<br>✓ <strong>Doble Diploma:</strong> Obtiene el título de Bachillerato estadounidense oficial (High School Diploma) apostillado.",
+        lbl_pathway: "Elige tu programa:",
         badge_esa: "Fondos Estatales",
         badge_private: "Privado K–12",
-        rt_esa_title: "Fondos ESA de Estados Unidos",
-        rt_esa_desc: "Paquetes de apoyo pedagógico virtual para familias beneficiarias de cuentas estatales de elección escolar.",
-        rt_oc_title: "Off-Campus K–12",
-        rt_oc_desc: "Matrícula escolar privada completa, expediente oficial con créditos FLDOE #134620 y diploma de graduación.",
-        rt_dd_title: "Programa Dual Diploma",
-        rt_dd_desc: "Bachillerato estadounidense complementario al colegio actual. Matrícula privada internacional (no elegible para ESA).",
+        rt_esa_title: "Fondos ESA / Elección Escolar",
+        rt_esa_desc: "Programas de apoyo pedagógico para familias beneficiarias de cuentas estatales de elección escolar.",
+        rt_oc_title: "Homeschool (Off-Campus)",
+        rt_oc_desc: "Matrícula formal privada con expediente acumulativo FLDOE #134620 y Diploma de High School americano.",
+        rt_dd_title: "Dual Diploma Internacional",
+        rt_dd_desc: "Bachillerato estadounidense simultáneo al colegio actual. Convalida hasta 75% y titulación oficial de Florida.",
         lbl_state_hub: "Selecciona el Hub Administrativo Estatal Activo",
         lbl_service: "Servicio Autorizado en Catálogo",
         sec2_title: "Datos del Tutor y del Estudiante",
@@ -952,46 +1003,65 @@
       updateLiveFolio();
     }
 
-    function handleCountryChange() {
-      var country = document.getElementById('countrySelect').value;
-      var esaRadio = document.querySelector('input[name="route_type"][value="esa"]');
-      var esaCard = document.getElementById('card-esa');
-
-      if (country !== 'US') {
-        esaRadio.disabled = true;
-        esaCard.style.opacity = '0.4';
-        esaCard.style.cursor = 'not-allowed';
-        if (esaRadio.checked) {
-          document.querySelector('input[name="route_type"][value="offcampus"]').checked = true;
-          handleRouteSelect('offcampus');
-        }
-      } else {
-        esaRadio.disabled = false;
-        esaCard.style.opacity = '1';
-        esaCard.style.cursor = 'pointer';
-      }
-      updateLiveFolio();
-    }
-
     function handleRouteSelect(route) {
       document.querySelectorAll('.route-card').forEach(function(c) { c.classList.remove('selected'); });
       var activeCard = document.getElementById('card-' + route);
       if (activeCard) activeCard.classList.add('selected');
 
+      var hsContainer = document.getElementById('homeschoolContainer');
+      var ddContainer = document.getElementById('dualContainer');
       var esaContainer = document.getElementById('esaHubContainer');
       var consentEsaBox = document.getElementById('consentEsaBox');
       var consentEsa = document.getElementById('consentEsa');
 
-      if (route === 'esa') {
-        esaContainer.style.display = 'block';
-        consentEsaBox.style.display = 'flex';
-        consentEsa.required = true;
-      } else {
-        esaContainer.style.display = 'none';
-        consentEsaBox.style.display = 'none';
-        consentEsa.required = false;
+      if (route === 'offcampus') {
+        if (hsContainer) hsContainer.style.display = 'block';
+        if (ddContainer) ddContainer.style.display = 'none';
+        if (esaContainer) esaContainer.style.display = 'none';
+        if (consentEsaBox) consentEsaBox.style.display = 'none';
+        if (consentEsa) consentEsa.required = false;
+        handleCountryChangeHomeschool();
+      } else if (route === 'dual') {
+        if (hsContainer) hsContainer.style.display = 'none';
+        if (ddContainer) ddContainer.style.display = 'block';
+        if (esaContainer) esaContainer.style.display = 'none';
+        if (consentEsaBox) consentEsaBox.style.display = 'none';
+        if (consentEsa) consentEsa.required = false;
+        handleCountryChangeDual();
+      } else if (route === 'esa') {
+        if (hsContainer) hsContainer.style.display = 'none';
+        if (ddContainer) ddContainer.style.display = 'none';
+        if (esaContainer) esaContainer.style.display = 'block';
+        if (consentEsaBox) consentEsaBox.style.display = 'flex';
+        if (consentEsa) consentEsa.required = true;
+        document.getElementById('countrySelect').value = 'US';
+        handleHubChange();
       }
       updateLiveFolio();
+    }
+
+    function handleCountryChangeHomeschool() {
+      var sel = document.getElementById('countrySelectHomeschool');
+      if (sel) {
+        document.getElementById('countrySelect').value = sel.value;
+      }
+      updateLiveFolio();
+    }
+
+    function handleCountryChangeDual() {
+      var sel = document.getElementById('countrySelectDual');
+      if (sel) {
+        document.getElementById('countrySelect').value = sel.value;
+      }
+      updateLiveFolio();
+    }
+
+    function handleCountryChange() {
+      var selectedRoute = document.querySelector('input[name="route_type"]:checked');
+      var route = selectedRoute ? selectedRoute.value : 'offcampus';
+      if (route === 'offcampus') handleCountryChangeHomeschool();
+      else if (route === 'dual') handleCountryChangeDual();
+      else document.getElementById('countrySelect').value = 'US';
     }
 
     function handleHubChange() {
@@ -1290,8 +1360,8 @@
 
     function updateLiveFolio() {
       var selectedRoute = document.querySelector('input[name="route_type"]:checked');
-      var route = selectedRoute ? selectedRoute.value : 'esa';
-      var hubId = document.getElementById('stateHubSelect').value;
+      var route = selectedRoute ? selectedRoute.value : 'offcampus';
+      var hubId = document.getElementById('stateHubSelect') ? document.getElementById('stateHubSelect').value : '';
       var year = (new Date()).getFullYear();
 
       var code = "OC";
@@ -1302,41 +1372,34 @@
         else if (hubId.indexOf("UT") !== -1) code = "UT";
         else if (hubId.indexOf("WY") !== -1) code = "WY";
         else if (hubId.indexOf("NH") !== -1) code = "NH";
+        else if (hubId.indexOf("AR") !== -1) code = "AR";
         else if (hubId.indexOf("SC") !== -1) code = "SC";
+        else code = "ESA";
       } else if (route === 'dual') {
         code = "DD";
       }
 
       var folioStr = "CHK-" + code + "-" + year + "-" + cachedRandomSeq;
-      document.getElementById('liveFolio').textContent = folioStr;
-      document.getElementById('hiddenFolio').value = folioStr;
+      if (document.getElementById('liveFolio')) document.getElementById('liveFolio').textContent = folioStr;
+      if (document.getElementById('hiddenFolio')) document.getElementById('hiddenFolio').value = folioStr;
     }
 
     // Initialize from URL parameters or saved state
     document.addEventListener("DOMContentLoaded", function() {
       var params = new URLSearchParams(location.search);
 
-      // Language check: Default EN, switch if ES requested
+      // Language check: Default ES, switch if EN requested
       var urlLang = params.get('lang');
       var savedLang = null;
       try { savedLang = localStorage.getItem('chanak_lang'); } catch(e){}
-      var initialLang = 'en';
-      if (urlLang === 'es' || (!urlLang && savedLang === 'es')) {
-        initialLang = 'es';
-      }
+      var initialLang = (urlLang === 'en' || (savedLang === 'en' && urlLang !== 'es')) ? 'en' : 'es';
       setPortalLanguage(initialLang);
-
-      // Country parameter
-      if (params.has('country')) {
-        var c = params.get('country').toUpperCase();
-        var opt = document.querySelector('#countrySelect option[value="' + c + '"]');
-        if (opt) document.getElementById('countrySelect').value = c;
-      }
 
       // State or Hub preselection from state landing pages
       var stateSlug = params.get('state');
       var hubParam = params.get('hub');
       var servParam = params.get('service');
+      var progParam = (params.get('programa') || params.get('program') || params.get('route') || '').toLowerCase();
       var hasPreselect = false;
 
       if (hubParam) {
@@ -1354,6 +1417,7 @@
           'utah': 'UT-UFA-ODY',
           'wyoming': 'WY-ESA-ODY',
           'new-hampshire': 'NH-EFA-CW',
+          'arkansas': 'AR-LEARNS-EFA',
           'south-carolina': 'SC-ESTF-CW'
         };
         var resolved = slugMap[stateSlug.toLowerCase()];
@@ -1363,11 +1427,30 @@
         }
       }
 
-      if (hasPreselect) {
-        document.getElementById('countrySelect').value = 'US';
-        document.querySelector('input[name="route_type"][value="esa"]').checked = true;
+      if (hasPreselect || progParam.indexOf('esa') !== -1 || progParam.indexOf('scholarship') !== -1) {
+        var rEsa = document.querySelector('input[name="route_type"][value="esa"]');
+        if (rEsa) rEsa.checked = true;
         handleRouteSelect('esa');
-        document.getElementById('preselectedNotice').style.display = 'flex';
+        if (hasPreselect) document.getElementById('preselectedNotice').style.display = 'flex';
+      } else if (progParam.indexOf('dual') !== -1) {
+        var rDual = document.querySelector('input[name="route_type"][value="dual"]');
+        if (rDual) rDual.checked = true;
+        handleRouteSelect('dual');
+        if (params.has('country')) {
+          var c = params.get('country').toUpperCase();
+          var opt = document.querySelector('#countrySelectDual option[value="' + c + '"]');
+          if (opt) document.getElementById('countrySelectDual').value = c;
+        }
+      } else {
+        // Default to Homeschool (offcampus)
+        var rOc = document.querySelector('input[name="route_type"][value="offcampus"]');
+        if (rOc) rOc.checked = true;
+        handleRouteSelect('offcampus');
+        if (params.has('country')) {
+          var c = params.get('country').toUpperCase();
+          var opt = document.querySelector('#countrySelectHomeschool option[value="' + c + '"]');
+          if (opt) document.getElementById('countrySelectHomeschool').value = c;
+        }
       }
 
       var gradeParam = params.get('grade');
@@ -1459,6 +1542,35 @@
       if (servSelect && servSelect.options[servSelect.selectedIndex]) {
         formData.append('service_name', servSelect.options[servSelect.selectedIndex].text);
       }
+      var selectedRoute = document.querySelector('input[name="route_type"]:checked');
+      var route = selectedRoute ? selectedRoute.value : 'offcampus';
+
+      if (route === 'offcampus') {
+        var hsCountry = document.getElementById('countrySelectHomeschool').value;
+        formData.set('country', hsCountry);
+        formData.set('pais', hsCountry);
+        formData.set('programa', 'offcampus');
+        formData.set('necesidad', 'offcampus');
+        formData.set('service_name', 'Homeschool (Off-Campus K-12)');
+      } else if (route === 'dual') {
+        var ddCountry = document.getElementById('countrySelectDual').value;
+        formData.set('country', ddCountry);
+        formData.set('pais', ddCountry);
+        formData.set('programa', 'dual');
+        formData.set('necesidad', 'dual');
+        formData.set('service_name', 'Dual Diploma Internacional');
+      } else if (route === 'esa') {
+        formData.set('country', 'US');
+        formData.set('pais', 'Estados Unidos');
+        var hubId = document.getElementById('stateHubSelect').value;
+        formData.set('hub_id', hubId);
+        formData.set('programa', 'esa');
+        formData.set('necesidad', 'esa');
+        var servSelect = document.getElementById('serviceSelect');
+        if (servSelect && servSelect.options[servSelect.selectedIndex]) {
+          formData.set('service_name', servSelect.options[servSelect.selectedIndex].text);
+        }
+      }
 
       // Track lead in analytics
       try {
@@ -1512,19 +1624,34 @@
       document.getElementById('confirmedFolio').textContent = folio;
       document.getElementById('confirmedDate').textContent = "Date: " + (new Date()).toISOString().split('T')[0];
 
-      // Service, Hub & Grade Summary on Receipt
-      var servSelect = document.getElementById('serviceSelect');
-      var selServiceText = servSelect.options[servSelect.selectedIndex] ? servSelect.options[servSelect.selectedIndex].text : servSelect.value;
-      var hubSelect = document.getElementById('stateHubSelect');
-      var selHubText = hubSelect.options[hubSelect.selectedIndex] ? hubSelect.options[hubSelect.selectedIndex].text : hubSelect.value;
+      var selectedRoute = document.querySelector('input[name="route_type"]:checked');
+      var route = selectedRoute ? selectedRoute.value : 'offcampus';
       var gradeSelect = document.getElementById('studentGrade');
       var selGradeText = gradeSelect.options[gradeSelect.selectedIndex] ? gradeSelect.options[gradeSelect.selectedIndex].text : gradeSelect.value;
-
       var recSummary = document.getElementById('recSelectedSummary');
+
       if (recSummary) {
-        recSummary.innerHTML = '<strong>' + (currentLang === 'es' ? 'Servicio Seleccionado: ' : 'Selected Service: ') + '</strong>' + selServiceText + '<br>' +
-          '<strong>' + (currentLang === 'es' ? 'Programa / Estado: ' : 'State Program / Hub: ') + '</strong>' + selHubText + '<br>' +
-          '<strong>' + (currentLang === 'es' ? 'Grado Escolar: ' : 'Grade Level: ') + '</strong>' + selGradeText;
+        if (route === 'offcampus') {
+          var hsSel = document.getElementById('countrySelectHomeschool');
+          var hsCountryName = hsSel.options[hsSel.selectedIndex].text;
+          recSummary.innerHTML = '<strong>' + (currentLang === 'es' ? 'Modalidad: ' : 'Pathway: ') + '</strong>Homeschool (Off-Campus K–12)<br>' +
+            '<strong>' + (currentLang === 'es' ? 'País de Residencia: ' : 'Country: ') + '</strong>' + hsCountryName + '<br>' +
+            '<strong>' + (currentLang === 'es' ? 'Grado Escolar: ' : 'Grade Level: ') + '</strong>' + selGradeText;
+        } else if (route === 'dual') {
+          var ddSel = document.getElementById('countrySelectDual');
+          var ddCountryName = ddSel.options[ddSel.selectedIndex].text;
+          recSummary.innerHTML = '<strong>' + (currentLang === 'es' ? 'Modalidad: ' : 'Pathway: ') + '</strong>Dual Diploma Internacional<br>' +
+            '<strong>' + (currentLang === 'es' ? 'País: ' : 'Country: ') + '</strong>' + ddCountryName + '<br>' +
+            '<strong>' + (currentLang === 'es' ? 'Grado Escolar: ' : 'Grade Level: ') + '</strong>' + selGradeText;
+        } else {
+          var servSelect = document.getElementById('serviceSelect');
+          var selServiceText = servSelect.options[servSelect.selectedIndex] ? servSelect.options[servSelect.selectedIndex].text : servSelect.value;
+          var hubSelect = document.getElementById('stateHubSelect');
+          var selHubText = hubSelect.options[hubSelect.selectedIndex] ? hubSelect.options[hubSelect.selectedIndex].text : hubSelect.value;
+          recSummary.innerHTML = '<strong>' + (currentLang === 'es' ? 'Servicio Seleccionado: ' : 'Selected Service: ') + '</strong>' + selServiceText + '<br>' +
+            '<strong>' + (currentLang === 'es' ? 'Programa / Estado: ' : 'State Program / Hub: ') + '</strong>' + selHubText + '<br>' +
+            '<strong>' + (currentLang === 'es' ? 'Grado Escolar: ' : 'Grade Level: ') + '</strong>' + selGradeText;
+        }
       }
       window.scrollTo({ top: rec.offsetTop - 40, behavior: 'smooth' });
     }
