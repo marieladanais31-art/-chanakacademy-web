@@ -1878,6 +1878,101 @@
       }
     }
 
+    /* Confirmación por programa: paso a paso sin precios y sin textos de otro flujo (ESA, $295, etc.). */
+    function applyReceiptFlow(route, hubId) {
+      var es = currentLang === 'es';
+      var flow = 'offcampus';
+      if (route === 'esa') {
+        flow = (['AZ-ESA-CW','NH-EFA-CW','SC-ESTF-CW'].indexOf(hubId) !== -1) ? 'esa_cw'
+             : (['UT-UFA-ODY','WY-ESA-ODY'].indexOf(hubId) !== -1) ? 'esa_ody'
+             : (hubId === 'FL-STEPUP-EMA') ? 'esa_ema' : 'esa_other';
+      } else if (route === 'dual') { flow = 'dual'; }
+      else if (route === 'adult') { flow = 'adult'; }
+
+      var isEsa = flow.indexOf('esa') === 0;
+      var T = function(a, b) { return es ? a : b; };
+      var set = function(id, txt) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.removeAttribute('data-i18n');
+        el.textContent = txt;
+      };
+      var q = function(sel, txt) {
+        var el = document.querySelector(sel);
+        if (!el) return;
+        el.removeAttribute('data-i18n');
+        el.textContent = txt;
+      };
+
+      q('[data-i18n="rec_title"]', T('¡Bienvenida a la familia Chanak!', 'Welcome to the Chanak family!'));
+      q('[data-i18n="rec_sub"]', T('Hemos recibido tu solicitud. Nuestro equipo se pondrá en contacto contigo en 24 horas laborables para acompañarte en los siguientes pasos.',
+                                   'We have received your application. Our team will contact you within 24 business hours to guide you through the next steps.'));
+      q('[data-i18n="tr1_desc"]', T('Admisiones revisa tu solicitud y se pondrá en contacto contigo. Respuesta en 24 h laborables.',
+                                    'Admissions is reviewing your application and will contact you. Response within 24 business hours.'));
+      q('[data-i18n="tr2_lbl"]', T('Vía 2 · Diagnóstico y PEI', 'Track 2 · Diagnostic & IEP'));
+      q('[data-i18n="tr2_status"]', T('Pendiente de diagnóstico', 'Diagnostic pending'));
+      q('[data-i18n="tr2_desc"]', T('Tras el contacto: prueba diagnóstica y Plan Educativo Individual (PEI) con tu familia, con el modelo 60/20/20.',
+                                    'After we contact you: diagnostic test and Individual Education Plan (IEP) built with your family, under the 60/20/20 model.'));
+      if (isEsa) {
+        q('[data-i18n="tr3_lbl"]', T('Vía 3 · Factura y plataforma de fondos', 'Track 3 · Invoice & funding platform'));
+        q('[data-i18n="tr3_status"]', T('Factura por enviar', 'Invoice to be sent'));
+        q('[data-i18n="tr3_desc"]', T('Te enviaremos la factura (sin cargos automáticos) para que la subas a tu plataforma. La aprobación depende del programa estatal.',
+                                      'We will send you the invoice (no automatic charges) for you to upload to your platform. Approval depends on the state program.'));
+      } else {
+        q('[data-i18n="tr3_lbl"]', T('Vía 3 · Matrícula y pago', 'Track 3 · Enrollment & payment'));
+        q('[data-i18n="tr3_status"]', T('Sin cargos automáticos', 'No automatic charges'));
+        q('[data-i18n="tr3_desc"]', T('Tu coordinador confirmará los importes y te enviará el enlace de pago tras la revisión.',
+                                      'Your coordinator will confirm the amounts and send you the payment link after the review.'));
+      }
+
+      var common = [
+        T('Prueba diagnóstica en línea para conocer el nivel real del estudiante.', 'Online diagnostic test to find the student\'s real level.'),
+        T('Plan Educativo Individual (PEI) construido contigo a partir del diagnóstico.', 'Individual Education Plan (IEP) built with you from the diagnostic.'),
+        T('Contrato de matrícula: lo revisas y lo firmas de forma electrónica.', 'Enrollment contract: you review and sign it electronically.'),
+        T('Carta de admisión cuando el expediente esté completo.', 'Admission letter once the file is complete.'),
+        T('Instructivos de acceso: plataforma, mentor y horario de Life Skills.', 'Access instructions: platform, mentor and Life Skills schedule.')
+      ];
+      var first = [T('Hemos enviado un correo de bienvenida con tu folio de referencia.', 'We sent a welcome email with your reference folio.'),
+                   T('Tu coordinador te contactará en 24 horas laborables para confirmar los datos.', 'Your coordinator will contact you within 24 business hours to confirm details.')];
+      var money;
+      if (flow === 'esa_cw') {
+        money = [T('Te enviaremos nuestra factura detallada (número, estudiante, servicios, fechas e importes).', 'We will send you our itemized invoice (number, student, services, dates and amounts).'),
+                 T('Súbela en TU cuenta de ClassWallet como solicitud de pago. Nunca compartas tu usuario o contraseña con nosotros.', 'Upload it in YOUR ClassWallet account as a payment request. Never share your login with us.'),
+                 T('Si el estado la aprueba, paga directamente a Chanak (la aprobación suele tardar de 7 a 10 días). Se puede facturar hasta un trimestre por adelantado. No garantizamos la aprobación.', 'If the state approves it, it pays Chanak directly (approval usually takes 7 to 10 days). Invoices may cover up to one quarter in advance. Approval is not guaranteed.')];
+      } else if (flow === 'esa_ody') {
+        money = [T('Te enviaremos el enlace/orden publicado para el marketplace Odyssey de tu estado, con la descripción del servicio.', 'We will send you the link/order published for your state\'s Odyssey marketplace, with the service description.'),
+                 T('Completa la compra desde TU cuenta de Odyssey. Nunca compartas tu usuario o contraseña con nosotros.', 'Complete the purchase from YOUR Odyssey account. Never share your login with us.'),
+                 T('La aprobación y el pago dependen del programa estatal. No los garantizamos.', 'Approval and payment depend on the state program. They are not guaranteed.')];
+      } else if (flow === 'esa_ema') {
+        money = [T('Te indicaremos qué servicio de nuestro catálogo EMA seleccionar y te enviaremos la documentación de soporte.', 'We will tell you which service in our EMA catalog to select and send you the supporting documents.'),
+                 T('Haz la solicitud desde TU cuenta de EMA (pago directo tras prestar el servicio, o reembolso). Nunca compartas tu usuario o contraseña con nosotros.', 'Submit the request from YOUR EMA account (direct payment after the service, or reimbursement). Never share your login with us.'),
+                 T('Step Up for Students revisa y aprueba cada servicio. No garantizamos la aprobación.', 'Step Up for Students reviews and approves each service. Approval is not guaranteed.')];
+      } else if (flow === 'esa_other') {
+        money = [T('Te enviaremos nuestra factura detallada y las instrucciones de la plataforma de becas de tu estado.', 'We will send you our itemized invoice and the instructions for your state\'s scholarship platform.'),
+                 T('Súbela desde TU cuenta. Nunca compartas tu usuario o contraseña con nosotros.', 'Upload it from YOUR account. Never share your login with us.'),
+                 T('La aprobación y el pago dependen del programa estatal. No los garantizamos.', 'Approval and payment depend on the state program. They are not guaranteed.')];
+      } else {
+        money = [T('Tu coordinador confirmará los importes y te enviará el enlace de pago. No se hace ningún cargo automático.', 'Your coordinator will confirm the amounts and send you the payment link. No automatic charges are made.')];
+        if (flow === 'dual') money.unshift(T('Ten a mano el último boletín de notas para la convalidación (tu hijo/a sigue en su colegio actual).', 'Keep the latest report card handy for credit validation (your child stays in their current school).'));
+        if (flow === 'adult') money.unshift(T('Ten a mano tus certificados de estudios previos para la revisión de créditos.', 'Keep your previous transcripts handy for credit review.'));
+      }
+      if (flow === 'esa_ema') {
+        common = [
+          T('Evaluación inicial en línea para conocer el nivel real del estudiante.', 'Online initial assessment to find the student\'s real level.'),
+          T('Plan de aprendizaje individual construido contigo a partir de la evaluación.', 'Individual learning plan built with you from the assessment.'),
+          T('Acuerdo de servicios: lo revisas y lo firmas de forma electrónica (servicio de educación en casa dirigido por los padres, no matrícula a tiempo completo).', 'Service agreement: you review and sign it electronically (parent-directed home education service, not full-time enrollment).'),
+          T('Instructivos de acceso: plataforma, mentor y horario de Life Skills.', 'Access instructions: platform, mentor and Life Skills schedule.')
+        ];
+      }
+      var steps = first.concat(money, common);
+      var ol = document.querySelector('#receipt-screen ol');
+      if (ol) {
+        ol.innerHTML = '';
+        steps.forEach(function(t) { var li = document.createElement('li'); li.textContent = t; ol.appendChild(li); });
+      }
+      q('[data-i18n="rec_next_steps_title"]', T('Tus próximos pasos:', 'Your next steps:'));
+    }
+
     function showConfirmation(folio) {
       document.getElementById('enrollmentForm').style.display = 'none';
       document.getElementById('preselectedNotice').style.display = 'none';
@@ -1924,6 +2019,7 @@
             '<strong>' + (currentLang === 'es' ? 'Grado Escolar: ' : 'Grade Level: ') + '</strong>' + selGradeText;
         }
       }
+      applyReceiptFlow(route, (document.getElementById('stateHubSelect') || {}).value || '');
       window.scrollTo({ top: rec.offsetTop - 40, behavior: 'smooth' });
     }
   </script>
