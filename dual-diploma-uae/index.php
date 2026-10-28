@@ -143,7 +143,7 @@ function fmt_aed(int $amount): string
  <p>Pricing is confirmed individually by city — the United Arab Emirates and Dubai have different rates (monthly, academic year, and enrollment fee), in AED. Download the information pack for your city to see exact pricing, or request information below and our International Admissions team will confirm it with you.</p>
  <div class="btns" style="margin-top:1rem">
  <a class="btn btn-secondary dark btn-sm" href="#form">Request international guidance</a>
- <a id="dossierDownload" href="/assets/dossiers/Chanak_Dual_Diploma_UAE_2026-2027.pdf" hidden style="display:none;"></a>
+ <a id="dossierDownload" href="#" hidden style="display:none;"></a>
  </div>
  <p class="disclaimer">The pack shown updates automatically once you type your city in the form below — Dubai gets the Dubai-priced pack, any other UAE city gets the UAE pack. Pricing does not include additional academic materials, which are managed separately.</p>
  </div>
