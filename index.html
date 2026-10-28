@@ -706,7 +706,7 @@ html{scroll-padding-top:90px}
 <a data-i18n="n_contact" href="#dossier">Contacto</a>
 </div>
 <div class="nav-r">
-<a class="btn btn-t nav-enroll" data-i18n="n_enroll" href="/matricula/" style="padding:.65rem 1.35rem;font-size:1.02rem;font-weight:800;white-space:nowrap;background:var(--teal);color:#fff;border-radius:10px;text-decoration:none;box-shadow:0 3px 12px rgba(11,157,164,0.25);">Enrollment / Matrícula</a>
+<a class="btn btn-t nav-enroll" data-i18n="rd_enroll" href="/matricula/" style="padding:.65rem 1.35rem;font-size:1.02rem;font-weight:800;white-space:nowrap;background:var(--teal);color:#fff;border-radius:10px;text-decoration:none;box-shadow:0 3px 12px rgba(11,157,164,0.25);">Iniciar matrícula →</a>
 <div class="chanak-region-selector-mount" style="display:inline-block; margin-right:6px;"></div>
 <div class="lang-w">
 <button class="lang-b" id="langBtn" onclick="toggleLang()">ES ▾</button>
@@ -725,7 +725,7 @@ html{scroll-padding-top:90px}
 </div>
 </nav>
 <div class="mob-m" id="mobMenu">
-<a data-i18n="n_enroll" href="/matricula/" style="font-weight:800;color:#fff;background:var(--teal);font-size:1.25rem;text-align:center;border-radius:10px;margin-bottom:8px;padding:12px;">Enrollment / Matrícula</a>
+<a data-i18n="rd_enroll" href="/matricula/" style="font-weight:800;color:#fff;background:var(--teal);font-size:1.25rem;text-align:center;border-radius:10px;margin-bottom:8px;padding:12px;">Iniciar matrícula →</a>
 <a data-i18n="n_home" href="#inicio">Inicio</a>
 <a data-i18n="n_quien" href="#quien">Quiénes somos</a>
 <a data-i18n="n_prog" href="#objetivo">Programas</a>
@@ -751,8 +751,16 @@ html{scroll-padding-top:90px}
 <h1 data-i18n="h_h1">Flexible en el ritmo.<br/><em>Rigurosa en los resultados.</em></h1>
 <div class="orn"><div class="orn-line"></div><span style="color:var(--teal)">✦</span><div class="orn-line"></div></div>
 <p class="hero-tag" data-i18n="h_tag">Educación americana K-12 con mentoría personalizada, expediente académico y una ruta clara hacia la graduación.</p>
-<p class="hero-sub2" data-i18n="h_sub">Colegio privado registrado en Florida · FLDOE #134620 · Candidato oficial MSA-CESS.</p>
-<div class="hero-ctas"><a class="btn btn-t" href="#objetivo" data-i18n="rd_family_cta">Para mi familia →</a><a class="btn btn-out home-hero-secondary" href="#instituciones" data-i18n="rd_institution_hero">Para mi institución →</a></div><a class="home-hero-link" href="/matricula/" data-i18n="rd_ready">¿Ya elegiste programa? Inicia tu matrícula →</a>
+<p class="hero-sub2" data-i18n="h_sub">Colegio americano K-12 · FLDOE #134620 · Candidato oficial MSA-CESS (la candidatura no equivale a acreditación)</p>
+<div class="hero-ctas">
+  <a class="btn btn-t" href="/matricula/" data-i18n="rd_enroll">Iniciar matrícula →</a>
+  <a class="btn btn-out home-hero-secondary" href="#dossier" data-i18n="how_cta">Solicitar orientación gratuita</a>
+</div>
+<div style="margin-top:14px;display:flex;gap:18px;justify-content:center;font-size:0.92rem;flex-wrap:wrap">
+  <a class="home-hero-link" href="#objetivo" data-i18n="rd_family_cta" style="margin:0">Para mi familia →</a>
+  <span style="color:rgba(255,255,255,0.4)">|</span>
+  <a class="home-hero-link" href="#instituciones" data-i18n="rd_institution_hero" style="margin:0">Para mi institución →</a>
+</div>
 <div class="trust-bar">
 <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1em;height:1em"><path d="M12 4v16M7 9h10"/></svg> <span data-i18n="t_1">Mentoría personalizada</span></span>
 <span class="trust-sep"> | </span>
@@ -773,11 +781,11 @@ html{scroll-padding-top:90px}
 <div class="a-div"></div>
 <div class="aw"><div class="aw-logo msa"><img loading="lazy" decoding="async" alt="MSA" src="assets/msa-dark.png"/></div><div class="aw-txt"><strong>MSA-CESS</strong><span data-i18n="aw_msa">Candidato Oficial</span></div></div>
 <div class="a-div"></div>
-<div class="aw"><div class="aw-txt"><strong>IRS 501(c)(3)</strong><span>EIN 36-5154011</span></div></div>
+<div class="aw"><div class="aw-txt"><strong>IRS 501(c)(3)</strong><span>Chanak TrainUp Education Inc.</span></div></div>
 </div></div>
 </div>
 <div class="wrap"><p class="home-note" data-i18n="rd_candidate">Candidato oficial MSA-CESS. La candidatura no equivale todavía a acreditación.</p></div>
-<section class="home-state-strip" id="fondos-esa" aria-label="Fondos y Cuentas ESA en EE. UU." data-i18n-aria-label="st_aria"><div class="state-strip-inner"><div class="state-strip-lead"><span class="state-strip-badge"><span class="badge-pulse"></span> <span data-i18n="st_badge">Fondos ESA EE. UU.</span></span><span class="state-strip-text" data-i18n="st_lead">Proveedor escolar K-12 aprobado:</span></div><div class="state-strip-marquee-wrap"><div class="state-strip-track"><a class="state-pill" href="/florida-home-education/"><span class="pill-st">FL</span> <strong>Florida</strong> <small>EMA / Step Up</small></a><a class="state-pill" href="/utah/"><span class="pill-st">UT</span> <strong>Utah</strong> <small>Odyssey UFA</small></a><a class="state-pill" href="/wyoming/"><span class="pill-st">WY</span> <strong>Wyoming</strong> <small>Odyssey ESA</small></a><a class="state-pill" href="/arizona/"><span class="pill-st">AZ</span> <strong>Arizona</strong> <small>ClassWallet</small></a><a class="state-pill" href="/alabama/"><span class="pill-st">AL</span> <strong>Alabama</strong> <small>CHOOSE</small></a><a class="state-pill" href="/south-carolina/"><span class="pill-st">SC</span> <strong>South Carolina</strong> <small>ESTF</small></a><a class="state-pill" href="/new-hampshire/"><span class="pill-st">NH</span> <strong>New Hampshire</strong> <small>EFA</small></a><a class="state-pill state-pill-all" href="/scholarships/"><strong data-i18n="st_view_dir">Ver directorio</strong> <small data-i18n="st_quote">Cotizador →</small></a><a class="state-pill" href="/florida-home-education/"><span class="pill-st">FL</span> <strong>Florida</strong> <small>EMA / Step Up</small></a><a class="state-pill" href="/utah/"><span class="pill-st">UT</span> <strong>Utah</strong> <small>Odyssey UFA</small></a><a class="state-pill" href="/wyoming/"><span class="pill-st">WY</span> <strong>Wyoming</strong> <small>Odyssey ESA</small></a><a class="state-pill" href="/arizona/"><span class="pill-st">AZ</span> <strong>Arizona</strong> <small>ClassWallet</small></a><a class="state-pill" href="/alabama/"><span class="pill-st">AL</span> <strong>Alabama</strong> <small>CHOOSE</small></a><a class="state-pill" href="/south-carolina/"><span class="pill-st">SC</span> <strong>South Carolina</strong> <small>ESTF</small></a><a class="state-pill" href="/new-hampshire/"><span class="pill-st">NH</span> <strong>New Hampshire</strong> <small>EFA</small></a><a class="state-pill state-pill-all" href="/scholarships/"><strong data-i18n="st_view_dir">Ver directorio</strong> <small data-i18n="st_quote">Cotizador →</small></a></div></div></div><p class="state-strip-note" data-i18n="rd_state_note">La utilización de fondos ESA está sujeta al servicio aprobado, a la elegibilidad de la familia y a las normas del programa.</p></section>
+<section class="home-state-strip" id="fondos-esa" aria-label="Fondos y Cuentas ESA en EE. UU." data-i18n-aria-label="st_aria"><div class="state-strip-inner"><div class="state-strip-lead"><span class="state-strip-badge"><span class="badge-pulse"></span> <span data-i18n="st_badge">Fondos ESA EE. UU.</span></span><span class="state-strip-text" data-i18n="st_lead">Proveedor escolar K-12 aprobado:</span></div><div class="state-strip-marquee-wrap"><div class="state-strip-track"><a class="state-pill" href="/florida-home-education/"><span class="pill-st">FL</span> <strong>Florida</strong> <small>EMA / Step Up</small></a><a class="state-pill" href="/utah/"><span class="pill-st">UT</span> <strong>Utah</strong> <small>Odyssey UFA</small></a><a class="state-pill" href="/wyoming/"><span class="pill-st">WY</span> <strong>Wyoming</strong> <small>Odyssey ESA</small></a><a class="state-pill" href="/arizona/"><span class="pill-st">AZ</span> <strong>Arizona</strong> <small>ClassWallet</small></a><a class="state-pill" href="/alabama/"><span class="pill-st">AL</span> <strong>Alabama</strong> <small>CHOOSE</small></a><a class="state-pill" href="/south-carolina/"><span class="pill-st">SC</span> <strong>South Carolina</strong> <small>ESTF</small></a><a class="state-pill" href="/new-hampshire/"><span class="pill-st">NH</span> <strong>New Hampshire</strong> <small>EFA</small></a><a class="state-pill state-pill-all" href="/scholarships/"><strong data-i18n="st_view_dir">Ver directorio</strong> <small data-i18n="st_quote">Cotizador →</small></a></div></div></div><p class="state-strip-note" data-i18n="rd_state_note">La utilización de fondos ESA está sujeta al servicio aprobado, a la elegibilidad de la familia y a las normas del programa.</p></section>
 <!-- AUDIENCE / 3D INTERACTIVE SHOWCASE (LIGHT LUXURY THEME) -->
 <section class="home-section" id="objetivo"><div class="wrap">
 <div class="home-heading"><div class="lbl" data-i18n="rd_family">PARA TU FAMILIA</div><h2 class="ttl" data-i18n="rd_programs">Elige el camino de tu estudiante</h2><p class="sub" data-i18n="rd_intro">Tres propuestas con objetivos distintos. Te ayudamos a encontrar la que encaja con tu familia.</p></div>
@@ -1990,26 +1998,31 @@ window.addEventListener('chanak:countryChange', function(e) {
 <input class="fi-inp" id="fe" name="email" placeholder="maria@ejemplo.com" required="" type="email"/>
 </div>
 <div class="fg">
-<label class="fl" data-i18n="f_wapp" for="fw">Teléfono de contacto</label>
-<input class="fi-inp" id="fw" name="whatsapp" placeholder="Teléfono de contacto" data-i18n-ph="f_wapp_ph" type="tel"/>
-</div>
-<div class="fg" style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
-<div>
-<label class="fl" data-i18n="f_country" for="fp">País</label>
+<label class="fl" data-i18n="f_country" for="fp">País de residencia *</label>
 <select class="fi-inp fi-sel" id="fp" name="pais" required data-i18n="f_country_opts">
-<option value="">--</option>
-<option>Panamá</option><option>España</option><option>México</option>
-<option>Argentina</option><option>Venezuela</option><option>Estados Unidos</option><option>Otro</option>
+<option value="">-- Selecciona tu país --</option>
+<option>España</option><option>Colombia</option><option>México</option><option>Panamá</option>
+<option>Estados Unidos</option><option>Argentina</option><option>Venezuela</option><option>Chile</option><option>Ecuador</option><option>Perú</option><option>Otro</option>
 </select>
 </div>
-<div>
+<div class="fg">
+<label class="fl" data-i18n="f_msg" for="fmsg">Mensaje / Consulta</label>
+<textarea class="fi-inp" id="fmsg" name="mensaje" placeholder="Cuéntanos brevemente tu situación..." data-i18n-ph="f_msg_ph" rows="3"></textarea>
+</div>
+<details style="margin:1rem 0;padding:.85rem 1rem;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;">
+<summary style="cursor:pointer;font-size:.85rem;color:var(--teal);font-weight:700;">+ Información adicional del estudiante y teléfono (opcional)</summary>
+<div style="margin-top:.85rem;display:flex;flex-direction:column;gap:.75rem;">
+<div class="fg" style="margin-bottom:0">
+<label class="fl" data-i18n="f_wapp" for="fw">Teléfono / WhatsApp de contacto</label>
+<input class="fi-inp" id="fw" name="whatsapp" placeholder="Teléfono de contacto con prefijo" data-i18n-ph="f_wapp_ph" type="tel"/>
+</div>
+<div class="fg" style="margin-bottom:0">
 <label class="fl" data-i18n="f_age" for="fedad">Edad / grado del estudiante</label>
 <input class="fi-inp" id="fedad" name="edad" placeholder="8 años / Grado 3" data-i18n-ph="f_age_ph" type="text"/>
 </div>
-</div>
-<div class="fg" style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+<div class="fg" style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:0">
 <div>
-<label class="fl" data-i18n="f_sit_lbl" for="fsit">Situación educativa actual del estudiante</label>
+<label class="fl" data-i18n="f_sit_lbl" for="fsit">Situación educativa actual</label>
 <select class="fi-inp fi-sel" id="fsit" name="situacion_educativa">
 <option value="">--</option>
 <option>Educación en casa / Homeschool</option><option>Colegio público</option><option>Colegio privado</option><option>Actualmente no está escolarizado</option><option>Otro</option>
@@ -2023,10 +2036,8 @@ window.addEventListener('chanak:countryChange', function(e) {
 </select>
 </div>
 </div>
-<div class="fg">
-<label class="fl" data-i18n="f_msg" for="fmsg">Mensaje</label>
-<textarea class="fi-inp" id="fmsg" name="mensaje" placeholder="Cuéntanos brevemente tu situación..." data-i18n-ph="f_msg_ph" rows="3"></textarea>
 </div>
+</details>
 <!-- Honeypot antispam: invisible para personas, los bots lo rellenan -->
 <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden">
 <label for="fweb">Website</label>
@@ -2414,14 +2425,19 @@ Chanak nació de esta visión: la educación es transmisión de valores, fe y ca
 <h2 class="ttl" data-i18n="red_ttl">Síguenos y comparte nuestra visión</h2>
 <p class="sub" data-i18n="red_sub">Estamos comunicando la visión de Chanak International Academy, Off Campus, Dual Diploma y el acompañamiento educativo para familias. Desde aquí puedes acceder a Instagram y ver una publicación destacada de Facebook.</p>
 <div class="social-actions">
-<a class="btn btn-t" href="https://www.instagram.com/chanakinternationalacademy/" rel="noopener noreferrer" target="_blank"><span class="brand-icon brand-icon-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3.4A4.6 4.6 0 1 1 12 16.6 4.6 4.6 0 0 1 12 7.4Zm0 2A2.6 2.6 0 1 0 14.6 12 2.6 2.6 0 0 0 12 9.4Zm5-2.35a1.05 1.05 0 1 1-1.05 1.05A1.05 1.05 0 0 1 17 7.05Z"/></svg></span><span data-i18n="red_ig">Ir a Instagram</span></a>
-<a class="btn btn-out" href="https://www.facebook.com/profile.php?id=61585911365975" rel="noopener noreferrer" target="_blank"><span class="brand-icon brand-icon-fb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.03 3.68 9.2 8.5 9.94v-7.03H8v-2.91h2.5V9.84c0-2.48 1.48-3.85 3.74-3.85 1.08 0 2.21.19 2.21.19v2.43H15.2c-1.23 0-1.61.76-1.61 1.54v1.91h2.74l-.44 2.91h-2.3V22c4.83-.74 8.41-4.91 8.41-9.94Z"/></svg></span><span data-i18n="red_fb">Ir a Facebook</span></a>
+<a class="btn btn-t" href="https://www.instagram.com/chanakinternationalacademy/" rel="noopener noreferrer" target="_blank"><span class="brand-icon brand-icon-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3.4A4.6 4.6 0 1 1 12 16.6 4.6 4.6 0 0 1 12 7.4Zm0 2A2.6 2.6 0 1 0 14.6 12 2.6 2.6 0 0 0 12 9.4Zm5-2.35a1.05 1.05 0 1 1-1.05 1.05A1.05 1.05 0 0 1 17 7.05Z"/></svg></span><span data-i18n="red_ig">Instagram</span></a>
+<a class="btn btn-out" href="https://www.facebook.com/profile.php?id=61585911365975" rel="noopener noreferrer" target="_blank"><span class="brand-icon brand-icon-fb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.03 3.68 9.2 8.5 9.94v-7.03H8v-2.91h2.5V9.84c0-2.48 1.48-3.85 3.74-3.85 1.08 0 2.21.19 2.21.19v2.43H15.2c-1.23 0-1.61.76-1.61 1.54v1.91h2.74l-.44 2.91h-2.3V22c4.83-.74 8.41-4.91 8.41-9.94Z"/></svg></span><span data-i18n="red_fb">Facebook</span></a>
+<a class="btn btn-out" href="https://www.youtube.com/@ChanakAcademy" rel="noopener noreferrer" target="_blank"><span>YouTube</span></a>
+<a class="btn btn-out" href="https://www.tiktok.com/@chanakacademy7?lang=es" rel="noopener noreferrer" target="_blank"><span>TikTok</span></a>
 </div>
 </div>
 <div class="social-embed fi d1" style="flex-direction:column;gap:.75rem;align-items:flex-start;padding:1.75rem">
 <div style="font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--navy)" data-i18n="wa_card_t">¿Prefieres hablar directamente?</div>
 <p style="font-size:.9rem;color:var(--muted);margin:0" data-i18n="wa_card_s">Escríbenos y te orientamos personalmente sobre la matrícula 2026-27.</p>
-
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+  <a class="btn btn-t" href="#solicitud" data-whatsapp-marker style="font-size:.86rem;padding:.55rem 1rem;">💬 WhatsApp (Próximamente)</a>
+  <a class="btn btn-out" href="#solicitud" style="font-size:.86rem;padding:.55rem 1rem;">📅 Agendar llamada de 15 min</a>
+</div>
 </div>
 </div>
 </section>
@@ -2432,10 +2448,12 @@ Chanak nació de esta visión: la educación es transmisión de valores, fe y ca
 <div>
 <div class="f-logo-w"><img loading="lazy" decoding="async" alt="Chanak" src="assets/chanak-logo.png" style="height:42px"/></div>
 <div class="f-brand">Chanak International Academy</div>
-<p class="f-info" data-i18n="f_info">Colegio privado americano registrado en Florida<br/>FLDOE #134620 · MSA Candidate<br/>IRS 501(c)(3) · EIN 36-5154011<br/>Candid Gold Transparency 2026 · Transparencia institucional<br/>7901 4th St N Ste 300, St. Petersburg FL</p>
+<p class="f-info" data-i18n="f_info">Operado por Chanak TrainUp Education Inc.<br/>FLDOE #134620 · Candidato oficial MSA-CESS<br/>Chanak Foundation Inc. · IRS 501(c)(3) Nonprofit<br/>Candid Gold Transparency 2026 · Transparencia institucional<br/>7901 4th St N Ste 300, St. Petersburg FL</p>
 <div class="footer-access" aria-label="Accesos Chanak">
 <a class="footer-access-btn" href="https://www.instagram.com/chanakinternationalacademy/" rel="noopener noreferrer" target="_blank" title="Instagram Chanak"><span class="brand-icon brand-icon-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3.4A4.6 4.6 0 1 1 12 16.6 4.6 4.6 0 0 1 12 7.4Zm0 2A2.6 2.6 0 1 0 14.6 12 2.6 2.6 0 0 0 12 9.4Zm5-2.35a1.05 1.05 0 1 1-1.05 1.05A1.05 1.05 0 0 1 17 7.05Z"/></svg></span><span>Instagram</span></a>
 <a class="footer-access-btn" href="https://www.facebook.com/profile.php?id=61585911365975" rel="noopener noreferrer" target="_blank" title="Facebook Chanak"><span class="brand-icon brand-icon-fb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.03 3.68 9.2 8.5 9.94v-7.03H8v-2.91h2.5V9.84c0-2.48 1.48-3.85 3.74-3.85 1.08 0 2.21.19 2.21.19v2.43H15.2c-1.23 0-1.61.76-1.61 1.54v1.91h2.74l-.44 2.91h-2.3V22c4.83-.74 8.41-4.91 8.41-9.94Z"/></svg></span><span>Facebook</span></a>
+<a class="footer-access-btn" href="https://www.youtube.com/@ChanakAcademy" rel="noopener noreferrer" target="_blank" title="YouTube Chanak"><span>YouTube</span></a>
+<a class="footer-access-btn" href="https://www.tiktok.com/@chanakacademy7?lang=es" rel="noopener noreferrer" target="_blank" title="TikTok Chanak"><span>TikTok</span></a>
 </div>
 <div class="f-part" id="footer-educafe-badge">
 <div class="f-part-logo"><img loading="lazy" decoding="async" alt="EducaFe" src="assets/educafe-logo.png" style="height:28px"/></div>

@@ -10,6 +10,8 @@
     whatsappLink: "",
     instagramUrl: "https://www.instagram.com/chanakinternationalacademy/",
     facebookUrl: "https://www.facebook.com/profile.php?id=61585911365975",
+    youtubeUrl: "https://www.youtube.com/@ChanakAcademy",
+    tiktokUrl: "https://www.tiktok.com/@chanakacademy7?lang=es",
     portalUrl: "https://portal.chanakacademy.org",
     matriculaUrl: SIS_MATRICULA_URL,
     sisUrl: "https://sis.chanakacademy.org",
