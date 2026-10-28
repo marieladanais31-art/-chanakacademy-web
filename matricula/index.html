@@ -6,6 +6,36 @@
   <title>Student Enrollment &amp; SIS State Hub Bridge · Chanak International Academy</title>
   <meta name="description" content="Official enrollment portal and SIS State Hub bridge for Chanak International Academy. Complete program selection, guardian details, and student application."/>
   <meta name="robots" content="noindex, follow"/>
+  <!-- Toda matrícula se hace en el SIS: esta ruta solo traduce los parámetros y redirige. ?legacy=1 mantiene la página anterior. -->
+  <script>
+  (function () {
+    try {
+      var q = new URLSearchParams(window.location.search);
+      if (q.get('legacy') === '1') return;
+      var HUB = { 'UT-UFA-ODY': 'utah-fits-all', 'WY-ESA-ODY': 'wyoming-esa', 'AZ-ESA-CW': 'arizona-esa', 'FL-STEPUP-EMA': 'florida-heip', 'AL-CHOOSE-CW': 'alabama-homeschool', 'NH-EFA-CW': 'new-hampshire-efa', 'AR-LEARNS-EFA': 'arkansas-learns', 'SC-ESTF-CW': 'esa' };
+      var PROG = { 'dual-diploma': 'dual_diploma', 'dual': 'dual_diploma', 'off-campus': 'off_campus', 'offcampus': 'off_campus', 'adult': 'adult_high_school' };
+      var out = new URLSearchParams();
+      var hub = q.get('hub'), prog = '';
+      if (hub && HUB[hub]) {
+        prog = HUB[hub];
+        if (prog === 'florida-heip') {
+          out.set('funding', 'scholarship');
+          var g = (q.get('grade') || '') + ' ' + (q.get('service') || '');
+          var band = /9-12|912/.test(g) ? '9-12' : /6-8|68/.test(g) ? '6-8' : /1-5|k5|k-5|15/.test(g) ? 'K-5' : '';
+          if (band) out.set('gradeBand', band);
+        }
+      } else {
+        var raw = (q.get('programa') || q.get('program') || '').toLowerCase();
+        prog = PROG[raw] || (/_/.test(raw) ? raw : '');
+      }
+      if (prog) out.set('program', prog);
+      if (q.get('country') && !hub) out.set('country', q.get('country').toUpperCase());
+      ['src', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'beca'].forEach(function (k) { if (q.get(k)) out.set(k, q.get(k)); });
+      window.location.replace('https://sis.chanakacademy.org/matricula' + (out.toString() ? '?' + out.toString() : ''));
+    } catch (e) { /* si falla, se queda la página */ }
+  })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=https://sis.chanakacademy.org/matricula"/></noscript>
   <link rel="icon" type="image/png" href="/assets/chanak-logo.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
