@@ -3659,9 +3659,8 @@ async function sendEmail(e){
  const safe=document.createElement('div');
  safe.style.cssText='text-align:center;padding:2rem;background:#f0faf5;border-radius:12px';
  const title=document.createElement('h3');title.textContent=(document.documentElement.lang==='en'?'Thank you, ':'Gracias, ')+n;
- const message=document.createElement('p');message.textContent=document.documentElement.lang==='en'?'Request received. Your program team will contact you. Your dossier includes the applicable fees and next steps.':'Solicitud recibida. El equipo de tu programa te contactará. Tu dossier incluye las tarifas aplicables y los próximos pasos.';
+ const message=document.createElement('p');message.textContent=document.documentElement.lang==='en'?'Request received. Your program team will contact you shortly.':'Solicitud recibida. El equipo de tu programa te contactará en breve.';
  safe.append(title,message);
- if(result.dossier){const u=new URL(result.dossier,location.origin);if(u.origin===location.origin&&u.pathname.startsWith('/assets/dossiers/')){const download=document.createElement('a');download.href=u.href;download.target='_blank';download.rel='noopener';download.className='btn btn-t';download.textContent=document.documentElement.lang==='en'?'Download your dossier':'Descargar tu dossier';safe.appendChild(download);}}
  f.replaceChildren(safe);
  }catch(err){
  if(submit){

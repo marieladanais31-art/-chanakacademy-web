@@ -32,8 +32,8 @@ $CONFIG = [
     // Enrutamiento por producto. 'to' admite varios buzones.
     // 'brevo_list' = ID de la lista de contactos en Brevo para ese producto.
     'routes' => [
-        'offcampus'   => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'OFF-CAMPUS',          'landing' => '/off-campus/',  'dossier' => '/assets/dossiers/dossier-off-campus.pdf?v=20260709b', 'brevo_list' => 3],
-        'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'dossier' => '/assets/dossiers/dossier-dual-diploma.pdf?v=20260709b', 'brevo_list' => 4],
+        'offcampus'   => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'OFF-CAMPUS',          'landing' => '/off-campus/',  'brevo_list' => 3],
+        'dual'        => ['to' => ['dualdiploma@chanakacademy.org'], 'label' => 'DUAL DIPLOMA',        'landing' => '/dual-diploma/', 'brevo_list' => 4],
         // CONFIRMADO por Mariela (2026-07-04): diagnóstico va a offcampus@.
         'diagnostico' => ['to' => ['offcampus@chanakacademy.org'],   'label' => 'DIAGNOSTICO',         'landing' => '/diagnostico/', 'brevo_list' => 5],
         'life_skills' => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'LIFE SKILLS', 'landing' => '/', 'brevo_list' => 3],
@@ -68,7 +68,7 @@ $AUTOREPLY = [
             . "· Revisaremos contigo la situación de tu hijo/a y resolveremos todas tus dudas.\n\n"
             . "Mientras tanto:\n"
             . "· Programa completo: {landing}\n"
-            . "· Descargar dossier Off-Campus: {dossier}\n"
+            . "· Consulta las tarifas de tu país: https://www.chanakacademy.org/#tarifas\n"
             . "· El dossier resume las 4 rutas disponibles. Los materiales curriculares se gestionan con las editoriales oficiales.\n"
             . "· Para matricularse: €180 de matrícula + primera mensualidad. Off-Campus inicia desde €250.\n"
             . "· Referencia internacional para Panamá u otros países: aprox. USD $286 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
@@ -85,7 +85,7 @@ $AUTOREPLY = [
             . "· Revisaremos contigo la compatibilidad con el colegio actual y resolveremos todas tus dudas.\n\n"
             . "Mientras tanto:\n"
             . "· Programa completo: {landing}\n"
-            . "· Descargar dossier Dual Diploma: {dossier}\n"
+            . "· Consulta las tarifas de tu país: https://www.chanakacademy.org/#tarifas\n"
             . "· Programa 100% digital online en plataforma LMS con tutoría académica; no requiere compra de material físico ni libros PACES.\n"
             . "· Diagnóstico académico: €35 (aprox. USD $40). Matrícula: €210 (aprox. USD $240). Mensualidad: desde €110/mes (aprox. USD $126).\n"
             . "· Total desde €1.310/año en 3.º ESO (aprox. USD $1.494). Referencia USD para Panamá u otros países, cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
