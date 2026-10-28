@@ -12,7 +12,7 @@
     try {
       var q = new URLSearchParams(window.location.search);
       if (q.get('legacy') === '1') return;
-      var HUB = { 'UT-UFA-ODY': 'utah-fits-all', 'WY-ESA-ODY': 'wyoming-esa', 'AZ-ESA-CW': 'arizona-esa', 'FL-STEPUP-EMA': 'florida-heip', 'AL-CHOOSE-CW': 'alabama-homeschool', 'NH-EFA-CW': 'new-hampshire-efa', 'AR-LEARNS-EFA': 'arkansas-learns', 'SC-ESTF-CW': 'esa' };
+      var HUB = { 'UT-UFA-ODY': 'utah-fits-all', 'WY-ESA-ODY': 'wyoming-esa', 'AZ-ESA-CW': 'arizona-esa', 'FL-STEPUP-EMA': 'florida-heip', 'AL-CHOOSE-CW': 'alabama-homeschool', 'NH-EFA-CW': 'new-hampshire-efa', 'AR-LEARNS-EFA': 'arkansas-learns', 'SC-ESTF-CW': 'south-carolina-estf' };
       var PROG = { 'dual-diploma': 'dual_diploma', 'dual': 'dual_diploma', 'off-campus': 'off_campus', 'offcampus': 'off_campus', 'adult': 'adult_high_school' };
       var out = new URLSearchParams();
       var hub = q.get('hub'), prog = '';
