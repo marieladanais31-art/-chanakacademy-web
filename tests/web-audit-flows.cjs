@@ -31,7 +31,7 @@ tracking.ChanakTracking.lead('off-campus');
 assert.equal(tracking.dataLayer.filter(x=>x[0]==='event').length,0);
 tracking.ChanakTracking.setConsent(true,true);
 tracking.ChanakTracking.setConsent(true,true);
-assert.equal(scripts.length,2);
+assert.equal(scripts.length,3);
 tracking.ChanakTracking.lead('off-campus');
 assert.equal(tracking.dataLayer.filter(x=>x[1]==='generate_lead').length,1);
 assert.equal(tracking.fbq.queue.filter(x=>x[1]==='Lead').length,1);

@@ -40,6 +40,14 @@
       metricool.onerror = function () { metricoolLoaded = false; };
       document.head.appendChild(metricool);
     }
+    if (analytics && !window.clarityLoaded && window.CHANAK_CLARITY_ID) {
+      window.clarityLoaded = true;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", window.CHANAK_CLARITY_ID);
+    }
     if (marketing && !metaLoaded) {
       metaLoaded = true;
       var fb = window.fbq = function () { fb.callMethod ? fb.callMethod.apply(fb, arguments) : fb.queue.push(arguments); };
@@ -90,21 +98,55 @@
     }
     control.addEventListener('click', show); document.body.appendChild(control); if (!saved) show();
   });
-  function enrollment(program) {
-    window.gtag('event', 'matricula_click', { event_category:'enrollment', event_label:program });
-    if(state.marketing && window.fbq)window.fbq('track', 'InitiateCheckout', {content_name:program});
+  function enrollment(program, src) {
+    window.gtag('event', 'matricula_click', {
+      event_category: 'enrollment',
+      event_label: program || 'general',
+      source_position: src || 'web'
+    });
+    if (state.marketing && window.fbq) {
+      window.fbq('track', 'InitiateCheckout', { content_name: program || 'general' });
+    }
   }
-  document.addEventListener('submit',function(e){
-    var form=e.target, url;
-    if(!form.action || form.method.toLowerCase()!=='get')return;
-    try{url=new URL(form.action,location.href)}catch(_){return}
-    if(/\/(matricula|enrollment)\/?$/.test(url.pathname))enrollment((form.elements.program && form.elements.program.value)||document.body.dataset.program||'general');
-  },true);
+
+  // Intercept form submissions for Lead measurement
+  document.addEventListener('submit', function(e) {
+    var form = e.target;
+    var prog = (form.elements.programa && form.elements.programa.value) ||
+               (form.elements.necesidad && form.elements.necesidad.value) ||
+               (form.id === 'dossierForm' ? 'orientacion_general' : 'formulario_contacto');
+    lead(prog);
+  }, true);
+
+  // Click tracking: Matrícula, WhatsApp, Social
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a'); if (!a) return;
-    var url; try { url = new URL(a.href, location.href); } catch (_) { return; }
-    if (/\/(matricula|enrollment)\/?$/.test(url.pathname)) {
-      enrollment(document.body.dataset.program || url.searchParams.get('program') || 'general');
+    var href = a.getAttribute('href') || '';
+    var url;
+    try { url = new URL(a.href, location.href); } catch (_) { url = null; }
+
+    // 1. Matrícula CTA clicks
+    if (url && (/\/(matricula|enrollment)\/?$/.test(url.pathname) || url.hostname.indexOf('sis.chanakacademy.org') !== -1)) {
+      var prog = url.searchParams.get('program') || url.searchParams.get('programa') || document.body.dataset.program || 'general';
+      var src = url.searchParams.get('src') || a.getAttribute('data-src') || 'button';
+      enrollment(prog, src);
+    }
+
+    // 2. WhatsApp clicks
+    if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || a.hasAttribute('data-whatsapp')) {
+      window.gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: 'whatsapp' });
+      if (state.marketing && window.fbq) window.fbq('trackCustom', 'WhatsAppClick');
+    }
+
+    // 3. Social network clicks
+    if (href.indexOf('instagram.com') !== -1) {
+      window.gtag('event', 'social_click', { event_category: 'social', event_label: 'instagram' });
+    } else if (href.indexOf('facebook.com') !== -1) {
+      window.gtag('event', 'social_click', { event_category: 'social', event_label: 'facebook' });
+    } else if (href.indexOf('youtube.com') !== -1) {
+      window.gtag('event', 'social_click', { event_category: 'social', event_label: 'youtube' });
+    } else if (href.indexOf('tiktok.com') !== -1) {
+      window.gtag('event', 'social_click', { event_category: 'social', event_label: 'tiktok' });
     }
   }, true);
 })();
