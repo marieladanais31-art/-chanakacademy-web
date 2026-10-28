@@ -30,7 +30,7 @@ Canonical website: https://www.chanakacademy.org/
 - Type: EducationalOrganization / School
 - FLDOE registration: #134620
 - Accreditation status: Official Candidate for Accreditation, MSA-CESS
-- Nonprofit: IRS 501(c)(3), EIN 36-5154011
+- Operating entity: Chanak TrainUp Education Inc. · FLDOE #134620
 - Main countries served: Spain, Panamá, United Arab Emirates (Dubai), United States, international families
 - Main audience: homeschool families, international students, families seeking U.S. academic pathways
 

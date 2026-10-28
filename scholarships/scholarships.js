@@ -52,7 +52,7 @@
       school_prices_link: "View Arizona school tuition →",
       // Topbar & Nav
       topbar_text: "Approved provider in the programs listed in the states table",
-      topbar_fldoe: "Registered with the Florida DOE, code #134620 · 501(c)(3) Nonprofit (EIN 36-5154011)",
+      topbar_fldoe: "Registered with the Florida DOE, code #134620 · Chanak TrainUp Education Inc.",
       nav_sub: "Approved State ESA & Choice Programs",
       nav_cta: "Request Guidance / Itemized Invoice",
       state_select_default: "Select State / Program:",
@@ -84,7 +84,7 @@
       // Trust bar
       trust_fldoe: "Registered with the Florida DOE, code #134620",
       trust_msa: "Candidate for MSA-CESS accreditation",
-      trust_nonprofit: "501(c)(3) Nonprofit: Chanak TrainUp Education Inc. (EIN 36-5154011)",
+      trust_nonprofit: "Chanak TrainUp Education Inc. · FLDOE #134620",
       trust_directpay: "Official State Platform Payment Processing",
 
       // Model 60/20/20 Section
@@ -238,7 +238,7 @@
       guides_lead: "In-depth resources compiled by our admissions and compliance team to maximize your state scholarship benefits.",
       g1_cat: "BILLING & DIRECT PAY",
       g1_title: "Requirements for an Approved Invoice in ClassWallet and Odyssey",
-      g1_desc: "Key elements required on Chanak's itemized invoices (student legal name, vendor EIN, line-item service coding) to ensure compliant state processing.",
+      g1_desc: "Key elements required on Chanak's itemized invoices (student legal name, vendor details, line-item service coding) to ensure compliant state processing.",
       g2_cat: "STATE COMPLIANCE",
       g2_title: "K–12 State Accountability: Standardized Testing & ILP",
       g2_desc: "How Chanak structures annual standardized testing options and Individualized Learning Plans (ILP) aligned with school choice accountability requirements.",
@@ -327,7 +327,7 @@
 
       // Footer
       footer_msa_disclaimer: "Chanak International Academy is a candidate for MSA-CESS accreditation. It is not an accredited school.",
-      footer_desc: "American private school registered with the Florida Department of Education (FLDOE #134620). Candidate for accreditation with Middle States Association (MSA-CESS). Operated by Chanak TrainUp Education Inc., a registered 501(c)(3) nonprofit organization (EIN 36-5154011).",
+      footer_desc: "American private school registered with the Florida Department of Education (FLDOE #134620). Candidate for accreditation with Middle States Association (MSA-CESS). Operated by Chanak TrainUp Education Inc.",
       footer_legal: "Chanak TrainUp Education Inc. (d/b/a Chanak International Academy), Florida nonprofit 501(c)(3), FLDOE #134620, candidate for MSA-CESS accreditation. State education scholarship usage is subject to student eligibility and individual state program guidelines. All rights reserved © 2026–2027."
     },
 
@@ -374,7 +374,7 @@
       school_prices_link: "Ver colegiatura escolar de Arizona →",
       // Topbar & Nav
       topbar_text: "Proveedor aprobado en los programas indicados en la tabla de estados",
-      topbar_fldoe: "Registrada ante el FLDOE, código #134620 · Organización Sin Ánimo de Lucro 501(c)(3) (EIN 36-5154011)",
+      topbar_fldoe: "Registrada ante el FLDOE, código #134620 · Chanak TrainUp Education Inc.",
       nav_sub: "Programas y Servicios Aprobados con Fondos ESA",
       nav_cta: "Solicitar Orientación / Factura Proforma",
       state_select_default: "Seleccionar Estado / Programa:",
@@ -406,7 +406,7 @@
       // Trust bar
       trust_fldoe: "Registrada ante el FLDOE, código #134620",
       trust_msa: "Candidata a la acreditación MSA-CESS",
-      trust_nonprofit: "Nonprofit 501(c)(3): Chanak TrainUp Education Inc. (EIN 36-5154011)",
+      trust_nonprofit: "Chanak TrainUp Education Inc. · FLDOE #134620",
       trust_directpay: "Gestión de Pago en Plataformas Estatales",
 
       // Model 60/20/20 Section
@@ -559,7 +559,7 @@
       guides_lead: "Recursos informativos redactados por nuestro equipo legal y académico para orientar la gestión de servicios educativos estatales.",
       g1_cat: "FACTURACIÓN Y PAGOS",
       g1_title: "Requisitos de una Factura Aprobada en ClassWallet y Odyssey",
-      g1_desc: "Descubre qué datos obligatorios incluye la factura de Chanak (nombre legal del alumno, código de proveedor EIN, desglose por conceptos) para evitar observaciones.",
+      g1_desc: "Descubre qué datos obligatorios incluye la factura de Chanak (nombre legal del alumno, datos del proveedor, facturación desglosada) para evitar observaciones.",
       g2_cat: "LEGALIDAD Y CUMPLIMIENTO",
       g2_title: "Cumplimiento Estatal K–12: Evaluaciones Anuales y Plan ILP",
       g2_desc: "Cómo Chanak estructura las opciones de evaluación periódica y los Planes de Aprendizaje Individualizados (ILP) alineados con los requisitos de elección escolar.",
@@ -648,7 +648,7 @@
 
       // Footer
       footer_msa_disclaimer: "Chanak International Academy es candidata a la acreditación MSA-CESS. No es una escuela acreditada.",
-      footer_desc: "Colegio privado estadounidense registrado ante el Departamento de Educación de Florida (FLDOE #134620). Candidata a la acreditación con Middle States Association (MSA-CESS). Operado por Chanak TrainUp Education Inc., organización sin fines de lucro 501(c)(3) (EIN 36-5154011).",
+      footer_desc: "Colegio privado estadounidense registrado ante el Departamento de Educación de Florida (FLDOE #134620). Candidata a la acreditación con Middle States Association (MSA-CESS). Operado por Chanak TrainUp Education Inc.",
       footer_legal: "Chanak TrainUp Education Inc. (d/b/a Chanak International Academy), entidad sin fines de lucro de Florida 501(c)(3), FLDOE #134620, candidata a la acreditación MSA-CESS. El uso de fondos estatales de elección escolar está sujeto a la elegibilidad del estudiante y a las normativas de cada programa. Todos los derechos reservados © 2026–2027."
     }
   };

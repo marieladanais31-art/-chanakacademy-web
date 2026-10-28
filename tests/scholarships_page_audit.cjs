@@ -111,7 +111,7 @@ test('Accreditation editorial rules: strictly candidate for MSA-CESS, never accr
 test('FLDOE registration and 501(c)(3) legal entity format', () => {
   assert(htmlContent.includes('#134620'), 'FLDOE code #134620 must be present');
   assert(htmlContent.includes('Chanak TrainUp Education Inc.'), 'Entity Chanak TrainUp Education Inc. must be present');
-  assert(htmlContent.includes('36-5154011'), 'EIN 36-5154011 must be present');
+  assert(!htmlContent.includes('36-5154011'), 'EIN 36-5154011 must not appear on public page');
   assert(htmlContent.includes('501(c)(3)'), '501(c)(3) must be present');
 });
 
