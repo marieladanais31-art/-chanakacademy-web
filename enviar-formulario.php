@@ -183,46 +183,36 @@ $AUTOREPLY = [
     ],
     // Autorespuesta específica cuando el lead llega desde /matricula/ (alta intención y continuidad con SIS).
     'matricula' => [
-        'subject' => '[Folio {folio}] Solicitud de incorporación recibida | Chanak Academy',
+        'subject' => '[Folio {folio}] ¡Bienvenida a Chanak International Academy!',
         'body' => "Hola {nombre},\n\n"
-            . "Hemos recibido correctamente la solicitud de incorporación para {estudiante}.\n\n"
+            . "¡Te damos una cálida bienvenida a la familia Chanak! Hemos recibido la solicitud de matrícula para {estudiante} y nos alegra acompañaros en este camino.\n\n"
             . "DATOS REGISTRADOS:\n"
             . "· Folio de referencia: {folio}\n"
-            . "· Programa / Servicio: {servicio}\n"
-            . "· Hub estatal: {hub}\n\n"
-            . "ESTADO DE SEGUIMIENTO (3 Vías de Control SIS):\n"
-            . "1. Vía Admisión: En revisión de expediente y documentación académica previa.\n"
-            . "2. Vía Académica: Asignación de mentor y verificación de plan pedagógico 60/20/20.\n"
-            . "3. Vía Financiera: Validación de método de abono / portal estatal aplicable.\n\n"
-            . "Qué pasará ahora:\n"
-            . "· En las próximas 24 horas laborables nuestro equipo de admisiones te contactará para coordinar los siguientes pasos.\n"
-            . "· La solicitud de incorporación no constituye admisión definitiva ni autoriza cargos hasta la validación del expediente.\n\n"
-            . "Puedes responder directamente a este correo si deseas aportar documentación complementaria o realizar alguna consulta.\n\n"
-            . "Atentamente,\n"
-            . "Equipo de Admisiones y Registro Académico\n"
-            . "Chanak International Academy\n"
-            . "FLDOE #134620 · MSA-CESS Official Candidate · 501(c)(3) Nonprofit",
+            . "· Programa: {servicio}\n"
+            . "{linea_hub}\n"
+            . "PRÓXIMOS PASOS:\n"
+            . "{pasos}\n\n"
+            . "La solicitud no constituye admisión definitiva ni autoriza cargos hasta completar los pasos anteriores.\n\n"
+            . "Puedes responder directamente a este correo con cualquier duda o documento.\n\n"
+            . "Con cariño,\n"
+            . "Equipo de Admisiones · Chanak International Academy\n"
+            . "FLDOE #134620 · Candidato oficial MSA-CESS (no es acreditación) · 501(c)(3)",
     ],
     'matricula_en' => [
-        'subject' => '[Folio {folio}] Enrollment Application Received | Chanak Academy',
+        'subject' => '[Folio {folio}] Welcome to Chanak International Academy!',
         'body' => "Dear {nombre},\n\n"
-            . "We have successfully received the enrollment application for {estudiante}.\n\n"
+            . "A warm welcome to the Chanak family! We have received the enrollment application for {estudiante} and we are glad to walk this path with you.\n\n"
             . "APPLICATION DETAILS:\n"
             . "· Folio Reference: {folio}\n"
-            . "· Program / Service: {servicio}\n"
-            . "· State Hub: {hub}\n\n"
-            . "THREE-TRACK PROGRESS STATUS (SIS Control):\n"
-            . "1. Admissions Track: Reviewing preliminary documents and prior student records.\n"
-            . "2. Academic Track: Mentor matching and 60/20/20 instructional plan alignment.\n"
-            . "3. Financial / Billing Track: Verifying billing method and state portal account authorization.\n\n"
-            . "What happens next:\n"
-            . "· Our admissions team will review your application and reach out within 24 business hours to guide you through the next steps.\n"
-            . "· Submitting an application does not constitute final admission nor authorize charges until student records are verified.\n\n"
-            . "You can reply directly to this email to provide documentation or inquire about your application status.\n\n"
-            . "Kind regards,\n"
-            . "Admissions & Academic Records Team\n"
-            . "Chanak International Academy\n"
-            . "FLDOE #134620 · MSA-CESS Official Candidate · 501(c)(3) Nonprofit",
+            . "· Program: {servicio}\n"
+            . "{linea_hub}\n"
+            . "NEXT STEPS:\n"
+            . "{pasos}\n\n"
+            . "This application is not a final admission and does not authorize charges until the steps above are completed.\n\n"
+            . "You can reply directly to this email with any question or document.\n\n"
+            . "Warmly,\n"
+            . "Admissions Team · Chanak International Academy\n"
+            . "FLDOE #134620 · MSA-CESS Official Candidate (not accreditation) · 501(c)(3)",
     ],
     // Autorespuesta en inglés para leads UAE/Dubai del Dual Diploma
     // (International Admissions). Placeholders: {nombre}, {landing},
@@ -320,6 +310,126 @@ function detect_commercial_region(string $country, string $city): string
     }
 
     return '';
+}
+
+/**
+ * Matrícula: nombre legible del hub/programa estatal (nunca códigos internos).
+ * Alabama no nombra ClassWallet ni "CHOOSE" (regla de documentos de ese estado).
+ */
+function chanak_hub_label(string $hub, bool $en): string
+{
+    $map = [
+        'FL-STEPUP-EMA' => ['Florida · Step Up for Students (EMA)', 'Florida · Step Up for Students (EMA)'],
+        'AL-CHOOSE-CW'  => ['Alabama · programa estatal de becas', 'Alabama · state scholarship program'],
+        'AZ-ESA-CW'     => ['Arizona · ESA (ClassWallet)', 'Arizona · ESA (ClassWallet)'],
+        'UT-UFA-ODY'    => ['Utah · Utah Fits All (Odyssey)', 'Utah · Utah Fits All (Odyssey)'],
+        'WY-ESA-ODY'    => ['Wyoming · ESA (Odyssey)', 'Wyoming · ESA (Odyssey)'],
+        'NH-EFA-CW'     => ['New Hampshire · EFA (ClassWallet)', 'New Hampshire · EFA (ClassWallet)'],
+        'AR-LEARNS-EFA' => ['Arkansas · LEARNS / EFA', 'Arkansas · LEARNS / EFA'],
+        'SC-ESTF-CW'    => ['South Carolina · ESTF (ClassWallet)', 'South Carolina · ESTF (ClassWallet)'],
+    ];
+    return isset($map[$hub]) ? $map[$hub][$en ? 1 : 0] : '';
+}
+
+/** Tipo de flujo de matrícula: offcampus | dual | adult | esa_cw | esa_ody | esa_ema | esa_other. */
+function chanak_matricula_flow(string $programa, string $hub): string
+{
+    $programa = strtolower($programa);
+    if ($programa === 'esa') {
+        if (in_array($hub, ['AZ-ESA-CW', 'NH-EFA-CW', 'SC-ESTF-CW'], true)) { return 'esa_cw'; }
+        if (in_array($hub, ['UT-UFA-ODY', 'WY-ESA-ODY'], true)) { return 'esa_ody'; }
+        if ($hub === 'FL-STEPUP-EMA') { return 'esa_ema'; }
+        return 'esa_other';
+    }
+    if (strpos($programa, 'dual') !== false) { return 'dual'; }
+    if (strpos($programa, 'adult') !== false) { return 'adult'; }
+    return 'offcampus';
+}
+
+/** Texto del paso a paso (sin precios, sin PII). */
+function chanak_matricula_steps(string $flow, bool $en): string
+{
+    $common = $en
+        ? ["Diagnostic test: a short online assessment to see the student's real level.",
+           "Individual Education Plan (IEP/PEI): we build it with you from the diagnostic, under our 60/20/20 model and Mastery Learning.",
+           "Enrollment contract: you review and sign it electronically.",
+           "Admission letter: issued once the file is complete.",
+           "Instructions: access to the platform, mentor and Life Skills schedule."]
+        : ["Prueba diagnóstica: una evaluación breve en línea para conocer el nivel real del estudiante.",
+           "Plan Educativo Individual (PEI): lo construimos contigo a partir del diagnóstico, con el modelo 60/20/20 y Mastery Learning.",
+           "Contrato de matrícula: lo revisas y lo firmas de forma electrónica.",
+           "Carta de admisión: se emite cuando el expediente está completo.",
+           "Instructivos: acceso a la plataforma, mentor y horario de Life Skills."];
+
+    $first = [];
+    switch ($flow) {
+        case 'dual':
+            $first = $en
+              ? ["The family will be contacted by our team within 24 business hours to confirm details. Please keep your student's latest report card handy for credit validation (Dual Diploma: your child stays in their current school).",
+                 "Enrollment: your coordinator confirms the amounts and sends the payment link. No automatic charges are made."]
+              : ["Nuestro equipo se pondrá en contacto contigo en 24 horas laborables para confirmar los datos. Ten a mano el último boletín de notas para la convalidación (Dual Diploma: tu hijo/a sigue en su colegio actual).",
+                 "Matrícula: tu coordinador confirma los importes y te envía el enlace de pago. No se hace ningún cargo automático."];
+            break;
+        case 'adult':
+            $first = $en
+              ? ["Our team will contact you within 24 business hours. Have your previous transcripts ready for credit review.",
+                 "Enrollment: your coordinator confirms the amounts and sends the payment link. No automatic charges are made."]
+              : ["Nuestro equipo se pondrá en contacto contigo en 24 horas laborables. Ten a mano tus certificados de estudios previos para la revisión de créditos.",
+                 "Matrícula: tu coordinador confirma los importes y te envía el enlace de pago. No se hace ningún cargo automático."];
+            break;
+        case 'esa_cw':
+            $first = $en
+              ? ["Our team will contact you within 24 business hours to confirm the student and the approved service.",
+                 "We send you our itemized invoice (invoice number, student, services, service dates, amounts and total).",
+                 "You upload that invoice in YOUR ClassWallet account (parent side) as a payment request. Never share your account login with us.",
+                 "The state reviews and, if approved, pays Chanak directly; settlement usually takes 2 to 10 business days. Approval depends on the state and the review of the service; we cannot guarantee payment."]
+              : ["Nuestro equipo se pondrá en contacto contigo en 24 horas laborables para confirmar al estudiante y el servicio aprobado.",
+                 "Te enviamos nuestra factura detallada (número de factura, estudiante, servicios, fechas de servicio, importes y total).",
+                 "Tú subes esa factura en TU cuenta de ClassWallet (lado del padre) como solicitud de pago. Nunca compartas con nosotros tu usuario o contraseña.",
+                 "El estado la revisa y, si la aprueba, paga directamente a Chanak; el abono suele tardar de 2 a 10 días laborables. La aprobación depende del estado y de la revisión del servicio; no podemos garantizar el pago."];
+            break;
+        case 'esa_ody':
+            $first = $en
+              ? ["Our team will contact you within 24 business hours to confirm the student and the approved service.",
+                 "We send you the payment link/order published for your state's Odyssey marketplace, with the itemized description of the service.",
+                 "You complete the purchase from YOUR Odyssey account. Never share your account login with us.",
+                 "Approval and payment depend on the state program and its review of the service; we cannot guarantee payment."]
+              : ["Nuestro equipo se pondrá en contacto contigo en 24 horas laborables para confirmar al estudiante y el servicio aprobado.",
+                 "Te enviamos el enlace de pago/orden publicado para el marketplace Odyssey de tu estado, con la descripción detallada del servicio.",
+                 "Tú completas la compra desde TU cuenta de Odyssey. Nunca compartas con nosotros tu usuario o contraseña.",
+                 "La aprobación y el pago dependen del programa estatal y de su revisión del servicio; no podemos garantizar el pago."];
+            break;
+        case 'esa_ema':
+            $first = $en
+              ? ["Our team will contact you within 24 business hours to confirm the student and the service.",
+                 "Chanak is registered as a provider in EMA (Step Up for Students). We tell you which service of our EMA catalog to select, and send you the supporting documentation you may need.",
+                 "You make the request from YOUR EMA account: direct payment (after the service is delivered) or reimbursement with our documents. Never share your account login with us.",
+                 "Approval depends on Step Up for Students and the review of each service; we cannot guarantee payment."]
+              : ["Nuestro equipo se pondrá en contacto contigo en 24 horas laborables para confirmar al estudiante y el servicio.",
+                 "Chanak está registrado como proveedor en EMA (Step Up for Students). Te indicamos qué servicio de nuestro catálogo EMA seleccionar y te enviamos la documentación de soporte que puedas necesitar.",
+                 "Tú haces la solicitud desde TU cuenta de EMA: pago directo (una vez prestado el servicio) o reembolso con nuestros documentos. Nunca compartas con nosotros tu usuario o contraseña.",
+                 "La aprobación depende de Step Up for Students y de la revisión de cada servicio; no podemos garantizar el pago."];
+            break;
+        case 'esa_other':
+            $first = $en
+              ? ["Our team will contact you within 24 business hours to confirm the student and the approved service.",
+                 "We send you our itemized invoice and the instructions for your state's scholarship platform, where you upload it from YOUR account. Never share your account login with us.",
+                 "Approval and payment depend on the state program; we cannot guarantee payment."]
+              : ["Nuestro equipo se pondrá en contacto contigo en 24 horas laborables para confirmar al estudiante y el servicio aprobado.",
+                 "Te enviamos nuestra factura detallada y las instrucciones de la plataforma de becas de tu estado, donde la subes desde TU cuenta. Nunca compartas con nosotros tu usuario o contraseña.",
+                 "La aprobación y el pago dependen del programa estatal; no podemos garantizar el pago."];
+            break;
+        default:
+            $first = $en
+              ? ["Our team will contact you within 24 business hours to confirm details.",
+                 "Enrollment: your coordinator confirms the amounts and sends the payment link. No automatic charges are made."]
+              : ["Nuestro equipo se pondrá en contacto contigo en 24 horas laborables para confirmar los datos.",
+                 "Matrícula: tu coordinador confirma los importes y te envía el enlace de pago. No se hace ningún cargo automático."];
+    }
+    $steps = array_merge($first, $common);
+    $out = [];
+    foreach ($steps as $i => $t) { $out[] = ($i + 1) . '. ' . $t; }
+    return implode("\n", $out);
 }
 
 function private_dir(): string
@@ -793,12 +903,22 @@ $replySubject = strtr($reply['subject'], [
     '{nombre}'           => $name !== '' ? $name : ($isEn ? 'Family' : 'familia'),
 ]);
 
+$matProg     = strtolower(first_value($data, ['programa', 'necesidad']));
+/* hub_id viaja siempre en el formulario: solo cuenta si la ruta es ESA. */
+$matHub      = ($matProg === 'esa' && $hub !== 'NONE') ? $hub : '';
+$matHubLabel = chanak_hub_label($matHub, $isEn);
+$matFlow     = chanak_matricula_flow($matProg, $matHub);
+$matPasos    = chanak_matricula_steps($matFlow, $isEn);
+$matServicio = first_value($data, ['service_name']) !== '' ? first_value($data, ['service_name']) : ($service !== '' ? $service : $label);
+
 $replyBody = strtr($reply['body'], [
     '{nombre}'           => $name !== '' ? $name : ($isEn ? 'Family' : 'familia'),
     '{estudiante}'       => $studentName !== '' ? $studentName : ($isEn ? 'your student' : 'tu hijo/a'),
     '{folio}'            => $folio !== '' ? $folio : 'PENDING',
-    '{hub}'              => ($hub !== '' && $hub !== 'NONE') ? $hub : ($isEn ? 'Direct Enrollment (No state hub)' : 'Matrícula Directa (Sin hub estatal)'),
-    '{servicio}'         => $service !== '' ? $service : $label,
+    '{hub}'              => ($matHub !== '') ? ($matHubLabel !== '' ? $matHubLabel : $matHub) : ($isEn ? 'Direct Enrollment (No state hub)' : 'Matrícula Directa (Sin hub estatal)'),
+    '{linea_hub}'        => ($matHubLabel !== '') ? (($isEn ? '· State program: ' : '· Programa estatal: ') . $matHubLabel . "\n") : '',
+    '{pasos}'            => $matPasos,
+    '{servicio}'         => $matServicio,
     '{landing}'          => $landing,
     '{dossier}'          => $dossier,
     '{dossier_offcampus}' => $dossierLinks['offcampus'],
