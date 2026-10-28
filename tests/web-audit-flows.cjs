@@ -32,6 +32,12 @@ assert.equal(tracking.dataLayer.filter(x=>x[0]==='event').length,0);
 tracking.ChanakTracking.setConsent(true,true);
 tracking.ChanakTracking.setConsent(true,true);
 assert.equal(scripts.length,3);
+if (listeners['click']) {
+  listeners['click']({ target: { closest: (sel) => sel === 'a' ? { getAttribute: () => 'https://www.youtube.com/@ChanakAcademy', hasAttribute: () => false } : null } });
+  listeners['click']({ target: { closest: (sel) => sel === 'a' ? { getAttribute: () => 'https://www.tiktok.com/@chanakacademy7?lang=es', hasAttribute: () => false } : null } });
+}
+const socialEvents = tracking.dataLayer.filter(x => x[0] === 'event' && x[1] === 'social_click').map(x => x[2].event_label);
+assert.equal(JSON.stringify(socialEvents), JSON.stringify(['youtube', 'tiktok']));
 tracking.ChanakTracking.lead('off-campus');
 assert.equal(tracking.dataLayer.filter(x=>x[1]==='generate_lead').length,1);
 assert.equal(tracking.fbq.queue.filter(x=>x[1]==='Lead').length,1);
