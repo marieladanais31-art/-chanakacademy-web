@@ -1938,7 +1938,7 @@
       if (flow === 'esa_cw') {
         money = [T('Te enviaremos nuestra factura detallada (número, estudiante, servicios, fechas e importes).', 'We will send you our itemized invoice (number, student, services, dates and amounts).'),
                  T('Súbela en TU cuenta de ClassWallet como solicitud de pago. Nunca compartas tu usuario o contraseña con nosotros.', 'Upload it in YOUR ClassWallet account as a payment request. Never share your login with us.'),
-                 T('Si el estado la aprueba, paga directamente a Chanak (suele tardar 2 a 10 días laborables). No garantizamos la aprobación.', 'If the state approves it, it pays Chanak directly (usually 2 to 10 business days). Approval is not guaranteed.')];
+                 T('Si el estado la aprueba, paga directamente a Chanak (la aprobación suele tardar de 7 a 10 días). Se puede facturar hasta un trimestre por adelantado. No garantizamos la aprobación.', 'If the state approves it, it pays Chanak directly (approval usually takes 7 to 10 days). Invoices may cover up to one quarter in advance. Approval is not guaranteed.')];
       } else if (flow === 'esa_ody') {
         money = [T('Te enviaremos el enlace/orden publicado para el marketplace Odyssey de tu estado, con la descripción del servicio.', 'We will send you the link/order published for your state\'s Odyssey marketplace, with the service description.'),
                  T('Completa la compra desde TU cuenta de Odyssey. Nunca compartas tu usuario o contraseña con nosotros.', 'Complete the purchase from YOUR Odyssey account. Never share your login with us.'),
@@ -1955,6 +1955,14 @@
         money = [T('Tu coordinador confirmará los importes y te enviará el enlace de pago. No se hace ningún cargo automático.', 'Your coordinator will confirm the amounts and send you the payment link. No automatic charges are made.')];
         if (flow === 'dual') money.unshift(T('Ten a mano el último boletín de notas para la convalidación (tu hijo/a sigue en su colegio actual).', 'Keep the latest report card handy for credit validation (your child stays in their current school).'));
         if (flow === 'adult') money.unshift(T('Ten a mano tus certificados de estudios previos para la revisión de créditos.', 'Keep your previous transcripts handy for credit review.'));
+      }
+      if (flow === 'esa_ema') {
+        common = [
+          T('Evaluación inicial en línea para conocer el nivel real del estudiante.', 'Online initial assessment to find the student\'s real level.'),
+          T('Plan de aprendizaje individual construido contigo a partir de la evaluación.', 'Individual learning plan built with you from the assessment.'),
+          T('Acuerdo de servicios: lo revisas y lo firmas de forma electrónica (servicio de educación en casa dirigido por los padres, no matrícula a tiempo completo).', 'Service agreement: you review and sign it electronically (parent-directed home education service, not full-time enrollment).'),
+          T('Instructivos de acceso: plataforma, mentor y horario de Life Skills.', 'Access instructions: platform, mentor and Life Skills schedule.')
+        ];
       }
       var steps = first.concat(money, common);
       var ol = document.querySelector('#receipt-screen ol');

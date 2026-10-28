@@ -360,6 +360,18 @@ function chanak_matricula_steps(string $flow, bool $en): string
            "Contrato de matrícula: lo revisas y lo firmas de forma electrónica.",
            "Carta de admisión: se emite cuando el expediente está completo.",
            "Instructivos: acceso a la plataforma, mentor y horario de Life Skills."];
+    if ($flow === 'esa_ema') {
+        // Florida EMA: programa de instrucción en casa (no es escuela de registro): acuerdo de servicios, sin carta de admisión.
+        $common = $en
+          ? ["Initial assessment: a short online diagnostic to see the student's real level.",
+             "Individual learning plan: we build it with you from the assessment.",
+             "Service agreement: you review and sign it electronically. This is a parent-directed home education service, not full-time enrollment.",
+             "Instructions: access to the platform, mentor and Life Skills schedule."]
+          : ["Evaluación inicial: un diagnóstico breve en línea para conocer el nivel real del estudiante.",
+             "Plan de aprendizaje individual: lo construimos contigo a partir de la evaluación.",
+             "Acuerdo de servicios: lo revisas y lo firmas de forma electrónica. Es un servicio de educación en casa dirigido por los padres, no una matrícula a tiempo completo.",
+             "Instructivos: acceso a la plataforma, mentor y horario de Life Skills."];
+    }
 
     $first = [];
     switch ($flow) {
@@ -382,11 +394,11 @@ function chanak_matricula_steps(string $flow, bool $en): string
               ? ["Our team will contact you within 24 business hours to confirm the student and the approved service.",
                  "We send you our itemized invoice (invoice number, student, services, service dates, amounts and total).",
                  "You upload that invoice in YOUR ClassWallet account (parent side) as a payment request. Never share your account login with us.",
-                 "The state reviews and, if approved, pays Chanak directly; settlement usually takes 2 to 10 business days. Approval depends on the state and the review of the service; we cannot guarantee payment."]
+                 "The state reviews and, if approved, pays Chanak directly; approval usually takes about 7 to 10 days from your order. Invoices may cover up to one quarter in advance. Approval depends on the state and the review of the service; we cannot guarantee payment."]
               : ["Nuestro equipo se pondrá en contacto contigo en 24 horas laborables para confirmar al estudiante y el servicio aprobado.",
                  "Te enviamos nuestra factura detallada (número de factura, estudiante, servicios, fechas de servicio, importes y total).",
                  "Tú subes esa factura en TU cuenta de ClassWallet (lado del padre) como solicitud de pago. Nunca compartas con nosotros tu usuario o contraseña.",
-                 "El estado la revisa y, si la aprueba, paga directamente a Chanak; el abono suele tardar de 2 a 10 días laborables. La aprobación depende del estado y de la revisión del servicio; no podemos garantizar el pago."];
+                 "El estado la revisa y, si la aprueba, paga directamente a Chanak; la aprobación suele tardar entre 7 y 10 días desde tu pedido. Se puede facturar hasta un trimestre por adelantado. La aprobación depende del estado y de la revisión del servicio; no podemos garantizar el pago."];
             break;
         case 'esa_ody':
             $first = $en
