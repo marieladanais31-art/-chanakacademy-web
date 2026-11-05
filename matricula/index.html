@@ -586,6 +586,48 @@
         <span id="preselectedText">Preselected from your State Guidance page. Review your options and confirm below.</span>
       </div>
 
+      <!-- 3-STEP ENROLLMENT GUIDANCE & DOCUMENT REQUIREMENTS -->
+      <div class="portal-card" style="margin-bottom:24px;background:#ffffff;border:1.5px solid var(--border-light);border-radius:16px;padding:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;">
+          <div>
+            <span style="font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--teal)">GUÍA DE MATRÍCULA ESCOLAR</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-top:2px;">Proceso de Admisión en 3 Pasos</h2>
+          </div>
+          <a href="/#dossier" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--teal);text-decoration:none;padding:6px 14px;border:1px solid var(--teal);border-radius:8px;">¿Dudas antes de inscribirte? Solicitar orientación →</a>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:20px;">
+          <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;">
+            <div style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:13px;margin-bottom:8px;">1</div>
+            <strong style="display:block;color:var(--navy);font-size:0.95rem;margin-bottom:4px;">1. Selecciona tu programa y país</strong>
+            <p style="font-size:0.83rem;color:var(--muted);line-height:1.45;margin:0;">Elige si aplicas con fondos estatales ESA en EE. UU. o matrícula internacional directa (Off-Campus, Dual Diploma o Adultos).</p>
+          </div>
+          <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;">
+            <div style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:13px;margin-bottom:8px;">2</div>
+            <strong style="display:block;color:var(--navy);font-size:0.95rem;margin-bottom:4px;">2. Completa los datos del estudiante</strong>
+            <p style="font-size:0.83rem;color:var(--muted);line-height:1.45;margin:0;">Ingresa la información del tutor y del estudiante en el formulario escolar para generar tu número de folio en el SIS.</p>
+          </div>
+          <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;">
+            <div style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:13px;margin-bottom:8px;">3</div>
+            <strong style="display:block;color:var(--navy);font-size:0.95rem;margin-bottom:4px;">3. Formalización y accesos al SIS</strong>
+            <p style="font-size:0.83rem;color:var(--muted);line-height:1.45;margin:0;">Admisiones valida tu expediente y recibes las credenciales a los portales escolares de familia y alumno para iniciar.</p>
+          </div>
+        </div>
+
+        <!-- Documentation Checklist Box -->
+        <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:16px;display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;">
+          <div style="flex-shrink:0;font-size:1.5rem;">📋</div>
+          <div style="flex:1;min-width:240px;">
+            <strong style="display:block;color:#0369a1;font-size:0.9rem;margin-bottom:4px;">Documentación requerida para formalizar el expediente:</strong>
+            <ul style="list-style:none;padding:0;margin:0;font-size:0.82rem;color:#334155;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px;">
+              <li>✓ <strong>Identificación oficial:</strong> DNI, pasaporte o certificado de nacimiento del alumno y tutor.</li>
+              <li>✓ <strong>Historial previo:</strong> Calificaciones o transcript de cursos anteriores (solo si convalidas créditos).</li>
+              <li>✓ <strong>Beneficiarios ESA (EE. UU.):</strong> Confirmación de cuenta o ID en ClassWallet, Odyssey o Step Up.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <!-- TOP MODE SWITCHER TABS: NACIONAL (FONDOS ESA) vs INTERNACIONAL -->
       <div class="matricula-mode-switch" role="tablist" aria-label="Modalidad de matrícula">
         <button type="button" class="mode-tab-btn active" id="tab-nacional" onclick="setMatriculaMode('nacional')">
