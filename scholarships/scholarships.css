@@ -2083,3 +2083,55 @@ footer.scholarships-footer {
   #videos .chanak-video-title { font-size: .76rem; }
   #videos .chanak-video-thumb-wrap { padding: 8px; }
 }
+
+/* ==========================================================================
+   2-BLOCK COMPARATIVE PROGRAM ARCHITECTURE & TUITION PRICING
+   ========================================================================== */
+.programs-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+@media (max-width: 860px) {
+  .programs-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.prog-comp-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.prog-comp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(10,25,47,0.12);
+}
+.tuition-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  align-items: stretch;
+  margin-bottom: 32px;
+}
+@media (max-width: 860px) {
+  .tuition-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.tuition-pricing-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 10px 30px rgba(10,25,47,0.06);
+  display: flex;
+  flex-direction: column;
+}
+.compliance-matrix-table th, .compliance-matrix-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}

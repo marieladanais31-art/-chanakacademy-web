@@ -1076,7 +1076,7 @@
         rt_oc_title: "Homeschool (Off-Campus)",
         rt_oc_desc: "Full private school enrollment, official FLDOE #134620 transcripts, and American High School Diploma.",
         rt_dd_title: "International Dual Diploma",
-        rt_dd_desc: "American High School Diploma alongside local schooling. 100% digital online in LMS with tutoring; no physical books or PACES.",
+        rt_dd_desc: "American High School Diploma alongside local schooling. 100% digital online in LMS with academic mentoring; no physical books or PACES.",
         rt_adult_title: "Adult High School Completion",
         rt_adult_desc: "Official High School Diploma program for students 18+ with prior credits transfer and apostilled Florida diploma.",
         lbl_state_hub: "Select Active State Administrative Hub",
@@ -1877,6 +1877,9 @@
         formData.set('programa', 'offcampus');
         formData.set('necesidad', 'offcampus');
         formData.set('service_name', 'Homeschool (Off-Campus K-12)');
+        if (hsCountry === 'US') {
+          formData.set('program_type', 'us_private_school_full');
+        }
       } else if (route === 'dual') {
         var ddCountry = document.getElementById('countrySelectDual').value;
         formData.set('country', ddCountry);
@@ -1902,6 +1905,13 @@
         if (servSelect && servSelect.options[servSelect.selectedIndex]) {
           formData.set('service_name', servSelect.options[servSelect.selectedIndex].text);
         }
+        if (hubId === 'FL-PEP-EMA' || hubId === 'FL-UA-EMA') {
+          formData.set('program_type', 'us_homeschool_stepup_pep');
+        } else if (hubId === 'AZ-ESA-CW') {
+          formData.set('program_type', 'us_private_school_full');
+        } else {
+          formData.set('program_type', 'us_state_scholarship_other');
+        }
       }
 
       // Track lead in analytics
@@ -1912,10 +1922,7 @@
       } catch(err){}
 
       try {
-        var endpoint = (window.location.hostname.indexOf('chanakacademy.org') !== -1)
-          ? 'https://www.chanakacademy.org/enviar-formulario.php'
-          : '/enviar-formulario.php';
-        var response = await fetch(endpoint, {
+        var response = await fetch('/enviar-formulario.php', {
           method: 'POST',
           body: formData
         });

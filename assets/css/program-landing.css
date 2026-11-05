@@ -3,4 +3,4 @@
 @media(max-width:900px){.hero-grid,.price-grid{grid-template-columns:1fr}.hero-card{max-width:660px}.cards,.steps{grid-template-columns:1fr 1fr}.navlinks a:not(.btn){display:none}}
 @media(max-width:640px){.hero-grid{padding:48px 0}.hero h1{font-size:39px}.hero-card{padding:20px}.form.two,.choice,.cards,.steps,.program-table{grid-template-columns:1fr}.section{padding:54px 0}.nav{min-height:64px}.brand span{display:none}.sticky{justify-content:space-between;font-size:12px}.sticky .btn{padding:10px 14px}}
 
-.price-box .program-includes-list{color:#f1f5f9!important}.price-box .program-includes-list li{color:#f1f5f9!important}.price-box .program-includes-list li span{color:#f1f5f9}.price-box .program-includes-list li span:first-child{color:#7be2dc!important;font-weight:800}
+.price-box .program-includes-list{color:#f1f5f9!important}.price-box .program-includes-list li{color:#f1f5f9!important}.price-box .program-includes-list li span{color:#f1f5f9}.price-box .program-includes-list li span:first-child{color:#7be2dc!important;font-weight:800}.price-box p{color:#f1f5f9}.price-box .small{color:#cbd5e1}

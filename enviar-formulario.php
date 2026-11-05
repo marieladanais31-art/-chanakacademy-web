@@ -107,27 +107,31 @@ $AUTOREPLY = [
             . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)",
     ],
     'florida_pep_ema' => [
-        'subject' => 'Hemos recibido tu solicitud · Florida PEP (EMA) | Chanak Academy',
+        'subject' => 'Hemos recibido tu solicitud · Florida PEP / Home Education (EMA) | Chanak Academy',
         'body' => "Hola {nombre},\n\n"
-            . "¡Gracias por tu interés en los programas de apoyo académico K-12 de Chanak aprobados y activos en EMA para familias PEP en Florida!\n\n"
+            . "¡Gracias por tu interés en los servicios de acompañamiento académico K-12 de Chanak (Service ID 20169280 en EMA / Step Up for Students) para familias de educación en el hogar y beca PEP en Florida!\n\n"
             . "Qué pasará ahora:\n"
-            . "· En las próximas 24 horas (días laborables) una persona de nuestro equipo te contactará para confirmar el nivel de tu estudiante y orientarte en el procedimiento de EMA.\n\n"
+            . "· En las próximas 24 horas (días laborables) una persona de nuestro equipo te contactará para confirmar el nivel de tu estudiante y orientarte en el procedimiento de reserva directa en EMA.\n"
+            . "· Diseñaremos juntos el Plan de Aprendizaje Individualizado (ILP/PEI) y la selección de áreas de refuerzo.\n\n"
+            . "Aviso normativo importante:\n"
+            . "El programa Chanak Home Education Instructional Program (Service ID 20169280 en EMA / Step Up For Students) proporciona acompañamiento y mentoría complementaria para familias bajo el estatuto de educación en el hogar o beca PEP. Estos servicios son dirigidos por los padres y no constituyen matrícula escolar formal de registro (School of Record), por lo que no incluyen la emisión de transcripts oficiales de escuela privada, créditos escolares transferibles ni diploma de High School. Las familias reciben reportes periódicos de progreso pedagógico y evidencias de aprendizaje para su portafolio anual.\n\n"
             . "Mientras tanto:\n"
-            . "· Programa completo: {landing}\n"
-            . "· Descargar dossier para familias (PDF): {dossier}\n"
-            . "· En EMA nos encuentras buscando: Chanak International Academy (Entidad legal: Chanak TrainUp Education Inc.).\n\n"
+            . "· Detalles del servicio y tarifas: {landing}\n"
+            . "· En el portal EMA nos encuentras buscando: Chanak International Academy (Entidad legal: Chanak TrainUp Education Inc. · Provider ID 20169280).\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\nFlorida Home Education Instructional Support",
     ],
     'florida_pep_ema_en' => [
-        'subject' => 'We have received your application · Florida PEP (EMA) | Chanak Academy',
+        'subject' => 'We have received your application · Florida PEP / Home Education (EMA) | Chanak Academy',
         'body' => "Dear {nombre},\n\n"
-            . "Thank you for your interest in Chanak's K-12 instructional support programs approved and active in EMA for Florida PEP families!\n\n"
+            . "Thank you for your interest in Chanak's K-12 instructional support program (Service ID 20169280 on Step Up / EMA) for homeschool and PEP families in Florida!\n\n"
             . "What happens next:\n"
-            . "· Within 24 business hours a member of our team will contact you to confirm your student's placement and guide you through the EMA reservation process.\n\n"
+            . "· Within 24 business hours a member of our team will contact you to confirm your student's placement and guide you through the direct EMA booking process.\n"
+            . "· We will prepare the Individualized Learning Plan (ILP/PEI) and tailored mentoring pacing.\n\n"
+            . "Important Regulatory Notice:\n"
+            . "The Chanak Home Education Instructional Program (Step Up EMA Service ID 20169280) provides academic mentoring and parent-directed support. It is not a school-of-record program and does not issue official school transcripts, credits, or a high school diploma. Families receive periodic Academic Progress Reports and portfolio evidence for their annual homeschool evaluation.\n\n"
             . "In the meantime:\n"
-            . "· Program details: {landing}\n"
-            . "· Download family dossier (PDF): {dossier}\n"
-            . "· Find us on the EMA portal by searching for: Chanak International Academy (Legal entity: Chanak TrainUp Education Inc.).\n\n"
+            . "· Service details and approved rates: {landing}\n"
+            . "· Find us on the EMA portal by searching: Chanak International Academy (Legal entity: Chanak TrainUp Education Inc. · Provider ID 20169280).\n\n"
             . "Kind regards,\nChanak International Academy\nFlorida Home Education Instructional Support",
     ],
     'alabama_choose' => [
