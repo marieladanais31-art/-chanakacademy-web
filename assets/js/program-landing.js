@@ -40,9 +40,9 @@
       if(rawIncludes){
         var items = rawIncludes.split('·').map(function(s){return s.trim();}).filter(Boolean);
         if(items.length > 1){
-          includesHtml = '<ul class="program-includes-list" style="list-style:none;padding:0;margin:14px 0 18px;display:flex;flex-direction:column;gap:8px;font-size:0.92rem;color:#334155;text-align:left;">' +
+          includesHtml = '<ul class="program-includes-list" style="list-style:none;padding:0;margin:14px 0 18px;display:flex;flex-direction:column;gap:8px;font-size:0.92rem;color:#f1f5f9;text-align:left;">' +
             items.map(function(it){
-              return '<li style="display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--teal,#087a80);font-weight:bold;line-height:1.2;">✓</span><span>'+it+'</span></li>';
+              return '<li style="display:flex;align-items:flex-start;gap:8px;"><span style="color:#7be2dc;font-weight:bold;line-height:1.2;">✓</span><span style="color:#f1f5f9;">'+it+'</span></li>';
             }).join('') + '</ul>';
         } else {
           includesHtml = '<p style="margin:12px 0 16px;">' + rawIncludes + '</p>';
