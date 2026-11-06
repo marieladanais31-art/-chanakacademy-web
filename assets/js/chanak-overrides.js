@@ -140,7 +140,7 @@
     ["Educar con fe, valores y visión internacional", "Una educación flexible, rigurosa y con visión internacional"],
     ["Somos una familia internacional. Chanak nos dio la continuidad académica americana con valores cristianos.", "Somos una familia internacional. Chanak nos dio continuidad académica americana, estructura y acompañamiento."],
     ["Educar con fe, valores y visión internacional sí es posible.", "Construir una trayectoria americana flexible y acompañada sí es posible."],
-    ["Tu hijo sigue en su colegio y suma el diploma de High School de una escuela registrada en Florida, candidata oficial a la acreditación MSA-CESS.", "Tu hijo continúa en su centro y añade una trayectoria de High School estadounidense con mentoría y seguimiento académico."],
+    ["Tu hijo sigue en su colegio y suma el diploma de High School de una escuela registrada en Florida, acreditada por MSA-CESS.", "Tu hijo continúa en su centro y añade una trayectoria de High School estadounidense con mentoría y seguimiento académico."],
     ["Florida Registered Private School", "Colegio privado registrado en Florida"],
     ["MSA-CESS Candidate for Accreditation", "Candidato oficial a la acreditación MSA-CESS"]
     /* La entrada que redirigía "sección de precios de esta página" al dossier

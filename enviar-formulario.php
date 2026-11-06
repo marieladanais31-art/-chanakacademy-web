@@ -231,7 +231,7 @@ $AUTOREPLY = [
             . "· Information pack (PDF): {dossier}\n\n"
             . "Please note: your information has been received. Eligibility is confirmed during the admissions process, not before.\n\n"
             . "Kind regards,\nChanak International Academy\nInternational Admissions\n\n"
-            . "FLDOE #134620 (publicly verifiable) · MSA-CESS Official Candidate for Accreditation — candidate status does not constitute accreditation · Nonprofit 501(c)(3)",
+            . "FLDOE #134620 (publicly verifiable) · Accredited by MSA-CESS · Nonprofit 501(c)(3)",
     ],
     'dual_dubai' => [
         'subject' => 'Chanak International Academy – U.S. Dual Diploma Information',
@@ -243,7 +243,7 @@ $AUTOREPLY = [
             . "· Information pack (PDF): {dossier}\n\n"
             . "Please note: your information has been received. Eligibility is confirmed during the admissions process, not before.\n\n"
             . "Kind regards,\nChanak International Academy\nInternational Admissions\n\n"
-            . "FLDOE #134620 (publicly verifiable) · MSA-CESS Official Candidate for Accreditation — candidate status does not constitute accreditation · Nonprofit 501(c)(3)",
+            . "FLDOE #134620 (publicly verifiable) · Accredited by MSA-CESS · Nonprofit 501(c)(3)",
     ],
 ];
 

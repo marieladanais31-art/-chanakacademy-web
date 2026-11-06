@@ -21,7 +21,7 @@
       c1_title: "Full Private School Enrollment (Off-Campus K–12)",
       c1_desc: "Complete distance education where Chanak is the official School of Record. Ideal for families seeking a formal American private school education with official transcripts, graduation credits, and an American High School diploma.",
       c1_features_title: "Key Program Features:",
-      c1_f1: "<strong>School of Record:</strong> Formal student enrollment under Florida Private School Code FLDOE #134620 (Candidate for MSA-CESS).",
+      c1_f1: "<strong>School of Record:</strong> Formal student enrollment under Florida Private School Code FLDOE #134620 (Accredited by MSA-CESS).",
       c1_f2: "<strong>Official Credentials:</strong> Official School Transcripts, verifiable High School course credits, and American High School Diploma.",
       c1_f3: "<strong>60/20/20 Learning Model:</strong> Core American Academics (60%) + Heritage &amp; Culture (20%) + Life Skills &amp; Leadership (20%).",
       c1_f4: "<strong>Academic Mentoring &amp; Systems:</strong> Assigned 1:1 mentor, continuous level placement evaluation, and 24/7 access to Chanak SIS &amp; LMS platforms.",
@@ -70,7 +70,7 @@
       mat_th_status: "Chanak Status",
       mat_th_transcript: "Official Transcript?",
       mat_th_tests: "State Assessments &amp; Evaluations",
-      disclaimer_private_school: "<strong>Official Private School Enrollment Notice:</strong> Chanak International Academy is a private school registered with the Florida Department of Education (FLDOE #134620) and an official Candidate for Accreditation with the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). Official transcripts and diplomas are issued exclusively to students formally enrolled in the Full Private School (Off-Campus) Program. Acceptance and transfer of credits remain subject to the receiving school district or university policies.",
+      disclaimer_private_school: "<strong>Official Private School Enrollment Notice:</strong> Chanak International Academy is a private K–12 school registered with the Florida Department of Education (FLDOE #134620) and fully accredited by the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). Chanak TrainUp Education, Inc. is a recognized 501(c)(3) tax-exempt nonprofit organization. Official school transcripts, course credits, and high school diplomas are awarded exclusively to students formally enrolled in the Full Private School (Off-Campus) Program. Acceptance and transfer of credits remain subject to the receiving school district or university policies.",
       disclaimer_stepup: "<strong>Florida Step Up (EMA) Notice:</strong> The Chanak Home Education Instructional Program (Step Up EMA Service ID 20169280) provides academic mentoring and parent-directed support. It is not a school-of-record program and does not issue official school transcripts, credits, or a high school diploma.",
       disclaimer_public_funds: "<strong>Public Funds Disclaimer:</strong> Provider registration on ClassWallet, EMA, or Odyssey facilitates direct processing of assigned state funds, but does not exempt the family from complying with compulsory attendance laws or state/scholarship evaluation requirements.",
 page_title: "Chanak Academy & State Education Funding | ClassWallet, Odyssey & EMA",
@@ -140,14 +140,14 @@ page_title: "Chanak Academy & State Education Funding | ClassWallet, Odyssey & E
       hero_disclaimer: "* Full-Time Online School (Arizona) provides formal enrollment and diploma; Virtual Academic Support packages provide mentoring without conferring diploma or transcript. Each program administrator determines which expenses are eligible.",
       pill_entity: "Entity: Chanak TrainUp Education Inc. d/b/a Chanak International Academy",
       pill_wallets: "Platforms: ClassWallet, Odyssey & Step Up / EMA",
-      pill_msa: "Candidate for MSA-CESS accreditation",
+      pill_msa: "Accredited by MSA-CESS",
       pill_fldoe: "Registered with the Florida DOE, code #134620",
       btn_explore_states: "Explore States & Platforms ↓",
       btn_request_guidance: "Request Guidance →",
 
       // Trust bar
       trust_fldoe: "Registered with the Florida DOE, code #134620",
-      trust_msa: "Candidate for MSA-CESS accreditation",
+      trust_msa: "Accredited by MSA-CESS",
       trust_nonprofit: "Chanak TrainUp Education Inc. · FLDOE #134620",
       trust_directpay: "Official State Platform Payment Processing",
 
@@ -395,9 +395,9 @@ page_title: "Chanak Academy & State Education Funding | ClassWallet, Odyssey & E
       curric_ace_desc: "Middle & High School (5–12): approx. <strong>$320 – $390 USD / year</strong>.<br>Elementary (1–4): approx. <strong>$460 – $530 USD / year</strong>.<br>ABCs with Ace and Christi reading kit: $380 – $440 USD.",
 
       // Footer
-      footer_msa_disclaimer: "Chanak International Academy is a candidate for MSA-CESS accreditation. It is not an accredited school.",
-      footer_desc: "American private school registered with the Florida Department of Education (FLDOE #134620). Candidate for accreditation with Middle States Association (MSA-CESS). Operated by Chanak TrainUp Education Inc.",
-      footer_legal: "Chanak TrainUp Education Inc. (d/b/a Chanak International Academy), Florida nonprofit 501(c)(3), FLDOE #134620, candidate for MSA-CESS accreditation. State education scholarship usage is subject to student eligibility and individual state program guidelines. All rights reserved © 2026–2027."
+      footer_msa_disclaimer: "Chanak International Academy is fully accredited by the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS).",
+      footer_desc: "Chanak International Academy is a private K–12 school registered with the Florida Department of Education (FLDOE #134620) and fully accredited by the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). Chanak TrainUp Education, Inc. is a recognized 501(c)(3) tax-exempt nonprofit organization. Official school transcripts, course credits, and high school diplomas are awarded exclusively to students formally enrolled in the Full Private School (Off-Campus) Program.",
+      footer_legal: "Chanak TrainUp Education Inc. (d/b/a Chanak International Academy), Florida nonprofit 501(c)(3), FLDOE #134620, fully accredited by MSA-CESS. State education scholarship usage is subject to student eligibility and individual state program guidelines. All rights reserved © 2026–2027."
     },
 
     es: {
@@ -412,7 +412,7 @@ page_title: "Chanak Academy & State Education Funding | ClassWallet, Odyssey & E
       c1_title: "Matrícula Privada Oficial (Off-Campus K–12)",
       c1_desc: "Educación escolar formal a distancia donde Chanak es la Escuela de Registro oficial. Diseñada para familias que buscan matrícula privada estadounidense con transcripts oficiales, créditos de High School y diploma oficial de graduación.",
       c1_features_title: "Aspectos Clave del Programa:",
-      c1_f1: "<strong>Escuela de Registro:</strong> Matrícula formal del estudiante bajo código escolar de Florida FLDOE #134620 (Candidata oficial a acreditación MSA-CESS).",
+      c1_f1: "<strong>Escuela de Registro:</strong> Matrícula formal del estudiante bajo código escolar de Florida FLDOE #134620 (Acreditada por MSA-CESS).",
       c1_f2: "<strong>Expediente Oficial:</strong> Transcripts oficiales de Florida, certificaciones de créditos de High School y diploma escolar de graduación.",
       c1_f3: "<strong>Modelo Educativo 60/20/20:</strong> Core Académico Estadounidense (60%) + Lengua y Cultura Local (20%) + Habilidades para la Vida y Liderazgo (20%).",
       c1_f4: "<strong>Mentoría y Sistemas:</strong> Mentor académico 1:1 asignado, evaluación continua de nivel por dominio y acceso 24/7 a las plataformas SIS y LMS.",
@@ -461,7 +461,7 @@ page_title: "Chanak Academy & State Education Funding | ClassWallet, Odyssey & E
       mat_th_status: "Estatus de Chanak",
       mat_th_transcript: "¿Emite Transcript Chanak?",
       mat_th_tests: "Exámenes y Evaluaciones Estatales",
-      disclaimer_private_school: "<strong>Aviso de Matrícula en Escuela Privada Oficial:</strong> Chanak International Academy es una escuela privada registrada ante el Departamento de Educación de Florida (FLDOE #134620) y candidata oficial a acreditación ante MSA-CESS. Los transcripts oficiales y diplomas se emiten exclusivamente a los estudiantes formalmente matriculados en el Programa de Escuela Privada Oficial. La convalidación y transferencia de créditos queda sujeta a las normativas de la institución receptora.",
+      disclaimer_private_school: "<strong>Aviso de Matrícula en Escuela Privada Oficial:</strong> Chanak International Academy es una escuela privada K–12 registrada ante el Departamento de Educación de Florida (FLDOE #134620) y plenamente acreditada por la Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). Chanak TrainUp Education, Inc. es una organización sin fines de lucro exenta de impuestos bajo la Sección 501(c)(3). Los expedientes oficiales (official transcripts), créditos académicos y diplomas de secundaria se otorgan exclusivamente a los estudiantes formalmente matriculados en el Programa Oficial de Escuela Privada.",
       disclaimer_stepup: "<strong>Aviso sobre Beca Step Up (EMA - Florida):</strong> El programa Chanak Home Education Instructional Program (Service ID 20169280 en EMA / Step Up For Students) proporciona acompañamiento y mentoría complementaria para familias bajo el estatuto de educación en el hogar o beca PEP. Estos servicios son dirigidos por los padres y no constituyen matrícula escolar formal de registro (School of Record), por lo que no incluyen la emisión de transcripts oficiales de escuela privada, créditos escolares transferibles ni diploma de High School. Las familias reciben reportes de progreso y evidencias de aprendizaje para su portafolio anual.",
       disclaimer_public_funds: "<strong>Descargo General sobre Fondos Públicos:</strong> El registro como proveedor en ClassWallet, EMA u Odyssey facilita la tramitación directa de pagos con fondos asignados, pero no exime a la familia del cumplimiento de las leyes de asistencia escolar ni de los requisitos de evaluación propios de su estado o beca.",
 page_title: "Chanak Academy y financiación educativa estatal | ClassWallet, Odyssey y EMA",
@@ -531,14 +531,14 @@ page_title: "Chanak Academy y financiación educativa estatal | ClassWallet, Ody
       hero_disclaimer: "* La Escuela Online Full-Time (Arizona) confiere matrícula escolar formal y diploma; los paquetes de apoyo virtual ofrecen mentoría sin otorgar diploma escolar. Cada administrador del programa determina qué gastos son elegibles.",
       pill_entity: "Entidad: Chanak TrainUp Education Inc. d/b/a Chanak International Academy",
       pill_wallets: "Plataformas: ClassWallet, Odyssey y Step Up / EMA",
-      pill_msa: "Candidata a la acreditación MSA-CESS",
+      pill_msa: "Acreditada por MSA-CESS",
       pill_fldoe: "Registrada ante el FLDOE, código #134620",
       btn_explore_states: "Explorar Estados y Plataformas ↓",
       btn_request_guidance: "Solicitar Orientación Gratuita →",
 
       // Trust bar
       trust_fldoe: "Registrada ante el FLDOE, código #134620",
-      trust_msa: "Candidata a la acreditación MSA-CESS",
+      trust_msa: "Acreditada por MSA-CESS",
       trust_nonprofit: "Chanak TrainUp Education Inc. · FLDOE #134620",
       trust_directpay: "Gestión de Pago en Plataformas Estatales",
 
@@ -785,9 +785,9 @@ page_title: "Chanak Academy y financiación educativa estatal | ClassWallet, Ody
       curric_ace_desc: "Secundaria y Bachillerato (grados 5–12): aprox. <strong>$320 – $390 USD / año</strong>.<br>Primaria (grados 1–4): aprox. <strong>$460 – $530 USD / año</strong>.<br>Kit de lectura ABCs with Ace and Christi: $380 – $440 USD.",
 
       // Footer
-      footer_msa_disclaimer: "Chanak International Academy es candidata a la acreditación MSA-CESS. No es una escuela acreditada.",
-      footer_desc: "Colegio privado estadounidense registrado ante el Departamento de Educación de Florida (FLDOE #134620). Candidata a la acreditación con Middle States Association (MSA-CESS). Operado por Chanak TrainUp Education Inc.",
-      footer_legal: "Chanak TrainUp Education Inc. (d/b/a Chanak International Academy), entidad sin fines de lucro de Florida 501(c)(3), FLDOE #134620, candidata a la acreditación MSA-CESS. El uso de fondos estatales de elección escolar está sujeto a la elegibilidad del estudiante y a las normativas de cada programa. Todos los derechos reservados © 2026–2027."
+      footer_msa_disclaimer: "Chanak International Academy está plenamente acreditada por la Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS).",
+      footer_desc: "Chanak International Academy es una escuela privada K–12 registrada ante el Departamento de Educación de Florida (FLDOE #134620) y plenamente acreditada por la Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS). Chanak TrainUp Education, Inc. es una organización sin fines de lucro exenta de impuestos bajo la Sección 501(c)(3). Los expedientes oficiales (official transcripts), créditos académicos y diplomas de secundaria se otorgan exclusivamente a los estudiantes formalmente matriculados en el Programa Oficial de Escuela Privada.",
+      footer_legal: "Chanak TrainUp Education Inc. (d/b/a Chanak International Academy), entidad sin fines de lucro de Florida 501(c)(3), FLDOE #134620, plenamente acreditada por la Middle States Association (MSA-CESS). El uso de fondos estatales de elección escolar está sujeto a la elegibilidad del estudiante y a las normativas de cada programa. Todos los derechos reservados © 2026–2027."
     }
   };
 

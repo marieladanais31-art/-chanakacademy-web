@@ -40,17 +40,17 @@
       if(rawIncludes){
         var items = rawIncludes.split('·').map(function(s){return s.trim();}).filter(Boolean);
         if(items.length > 1){
-          includesHtml = '<ul class="program-includes-list" style="list-style:none;padding:0;margin:14px 0 18px;display:flex;flex-direction:column;gap:8px;font-size:0.92rem;color:#f1f5f9;text-align:left;">' +
+          includesHtml = '<ul class="program-includes-list" style="list-style:none;padding:0;margin:14px 0 18px;display:flex;flex-direction:column;gap:8px;font-size:0.92rem;color:#f1f5f9 !important;text-align:left;">' +
             items.map(function(it){
-              return '<li style="display:flex;align-items:flex-start;gap:8px;"><span style="color:#7be2dc;font-weight:bold;line-height:1.2;">✓</span><span style="color:#f1f5f9;">'+it+'</span></li>';
+              return '<li style="display:flex;align-items:flex-start;gap:8px;color:#f1f5f9 !important;"><span style="color:#7be2dc !important;font-weight:bold;line-height:1.2;">✓</span><span style="color:#f1f5f9 !important;">'+it+'</span></li>';
             }).join('') + '</ul>';
         } else {
-          includesHtml = '<p style="margin:12px 0 16px;">' + rawIncludes + '</p>';
+          includesHtml = '<p style="margin:12px 0 16px;color:#f1f5f9 !important;">' + rawIncludes + '</p>';
         }
       } else {
-        includesHtml = '<p style="margin:12px 0 16px;">' + (isEn?'The academic route and final investment are confirmed in writing after reviewing the student file.':'La ruta y la inversión final se confirman por escrito después de revisar el caso.') + '</p>';
+        includesHtml = '<p style="margin:12px 0 16px;color:#f1f5f9 !important;">' + (isEn?'The academic route and final investment are confirmed in writing after reviewing the student file.':'La ruta y la inversión final se confirman por escrito después de revisar el caso.') + '</p>';
       }
-      mount.innerHTML='<div class="eyebrow">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+region.name.toUpperCase()+'</div><div class="price-value">'+price+'</div>'+includesHtml+'<p class="small">'+(data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'))+'</p>';
+      mount.innerHTML='<div class="eyebrow" style="color:#78dfd9 !important;">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+region.name.toUpperCase()+'</div><div class="price-value" style="color:#7be2dc !important;font-size:30px;font-weight:950;">'+price+'</div>'+includesHtml+'<p class="small" style="color:#cbd5e1 !important;font-size:12px;line-height:1.45;">'+(data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'))+'</p>';
     }
     var pay=$('#approved-payment'),payLink=paymentUrl(c);if(pay){if(payLink){pay.classList.remove('hide');pay.href=payLink;pay.dataset.chanakDirectPayment='1'}else{pay.classList.add('hide');pay.removeAttribute('href')}}
     $$('input[name="pais"]').forEach(function(i){i.value=c});

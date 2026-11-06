@@ -195,11 +195,11 @@ test('Zero occurrences of prohibited words (diagnost, tutoring, etc.)', () => {
 });
 
 // 7. Accreditation check
-test('Accreditation candidate status (candidate for MSA-CESS, never accredited)', () => {
+test('Accreditation status (fully accredited by MSA-CESS, never candidate)', () => {
   for (const [name, content] of [['Utah', utahHtml], ['Wyoming', wyomingHtml]]) {
-    assert(!/\baccredited school\b/i.test(content), `${name} contains forbidden claim 'accredited school'`);
-    assert(!/\bescuela acreditada\b/i.test(content), `${name} contains forbidden claim 'escuela acreditada'`);
-    assert(content.includes('MSA-CESS Candidate') || content.includes('candidate for MSA-CESS accreditation'), `${name} missing candidate status`);
+    assert(!/candidate for accreditation/i.test(content), `${name} contains forbidden candidate claim`);
+    assert(!/candidat[oa] a(?: la)? acreditaci[oó]n/i.test(content), `${name} contains forbidden candidate claim`);
+    assert(content.includes('MSA-CESS Accredited') || content.includes('Acreditada por MSA-CESS') || content.includes('Accredited by the Middle States Association') || content.includes('acreditada por MSA-CESS'), `${name} missing accredited status`);
   }
 });
 

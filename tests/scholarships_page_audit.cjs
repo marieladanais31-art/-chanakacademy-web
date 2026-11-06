@@ -93,18 +93,13 @@ test('Editorial rules: NO forbidden words (tutoring, tutoría, diagnóstico, dia
 });
 
 // 2b. Accreditation claims check
-test('Accreditation editorial rules: strictly candidate for MSA-CESS, never accredited school', () => {
-  assert(htmlContent.includes('candidate for MSA-CESS accreditation'), 'Must include candidate for MSA-CESS accreditation');
-  assert(htmlContent.includes('candidata a la acreditación MSA-CESS') || jsContent.includes('candidata a la acreditación MSA-CESS'), 'Must include candidata a la acreditación MSA-CESS');
-  assert(htmlContent.includes('It is not an accredited school.') || jsContent.includes('It is not an accredited school.'), 'Must include "It is not an accredited school."');
-  assert(htmlContent.includes('No es una escuela acreditada.') || jsContent.includes('No es una escuela acreditada.'), 'Must include "No es una escuela acreditada."');
-
-  // Verify that "accredited" is only used within "not an accredited school" or "No es una escuela acreditada"
-  const cleanHtml = htmlContent
-    .replace(/It is not an accredited school\./g, '')
-    .replace(/No es una escuela acreditada\./g, '');
-  assert(!/\baccredited\b/i.test(cleanHtml), 'Word "accredited" found outside allowable disclaimer');
-  assert(!/\bacreditada\b/i.test(cleanHtml), 'Word "acreditada" found outside allowable disclaimer');
+test('Accreditation editorial rules: fully accredited by MSA-CESS, zero candidate claims', () => {
+  assert(htmlContent.includes('Accredited by MSA-CESS') || jsContent.includes('Accredited by MSA-CESS'), 'Must include Accredited by MSA-CESS');
+  assert(htmlContent.includes('Acreditada por MSA-CESS') || jsContent.includes('Acreditada por MSA-CESS'), 'Must include Acreditada por MSA-CESS');
+  assert(!htmlContent.includes('It is not an accredited school.'), 'Must NOT include "It is not an accredited school."');
+  assert(!htmlContent.includes('No es una escuela acreditada.'), 'Must NOT include "No es una escuela acreditada."');
+  assert(!/candidate for accreditation/i.test(htmlContent), 'Must NOT contain "candidate for accreditation"');
+  assert(!/candidat[oa] a la acreditación/i.test(htmlContent), 'Must NOT contain "candidata a la acreditación"');
 });
 
 // 3. Registration and legal entity check

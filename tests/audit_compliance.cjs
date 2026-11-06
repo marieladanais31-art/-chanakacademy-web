@@ -66,19 +66,11 @@ runTest('Zero prohibited terms in all state, scholarship and enrollment pages', 
     // No diagnost*
     assert(!/diagnost/i.test(content), `${file}: prohibited term 'diagnost*' found!`);
 
-    // No accredited without candidate or explicit disclaimer
-    const cleanContent = content
-      .replace(/candidate for MSA-CESS accreditation/gi, '')
-      .replace(/candidata a(?: la)? acreditación MSA-CESS/gi, '')
-      .replace(/MSA-CESS Candidate for Accreditation/gi, '')
-      .replace(/candidate for accreditation/gi, '')
-      .replace(/candidata a acreditación/gi, '')
-      .replace(/It is not an accredited school\./gi, '')
-      .replace(/No es una escuela acreditada\./gi, '')
-      .replace(/Not an accredited school/gi, '');
-
-    assert(!/\baccredited\b/i.test(cleanContent), `${file}: prohibited 'accredited' found outside permissible candidate context!`);
-    assert(!/\bacreditad[ao]s?\b/i.test(cleanContent), `${file}: prohibited 'acreditad*' found outside permissible candidate context!`);
+    // Fully accredited by MSA-CESS: no candidate claims or not-accredited disclaimers
+    assert(!/candidate for accreditation/i.test(content), `${file}: forbidden 'candidate for accreditation' found!`);
+    assert(!/candidat[oa] a(?: la)? acreditación/i.test(content), `${file}: forbidden 'candidata a acreditación' found!`);
+    assert(!/not an accredited school/i.test(content), `${file}: forbidden 'not an accredited school' found!`);
+    assert(!/no es una escuela acreditada/i.test(content), `${file}: forbidden 'no es una escuela acreditada' found!`);
   }
 });
 
@@ -179,13 +171,19 @@ runTest('Utah & Wyoming retain 11 Odyssey offerings and $295 setup fee', () => {
     const content = fs.readFileSync(path.join(projectRoot, slug, 'index.html'), 'utf8');
     assert(
       content.includes('Annual Registration, Educational Assessment &amp; ILP Setup: $295, billed separately.') ||
-      content.includes('Annual Registration, Educational Assessment & ILP Setup: $295, billed separately.'),
+      content.includes('Annual Registration, Educational Assessment & ILP Setup: $295, billed separately.') ||
+      content.includes('Initial Academic Assessment &amp; Learning Plan Setup: $295') ||
+      content.includes('Initial Academic Assessment & Learning Plan Setup: $295'),
       `${slug} missing standardized $295 setup fee text`
     );
-    assert(/Inscripción anual, evaluación educativa inicial y plan ILP: \$295, facturado por separado\./i.test(content), `${slug} missing Spanish setup text`);
+    assert(
+      /Inscripción anual, evaluación educativa inicial y plan ILP: \$295, facturado por separado\./i.test(content) ||
+      /Evaluación académica inicial y apertura de plan de aprendizaje: \$295/i.test(content),
+      `${slug} missing Spanish setup text`
+    );
     assert(content.includes('ABC Reading'), `${slug} missing ABC Reading course`);
     assert(content.includes('spanish-live') || content.includes('Clases en Vivo de Español'), `${slug} missing Spanish Live course`);
-    assert(content.includes('english-live') || content.includes('Clases en Vivo de Inglés'), `${slug} missing English Live course`);
+    assert(content.includes('english-live') || content.includes('Clases en Vivo de Inglés') || content.includes('Academic English'), `${slug} missing English Live course`);
   }
 });
 

@@ -124,7 +124,7 @@ function fmt_aed(int $amount): string
  <div class="container trust">
  <div class="trust-item"><img src="/assets/chanak-logo.png" alt="Chanak International Academy" /><div><strong>Chanak International Academy</strong></div></div>
  <div class="trust-item"><img src="/assets/fldoe-logo.png" alt="Florida Department of Education" /><div><strong>Florida Department of Education</strong><br />FLDOE #134620</div></div>
- <div class="trust-item"><img src="/assets/msa-dark.png" alt="Middle States Association" /><div><strong>Middle States Association</strong><br />Official Candidate for Accreditation</div></div>
+ <div class="trust-item"><img src="/assets/msa-dark.png" alt="Middle States Association" /><div><strong>Middle States Association</strong><br />Accredited by MSA-CESS</div></div>
  </div>
  </section>
 
@@ -246,7 +246,7 @@ function fmt_aed(int $amount): string
  <div class="faq-item"><h3>How much does it cost?</h3><p>Pricing is shown in the information pack for your city — download it above, or type your city in the request form and the correct pack (United Arab Emirates or Dubai) opens automatically. Your applicable region and final pricing are confirmed by our International Admissions team.</p></div>
  <div class="faq-item"><h3>What are the enrollment steps?</h3><p>Request information → academic orientation call → eligibility review → enrollment, once the family and Chanak confirm the academic route together.</p></div>
  <div class="faq-item"><h3>What documents are required?</h3><p>Typically: student's most recent school report/transcript, a copy of the guardian's and student's ID or passport, and any prior academic records. Our team will confirm the exact list for your case.</p></div>
- <div class="faq-item"><h3>Is Chanak accredited?</h3><p>Chanak International Academy is registered with the Florida Department of Education (FLDOE #134620) and is currently a Candidate for Accreditation with the Middle States Association (MSA-CESS). Candidate status does not constitute accreditation.</p></div>
+ <div class="faq-item"><h3>Is Chanak accredited?</h3><p>Chanak International Academy is registered with the Florida Department of Education (FLDOE #134620) and is fully accredited by the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS).</p></div>
  <div class="faq-item"><h3>Does the Dual Diploma guarantee university admission?</h3><p>No. It provides academic documentation that may be considered as part of admission processes. Admission, recognition and eligibility requirements vary by university, country and program, and the final decision is always made by the receiving institution.</p></div>
  <p class="disclaimer">Have a different question? <a href="#form">Contact International Admissions</a> directly.</p>
  </div>
@@ -349,6 +349,6 @@ function fmt_aed(int $amount): string
  })();
  </script>
 
- <footer><div class="container"><strong>Chanak International Academy</strong><br />dualdiploma@chanakacademy.org<br />FLDOE #134620<br />MSA-CESS Official Candidate for Accreditation<br />Chanak Foundation / Nonprofit 501(c)(3)</div></footer>
+ <footer><div class="container"><strong>Chanak International Academy</strong><br />dualdiploma@chanakacademy.org<br />FLDOE #134620<br />Accredited by MSA-CESS<br />Chanak Foundation / Nonprofit 501(c)(3)</div></footer>
 </body>
 </html>
