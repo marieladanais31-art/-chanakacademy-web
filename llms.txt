@@ -29,7 +29,7 @@ Canonical website: https://www.chanakacademy.org/
 - Name: Chanak International Academy
 - Type: EducationalOrganization / School
 - FLDOE registration: #134620
-- Accreditation status: Official Candidate for Accreditation, MSA-CESS
+- Accreditation status: Accredited by the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS)
 - Operating entity: Chanak TrainUp Education Inc. · FLDOE #134620
 - Main countries served: Spain, Panamá, United Arab Emirates (Dubai), United States, international families
 - Main audience: homeschool families, international students, families seeking U.S. academic pathways
