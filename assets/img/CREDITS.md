@@ -12,6 +12,7 @@ La atribución se incluye aquí como cortesía y trazabilidad.
 | `hero-diagnostico.webp` | Primer plano cálido de un niño escribiendo ejercicios acompañado | Pexels — Andrea Piacquadio — https://www.pexels.com/photo/3769995/ (imagen: https://images.pexels.com/photos/3769995/pexels-photo-3769995.jpeg) | Pexels License |
 | `quienes-somos.webp` | Madre acompañando a su hijo con los deberes en ambiente hogareño | Pexels — Andrea Piacquadio — https://www.pexels.com/photo/3769981/ (imagen: https://images.pexels.com/photos/3769981/pexels-photo-3769981.jpeg) | Pexels License |
 | `metodologia.webp` | Detalle de estudio: manos escribiendo, cuaderno y taza sobre mesa de madera | Unsplash — https://unsplash.com/photos/s9CC2SKySJM (imagen: https://images.unsplash.com/photo-1434030216411-0b793f4b4173) | Unsplash License |
+| `microschool-classroom.webp` | Grupo de niños en clases presenciales con docentes en mesa de estudio | Pexels / Repositorio Chanak (optimizado desde assets/hogar.png) | Pexels / Uso Libre |
 
 ## Resumen de licencias
 
