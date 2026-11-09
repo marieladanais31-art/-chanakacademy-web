@@ -74,7 +74,7 @@ $AUTOREPLY = [
             . "· Para matricularse: €180 de matrícula + primera mensualidad. Off-Campus inicia desde €250.\n"
             . "· Referencia internacional para Panamá u otros países: aprox. USD $286 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
-            . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and with its accreditation approved by Commission vote of the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS, official letter pending). IRS 501(c)(3).\n"
+            . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and accredited by MSA-CESS. IRS 501(c)(3).\n"
             . "Al finalizar sus estudios, el estudiante obtiene el diploma de High School Americano con certificado apostillado.",
     ],
     'dual' => [
@@ -91,7 +91,7 @@ $AUTOREPLY = [
             . "· Diagnóstico académico: €35 (aprox. USD $40). Matrícula: €210 (aprox. USD $240). Mensualidad: desde €110/mes (aprox. USD $126).\n"
             . "· Total desde €1.310/año en 3.º ESO (aprox. USD $1.494). Referencia USD para Panamá u otros países, cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
-            . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and with its accreditation approved by Commission vote of the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS, official letter pending). IRS 501(c)(3).\n"
+            . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and accredited by MSA-CESS. IRS 501(c)(3).\n"
             . "Tu hijo no cambia de colegio: añade el diploma de High School Americano convalidando hasta el 75% de créditos según expediente.",
     ],
     'diagnostico' => [
@@ -197,7 +197,7 @@ $AUTOREPLY = [
             . "· Microschools (Comunidades y Familias): https://www.chanakacademy.org/microschools/\n"
             . "· Apertura de Microschools (Organizaciones y Centros): https://www.chanakacademy.org/open-a-microschool/\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
-            . "Chanak International Academy · Private School FLDOE #134620 · Acreditación aprobada por MSA-CESS (carta oficial en trámite).",
+            . "Chanak International Academy · Private School FLDOE #134620 · Acreditada por MSA-CESS.",
     ],
     // Autorespuesta específica cuando el lead llega desde /matricula/ (alta intención y continuidad con SIS).
     'matricula' => [
@@ -214,7 +214,7 @@ $AUTOREPLY = [
             . "Puedes responder directamente a este correo con cualquier duda o documento.\n\n"
             . "Con cariño,\n"
             . "Equipo de Admisiones · Chanak International Academy\n"
-            . "FLDOE #134620 · Acreditación aprobada por MSA-CESS (carta oficial en trámite) · 501(c)(3)",
+            . "FLDOE #134620 · Acreditada por MSA-CESS · 501(c)(3)",
     ],
     'matricula_en' => [
         'subject' => '[Folio {folio}] Welcome to Chanak International Academy!',
@@ -230,7 +230,7 @@ $AUTOREPLY = [
             . "You can reply directly to this email with any question or document.\n\n"
             . "Warmly,\n"
             . "Admissions Team · Chanak International Academy\n"
-            . "FLDOE #134620 · MSA-CESS Accreditation Approved (official letter pending) · 501(c)(3)",
+            . "FLDOE #134620 · Accredited by MSA-CESS · 501(c)(3)",
     ],
     // Autorespuesta en inglés para leads UAE/Dubai del Dual Diploma
     // (International Admissions). Placeholders: {nombre}, {landing},
