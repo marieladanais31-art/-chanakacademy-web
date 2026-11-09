@@ -98,8 +98,8 @@ console.log('  ✓ index.html: English translations, placeholders, select option
 // 5. ACADEMIC CLARITY (FAQ fq1_a)
 assert(indexContent.includes('Al matricularse formalmente en el colegio privado registrado de Chanak Academy'), 'index.html missing academic clarification in ES');
 assert(indexContent.includes("When formally enrolled in Chanak Academy's registered private school"), 'index.html missing academic clarification in EN');
-assert(indexContent.includes('plenamente acreditada por la Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS)'), 'index.html missing exact MSA-CESS accreditation in ES');
-assert(indexContent.includes('fully accredited by the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS)'), 'index.html missing exact MSA-CESS accreditation in EN');
+assert(indexContent.includes('con acreditación aprobada por voto de comisiones de MSA-CESS (carta oficial en trámite)'), 'index.html missing exact MSA-CESS accreditation in ES');
+assert(indexContent.includes('has its MSA-CESS accreditation approved by Commission vote (official letter pending)'), 'index.html missing exact MSA-CESS accreditation in EN');
 console.log('  ✓ Homepage FAQ: diploma clarity and MSA-CESS accreditation preserved accurately');
 
 console.log('\n🎉 ALL TARGETED AUDIT VERIFICATION CHECKS PASSED PERFECTLY!');
