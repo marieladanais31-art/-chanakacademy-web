@@ -37,7 +37,7 @@ HUB = dict(
 # ── Mentores ──
 MEN = dict(
     title=d('Mentores y colaboradores · Chanak', 'Mentors and Collaborators · Chanak'),
-    desc=d('Acompaña a estudiantes de Chanak como mentor, coordinador o voluntario: seguimiento académico, Life Skills y Mastery Learning, con formación de Chanak TrainUp.',
+    desc=d('Acompaña a estudiantes de Chanak como mentor, coordinador o voluntario: seguimiento académico, Life Skills y Mastery Learning, con formación propia.',
            'Walk with Chanak students as a mentor, coordinator or volunteer: academic follow-up, Life Skills and Mastery Learning, with Chanak TrainUp training.'),
     h1=d('Mentores y colaboradores', 'Mentors and collaborators'),
     lead=d('Si te mueve acompañar a un estudiante hasta que de verdad entiende, aquí hay un lugar para ti.', 'If you are moved to walk with a student until they truly understand, there is a place for you here.'),

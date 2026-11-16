@@ -8,10 +8,10 @@ def d(es, en, ca, fr):
 
 URL = d('/microschools/presupuesto/', '/en/microschools/budget/', '/ca/microschools/pressupost/', '/fr/microschools/budget/')
 TITLE = d('Calculadora de presupuesto para Microschool · Chanak', 'Microschool Budget Calculator · Chanak', 'Calculadora de pressupost per a Microschool · Chanak', 'Calculateur de budget pour Microschool · Chanak')
-DESC = d('Calcula la inversión inicial, el gasto mensual y el punto de equilibrio de tu Microschool, y descarga el previo normativo de tu país. Gratis y sin registro.',
+DESC = d('Calcula la inversión inicial, el gasto mensual y el punto de equilibrio de tu Microschool, y descarga el previo normativo de tu país.',
          'Estimate your Microschool’s start-up investment, monthly costs and break-even point, and download your country’s regulatory preview. Free, no sign-up.',
-         'Calcula la inversió inicial, la despesa mensual i el punt d’equilibri de la teva Microschool, i descarrega el previ normatiu del teu país. Gratis i sense registre.',
-         'Estimez l’investissement initial, les charges mensuelles et le seuil de rentabilité de votre Microschool, et téléchargez l’aperçu réglementaire de votre pays.')
+         'Calcula la inversió inicial, la despesa mensual i el punt d’equilibri de la teva Microschool i descarrega el previ normatiu del teu país.',
+         'Estimez l’investissement initial, les charges mensuelles et le seuil de rentabilité de votre Microschool, avec l’aperçu réglementaire de votre pays.')
 H1 = d('Calculadora de presupuesto para tu Microschool', 'Budget calculator for your Microschool', 'Calculadora de pressupost per a la teva Microschool', 'Calculateur de budget pour votre Microschool')
 LEAD = d('Una herramienta original de Chanak para fundadores: inversión inicial, gasto mensual, ingresos y punto de equilibrio. Los campos empiezan vacíos y nada de lo que escribas sale de tu navegador.',
          'An original Chanak tool for founders: start-up investment, monthly costs, income and break-even. Fields start empty and nothing you type leaves your browser.',

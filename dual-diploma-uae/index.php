@@ -349,6 +349,6 @@ function fmt_aed(int $amount): string
  })();
  </script>
 
- <footer><div class="container"><strong>Chanak International Academy</strong><br />dualdiploma@chanakacademy.org<br />FLDOE #134620<br />Accredited by MSA-CESS<br />Chanak Foundation / Nonprofit 501(c)(3)</div></footer>
+ <footer><div class="container"><strong>Chanak International Academy</strong><br />dualdiploma@chanakacademy.org<br />FLDOE #134620<br />Accredited by MSA-CESS<br />Chanak TrainUp Education, Inc. / Nonprofit 501(c)(3)</div></footer>
 </body>
 </html>

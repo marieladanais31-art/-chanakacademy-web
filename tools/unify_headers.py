@@ -111,7 +111,9 @@ def como_funciona():
         j = h.index('<!-- HERO -->', i)
         # La navegación antigua se conserva oculta: el JS de idiomas de la página la referencia.
         h = h[:i] + blk + '<div class="cx-legacy-nav" hidden aria-hidden="true" style="display:none!important">' + h[i:j] + '</div>' + h[j:]
-    core = '<!-- cx:core -->' + ''.join(f'<div class="cx" data-cxl="{l}"{"" if l == "es" else " hidden"}>{core_content.section(l)}</div>' for l in ('es', 'en', 'ca', 'fr')) + '<!-- /cx:core -->'
+    from site_i18n import LINKS
+    join = lambda l: f'<p class="cx-join">{T["join_line"][l].format(u=LINKS[l]["unete"])}</p>'
+    core = '<!-- cx:core -->' + ''.join(f'<div class="cx" data-cxl="{l}"{"" if l == "es" else " hidden"}>{core_content.section(l)}{join(l)}</div>' for l in ('es', 'en', 'ca', 'fr')) + '<!-- /cx:core -->'
     if '<!-- cx:core -->' in h:
         h = re.sub(r'<!-- cx:core -->.*?<!-- /cx:core -->', lambda m: core, h, count=1, flags=re.S)
     else:

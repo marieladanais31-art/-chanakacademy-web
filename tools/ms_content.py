@@ -99,16 +99,16 @@ TOOLS = [
 # ── /open-a-microschool/ ──
 OPEN_TITLE = d('Cómo abrir una Microschool cristiana · Chanak', 'How to Open a Christian Microschool · Chanak', 'Com obrir una Microschool cristiana · Chanak', 'Comment ouvrir une Microschool chrétienne · Chanak')
 OPEN_DESC = d(
-    'Abre una Chanak Microschool (Partner Learning Center): tú aportas espacio y comunidad; Chanak, la acreditación MSA-CESS, el currículo 60/20/20 y la formación.',
-    'Open a Chanak Microschool (Partner Learning Center): you bring the space and community; Chanak brings MSA-CESS accreditation, the 60/20/20 curriculum and training.',
+    'Abre una Chanak Microschool (Partner Learning Center): tú aportas espacio y comunidad; Chanak, la acreditación MSA-CESS, el currículo y la formación.',
+    'Open a Chanak Microschool (Partner Learning Center): you bring space and community; Chanak brings MSA-CESS accreditation, curriculum and training.',
     'Obre una Chanak Microschool (Partner Learning Center): tu aportes espai i comunitat; Chanak, l’acreditació MSA-CESS, el currículum 60/20/20 i la formació.',
-    'Ouvrez une Chanak Microschool (Partner Learning Center) : vous apportez le lieu et la communauté ; Chanak, l’accréditation MSA-CESS, le programme 60/20/20 et la formation.')
+    'Ouvrez une Chanak Microschool (Partner Learning Center) : vous apportez lieu et communauté ; Chanak, l’accréditation MSA-CESS et la formation.')
 MS_TITLE = d('Microschool cristiana: aprender en comunidad · Chanak', 'Christian Microschool: Learning in Community · Chanak', 'Microschool cristiana: aprendre en comunitat · Chanak', 'Microschool chrétienne : apprendre en communauté · Chanak')
 MS_DESC = d(
-    'Grupos pequeños y presenciales con plan de estudios americano acreditado por MSA-CESS. Una alianza para comunidades de unas 10 familias o más, en EE. UU. e internacional.',
-    'Small in-person groups with an American curriculum accredited by MSA-CESS. A partnership for communities of about 10 or more families, in the U.S. and internationally.',
-    'Grups petits i presencials amb pla d’estudis americà acreditat per MSA-CESS. Una aliança per a comunitats d’unes 10 famílies o més, als EUA i internacional.',
-    'Petits groupes en présentiel avec un programme américain accrédité par MSA-CESS. Un partenariat pour des communautés d’une dizaine de familles ou plus, aux USA et à l’international.')
+    'Grupos pequeños y presenciales con plan de estudios americano acreditado por MSA-CESS. Alianza para comunidades de unas 10 familias o más.',
+    'Small in-person groups with an American curriculum accredited by MSA-CESS. A partnership for communities of about 10 or more families.',
+    'Grups petits i presencials amb pla d’estudis americà acreditat per MSA-CESS. Aliança per a comunitats d’unes 10 famílies o més.',
+    'Petits groupes en présentiel avec un programme américain accrédité MSA-CESS. Un partenariat pour des communautés d’une dizaine de familles.')
 HERO_H1 = d('Abre una Chanak Microschool <em>(Partner Learning Center)</em> en tu ciudad', 'Open a Chanak Microschool <em>(Partner Learning Center)</em> in your city',
             'Obre una Chanak Microschool <em>(Partner Learning Center)</em> a la teva ciutat', 'Ouvrez une Chanak Microschool <em>(Partner Learning Center)</em> dans votre ville')
 HERO_LEAD = d(

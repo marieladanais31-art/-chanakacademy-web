@@ -33,7 +33,7 @@ def offcampus(es):
 <p class="amount">US$80<small style="font-size:1rem">/{x('mes', 'mo')}</small></p><p class="eq">{x('70 €/mes en España · matrícula anual 180 €', '€70/mo in Spain · €180 annual enrollment fee')}</p>
 <ul class="cx-list"><li>{x('Tú diriges el día a día; nosotros te damos el plan y la guía', 'You run the day-to-day; we give you the plan and the guidance')}</li><li>{x('Diagnóstico académico y Plan Educativo Individualizado (PEI)', 'Academic diagnostic and Individualized Education Plan')}</li><li>{x('Mentoría familiar mensual', 'Monthly family mentoring')}</li><li>{x('Plataforma, seguimiento e informes', 'Platform, tracking and reports')}</li></ul>
 <div class="cx-btns"><a class="cx-btn cx-btn-o" href="/matricula/?utm_source=web&amp;utm_medium=offcampus&amp;plan=guided">{x('Empezar con Homeschool Guiado →', 'Start Guided Homeschool →')}</a></div></div>
-<div class="cx-plan feat">{img('hs-mentoria', x('Estudiante en una sesión de mentoría por videollamada con su cuaderno', 'Student in a video mentoring session with a notebook'))}
+<div class="cx-plan feat" id="full-enrollment">{img('hs-mentoria', x('Estudiante en una sesión de mentoría por videollamada con su cuaderno', 'Student in a video mentoring session with a notebook'))}
 <div class="tagline" style="margin-top:18px">{x('Matrícula escolar completa', 'Full school enrollment')}</div><h3>Full Enrollment · Guided Virtual School</h3>
 <p class="amount">{x('desde', 'from')} US$275<small style="font-size:1rem">/{x('mes', 'mo')}</small></p><p class="eq">{x('K–5 US$275 · 6–8 US$320 · 9–12 US$365 · 10 mensualidades · matrícula anual US$295', 'K–5 US$275 · 6–8 US$320 · 9–12 US$365 · 10 monthly payments · US$295 annual enrollment fee')}</p>
 <ul class="cx-list"><li>{x('Chanak es su colegio: matrícula escolar a tiempo completo', 'Chanak is their school: full-time school enrollment')}</li><li>{x('Tres clases en vivo de inglés (ELA) por semana', 'Three live English (ELA) classes per week')}</li><li>{x('Mentoría individual semanal y Life Skills en vivo', 'Weekly one-to-one mentoring and live Life Skills')}</li><li>{x('Evaluación, boletines, expediente y diploma al cumplir los requisitos', 'Assessment, report cards, transcript and diploma once requirements are met')}</li></ul>
@@ -143,6 +143,7 @@ def en_blocks():
     B, n = json.JSONDecoder().raw_decode(js[i:])
     for k in B:
         B[k] = re.sub(r'<!-- cx:core -->.*?<!-- /cx:core -->', '', B[k], flags=re.S) + core('en')
+        B[k] = B[k].replace('<div class="cx-plan feat"><img', '<div class="cx-plan feat" id="full-enrollment"><img')
     open(p, 'w', encoding='utf-8').write(js[:i] + json.dumps(B, ensure_ascii=False) + js[i + n:])
     print('  · assets/js/cx-en-blocks.js (Core EN)')
 

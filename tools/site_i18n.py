@@ -12,10 +12,10 @@ T = {
  'html_lang': dict(es='es', en='en', ca='ca', fr='fr'),
  'og_locale': dict(es='es_ES', en='en_US', ca='ca_ES', fr='fr_FR'),
  'title': dict(
-    es='Colegio Americano K-12 Online Acreditado · Chanak International Academy',
-    en='Accredited American K-12 Online School · Chanak International Academy',
-    ca='Col·legi Americà K-12 Online Acreditat · Chanak International Academy',
-    fr='École américaine K-12 en ligne accréditée · Chanak International Academy'),
+    es='Colegio americano K-12 online acreditado · Chanak',
+    en='Accredited American K-12 Online School · Chanak',
+    ca='Col·legi americà K-12 online acreditat · Chanak',
+    fr='École américaine K-12 en ligne accréditée · Chanak'),
  'desc': dict(
     es='Colegio cristiano estadounidense K-12 acreditado por MSA-CESS y registrado en Florida (FLDOE #134620). Elige la modalidad que encaja con tu familia.',
     en='Christian American K-12 school accredited by MSA-CESS and registered in Florida (FLDOE #134620). Choose the approach that fits your family.',
