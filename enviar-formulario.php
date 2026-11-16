@@ -43,6 +43,9 @@ $CONFIG = [
         'esa'         => ['to' => ['scholarships@chanakacademy.org'], 'label' => 'FONDOS ESA', 'landing' => '/scholarships/', 'dossier' => '', 'brevo_list' => 3],
         'general'     => ['to' => ['offcampus@chanakacademy.org'], 'label' => 'INFO GENERAL', 'landing' => '/', 'brevo_list' => 6],
         'microschool' => ['to' => ['administration@chanakacademy.org'], 'label' => 'MICROSCHOOL', 'landing' => '/microschools/', 'brevo_list' => 6],
+        // Colaboración (páginas /unete/): sin lista propia en Brevo, van a la lista General (6).
+        'embajador'   => ['to' => ['administration@chanakacademy.org'], 'label' => 'EMBAJADORES', 'landing' => '/unete/embajadores/', 'brevo_list' => 6],
+        'mentor'      => ['to' => ['administration@chanakacademy.org'], 'label' => 'MENTORES', 'landing' => '/unete/mentores/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
         // Sin lista propia en Brevo: va a la lista General (6).
         'hub'         => ['to' => ['rededucativa@asociacioneducafe.org'], 'label' => 'ALIANZAS 2027', 'landing' => '/alianzas/', 'brevo_list' => 6],
@@ -198,6 +201,44 @@ $AUTOREPLY = [
             . "· Apertura de Microschools (Organizaciones y Centros): https://www.chanakacademy.org/open-a-microschool/\n\n"
             . "Un saludo,\nEquipo Chanak International Academy\n\n"
             . "Chanak International Academy · Private School FLDOE #134620 · Acreditada por MSA-CESS.",
+    ],
+    'embajador' => [
+        'subject' => 'Hemos recibido tu solicitud · Programa de Embajadores | Chanak Academy',
+        'body' => "Hola {nombre},\n\n"
+            . "Gracias por tu interés en el Programa de Embajadores de Chanak International Academy.\n\n"
+            . "Revisamos cada solicitud y te responderemos por correo con la decisión. En este paso no pedimos datos bancarios ni documentos de identidad.\n\n"
+            . "Recuerda: las personas o familias que reciben fondos de un programa estatal de educación no pueden participar en el programa.\n\n"
+            . "Más información: {landing}\n\n"
+            . "Un saludo,\nEquipo Chanak International Academy\n\n"
+            . "Chanak International Academy · Escuela privada registrada en Florida (FLDOE #134620) · Acreditada por MSA-CESS.",
+    ],
+    'embajador_en' => [
+        'subject' => 'We received your application · Ambassador Program | Chanak Academy',
+        'body' => "Hello {nombre},\n\n"
+            . "Thank you for your interest in the Chanak International Academy Ambassador Program.\n\n"
+            . "We review every application and will reply by email with our decision. At this step we do not ask for bank details or identity documents.\n\n"
+            . "Please remember: people or families who receive funds from a state education program cannot participate in the program.\n\n"
+            . "More information: {site}/en/join/ambassadors/\n\n"
+            . "Kind regards,\nChanak International Academy\n\n"
+            . "Chanak International Academy · Private school registered in Florida (FLDOE #134620) · Accredited by MSA-CESS.",
+    ],
+    'mentor' => [
+        'subject' => 'Hemos recibido tu mensaje · Mentores y colaboradores | Chanak Academy',
+        'body' => "Hola {nombre},\n\n"
+            . "Gracias por querer acompañar a estudiantes con Chanak International Academy.\n\n"
+            . "Nuestro equipo revisará tu mensaje y te escribirá para proponerte una primera conversación. Los requisitos, la formación y las condiciones se confirman en la entrevista.\n\n"
+            . "Más información: {landing}\n\n"
+            . "Un saludo,\nEquipo Chanak International Academy\n\n"
+            . "Chanak International Academy · Escuela privada registrada en Florida (FLDOE #134620) · Acreditada por MSA-CESS.",
+    ],
+    'mentor_en' => [
+        'subject' => 'We received your message · Mentors and collaborators | Chanak Academy',
+        'body' => "Hello {nombre},\n\n"
+            . "Thank you for wanting to walk alongside students with Chanak International Academy.\n\n"
+            . "Our team will review your message and write to propose a first conversation. Requirements, training and terms are confirmed in the interview.\n\n"
+            . "More information: {site}/en/join/mentors/\n\n"
+            . "Kind regards,\nChanak International Academy\n\n"
+            . "Chanak International Academy · Private school registered in Florida (FLDOE #134620) · Accredited by MSA-CESS.",
     ],
     // Autorespuesta específica cuando el lead llega desde /matricula/ (alta intención y continuidad con SIS).
     'matricula' => [
@@ -917,7 +958,7 @@ if ($esMatricula) {
 } elseif ($route === 'florida_pep_ema') {
     $reply = $isEn ? ($AUTOREPLY['florida_pep_ema_en'] ?? $AUTOREPLY['florida_pep_ema']) : $AUTOREPLY['florida_pep_ema'];
 } else {
-    $reply = $AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general'];
+    $reply = ($isEn && isset($AUTOREPLY[$autoreplyKey . '_en'])) ? $AUTOREPLY[$autoreplyKey . '_en'] : ($AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general']);
     if ($commercialRegion === '' && $pack) {
         $en = $isEn;
         $subject = $en ? 'Your program dossier' : 'Tu dossier del programa';
