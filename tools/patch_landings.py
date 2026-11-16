@@ -3,7 +3,9 @@
 """Añade a las landings existentes (sin quitar nada) los bloques nuevos: planes, fotos, DBU,
 política de matrícula y pasos para fundadores. Idempotente: cada bloque lleva un marcador <!-- cx:… -->.
 Uso: python3 tools/patch_landings.py"""
-import os, re, json
+import os, re, json, sys
+sys.path.insert(0, os.path.dirname(__file__))
+import core_content
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V = '20261116'
 IMG = '/assets/img/gen/'
@@ -129,6 +131,22 @@ def micro(es):
     return A, B
 
 
+def core(lang):
+    return f'<!-- cx:core --><div class="cx">{core_content.section(lang)}</div><!-- /cx:core -->'
+
+
+def en_blocks():
+    """Las landings EN compiladas reciben el bloque Core a través de assets/js/cx-en-blocks.js."""
+    p = os.path.join(ROOT, 'assets/js/cx-en-blocks.js')
+    js = open(p, encoding='utf-8').read()
+    i = js.index('var B=') + 6
+    B, n = json.JSONDecoder().raw_decode(js[i:])
+    for k in B:
+        B[k] = re.sub(r'<!-- cx:core -->.*?<!-- /cx:core -->', '', B[k], flags=re.S) + core('en')
+    open(p, 'w', encoding='utf-8').write(js[:i] + json.dumps(B, ensure_ascii=False) + js[i + n:])
+    print('  · assets/js/cx-en-blocks.js (Core EN)')
+
+
 def insert_before(h, marker, block, tag):
     if f'<!-- cx:{tag} -->' in h:
         h = re.sub(rf'<!-- cx:{tag} -->.*?<!-- /cx:{tag} -->', lambda m: block, h, flags=re.S)
@@ -158,11 +176,12 @@ def last(h, s):
 
 if __name__ == '__main__':
     A, B, C = offcampus(True)
-    patch('off-campus/index.html', [('<section class="section soft" id="incluye">', A, 'planes'), ('<section class="section" id="inversion">', B, 'obtiene'), ('<section class="final">', C, 'matricula')])
+    patch('off-campus/index.html', [('<section class="section soft" id="incluye">', A, 'planes'), ('<section class="section" id="inversion">', B, 'obtiene'), ('<section class="final">', C, 'matricula'), ('<section class="section" id="inversion">', core('es'), 'core')])
     A, B, C = dual(True)
-    patch('dual-diploma/index.html', [('<section class="section soft">', A, 'semana'), ('<section class="section" id="inversion">', B, 'pathways'), ('<section class="final">', C, 'opciones')])
+    patch('dual-diploma/index.html', [('<section class="section soft">', A, 'semana'), ('<section class="section" id="inversion">', B, 'pathways'), ('<section class="final">', C, 'opciones'), ('<section class="section" id="inversion">', core('es'), 'core')])
     # Las landings EN de off-campus y dual-diploma son bundles React: sus bloques van en assets/js/cx-en-blocks.js
     A, B = micro(True)
     patch('microschools/index.html', [('<section class="content-sec bg-slate" id="como-aprende">', A, 'puntomedio'), ('<section class="content-sec bg-white" id="registro-grupo">', B, 'fundadores')])
     A, B = micro(False)
     patch('microschools/en/index.html', [('<section class="content-sec bg-slate" id="how-it-works">', A, 'puntomedio'), ('<section class="content-sec bg-white" id="register-group">', B, 'fundadores')])
+    en_blocks()

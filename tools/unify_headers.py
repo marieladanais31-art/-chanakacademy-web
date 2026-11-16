@@ -7,6 +7,7 @@ import json, os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from build_site import header, V, ROOT
 from site_i18n import T
+import core_content
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">')
@@ -110,6 +111,15 @@ def como_funciona():
         j = h.index('<!-- HERO -->', i)
         # La navegación antigua se conserva oculta: el JS de idiomas de la página la referencia.
         h = h[:i] + blk + '<div class="cx-legacy-nav" hidden aria-hidden="true" style="display:none!important">' + h[i:j] + '</div>' + h[j:]
+    core = '<!-- cx:core -->' + ''.join(f'<div class="cx" data-cxl="{l}"{"" if l == "es" else " hidden"}>{core_content.section(l)}</div>' for l in ('es', 'en', 'ca', 'fr')) + '<!-- /cx:core -->'
+    if '<!-- cx:core -->' in h:
+        h = re.sub(r'<!-- cx:core -->.*?<!-- /cx:core -->', lambda m: core, h, count=1, flags=re.S)
+    else:
+        k = h.index('<section id="tarifas"')
+        h = h[:k] + core + h[k:]
+    desc = 'Currículo Core de Chanak: Estándares B.E.S.T. de Florida, Mastery Learning y cosmovisión cristiana. Modelo 60/20/20, currículos, portales y preguntas.'
+    h = re.sub(r'<meta content="[^"]*" name="description"/>', f'<meta content="{desc}" name="description"/>', h, 1)
+    h = re.sub(r'<title>.*?</title>', '<title>Cómo funciona Chanak: método, currículo Core y portales</title>', h, 1)
     open(p, 'w', encoding='utf-8').write(ensure_css(h))
     print('  ·', path)
 
