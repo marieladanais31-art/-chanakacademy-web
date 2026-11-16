@@ -33,7 +33,7 @@ programs = {
     "dual-diploma": {
         "title": "Dual Diploma",
         "promise": "Diploma de High School estadounidense en paralelo a los estudios locales.",
-        "features": ["Revisión de expediente y Plan de Ruta", "Hasta 75% de créditos reconocibles, sujeto a evaluación", "3–5 horas semanales según ruta", "Mentoría, SIS y LMS", "Transcript oficial y orientación académica"],
+        "features": ["Revisión de expediente y Plan de Estudio", "Hasta 75% de créditos reconocibles, sujeto a evaluación", "3–5 horas semanales según ruta", "Mentoría, SIS y LMS", "Transcript oficial y orientación académica"],
     },
 }
 

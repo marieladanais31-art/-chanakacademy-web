@@ -116,7 +116,7 @@
         "assessmentLabel": "Evaluación académica",
         "enrollmentFee": "$4,300 MXN",
         "installments": "10 mensualidades",
-        "includes": "Plan de Ruta · SIS · LMS · clases semanales en vivo · mentoría personalizada",
+        "includes": "Plan de Estudio · SIS · LMS · clases semanales en vivo · mentoría personalizada",
         "routes": [
           {
             "key": "r4",
@@ -151,7 +151,7 @@
             "totalYear": "$65,000 MXN"
           }
         ],
-        "footnote": "Tarifa México del ciclo 2026-2027 en pesos mexicanos. El total anual se calcula a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Ruta y la inversión correspondiente por escrito antes de formalizar."
+        "footnote": "Tarifa México del ciclo 2026-2027 en pesos mexicanos. El total anual se calcula a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Estudio y la inversión correspondiente por escrito antes de formalizar."
       }
     },
     "PA": {
@@ -194,7 +194,7 @@
         "assessmentLabel": "Evaluación académica inicial",
         "enrollmentFee": "US$250",
         "installments": "10 mensualidades",
-        "includes": "Plan de Ruta · SIS · LMS · mentoría · Life Skills & Leadership",
+        "includes": "Plan de Estudio · SIS · LMS · mentoría · Life Skills & Leadership",
         "routes": [
           {
             "key": "from",
@@ -205,7 +205,7 @@
             "totalYear": "desde US$1,400 al año"
           }
         ],
-        "footnote": "Inversión anual desde US$1,400 según el grado de entrada. La tabla completa por ruta se entrega con el Plan de Ruta personalizado, antes de formalizar la matrícula."
+        "footnote": "Inversión anual desde US$1,400 según el grado de entrada. La tabla completa por ruta se entrega con el Plan de Estudio personalizado, antes de formalizar la matrícula."
       }
     },
     "CO": {
