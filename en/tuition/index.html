@@ -115,6 +115,7 @@
 </div></footer>
 <script>
 (function(){var b=document.querySelector('.cx-burger'),n=document.getElementById('cx-nav');if(b&&n)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+document.querySelectorAll('.cx-langs a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('chanak_lang',a.getAttribute('hreflang'))}catch(e){}})});
 try{var q=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(q.get(k))sessionStorage.setItem('chanak_'+k,q.get(k))});if(!sessionStorage.getItem('chanak_utm_landing'))sessionStorage.setItem('chanak_utm_landing',location.pathname)}catch(e){}
 })();
 </script>

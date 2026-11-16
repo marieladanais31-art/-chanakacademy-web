@@ -50,7 +50,7 @@ body.cx-page{margin:0;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',s
 .cx-langs a{padding:.2rem .5rem;font-size:.74rem;border-radius:999px;font-weight:700;color:var(--muted)}
 .cx-langs a[aria-current]{background:var(--navy);color:#fff}
 .cx-burger{display:none;margin-left:auto;background:none;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:1.1rem;cursor:pointer;color:var(--navy)}
-@media(max-width:1279px){
+@media(max-width:1339px){
   .cx-burger{display:block}
   .cx-nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;align-items:stretch;padding:14px 20px 20px;border-bottom:1px solid var(--border);box-shadow:var(--sh)}
   .cx-nav.open{display:flex}
@@ -207,3 +207,33 @@ body.cx-page{margin:0;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',s
 @media(max-width:520px){.cx-brand b{font-size:.9rem}.cx-burger{padding:8px 10px;font-size:.95rem;white-space:nowrap}.cx-head-in{gap:10px}}
 @media(max-width:480px){.cx-trust-in{grid-template-columns:1fr}.cx-foot-g{grid-template-columns:1fr}.cx-foot a{overflow-wrap:anywhere}}
 html{overflow-x:clip}
+
+/* 2026-11-17 · Cabecera única en todas las páginas */
+.cx-hdr{display:contents}
+.cx-hdr[hidden]{display:none}
+.cx-head-in{min-height:72px}
+.cx-nav a,.cx-btn,.cx-burger,.cx-top-in a,.cx-langs a{white-space:nowrap}
+.cx-nw{white-space:nowrap}
+.cx-top-in span{min-width:0}
+.cx-subnav{background:var(--off);border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif}
+.cx-subnav-in{max-width:1320px;margin:0 auto;padding:8px 24px;display:flex;gap:6px;align-items:center;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
+.cx-subnav a{white-space:nowrap;flex:0 0 auto;font-size:.84rem;font-weight:600;color:var(--navy);text-decoration:none;padding:.35rem .75rem;border-radius:999px;border:1px solid transparent}
+.cx-subnav a:hover{background:#fff;border-color:var(--border)}
+.cx-subnav .region{margin-left:auto;flex:0 0 auto}
+.cx-hero-routes .lbl{align-self:center;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#b9d0df;margin-right:2px}
+.cx-join{text-align:center;margin:0;padding:22px 16px;font-size:.95rem;color:var(--muted);background:#fff;border-top:1px solid var(--border)}
+.cx-join a{color:var(--teal-d);font-weight:700}
+.cx-foot-g{grid-template-columns:1.5fr 1fr 1fr 1fr 1fr}
+@media(max-width:1020px){.cx-foot-g{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:860px){.cx-foot-g{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.cx-foot-g{grid-template-columns:1fr}.cx-top{font-size:.74rem}.cx-top-in{gap:10px}}
+@media(max-width:1339px){.cx-nav{max-height:calc(100vh - 80px);overflow-y:auto}}
+
+
+/* Formulario de /off-campus/: etiqueta visible sobre cada campo */
+#lead-form .cx-fl{display:flex;flex-direction:column;gap:4px;min-width:0;font-size:12.5px;font-weight:700;color:#0c2d48;text-align:left}
+#lead-form .cx-fl>span{line-height:1.25}
+#lead-form .cx-fl .field{width:100%;min-width:0;font-weight:400}
+@media(max-width:1180px){#lead-form.form.two{grid-template-columns:1fr}}
+/* Una sola línea bajo la cabecera al hacer scroll (antes se sumaba la de la cinta de confianza) */
+.cx-trust{border-bottom:0}

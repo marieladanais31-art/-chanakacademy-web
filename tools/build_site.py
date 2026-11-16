@@ -141,6 +141,7 @@ def footer(lang):
 </div></footer>
 <script>
 (function(){{var b=document.querySelector('.cx-burger'),n=document.getElementById('cx-nav');if(b&&n)b.addEventListener('click',function(){{var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)}});
+document.querySelectorAll('.cx-langs a').forEach(function(a){{a.addEventListener('click',function(){{try{{localStorage.setItem('chanak_lang',a.getAttribute('hreflang'))}}catch(e){{}}}})}});
 try{{var q=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){{if(q.get(k))sessionStorage.setItem('chanak_'+k,q.get(k))}});if(!sessionStorage.getItem('chanak_utm_landing'))sessionStorage.setItem('chanak_utm_landing',location.pathname)}}catch(e){{}}
 }})();
 </script>
@@ -212,7 +213,7 @@ def home(lang):
 
 <div class="cx-trust" aria-label="Credentials"><div class="cx-wrap cx-trust-in">
 <div class="cx-trust-it"><img src="/assets/img/fldoe-logo-clean.png" alt="Florida Department of Education" width="160" height="44" loading="lazy" decoding="async"><b>FLDOE #134620</b><span>{t('t_fl', lang)}</span></div>
-<div class="cx-trust-it"><img src="/assets/img/msa-logo-clean.png" alt="Middle States Association (MSA-CESS)" width="160" height="40" loading="lazy" decoding="async"><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div>
+<div class="cx-trust-it"><img src="/assets/img/msa-logo-clean.webp" alt="Middle States Association (MSA-CESS)" width="160" height="40" loading="lazy" decoding="async"><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div>
 <div class="cx-trust-it"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University · Global Community" width="130" height="48" loading="lazy" decoding="async"><b>Dallas Baptist University</b><span>{t('t_dbu', lang)}</span></div>
 <div class="cx-trust-it"><img src="/assets/img/chanak-trainup-logo.webp" alt="Chanak TrainUp Education Inc." width="140" height="48" loading="lazy" decoding="async"><b>Chanak TrainUp Education Inc.</b><span>{t('t_irs', lang)}</span></div>
 </div></div>
