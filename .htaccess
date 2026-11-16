@@ -29,6 +29,9 @@ RewriteRule ^scholarships/alabama(/.*)?$ /alabama$1 [R=301,L]
 RewriteRule ^scholarships/south-carolina(/.*)?$ /south-carolina$1 [R=301,L]
 RewriteRule ^scholarships/new-hampshire(/.*)?$ /new-hampshire$1 [R=301,L]
 
+# Tarifas: página única (2026-11). /tuition/ queda redirigida.
+RewriteRule ^tuition/?$ /tarifas/ [R=301,L]
+
 # Carpeta privada (leads, logs, claves): nunca accesible desde la web.
 RewriteRule ^_private(/|$) - [F,L]
 

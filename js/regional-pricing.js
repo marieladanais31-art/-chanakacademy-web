@@ -100,6 +100,29 @@ window.CHANAK_CONTACTS = {
   PA: { name: 'Mariela Andrade' }
 };
 
+/**
+ * MATRIZ 2026-2027 (aplicada el 2026-11-16 por indicación de dirección).
+ * Full Enrollment · Guided Virtual School: mismo precio nominal en USD en TODOS los países.
+ * La matrícula anual se cobra UNA vez por estudiante y curso (no se duplica al pagar por trimestre o año).
+ * Estas cifras se muestran en /tarifas/ y /en/tuition/ (HTML estático generado por tools/build_site.py):
+ * si cambian aquí, hay que cambiarlas también en PRICING de ese script y volver a generar.
+ * Las equivalencias en moneda local NO aprobadas no se publican. Única aprobada: US$80 = 70 € (Homeschool Guiado, España).
+ */
+window.CHANAK_FULL_ENROLLMENT = {
+  cycle: '2026-2027', currency: 'USD', enrollmentFee: 295, installments: 10,
+  tiers: [
+    { key: 'k5',  grades: 'K–5',  monthly: 275, quarterly: 687.5, annualTuition: 2750, totalYear: 3045 },
+    { key: 'g68', grades: '6–8',  monthly: 320, quarterly: 800,   annualTuition: 3200, totalYear: 3495 },
+    { key: 'g912', grades: '9–12', monthly: 365, quarterly: 912.5, annualTuition: 3650, totalYear: 3945 }
+  ],
+  guidedHomeschoolSpain: { usdMonthly: 80, eurMonthly: 70, eurEnrollmentFee: 180 }
+};
+window.CHANAK_ENROLLMENT_POLICY = {
+  version: '2026-11-16',
+  es: { label: 'Matrícula anual (incluye diagnóstico académico, PEI e inducción)', text: 'La matrícula anual incluye el diagnóstico académico inicial, la elaboración del Plan Educativo Individualizado (PEI) y la inducción de incorporación. Una vez abonada, no se devuelve, salvo los derechos de desistimiento, cancelación, reembolso u otros derechos irrenunciables que establezca la legislación aplicable.' },
+  en: { label: 'Annual Enrollment Fee (includes academic diagnostic assessment, Individualized Education Plan and onboarding/orientation)', text: 'The annual enrollment fee includes the initial academic assessment, the Individualized Education Plan (IEP/PEI), and student/family onboarding. Once paid, the fee is non-refundable, except where applicable law grants mandatory withdrawal, cancellation, refund, or other non-waivable rights.' }
+};
+
 window.CHANAK_PRICING = {
   updated: '2026-09-18',
   cycle: '2026-2027',
