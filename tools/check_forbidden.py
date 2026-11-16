@@ -21,7 +21,7 @@ EXT = ('.html', '.js', '.py', '.txt', '.md', '.json', '.php', '.xml', '.css', '.
 SKIP_DIRS = {'.git', 'node_modules', 'screenshots', '.claude'}
 SKIP_FILES = {'tools/check_forbidden.py'}
 # Documentos que citan las expresiones precisamente para prohibirlas o registrar el cambio.
-QUOTING = {'docs/AUDITORIA-INCOHERENCIAS.md', 'docs/REDISENO-2026-11.md', 'CAMBIOS.md'}
+QUOTING = set()
 
 
 def scan():

@@ -50,7 +50,7 @@ body.cx-page{margin:0;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',s
 .cx-langs a{padding:.2rem .5rem;font-size:.74rem;border-radius:999px;font-weight:700;color:var(--muted)}
 .cx-langs a[aria-current]{background:var(--navy);color:#fff}
 .cx-burger{display:none;margin-left:auto;background:none;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:1.1rem;cursor:pointer;color:var(--navy)}
-@media(max-width:1339px){
+@media(max-width:1419px){
   .cx-burger{display:block}
   .cx-nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;align-items:stretch;padding:14px 20px 20px;border-bottom:1px solid var(--border);box-shadow:var(--sh)}
   .cx-nav.open{display:flex}
@@ -212,7 +212,7 @@ html{overflow-x:clip}
 .cx-hdr{display:contents}
 .cx-hdr[hidden]{display:none}
 .cx-head-in{min-height:72px}
-.cx-nav a,.cx-btn,.cx-burger,.cx-top-in a,.cx-langs a{white-space:nowrap}
+.cx-nav a,.cx-nav .cx-btn,.cx-burger,.cx-top-in a,.cx-langs a{white-space:nowrap}
 .cx-nw{white-space:nowrap}
 .cx-top-in span{min-width:0}
 .cx-subnav{background:var(--off);border-bottom:1px solid var(--border);font-family:'DM Sans',system-ui,sans-serif}
@@ -227,7 +227,7 @@ html{overflow-x:clip}
 @media(max-width:1020px){.cx-foot-g{grid-template-columns:1fr 1fr 1fr}}
 @media(max-width:860px){.cx-foot-g{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.cx-foot-g{grid-template-columns:1fr}.cx-top{font-size:.74rem}.cx-top-in{gap:10px}}
-@media(max-width:1339px){.cx-nav{max-height:calc(100vh - 80px);overflow-y:auto}}
+@media(max-width:1419px){.cx-nav{max-height:calc(100vh - 80px);overflow-y:auto}}
 
 
 /* Formulario de /off-campus/: etiqueta visible sobre cada campo */
@@ -287,3 +287,11 @@ p.cx-policy{margin:26px 0 0}
   body.cx-print-previo #cx-budget>section:has(#cx-previo){display:block!important}
   body.cx-print-previo #cx-budget>section:has(#cx-previo)>:not(#cx-previo){display:none!important}
 }
+/* Móvil estrecho (360 px): la marca cede espacio al botón de menú y los botones largos pueden partir línea */
+.cx-brand b,.cx-brand small{white-space:nowrap}
+.cx-head .cx-wrap{max-width:1480px}
+@media(max-width:1639px){.cx-brand small{display:none}}
+@media(max-width:1419px){.cx-brand{flex-shrink:1}.cx-brand b{white-space:normal;overflow-wrap:anywhere}}
+@media(max-width:400px){.cx-wrap{padding:0 16px}.cx-brand img{height:36px}.cx-brand b{font-size:.82rem}.cx-burger{padding:7px 9px;font-size:.88rem}.cx-plan{padding:20px}.cx-btn{padding:.8rem 1.1rem}}
+.cx-btns .cx-btn{max-width:100%;text-align:center}
+.test-opt{min-width:0;overflow-wrap:anywhere;white-space:normal}
