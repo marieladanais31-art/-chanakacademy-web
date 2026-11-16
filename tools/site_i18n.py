@@ -135,7 +135,7 @@ T = {
     en='Private K-12 school listed with the Florida Department of Education. The registration is public and verifiable.',
     ca='Col·legi privat K-12 inscrit al Departament d’Educació de Florida. El registre és públic i verificable.',
     fr='École privée K-12 inscrite auprès du Département de l’Éducation de Floride. L’enregistrement est public et vérifiable.'),
- 'tr3_h': dict(es='Global Community de Dallas Baptist University', en='Dallas Baptist University Global Community', ca='Global Community de Dallas Baptist University', fr='Global Community de Dallas Baptist University'),
+ 'tr3_h': dict(es='Miembro de la Global Community de Dallas Baptist University', en='Dallas Baptist University Global Community Member', ca='Membre de la Global Community de Dallas Baptist University', fr='Membre de la Global Community de Dallas Baptist University'),
  'tr3_p': dict(
     es='Chanak es miembro de una red de más de 280 escuelas en 50 países, con formación docente, programas de inglés y becas de DBU según cada programa. DBU no acredita a Chanak ni garantiza admisión.',
     en='Chanak is a member of a network of 280+ schools in 50 countries, with teacher training, English programs and DBU scholarships by program. DBU does not accredit Chanak or guarantee admission.',
@@ -143,10 +143,10 @@ T = {
     fr='Chanak est membre d’un réseau de plus de 280 écoles dans 50 pays, avec formation des enseignants, programmes d’anglais et bourses DBU selon chaque programme. DBU n’accrédite pas Chanak et ne garantit pas l’admission.'),
  'tr4_h': dict(es='Entidad sin ánimo de lucro 501(c)(3)', en='501(c)(3) nonprofit organization', ca='Entitat sense ànim de lucre 501(c)(3)', fr='Organisme sans but lucratif 501(c)(3)'),
  'tr4_p': dict(
-    es='Operada por Chanak TrainUp Education, Inc., organización reconocida por el IRS de Estados Unidos. Sello Candid Gold de transparencia 2026.',
-    en='Operated by Chanak TrainUp Education, Inc., recognized by the U.S. IRS. Candid Gold Seal of Transparency 2026.',
-    ca='Operada per Chanak TrainUp Education, Inc., organització reconeguda per l’IRS dels Estats Units. Segell Candid Gold de transparència 2026.',
-    fr='Gérée par Chanak TrainUp Education, Inc., reconnue par l’IRS américain. Sceau de transparence Candid Gold 2026.'),
+    es='Operada por Chanak TrainUp Education, Inc., organización sin ánimo de lucro reconocida por el IRS de Estados Unidos (501(c)(3)). Sello Candid Gold de transparencia 2026. <a href="https://training.chanakacademy.org" target="_blank" rel="noopener">Conocer Chanak TrainUp Education ↗</a>',
+    en='Operated by Chanak TrainUp Education, Inc., a 501(c)(3) nonprofit organization recognized by the U.S. IRS. Candid Gold Seal of Transparency 2026. <a href="https://training.chanakacademy.org" target="_blank" rel="noopener">Learn about Chanak TrainUp Education ↗</a>',
+    ca='Operada per Chanak TrainUp Education, Inc., organització sense ànim de lucre reconeguda per l’IRS dels Estats Units (501(c)(3)). Segell Candid Gold de transparència 2026. <a href="https://training.chanakacademy.org" target="_blank" rel="noopener">Conèixer Chanak TrainUp Education ↗</a>',
+    fr='Gérée par Chanak TrainUp Education, Inc., organisme sans but lucratif reconnu par l’IRS américain (501(c)(3)). Sceau de transparence Candid Gold 2026. <a href="https://training.chanakacademy.org" target="_blank" rel="noopener">En savoir plus sur Chanak TrainUp Education ↗</a>'),
  'tr_alt': dict(es='Diploma enrollado con cinta azul, birrete y carpeta de expediente sobre un escritorio', en='Rolled diploma with blue ribbon, graduation cap and transcript folder on a desk', ca='Diploma enrotllat amb cinta blava, birret i carpeta d’expedient sobre un escriptori', fr='Diplôme roulé avec ruban bleu, toque et dossier scolaire sur un bureau'),
  's_eye': dict(es='Cómo empezar', en='How to start', ca='Com començar', fr='Comment commencer'),
  's_h2': dict(es='De la orientación al primer día, en cuatro pasos', en='From guidance to day one, in four steps', ca='De l’orientació al primer dia, en quatre passos', fr='Du premier conseil au premier jour, en quatre étapes'),

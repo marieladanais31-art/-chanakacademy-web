@@ -240,10 +240,10 @@ window.CHANAK_PRICING = {
         enrollmentIncludes: 'Incluye diagnóstico académico y Plan Educativo Individualizado (PEI).',
         installments: 'mensual',
         includes: 'Revisión y orientación del mentor con la familia (1 hora al mes) · Acceso a plataforma LMS y SIS · Plan Educativo Individualizado (PEI)',
-        note: 'Al formalizar se abonan US$250: matrícula de US$180 más la primera mensualidad de US$70.',
+        note: 'Al formalizar se abonan US$260: matrícula de US$180 más la primera mensualidad de US$80.',
         tiers: [
-          { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$70/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
-          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$70/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
+          { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$80/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
+          { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$80/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
         footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por la familia de las editoriales en EE. UU. Precios orientativos de referencia en EE. UU.: AOP LIFEPAC (~$45–$50 USD por materia individual o $440–$485 USD/año set completo de 5 materias), Christian Light Education / CLE (~$55 USD por materia o $390–$430 USD/año con guías de maestro) o A.C.E. ($320–$390 USD/año en secundaria y $460–$530 USD/año en primaria). Calcular siempre gastos de envío internacional según destino.'
       },

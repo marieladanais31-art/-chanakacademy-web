@@ -212,7 +212,7 @@ def home(lang):
 <div class="cx-trust-it"><img src="/assets/fldoe-logo.png" alt="Florida Department of Education" width="128" height="42" loading="lazy" decoding="async"><div><b>FLDOE #134620</b><span>{t('t_fl', lang)}</span></div></div>
 <div class="cx-trust-it"><img src="/assets/msa-light.png" alt="Middle States Association (MSA-CESS)" width="136" height="44" loading="lazy" decoding="async"><div><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div></div>
 <div class="cx-trust-it"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University" width="120" height="60" loading="lazy" decoding="async"><div><b>DBU</b><span>{t('t_dbu', lang)}</span></div></div>
-<div class="cx-trust-it"><div class="cx-seal" aria-hidden="true">IRS<br>501(c)(3)</div><div><b>501(c)(3)</b><span>{t('t_irs', lang)}</span></div></div>
+<div class="cx-trust-it"><img src="/assets/img/chanak-trainup-logo.png" alt="Chanak Trainup Education - Nonprofit Section 501(c)(3)" width="130" height="55" loading="lazy" decoding="async" style="max-height:44px;width:auto;object-fit:contain"><div><b>501(c)(3)</b><span>{t('t_irs', lang)}</span></div></div>
 </div></div>
 
 <section class="cx-sec" id="rutas"><div class="cx-wrap">
@@ -234,7 +234,7 @@ def home(lang):
 <div><div class="cx-eyebrow">{t('tr_eye', lang)}</div><h2>{t('tr_h2', lang)}</h2>
 <h3>{t('tr1_h', lang)}</h3><p>{t('tr1_p', lang)}</p>
 <h3>{t('tr2_h', lang)}</h3><p>{t('tr2_p', lang)}</p></div></div>
-<div class="cx-grid cx-g2"><div class="cx-card"><h3>{t('tr3_h', lang)}</h3><p>{t('tr3_p', lang)}</p></div><div class="cx-card"><h3>{t('tr4_h', lang)}</h3><p>{t('tr4_p', lang)}</p></div></div>
+<div class="cx-grid cx-g2"><div class="cx-card"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University" width="130" height="65" loading="lazy" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr3_h', lang)}</h3><p>{t('tr3_p', lang)}</p></div><div class="cx-card"><img src="/assets/img/chanak-trainup-logo.png" alt="Chanak Trainup Education" width="140" height="60" loading="lazy" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr4_h', lang)}</h3><p>{t('tr4_p', lang)}</p></div></div>
 </div></section>
 
 <section class="cx-sec cx-soft" id="como"><div class="cx-wrap">
@@ -299,9 +299,9 @@ PRICING = {
     'guided': [  # (país es, país en, mensualidad, matrícula anual)
         ('España', 'Spain', 'US$80/mes · <b>70 €/mes</b>', 'US$80/mo · <b>€70/mo</b>', '180 €', 'es'),
         ('México', 'Mexico', '$3,500 MXN/mes', 'MXN 3,500/mo', '$4,500 MXN', 'mx'),
-        ('Panamá', 'Panama', 'US$70/mes', 'US$70/mo', 'US$180', 'pa'),
+        ('Panamá', 'Panama', 'US$80/mes', 'US$80/mo', 'US$180', 'pa'),
         ('Colombia', 'Colombia', '$225.000 COP/mes', 'COP 225,000/mo', '$575.000 COP', 'co'),
-        ('Internacional', 'International', 'US$70/mes', 'US$70/mo', 'US$180', 'global')],
+        ('Internacional', 'International', 'US$80/mes', 'US$80/mo', 'US$180', 'global')],
     'dual': [
         ('España', 'Spain', '110 € · 129 € · 148 € · 167 €/mes <small>rutas de 4, 3 y 2 años e intensiva</small>', '€110 · €129 · €148 · €167/mo <small>4-, 3-, 2-year and intensive routes</small>', '210 €', '35 €'),
         ('México', 'Mexico', 'desde $3,400 MXN/mes <small>$4,100 · $5,800 · $6,500 según la ruta</small>', 'from MXN 3,400/mo <small>3,400 · 4,100 · 5,800 · 6,500 by route</small>', '$4,300 MXN', '$850 MXN'),

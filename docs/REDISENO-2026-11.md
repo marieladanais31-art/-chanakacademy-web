@@ -34,7 +34,7 @@ python3 tools/patch_landings.py    # bloques nuevos de las landings (idempotente
 
 ## Imágenes
 
-`assets/img/gen/*.webp` son **vistas previas de baja resolución (200 px ampliadas)**. Antes de publicar hay que sustituirlas por los originales (2496×1664) que están en Canva, con el mismo nombre, en WebP ~1600 px, < 200 KB.
+`assets/img/gen/*.webp`: **Las 12 imágenes originales en alta resolución (1600 px)** fueron descargadas directamente desde los diseños de Canva y optimizadas en formato WebP (< 200 KB) con calidad 80-85%. Se añadió además el logotipo oficial de **Chanak Trainup Education - Nonprofit Section 501(c)(3)** en `assets/img/chanak-trainup-logo.png`.
 
 | Archivo | Original en Canva |
 |---|---|
@@ -56,7 +56,7 @@ Son imágenes generadas con IA (sin personas reales). El pie de la web indica «
 ## Pendientes (no tocados a propósito)
 
 1. **Arizona «Full-Time Online School» ($1.125–1.350/trimestre)** sigue en `/arizona/`, `/scholarships/`, `/matricula/`, `assets/js/chanak-hubs.js` y `_private/hubs-catalog.json`. Quitarlo afecta a los productos del SIS y a lo declarado en ClassWallet Arizona.
-2. **Homeschool Guiado fuera de España**: España publica US$80 y Panamá/Internacional US$70. Decidir si se unifica.
+2. **Homeschool Guiado fuera de España**: Resuelto (Opción A aprobada por dirección el 16-nov-2026): unificado a US$80/mes en Panamá e Internacional (España se mantiene en US$80 = 70 €/mes).
 3. **Full Enrollment en `/matricula/` y en el SIS**: la web ya lo ofrece en todos los países; el formulario de matrícula y el cobro aún no.
 4. **Equivalencias en moneda local** de Full Enrollment (EUR, MXN, COP): no publicadas hasta que se aprueben.
 5. **Landings EN de Off-Campus y Dual Diploma**: son bundles React con error de hidratación previo; recompilar desde `chanak-landing` con los bloques nuevos y borrar `cx-en-blocks.js`.
