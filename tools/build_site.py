@@ -102,12 +102,12 @@ def head(lang, title, desc, canonical, alternates, extra_ld=''):
 def header(lang, lang_urls):
     L = LINKS[lang]
     langs = ''.join(f'<a href="{lang_urls[l]}" hreflang="{l}" lang="{l}"' + (' aria-current="true"' if l == lang else '') + f'>{l.upper()}</a>' for l in LANGS if l in lang_urls)
-    return f'''<div class="cx-top">{t('top', lang)} <a href="https://sis.chanakacademy.org/login" rel="noopener">{t('n_portal', lang)} →</a></div>
+    return f'''<div class="cx-top"><div class="cx-wrap cx-top-in"><span>{t('top', lang)}</span><a href="https://sis.chanakacademy.org/login" rel="noopener">{t('n_portal', lang)} →</a></div></div>
 <header class="cx-head"><div class="cx-wrap cx-head-in">
 <a class="cx-brand" href="{L['home']}"><img src="/assets/chanak-logo.png" alt="Chanak International Academy" width="74" height="48"><span><b>Chanak International Academy</b><small>{t('brand_sub', lang)}</small></span></a>
 <button class="cx-burger" type="button" aria-expanded="false" aria-controls="cx-nav">☰ {t('menu', lang)}</button>
 <nav class="cx-nav" id="cx-nav" aria-label="{t('menu', lang)}">
-<a href="{L['hs']}">{t('n_hs', lang)}</a>
+<div class="cx-dropdown"><a href="{L['hs']}">{t('n_hs', lang)} ▾</a><div class="cx-dropdown-menu"><a href="{L['hs']}#planes">{t('m_opt_guiado', lang)}</a><a href="{L['hs']}#full-enrollment">{t('m_opt_full', lang)}</a></div></div>
 <a href="{L['dd']}">{t('n_dd', lang)}</a>
 <a href="{L['ms']}">{t('n_ms', lang)}</a>
 <a href="{L['fees']}">{t('n_fees', lang)}</a>
@@ -209,10 +209,10 @@ def home(lang):
 </div></div></section>
 
 <div class="cx-trust" aria-label="Credentials"><div class="cx-wrap cx-trust-in">
-<div class="cx-trust-it"><img src="/assets/fldoe-logo.png" alt="Florida Department of Education" width="128" height="42" loading="lazy" decoding="async"><div><b>FLDOE #134620</b><span>{t('t_fl', lang)}</span></div></div>
-<div class="cx-trust-it"><img src="/assets/msa-light.png" alt="Middle States Association (MSA-CESS)" width="136" height="44" loading="lazy" decoding="async"><div><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div></div>
-<div class="cx-trust-it"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University" width="120" height="60" loading="lazy" decoding="async"><div><b>DBU</b><span>{t('t_dbu', lang)}</span></div></div>
-<div class="cx-trust-it"><img src="/assets/img/chanak-trainup-logo.png" alt="Chanak Trainup Education - Nonprofit Section 501(c)(3)" width="130" height="55" loading="lazy" decoding="async" style="max-height:44px;width:auto;object-fit:contain"><div><b>501(c)(3)</b><span>{t('t_irs', lang)}</span></div></div>
+<div class="cx-trust-it"><img src="/assets/img/fldoe-logo-clean.png" alt="Florida Department of Education" width="160" height="44" loading="lazy" decoding="async"><b>FLDOE #134620</b><span>{t('t_fl', lang)}</span></div>
+<div class="cx-trust-it"><img src="/assets/img/msa-logo-clean.png" alt="Middle States Association (MSA-CESS)" width="160" height="40" loading="lazy" decoding="async"><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div>
+<div class="cx-trust-it"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University" width="130" height="48" loading="lazy" decoding="async"><b>Dallas Baptist University</b><span>{t('t_dbu', lang)}</span></div>
+<div class="cx-trust-it"><img src="/assets/img/chanak-trainup-logo.png" alt="Chanak TrainUp Education" width="140" height="48" loading="lazy" decoding="async"><b>Chanak TrainUp Education</b><span>{t('t_irs', lang)}</span></div>
 </div></div>
 
 <section class="cx-sec" id="rutas"><div class="cx-wrap">
@@ -251,7 +251,7 @@ def home(lang):
 <section class="cx-sec" id="modelo"><div class="cx-wrap cx-split">
 <div><div class="cx-eyebrow">{t('md_eye', lang)}</div><h2>{t('md_h2', lang)}</h2><p class="cx-lead">{t('md_lead', lang)}</p>
 <div class="cx-grid cx-g3" style="margin-top:20px"><div><div class="cx-num">60%</div><p>{t('md1', lang)}</p></div><div><div class="cx-num">20%</div><p>{t('md2', lang)}</p></div><div><div class="cx-num">20%</div><p>{t('md3', lang)}</p></div></div></div>
-<img src="{IMG}life-skills-cocina.webp" alt="{html.escape(t('md_alt', lang))}" width="1200" height="800" loading="lazy" decoding="async">
+<img src="{IMG}hs-materiales.webp" alt="{html.escape(t('md_alt', lang))}" width="1200" height="800" loading="lazy" decoding="async">
 </div></section>
 
 <section class="cx-sec cx-soft" id="fondos-esa"><div class="cx-wrap">
