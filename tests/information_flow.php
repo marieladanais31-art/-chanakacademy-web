@@ -22,9 +22,17 @@ foreach($cases as [$data,$route,$country,$lang,$file]){
  $p=chanak_information_pack($actual,$data,'https://www.chanakacademy.org/','https://www.chanakacademy.org');
  check($p['country']===$country,'country '.$file);
  check($p['language']===$lang,'language '.$file);
- check(str_ends_with((string)parse_url($p['dossier'],PHP_URL_PATH),$file.'.pdf'),'single dossier '.$file);
+ // Historical local PDFs and the new public official Drive PDFs both remain valid.
+ $url=(string)$p['dossier'];
+ $urlHost=(string)parse_url($url,PHP_URL_HOST);
+ $urlPath=(string)parse_url($url,PHP_URL_PATH);
+ if($urlHost==='drive.google.com'){
+   check((bool)preg_match('~^/file/d/[A-Za-z0-9_-]+/view$~',$urlPath),'verified public Drive PDF format '.$file);
+ } else {
+   check(str_ends_with($urlPath,$file.'.pdf'),'single local dossier '.$file);
+   check(file_exists(__DIR__.'/..'.$urlPath),'local PDF exists '.$file);
+ }
  check($p['fees']==='' && $p['complete']==='','no extra dossiers '.$file);
- check(file_exists(__DIR__.'/..'.parse_url($p['dossier'],PHP_URL_PATH)),'PDF exists '.$file);
  $expectedRecipients = in_array($actual, ['alabama_choose', 'florida_pep_ema', 'classwallet', 'esa'], true)
    ? ['scholarships@chanakacademy.org']
    : ($actual === 'dual' ? ['dualdiploma@chanakacademy.org'] : ['offcampus@chanakacademy.org']);
