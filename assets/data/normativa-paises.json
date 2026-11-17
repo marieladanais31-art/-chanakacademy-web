@@ -27,7 +27,13 @@
     "B": "Como centro extranjero no se aplican los requisitos mínimos del RD 132/2010 (sistema español) sino los estándares del país de origen y la normativa municipal. Local con uso compatible en el planeamiento (PGOU), seguridad contra incendios y accesibilidad (CTE) y solución para recreo y educación física (terraza o convenio con instalación pública cercana).",
     "C": "Titulaciones exigidas por la acreditadora y el sistema de EE. UU.; para Lengua y Cultura Españolas, profesorado con titulación habilitante en España. Entidad posible: asociación, fundación o S. L.; el código de centro extranjero se tramita ante la Consejería autonómica.",
     "partidas": "Adecuación CTE y accesibilidad; seguro de responsabilidad civil; docente habilitado de Lengua y Cultura; gestoría o asesoría legal de la autorización autonómica.",
-    "verificaciones": "Los requisitos varían por comunidad autónoma. Verificar con la Consejería y con asesoría legal, incluida la documentación que se exija para respaldar la acreditación."
+    "verificaciones": "Los requisitos varían por comunidad autónoma. Verificar con la Consejería y con asesoría legal, incluida la documentación que se exija para respaldar la acreditación.",
+    "etapas": {
+     "infantil": "Marco de referencia: Real Decreto 806/1993 (centros docentes extranjeros; incluye las enseñanzas de Lengua y Cultura Españolas). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de España.",
+     "primaria": "Marco de referencia: Real Decreto 806/1993 (centros docentes extranjeros; incluye las enseñanzas de Lengua y Cultura Españolas). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de España.",
+     "secundaria": "Marco de referencia: Real Decreto 806/1993 (centros docentes extranjeros; incluye las enseñanzas de Lengua y Cultura Españolas). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de España.",
+     "bachillerato": "Marco de referencia: Real Decreto 806/1993 (centros docentes extranjeros; incluye las enseñanzas de Lengua y Cultura Españolas). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de España."
+    }
    }
   },
   {
@@ -54,7 +60,13 @@
     "B": "Resuelto de funcionamiento ante el MEDUCA. Inmueble conforme a los planos y normas de seguridad aprobados por el Cuerpo de Bomberos y el Municipio. Se admiten centros pequeños tipo Learning Hub o centro particular.",
     "C": "Docentes de las materias nacionales con idoneidad docente expedida por el MEDUCA; mentores y guías del programa estadounidense con la certificación de Chanak.",
     "partidas": "Trámite del Resuelto de funcionamiento; planos y seguridad contra incendios; docentes con idoneidad para las materias nacionales.",
-    "verificaciones": "Confirmar con el MEDUCA el tipo de centro y los requisitos vigentes."
+    "verificaciones": "Confirmar con el MEDUCA el tipo de centro y los requisitos vigentes.",
+    "etapas": {
+     "infantil": "Marco de referencia: Ley 47 de 1946, Orgánica de Educación (texto único aprobado por el Decreto Ejecutivo 305 de 2004, Gaceta Oficial 25042). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Panamá.",
+     "primaria": "Marco de referencia: Ley 47 de 1946, Orgánica de Educación (texto único aprobado por el Decreto Ejecutivo 305 de 2004, Gaceta Oficial 25042). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Panamá.",
+     "secundaria": "Marco de referencia: Ley 47 de 1946, Orgánica de Educación (texto único aprobado por el Decreto Ejecutivo 305 de 2004, Gaceta Oficial 25042). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Panamá.",
+     "bachillerato": "Marco de referencia: Ley 47 de 1946, Orgánica de Educación (texto único aprobado por el Decreto Ejecutivo 305 de 2004, Gaceta Oficial 25042). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Panamá."
+    }
    }
   },
   {
@@ -83,7 +95,13 @@
     "B": "Constitución como A. C. o S. C. de servicios de tutoría y asesoría. Inmueble con uso de suelo compatible, constancia de seguridad estructural y Programa Interno de Protección Civil de la alcaldía o municipio.",
     "C": "Guías y mentores certificados por Chanak y con titulación universitaria acorde al estándar de acreditación estadounidense. Confirmar si la vía elegida exige cédula profesional mexicana.",
     "partidas": "Apostilla y traducción de documentos; trámite de revalidación SEP; protección civil; constancia de seguridad estructural; constitución de la A. C. o S. C.",
-    "verificaciones": "Punto de alta sensibilidad legal: confirmar con abogado local si el modelo puede operar sin RVOE."
+    "verificaciones": "Punto de alta sensibilidad legal: confirmar con abogado local si el modelo puede operar sin RVOE.",
+    "etapas": {
+     "infantil": "Marco de referencia: Constitución Política, arts. 3 y 9. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de México.",
+     "primaria": "Marco de referencia: Constitución Política, arts. 3 y 9. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de México.",
+     "secundaria": "Marco de referencia: Constitución Política, arts. 3 y 9. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de México.",
+     "bachillerato": "Marco de referencia: Constitución Política, arts. 3 y 9. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de México."
+    }
    }
   },
   {
@@ -110,7 +128,13 @@
     "B": "Entidad civil o mercantil (Registro Mercantil). Dictamen favorable de salubridad y visto bueno municipal: ventilación, iluminación y seguridad contra incendios.",
     "C": "Responsable técnico o administrativo registrado ante la Dirección Departamental de Educación; mentores certificados en el SIS y la metodología de Chanak.",
     "partidas": "Dictamen de salubridad; adecuación contra incendios; traducción jurada y apostilla; registro de la entidad.",
-    "verificaciones": "Confirmar con el MINEDUC el trámite y plazos actuales de equivalencia."
+    "verificaciones": "Confirmar con el MINEDUC el trámite y plazos actuales de equivalencia.",
+    "etapas": {
+     "infantil": "Marco de referencia: Ley de Educación Nacional (Decreto Legislativo 12-91). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Guatemala.",
+     "primaria": "Marco de referencia: Ley de Educación Nacional (Decreto Legislativo 12-91). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Guatemala.",
+     "secundaria": "Marco de referencia: Ley de Educación Nacional (Decreto Legislativo 12-91). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Guatemala.",
+     "bachillerato": "Marco de referencia: Ley de Educación Nacional (Decreto Legislativo 12-91). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Guatemala."
+    }
    }
   },
   {
@@ -137,7 +161,13 @@
     "B": "Registro como centro de apoyo pedagógico o modalidad flexible/asociación educativa. Local con requisitos básicos de infraestructura comercial, evacuación y medidas de seguridad supervisadas por Bomberos y Protección Civil.",
     "C": "Coordinador académico responsable de la gestión ante el MINEDUCYT; tutores y mentores con certificación institucional de Chanak.",
     "partidas": "Apostilla de documentos; adecuación de evacuación y seguridad; coordinador académico.",
-    "verificaciones": "Confirmar con el MINEDUCYT la figura de registro más adecuada."
+    "verificaciones": "Confirmar con el MINEDUCYT la figura de registro más adecuada.",
+    "etapas": {
+     "infantil": "Marco de referencia: Ley General de Educación (Decreto Legislativo 917 de 1996), arts. 59 a 62 sobre equivalencias de estudios realizados en el extranjero (Ministerio de Educación). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de El Salvador.",
+     "primaria": "Marco de referencia: Ley General de Educación (Decreto Legislativo 917 de 1996), arts. 59 a 62 sobre equivalencias de estudios realizados en el extranjero (Ministerio de Educación). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de El Salvador.",
+     "secundaria": "Marco de referencia: Ley General de Educación (Decreto Legislativo 917 de 1996), arts. 59 a 62 sobre equivalencias de estudios realizados en el extranjero (Ministerio de Educación). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de El Salvador.",
+     "bachillerato": "Marco de referencia: Ley General de Educación (Decreto Legislativo 917 de 1996), arts. 59 a 62 sobre equivalencias de estudios realizados en el extranjero (Ministerio de Educación). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de El Salvador."
+    }
    }
   },
   {
@@ -164,7 +194,13 @@
     "B": "Centro de apoyo académico o comunidad de aprendizaje constituido como compañía de servicios educativos o fundación. Plan de gestión de riesgos, aforos y permisos del Cuerpo de Bomberos y del municipio.",
     "C": "El centro facilita el proceso de educación en casa con tutores formados en Mastery Learning y en el SIS de Chanak.",
     "partidas": "Constitución de la compañía o fundación; plan de gestión de riesgos; permisos de Bomberos y municipio.",
-    "verificaciones": "Verificar el acuerdo ministerial vigente y las condiciones de equivalencia antes de ofrecerlo a familias."
+    "verificaciones": "Verificar el acuerdo ministerial vigente y las condiciones de equivalencia antes de ofrecerlo a familias.",
+    "etapas": {
+     "infantil": "Marco de referencia: Ley Orgánica de Educación Intercultural (LOEI). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Ecuador.",
+     "primaria": "Marco de referencia: Ley Orgánica de Educación Intercultural (LOEI). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Ecuador.",
+     "secundaria": "Marco de referencia: Ley Orgánica de Educación Intercultural (LOEI). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Ecuador.",
+     "bachillerato": "Marco de referencia: Ley Orgánica de Educación Intercultural (LOEI). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Ecuador."
+    }
    }
   },
   {
@@ -193,7 +229,13 @@
     "B": "Constitución como fundación, corporación o empresa de apoyo a la educación (CIIU 8560) en Cámara de Comercio. Local con concepto sanitario favorable, certificado de bomberos y uso de suelo compatible.",
     "C": "Contratación de personal local bajo la legislación laboral colombiana (seguridad social, parafiscales y riesgos laborales) y certificación de Chanak para guías y mentores.",
     "partidas": "Matrícula mercantil; concepto sanitario; certificado de bomberos; seguridad social y parafiscales; apostilla y traducción.",
-    "verificaciones": "Confirmar con el MEN condiciones de convalidación (por ejemplo, si se exigen pruebas) y el alcance de la figura CIIU 8560."
+    "verificaciones": "Confirmar con el MEN condiciones de convalidación (por ejemplo, si se exigen pruebas) y el alcance de la figura CIIU 8560.",
+    "etapas": {
+     "infantil": "Marco de referencia: Ley 115 de 1994. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Colombia.",
+     "primaria": "Marco de referencia: Ley 115 de 1994. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Colombia.",
+     "secundaria": "Marco de referencia: Ley 115 de 1994. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Colombia.",
+     "bachillerato": "Marco de referencia: Ley 115 de 1994. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Colombia."
+    }
    }
   },
   {
@@ -221,7 +263,13 @@
     "B": "Sociedad Anónima o S. R. L. con patente municipal de servicios educativos. Permisos sanitarios del Ministerio de Salud y accesibilidad universal (Ley 7600): rampas, puertas y servicios sanitarios accesibles.",
     "C": "Contratación bajo el Código de Trabajo; el personal que atiende a los estudiantes completa la certificación de Chanak.",
     "partidas": "Patente municipal; permisos del Ministerio de Salud; adecuación de accesibilidad; cargas laborales; apostilla.",
-    "verificaciones": "Confirmar con el MEP el procedimiento y plazos de equiparación."
+    "verificaciones": "Confirmar con el MEP el procedimiento y plazos de equiparación.",
+    "etapas": {
+     "infantil": "Marco de referencia: Ley Fundamental de Educación (Ley 2160). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Costa Rica.",
+     "primaria": "Marco de referencia: Ley Fundamental de Educación (Ley 2160). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Costa Rica.",
+     "secundaria": "Marco de referencia: Ley Fundamental de Educación (Ley 2160). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Costa Rica.",
+     "bachillerato": "Marco de referencia: Ley Fundamental de Educación (Ley 2160). Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Costa Rica."
+    }
    }
   },
   {
@@ -251,7 +299,13 @@
     "B": "Instalaciones verificadas o acreditadas en Florida antes de abrir y conformes con los requisitos municipales y estatales.",
     "C": "Personal conforme a los requisitos del estado y certificación de Chanak.",
     "partidas": "Verificación de instalaciones; seguros; certificación de guías.",
-    "verificaciones": "Chanak completará los requisitos específicos por estado en la propuesta de alianza."
+    "verificaciones": "Chanak completará los requisitos específicos por estado en la propuesta de alianza.",
+    "etapas": {
+     "infantil": "Marco de referencia: Normativa del estado y del municipio de la sede. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Estados Unidos.",
+     "primaria": "Marco de referencia: Normativa del estado y del municipio de la sede. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Estados Unidos.",
+     "secundaria": "Marco de referencia: Normativa del estado y del municipio de la sede. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Estados Unidos.",
+     "bachillerato": "Marco de referencia: Normativa del estado y del municipio de la sede. Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de Estados Unidos."
+    }
    }
   },
   {
@@ -281,7 +335,13 @@
     "B": "Uso del local, seguridad, accesibilidad y seguros conforme a la normativa local.",
     "C": "Cualificación según las leyes del país y certificación de Chanak.",
     "partidas": "Asesoría legal local; seguros; adecuación del espacio.",
-    "verificaciones": "Se prepara un análisis específico en la conversación de alianza."
+    "verificaciones": "Se prepara un análisis específico en la conversación de alianza.",
+    "etapas": {
+     "infantil": "Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de tu país.",
+     "primaria": "Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de tu país.",
+     "secundaria": "Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de tu país.",
+     "bachillerato": "Requisitos específicos de esta etapa: verificar en fuente oficial con la autoridad educativa de tu país."
+    }
    }
   }
  ]

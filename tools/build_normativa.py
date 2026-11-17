@@ -126,7 +126,8 @@ def build():
             'legal_note': dict(zip(L4, LEGAL_NOTE[cid])) if cid in LEGAL_NOTE else None,
             'resumen': dict(zip(L4, SUMMARY[cid])),
             # Solo para el previo descargable (no se muestra en las páginas públicas):
-            'previo': {'A': d.get('C', ''), 'B': d.get('D', ''), 'C': d.get('E', ''), 'partidas': d.get('F', ''), 'verificaciones': d.get('G', '')},
+            'previo': {'A': d.get('C', ''), 'B': d.get('D', ''), 'C': d.get('E', ''), 'partidas': d.get('F', ''), 'verificaciones': d.get('G', ''),
+                       'etapas': {'infantil': d.get('H', ''), 'primaria': d.get('I', ''), 'secundaria': d.get('J', ''), 'bachillerato': d.get('K', '')}},
         })
     data = {'fuente': 'assets/descargas/Calculadora-Presupuesto-Microschool-Chanak-ES.xlsx · hoja Normativa_datos',
             'revision': datetime.date.today().isoformat(), 'paises': out}

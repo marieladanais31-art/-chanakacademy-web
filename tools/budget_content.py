@@ -43,7 +43,7 @@ RES = d('Reserva', 'Reserve', 'Reserva', 'Réserve')
 OPS = d('Operación', 'Operations', 'Operació', 'Fonctionnement')
 
 # (partida, pilar, nota, valor de ejemplo)
-INV = [
+_INV_OLD = [
     (d('Currículo complementario propio (si lo mantienes)', 'Your own complementary curriculum (if you keep one)', 'Currículum complementari propi (si el mantens)', 'Votre programme complémentaire (si vous en gardez un)'), PA, d('Opcional: el plan base lo aporta Chanak', 'Optional: Chanak provides the base curriculum', 'Opcional: el pla base l’aporta Chanak', 'Facultatif : Chanak fournit le programme de base'), None),
     (d('Material didáctico inicial', 'Initial teaching materials', 'Material didàctic inicial', 'Matériel pédagogique initial'), PA, d('Libros, kits, material de aula', 'Books, kits, classroom supplies', 'Llibres, kits, material d’aula', 'Livres, kits, fournitures'), 1200),
     (d('Formación y certificación de guías y coordinadores', 'Training and certification of guides and coordinators', 'Formació i certificació de guies i coordinadors', 'Formation et certification des guides et coordinateurs'), PC, d('El importe se detalla en la propuesta de alianza', 'The amount is detailed in the partnership proposal', 'L’import es detalla a la proposta d’aliança', 'Le montant figure dans la proposition de partenariat'), None),
@@ -59,7 +59,7 @@ INV = [
     (d('Marketing de lanzamiento', 'Launch marketing', 'Màrqueting de llançament', 'Marketing de lancement'), MKT, d('Web, folletos, reuniones informativas', 'Website, flyers, information meetings', 'Web, fullets, reunions informatives', 'Site web, dépliants, réunions d’information'), 600),
     (d('Fondo de imprevistos', 'Contingency fund', 'Fons d’imprevistos', 'Fonds pour imprévus'), RES, d('Se recomienda reservar un margen', 'Keeping a margin is recommended', 'Es recomana reservar un marge', 'Prévoir une marge est recommandé'), 1000),
 ]
-MON = [
+_MON_OLD = [
     (d('Alquiler o cesión del espacio y suministros', 'Rent or use of the space and utilities', 'Lloguer o cessió de l’espai i subministraments', 'Loyer ou mise à disposition du lieu et charges'), PB, d('Compartir o ceder espacio reduce el coste', 'Sharing or borrowing space lowers the cost', 'Compartir o cedir espai redueix el cost', 'Partager un lieu réduit le coût'), 900),
     (d('Limpieza y mantenimiento', 'Cleaning and maintenance', 'Neteja i manteniment', 'Nettoyage et entretien'), PB, d('', '', '', ''), 150),
     (d('Personal docente y guías certificados (salarios y cargas)', 'Certified teaching staff and guides (salaries and payroll costs)', 'Personal docent i guies certificats (salaris i càrregues)', 'Personnel enseignant et guides certifiés (salaires et charges)'), PC, d('Según legislación laboral local', 'Under local labour law', 'Segons legislació laboral local', 'Selon le droit du travail local'), 2600),
@@ -119,3 +119,71 @@ T = dict(
                     'Informations de référence, sans valeur de conseil juridique. Les exigences évoluent et varient selon la région ; vérifiez-les auprès de l’autorité éducative de votre pays. Chanak oriente et accompagne, mais ne remplace pas le conseil juridique local et ne garantit ni autorisations, ni codes d’établissement, ni fonds publics.'),
     disclaimer=FOOT,
 )
+
+
+# ───────────── Variante por alcance: textos por id (los números viven en la hoja → JSON) ─────────────
+_PIL = {'A · Plan de estudios': PA, 'B · Instalaciones': PB, 'C · Personal docente': PC, 'Legal': LEGAL, 'Tecnología': TECH, 'Marketing': MKT, 'Reserva': RES, 'Operación': OPS}
+PILAR_I18N = _PIL
+_OLD_INV_IDS = ['curriculo_propio', 'material_inicial', 'formacion_guias', 'antecedentes', 'adecuacion', 'mobiliario', 'incendios', 'accesibilidad', 'licencias', 'legal', 'seguros', 'tecnologia', 'marketing', 'imprevistos']
+_OLD_MON_IDS = ['alquiler', 'limpieza', None, 'docentes_locales', 'administracion', 'plataforma', 'cuota_alianza', 'materiales', 'seguros_mes', 'contabilidad', 'marketing_mes', 'reserva_mes']
+INV_I18N = {i: (n, h) for i, (n, _p, h, _ex) in zip(_OLD_INV_IDS, _INV_OLD)}
+MON_I18N = {i: (n, h) for i, (n, _p, h, _ex) in zip(_OLD_MON_IDS, _MON_OLD) if i}
+INV_I18N.update({
+    'manipulativos': (d('Manipulativos y material de lectoescritura inicial', 'Manipulatives and early literacy materials', 'Manipulatius i material de lectoescriptura inicial', 'Matériel de manipulation et de lecture-écriture initiale'),
+                      d('Solo si el alcance incluye K–2', 'Only if the scope includes K–2', 'Només si l’abast inclou K–2', 'Seulement si le périmètre inclut K–2')),
+    'mobiliario_infantil': (d('Mobiliario y zona de juego para primeros grados', 'Furniture and play area for early grades', 'Mobiliari i zona de joc per als primers cursos', 'Mobilier et espace de jeu pour les premières classes'),
+                            d('Solo si el alcance incluye K–2', 'Only if the scope includes K–2', 'Només si l’abast inclou K–2', 'Seulement si le périmètre inclut K–2')),
+    'laboratorio': (d('Laboratorio y material de ciencias', 'Science lab and materials', 'Laboratori i material de ciències', 'Laboratoire et matériel de sciences'),
+                    d('Solo si el alcance incluye Middle o High School', 'Only if the scope includes Middle or High School', 'Només si l’abast inclou Middle o High School', 'Seulement si le périmètre inclut Middle ou High School')),
+    'dual_examenes': (d('Dual Diploma, exámenes y orientación universitaria', 'Dual Diploma, exams and university guidance', 'Dual Diploma, exàmens i orientació universitària', 'Dual Diploma, examens et orientation universitaire'),
+                      d('Solo si el alcance incluye High School', 'Only if the scope includes High School', 'Només si l’abast inclou High School', 'Seulement si le périmètre inclut High School')),
+})
+MON_I18N['administracion'] = (d('Administración y gestión interna', 'Administration and internal management', 'Administració i gestió interna', 'Administration et gestion interne'), d('', '', '', ''))
+ALCANCE_I18N = {
+    'alcance1': d('Kinder y lectura inicial', 'Kindergarten and early literacy', 'Kinder i lectura inicial', 'Maternelle et lecture initiale'),
+    'alcance2': d('Elementary (K–5)', 'Elementary (K–5)', 'Elementary (K–5)', 'Elementary (K–5)'),
+    'alcance3': d('Middle (6–8)', 'Middle (6–8)', 'Middle (6–8)', 'Middle (6–8)'),
+    'alcance4': d('High School (9–12)', 'High School (9–12)', 'High School (9–12)', 'High School (9–12)'),
+    'alcance5': d('Escuela completa (K–12)', 'Full school (K–12)', 'Escola completa (K–12)', 'École complète (K–12)'),
+}
+TRAMO_I18N = {
+    'tramo1': d('K–2 · Kinder y lectura inicial', 'K–2 · Kindergarten and early literacy', 'K–2 · Kinder i lectura inicial', 'K–2 · Maternelle et lecture initiale'),
+    'tramo2': d('3–5 · Resto de Elementary', '3–5 · Rest of Elementary', '3–5 · Resta d’Elementary', '3–5 · Reste d’Elementary'),
+    'tramo3': d('6–8 · Middle', '6–8 · Middle', '6–8 · Middle', '6–8 · Middle'),
+    'tramo4': d('9–12 · High School', '9–12 · High School', '9–12 · High School', '9–12 · High School'),
+}
+EX = dict(fee=400, students=16,
+          inv={'material_inicial': 1200, 'mobiliario': 3200, 'adecuacion': 2500, 'incendios': 800, 'licencias': 600, 'legal': 900, 'seguros': 400, 'tecnologia': 2400, 'marketing': 600, 'imprevistos': 1000},
+          mon={'alquiler': 900, 'limpieza': 150, 'docentes_locales': 2600, 'administracion': 800, 'materiales': 200, 'seguros_mes': 150, 'contabilidad': 150, 'marketing_mes': 150, 'reserva_mes': 100})
+T.update(dict(
+    scope=d('Alcance de la escuela', 'School scope', 'Abast de l’escola', 'Périmètre de l’école'),
+    scope_ph=d('— Elige el alcance —', '— Choose the scope —', '— Tria l’abast —', '— Choisissez le périmètre —'),
+    scope_req=d('Elige el alcance de tu escuela (obligatorio) para calcular el resultado.', 'Choose your school’s scope (required) to calculate the result.', 'Tria l’abast de la teva escola (obligatori) per calcular el resultat.', 'Choisissez le périmètre de votre école (obligatoire) pour calculer le résultat.'),
+    students_h2=d('Alumnos por tramo', 'Students per band', 'Alumnes per tram', 'Élèves par tranche'),
+    students=d('Alumnos', 'Students', 'Alumnes', 'Élèves'),
+    band_in=d('Tramo incluido en el alcance elegido', 'Band included in the chosen scope', 'Tram inclòs a l’abast triat', 'Tranche incluse dans le périmètre choisi'),
+    band_out=d('Fuera del alcance elegido: cuenta como 0', 'Outside the chosen scope: counts as 0', 'Fora de l’abast triat: compta com a 0', 'Hors du périmètre choisi : compte pour 0'),
+    assume_h=d('Supuestos por tramo (editables)', 'Assumptions per band (editable)', 'Supòsits per tram (editables)', 'Hypothèses par tranche (modifiables)'),
+    assume_p=d('Supuesto editable. Los ratios, las aulas y el espacio son valores de partida: ajústalos a la ley y a la realidad de tu país. Los importes quedan vacíos.',
+               'Editable assumption. Ratios, classrooms and space are starting values: adjust them to your country’s law and reality. Amounts are left empty.',
+               'Supòsit editable. Els ràtios, les aules i l’espai són valors de partida: ajusta’ls a la llei i a la realitat del teu país. Els imports queden buits.',
+               'Hypothèse modifiable. Les ratios, les salles et l’espace sont des valeurs de départ : adaptez-les à la loi et à la réalité de votre pays. Les montants restent vides.'),
+    th_band=d('Tramo', 'Band', 'Tram', 'Tranche'), th_ratio=d('Alumnos por guía', 'Students per guide', 'Alumnes per guia', 'Élèves par guide'), th_aula=d('Alumnos por aula', 'Students per classroom', 'Alumnes per aula', 'Élèves par salle'),
+    th_m2=d('m² por alumno', 'm² per student', 'm² per alumne', 'm² par élève'), th_cost=d('Coste mensual por guía', 'Monthly cost per guide', 'Cost mensual per guia', 'Coût mensuel par guide'),
+    th_mi=d('Material inicial por alumno', 'Initial materials per student', 'Material inicial per alumne', 'Matériel initial par élève'), th_ti=d('Tecnología inicial por alumno', 'Initial technology per student', 'Tecnologia inicial per alumne', 'Technologie initiale par élève'),
+    th_mm=d('Material mensual por alumno', 'Monthly materials per student', 'Material mensual per alumne', 'Matériel mensuel par élève'),
+    coord_cost=d('Coste mensual del coordinador académico', 'Monthly cost of the academic coordinator', 'Cost mensual del coordinador acadèmic', 'Coût mensuel du coordinateur pédagogique'),
+    coord_h=d('Se añade si hay alumnos en 2 o más etapas (Elementary, Middle, High).', 'Added when there are students in 2 or more stages (Elementary, Middle, High).', 'S’afegeix si hi ha alumnes en 2 o més etapes (Elementary, Middle, High).', 'Ajouté s’il y a des élèves dans 2 étapes ou plus (Elementary, Middle, High).'),
+    staff_h=d('Personal y espacio (calculado)', 'Staff and space (calculated)', 'Personal i espai (calculat)', 'Personnel et espace (calculé)'),
+    th_students=d('Alumnos', 'Students', 'Alumnes', 'Élèves'), th_guides=d('Guías', 'Guides', 'Guies', 'Guides'), th_rooms=d('Aulas', 'Classrooms', 'Aules', 'Salles'), th_sqm=d('m² necesarios', 'm² needed', 'm² necessaris', 'm² nécessaires'),
+    coord_lbl=d('Coordinador académico', 'Academic coordinator', 'Coordinador acadèmic', 'Coordinateur pédagogique'),
+    staff_empty=d('Introduce alumnos en algún tramo del alcance para ver guías, aulas y espacio.', 'Enter students in a band of the scope to see guides, classrooms and space.', 'Introdueix alumnes en algun tram de l’abast per veure guies, aules i espai.', 'Saisissez des élèves dans une tranche du périmètre pour voir guides, salles et espace.'),
+    law_note=d('Ajustar a la ley del país.', 'Adjust to the country’s law.', 'Ajustar a la llei del país.', 'À adapter à la loi du pays.'),
+    cmp_h=d('Comparar alcances', 'Compare scopes', 'Comparar abasts', 'Comparer les périmètres'),
+    cmp_p=d('Las mismas entradas calculadas para los cinco alcances en paralelo: útil para decidir por dónde empezar o cómo crecer por fases.', 'The same inputs calculated for the five scopes side by side: useful to decide where to start or how to grow in phases.',
+            'Les mateixes entrades calculades per als cinc abasts en paral·lel: útil per decidir per on començar o com créixer per fases.', 'Les mêmes données calculées pour les cinq périmètres en parallèle : utile pour décider par où commencer ou comment croître par phases.'),
+    r_students=d('Alumnos', 'Students', 'Alumnes', 'Élèves'), r_staff=d('Coste de personal', 'Staff cost', 'Cost de personal', 'Coût du personnel'),
+    st_infantil=d('Infantil', 'Early childhood', 'Infantil', 'Maternelle'), st_primaria=d('Primaria', 'Primary', 'Primària', 'Primaire'), st_secundaria=d('Secundaria', 'Secondary', 'Secundària', 'Secondaire'), st_bachillerato=d('Bachillerato', 'Upper secondary', 'Batxillerat', 'Lycée'),
+    pv_stage=d('Notas por etapa', 'Notes by stage', 'Notes per etapa', 'Notes par étape'),
+    load_err=d('No se pudieron cargar los parámetros. Descarga la hoja de cálculo.', 'The parameters could not be loaded. Download the spreadsheet.', 'No s’han pogut carregar els paràmetres. Descarrega el full de càlcul.', 'Impossible de charger les paramètres. Téléchargez la feuille de calcul.'),
+))

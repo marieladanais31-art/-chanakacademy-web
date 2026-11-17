@@ -76,6 +76,7 @@ Orden de reconstrucción (todos idempotentes):
 
 ```bash
 python3 tools/build_site.py          # portada (4 idiomas) y tarifas
+python3 tools/build_acreditacion.py  # páginas de acreditación MSA-CESS (4 idiomas)
 python3 tools/patch_landings.py      # bloques de off-campus, dual-diploma y microschools + bloque Core
 python3 tools/build_microschool.py   # normativa (JSON), pilares, tabla por país, marco legal, 7 pasos, kit, FAQ
 python3 tools/build_pages.py         # presupuesto, 7 errores, colabora (mentores, embajadores)
@@ -89,3 +90,12 @@ python3 tools/check_links.py         # enlaces, anclas y JSON-LD
   `tools/budget_content.py`, `tools/errores_content.py`, `tools/unete_content.py`.
 - Normativa por país: `tools/build_normativa.py` lee la hoja `Normativa_datos` del Excel y solo publica las normas de `VERIFIED`.
 - Hallazgos y decisiones pendientes: `docs/AUDITORIA-INCOHERENCIAS.md`.
+
+Hoja de presupuesto (requiere `python3 -m venv .venv && .venv/bin/pip install openpyxl formulas`, solo para regenerarla y probarla):
+
+```bash
+.venv/bin/python tools/build_hoja_presupuesto.py    # regenera el .xlsx (conserva Normativa_datos)
+python3 tools/build_presupuesto_json.py             # xlsx → assets/data/presupuesto-alcance.json (lo ejecuta también build_microschool.py)
+.venv/bin/python tools/test_hoja_presupuesto.py     # evalúa las fórmulas y guarda tests/fixtures/budget_expected.json
+node tests/budget_scope.cjs                         # web ↔ hoja
+```

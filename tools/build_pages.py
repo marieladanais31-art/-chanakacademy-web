@@ -51,8 +51,9 @@ def hp():
 # ───────────── Presupuesto ─────────────
 def budget(lang):
     L = LINKS[lang]
-    rows = lambda src: [dict(n=n[lang], p=p[lang], h=h[lang], ex=ex) for n, p, h, ex in src]
-    cfg = dict(lang=lang, locale=B.LOCALE[lang], currency='EUR', country='es', inv=rows(B.INV), mon=rows(B.MON), t={k: v[lang] for k, v in B.T.items()})
+    i18n = dict(inv={k: dict(n=v[0][lang], h=v[1][lang]) for k, v in B.INV_I18N.items()}, mon={k: dict(n=v[0][lang], h=v[1][lang]) for k, v in B.MON_I18N.items()},
+                alcance={k: v[lang] for k, v in B.ALCANCE_I18N.items()}, tramo={k: v[lang] for k, v in B.TRAMO_I18N.items()}, pilar={k: v[lang] for k, v in B.PILAR_I18N.items()})
+    cfg = dict(lang=lang, locale=B.LOCALE[lang], currency='EUR', country='es', i18n=i18n, ex=B.EX, t={k: v[lang] for k, v in B.T.items()})
     tips = ''.join(f'<li>{t[lang]}</li>' for t in B.TIPS)
     trail = [(C.CRUMB_MS[lang], L['ms']), (B.T['previo_h'][lang] if False else B.H1[lang].split(' para ')[0].split(' for ')[0].split(' per ')[0].split(' pour ')[0], B.URL[lang])]
     body = f'''
@@ -69,7 +70,7 @@ def budget(lang):
 </div></section>'''
     app = {"@type": "WebApplication", "name": B.H1[lang], "url": BASE + B.URL[lang], "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": lang,
            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "provider": {"@id": BASE + "/#school"}}
-    scripts = f'<script>window.CX_BUDGET={json.dumps(cfg, ensure_ascii=False)};</script><script src="/assets/js/cx-budget.js?v={V}"></script>'
+    scripts = f'<script>window.CX_BUDGET={json.dumps(cfg, ensure_ascii=False)};</script><script src="/assets/js/cx-budget-core.js?v={V}"></script><script src="/assets/js/cx-budget.js?v={V}"></script>'
     page(lang, B.URL, B.TITLE[lang], B.DESC[lang], body, ld(ORG_LD, crumbs(lang, trail), app), scripts=scripts)
 
 

@@ -299,3 +299,9 @@ p.cx-policy{margin:26px 0 0}
 .cx-inst{max-width:860px;margin:36px auto 0;background:#fff;border:1px solid var(--border);border-left:4px solid var(--teal-d);border-radius:var(--r);padding:24px 28px}
 .cx-inst h3{margin-top:0}.cx-inst p:last-child{margin-bottom:0}
 .cx-soft .cx-inst{background:#fff}
+/* Presupuesto por alcance */
+.cx-b-bands{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 16px;margin:10px 0}
+@media(max-width:960px){.cx-b-bands{grid-template-columns:1fr 1fr}}@media(max-width:520px){.cx-b-bands{grid-template-columns:1fr}}
+.cx-b-warn{margin-top:14px}.cx-b-assume{margin-top:18px}.cx-b-assume summary{cursor:pointer;font-weight:700;color:var(--navy)}
+.cx-b-cmp .cx-table th.cx-b-sel{background:var(--teal-d)}.cx-b-cmp .cx-table td:first-child{font-weight:700}
+.cx-b-assume .cx-inp{min-width:96px;margin:0}

@@ -62,3 +62,38 @@ la normativa de educación en casa de Ecuador (no se publica ningún número de 
 Mínimo de pago de embajadores (US$50) y porcentaje de comisión; términos y divulgación de embajadores; formación de Guías (40 h);
 cuota de incorporación; condiciones económicas de alianza; aviso «International Education and Regulatory Notice» (texto en inglés,
 marcado `PENDIENTE_REVISION_LEGAL` en el HTML).
+
+
+## Acreditación MSA-CESS (carta ONOA verificada)
+
+Datos publicados, comprobados contra la carta ONOA: decisión del 6 de noviembre de 2026 (Commissions on Elementary and Secondary Schools de
+Middle States); alcance Kindergarten–Grade 12; vigencia 7 años, hasta el 1 de enero de 2034; código institucional MSA FL175; carta firmada por
+Christian Talbot, President; Mid-Term Report el 1 de diciembre de 2030; visita del equipo en primavera de 2033. No se publica nada más.
+
+- Páginas `/acreditacion/`, `/en/accreditation/`, `/ca/acreditacio/`, `/fr/accreditation/` (`tools/build_acreditacion.py`), con la sección «Qué significa la
+  acreditación MSA-CESS» y JSON-LD (credencial con fecha de decisión, vigencia y código).
+- **No se publica:** el informe final del equipo (se retiró su enlace de la página), el portal de miembros, el paquete de celebración ni ningún enlace awstrack.
+  La carta ONOA sigue enlazada porque ya estaba publicada en `main` y responde sin iniciar sesión; **confirmar con dirección si puede enlazarse públicamente**
+  (idealmente alojando el PDF en el sitio).
+- Eliminados «candidate/candidata/candidato» y la insignia `msa-candidate.jpg`; las plantillas y generadores de dossiers (`_private/dossier-templates/`,
+  `tools/generate_*_dossiers.py`) usan la fórmula acreditada. **No se regeneró ningún PDF.**
+- **Logo MSA:** se usa el `msa-logo-clean.png` de `main`. Hay que confirmar las normas de uso del sello para miembros acreditados; si hubiera dudas, dejar solo texto.
+
+## Presupuesto de Microschool por alcance
+
+- Desplegable obligatorio «Alcance de la escuela» (5 opciones) en la hoja (`Inicio!C7`) y en la web. «Kinder y lectura inicial» = tramo K–2 por defecto
+  (**confirmar con dirección**). Los alcances se componen de 4 tramos (K–2, 3–5, 6–8, 9–12); Escuela completa = suma de los tramos.
+- Origen único de datos: hojas `Parametros_alcance` (alcances, ratios, aulas, m², costes, partidas condicionadas) y `Normativa_datos`, en
+  `assets/descargas/Calculadora-Presupuesto-Microschool-Chanak-ES.xlsx`. La web lee `assets/data/presupuesto-alcance.json` y `normativa-paises.json`,
+  generados con `tools/build_presupuesto_json.py` y `tools/build_normativa.py`.
+- Supuestos iniciales (editables, marcados «supuesto editable»): ratios alumnos/guía 8 · 10 · 12 · 15, alumnos por aula 12 · 15 · 18 · 20, m² por alumno 3 · 2,5 · 2,5 · 2,5.
+  **Son valores de partida, no datos oficiales.** Los importes (coste por guía, materiales, tecnología, coordinador) quedan vacíos.
+- `Cuotas_Chanak`: vacía en la versión pública. Si se precarga (versión de propuesta), la cuota por alumno se aplica solo a los alumnos de los tramos activos; con la tabla vacía no aparece ningún importe de Chanak.
+- Hoja `Comparar_alcances`: los cinco alcances en paralelo. Previo normativo: país + notas por etapa. **Las notas por etapa son genéricas** («verificar en fuente oficial»):
+  no se han inventado requisitos por etapa; pendiente de verificación legal.
+- Pruebas: `node tests/budget_scope.cjs` compara el cálculo web con la hoja (fórmulas evaluadas con `tools/test_hoja_presupuesto.py`) en 3 escenarios × 5 alcances.
+
+## Pendiente de decisión (no rellenado)
+
+Alcance exacto de «Kinder y lectura inicial»; ratios y partidas por tramo; si la ONOA puede enlazarse públicamente y cómo usar el logo MSA; verificación legal de la normativa por país y por etapa.
+**Mínimo de familias:** se mantiene 10 (decisión institucional del 17 nov.); el prompt de rescate lo lista otra vez como abierto: confirmar.

@@ -10,6 +10,7 @@ from site_i18n import LINKS
 import ms_content as C
 import build_normativa
 import notice_content
+import build_presupuesto_json
 
 MS = {'es': 'microschools/index.html', 'en': 'microschools/en/index.html', 'ca': 'microschools/ca/index.html', 'fr': 'microschools/fr/index.html'}
 OPEN = {'es': 'open-a-microschool/index.html', 'en': 'open-a-microschool/en/index.html', 'ca': 'open-a-microschool/ca/index.html', 'fr': 'open-a-microschool/fr/index.html'}
@@ -209,7 +210,7 @@ def open_page(lang, data):
 
 
 if __name__ == '__main__':
-    print('Normativa:'); data = build_normativa.build()
+    print('Normativa:'); data = build_normativa.build(); build_presupuesto_json.build()
     print('Microschool:')
     for l in C.L4:
         microschools(l, data); open_page(l, data)
