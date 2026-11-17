@@ -99,8 +99,8 @@ DATA={
 def credentials(lang):
  en=lang=='en'
  return section('Institutional standing' if en else 'Respaldo institucional',
- 'FLDOE #134620: private-school registration, not accreditation. MSA-CESS: official candidate; accreditation has not yet been granted. IRS 501(c)(3): nonprofit tax status. Candid Gold 2026: transparency recognition, not educational accreditation.' if en else
- 'FLDOE #134620: registro de escuela privada, no acreditación. MSA-CESS: candidatura oficial; la acreditación todavía no ha sido concedida. IRS 501(c)(3): condición fiscal nonprofit. Candid Gold 2026: transparencia, no acreditación educativa.')
+ 'FLDOE #134620: private-school registration, not accreditation. MSA-CESS: accredited for Kindergarten–Grade 12 (decision of November 6, 2026; valid through January 1, 2034). IRS 501(c)(3): nonprofit tax status. Candid Gold 2026: transparency recognition, not educational accreditation.' if en else
+ 'FLDOE #134620: registro de escuela privada, no acreditación. MSA-CESS: acreditada para Kindergarten–Grade 12 (decisión del 6 de noviembre de 2026; vigencia hasta el 1 de enero de 2034). IRS 501(c)(3): condición fiscal nonprofit. Candid Gold 2026: transparencia, no acreditación educativa.')
 
 def final_page(key,lang):
  en=lang=='en';d=DATA[key]

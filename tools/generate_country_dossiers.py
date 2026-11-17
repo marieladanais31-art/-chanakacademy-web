@@ -62,7 +62,7 @@ def make(program_key, code, market):
     story = []
     cover = Table([[Paragraph("CHANAK INTERNATIONAL ACADEMY", styles["CoverSub"])], [Paragraph(p["title"], styles["CoverTitle"])], [Paragraph(f"Dossier informativo · {market['country']} · Ciclo 2026–2027", styles["CoverSub"])], [Spacer(1, 8*mm)], [Paragraph(p["promise"], styles["CoverSub"])]], colWidths=[174*mm], rowHeights=[18*mm, 38*mm, 18*mm, 12*mm, 42*mm])
     cover.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,-1), NAVY), ("BOX", (0,0), (-1,-1), 0, NAVY), ("VALIGN", (0,0), (-1,-1), "MIDDLE"), ("LEFTPADDING", (0,0), (-1,-1), 14*mm), ("RIGHTPADDING", (0,0), (-1,-1), 14*mm)]))
-    story += [cover, Spacer(1, 10*mm), Paragraph("Escuela privada registrada en Florida · FLDOE #134620", styles["H2x"]), Paragraph("Candidato oficial a acreditación de Middle States Association (MSA-CESS). La candidatura no equivale todavía a acreditación concedida.", styles["Bodyx"]), Paragraph(market["local"], styles["Bodyx"]), PageBreak()]
+    story += [cover, Spacer(1, 10*mm), Paragraph("Escuela privada registrada en Florida · FLDOE #134620", styles["H2x"]), Paragraph("Acreditada por MSA-CESS (Middle States Association) para Kindergarten–Grade 12: decisión del 6 de noviembre de 2026, vigencia hasta el 1 de enero de 2034. La acreditación no sustituye autorizaciones locales ni garantiza admisión o convalidación.", styles["Bodyx"]), Paragraph(market["local"], styles["Bodyx"]), PageBreak()]
     story += [Paragraph(f"{p['title']} en {market['country']}", styles["H1x"]), Paragraph(p["promise"], styles["Bodyx"]), Paragraph("Qué incluye", styles["H2x"])]
     for item in p["features"]:
         story.append(Paragraph(f"• {item}", styles["Bodyx"]))
