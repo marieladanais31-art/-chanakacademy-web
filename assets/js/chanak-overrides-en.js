@@ -451,7 +451,8 @@
       mount.style.cssText = "max-width:900px;margin:36px auto;padding:28px 24px;background:#f4fbfb;border:1px solid #cdeeee;border-radius:16px;font-family:'DM Sans',sans-serif;color:#0c2d48";
       document.body.appendChild(mount);
     }
-    var tiers = oc.tiers || [];
+    var tx = oc.en || oc;   /* English copy for the Spanish-language markets (regional-pricing.js) */
+    var tiers = tx.tiers || oc.tiers || [];
     var flat = tiers.length > 0 && tiers.every(function (t) { return t.monthly === tiers[0].monthly; });
     var monthlyBlock;
     if (flat) {
@@ -466,11 +467,11 @@
     mount.innerHTML =
       '<h2 style="font-family:\'Playfair Display\',Georgia,serif;font-size:1.4rem;margin:0 0 14px">Tuition</h2>'
       + '<p style="font-size:1.6rem;font-weight:800;margin:0 0 4px">' + (oc.enrollmentFee || "") + ' <span style="font-size:1rem;font-weight:600;color:#2A4262">Enrollment (one-time)</span></p>'
-      + (oc.enrollmentIncludes ? '<p style="font-size:14px;color:#2A4262;margin:0 0 14px">' + oc.enrollmentIncludes + '</p>' : "")
+      + (tx.enrollmentIncludes ? '<p style="font-size:14px;color:#2A4262;margin:0 0 14px">' + tx.enrollmentIncludes + '</p>' : "")
       + monthlyBlock
-      + (oc.installments ? '<p style="font-size:14px;color:#2A4262;margin:0 0 14px">' + oc.installments + '</p>' : "")
-      + (oc.includes ? '<p style="font-size:14px;line-height:1.7;margin:0 0 10px"><strong>Included: </strong>' + oc.includes + '</p>' : "")
-      + (oc.footnote ? '<p style="font-size:13px;color:#5A7060;line-height:1.6;margin:0">' + oc.footnote + '</p>' : "");
+      + (tx.installments ? '<p style="font-size:14px;color:#2A4262;margin:0 0 14px">' + tx.installments + '</p>' : "")
+      + (tx.includes ? '<p style="font-size:14px;line-height:1.7;margin:0 0 10px"><strong>Included: </strong>' + tx.includes + '</p>' : "")
+      + (tx.footnote ? '<p style="font-size:13px;color:#5A7060;line-height:1.6;margin:0">' + tx.footnote + '</p>' : "");
 
     if (!mount.dataset.countryListener) {
       mount.dataset.countryListener = "1";
@@ -524,7 +525,7 @@
       }
     }
     mount.style.display = "";
-    mount.innerHTML = '<strong>Chanak contact · ' + (region.shortName || '') + ':</strong> ' + contact.name;
+    mount.innerHTML = '<strong>Chanak contact · ' + (region.shortNameEn || region.shortName || '') + ':</strong> ' + contact.name;
 
     if (!mount.dataset.countryListener) {
       mount.dataset.countryListener = "1";

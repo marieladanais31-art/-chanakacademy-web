@@ -229,6 +229,61 @@ COND = [
 ]
 
 
+# ── Cómo pagan las familias: fondos aprobados (ESA) o pago directo ──
+def d5(es, en, ca, fr, pt):
+    return dict(es=es, en=en, ca=ca, fr=fr, pt=pt)
+
+
+PAGO_EYE = d5('Cómo pagan las familias', 'How families pay', 'Com paguen les famílies', 'Comment les familles paient', 'Como as famílias pagam')
+PAGO_H2 = d5('Con fondos aprobados o con pago directo', 'With approved funds or by direct payment', 'Amb fons aprovats o amb pagament directe', 'Avec des fonds approuvés ou par paiement direct', 'Com fundos aprovados ou com pagamento direto')
+PAGO_LEAD = d5('La forma de pago depende del país y de si tu estado ofrece un programa de elección escolar elegible. Cada familia confirma su caso antes de matricularse.',
+               'How you pay depends on the country and on whether your state offers an eligible school-choice program. Each family confirms its case before enrolling.',
+               'La forma de pagament depèn del país i de si el teu estat ofereix un programa d’elecció escolar elegible. Cada família confirma el seu cas abans de matricular-se.',
+               'Le mode de paiement dépend du pays et de la possibilité, dans votre État, d’un programme de choix scolaire éligible. Chaque famille confirme sa situation avant de s’inscrire.',
+               'A forma de pagamento depende do país e de o seu estado oferecer um programa de escolha escolar elegível. Cada família confirma o seu caso antes de se matricular.')
+PAGO = [
+    (d5('Microschool en EE. UU. con fondos aprobados', 'U.S. Microschool with approved funds', 'Microschool als EUA amb fons aprovats', 'Microschool aux États-Unis avec des fonds approuvés', 'Microschool nos EUA com fundos aprovados'),
+     d5('Si tu estado tiene un programa ESA elegible y aprueba el servicio, la familia puede pagar con esos fondos. Chanak es proveedor aprobado en Alabama, Arizona, Florida, New Hampshire, Carolina del Sur, Utah y Wyoming. La familia elige Homeschool Guiado con apoyo presencial o Full Enrollment, y el SIS registra el programa de cada alumno.',
+        'If your state has an eligible ESA program and approves the service, the family can pay with those funds. Chanak is an approved provider in Alabama, Arizona, Florida, New Hampshire, South Carolina, Utah and Wyoming. The family chooses Guided Homeschool with in-person support or Full Enrollment, and the SIS records each student’s program.',
+        'Si el teu estat té un programa ESA elegible i aprova el servei, la família pot pagar amb aquests fons. Chanak és proveïdor aprovat a Alabama, Arizona, Florida, New Hampshire, Carolina del Sud, Utah i Wyoming. La família tria Homeschool Guiat amb suport presencial o Full Enrollment, i el SIS registra el programa de cada alumne.',
+        'Si votre État dispose d’un programme ESA éligible et approuve le service, la famille peut payer avec ces fonds. Chanak est prestataire agréé en Alabama, Arizona, Floride, New Hampshire, Caroline du Sud, Utah et Wyoming. La famille choisit Homeschool guidé avec soutien en présentiel ou Full Enrollment, et le SIS enregistre le programme de chaque élève.',
+        'Se o seu estado tem um programa ESA elegível e aprova o serviço, a família pode pagar com esses fundos. A Chanak é provedora aprovada no Alabama, Arizona, Flórida, New Hampshire, Carolina do Sul, Utah e Wyoming. A família escolhe Homeschool Guiado com apoio presencial ou Full Enrollment, e o SIS registra o programa de cada aluno.')),
+    (d5('Sin fondos estatales e International Microschools', 'Without state funds, and International Microschools', 'Sense fons estatals i International Microschools', 'Sans fonds d’État et International Microschools', 'Sem fundos estaduais e International Microschools'),
+     d5('Las familias que no usan fondos estatales, y todas las de International Microschools, pagan directamente la cuota de la Microschool. La fija el operador local y se confirma por escrito antes de la matrícula.',
+        'Families who do not use state funds, and all families in International Microschools, pay the Microschool tuition directly. The local operator sets it and it is confirmed in writing before enrollment.',
+        'Les famílies que no fan servir fons estatals, i totes les d’International Microschools, paguen directament la quota de la Microschool. La fixa l’operador local i es confirma per escrit abans de la matrícula.',
+        'Les familles qui n’utilisent pas de fonds d’État, et toutes celles des International Microschools, paient directement les frais de la Microschool. L’opérateur local les fixe et ils sont confirmés par écrit avant l’inscription.',
+        'As famílias que não usam fundos estaduais, e todas as das International Microschools, pagam diretamente a mensalidade da Microschool. Ela é definida pelo operador local e confirmada por escrito antes da matrícula.')),
+    (d5('Qué cubren los fondos y qué no', 'What the funds cover and what they do not', 'Què cobreixen els fons i què no', 'Ce que couvrent les fonds et ce qu’ils ne couvrent pas', 'O que os fundos cobrem e o que não cobrem'),
+     d5('Los fondos ESA se aplican solo a los servicios educativos aprobados por el programa del estado: no son un derecho automático. Las instalaciones y las autorizaciones locales siguen siendo responsabilidad del operador. La elegibilidad, el importe y cada compra los decide el programa de cada estado.',
+        'ESA funds apply only to educational services approved by the state program; they are not an automatic entitlement. Facilities and local authorizations remain the operator’s responsibility. Eligibility, the amount and each purchase are decided by each state’s program.',
+        'Els fons ESA només s’apliquen als serveis educatius aprovats pel programa de l’estat: no són un dret automàtic. Les instal·lacions i les autoritzacions locals continuen sent responsabilitat de l’operador. L’elegibilitat, l’import i cada compra els decideix el programa de cada estat.',
+        'Les fonds ESA ne s’appliquent qu’aux services éducatifs approuvés par le programme de l’État : ils ne constituent pas un droit automatique. Les locaux et les autorisations locales restent de la responsabilité de l’opérateur. L’éligibilité, le montant et chaque achat relèvent du programme de chaque État.',
+        'Os fundos ESA aplicam-se apenas aos serviços educacionais aprovados pelo programa do estado: não são um direito automático. As instalações e as autorizações locais continuam sob responsabilidade do operador. A elegibilidade, o valor e cada compra são decididos pelo programa de cada estado.')),
+]
+PAGO_LINK = d5('Ver los fondos ESA por estado →', 'See ESA funds by state →', 'Veure els fons ESA per estat →', 'Voir les fonds ESA par État →', 'Ver os fundos ESA por estado →')
+
+
+# ── Calidad y supervisión continua (del modelo de red: datos de dominio en el SIS, asistencia, encuestas, revisión anual, protección del menor) ──
+CAL_EYE = d5('Calidad', 'Quality', 'Qualitat', 'Qualité', 'Qualidade')
+CAL_H2 = d5('Supervisión continua de cada sede', 'Ongoing oversight of every site', 'Supervisió contínua de cada seu', 'Suivi continu de chaque site', 'Supervisão contínua de cada unidade')
+CAL_LEAD = d5('Cada Microschool opera bajo supervisión de Chanak y rinde cuentas con datos, no solo con visitas.',
+              'Every Microschool operates under Chanak’s oversight and is accountable with data, not just visits.',
+              'Cada Microschool opera sota la supervisió de Chanak i en rendeix comptes amb dades, no només amb visites.',
+              'Chaque Microschool fonctionne sous la supervision de Chanak et rend des comptes par des données, pas seulement par des visites.',
+              'Cada Microschool opera sob a supervisão da Chanak e presta contas com dados, não apenas com visitas.')
+CAL = [
+    (d5('Dominio por objetivo', 'Mastery by objective', 'Domini per objectiu', 'Maîtrise par objectif', 'Domínio por objetivo'),
+     d5('Los datos de dominio de cada estudiante se registran en el SIS según su plan individual (umbral del 80 %).', 'Each student’s mastery data is recorded in the SIS against their individual plan (80% threshold).', 'Les dades de domini de cada estudiant es registren al SIS segons el seu pla individual (llindar del 80 %).', 'Les données de maîtrise de chaque élève sont enregistrées dans le SIS selon son plan individuel (seuil de 80 %).', 'Os dados de domínio de cada estudante são registrados no SIS conforme o seu plano individual (limite de 80 %).')),
+    (d5('Asistencia y familias', 'Attendance and families', 'Assistència i famílies', 'Assiduité et familles', 'Frequência e famílias'),
+     d5('Seguimiento de asistencia y encuesta a las familias para detectar a tiempo lo que hay que mejorar.', 'Attendance tracking and family surveys to spot in time what needs improving.', 'Seguiment d’assistència i enquesta a les famílies per detectar a temps què cal millorar.', 'Suivi de l’assiduité et enquête auprès des familles pour repérer à temps ce qu’il faut améliorer.', 'Acompanhamento da frequência e pesquisa com as famílias para detectar a tempo o que precisa melhorar.')),
+    (d5('Revisión anual y mejora', 'Annual review and improvement', 'Revisió anual i millora', 'Revue annuelle et amélioration', 'Revisão anual e melhoria'),
+     d5('Revisión anual de cada sede y plan de mejora cuando haga falta; Chanak puede suspender la actividad si no se cumplen los requisitos.', 'Annual review of each site and an improvement plan when needed; Chanak may suspend activity if requirements are not met.', 'Revisió anual de cada seu i pla de millora quan calgui; Chanak pot suspendre l’activitat si no es compleixen els requisits.', 'Revue annuelle de chaque site et plan d’amélioration si nécessaire ; Chanak peut suspendre l’activité si les exigences ne sont pas respectées.', 'Revisão anual de cada unidade e plano de melhoria quando necessário; a Chanak pode suspender a atividade se os requisitos não forem cumpridos.')),
+    (d5('Protección del menor', 'Child safeguarding', 'Protecció del menor', 'Protection de l’enfant', 'Proteção da criança'),
+     d5('Verificación de antecedentes según la ley de cada país, certificación de Guías y protocolo de protección con responsable designado.', 'Background checks under each country’s law, Guide certification and a safeguarding protocol with a designated lead.', 'Verificació d’antecedents segons la llei de cada país, certificació de Guies i protocol de protecció amb responsable designat.', 'Vérification des antécédents selon la loi de chaque pays, certification des Guides et protocole de protection avec un responsable désigné.', 'Verificação de antecedentes conforme a lei de cada país, certificação de Guias e protocolo de proteção com responsável designado.')),
+]
+
+
 # Português (overlay en tools/pt_ms.py): añade la clave 'pt' a los textos anteriores sin tocar las llamadas d(es,en,ca,fr).
 import sys as _sys
 import pt_ms as _pt_ms

@@ -29,6 +29,8 @@ window.SUPPORTED_REGIONS = {
     code: 'ES',
     name: 'España / Europa',
     shortName: 'España',
+    nameEn: 'Spain / Europe',
+    shortNameEn: 'Spain',
     flag: '🇪🇸',
     currency: 'EUR',
     symbol: '€',
@@ -39,6 +41,8 @@ window.SUPPORTED_REGIONS = {
     code: 'MX',
     name: 'México',
     shortName: 'México',
+    nameEn: 'Mexico',
+    shortNameEn: 'Mexico',
     flag: '🇲🇽',
     // currency = lo que se envía al SIS. NO se cambia: el SIS ya espera USD.
     // displayCurrency = lo único que ve la familia. México publica en pesos.
@@ -52,6 +56,8 @@ window.SUPPORTED_REGIONS = {
     code: 'PA',
     name: 'Panamá',
     shortName: 'Panamá',
+    nameEn: 'Panama',
+    shortNameEn: 'Panama',
     flag: '🇵🇦',
     currency: 'USD',
     symbol: '$',
@@ -62,6 +68,8 @@ window.SUPPORTED_REGIONS = {
     code: 'US',
     name: 'Estados Unidos',
     shortName: 'Estados Unidos',
+    nameEn: 'United States',
+    shortNameEn: 'United States',
     flag: '🇺🇸',
     currency: 'USD',
     symbol: '$',
@@ -72,6 +80,8 @@ window.SUPPORTED_REGIONS = {
     code: 'GLOBAL',
     name: 'Internacional',
     shortName: 'Internacional',
+    nameEn: 'International',
+    shortNameEn: 'International',
     flag: '🌐',
     currency: 'USD',
     symbol: '$',
@@ -153,7 +163,18 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: '70 €/mes', description: 'Currículo estadounidense K-5 con Plan Educativo Individualizado y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Bachillerato (6-12)', monthly: '70 €/mes', description: 'Currículo estadounidense completo, créditos y expediente emitidos por Chanak, colegio registrado en Florida (FLDOE #134620).' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Libros y material curricular no incluidos; adquiridos directamente por los padres. Coste orientativo para España/Europa con distribuidor oficial CEE: A.C.E. 700–880 €/año en grados 1–4 y 530–680 €/año en grados 5–12 (kit ABCs lectoescritura: 690–760 € al incluir manuales maestros y Score Keys); o alternativas cristocéntricas como Christian Light (CLE) 360–400 €/año (lectura 165 €) o LIFEPAC 405–455 €/año (lectura 100 €). Calcular siempre gastos de envío adicionales según destino.'
+        footnote: 'Mensualidad única para todos los niveles. Libros y material curricular no incluidos; adquiridos directamente por los padres. Coste orientativo para España/Europa con distribuidor oficial CEE: A.C.E. 700–880 €/año en grados 1–4 y 530–680 €/año en grados 5–12 (kit ABCs lectoescritura: 690–760 € al incluir manuales maestros y Score Keys); o alternativas cristocéntricas como Christian Light (CLE) 360–400 €/año (lectura 165 €) o LIFEPAC 405–455 €/año (lectura 100 €). Calcular siempre gastos de envío adicionales según destino.',
+        en: {
+          enrollmentIncludes: 'Includes the academic diagnostic and the Individualized Education Plan (IEP/PEI).',
+          installments: '',
+          includes: 'Monthly mentor review and guidance with the family (1 hour per month) · LMS and SIS platform access · Individualized Education Plan (IEP/PEI)',
+          note: 'At enrollment, €250 is due: the €180 enrollment fee plus the first monthly payment of €70.',
+          tiers: [
+            { key: 'elementary', title: 'Elementary (K-5)', monthly: '€70', description: 'U.S. K-5 curriculum with an Individualized Education Plan and progress tracking in the SIS.' },
+            { key: 'middle_high', title: 'Middle and High School (6-12)', monthly: '€70', description: 'Full U.S. curriculum, credits and transcript issued by Chanak, a Florida-registered school (FLDOE #134620).' }
+          ],
+          footnote: 'One single monthly fee for all levels. Books and curriculum materials are not included; they are purchased directly by parents. Approximate cost for Spain/Europe through the official CEE distributor: A.C.E. €700–880/year in grades 1–4 and €530–680/year in grades 5–12 (ABCs literacy kit: €690–760 when teacher manuals and Score Keys are included); or Christ-centered alternatives such as Christian Light (CLE) €360–400/year (reading €165) or LIFEPAC €405–455/year (reading €100). Always add shipping costs according to destination.'
+        },
       },
 
       dual_diploma: {
@@ -200,7 +221,18 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: '$3,500 MXN/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Preparatoria (6-12)', monthly: '$3,500 MXN/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por los padres de editoriales en EE. UU. Precios orientativos de referencia: AOP LIFEPAC (~$45–$50 USD por materia o $440–$485 USD año completo), Christian Light Education / CLE (~$55 USD por materia o $390–$430 USD año completo con guías) o A.C.E. ($320–$390 USD/año secundaria y $460–$530 USD/año primaria). Calcular siempre gastos de envío según destino.'
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por los padres de editoriales en EE. UU. Precios orientativos de referencia: AOP LIFEPAC (~$45–$50 USD por materia o $440–$485 USD año completo), Christian Light Education / CLE (~$55 USD por materia o $390–$430 USD año completo con guías) o A.C.E. ($320–$390 USD/año secundaria y $460–$530 USD/año primaria). Calcular siempre gastos de envío según destino.',
+        en: {
+          enrollmentIncludes: 'Includes the academic diagnostic and the Individualized Education Plan (IEP/PEI).',
+          installments: '',
+          includes: 'Monthly mentor review and guidance with the family (1 hour per month) · LMS and SIS platform access · Individualized Education Plan (IEP/PEI)',
+          note: 'At enrollment, $8,000 MXN is due: the $4,500 MXN enrollment fee plus the first monthly payment of $3,500 MXN.',
+          tiers: [
+            { key: 'elementary', title: 'Elementary (K-5)', monthly: '$3,500 MXN', description: 'U.S. K-5 curriculum with bilingual support and progress tracking in the SIS.' },
+            { key: 'middle_high', title: 'Middle and High School (6-12)', monthly: '$3,500 MXN', description: 'Official High School credits and a transcript issued by Chanak.' }
+          ],
+          footnote: 'One single monthly fee for all levels. Materials and curriculum are not included; parents buy them directly from U.S. publishers. Approximate reference prices: AOP LIFEPAC (~$45–$50 USD per subject or $440–$485 USD for a full year), Christian Light Education / CLE (~$55 USD per subject or $390–$430 USD for a full year with guides) or A.C.E. ($320–$390 USD/year in middle and high school and $460–$530 USD/year in elementary). Always add shipping costs according to destination.'
+        },
       },
 
       dual_diploma: {
@@ -245,7 +277,18 @@ window.CHANAK_PRICING = {
           { key: 'elementary', title: 'Primaria (K-5)', monthly: 'US$80/mes', description: 'Currículo estadounidense K-5 con acompañamiento bilingüe y seguimiento en el SIS.' },
           { key: 'middle_high', title: 'Secundaria y Media (6-12)', monthly: 'US$80/mes', description: 'Créditos oficiales de High School y transcript emitido por Chanak.' }
         ],
-        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por la familia de las editoriales en EE. UU. Precios orientativos de referencia en EE. UU.: AOP LIFEPAC (~$45–$50 USD por materia individual o $440–$485 USD/año set completo de 5 materias), Christian Light Education / CLE (~$55 USD por materia o $390–$430 USD/año con guías de maestro) o A.C.E. ($320–$390 USD/año en secundaria y $460–$530 USD/año en primaria). Calcular siempre gastos de envío internacional según destino.'
+        footnote: 'Mensualidad única para todos los niveles. Material y currículo no incluidos; adquiridos directamente por la familia de las editoriales en EE. UU. Precios orientativos de referencia en EE. UU.: AOP LIFEPAC (~$45–$50 USD por materia individual o $440–$485 USD/año set completo de 5 materias), Christian Light Education / CLE (~$55 USD por materia o $390–$430 USD/año con guías de maestro) o A.C.E. ($320–$390 USD/año en secundaria y $460–$530 USD/año en primaria). Calcular siempre gastos de envío internacional según destino.',
+        en: {
+          enrollmentIncludes: 'Includes the academic diagnostic and the Individualized Education Plan (IEP/PEI).',
+          installments: '',
+          includes: 'Monthly mentor review and guidance with the family (1 hour per month) · LMS and SIS platform access · Individualized Education Plan (IEP/PEI)',
+          note: 'At enrollment, US$260 is due: the US$180 enrollment fee plus the first monthly payment of US$80.',
+          tiers: [
+            { key: 'elementary', title: 'Elementary (K-5)', monthly: 'US$80', description: 'U.S. K-5 curriculum with bilingual support and progress tracking in the SIS.' },
+            { key: 'middle_high', title: 'Middle and High School (6-12)', monthly: 'US$80', description: 'Official High School credits and a transcript issued by Chanak.' }
+          ],
+          footnote: 'One single monthly fee for all levels. Materials and curriculum are not included; the family buys them directly from U.S. publishers. Approximate reference prices in the U.S.: AOP LIFEPAC (~$45–$50 USD per individual subject or $440–$485 USD/year for the full 5-subject set), Christian Light Education / CLE (~$55 USD per subject or $390–$430 USD/year with teacher guides) or A.C.E. ($320–$390 USD/year in middle and high school and $460–$530 USD/year in elementary). Always add international shipping costs according to destination.'
+        },
       },
 
       dual_diploma: {

@@ -125,6 +125,21 @@ def condiciones(lang):
 <div class="cx-grid cx-g3">{li}</div></div></section>''')
 
 
+def pago(lang):
+    li = ''.join(f'<div class="cx-card"><h3>{a[lang]}</h3><p>{c[lang]}</p></div>' for a, c in C.PAGO)
+    return wrap('pago', f'''<section class="cx-sec cx-soft" id="como-pagan-las-familias"><div class="cx-wrap">
+<div class="cx-center"><div class="cx-eyebrow">{C.PAGO_EYE[lang]}</div><h2>{C.PAGO_H2[lang]}</h2><p class="cx-lead">{C.PAGO_LEAD[lang]}</p></div>
+<div class="cx-grid cx-g3">{li}</div>
+<p class="cx-note cx-center"><a href="/scholarships/">{C.PAGO_LINK[lang]}</a></p></div></section>''')
+
+
+def calidad(lang):
+    li = ''.join(f'<div class="cx-card"><h3>{a[lang]}</h3><p>{c[lang]}</p></div>' for a, c in C.CAL)
+    return wrap('calidad', f'''<section class="cx-sec" id="supervision"><div class="cx-wrap">
+<div class="cx-center"><div class="cx-eyebrow">{C.CAL_EYE[lang]}</div><h2>{C.CAL_H2[lang]}</h2><p class="cx-lead">{C.CAL_LEAD[lang]}</p></div>
+<div class="cx-grid cx-g4">{li}</div></div></section>''')
+
+
 def geo_legal(lang, data):
     th = C.GEO_TH[lang]
     rows = ''.join(f'<tr><td><b>{a[lang]}</b></td><td>{b[lang]}</td></tr>' for a, b in C.GEO_ROWS)
@@ -241,6 +256,8 @@ def microschools(lang, data):
     h = xdefault(h, '/microschools/')
     h = put(h, 'pilares', pilares(lang), nth_section(1))
     h = put(h, 'condiciones', condiciones(lang), lambda s: s.find('<!-- cx:porpais -->') if '<!-- cx:porpais -->' in s else [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
+    h = put(h, 'pago', pago(lang), lambda s: s.find('<!-- cx:porpais -->') if '<!-- cx:porpais -->' in s else [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
+    h = put(h, 'calidad', calidad(lang), lambda s: s.find('<!-- cx:porpais -->') if '<!-- cx:porpais -->' in s else [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
     if lang == 'en':
         h = put(h, 'aviso', notice_content.section(), lambda s: s.find('<!-- cx:herramientas -->') if '<!-- cx:herramientas -->' in s else [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
     last = lambda s: (s.find('<!-- cx:fundadores -->') if '<!-- cx:fundadores -->' in s else [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
@@ -272,6 +289,8 @@ def open_page(lang, data):
     h = put(h, 'kit', kit(lang), lambda s: re.search(r'<section class="content-sec[^"]*" id="recursos">', s).start())
     pf = lambda s: re.search(r'<section class="content-sec[^"]*" id="partner-form">', s).start()
     h = put(h, 'condiciones', condiciones(lang), lambda s: s.find('<!-- cx:pasos -->'))
+    h = put(h, 'pago', pago(lang), lambda s: s.find('<!-- cx:pasos -->'))
+    h = put(h, 'calidad', calidad(lang), lambda s: s.find('<!-- cx:pasos -->'))
     h = put(h, 'porpais', geo_legal(lang, data), pf)
     h = put(h, 'faq', faq_block(lang), pf)
     if lang == 'en':
