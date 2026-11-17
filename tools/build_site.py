@@ -191,6 +191,7 @@ def home(lang):
     alternates = [('es', '/'), ('en', '/en/'), ('ca', '/ca/'), ('fr', '/fr/'), ('x-default', '/')]
     site_ld = {"@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": "Chanak International Academy", "inLanguage": LANGS, "publisher": {"@id": BASE + "/#school"}}
     out = head(lang, t('title', lang), t('desc', lang), L['home'], alternates, ld(ORG_LD, site_ld, faq_ld(faq)))
+    out += f'<div role="note" style="padding:14px 22px;text-align:center;background:#eaf5f1;color:#103d4b;font:600 14px system-ui,sans-serif">{t("acc_note", lang)}</div>\n'
     out += header(lang, {l: LINKS[l]['home'] for l in LANGS})
     pills = ''.join(f'<a href="{u}">{n}</a>' for n, u in STATES)
     faq_html = ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in faq)

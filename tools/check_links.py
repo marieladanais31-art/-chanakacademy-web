@@ -5,7 +5,7 @@ Uso: python3 tools/check_links.py"""
 import glob, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = ['index.html', 'en/index.html', 'ca/index.html', 'fr/index.html', 'tarifas/index.html', 'en/tuition/index.html', 'como-funciona/index.html',
-         'off-campus/index.html', 'dual-diploma/index.html', 'scholarships/index.html']
+         'off-campus/index.html', 'dual-diploma/index.html', 'scholarships/index.html', 'acreditacion/index.html', 'dossiers/index.html']
 for pat in ('microschools/**/index.html', 'open-a-microschool/**/index.html', 'unete/**/index.html', 'en/join/**/index.html', 'en/microschools/**/index.html', 'ca/microschools/**/index.html', 'fr/microschools/**/index.html'):
     PAGES += sorted(os.path.relpath(p, ROOT) for p in glob.glob(os.path.join(ROOT, pat), recursive=True))
 JS_IDS = {'off-campus/en/index.html': {'planes', 'full-enrollment', 'que-obtiene', 'core', 'matricula-anual', 'portales'}, 'dual-diploma/en/index.html': {'semana', 'core', 'university-pathways', 'opciones-matricula', 'solicitud'}}

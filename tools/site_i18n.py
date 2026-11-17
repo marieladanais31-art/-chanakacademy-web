@@ -334,6 +334,11 @@ T = {
  'dd_alt': dict(es='Estudiante de espaldas en su escritorio por la tarde, con mochila, libros y portátil', en='Student seen from behind at an evening desk with backpack, books and laptop', ca='Estudiant d’esquena al seu escriptori al vespre, amb motxilla, llibres i portàtil', fr='Élève de dos à son bureau le soir, avec sac à dos, livres et ordinateur'),
  'ms_alt': dict(es='Sala de aprendizaje con un grupo pequeño alrededor de una mesa y una coordinadora', en='Learning room with a small group around a table and a coordinator', ca='Sala d’aprenentatge amb un grup petit al voltant d’una taula i una coordinadora', fr='Salle d’apprentissage avec un petit groupe autour d’une table et une coordinatrice'),
  'm_alt': dict(es='Biblia abierta, cuaderno y libros escolares sobre una mesa con luz de la mañana', en='Open Bible, notebook and school books on a table in morning light', ca='Bíblia oberta, quadern i llibres escolars sobre una taula amb llum del matí', fr='Bible ouverte, carnet et livres scolaires sur une table dans la lumière du matin'),
+ 'acc_note': dict(
+    es='🎓 Chanak International Academy · <strong>MSA-CESS Accredited K–12</strong> · Acreditación concedida el 6 de noviembre de 2026 · Vigente hasta el 1 de enero de 2034 · <a href="/acreditacion/">Ver acreditación oficial</a>',
+    en='🎓 Chanak International Academy · <strong>MSA-CESS Accredited K–12</strong> · Accreditation granted on November 6, 2026 · Valid through January 1, 2034 · <a href="/acreditacion/">View the official accreditation</a>',
+    ca='🎓 Chanak International Academy · <strong>MSA-CESS Accredited K–12</strong> · Acreditació concedida el 6 de novembre de 2026 · Vigent fins l’1 de gener de 2034 · <a href="/acreditacion/">Veure l’acreditació oficial</a>',
+    fr='🎓 Chanak International Academy · <strong>MSA-CESS Accredited K–12</strong> · Accréditation accordée le 6 novembre 2026 · Valable jusqu’au 1er janvier 2034 · <a href="/acreditacion/">Voir l’accréditation officielle</a>'),
  'n_modes': dict(es='Modalidades', en='Approaches', ca='Modalitats', fr='Modalités'),
  'ft_colab': dict(es='Colabora', en='Get involved', ca='Col·labora', fr='Participer'),
  'ft_mentors': dict(es='Mentores y colaboradores', en='Mentors and collaborators', ca='Mentors i col·laboradors (en castellà)', fr='Mentors et collaborateurs (en anglais)'),
