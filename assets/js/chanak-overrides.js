@@ -127,8 +127,6 @@
     ["Life Skills & Purpose Program", "Habilidades para la vida y propósito"],
     ["Florida Dept. of Education", "Departamento de Educación de Florida"],
     ["Registrada como Private School con estatus activo.", "Registrada como colegio privado con estatus activo."],
-    ["Official Candidate for Accreditation — organismo americano de referencia.", "Acreditada por MSA-CESS."],
-    ["Official Candidate", "Acreditada por MSA-CESS"],
     ["Nonprofit 501(c)(3)", "Organización sin fines de lucro 501(c)(3)"],
     ["Florida Nonprofit", "Entidad sin fines de lucro de Florida"],
     ["Completar datos y pagar", "Matricular"],
@@ -141,8 +139,7 @@
     ["Somos una familia internacional. Chanak nos dio la continuidad académica americana con valores cristianos.", "Somos una familia internacional. Chanak nos dio continuidad académica americana, estructura y acompañamiento."],
     ["Educar con fe, valores y visión internacional sí es posible.", "Construir una trayectoria americana flexible y acompañada sí es posible."],
     ["Tu hijo sigue en su colegio y suma el diploma de High School de una escuela registrada en Florida, acreditada por MSA-CESS.", "Tu hijo continúa en su centro y añade una trayectoria de High School estadounidense con mentoría y seguimiento académico."],
-    ["Florida Registered Private School", "Colegio privado registrado en Florida"],
-    ["MSA-CESS Candidate for Accreditation", "Acreditada por MSA-CESS"]
+    ["Florida Registered Private School", "Colegio privado registrado en Florida"]
     /* La entrada que redirigía "sección de precios de esta página" al dossier
        se retiró el 2026-09-19: offCampusPricingSection() ya pone una sección
        de precios real en la página, así que la frase original vuelve a ser

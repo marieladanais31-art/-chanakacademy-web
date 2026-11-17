@@ -116,7 +116,7 @@ HERO_LEAD = d(
     'You bring the local vision, the space and the community; Chanak brings MSA-CESS accreditation, the 60/20/20 curriculum, the SIS, Guide training and support with ESA funds in the U.S. states where Chanak is an approved provider and only for the services approved in each program (reviewed state by state).',
     'Tu aportes la visió local, l’espai i la comunitat; Chanak aporta l’acreditació MSA-CESS, el currículum 60/20/20, el SIS, la formació de Guies i l’acompanyament en fons ESA als estats dels EUA on Chanak és proveïdor aprovat i només per als serveis aprovats en cada programa (es revisa estat per estat).',
     'Vous apportez la vision locale, le lieu et la communauté ; Chanak apporte l’accréditation MSA-CESS, le programme 60/20/20, le SIS, la formation des Guides et l’accompagnement pour les fonds ESA dans les États américains où Chanak est prestataire agréé et uniquement pour les services approuvés dans chaque programme (examiné État par État).')
-HERO_CTA = d('Postular mi organización como Entidad Colaboradora →', 'Apply as a Partner Organization →', 'Postular la meva organització com a Entitat Col·laboradora →', 'Candidater comme entité partenaire →')
+HERO_CTA = d('Postular mi organización como Entidad Colaboradora →', 'Apply as a Partner Organization →', 'Postular la meva organització com a Entitat Col·laboradora →', 'Postuler comme entité partenaire →')
 HERO_CTA2 = d('Test de compatibilidad (2 min) ↓', 'Compatibility test (2 min) ↓', 'Test de compatibilitat (2 min) ↓', 'Test de compatibilité (2 min) ↓')
 ESA_CARD = (
     d('Acompañamiento en fondos ESA (EE. UU.)', 'Support with ESA funds (U.S.)', 'Acompanyament en fons ESA (EUA)', 'Accompagnement pour les fonds ESA (USA)'),

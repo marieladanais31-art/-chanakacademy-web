@@ -60,7 +60,7 @@ Son imágenes generadas con IA (sin personas reales). El pie de la web indica «
 3. **Full Enrollment en `/matricula/` y en el SIS**: la web ya lo ofrece en todos los países; el formulario de matrícula y el cobro aún no.
 4. **Equivalencias en moneda local** de Full Enrollment (EUR, MXN, COP): no publicadas hasta que se aprueben.
 5. **Landings EN de Off-Campus y Dual Diploma**: son bundles React con error de hidratación previo; recompilar desde `chanak-landing` con los bloques nuevos y borrar `cx-en-blocks.js`.
-6. **Dossiers privados de UAE/Dubái** (`_private/dossier-templates/`) aún dicen «candidate status»; y los PDF de `assets/dossiers/` son de octubre.
+6. **Dossiers privados de UAE/Dubái** (`_private/dossier-templates/`) tenían la fórmula anterior de MSA (ya alineadas); y los PDF de `assets/dossiers/` son de octubre.
 7. **Dos frases con «Chanak Foundation»** (ayuda financiera) en `/mx/` o `/pa/` y `/us/florida/`: son contenido, decidir redacción.
 8. **Uso de logotipos**: DBU (añadido por indicación de dirección) y MSA: confirmar normas de marca de cada entidad.
 9. `tests/*.cjs` auditan la portada antigua: actualizar selectores.

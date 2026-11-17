@@ -47,7 +47,7 @@ ORG_LD = {
     "address": {"@type": "PostalAddress", "streetAddress": "7901 4th St N Ste 300", "addressLocality": "St. Petersburg", "addressRegion": "FL", "postalCode": "33702", "addressCountry": "US"},
     "areaServed": ["US", "ES", "MX", "PA", "CO", "AE", "Worldwide"],
     "knowsLanguage": ["en", "es", "ca", "fr"],
-    "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "Accreditation", "name": "MSA-CESS Accreditation",
+    "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "Accreditation", "name": "MSA-CESS Accreditation, Kindergarten–Grade 12", "identifier": "FL175", "dateCreated": "2026-11-06", "expires": "2034-01-01", "url": BASE + "/acreditacion/",
                       "recognizedBy": {"@type": "Organization", "name": "Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS)", "url": "https://www.msa-cess.org/"}},
     "memberOf": {"@type": "Organization", "name": "Dallas Baptist University Global Community", "url": "https://www.dbu.edu/international/global-community/"},
     "contactPoint": [
@@ -126,7 +126,7 @@ def footer(lang):
 <div class="cx-foot-g">
 <div><img src="/assets/chanak-logo.png" alt="Chanak" width="65" height="42" loading="lazy" decoding="async" style="background:#fff;border-radius:8px;padding:4px">
 <div class="brand">Chanak International Academy</div>
-<p>{t('ft_op', lang)}<br>FLDOE #134620 · MSA-CESS<br>7901 4th St N Ste 300, St. Petersburg, FL 33702</p>
+<p>{t('ft_op', lang)}<br>{t('t_msa', lang)} · FLDOE #134620<br>7901 4th St N Ste 300, St. Petersburg, FL 33702</p>
 <p><a href="https://www.instagram.com/chanakinternationalacademy/" rel="noopener" style="display:inline">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61585911365975" rel="noopener" style="display:inline">Facebook</a> · <a href="https://www.youtube.com/@ChanakAcademy" rel="noopener" style="display:inline">YouTube</a> · <a href="https://www.tiktok.com/@chanakacademy7" rel="noopener" style="display:inline">TikTok</a></p></div>
 <div><h4>{t('ft_prog', lang)}</h4>
 <a href="{L['hs']}">{t('n_hs', lang)}</a><a href="{L['dd']}">{t('n_dd', lang)}</a><a href="{L['ms']}">{t('n_ms', lang)}</a><a href="{L['open']}">{t('ms_cta', lang).replace(' →', '')}</a><a href="{L['diag']}">{t('sv1_h', lang)}</a><a href="{L['uni']}">{t('sv2_h', lang)}</a><a href="{L['fees']}">{t('n_fees', lang)}</a></div>
@@ -191,7 +191,7 @@ def home(lang):
     alternates = [('es', '/'), ('en', '/en/'), ('ca', '/ca/'), ('fr', '/fr/'), ('x-default', '/')]
     site_ld = {"@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": "Chanak International Academy", "inLanguage": LANGS, "publisher": {"@id": BASE + "/#school"}}
     out = head(lang, t('title', lang), t('desc', lang), L['home'], alternates, ld(ORG_LD, site_ld, faq_ld(faq)))
-    out += f'<div role="note" style="padding:14px 22px;text-align:center;background:#eaf5f1;color:#103d4b;font:600 14px system-ui,sans-serif">{t("acc_note", lang)}</div>\n'
+    out += f'<div role="note" style="padding:14px 22px;text-align:center;background:#eaf5f1;color:#103d4b;font:600 14px system-ui,sans-serif">{t("acc_note", lang, u=L["acc"])}</div>\n'
     out += header(lang, {l: LINKS[l]['home'] for l in LANGS})
     pills = ''.join(f'<a href="{u}">{n}</a>' for n, u in STATES)
     faq_html = ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in faq)
@@ -215,7 +215,7 @@ def home(lang):
 
 <div class="cx-trust" aria-label="Credentials"><div class="cx-wrap cx-trust-in">
 <div class="cx-trust-it"><img src="/assets/img/fldoe-logo-clean.png" alt="Florida Department of Education" width="160" height="44" loading="lazy" decoding="async"><b>FLDOE #134620</b><span>{t('t_fl', lang)}</span></div>
-<div class="cx-trust-it"><img src="/assets/img/msa-logo-clean.webp" alt="Middle States Association (MSA-CESS)" width="160" height="40" loading="lazy" decoding="async"><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div>
+<div class="cx-trust-it"><img src="/assets/img/msa-logo-clean.png" alt="Middle States Association (MSA-CESS)" width="160" height="40" loading="lazy" decoding="async"><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div>
 <div class="cx-trust-it"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University · Global Community" width="130" height="48" loading="lazy" decoding="async"><b>Dallas Baptist University</b><span>{t('t_dbu', lang)}</span></div>
 <div class="cx-trust-it"><img src="/assets/img/chanak-trainup-logo.webp" alt="Chanak TrainUp Education Inc." width="140" height="48" loading="lazy" decoding="async"><b>Chanak TrainUp Education Inc.</b><span>{t('t_irs', lang)}</span></div>
 </div></div>

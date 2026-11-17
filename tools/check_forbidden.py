@@ -19,6 +19,8 @@ PHRASES = [
 RX = re.compile('|'.join(PHRASES), re.I)
 EXT = ('.html', '.js', '.py', '.txt', '.md', '.json', '.php', '.xml', '.css', '.csv')
 SKIP_DIRS = {'.git', 'node_modules', 'screenshots', '.claude'}
+# assets/dossiers es zona protegida (dossiers ya publicados en main): no se edita; se documenta en el PR.
+SKIP_PREFIX = ('assets/dossiers/',)
 SKIP_FILES = {'tools/check_forbidden.py'}
 # Documentos que citan las expresiones precisamente para prohibirlas o registrar el cambio.
 QUOTING = set()
@@ -33,7 +35,7 @@ def scan():
                 continue
             p = os.path.join(d, f)
             rel = os.path.relpath(p, ROOT)
-            if rel in SKIP_FILES or rel in QUOTING:
+            if rel in SKIP_FILES or rel in QUOTING or rel.startswith(SKIP_PREFIX):
                 continue
             try:
                 txt = open(p, encoding='utf-8', errors='replace').read()
