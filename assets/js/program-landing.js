@@ -35,6 +35,11 @@
           price=baseD?((isEn?'From ':'Desde ')+fmtMo(baseD)):(data.routes[0].totalYear||price);
         }
       }
+      if(program==='off-campus'){
+        // Full Enrollment is always priced in USD: country selection does not
+        // change the school's nominal tuition. Guided Homeschool is separate.
+        price=isEn?'From US$275 / month':'Desde US$275/mes';
+      }
       var rawIncludes = data.includes || data.note;
       var includesHtml = '';
       if(rawIncludes){
@@ -50,7 +55,15 @@
       } else {
         includesHtml = '<p style="margin:12px 0 16px;color:#f1f5f9 !important;">' + (isEn?'The academic route and final investment are confirmed in writing after reviewing the student file.':'La ruta y la inversión final se confirman por escrito después de revisar el caso.') + '</p>';
       }
-      mount.innerHTML='<div class="eyebrow" style="color:#78dfd9 !important;">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+((isEn&&region.nameEn)?region.nameEn:region.name).toUpperCase()+'</div><div class="price-value" style="color:#7be2dc !important;font-size:30px;font-weight:950;">'+price+'</div>'+includesHtml+'<p class="small" style="color:#cbd5e1 !important;font-size:12px;line-height:1.45;">'+(data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'))+'</p>';
+      if(program==='off-campus'){
+        includesHtml = isEn
+          ? '<ul class="program-includes-list" style="margin:14px 0;color:#f1f5f9"><li>K–5: US$275/month · 10 tuition payments</li><li>Grades 6–8: US$320/month</li><li>Grades 9–12: US$365/month</li><li>Annual enrollment: US$295 per student</li><li>4 quarterly payments or annual tuition payment also available</li><li>Weekly student mentoring, 3 live English/ELA sessions and live Life Skills</li></ul>'
+          : '<ul class="program-includes-list" style="margin:14px 0;color:#f1f5f9"><li>K–5: US$275/mes · 10 mensualidades</li><li>Grados 6–8: US$320/mes</li><li>Grados 9–12: US$365/mes</li><li>Matrícula anual US$295 por estudiante</li><li>También 4 cuotas trimestrales o pago de colegiatura anual</li><li>Mentoría semanal, 3 sesiones de ELA/inglés y Life Skills en vivo</li></ul>';
+      }
+      var footnote = program==='off-campus'
+        ? (isEn?'Same USD tuition in all countries. Guided Homeschool is a different plan (international reference US$80/month). Exact invoice after Admissions review.':'Mismo precio de Full Enrollment en USD para todos los países. Homeschool Guiado es otro plan (referencia internacional US$80/mes). Factura exacta tras revisión de Admisiones.')
+        : (data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'));
+      mount.innerHTML='<div class="eyebrow" style="color:#78dfd9 !important;">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+((isEn&&region.nameEn)?region.nameEn:region.name).toUpperCase()+'</div><div class="price-value" style="color:#7be2dc !important;font-size:30px;font-weight:950;">'+price+'</div>'+includesHtml+'<p class="small" style="color:#cbd5e1 !important;font-size:12px;line-height:1.45;">'+footnote+'</p>';
     }
     var pay=$('#approved-payment'),payLink=paymentUrl(c);if(pay){if(payLink){pay.classList.remove('hide');pay.href=payLink;pay.dataset.chanakDirectPayment='1'}else{pay.classList.add('hide');pay.removeAttribute('href')}}
     $$('input[name="pais"]').forEach(function(i){i.value=c});
