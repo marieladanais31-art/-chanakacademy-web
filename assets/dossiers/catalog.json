@@ -1,59 +1,59 @@
 {
-  "version": "2026.10.08-editorial",
+  "version": "2026.11.17-programs-bilingual",
   "routes": {
     "offcampus": {
       "countries": {
         "ES": {
-          "es": "/assets/dossiers/family/off-campus-es-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/off-campus-es-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1zqgqhop1kLu1mRY0spxpCxqdR3s-2O1I/view",
+          "en": "https://drive.google.com/file/d/1D-QjGAfobqEaTJRXkeeOUHgWMtQ-qggY/view"
         },
         "MX": {
-          "es": "/assets/dossiers/family/off-campus-mx-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/off-campus-mx-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1zqgqhop1kLu1mRY0spxpCxqdR3s-2O1I/view",
+          "en": "https://drive.google.com/file/d/1D-QjGAfobqEaTJRXkeeOUHgWMtQ-qggY/view"
         },
         "PA": {
-          "es": "/assets/dossiers/family/off-campus-pa-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/off-campus-pa-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1zqgqhop1kLu1mRY0spxpCxqdR3s-2O1I/view",
+          "en": "https://drive.google.com/file/d/1D-QjGAfobqEaTJRXkeeOUHgWMtQ-qggY/view"
         },
         "CO": {
-          "es": "/assets/dossiers/family/off-campus-co-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/off-campus-co-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1zqgqhop1kLu1mRY0spxpCxqdR3s-2O1I/view",
+          "en": "https://drive.google.com/file/d/1D-QjGAfobqEaTJRXkeeOUHgWMtQ-qggY/view"
         },
         "US": {
-          "es": "/assets/dossiers/family/off-campus-us-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/off-campus-us-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1zqgqhop1kLu1mRY0spxpCxqdR3s-2O1I/view",
+          "en": "https://drive.google.com/file/d/1D-QjGAfobqEaTJRXkeeOUHgWMtQ-qggY/view"
         },
         "GLOBAL": {
-          "es": "/assets/dossiers/family/off-campus-global-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/off-campus-global-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1zqgqhop1kLu1mRY0spxpCxqdR3s-2O1I/view",
+          "en": "https://drive.google.com/file/d/1D-QjGAfobqEaTJRXkeeOUHgWMtQ-qggY/view"
         }
       }
     },
     "dual": {
       "countries": {
         "ES": {
-          "es": "/assets/dossiers/family/dual-diploma-es-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/dual-diploma-es-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1inoPFVQWo6X6FEI1EXH5qJvBtD9vhzKt/view",
+          "en": "https://drive.google.com/file/d/1HGxxdcVQ6Ohufj4-Hvn6G0-2DgexRBKj/view"
         },
         "MX": {
-          "es": "/assets/dossiers/family/dual-diploma-mx-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/dual-diploma-mx-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1inoPFVQWo6X6FEI1EXH5qJvBtD9vhzKt/view",
+          "en": "https://drive.google.com/file/d/1HGxxdcVQ6Ohufj4-Hvn6G0-2DgexRBKj/view"
         },
         "PA": {
-          "es": "/assets/dossiers/family/dual-diploma-pa-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/dual-diploma-pa-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1inoPFVQWo6X6FEI1EXH5qJvBtD9vhzKt/view",
+          "en": "https://drive.google.com/file/d/1HGxxdcVQ6Ohufj4-Hvn6G0-2DgexRBKj/view"
         },
         "CO": {
-          "es": "/assets/dossiers/family/dual-diploma-co-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/dual-diploma-co-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1inoPFVQWo6X6FEI1EXH5qJvBtD9vhzKt/view",
+          "en": "https://drive.google.com/file/d/1HGxxdcVQ6Ohufj4-Hvn6G0-2DgexRBKj/view"
         },
         "US": {
-          "es": "/assets/dossiers/family/dual-diploma-us-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/dual-diploma-us-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1inoPFVQWo6X6FEI1EXH5qJvBtD9vhzKt/view",
+          "en": "https://drive.google.com/file/d/1HGxxdcVQ6Ohufj4-Hvn6G0-2DgexRBKj/view"
         },
         "GLOBAL": {
-          "es": "/assets/dossiers/family/dual-diploma-global-es.pdf?v=20261008editorial",
-          "en": "/assets/dossiers/family/dual-diploma-global-en.pdf?v=20261008editorial"
+          "es": "https://drive.google.com/file/d/1inoPFVQWo6X6FEI1EXH5qJvBtD9vhzKt/view",
+          "en": "https://drive.google.com/file/d/1HGxxdcVQ6Ohufj4-Hvn6G0-2DgexRBKj/view"
         }
       }
     },
@@ -108,6 +108,13 @@
         "es": "/assets/dossiers/family/general-es.pdf?v=20261008editorial",
         "en": "/assets/dossiers/family/general-en.pdf?v=20261008editorial"
       }
+    },
+    "microschools": {
+      "single": {
+        "es": "https://drive.google.com/file/d/1axcbpBwRHQ-ipIRgfTZVkVgxAdamqUDP/view",
+        "en": "https://drive.google.com/file/d/1e1xghjK9vrrv_4jjWZa4uPlz4cztUdrB/view"
+      }
     }
-  }
+  },
+  "releaseNote": "Generic program dossiers replace outdated 2026-10-08 marketing PDFs. Market-specific contractual fees remain outside these generic downloads and must be validated before enrollment."
 }
