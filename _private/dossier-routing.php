@@ -73,7 +73,7 @@ function chanak_information_pack(string $route, array $data, string $referer, st
     $country=isset($entry['countries'][$country]) ? $country : ($country ?: 'GLOBAL');
     $path=$entry['single'][$language] ?? $entry['countries'][$country][$language] ?? $entry['countries']['GLOBAL'][$language] ?? null;
     if (!$path) return null;
-    $url=rtrim($site,'/').$path;
+    $url=preg_match('~^https://~i',(string)$path) ? (string)$path : rtrim($site,'/').$path;
     // Exactly one family dossier. Compatibility keys carry no extra documents.
     return ['language'=>$language,'country'=>$country,'dossier'=>$url,'initial'=>$url,'fees'=>'','complete'=>''];
 }

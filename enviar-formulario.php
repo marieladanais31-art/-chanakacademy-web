@@ -64,21 +64,40 @@ $COMMERCIAL_PRICING = include __DIR__ . '/_private/commercial-pricing.php';
    {landing}, {whatsapp}, {whatsapp_display}. Texto plano. */
 $AUTOREPLY = [
     'offcampus' => [
-        'subject' => 'Hemos recibido tu solicitud · Off-Campus | Chanak Academy',
+        'subject' => 'Chanak Off-Campus · Recibimos tu solicitud y estos son los siguientes pasos',
         'body' => "Hola {nombre},\n\n"
-            . "¡Gracias por tu interés en el programa Off-Campus de Chanak International Academy!\n\n"
-            . "Qué pasará ahora:\n"
-            . "· En las próximas 24 horas (días laborables) una persona de nuestro equipo te contactará personalmente.\n"
-            . "· Revisaremos contigo la situación de tu hijo/a y resolveremos todas tus dudas.\n\n"
-            . "Mientras tanto:\n"
-            . "· Programa completo: {landing}\n"
-            . "· Consulta las tarifas de tu país: https://www.chanakacademy.org/#tarifas\n"
-            . "· El dossier resume las 4 rutas disponibles. Los materiales curriculares se gestionan con las editoriales oficiales.\n"
-            . "· Para matricularse: €180 de matrícula + primera mensualidad. Off-Campus inicia desde €250.\n"
-            . "· Referencia internacional para Panamá u otros países: aprox. USD $286 al cambio BCE 1 EUR = 1.1404 USD (redondeado al alza).\n"
-            . "Un saludo,\nEquipo Chanak International Academy\n\n"
-            . "Chanak Academy is a registered private school with the Florida Department of Education (FLDOE #134620) and accredited by MSA-CESS. IRS 501(c)(3).\n"
-            . "Al finalizar sus estudios, el estudiante obtiene el diploma de High School Americano con certificado apostillado.",
+            . "Hemos recibido tu solicitud para Chanak Off-Campus. La modalidad indicada es: {plan}.\n\n"
+            . "Tenemos dos modalidades distintas:\n"
+            . "· Guided Homeschool: US$80 al mes como referencia internacional y mentoría mensual con la familia. La matrícula del programa y sus condiciones se confirman para tu país.\n"
+            . "· Full Enrollment: matrícula escolar K–12 a tiempo completo, tres sesiones semanales de ELA/English, Life Skills en vivo y mentoría semanal con el estudiante. Colegiatura en USD: K–5 US$275/mes, 6–8 US$320/mes, 9–12 US$365/mes, durante 10 mensualidades. Matrícula anual US$295 por estudiante, una vez por curso.\n"
+            . "Full Enrollment también permite 4 pagos trimestrales o un pago de colegiatura anual, siempre en USD. Los materiales externos o cargos aplicables se especifican antes de confirmar.\n\n"
+            . "¿Qué sucede ahora?\n"
+            . "1. Nuestro equipo revisará país, grado, modalidad y situación académica y responderá en un día hábil.\n"
+            . "2. Recibirás por escrito tu propuesta, requisitos, modalidad curricular y calendario de pagos.\n"
+            . "3. Si deseas continuar, presentarás la solicitud de matrícula en https://sis.chanakacademy.org/matricula?program=off_campus&scope=international .\n"
+            . "4. Tras verificar la documentación y aprobar la propuesta, Admisiones facilitará una factura o enlace de pago correspondiente al expediente. No efectúes pagos desde enlaces generales antes de aprobar el plan.\n"
+            . "5. Confirmado el pago aplicable, Chanak organiza diagnóstico, PEI, inducción y accesos según el programa.\n\n"
+            . "Programa: {landing}\n"
+            . "Tarifas oficiales: https://www.chanakacademy.org/tarifas/\n"
+            . "Dossier opcional: {dossier}\n\n"
+            . "Esta solicitud no implica admisión ni genera un cargo. Los documentos académicos se emiten al cumplir los requisitos; la acreditación MSA-CESS corresponde a Chanak International Academy K–12.\n\n"
+            . "Admisiones Chanak · offcampus@chanakacademy.org",
+    ],
+    'offcampus_en' => [
+        'subject' => 'Chanak Off-Campus · Your inquiry and next enrollment steps',
+        'body' => "Dear {nombre},\n\n"
+            . "We received your Off-Campus inquiry. Selected pathway: {plan}.\n\n"
+            . "Guided Homeschool includes one family mentoring session per month and guided access to the platform (international reference US$80/month; local enrollment conditions are confirmed in writing).\n"
+            . "Full Enrollment provides full-time school enrollment, three weekly live Academic English/ELA sessions, live Life Skills and weekly individual student mentoring. USD tuition for 10 months: K–5 US$275/month; grades 6–8 US$320/month; grades 9–12 US$365/month, plus US$295 annual enrollment fee per student. Quarterly or annual tuition options are also available.\n\n"
+            . "NEXT STEPS\n"
+            . "1. Admissions reviews the student's grade, location and academic background and responds within one business day.\n"
+            . "2. You receive a written program quote and list of documents, materials and payment dates.\n"
+            . "3. If ready to apply, go to https://sis.chanakacademy.org/matricula?program=off_campus&scope=international .\n"
+            . "4. Pay only against the invoice or payment link issued for your approved application; an inquiry is not an enrollment or a payment authorization.\n"
+            . "5. After payment confirmation, Chanak arranges assessment, individualized learning plan and onboarding.\n\n"
+            . "Program: {landing}\nOfficial tuition: https://www.chanakacademy.org/tarifas/\n"
+            . "Optional PDF dossier: {dossier}\n\n"
+            . "Chanak Admissions · offcampus@chanakacademy.org",
     ],
     'dual' => [
         'subject' => 'Hemos recibido tu solicitud · Dual Diploma | Chanak Academy',
@@ -959,7 +978,7 @@ if ($esMatricula) {
     $reply = $isEn ? ($AUTOREPLY['florida_pep_ema_en'] ?? $AUTOREPLY['florida_pep_ema']) : $AUTOREPLY['florida_pep_ema'];
 } else {
     $reply = ($isEn && isset($AUTOREPLY[$autoreplyKey . '_en'])) ? $AUTOREPLY[$autoreplyKey . '_en'] : ($AUTOREPLY[$autoreplyKey] ?? $AUTOREPLY['general']);
-    if ($commercialRegion === '' && $pack) {
+    if ($commercialRegion === '' && $pack && !in_array($route, ['offcampus', 'dual'], true)) {
         $en = $isEn;
         $subject = $en ? 'Your program dossier' : 'Tu dossier del programa';
         $reply = [
@@ -982,7 +1001,14 @@ $matFlow     = chanak_matricula_flow($matProg, $matHub);
 $matPasos    = chanak_matricula_steps($matFlow, $isEn);
 $matServicio = first_value($data, ['service_name']) !== '' ? first_value($data, ['service_name']) : ($service !== '' ? $service : $label);
 
+$planParam = strtolower(first_value($data, ['plan', 'modalidad', 'plan_interes']));
+$planName = (strpos($planParam, 'full') !== false || strpos($planParam, 'complet') !== false)
+    ? ($isEn ? 'Full Enrollment · Guided Virtual School' : 'Full Enrollment · Matrícula escolar completa')
+    : ((strpos($planParam, 'guided') !== false || strpos($planParam, 'guiado') !== false)
+        ? ($isEn ? 'Guided Homeschool' : 'Homeschool Guiado')
+        : ($isEn ? 'Not selected; Admissions will confirm' : 'Pendiente de confirmar con Admisiones'));
 $replyBody = strtr($reply['body'], [
+    '{plan}'             => $planName,
     '{nombre}'           => $name !== '' ? $name : ($isEn ? 'Family' : 'familia'),
     '{estudiante}'       => $studentName !== '' ? $studentName : ($isEn ? 'your student' : 'tu hijo/a'),
     '{folio}'            => $folio !== '' ? $folio : 'PENDING',
