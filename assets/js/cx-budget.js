@@ -7,7 +7,8 @@
   var C = window.CX_BUDGET, B = window.CXB; if (!C || !B) return;
   var T = C.t, root = document.getElementById('cx-budget'); if (!root) return;
   var P = null, N = null;
-  var st = { cur: C.currency || 'EUR', country: C.country || 'es', scope: '', fee: '', other: '', grants: '', students: ['', '', '', ''], inv: {}, mon: {}, extraInv: [], extraMon: [] };
+  var CH = {};   /* valores sugeridos de Cuotas_Chanak: se cargan con P */
+  var st = { affil: '', cfee: '', cur: C.currency || 'EUR', country: C.country || 'es', scope: '', fee: '', other: '', grants: '', students: ['', '', '', ''], inv: {}, mon: {}, extraInv: [], extraMon: [] };
   var STAGES = [['infantil', ['K2']], ['primaria', ['K2', 'E35']], ['secundaria', ['M68']], ['bachillerato', ['H912']]];
   var BANDKEY = ['K2', 'E35', 'M68', 'H912'];
   var el = function (tag, attrs, kids) {
@@ -23,7 +24,7 @@
   function scopeName(a) { return C.i18n.alcance[a.id] || a.name; }
   function bandName(t) { return C.i18n.tramo[t.id] || t.name; }
   function pilar(es) { return es ? (C.i18n.pilar[es] || es) : T.other_cat; }
-  function S() { return { fee: st.fee, other: st.other, grants: st.grants, students: st.students, inv: st.inv, mon: st.mon, extraInv: st.extraInv, extraMon: st.extraMon }; }
+  function S() { return { affil: st.affil, cfee: st.cfee, fee: st.fee, other: st.other, grants: st.grants, students: st.students, inv: st.inv, mon: st.mon, extraInv: st.extraInv, extraMon: st.extraMon }; }
   function activeScope() { return st.scope || 'alcance5'; }   // sin alcance elegido se muestran todas las partidas, pero no hay resultados
 
   var out = el('div', { cls: 'cx-b-out', 'aria-live': 'polite' }), cmpBox = el('div', { cls: 'cx-b-cmp' });
@@ -60,7 +61,7 @@
   var addInv = el('button', { type: 'button', cls: 'cx-btn cx-btn-o cx-b-add', text: '+ ' + T.add }), addMon = el('button', { type: 'button', cls: 'cx-btn cx-btn-o cx-b-add', text: '+ ' + T.add });
   root.appendChild(step(1, T.s1, T.s1_p, [table(invBody), addInv]));
   root.appendChild(step(2, T.s2, T.s2_p, [table(monBody), addMon]));
-  root.appendChild(step(3, T.s3, T.s3_p, [el('div', { cls: 'cx-b-inc' }, [field(T.fee, 'fee', T.fee_h), field(T.other_inc, 'other', T.other_inc_h), field(T.schol, 'grants', T.schol_h)]), el('h3', { text: T.students_h2 }), bandBox, staffBox,
+  root.appendChild(step(3, T.s3, T.s3_p, [el('div', { cls: 'cx-b-inc' }, [field(T.fee, 'fee', T.fee_h), field(T.other_inc, 'other', T.other_inc_h), field(T.schol, 'grants', T.schol_h)]), el('div', { cls: 'cx-b-inc' }, [field(T.affil, 'affil', T.affil_h), field(T.cfee, 'cfee', T.cfee_h)]), el('h3', { text: T.students_h2 }), bandBox, staffBox,
     el('details', { cls: 'cx-b-assume' }, [el('summary', { text: T.assume_h }), el('p', { cls: 'cx-note', text: T.assume_p }), assumeBox])]));
   var csvBtn = el('button', { type: 'button', cls: 'cx-btn cx-btn-n', text: T.csv }), prBtn = el('button', { type: 'button', cls: 'cx-btn cx-btn-o', text: T.print });
   root.appendChild(el('section', { cls: 'cx-b-step cx-b-result' }, [el('h2', {}, [el('span', { cls: 'cx-step-n', text: '4' }), document.createTextNode(' ' + T.s4)]), out,
@@ -68,6 +69,8 @@
   var prevBox = el('div', { cls: 'cx-b-prev', id: 'cx-previo' }), prevBtn = el('button', { type: 'button', cls: 'cx-btn cx-btn-t', text: T.previo_btn }), prevCsv = el('button', { type: 'button', cls: 'cx-btn cx-btn-o', text: T.previo_csv });
   var xl = el('a', { cls: 'cx-btn cx-btn-o', href: '/assets/descargas/Calculadora-Presupuesto-Microschool-Chanak-ES.xlsx', download: '', text: T.xlsx });
   root.appendChild(el('section', { cls: 'cx-b-step' }, [el('h2', { text: T.previo_h }), el('p', { cls: 'cx-lead', text: T.previo_p }), el('div', { cls: 'cx-btns' }, [prevBtn, prevCsv, xl]), prevBox]));
+
+  root.querySelectorAll('input[data-k=affil]').forEach(function (i) { i.value = st.affil; }); root.querySelectorAll('input[data-k=cfee]').forEach(function (i) { i.value = st.cfee; });
 
   /* ── Render ── */
   function amountRow(it, group) {
@@ -185,7 +188,7 @@
   /* ── Eventos ── */
   root.addEventListener('input', function (e) {
     var t = e.target, k = t.dataset.k; if (!k) return;
-    if (k === 'fee' || k === 'other' || k === 'grants') st[k] = t.value;
+    if (k === 'fee' || k === 'other' || k === 'grants' || k === 'affil' || k === 'cfee') st[k] = t.value;
     else if (k === 'stu') st.students[+t.dataset.i] = t.value;
     else if (k === 'amt') st[t.dataset.g === 'inv' ? 'inv' : 'mon'][t.dataset.id] = t.value;
     else if (k === 'xamt') st[t.dataset.g === 'inv' ? 'extraInv' : 'extraMon'][+t.dataset.i] = t.value;
@@ -207,12 +210,14 @@
     exNote.hidden = false; renderItems(); renderBands(); root.querySelectorAll('input[data-k=fee]').forEach(function (i) { i.value = st.fee; }); root.querySelectorAll('input[data-k=other],input[data-k=grants]').forEach(function (i) { i.value = ''; }); render();
   });
   clrBtn.addEventListener('click', function () {
-    st.fee = st.other = st.grants = ''; st.students = ['', '', '', '']; st.inv = {}; st.mon = {}; st.extraInv = []; st.extraMon = []; exNote.hidden = true; prevBox.replaceChildren();
+    st.fee = st.other = st.grants = ''; st.affil = CH.incorporacion == null ? '' : String(CH.incorporacion); st.cfee = CH.por_alumno == null ? '' : String(CH.por_alumno); root.querySelectorAll('input[data-k=affil]').forEach(function (i) { i.value = st.affil; }); root.querySelectorAll('input[data-k=cfee]').forEach(function (i) { i.value = st.cfee; }); st.students = ['', '', '', '']; st.inv = {}; st.mon = {}; st.extraInv = []; st.extraMon = []; exNote.hidden = true; prevBox.replaceChildren();
     root.querySelectorAll('input[data-k=fee],input[data-k=other],input[data-k=grants]').forEach(function (i) { i.value = ''; }); renderItems(); renderBands(); render();
   });
 
   Promise.all([fetch('/assets/data/presupuesto-alcance.json').then(function (r) { return r.json(); }), fetch('/assets/data/normativa-paises.json').then(function (r) { return r.json(); })]).then(function (a) {
     P = a[0]; N = a[1].paises;
+    CH = P.cuotas_chanak || {}; st.affil = CH.incorporacion == null ? '' : String(CH.incorporacion); st.cfee = CH.por_alumno == null ? '' : String(CH.por_alumno);
+    root.querySelectorAll('input[data-k=affil]').forEach(function (i) { i.value = st.affil; }); root.querySelectorAll('input[data-k=cfee]').forEach(function (i) { i.value = st.cfee; });
     P.alcances.forEach(function (al) { scopeSel.appendChild(el('option', { value: al.id, text: scopeName(al) })); });
     N.forEach(function (p) { var o = el('option', { value: p.id, text: p.name[C.lang] || p.name.es }); if (p.id === st.country) o.selected = true; ctySel.appendChild(o); });
     renderItems(); renderBands(); renderAssume(); render();

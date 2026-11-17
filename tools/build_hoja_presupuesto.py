@@ -4,7 +4,7 @@
 
 · Fuente única de datos: hojas `Parametros_alcance`, `Cuotas_Chanak` y `Normativa_datos`. La web las lee con
   tools/build_presupuesto_json.py → assets/data/presupuesto-alcance.json (no duplica números).
-· Versión pública: `Cuotas_Chanak` solo lleva la inversión de incorporación (3.500); cuota mensual y por alumno vacías.
+· Versión pública: `Cuotas_Chanak` lleva solo valores sugeridos y editables (afiliación 3.500; fee 40 por alumno).
 · Requiere openpyxl:  python3 -m venv .venv && .venv/bin/pip install openpyxl   (solo para regenerar la hoja)
 Uso:  .venv/bin/python tools/build_hoja_presupuesto.py"""
 import os, sys, zipfile, re
@@ -206,13 +206,14 @@ def build():
     cq = wb.create_sheet('Cuotas_Chanak')
     widths(cq, {'A': 4, 'B': 58, 'C': 24, 'D': 70})
     cq['A1'] = 'Cuotas Chanak'; cq['A1'].font = TITLE
-    cq['A2'] = 'La inversión de incorporación con Chanak es de 3.500 (importe de referencia, una sola vez). La cuota fija mensual y la cuota por alumno se completan con tu propuesta de alianza; si quedan vacías, la calculadora no suma ningún importe mensual de Chanak.'; cq['A2'].font = NOTE
+    cq['A2'] = 'Valores sugeridos del acuerdo macro (editables; confirma los definitivos en tu propuesta): afiliación inicial 3.500 (una sola vez) y fee mensual de 40 por alumno. La cuota fija mensual queda vacía.'; cq['A2'].font = NOTE
     head(cq, 3, ['', 'Concepto', 'Importe', 'Cómo se aplica'], start=1)
-    for r, (lab, how) in enumerate([('Cuota de incorporación de la sede (una sola vez)', 'Se suma a la inversión inicial'),
+    for r, (lab, how) in enumerate([('Afiliación inicial a Chanak (una sola vez) · sugerencia', 'Se suma a la inversión inicial'),
                                     ('Cuota fija mensual de alianza', 'Se suma al gasto mensual'),
-                                    ('Cuota mensual por alumno', 'Se multiplica por los alumnos de los tramos activos del alcance elegido')], start=4):
+                                    ('Fee mensual Chanak por alumno · acuerdo macro', 'Se multiplica por los alumnos de los tramos activos del alcance elegido')], start=4):
         cq.cell(row=r, column=2, value=lab); inp(cq.cell(row=r, column=3)); cq.cell(row=r, column=4, value=how)
-    cq['C4'] = 3500; cq['D4'] = 'Se suma a la inversión inicial (importe de referencia de 3.500: ajústalo a tu moneda y a tu propuesta)'
+    cq['C4'] = 3500; cq['D4'] = 'Se suma a la inversión inicial (sugerencia; ajústala a tu moneda y a tu propuesta)'
+    cq['C6'] = 40; cq['D6'] = 'Se multiplica por los alumnos de los tramos activos del alcance elegido (valor del acuerdo macro; editable)'
     # ───────── Inversion_inicial ─────────
     iv = wb.create_sheet('Inversion_inicial')
     widths(iv, {'A': 56, 'B': 26, 'C': 22, 'D': 56, 'E': 14})
@@ -224,7 +225,7 @@ def build():
     iv['A4'] = 'Partidas introducidas que aplican al alcance'; iv['C4'] = f'=SUMPRODUCT(C{i0}:C{i1},E{i0}:E{i1})'
     iv['A5'] = 'Material y tecnología por alumno (tramos activos)'
     iv['C5'] = ('=SUMPRODUCT(Ingresos_y_equilibrio!C5:C8,Parametros_alcance!F15:F18)+SUMPRODUCT(Ingresos_y_equilibrio!C5:C8,Parametros_alcance!G15:G18)')
-    iv['A6'] = 'Cuota de incorporación de la sede (hoja Cuotas_Chanak)'; iv['C6'] = '=N(Cuotas_Chanak!C4)'
+    iv['A6'] = 'Afiliación inicial a Chanak (hoja Cuotas_Chanak)'; iv['C6'] = '=N(Cuotas_Chanak!C4)'
     for r in (4, 5, 6): iv.cell(row=r, column=3).fill = EX_FILL
     head(iv, 9, ['Partida', 'Pilar o categoría', '=\"Importe estimado (\"&Inicio!$C$6&\")\"', 'Notas', 'Aplica (1/0)'])
     for i in range(n_inv):

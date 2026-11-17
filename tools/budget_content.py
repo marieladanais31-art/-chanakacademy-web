@@ -156,7 +156,11 @@ EX = dict(fee=400, students=16,
           inv={'material_inicial': 1200, 'mobiliario': 3200, 'adecuacion': 2500, 'incendios': 800, 'licencias': 600, 'legal': 900, 'seguros': 400, 'tecnologia': 2400, 'marketing': 600, 'imprevistos': 1000},
           mon={'alquiler': 900, 'limpieza': 150, 'docentes_locales': 2600, 'administracion': 800, 'materiales': 200, 'seguros_mes': 150, 'contabilidad': 150, 'marketing_mes': 150, 'reserva_mes': 100})
 T.update(dict(
-    chanak_inv=d('La inversión inicial incluye la inversión de incorporación con Chanak: {x} (una sola vez, importe de referencia).', 'The start-up investment includes the Chanak partnership investment: {x} (one-time, reference amount).', 'La inversió inicial inclou la inversió d’incorporació amb Chanak: {x} (una sola vegada, import de referència).', 'L’investissement initial comprend l’investissement d’intégration avec Chanak : {x} (une seule fois, montant de référence).'),
+    chanak_inv=d('La inversión inicial incluye la afiliación inicial a Chanak: {x} (una sola vez, sugerencia editable).', 'The start-up investment includes the initial Chanak affiliation: {x} (one-time, editable suggestion).', 'La inversió inicial inclou l’afiliació inicial a Chanak: {x} (una sola vegada, suggeriment editable).', 'L’investissement initial comprend l’affiliation initiale à Chanak : {x} (une seule fois, suggestion modifiable).'),
+    affil=d('Afiliación inicial a Chanak (sugerencia)', 'Initial Chanak affiliation (suggestion)', 'Afiliació inicial a Chanak (suggeriment)', 'Affiliation initiale à Chanak (suggestion)'),
+    affil_h=d('Pago único. Valor sugerido, editable: confírmalo en tu propuesta.', 'One-time payment. Suggested, editable value: confirm it in your proposal.', 'Pagament únic. Valor suggerit, editable: confirma’l a la teva proposta.', 'Paiement unique. Valeur suggérée, modifiable : confirmez-la dans votre proposition.'),
+    cfee=d('Fee mensual Chanak por estudiante (acuerdo macro)', 'Monthly Chanak fee per student (framework agreement)', 'Fee mensual de Chanak per estudiant (acord marc)', 'Frais mensuels Chanak par élève (accord-cadre)'),
+    cfee_h=d('Valor del acuerdo macro, editable: confírmalo en tu propuesta.', 'Framework-agreement value, editable: confirm it in your proposal.', 'Valor de l’acord marc, editable: confirma’l a la teva proposta.', 'Valeur de l’accord-cadre, modifiable : confirmez-la dans votre proposition.'),
     scope=d('Alcance de la escuela', 'School scope', 'Abast de l’escola', 'Périmètre de l’école'),
     scope_ph=d('— Elige el alcance —', '— Choose the scope —', '— Tria l’abast —', '— Choisissez le périmètre —'),
     scope_req=d('Elige el alcance de tu escuela (obligatorio) para calcular el resultado.', 'Choose your school’s scope (required) to calculate the result.', 'Tria l’abast de la teva escola (obligatori) per calcular el resultat.', 'Choisissez le périmètre de votre école (obligatoire) pour calculer le résultat.'),
@@ -188,3 +192,9 @@ T.update(dict(
     pv_stage=d('Notas por etapa', 'Notes by stage', 'Notes per etapa', 'Notes par étape'),
     load_err=d('No se pudieron cargar los parámetros. Descarga la hoja de cálculo.', 'The parameters could not be loaded. Download the spreadsheet.', 'No s’han pogut carregar els paràmetres. Descarrega el full de càlcul.', 'Impossible de charger les paramètres. Téléchargez la feuille de calcul.'),
 ))
+
+
+# Português (overlay em tools/pt_budget.py)
+import sys as _sys
+import pt_budget as _pt
+_pt.apply(_sys.modules[__name__])

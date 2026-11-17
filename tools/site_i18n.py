@@ -195,15 +195,15 @@ T = {
     ca='Col·legi privat K-12 inscrit al Departament d’Educació de Florida. El registre és públic i verificable.',
     fr='École privée K-12 inscrite auprès du Département de l’Éducation de Floride. L’enregistrement est public et vérifiable.'),
  'tr3_h': dict(
-    es='Acreditación MSA-CESS: escuelas reconocidas por muchas universidades en todo el mundo',
-    en='MSA-CESS accreditation: schools recognized by many universities worldwide',
-    ca='Acreditació MSA-CESS: escoles reconegudes per moltes universitats arreu del món',
-    fr='Accréditation MSA-CESS : des écoles reconnues par de nombreuses universités dans le monde'),
+    es='Acreditación MSA-CESS: un respaldo reconocido en todo el mundo',
+    en='MSA-CESS accreditation: backing recognized worldwide',
+    ca='Acreditació MSA-CESS: un aval reconegut arreu del món',
+    fr='Accréditation MSA-CESS : une garantie reconnue dans le monde entier'),
  'tr3_p': dict(
-    es='Las escuelas con acreditación MSA-CESS son reconocidas por muchas universidades a nivel mundial. Además, somos miembros de la Global Community de Dallas Baptist University. La admisión y las becas dependen siempre de los requisitos de cada universidad.',
-    en='MSA-CESS accredited schools are recognized by many universities worldwide. We are also members of Dallas Baptist University’s Global Community. Admission and scholarships always depend on each university’s own requirements.',
-    ca='Les escoles amb acreditació MSA-CESS són reconegudes per moltes universitats a tot el món. A més, som membres de la Global Community de Dallas Baptist University. L’admissió i les beques depenen sempre dels requisits de cada universitat.',
-    fr='Les écoles accréditées MSA-CESS sont reconnues par de nombreuses universités dans le monde. Nous sommes aussi membres de la Global Community de Dallas Baptist University. L’admission et les bourses dépendent toujours des exigences de chaque université.'),
+    es='MSA-CESS acredita a más de 3.000 escuelas en 117 países, según su sitio oficial. Esta acreditación respalda la calidad del programa y la fiabilidad del expediente académico, algo que las universidades tienen en cuenta al valorar a un estudiante. La admisión y las becas dependen siempre de cada universidad. Además, somos miembros de la Global Community de Dallas Baptist University.',
+    en='MSA-CESS accredits more than 3,000 schools in 117 countries, according to its official website. This accreditation supports the quality of the program and the reliability of the academic record, which universities take into account when evaluating a student. Admission and scholarships always depend on each university. We are also members of Dallas Baptist University’s Global Community.',
+    ca='MSA-CESS acredita més de 3.000 escoles a 117 països, segons el seu web oficial. Aquesta acreditació avala la qualitat del programa i la fiabilitat de l’expedient acadèmic, cosa que les universitats tenen en compte quan valoren un estudiant. L’admissió i les beques depenen sempre de cada universitat. A més, som membres de la Global Community de Dallas Baptist University.',
+    fr='MSA-CESS accrédite plus de 3 000 écoles dans 117 pays, selon son site officiel. Cette accréditation atteste la qualité du programme et la fiabilité du dossier scolaire, éléments que les universités prennent en compte pour évaluer un élève. L’admission et les bourses dépendent toujours de chaque université. Nous sommes aussi membres de la Global Community de Dallas Baptist University.'),
  'tr4_h': dict(
     es='Chanak TrainUp Education Inc. · Entidad sin ánimo de lucro 501(c)(3)',
     en='Chanak TrainUp Education Inc. · 501(c)(3) nonprofit organization',

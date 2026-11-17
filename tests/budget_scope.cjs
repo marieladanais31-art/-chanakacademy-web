@@ -26,8 +26,8 @@ for (const [name, fx] of Object.entries(FX)) {
   });
 }
 const ref = FX['referencia'].input, S = stateOf(ref);
-test('caso de referencia (cuota 400, gasto 5.200, 10 alumnos): 13 para el equilibrio en TODOS los alcances que incluyen el tramo', () => {
-  ['alcance1', 'alcance2', 'alcance5'].forEach((id) => assert.strictEqual(B.compute(P, S, id).equil, 13, id));
+test('caso de referencia (cuota 400, gasto 5.200, 10 alumnos): 13 sin fee Chanak y 14 con el fee sugerido de 40, en TODOS los alcances que incluyen el tramo', () => {
+  ['alcance1', 'alcance2', 'alcance5'].forEach((id) => { assert.strictEqual(B.compute(P, { ...S, cfee: 0 }, id).equil, 13, id); assert.strictEqual(B.compute(P, S, id).equil, 14, id); });
 });
 test('Escuela completa con alumnos solo en un tramo = mismo resultado que el alcance equivalente', () => {
   const full = B.compute(P, S, 'alcance5'), kin = B.compute(P, S, 'alcance1');
@@ -52,10 +52,11 @@ test('el coordinador académico aparece con alumnos en 2 o más etapas, no con u
   assert.strictEqual(B.compute(P, { ...S, students: [10, 0, 10, 0] }, 'alcance5').coord, 1);
   assert.strictEqual(B.compute(P, { ...S, students: [10, 10, 10, 10] }, 'alcance5').coord, 1);
 });
-test('versión pública: solo la inversión de incorporación (3.500); cuota mensual y por alumno vacías', () => {
-  assert.strictEqual(P.cuotas_chanak.incorporacion, 3500); assert.strictEqual(P.cuotas_chanak.fija_mensual, null); assert.strictEqual(P.cuotas_chanak.por_alumno, null);
+test('valores sugeridos del acuerdo macro: afiliación 3.500 y fee 40 por alumno; editables (affil/cfee); cuota fija vacía', () => {
+  assert.strictEqual(P.cuotas_chanak.incorporacion, 3500); assert.strictEqual(P.cuotas_chanak.fija_mensual, null); assert.strictEqual(P.cuotas_chanak.por_alumno, 40);
   const r = B.compute(P, { ...S, students: [10, 10, 10, 10] }, 'alcance5');
-  assert.strictEqual(r.chanak, 0); assert.strictEqual(r.invCuota, 3500);
+  assert.strictEqual(r.chanak, 1600); assert.strictEqual(r.invCuota, 3500);
+  const e = B.compute(P, { ...S, students: [10, 10, 10, 10], affil: 1000, cfee: 0 }, 'alcance5'); assert.strictEqual(e.chanak, 0); assert.strictEqual(e.invCuota, 1000);
 });
 test('con cuotas Chanak precargadas (versión de propuesta) se aplican solo a los alumnos de los tramos activos', () => {
   const X = JSON.parse(JSON.stringify(P)); X.cuotas_chanak = { incorporacion: 500, fija_mensual: 100, por_alumno: 10 };

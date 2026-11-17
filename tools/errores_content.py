@@ -100,3 +100,9 @@ F = dict(email=d('Correo electrónico', 'Email', 'Correu electrònic', 'E-mail')
          send=d('Enviar →', 'Send →', 'Enviar →', 'Envoyer →'), ok_h=d('Gracias', 'Thank you', 'Gràcies', 'Merci'),
          ok_p=d('Hemos recibido tus datos. Te escribiremos pronto.', 'We have received your details. We will write soon.', 'Hem rebut les teves dades. T’escriurem aviat.', 'Nous avons bien reçu vos informations. Nous vous écrirons bientôt.'))
 CRUMB = d('7 errores', '7 mistakes', '7 errors', '7 erreurs')
+
+
+# Português (overlay em tools/pt_budget.py)
+import sys as _sys
+import pt_budget as _pt
+_pt.apply(_sys.modules[__name__])

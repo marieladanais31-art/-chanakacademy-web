@@ -8,7 +8,13 @@ Uso: python3 tools/build_pages.py"""
 import html, json, os, sys, datetime
 sys.path.insert(0, os.path.dirname(__file__))
 from build_site import head, header, footer, write, ld, faq_ld, ORG_LD, BASE, V
-LANGS = ['es', 'en', 'ca', 'fr']   # el portugués solo cubre portada y acreditación (tools/pt_i18n.py)
+LANGS = ['es', 'en', 'ca', 'fr']   # páginas de /unete/ (sin portugués)
+PT_LANGS = LANGS + ['pt']          # presupuesto y 7 errores también en portugués (tools/pt_budget.py)
+
+
+def lg(d, lang):
+    """Texto de otro módulo (ms_content…) en el idioma; si aún no tiene pt, cae al español."""
+    return d[lang] if lang in d else d['es']
 from site_i18n import LINKS
 import budget_content as B
 import errores_content as E
@@ -42,7 +48,7 @@ def page(lang, urls, title, desc, body, extra_ld, noindex=False, scripts=''):
 
 
 def form_attrs(lang):
-    return f'data-cx-form data-lang="{lang}" data-sending="{C.FORM_MSG["sending"][lang]}" data-err="{C.FORM_MSG["err"][lang]}" action="/enviar-formulario.php" method="post" novalidate'
+    return f'data-cx-form data-lang="{lang}" data-sending="{lg(C.FORM_MSG["sending"], lang)}" data-err="{lg(C.FORM_MSG["err"], lang)}" action="/enviar-formulario.php" method="post" novalidate'
 
 
 def hp():
@@ -56,7 +62,7 @@ def budget(lang):
                 alcance={k: v[lang] for k, v in B.ALCANCE_I18N.items()}, tramo={k: v[lang] for k, v in B.TRAMO_I18N.items()}, pilar={k: v[lang] for k, v in B.PILAR_I18N.items()})
     cfg = dict(lang=lang, locale=B.LOCALE[lang], currency='EUR', country='es', i18n=i18n, ex=B.EX, t={k: v[lang] for k, v in B.T.items()})
     tips = ''.join(f'<li>{t[lang]}</li>' for t in B.TIPS)
-    trail = [(C.CRUMB_MS[lang], L['ms']), (B.T['previo_h'][lang] if False else B.H1[lang].split(' para ')[0].split(' for ')[0].split(' per ')[0].split(' pour ')[0], B.URL[lang])]
+    trail = [(lg(C.CRUMB_MS, lang), L['ms']), (B.T['previo_h'][lang] if False else B.H1[lang].split(' para ')[0].split(' for ')[0].split(' per ')[0].split(' pour ')[0], B.URL[lang])]
     body = f'''
 <section class="cx-navy cx-phead"><div class="cx-wrap">{crumb_html(lang, trail)}
 <h1>{B.H1[lang]}</h1><p class="cx-lead">{B.LEAD[lang]}</p></div></section>
@@ -67,7 +73,7 @@ def budget(lang):
 <section class="cx-sec cx-soft cx-noprint"><div class="cx-wrap cx-split">
 <div><h2>{B.TIPS_H[lang]}</h2><ul class="cx-list">{tips}</ul>
 <div class="cx-btns"><a class="cx-btn cx-btn-n" href="{L['err7']}">{B.NEXT[lang][0]}</a><a class="cx-btn cx-btn-o" href="{L['open']}#partner-form">{B.NEXT[lang][1]}</a></div></div>
-<img src="/assets/img/gen/alianza-presupuesto.webp" alt="{html.escape(dict(es='Dos personas revisando un presupuesto y un plan sobre una mesa', en='Two people reviewing a budget and a plan at a table', ca='Dues persones revisant un pressupost i un pla sobre una taula', fr='Deux personnes examinant un budget et un plan sur une table')[lang])}" width="1200" height="800" loading="lazy" decoding="async">
+<img src="/assets/img/gen/alianza-presupuesto.webp" alt="{html.escape(dict(es='Dos personas revisando un presupuesto y un plan sobre una mesa', en='Two people reviewing a budget and a plan at a table', ca='Dues persones revisant un pressupost i un pla sobre una taula', fr='Deux personnes examinant un budget et un plan sur une table', pt='Duas pessoas revisando um orçamento e um plano sobre uma mesa')[lang])}" width="1200" height="800" loading="lazy" decoding="async">
 </div></section>'''
     app = {"@type": "WebApplication", "name": B.H1[lang], "url": BASE + B.URL[lang], "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": lang,
            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "provider": {"@id": BASE + "/#school"}}
@@ -78,9 +84,9 @@ def budget(lang):
 # ───────────── 7 errores ─────────────
 def errores(lang):
     L = LINKS[lang]
-    trail = [(C.CRUMB_MS[lang], L['ms']), (E.CRUMB[lang], E.URL[lang])]
+    trail = [(lg(C.CRUMB_MS, lang), L['ms']), (E.CRUMB[lang], E.URL[lang])]
     arts = ''.join(f'<article class="cx-err7"><div class="cx-step-n">{i}</div><div><h2>{t[lang]}</h2><p>{p[lang]}</p><p class="cx-fix"><b>{E.FIX[lang]}:</b> {f[lang]}</p></div></article>' for i, (t, p, f) in enumerate(E.ERR, 1))
-    pill = ''.join(f'<li>{t[lang]}</li>' for t, _ in C.PILLARS)
+    pill = ''.join(f'<li>{lg(t, lang)}</li>' for t, _ in C.PILLARS)
     opts = ''.join(f'<option>{c}</option>' for c in COUNTRIES)
     F = E.F
     body = f'''
@@ -89,7 +95,7 @@ def errores(lang):
 <div class="cx-btns cx-noprint" style="margin-top:22px"><button type="button" class="cx-btn cx-btn-w" onclick="window.print()">{E.PRINT[lang]}</button></div></div></section>
 <section class="cx-sec"><div class="cx-wrap cx-article">{arts}
 <div class="cx-card cx-pillar" style="margin-top:36px"><h2>{E.CLOSE_H[lang]}</h2><p>{E.CLOSE_P[lang]}</p><ul class="cx-list" style="margin-top:14px">{pill}</ul>
-<p class="cx-note">{C.PIL_LEGAL[lang]}</p>
+<p class="cx-note">{lg(C.PIL_LEGAL, lang)}</p>
 <div class="cx-btns cx-noprint" style="margin-top:18px"><a class="cx-btn cx-btn-t" href="{L['budget']}">{E.CTA[lang][0]}</a><a class="cx-btn cx-btn-o" href="{L['open']}#partner-form">{E.CTA[lang][1]}</a></div></div>
 </div></section>
 <section class="cx-sec cx-navy cx-noprint" id="guia"><div class="cx-wrap cx-split">
@@ -99,7 +105,7 @@ def errores(lang):
 <label class="l" for="e7-e">{F['email'][lang]}</label><input class="cx-inp" id="e7-e" name="email" type="email" autocomplete="email" required>
 <label class="l" for="e7-p">{F['country'][lang]}</label><select class="cx-inp" id="e7-p" name="pais" required><option value="">—</option>{opts}<option>Other / Otro</option></select>
 <label class="l" for="e7-s">{F['size'][lang]}</label><input class="cx-inp" id="e7-s" name="num_familias" type="number" min="1" max="1000" inputmode="numeric" required>
-{hp()}<label class="cx-check"><input type="checkbox" name="consentimiento" required><span>{C.PRIV[lang].format(priv=L['priv'])}</span></label>
+{hp()}<label class="cx-check"><input type="checkbox" name="consentimiento" required><span>{lg(C.PRIV, lang).format(priv=L['priv'])}</span></label>
 <button class="cx-btn cx-btn-t" type="submit">{F['send'][lang]}</button><p class="cx-err" role="alert" hidden></p></form>
 <template class="cx-ok-t"><h3>{F['ok_h'][lang]}</h3><p>{F['ok_p'][lang]}</p><p><a class="cx-btn cx-btn-n" href="{L['budget']}">{E.CTA[lang][0]}</a></p></template></div>
 </div></section>'''
@@ -144,7 +150,7 @@ def mentors(lang):
 <div class="cx-f2"><div><label class="l" for="mt-p">{A['f_country'][lang]}</label><input class="cx-inp" id="mt-p" name="pais" autocomplete="country-name" required></div>
 <div><label class="l" for="mt-r">{M['role'][lang]}</label><select class="cx-inp" id="mt-r" name="rol_interes" required><option value="">—</option>{roles}</select></div></div>
 <label class="l" for="mt-m">{M['msg'][lang]}</label><textarea class="cx-inp" id="mt-m" name="mensaje" rows="4" required></textarea>
-{hp()}<label class="cx-check"><input type="checkbox" name="consentimiento" required><span>{C.PRIV[lang].format(priv=L['priv'])}</span></label>
+{hp()}<label class="cx-check"><input type="checkbox" name="consentimiento" required><span>{lg(C.PRIV, lang).format(priv=L['priv'])}</span></label>
 <button class="cx-btn cx-btn-t" type="submit">{M['send'][lang]}</button><p class="cx-err" role="alert" hidden></p></form>
 <template class="cx-ok-t"><h3>{M['ok_h'][lang]}</h3><p>{M['ok_p'][lang]}</p></template></div></div></section>'''
     page(lang, urls, M['title'][lang], M['desc'][lang], body, ld(ORG_LD, crumbs(lang, trail)), scripts=FORMS)
@@ -211,7 +217,7 @@ def draft(lang, key, doc):
 
 if __name__ == '__main__':
     print('Presupuesto y 7 errores:')
-    for l in LANGS:
+    for l in PT_LANGS:
         budget(l); errores(l)
     print('Colabora con Chanak:')
     for l in ('es', 'en'):

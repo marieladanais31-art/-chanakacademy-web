@@ -46,8 +46,8 @@ PT = {
  'tr1_p': 'Middle States Association Commissions on Elementary and Secondary Schools: uma revisão externa e independente de governança, currículo, avaliação e cuidado com o estudante.',
  'tr2_h': 'Registrada na Flórida · FLDOE #134620',
  'tr2_p': 'Escola privada K-12 inscrita no Departamento de Educação da Flórida. O registro é público e verificável.',
- 'tr3_h': 'Credenciamento MSA-CESS: escolas reconhecidas por muitas universidades em todo o mundo',
- 'tr3_p': 'As escolas com credenciamento MSA-CESS são reconhecidas por muitas universidades no mundo todo. Além disso, somos membros da Global Community da Dallas Baptist University. A admissão e as bolsas dependem sempre dos requisitos de cada universidade.',
+ 'tr3_h': 'Credenciamento MSA-CESS: um respaldo reconhecido no mundo todo',
+ 'tr3_p': 'A MSA-CESS credencia mais de 3.000 escolas em 117 países, segundo o seu site oficial. Esse credenciamento respalda a qualidade do programa e a confiabilidade do histórico acadêmico, algo que as universidades levam em conta ao avaliar um estudante. A admissão e as bolsas dependem sempre de cada universidade. Além disso, somos membros da Global Community da Dallas Baptist University.',
  'tr4_h': 'Chanak TrainUp Education Inc. · Organização sem fins lucrativos 501(c)(3)',
  'tr4_p': 'Operada pela Chanak TrainUp Education, Inc., organização sem fins lucrativos reconhecida pelo IRS dos Estados Unidos (501(c)(3)). Selo Candid Gold de transparência 2026. <a href="https://training.chanakacademy.org" target="_blank" rel="noopener">Conhecer a Chanak TrainUp Education ↗</a>',
  'tr_alt': 'Diploma enrolado com fita azul, capelo e pasta de histórico sobre uma mesa',
@@ -106,10 +106,10 @@ PT = {
  'sv4_alt': 'Sessão de mentoria por videochamada vista de trás, com um caderno aberto',
 }
 
-LINKS_PT = dict(home='/pt/', hs='/off-campus/', dd='/dual-diploma/', ms='/microschools/?lang=es', open='/open-a-microschool/?lang=es', fees='/tarifas/',
-                how='/como-funciona/', uni='/universidad-eeuu/', diag='/diagnostico/', priv='/privacidad/', cook='/cookies/', legal='/aviso-legal/',
-                terms='/terminos/', unete='/unete/', mentors='/unete/mentores/', amb='/unete/embajadores/', budget='/microschools/presupuesto/',
-                err7='/microschools/7-errores/', acc='/pt/acreditacao/')
+LINKS_PT = dict(home='/pt/', hs='/off-campus/', dd='/dual-diploma/', ms='/microschools/pt/', open='/open-a-microschool/pt/', fees='/tarifas/',
+                how='/como-funciona/?lang=pt', uni='/universidad-eeuu/', diag='/diagnostico/', priv='/privacidad/', cook='/cookies/', legal='/aviso-legal/',
+                terms='/terminos/', unete='/unete/', mentors='/unete/mentores/', amb='/unete/embajadores/', budget='/pt/microschools/orcamento/',
+                err7='/pt/microschools/7-erros/', acc='/pt/acreditacao/')
 
 FAQ_PT = [
  ('A Chanak International Academy é credenciada?', 'Sim. A Chanak International Academy é credenciada pela Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS) e é uma escola privada registrada no Departamento de Educação da Flórida (FLDOE #134620). É operada pela Chanak TrainUp Education, Inc., entidade sem fins lucrativos 501(c)(3).'),
