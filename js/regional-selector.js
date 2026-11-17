@@ -6,6 +6,8 @@
 
 (function() {
   var COOKIE_NAME = 'user_country';
+  /* Nombre de la región en el idioma de la página (inglés si <html lang="en…">). */
+  function rname(r) { return (document.documentElement.lang || '').indexOf('en') === 0 && r.nameEn ? r.nameEn : r.name; }
   var COOKIE_DAYS = 365;  // 2026-09-19: de 30 a 365 días por decisión de dirección
 
   function getCookie(name) {
@@ -97,7 +99,7 @@
 
     // Actualizar etiquetas visuales del selector
     document.querySelectorAll('.current-region-flag').forEach(function(el) { el.textContent = region.flag; });
-    document.querySelectorAll('.current-region-name').forEach(function(el) { el.textContent = region.name; });
+    document.querySelectorAll('.current-region-name').forEach(function(el) { el.textContent = rname(region); });
     document.querySelectorAll('.current-region-currency').forEach(function(el) { el.textContent = '(' + (region.displayCurrency || region.currency) + ')'; });
 
     document.querySelectorAll('[data-featured-es]').forEach(function(el) {
@@ -237,7 +239,7 @@
     var html = '<div class="chanak-region-dropdown" style="position:relative; display:inline-block; text-align:left;">' +
         '<button type="button" class="chanak-region-btn" style="display:flex; align-items:center; gap:8px; padding:6px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:' + (isFooter ? 'rgba(30,41,59,0.9)' : 'rgba(15,23,42,0.85)') + '; color:#e2e8f0; font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s;">' +
         '<span class="current-region-flag">' + current.flag + '</span>' +
-        '<span class="current-region-name">' + current.name + '</span> ' +
+        '<span class="current-region-name">' + rname(current) + '</span> ' +
         '<span class="current-region-currency" style="color:#fbbf24; font-size:11px; font-weight:bold;">(' + current.currency + ')</span>' +
         '<span style="font-size:10px; opacity:0.7; margin-left:4px;">▼</span>' +
         '</button>' +
@@ -246,7 +248,7 @@
       Object.keys(window.SUPPORTED_REGIONS).forEach(function(code) {
         var reg = window.SUPPORTED_REGIONS[code];
         html += '<button type="button" data-country="' + code + '" style="width:100%; display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border:none; background:transparent; color:#cbd5e1; border-radius:6px; cursor:pointer; text-align:left; font-size:13px; margin-bottom:2px;" onmouseover="this.style.background=\'#1e293b\';this.style.color=\'#fff\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#cbd5e1\';">' +
-          '<div style="display:flex; align-items:center; gap:8px;"><span>' + reg.flag + '</span><span>' + reg.name + '</span></div>' +
+          '<div style="display:flex; align-items:center; gap:8px;"><span>' + reg.flag + '</span><span>' + rname(reg) + '</span></div>' +
           '<span style="font-family:monospace; font-size:11px; color:#94a3b8;">' + (reg.displayCurrency || reg.currency) + '</span>' +
           '</button>';
       });

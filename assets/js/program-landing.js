@@ -9,7 +9,7 @@
   function dossierUrl(c){var country=['ES','MX','PA','CO','US','GLOBAL'].indexOf(c)>=0?c:'GLOBAL';return '/assets/dossiers/family/'+program+'-'+country.toLowerCase()+'-'+(document.documentElement.lang.indexOf('en')===0?'en':'es')+'.pdf?v=20261008editorial'}
   function render(){
     var c=code(),region=window.SUPPORTED_REGIONS&&window.SUPPORTED_REGIONS[c]||{flag:'🌎',name:'Internacional',currency:'USD'};
-    $$('[data-region-label]').forEach(function(el){el.textContent=region.flag+' '+region.name});
+    $$('[data-region-label]').forEach(function(el){el.textContent=region.flag+' '+((document.documentElement.lang||'').indexOf('en')===0&&region.nameEn?region.nameEn:region.name)});
     $$('[data-sis]').forEach(function(el){el.href=sisUrl(el.dataset.sis||'cta')});
     $$('[data-dossier]').forEach(function(el){el.href=dossierUrl(c)});
     var market=window.CHANAK_PRICING&&window.CHANAK_PRICING.markets&&(window.CHANAK_PRICING.markets[c]||window.CHANAK_PRICING.markets.GLOBAL);
@@ -50,7 +50,7 @@
       } else {
         includesHtml = '<p style="margin:12px 0 16px;color:#f1f5f9 !important;">' + (isEn?'The academic route and final investment are confirmed in writing after reviewing the student file.':'La ruta y la inversión final se confirman por escrito después de revisar el caso.') + '</p>';
       }
-      mount.innerHTML='<div class="eyebrow" style="color:#78dfd9 !important;">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+region.name.toUpperCase()+'</div><div class="price-value" style="color:#7be2dc !important;font-size:30px;font-weight:950;">'+price+'</div>'+includesHtml+'<p class="small" style="color:#cbd5e1 !important;font-size:12px;line-height:1.45;">'+(data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'))+'</p>';
+      mount.innerHTML='<div class="eyebrow" style="color:#78dfd9 !important;">'+(isEn?'INFORMATION FOR ':'INFORMACIÓN PARA ')+((isEn&&region.nameEn)?region.nameEn:region.name).toUpperCase()+'</div><div class="price-value" style="color:#7be2dc !important;font-size:30px;font-weight:950;">'+price+'</div>'+includesHtml+'<p class="small" style="color:#cbd5e1 !important;font-size:12px;line-height:1.45;">'+(data.footnote||(isEn?'No enrollment fee is collected without prior written confirmation of the applicable program and rate.':'No se cobra una matrícula sin confirmar previamente el programa y el importe aplicable.'))+'</p>';
     }
     var pay=$('#approved-payment'),payLink=paymentUrl(c);if(pay){if(payLink){pay.classList.remove('hide');pay.href=payLink;pay.dataset.chanakDirectPayment='1'}else{pay.classList.add('hide');pay.removeAttribute('href')}}
     $$('input[name="pais"]').forEach(function(i){i.value=c});
