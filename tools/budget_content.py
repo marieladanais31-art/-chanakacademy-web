@@ -156,6 +156,7 @@ EX = dict(fee=400, students=16,
           inv={'material_inicial': 1200, 'mobiliario': 3200, 'adecuacion': 2500, 'incendios': 800, 'licencias': 600, 'legal': 900, 'seguros': 400, 'tecnologia': 2400, 'marketing': 600, 'imprevistos': 1000},
           mon={'alquiler': 900, 'limpieza': 150, 'docentes_locales': 2600, 'administracion': 800, 'materiales': 200, 'seguros_mes': 150, 'contabilidad': 150, 'marketing_mes': 150, 'reserva_mes': 100})
 T.update(dict(
+    chanak_inv=d('La inversión inicial incluye la inversión de incorporación con Chanak: {x} (una sola vez, importe de referencia).', 'The start-up investment includes the Chanak partnership investment: {x} (one-time, reference amount).', 'La inversió inicial inclou la inversió d’incorporació amb Chanak: {x} (una sola vegada, import de referència).', 'L’investissement initial comprend l’investissement d’intégration avec Chanak : {x} (une seule fois, montant de référence).'),
     scope=d('Alcance de la escuela', 'School scope', 'Abast de l’escola', 'Périmètre de l’école'),
     scope_ph=d('— Elige el alcance —', '— Choose the scope —', '— Tria l’abast —', '— Choisissez le périmètre —'),
     scope_req=d('Elige el alcance de tu escuela (obligatorio) para calcular el resultado.', 'Choose your school’s scope (required) to calculate the result.', 'Tria l’abast de la teva escola (obligatori) per calcular el resultat.', 'Choisissez le périmètre de votre école (obligatoire) pour calculer le résultat.'),

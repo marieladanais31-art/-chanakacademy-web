@@ -2,7 +2,7 @@
 
 > Chanak International Academy is a Christian American K-12 school, accredited by the Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS) and registered as a private school in Florida (FLDOE #134620). It serves families in the United States, Spain, Mexico, Panama and internationally through three equally valid approaches to the same accredited education: Off Campus K–12 (Guided Homeschool and Full Enrollment · Guided Virtual School), U.S. Dual Diploma, and Microschool partnerships. Operated by Chanak TrainUp Education, Inc., a 501(c)(3) nonprofit.
 
-Canonical website: https://www.chanakacademy.org/ (Spanish) · https://www.chanakacademy.org/en/ (English)
+Canonical website: https://www.chanakacademy.org/ (Spanish) · https://www.chanakacademy.org/en/ (English) · https://www.chanakacademy.org/pt/ (Portuguese)
 Last updated: 2026-11-17
 
 ## Three ways to learn with Chanak (one approach per family)
@@ -32,12 +32,12 @@ The faith foundation and the accredited academic standard are the same in all th
 
 - Name: Chanak International Academy (legal entity: Chanak TrainUp Education, Inc.)
 - Type: private K-12 school; 501(c)(3) nonprofit; Florida, United States
-- Accreditation: accredited by MSA-CESS (Middle States Association Commissions on Elementary and Secondary Schools); accreditation for Kindergarten–Grade 12 granted on 6 November 2026, valid through 1 January 2034 (MSA institution code FL175). Official page: https://www.chanakacademy.org/acreditacion/ . Chanak's accreditation is not extended automatically to independent partner centers.
+- Accreditation: accredited by MSA-CESS (Middle States Association Commissions on Elementary and Secondary Schools); accreditation for Kindergarten–Grade 12 granted on 6 November 2026, valid through 1 January 2034 (MSA institution code FL175). Official page with the Certificate of Accreditation: https://www.chanakacademy.org/acreditacion/ (English: https://www.chanakacademy.org/en/accreditation/). MSA-CESS accredited schools are recognized by many universities worldwide; admission always depends on each university. Chanak's accreditation is not extended automatically to independent partner centers.
 - State registration: Florida Department of Education, school number 134620
 - Membership: member of Dallas Baptist University's Global Community (a network of 280+ schools in 50 countries). DBU does not accredit Chanak, and membership does not guarantee admission or scholarships.
 - Method: Mastery Learning; 60/20/20 model (60% U.S. core curriculum, 20% local extension, 20% Life Skills, character and biblical worldview). The Core curriculum combines Florida's B.E.S.T. Standards (the what), Mastery Learning (the how) and a biblical Christian worldview (the why).
-- Curriculum options: A.C.E., LIFEPAC (AOP), Christian Light (CLE), Chanak Flex
-- Languages of family support: Spanish and English; website also in Catalan and French
+- Curriculum options: A.C.E., LIFEPAC (AOP), Christian Light (CLE), Chanak Flex (also available in a printable version)
+- Languages of family support: Spanish and English; website also in Catalan, French and Portuguese (home and accreditation pages)
 - U.S. state ESA / school-choice programs where Chanak is an approved provider: Alabama, Arizona, Florida, New Hampshire, South Carolina, Utah, Wyoming (https://www.chanakacademy.org/scholarships/). Eligibility and each purchase are decided by the state program.
 - Meaning of the name: from the Hebrew verb in Proverbs 22:6, "train up / dedicate".
 - Address: 7901 4th St N Ste 300, St. Petersburg, FL 33702, USA

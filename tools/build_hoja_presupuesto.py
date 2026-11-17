@@ -4,7 +4,7 @@
 
 · Fuente única de datos: hojas `Parametros_alcance`, `Cuotas_Chanak` y `Normativa_datos`. La web las lee con
   tools/build_presupuesto_json.py → assets/data/presupuesto-alcance.json (no duplica números).
-· Versión pública: `Cuotas_Chanak` VACÍA y sin importes en los supuestos monetarios.
+· Versión pública: `Cuotas_Chanak` solo lleva la inversión de incorporación (3.500); cuota mensual y por alumno vacías.
 · Requiere openpyxl:  python3 -m venv .venv && .venv/bin/pip install openpyxl   (solo para regenerar la hoja)
 Uso:  .venv/bin/python tools/build_hoja_presupuesto.py"""
 import os, sys, zipfile, re
@@ -206,12 +206,13 @@ def build():
     cq = wb.create_sheet('Cuotas_Chanak')
     widths(cq, {'A': 4, 'B': 58, 'C': 24, 'D': 70})
     cq['A1'] = 'Cuotas Chanak'; cq['A1'].font = TITLE
-    cq['A2'] = 'Esta versión pública NO incluye importes: se completan con tu propuesta de alianza. Si quedan vacías, la calculadora no muestra ningún importe de Chanak.'; cq['A2'].font = NOTE
+    cq['A2'] = 'La inversión de incorporación con Chanak es de 3.500 (importe de referencia, una sola vez). La cuota fija mensual y la cuota por alumno se completan con tu propuesta de alianza; si quedan vacías, la calculadora no suma ningún importe mensual de Chanak.'; cq['A2'].font = NOTE
     head(cq, 3, ['', 'Concepto', 'Importe', 'Cómo se aplica'], start=1)
     for r, (lab, how) in enumerate([('Cuota de incorporación de la sede (una sola vez)', 'Se suma a la inversión inicial'),
                                     ('Cuota fija mensual de alianza', 'Se suma al gasto mensual'),
                                     ('Cuota mensual por alumno', 'Se multiplica por los alumnos de los tramos activos del alcance elegido')], start=4):
         cq.cell(row=r, column=2, value=lab); inp(cq.cell(row=r, column=3)); cq.cell(row=r, column=4, value=how)
+    cq['C4'] = 3500; cq['D4'] = 'Se suma a la inversión inicial (importe de referencia de 3.500: ajústalo a tu moneda y a tu propuesta)'
     # ───────── Inversion_inicial ─────────
     iv = wb.create_sheet('Inversion_inicial')
     widths(iv, {'A': 56, 'B': 26, 'C': 22, 'D': 56, 'E': 14})

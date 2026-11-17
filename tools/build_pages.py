@@ -7,7 +7,8 @@
 Uso: python3 tools/build_pages.py"""
 import html, json, os, sys, datetime
 sys.path.insert(0, os.path.dirname(__file__))
-from build_site import head, header, footer, write, ld, faq_ld, ORG_LD, BASE, V, LANGS
+from build_site import head, header, footer, write, ld, faq_ld, ORG_LD, BASE, V
+LANGS = ['es', 'en', 'ca', 'fr']   # el portugués solo cubre portada y acreditación (tools/pt_i18n.py)
 from site_i18n import LINKS
 import budget_content as B
 import errores_content as E
