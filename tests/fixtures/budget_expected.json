@@ -37,18 +37,18 @@
      "coord": 0,
      "staff": 0.0,
      "mat": 0.0,
-     "gasto": 5200.0,
+     "gasto": 5600.0,
      "ingresos": 4000.0,
-     "neto": -1200.0,
-     "equil": 13.0,
+     "neto": -1600.0,
+     "equil": 14.0,
      "inv": 3500.0,
      "payback": "No se recupera"
     },
     "selected": {
      "total": 10.0,
-     "gasto": 5200.0,
-     "neto": -1200.0,
-     "equil": 13.0,
+     "gasto": 5600.0,
+     "neto": -1600.0,
+     "equil": 14.0,
      "inv": 3500.0
     }
    },
@@ -64,18 +64,18 @@
      "coord": 0,
      "staff": 0.0,
      "mat": 0.0,
-     "gasto": 5200.0,
+     "gasto": 5600.0,
      "ingresos": 4000.0,
-     "neto": -1200.0,
-     "equil": 13.0,
+     "neto": -1600.0,
+     "equil": 14.0,
      "inv": 3500.0,
      "payback": "No se recupera"
     },
     "selected": {
      "total": 10.0,
-     "gasto": 5200.0,
-     "neto": -1200.0,
-     "equil": 13.0,
+     "gasto": 5600.0,
+     "neto": -1600.0,
+     "equil": 14.0,
      "inv": 3500.0
     }
    },
@@ -145,18 +145,18 @@
      "coord": 0,
      "staff": 0.0,
      "mat": 0.0,
-     "gasto": 5200.0,
+     "gasto": 5600.0,
      "ingresos": 4000.0,
-     "neto": -1200.0,
-     "equil": 13.0,
+     "neto": -1600.0,
+     "equil": 14.0,
      "inv": 3500.0,
      "payback": "No se recupera"
     },
     "selected": {
      "total": 10.0,
-     "gasto": 5200.0,
-     "neto": -1200.0,
-     "equil": 13.0,
+     "gasto": 5600.0,
+     "neto": -1600.0,
+     "equil": 14.0,
      "inv": 3500.0
     }
    }
@@ -227,18 +227,18 @@
      "coord": 0,
      "staff": 3600.0,
      "mat": 120.0,
-     "gasto": 6140.0,
+     "gasto": 6620.0,
      "ingresos": 5550.0,
-     "neto": -590.0,
-     "equil": 14.0,
+     "neto": -1070.0,
+     "equil": 15.0,
      "inv": 10860.0,
      "payback": "No se recupera"
     },
     "selected": {
      "total": 12.0,
-     "gasto": 6140.0,
-     "neto": -590.0,
-     "equil": 14.0,
+     "gasto": 6620.0,
+     "neto": -1070.0,
+     "equil": 15.0,
      "inv": 10860.0
     }
    },
@@ -254,18 +254,18 @@
      "coord": 0,
      "staff": 7000.0,
      "mat": 240.0,
-     "gasto": 9660.0,
+     "gasto": 10740.0,
      "ingresos": 12300.0,
-     "neto": 2640.0,
-     "equil": 22.0,
+     "neto": 1560.0,
+     "equil": 24.0,
      "inv": 12060.0,
-     "payback": 5.0
+     "payback": 8.0
     },
     "selected": {
      "total": 27.0,
-     "gasto": 9660.0,
-     "neto": 2640.0,
-     "equil": 22.0,
+     "gasto": 10740.0,
+     "neto": 1560.0,
+     "equil": 24.0,
      "inv": 12060.0
     }
    },
@@ -281,18 +281,18 @@
      "coord": 0,
      "staff": 3800.0,
      "mat": 160.0,
-     "gasto": 6380.0,
+     "gasto": 7180.0,
      "ingresos": 9150.0,
-     "neto": 2770.0,
-     "equil": 14.0,
+     "neto": 1970.0,
+     "equil": 16.0,
      "inv": 12900.0,
-     "payback": 5.0
+     "payback": 7.0
     },
     "selected": {
      "total": 20.0,
-     "gasto": 6380.0,
-     "neto": 2770.0,
-     "equil": 14.0,
+     "gasto": 7180.0,
+     "neto": 1970.0,
+     "equil": 16.0,
      "inv": 12900.0
     }
    },
@@ -308,18 +308,18 @@
      "coord": 0,
      "staff": 4400.0,
      "mat": 300.0,
-     "gasto": 7120.0,
+     "gasto": 8120.0,
      "ingresos": 11400.0,
-     "neto": 4280.0,
-     "equil": 16.0,
+     "neto": 3280.0,
+     "equil": 18.0,
      "inv": 18900.0,
-     "payback": 5.0
+     "payback": 6.0
     },
     "selected": {
      "total": 25.0,
-     "gasto": 7120.0,
-     "neto": 4280.0,
-     "equil": 16.0,
+     "gasto": 8120.0,
+     "neto": 3280.0,
+     "equil": 18.0,
      "inv": 18900.0
     }
    },
@@ -335,18 +335,18 @@
      "coord": 1,
      "staff": 17700.0,
      "mat": 700.0,
-     "gasto": 20820.0,
+     "gasto": 23700.0,
      "ingresos": 32550.0,
-     "neto": 11730.0,
-     "equil": 46.0,
+     "neto": 8850.0,
+     "equil": 53.0,
      "inv": 25060.0,
      "payback": 3.0
     },
     "selected": {
      "total": 72.0,
-     "gasto": 20820.0,
-     "neto": 11730.0,
-     "equil": 46.0,
+     "gasto": 23700.0,
+     "neto": 8850.0,
+     "equil": 53.0,
      "inv": 25060.0
     }
    }
@@ -411,18 +411,18 @@
      "coord": 0,
      "staff": 1500.0,
      "mat": 0.0,
-     "gasto": 3000.0,
+     "gasto": 3320.0,
      "ingresos": 3040.0,
-     "neto": 40.0,
-     "equil": 8.0,
+     "neto": -280.0,
+     "equil": 9.0,
      "inv": 4500.0,
-     "payback": 113.0
+     "payback": "No se recupera"
     },
     "selected": {
      "total": 8.0,
-     "gasto": 3000.0,
-     "neto": 40.0,
-     "equil": 8.0,
+     "gasto": 3320.0,
+     "neto": -280.0,
+     "equil": 9.0,
      "inv": 4500.0
     }
    },
@@ -438,18 +438,18 @@
      "coord": 0,
      "staff": 4500.0,
      "mat": 0.0,
-     "gasto": 6000.0,
+     "gasto": 6880.0,
      "ingresos": 8360.0,
-     "neto": 2360.0,
-     "equil": 16.0,
+     "neto": 1480.0,
+     "equil": 19.0,
      "inv": 4500.0,
-     "payback": 2.0
+     "payback": 4.0
     },
     "selected": {
      "total": 22.0,
-     "gasto": 6000.0,
-     "neto": 2360.0,
-     "equil": 16.0,
+     "gasto": 6880.0,
+     "neto": 1480.0,
+     "equil": 19.0,
      "inv": 4500.0
     }
    },
@@ -465,18 +465,18 @@
      "coord": 0,
      "staff": 3200.0,
      "mat": 0.0,
-     "gasto": 4700.0,
+     "gasto": 5420.0,
      "ingresos": 6840.0,
-     "neto": 2140.0,
-     "equil": 13.0,
+     "neto": 1420.0,
+     "equil": 15.0,
      "inv": 5000.0,
-     "payback": 3.0
+     "payback": 4.0
     },
     "selected": {
      "total": 18.0,
-     "gasto": 4700.0,
-     "neto": 2140.0,
-     "equil": 13.0,
+     "gasto": 5420.0,
+     "neto": 1420.0,
+     "equil": 15.0,
      "inv": 5000.0
     }
    },
@@ -519,18 +519,18 @@
      "coord": 1,
      "staff": 9700.0,
      "mat": 0.0,
-     "gasto": 11200.0,
+     "gasto": 12800.0,
      "ingresos": 15200.0,
-     "neto": 4000.0,
-     "equil": 30.0,
+     "neto": 2400.0,
+     "equil": 34.0,
      "inv": 5000.0,
-     "payback": 2.0
+     "payback": 3.0
     },
     "selected": {
      "total": 40.0,
-     "gasto": 11200.0,
-     "neto": 4000.0,
-     "equil": 30.0,
+     "gasto": 12800.0,
+     "neto": 2400.0,
+     "equil": 34.0,
      "inv": 5000.0
     }
    }

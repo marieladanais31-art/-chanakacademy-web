@@ -509,6 +509,6 @@
  "cuotas_chanak": {
   "incorporacion": 3500,
   "fija_mensual": null,
-  "por_alumno": null
+  "por_alumno": 40
  }
 }

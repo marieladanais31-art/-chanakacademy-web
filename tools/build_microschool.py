@@ -11,17 +11,90 @@ import ms_content as C
 import build_normativa
 import notice_content
 import build_presupuesto_json
+import pt_ms
 
-MS = {'es': 'microschools/index.html', 'en': 'microschools/en/index.html', 'ca': 'microschools/ca/index.html', 'fr': 'microschools/fr/index.html'}
-OPEN = {'es': 'open-a-microschool/index.html', 'en': 'open-a-microschool/en/index.html', 'ca': 'open-a-microschool/ca/index.html', 'fr': 'open-a-microschool/fr/index.html'}
-MS_URL = {'es': '/microschools/', 'en': '/microschools/en/', 'ca': '/microschools/ca/', 'fr': '/microschools/fr/'}
-OPEN_URL = {'es': '/open-a-microschool/', 'en': '/open-a-microschool/en/', 'ca': '/open-a-microschool/ca/', 'fr': '/open-a-microschool/fr/'}
-ROADMAP_ID = {'es': 'ruta-del-socio', 'en': 'partner-roadmap', 'ca': 'ruta-del-soci', 'fr': 'feuille-de-route'}
-DATE = {'es': '{d} de {m} de {y}', 'en': '{m} {d}, {y}', 'ca': '{d} de {m} de {y}', 'fr': '{d} {m} {y}'}
+MS = {'es': 'microschools/index.html', 'en': 'microschools/en/index.html', 'ca': 'microschools/ca/index.html', 'fr': 'microschools/fr/index.html', 'pt': 'microschools/pt/index.html'}
+OPEN = {'es': 'open-a-microschool/index.html', 'en': 'open-a-microschool/en/index.html', 'ca': 'open-a-microschool/ca/index.html', 'fr': 'open-a-microschool/fr/index.html', 'pt': 'open-a-microschool/pt/index.html'}
+MS_URL = {'es': '/microschools/', 'en': '/microschools/en/', 'ca': '/microschools/ca/', 'fr': '/microschools/fr/', 'pt': '/microschools/pt/'}
+OPEN_URL = {'es': '/open-a-microschool/', 'en': '/open-a-microschool/en/', 'ca': '/open-a-microschool/ca/', 'fr': '/open-a-microschool/fr/', 'pt': '/open-a-microschool/pt/'}
+ROADMAP_ID = {'es': 'ruta-del-socio', 'en': 'partner-roadmap', 'ca': 'ruta-del-soci', 'fr': 'feuille-de-route', 'pt': 'roteiro-do-parceiro'}
+DATE = {'es': '{d} de {m} de {y}', 'en': '{m} {d}, {y}', 'ca': '{d} de {m} de {y}', 'fr': '{d} {m} {y}', 'pt': '{d} de {m} de {y}'}
 MONTHS = {'es': 'enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre'.split(),
           'en': 'January February March April May June July August September October November December'.split(),
           'ca': 'gener febrer març abril maig juny juliol agost setembre octubre novembre desembre'.split(),
-          'fr': 'janvier février mars avril mai juin juillet août septembre octobre novembre décembre'.split()}
+          'fr': 'janvier février mars avril mai juin juillet août septembre octobre novembre décembre'.split(),
+          'pt': 'janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro'.split()}
+
+
+ALL = tuple(C.L4) + ('pt',)
+HREFLANG_PT_ORDER = ('es', 'en', 'ca', 'fr', 'pt')
+
+
+def alternates(urls, h):
+    """Sustituye todos los <link rel="alternate" hreflang> por el juego completo es/en/ca/fr/pt + x-default."""
+    h = re.sub(r'[ \t]*<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?', '', h)
+    blk = f'  <link rel="alternate" hreflang="x-default" href="{BASE}{urls["es"]}">\n' + ''.join(f'  <link rel="alternate" hreflang="{l}" href="{BASE}{urls[l]}">\n' for l in HREFLANG_PT_ORDER)
+    i = h.index('<link rel="stylesheet" href="/assets/css/microschools.css')
+    return h[:i] + blk.lstrip() + '  ' + h[i:]
+
+
+def es_redirect_pt(h, url):
+    """La redirección por idioma de las páginas ES gana la rama pt."""
+    if "l === 'pt'" in h or "location.replace('/microschools/fr/'" not in h and "location.replace('/open-a-microschool/fr/'" not in h:
+        return h
+    fr = url.replace('/pt/', '/fr/')
+    line = f"      else if (l === 'fr') {{ location.replace('{fr}' + location.search + location.hash); }}\n"
+    return h.replace(line, line + f"      else if (l === 'pt') {{ location.replace('{url}' + location.search + location.hash); }}\n", 1)
+
+
+def pt_header(kind):
+    """Cabecera única en portugués (misma que genera tools/unify_headers.py para las demás lenguas)."""
+    from build_site import header
+    from unify_headers import BURGER
+    L = LINKS['pt']
+    urls = {'es': ('/microschools/?lang=es' if kind == 'ms' else '/open-a-microschool/?lang=es'), 'en': MS_URL['en'] if kind == 'ms' else OPEN_URL['en'],
+            'ca': MS_URL['ca'] if kind == 'ms' else OPEN_URL['ca'], 'fr': MS_URL['fr'] if kind == 'ms' else OPEN_URL['fr'], 'pt': MS_URL['pt'] if kind == 'ms' else OPEN_URL['pt']}
+    links = [('Microschools', MS_URL['pt']), ('Abra uma Microschool', OPEN_URL['pt']), ('Os três pilares', '#pilares'), ('Segundo o seu país', '#por-pais'),
+             ('Marco legal', '#marco-legal'), ('Orçamento', L['budget']), ('7 erros', L['err7'])]
+    a = ''.join(f'<a href="{u}">{n}</a>' for n, u in links)
+    sub = f'<nav class="cx-subnav" aria-label="Nesta página"><div class="cx-subnav-in">{a}</div></nav>'
+    return f'<!-- cx:header --><div class="cx cx-hdr">{header("pt", urls)}{sub}</div>{BURGER}<!-- /cx:header -->'
+
+
+LINK_MAP = [('/microschools/fr/', '/microschools/pt/'), ('/open-a-microschool/fr/', '/open-a-microschool/pt/'), ('/?lang=fr#dossier', '/pt/#orientacion'),
+            ('/?lang=fr', '/pt/'), ('/como-funciona/?lang=fr', '/como-funciona/?lang=pt'), ('/fr/microschools/budget/', LINKS['pt']['budget']),
+            ('/fr/microschools/7-erreurs/', LINKS['pt']['err7']), ('href="/fr/"', 'href="/pt/"')]
+
+
+def make_pt_base(kind):
+    """Crea /microschools/pt/ o /open-a-microschool/pt/ a partir de la base francesa (misma estructura, texto traducido)
+    y deja los bloques cx:… para que los regeneren microschools('pt') y open_page('pt')."""
+    src = os.path.join(ROOT, (MS if kind == 'ms' else OPEN)['fr']); dst = os.path.join(ROOT, (MS if kind == 'ms' else OPEN)['pt'])
+    h = open(src, encoding='utf-8').read()
+    h = pt_ms.translate_base(h)
+    h = h.replace('<html lang="fr">', '<html lang="pt">')
+    url_fr = (MS_URL if kind == 'ms' else OPEN_URL)['fr']; url_pt = (MS_URL if kind == 'ms' else OPEN_URL)['pt']
+    h = h.replace(BASE + url_fr, BASE + url_pt)
+    # los enlaces antiguos se reescriben primero (la regla '/?lang=fr#dossier' antes que '/?lang=fr')
+    for a, b in LINK_MAP:
+        h = h.replace(a, b)
+    h = re.sub(r'<!-- cx:header -->.*?<!-- /cx:header -->', lambda m: pt_header(kind), h, 1, flags=re.S)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    open(dst, 'w', encoding='utf-8').write(h)
+    print('  · base', os.path.relpath(dst, ROOT))
+
+
+def add_alternates():
+    for kind, M, U in (('ms', MS, MS_URL), ('open', OPEN, OPEN_URL)):
+        urls = dict(U)
+        for lang in ALL:
+            p = os.path.join(ROOT, M[lang]); h = open(p, encoding='utf-8').read()
+            h = alternates(urls, h)
+            h = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{BASE}{U[lang]}">', h, 1)
+            h = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{BASE}{U[lang]}">', h, 1)
+            if lang == 'es':
+                h = es_redirect_pt(h, U['pt'])
+            open(p, 'w', encoding='utf-8').write(h)
 
 
 def today(lang):
@@ -214,3 +287,8 @@ if __name__ == '__main__':
     print('Microschool:')
     for l in C.L4:
         microschools(l, data); open_page(l, data)
+    print('Português:')
+    pt_ms.add_normativa(data)
+    make_pt_base('ms'); make_pt_base('open')
+    microschools('pt', data); open_page('pt', data)
+    add_alternates()

@@ -15,7 +15,7 @@
   function dot(a, b) { var s = 0; for (var i = 0; i < a.length; i++) s += (a[i] || 0) * (b[i] || 0); return s; }
   function scopeOf(P, id) { for (var i = 0; i < P.alcances.length; i++) if (P.alcances[i].id === id) return P.alcances[i]; return null; }
 
-  /* S = { fee, other, grants, students:[4], inv:{id:amount}, mon:{id:amount}, extraInv:[amounts], extraMon:[amounts] } */
+  /* S = { affil?, cfee? (sobrescriben la afiliación inicial y el fee mensual por alumno de Cuotas_Chanak), fee, other, grants, students:[4], inv:{id:amount}, mon:{id:amount}, extraInv:[amounts], extraMon:[amounts] } */
   function compute(P, S, scopeId) {
     var sc = scopeOf(P, scopeId), flags = sc ? sc.flags : [0, 0, 0, 0], ch = P.cuotas_chanak || {};
     var fee = n(S.fee), other = n(S.other), grants = n(S.grants);
@@ -29,7 +29,8 @@
     var coord = nEtapas >= P.coordinador.min_etapas ? P.coordinador.numero : 0;
     var staff = 0; guias.forEach(function (g, k) { staff += g * n(P.tramos[k].coste_guia); }); staff += coord * n(P.coordinador.coste);
     var mat = 0; students.forEach(function (a, k) { mat += a * n(P.tramos[k].mat_mensual); });
-    var chanak = n(ch.fija_mensual) + n(ch.por_alumno) * total;
+    var perStudent = S.cfee !== undefined ? n(S.cfee) : n(ch.por_alumno);
+    var chanak = n(ch.fija_mensual) + perStudent * total;
     var manual = 0; P.gasto.forEach(function (it) { if (!it.custom) manual += n((S.mon || {})[it.id]); });
     (S.extraMon || []).forEach(function (v) { manual += n(v); });
     var gasto = staff + mat + chanak + manual;
@@ -43,7 +44,7 @@
     });
     (S.extraInv || []).forEach(function (v) { invPart += n(v); });
     var invAlumno = 0; students.forEach(function (a, k) { invAlumno += a * (n(P.tramos[k].mat_inicial) + n(P.tramos[k].tec_inicial)); });
-    var invCuota = n(ch.incorporacion), inv = invPart + invAlumno + invCuota;
+    var invCuota = S.affil !== undefined ? n(S.affil) : n(ch.incorporacion), inv = invPart + invAlumno + invCuota;
     return { scope: scopeId, flags: flags, students: students, total: total, guias: guias, aulas: aulas, m2: m2, etapas: nEtapas, coord: coord, staff: staff, mat: mat,
              chanak: chanak, manual: manual, gasto: gasto, ingresos: ingresos, neto: neto, equil: equil, anual: neto * 12, invPart: invPart, invAlumno: invAlumno, invCuota: invCuota,
              inv: inv, payback: neto > 0 ? ru(inv / neto) : null, applies: applies };

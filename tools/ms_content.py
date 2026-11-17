@@ -227,3 +227,9 @@ COND = [
     (d('Acreditación', 'Accreditation', 'Acreditació', 'Accréditation'),
      d('La acreditación MSA-CESS es de Chanak International Academy y respalda los expedientes y diplomas que emite Chanak. No se extiende automáticamente a centros independientes: cada implementación se valida y supervisa.', 'MSA-CESS accreditation belongs to Chanak International Academy and backs the records and diplomas issued by Chanak. It does not automatically extend to independent centers: each implementation is validated and supervised.', 'L’acreditació MSA-CESS és de Chanak International Academy i avala els expedients i diplomes que emet Chanak. No s’estén automàticament a centres independents: cada implementació es valida i se supervisa.', 'L’accréditation MSA-CESS appartient à Chanak International Academy et couvre les dossiers et diplômes délivrés par Chanak. Elle ne s’étend pas automatiquement aux centres indépendants : chaque mise en œuvre est validée et supervisée.')),
 ]
+
+
+# Português (overlay en tools/pt_ms.py): añade la clave 'pt' a los textos anteriores sin tocar las llamadas d(es,en,ca,fr).
+import sys as _sys
+import pt_ms as _pt_ms
+_pt_ms.apply(_sys.modules[__name__])

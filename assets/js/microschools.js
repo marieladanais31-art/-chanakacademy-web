@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
           title = yesCount >= 4 ? '🎉 Profil Idéal pour une Chanak Microschool' : '📋 Bon Potentiel pour un Partenariat Chanak';
           msg = `Vous avez répondu favorablement à ${yesCount} critères sur 5. Votre structure est dans une position propice pour initier la feuille de route avec Chanak International Academy.`;
           btnText = 'Compléter la Demande Institutionnelle ↓';
+        } else if (lang === 'pt') {
+          title = yesCount >= 4 ? '🎉 Perfil ideal para uma Chanak Microschool' : '📋 Bom potencial para uma parceria com a Chanak';
+          msg = `Você respondeu favoravelmente a ${yesCount} dos 5 critérios. A sua comunidade ou organização está em uma posição propícia para iniciar o caminho de parceiro com a Chanak International Academy.`;
+          btnText = 'Preencher a solicitação institucional ↓';
         } else {
           title = yesCount >= 4 ? '🎉 Perfil Ideal para una Chanak Microschool' : '📋 Buen Potencial para Alianza con Chanak';
           msg = `Has respondido favorablemente a ${yesCount} de 5 criterios. Tu comunidad u organización se encuentra en una posición propicia para iniciar la ruta de socio con Chanak International Academy.`;

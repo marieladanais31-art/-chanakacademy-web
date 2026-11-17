@@ -9,13 +9,14 @@ from build_site import header, V, ROOT
 from site_i18n import T
 import core_content
 import notice_content
+import pt_como
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">')
 CSS = f'<link rel="stylesheet" href="/assets/css/site.css?v={V}">'
 BURGER = ("<script>(function(){document.querySelectorAll('.cx-burger').forEach(function(b){var n=b.parentNode.querySelector('.cx-nav');"
           "if(n&&!b.dataset.cx){b.dataset.cx=1;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})}});document.querySelectorAll('.cx-langs a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('chanak_lang',a.getAttribute('hreflang'))}catch(e){}})});})();</script>")
-SUB_LABEL = dict(es='En esta página', en='On this page', ca='En aquesta pàgina', fr='Sur cette page')
+SUB_LABEL = dict(es='En esta página', en='On this page', ca='En aquesta pàgina', fr='Sur cette page', pt='Nesta página')
 
 
 def subnav(lang, links, extra=''):
@@ -53,13 +54,14 @@ def swap(path, start_rx, end_str, blk):
     print('  ·', path)
 
 
-MS = {'es': '/microschools/?lang=es', 'en': '/microschools/en/', 'ca': '/microschools/ca/', 'fr': '/microschools/fr/'}
-OPEN = {'es': '/open-a-microschool/?lang=es', 'en': '/open-a-microschool/en/', 'ca': '/open-a-microschool/ca/', 'fr': '/open-a-microschool/fr/'}
+MS = {'es': '/microschools/?lang=es', 'en': '/microschools/en/', 'ca': '/microschools/ca/', 'fr': '/microschools/fr/', 'pt': '/microschools/pt/'}
+OPEN = {'es': '/open-a-microschool/?lang=es', 'en': '/open-a-microschool/en/', 'ca': '/open-a-microschool/ca/', 'fr': '/open-a-microschool/fr/', 'pt': '/open-a-microschool/pt/'}
 MS_SUB = {
     'es': [('Microschools', '/microschools/?lang=es'), ('Abre una Microschool', '/open-a-microschool/?lang=es'), ('Los tres pilares', '#pilares'), ('Según tu país', '#por-pais'), ('Marco legal', '#marco-legal'), ('Presupuesto', '/microschools/presupuesto/'), ('7 errores', '/microschools/7-errores/')],
     'en': [('Microschools', '/microschools/en/'), ('Open a Microschool', '/open-a-microschool/en/'), ('The three pillars', '#pilares'), ('By country', '#por-pais'), ('Legal framework', '#marco-legal'), ('Budget', '/en/microschools/budget/'), ('7 mistakes', '/en/microschools/7-mistakes/')],
     'ca': [('Microschools', '/microschools/ca/'), ('Obre una Microschool', '/open-a-microschool/ca/'), ('Els tres pilars', '#pilares'), ('Segons el teu país', '#por-pais'), ('Marc legal', '#marco-legal'), ('Pressupost', '/ca/microschools/pressupost/'), ('7 errors', '/ca/microschools/7-errors/')],
     'fr': [('Microschools', '/microschools/fr/'), ('Ouvrir une Microschool', '/open-a-microschool/fr/'), ('Les trois piliers', '#pilares'), ('Selon votre pays', '#por-pais'), ('Cadre légal', '#marco-legal'), ('Budget', '/fr/microschools/budget/'), ('7 erreurs', '/fr/microschools/7-erreurs/')],
+    'pt': [('Microschools', '/microschools/pt/'), ('Abra uma Microschool', '/open-a-microschool/pt/'), ('Os três pilares', '#pilares'), ('Conforme o seu país', '#por-pais'), ('Marco legal', '#marco-legal'), ('Orçamento', '/pt/microschools/orcamento/'), ('7 erros', '/pt/microschools/7-erros/')],
 }
 REGION = '<div class="chanak-region-selector-mount region"></div>'
 
@@ -89,17 +91,38 @@ if(document.readyState==='complete')start();else window.addEventListener('load',
         print('  ·', path, '(cabecera por JS)')
 
 
+def pt_js(h):
+    """Português en el cambio de idioma por JS de /como-funciona/ (?lang=pt). Idempotente."""
+    if "T.pt=Object.assign" in h:
+        h = re.sub(r"/\* cx:pt \*/.*?/\* /cx:pt \*/", lambda m: _pt_block(), h, count=1, flags=re.S)
+        return h
+    h = h.replace("['es','en','ca','fr'].indexOf(URL_LANG)", "['es','en','ca','fr','pt'].indexOf(URL_LANG)").replace("['es','en','ca','fr'].indexOf(SAVED_LANG)", "['es','en','ca','fr','pt'].indexOf(SAVED_LANG)")
+    h = h.replace("(l==='fr'?'fr/':''))));", "(l==='fr'?'fr/':(l==='pt'?'pt/':'')))));")
+    h = h.replace("const N={es:'ES',en:'EN',ca:'CA',fr:'FR'};", "const N={es:'ES',en:'EN',ca:'CA',fr:'FR',pt:'PT'};")
+    h = h.replace('<div class="lang-opt" onclick="setLang(\'fr\')">Français</div>', '<div class="lang-opt" onclick="setLang(\'fr\')">Français</div>\n<div class="lang-opt" onclick="setLang(\'pt\')">Português</div>', 1)
+    h = h.replace('<span class="mob-lang" onclick="setLang(\'fr\')">FR</span>', '<span class="mob-lang" onclick="setLang(\'fr\')">FR</span>\n<span class="mob-lang" onclick="setLang(\'pt\')">PT</span>', 1)
+    h = h.replace("  fr:['--','École à la maison / Homeschool','École publique','École privée','Actuellement non scolarisé','Autre']", "  fr:['--','École à la maison / Homeschool','École publique','École privée','Actuellement non scolarisé','Autre'],\n  pt:" + json.dumps(pt_como.FORM_FSIT, ensure_ascii=False), 1)
+    h = h.replace("  fr:['--','Primaire','Collège','Lycée / High School','A terminé ses études','Autre']", "  fr:['--','Primaire','Collège','Lycée / High School','A terminé ses études','Autre'],\n  pt:" + json.dumps(pt_como.FORM_FETAPA, ensure_ascii=False), 1)
+    h = h.replace("const FORM_SELECT_OPTIONS={", "/* cx:pt */" + _pt_block() + "/* /cx:pt */\nconst FORM_SELECT_OPTIONS={", 1)
+    return h
+
+
+def _pt_block():
+    return ("T.pt=Object.assign({},T.es," + json.dumps(pt_como.TPT, ensure_ascii=False) + ");")
+
+
 def como_funciona():
     """Una sola página con cuatro idiomas (setLang): se generan las cuatro cabeceras y se muestra la del idioma activo."""
     path = 'como-funciona/index.html'
     p = os.path.join(ROOT, path)
     h = open(p, encoding='utf-8').read()
-    urls = {l: f'/como-funciona/?lang={l}' for l in ('es', 'en', 'ca', 'fr')}
+    urls = {l: f'/como-funciona/?lang={l}' for l in ('es', 'en', 'ca', 'fr', 'pt')}
     subs = {'es': [('Método', '#modelo'), ('Plan de Estudios Core', '#core'), ('Currículos', '#curriculos'), ('Portales', '#portales'), ('Identidad', '#quien'), ('Preguntas', '#faq'), ('Tarifas', '/tarifas/')],
             'en': [('Method', '#modelo'), ('Core Curriculum', '#core'), ('Curricula', '#curriculos'), ('Portals', '#portales'), ('Who we are', '#quien'), ('FAQ', '#faq'), ('Tuition', '/en/tuition/')],
             'ca': [('Mètode', '#modelo'), ('Pla d’Estudis Core', '#core'), ('Currículums', '#curriculos'), ('Portals', '#portales'), ('Identitat', '#quien'), ('Preguntes', '#faq'), ('Tarifes', '/tarifas/')],
+            'pt': pt_como.SUBNAV,
             'fr': [('Méthode', '#modelo'), ('Programme Core', '#core'), ('Programmes', '#curriculos'), ('Portails', '#portales'), ('Identité', '#quien'), ('Questions', '#faq'), ('Tarifs', '/en/tuition/')]}
-    parts = ''.join(f'<div class="cx cx-hdr" data-cxl="{l}"{"" if l == "es" else " hidden"}>{header(l, urls)}{subnav(l, subs[l])}</div>' for l in ('es', 'en', 'ca', 'fr'))
+    parts = ''.join(f'<div class="cx cx-hdr" data-cxl="{l}"{"" if l == "es" else " hidden"}>{header(l, urls)}{subnav(l, subs[l])}</div>' for l in ('es', 'en', 'ca', 'fr', 'pt'))
     sync = ("<script>(function(){function s(){var l=(document.documentElement.lang||document.documentElement.getAttribute('data-lang')||'es').slice(0,2);"
             "var q=document.querySelectorAll('[data-cxl]'),ok=false;q.forEach(function(e){if(e.dataset.cxl===l)ok=true});if(!ok)l='es';"
             "q.forEach(function(e){e.hidden=e.dataset.cxl!==l})}s();new MutationObserver(s).observe(document.documentElement,{attributes:true,attributeFilter:['lang','data-lang']});"
@@ -114,7 +137,8 @@ def como_funciona():
         h = h[:i] + blk + '<div class="cx-legacy-nav" hidden aria-hidden="true" style="display:none!important">' + h[i:j] + '</div>' + h[j:]
     from site_i18n import LINKS
     join = lambda l: f'<p class="cx-join">{T["join_line"][l].format(u=LINKS[l]["unete"])}</p>'
-    core = '<!-- cx:core -->' + ''.join(f'<div class="cx" data-cxl="{l}"{"" if l == "es" else " hidden"}>{core_content.section(l)}{join(l)}</div>' for l in ('es', 'en', 'ca', 'fr')) + '<!-- /cx:core -->'
+    core_html = lambda l: pt_como.core_section() if l == 'pt' else core_content.section(l)
+    core = '<!-- cx:core -->' + ''.join(f'<div class="cx" data-cxl="{l}"{"" if l == "es" else " hidden"}>{core_html(l)}{join(l)}</div>' for l in ('es', 'en', 'ca', 'fr', 'pt')) + '<!-- /cx:core -->'
     if '<!-- cx:core -->' in h:
         h = re.sub(r'<!-- cx:core -->.*?<!-- /cx:core -->', lambda m: core, h, count=1, flags=re.S)
     else:
@@ -127,6 +151,7 @@ def como_funciona():
     desc = 'Currículo Core de Chanak: Estándares B.E.S.T. de Florida, Mastery Learning y cosmovisión cristiana. Modelo 60/20/20, currículos, portales y preguntas.'
     h = re.sub(r'<meta content="[^"]*" name="description"/>', f'<meta content="{desc}" name="description"/>', h, 1)
     h = re.sub(r'<title>.*?</title>', '<title>Cómo funciona Chanak: método, currículo Core y portales</title>', h, 1)
+    h = pt_js(h)
     open(p, 'w', encoding='utf-8').write(ensure_css(h))
     print('  ·', path)
 
@@ -161,7 +186,9 @@ def offcampus_form():
 
 if __name__ == '__main__':
     print('Cabecera única:')
-    for l in ('es', 'en', 'ca', 'fr'):
+    for l in ('es', 'en', 'ca', 'fr', 'pt'):
+        if not os.path.exists(os.path.join(ROOT, MS[l].split('?')[0].strip('/') + '/index.html')):
+            print('  · (sin página aún)', MS[l]); continue
         swap(MS[l].split('?')[0].strip('/') + '/index.html', r'(<!-- Header -->\s*)?<header class="site-header">', '</header>', block(l, MS, MS_SUB[l]))
         swap(OPEN[l].split('?')[0].strip('/') + '/index.html', r'(<!-- Header -->\s*)?<header class="site-header">', '</header>', block(l, OPEN, MS_SUB[l]))
     swap('off-campus/index.html', r'<div class="topbar">', '</header>', block('es', {'es': '/off-campus/', 'en': '/off-campus/en/'},
