@@ -178,28 +178,22 @@ $AUTOREPLY = [
             . "FLDOE #134620 · 501(c)(3) Nonprofit",
     ],
     'general' => [
-        'subject' => 'Hemos recibido tu solicitud | Chanak Academy',
+        'subject' => 'Chanak International Academy · Recibimos tu consulta',
         'body' => "Hola {nombre},\n\n"
-            . "¡Gracias por escribir a Chanak International Academy!\n\n"
-            . "Qué pasará ahora:\n"
-            . "· En las próximas 24 horas (días laborables) una persona de nuestro equipo te contactará personalmente para orientarte.\n\n"
-            . "¿No sabes qué programa encaja mejor con tu familia?\n"
-            . "Nuestro primer paso recomendado es el Diagnóstico Académico (50€): una evaluación completa del nivel real "
-            . "de tu hijo/a con propuesta personalizada. Más información: {site}/diagnostico/\n\n"
-            . "Mientras tanto puedes descargar los dossiers principales:\n"
-            . "· Dossier Off-Campus: {dossier_offcampus}\n"
-            . "· Dossier Dual Diploma: {dossier_dual}\n\n"
-            . "Importante:\n"
-            . "· El dossier resume las 4 rutas disponibles.\n"
-            . "· Los materiales académicos se gestionan aparte.\n"
-            . "· Diagnóstico Académico: €50 (aprox. USD $58).\n"
-            . "· Matrícula: €180 + primera mensualidad.\n"
-            . "· Off-Campus inicia desde €250 (aprox. USD $286).\n"
-            . "· Dual Diploma: diagnóstico €35, matrícula €210, mensualidad desde €110/mes (aprox. USD $40 / $240 / $126).\n"
-            . "· Referencia USD para Panamá u otros países calculada con cambio BCE 1 EUR = 1.1404 USD, redondeada al alza.\n\n"
-            . "Un saludo,\nEquipo Chanak International Academy\n\n"
-            . "Colegio privado americano · FLDOE #134620 (registro verificable públicamente) · IRS 501(c)(3)\n"
-            . "Al finalizar sus estudios, el estudiante obtiene el diploma de High School Americano con certificado apostillado.",
+            . "Gracias por escribir a Chanak International Academy. Hemos recibido tu solicitud y una persona de Admisiones te responderá en un día hábil.\n\n"
+            . "¿Qué puedes estudiar con nosotros?\n"
+            . "· Off-Campus K–12: Guided Homeschool (la familia lidera, mentoría familiar mensual) o Full Enrollment (matrícula escolar completa, clases ELA/English, Life Skills y mentoría semanal).\n"
+            . "· Dual Diploma (grados 9–12): segunda ruta estadounidense sin dejar el colegio local, con auditoría de créditos y Plan de Ruta individual.\n"
+            . "· Microschool & Academic Partnerships: alianzas institucionales para comunidades, colegios e iglesias.\n\n"
+            . "Full Enrollment tiene el mismo precio nominal en USD para todos los países: K–5 US$275/mes, 6–8 US$320/mes y 9–12 US$365/mes durante 10 meses; matrícula anual US$295 por estudiante. Guided Homeschool y Dual Diploma tienen tarifas y condiciones distintas según programa y país.\n"
+            . "Consulta las tarifas oficiales: {site}/tarifas/\n"
+            . "Off-Campus: {site}/off-campus/\n"
+            . "Dual Diploma: {site}/dual-diploma/\n"
+            . "Microschools: {site}/microschools/\n"
+            . "Presentaciones opcionales: {site}/dossiers/\n\n"
+            . "La solicitud de información es gratuita y no constituye matrícula ni realiza un cobro. La evaluación diagnóstica, si se contrata como servicio independiente, tiene sus propias condiciones. El expediente, condiciones y pagos se confirman según la modalidad elegida.\n\n"
+            . "Chanak International Academy · Acreditada por MSA-CESS para K–12 · FLDOE #134620 (registro de escuela privada)\n"
+            . "Un saludo,\nAdmisiones Chanak",
     ],
     'hub' => [
         'subject' => 'Hemos recibido tu solicitud · Alianzas | Chanak Academy',
