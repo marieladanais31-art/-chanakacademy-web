@@ -1,6 +1,6 @@
 {
  "fuente": "assets/descargas/Calculadora-Presupuesto-Microschool-Chanak-ES.xlsx · hoja Normativa_datos",
- "revision": "2026-11-16",
+ "revision": "2026-11-17",
  "paises": [
   {
    "id": "es",
@@ -39,13 +39,10 @@
     "ca": "Panamà",
     "fr": "Panama"
    },
-   "legal": [],
-   "legal_note": {
-    "es": "Normas de referencia en verificación con la autoridad educativa del país; se confirman en la conversación de alianza.",
-    "en": "Reference rules are being verified with the country’s education authority; they are confirmed in the partnership conversation.",
-    "ca": "Normes de referència en verificació amb l’autoritat educativa del país; es confirmen en la conversa d’aliança.",
-    "fr": "Textes de référence en cours de vérification auprès de l’autorité éducative du pays ; ils sont confirmés lors de l’échange de partenariat."
-   },
+   "legal": [
+    "Ley 47 de 1946, Orgánica de Educación (texto único aprobado por el Decreto Ejecutivo 305 de 2004, Gaceta Oficial 25042)"
+   ],
+   "legal_note": null,
    "resumen": {
     "es": "La apertura de un centro particular se tramita ante el Ministerio de Educación (MEDUCA). El currículo estadounidense se integra con las asignaturas del núcleo nacional que indique la autoridad.",
     "en": "Opening a private centre is processed with the Ministry of Education (MEDUCA). The U.S. curriculum is combined with the national core subjects required by the authority.",
@@ -98,13 +95,10 @@
     "ca": "Guatemala",
     "fr": "Guatemala"
    },
-   "legal": [],
-   "legal_note": {
-    "es": "Normas de referencia en verificación con la autoridad educativa del país; se confirman en la conversación de alianza.",
-    "en": "Reference rules are being verified with the country’s education authority; they are confirmed in the partnership conversation.",
-    "ca": "Normes de referència en verificació amb l’autoritat educativa del país; es confirmen en la conversa d’aliança.",
-    "fr": "Textes de référence en cours de vérification auprès de l’autorité éducative du pays ; ils sont confirmés lors de l’échange de partenariat."
-   },
+   "legal": [
+    "Ley de Educación Nacional (Decreto Legislativo 12-91)"
+   ],
+   "legal_note": null,
    "resumen": {
     "es": "Los estudios cursados en un programa extranjero pueden presentarse a equivalencia ante el Ministerio de Educación (MINEDUC) según el trámite vigente.",
     "en": "Studies completed in a foreign program may be submitted for equivalency with the Ministry of Education (MINEDUC) under the procedure in force.",
@@ -128,13 +122,10 @@
     "ca": "El Salvador",
     "fr": "Salvador"
    },
-   "legal": [],
-   "legal_note": {
-    "es": "Normas de referencia en verificación con la autoridad educativa del país; se confirman en la conversación de alianza.",
-    "en": "Reference rules are being verified with the country’s education authority; they are confirmed in the partnership conversation.",
-    "ca": "Normes de referència en verificació amb l’autoritat educativa del país; es confirmen en la conversa d’aliança.",
-    "fr": "Textes de référence en cours de vérification auprès de l’autorité éducative du pays ; ils sont confirmés lors de l’échange de partenariat."
-   },
+   "legal": [
+    "Ley General de Educación (Decreto Legislativo 917 de 1996), artículos 59 a 62 sobre equivalencias de estudios realizados en el extranjero"
+   ],
+   "legal_note": null,
    "resumen": {
     "es": "El reconocimiento de estudios realizados en el extranjero se gestiona ante el Ministerio de Educación según el procedimiento vigente.",
     "en": "Recognition of studies completed abroad is handled by the Ministry of Education under the procedure in force.",
@@ -163,10 +154,10 @@
    ],
    "legal_note": null,
    "resumen": {
-    "es": "El vínculo de las familias con un programa internacional y las equivalencias de estudios deben confirmarse con el Ministerio de Educación antes de ofrecerlo.",
-    "en": "Families’ link to an international program and study equivalencies must be confirmed with the Ministry of Education before it is offered.",
-    "ca": "El vincle de les famílies amb un programa internacional i les equivalències d’estudis s’han de confirmar amb el Ministeri d’Educació abans d’oferir-lo.",
-    "fr": "Le lien des familles avec un programme international et les équivalences d’études doivent être confirmés auprès du ministère de l’Éducation avant toute offre."
+    "es": "La normativa ministerial sobre educación en casa y modalidades a distancia se ha reformado varias veces entre 2023 y 2026. El vínculo de las familias con un programa internacional y las equivalencias de estudios deben confirmarse con el Ministerio de Educación antes de ofrecerlo.",
+    "en": "Ministry rules on homeschooling and distance learning have been reformed several times between 2023 and 2026. Families’ link to an international program and study equivalencies must be confirmed with the Ministry of Education before it is offered.",
+    "ca": "La normativa ministerial sobre educació a casa i modalitats a distància s’ha reformat diverses vegades entre 2023 i 2026. El vincle de les famílies amb un programa internacional i les equivalències d’estudis s’han de confirmar amb el Ministeri d’Educació abans d’oferir-lo.",
+    "fr": "La réglementation ministérielle sur l’instruction en famille et l’enseignement à distance a été réformée plusieurs fois entre 2023 et 2026. Le lien des familles avec un programme international et les équivalences d’études doivent être confirmés auprès du ministère de l’Éducation avant toute offre."
    },
    "previo": {
     "A": "Marco favorable a la educación en casa. El vínculo de las familias con un programa internacional acreditado y las equivalencias deben confirmarse con el Ministerio de Educación.",
@@ -215,6 +206,7 @@
     "fr": "Costa Rica"
    },
    "legal": [
+    "Ley Fundamental de Educación (Ley 2160 de 1957)",
     "Ley 7600, de Igualdad de Oportunidades para las Personas con Discapacidad"
    ],
    "legal_note": null,

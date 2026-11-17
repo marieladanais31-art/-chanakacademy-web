@@ -22,18 +22,19 @@ CURRENCY = {'es': 'EUR', 'pa': 'PAB', 'mx': 'MXN', 'us': 'USD'}
 
 # Normas comprobadas en fuente oficial (título y vigencia). Lo que la hoja cita y no está aquí NO se publica.
 VERIFIED = {
-    # Verificado 2026-11-16/17 en BOE, DOF/SEP, gob.ec, MEN y TSE (ver docs/AUDITORIA-INCOHERENCIAS.md).
+    # Verificado 2026-11-16/17 en BOE, DOF/SEP, gob.ec, MEN, TSE, MEDUCA, MINEDUC/Congreso de Guatemala,
+    # Corte Suprema de El Salvador y Asamblea Legislativa de Costa Rica (ver docs/AUDITORIA-INCOHERENCIAS.md).
     'es': ['Real Decreto 806/1993, de 28 de mayo, sobre régimen de centros docentes extranjeros en España',
            'Código Técnico de la Edificación (Real Decreto 314/2006): seguridad en caso de incendio (DB-SI) y accesibilidad (DB-SUA)'],
-    'pa': [],   # Ley 47 de 1946: no se pudo abrir la fuente oficial → no se publica todavía
+    'pa': ['Ley 47 de 1946, Orgánica de Educación (texto único aprobado por el Decreto Ejecutivo 305 de 2004, Gaceta Oficial 25042)'],
     'mx': ['Constitución Política de los Estados Unidos Mexicanos, artículo 3.º', 'Ley General de Educación (DOF 30-09-2019)',
            'Acuerdo número 286 de la SEP sobre revalidación y equivalencia de estudios (DOF 30-10-2000, última reforma DOF 18-04-2017)'],
-    'gt': [],   # Decreto Legislativo 12-91: pendiente de verificar en fuente oficial
-    'sv': [],   # Decreto Legislativo 917: pendiente de verificar en fuente oficial
+    'gt': ['Ley de Educación Nacional (Decreto Legislativo 12-91)'],
+    'sv': ['Ley General de Educación (Decreto Legislativo 917 de 1996), artículos 59 a 62 sobre equivalencias de estudios realizados en el extranjero'],
     'ec': ['Ley Orgánica de Educación Intercultural (LOEI, Registro Oficial 417 de 31-03-2011) y sus reformas'],
     'co': ['Ley 115 de 1994 (Ley General de Educación)', 'Decreto 1075 de 2015 (Decreto Único Reglamentario del Sector Educación)',
            'Resolución 24302 de 2021 del Ministerio de Educación Nacional (convalidación de estudios de preescolar, básica y media realizados en el exterior)'],
-    'cr': ['Ley 7600, de Igualdad de Oportunidades para las Personas con Discapacidad'],   # Ley 2160 y el decreto de equiparación: pendientes
+    'cr': ['Ley Fundamental de Educación (Ley 2160 de 1957)', 'Ley 7600, de Igualdad de Oportunidades para las Personas con Discapacidad'],   # decreto de equiparación: no se cita
     'us': [],
     'other': [],
 }
@@ -42,7 +43,6 @@ PENDING = ('Normas de referencia en verificación con la autoridad educativa del
            'Normes de referència en verificació amb l’autoritat educativa del país; es confirmen en la conversa d’aliança.',
            'Textes de référence en cours de vérification auprès de l’autorité éducative du pays ; ils sont confirmés lors de l’échange de partenariat.')
 LEGAL_NOTE = {
-    'pa': PENDING, 'gt': PENDING, 'sv': PENDING,
     'us': ('Normativa del estado y del municipio de la sede.', 'State and municipal rules where the site is located.', 'Normativa de l’estat i del municipi de la seu.', 'Réglementation de l’État et de la municipalité du site.'),
     'other': ('Por determinar con asesoría legal local.', 'To be determined with local legal counsel.', 'Per determinar amb assessoria legal local.', 'À déterminer avec un conseil juridique local.'),
 }
@@ -68,10 +68,10 @@ SUMMARY = {
            'Recognition of studies completed abroad is handled by the Ministry of Education under the procedure in force.',
            'El reconeixement d’estudis fets a l’estranger es gestiona davant el Ministeri d’Educació segons el procediment vigent.',
            'La reconnaissance des études effectuées à l’étranger est gérée par le ministère de l’Éducation selon la procédure en vigueur.'),
-    'ec': ('El vínculo de las familias con un programa internacional y las equivalencias de estudios deben confirmarse con el Ministerio de Educación antes de ofrecerlo.',
-           'Families’ link to an international program and study equivalencies must be confirmed with the Ministry of Education before it is offered.',
-           'El vincle de les famílies amb un programa internacional i les equivalències d’estudis s’han de confirmar amb el Ministeri d’Educació abans d’oferir-lo.',
-           'Le lien des familles avec un programme international et les équivalences d’études doivent être confirmés auprès du ministère de l’Éducation avant toute offre.'),
+    'ec': ('La normativa ministerial sobre educación en casa y modalidades a distancia se ha reformado varias veces entre 2023 y 2026. El vínculo de las familias con un programa internacional y las equivalencias de estudios deben confirmarse con el Ministerio de Educación antes de ofrecerlo.',
+           'Ministry rules on homeschooling and distance learning have been reformed several times between 2023 and 2026. Families’ link to an international program and study equivalencies must be confirmed with the Ministry of Education before it is offered.',
+           'La normativa ministerial sobre educació a casa i modalitats a distància s’ha reformat diverses vegades entre 2023 i 2026. El vincle de les famílies amb un programa internacional i les equivalències d’estudis s’han de confirmar amb el Ministeri d’Educació abans d’oferir-lo.',
+           'La réglementation ministérielle sur l’instruction en famille et l’enseignement à distance a été réformée plusieurs fois entre 2023 et 2026. Le lien des familles avec un programme international et les équivalences d’études doivent être confirmés auprès du ministère de l’Éducation avant toute offre.'),
     'co': ('Los estudios realizados en el exterior pueden presentarse a convalidación ante el Ministerio de Educación Nacional conforme al trámite vigente; requisitos y condiciones se verifican caso a caso.',
            'Studies completed abroad may be submitted for validation with the Ministry of National Education under the procedure in force; requirements and conditions are checked case by case.',
            'Els estudis fets a l’exterior es poden presentar a convalidació davant el Ministeri d’Educació Nacional segons el tràmit vigent; requisits i condicions es verifiquen cas per cas.',

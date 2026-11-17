@@ -63,18 +63,18 @@ Verificación en fuente oficial (BOE, DOF/SEP, gob.ec, MEN, TSE). **La web solo 
 | España | RD 806/1993 | Confirmado (BOE-A-1993-16128) | Sí. Es también la base de «Lengua y Cultura Españolas» |
 | España | RD 104/1988 y Orden ECD/3305/2002 como normas de «Lengua y Cultura Españolas» | **Atribución incorrecta**: regulan la homologación y convalidación de estudios extranjeros no universitarios | No en la web. Corregido en la copia del Excel del repo |
 | España | CTE DB-SI | Confirmado (RD 314/2006); la accesibilidad es DB-SUA | Sí, con DB-SUA |
-| Panamá | Ley 47 de 1946 | No se pudo abrir la fuente oficial | **No publicado** (queda «en verificación») |
+| Panamá | Ley 47 de 1946 | Confirmado: texto único aprobado por el Decreto Ejecutivo 305 de 30-04-2004, Gaceta Oficial 25042 (marco jurídico de MEDUCA). Hay un anteproyecto de reforma en la Asamblea (2026) | Sí. No se cita la «Dirección Nacional de Educación Particular» (no verificada) |
 | México | Constitución art. 3; Ley General de Educación | Confirmado | Sí |
 | México | Art. 9 de la Constitución | Existe, pero no trata de educación | No publicado |
 | México | Acuerdo 286 SEP | Confirmado (DOF 30-10-2000; última reforma 18-04-2017). **No permite operar sin RVOE** | Sí, aclarando que no sustituye la autorización del centro |
-| Guatemala | Decreto Legislativo 12-91 | No se pudo abrir la fuente oficial | **No publicado** |
-| El Salvador | Decreto Legislativo 917 | No se pudo abrir la fuente oficial | **No publicado** |
+| Guatemala | Decreto Legislativo 12-91 | Confirmado: Ley de Educación Nacional, vigente desde 12-01-1991 (portal del MINEDUC y documentos del Congreso). DIGEEX no se cita | Sí |
+| El Salvador | Decreto Legislativo 917 | Confirmado: Ley General de Educación, dada el 12-12-1996 (texto en el portal de jurisprudencia de la Corte Suprema). Los arts. 59 a 62 regulan las equivalencias de estudios hechos en el extranjero; no existe un «reglamento» aparte que pudiera confirmarse | Sí, con los arts. 59 a 62. Corregido en el Excel del repo |
 | Ecuador | LOEI | Confirmado (R.O. 417, 31-03-2011) | Sí, «y sus reformas» |
-| Ecuador | Acuerdo ministerial de educación en casa | Número no confirmado (0067-13 o 2023-00063-A) | **No publicado** |
+| Ecuador | Acuerdo ministerial de educación en casa | Cambió varias veces: 067-13-A (2013), MINEDUC-MINEDUC-2023-00069-A (30-10-2023), MINEDUC-MINEDUC-2025-00024-A (jun. 2025) y MINEDEC-MINEDEC-2026-00023-A (Registro Oficial 268, 20-04-2026, modalidades semipresencial y a distancia). No se pudo leer en fuente oficial qué acuerdo regula hoy la educación en casa | **No publicado** el número; el resumen público avisa de las reformas. Excel del repo actualizado |
 | Colombia | Ley 115 de 1994; Decreto 1075 de 2015 | Confirmado | Sí |
 | Colombia | Resolución 10687 de 2019 | **Incorrecta para colegio**: es de educación superior. La de preescolar, básica y media es la Resolución 24302 de 2021 | Publicada la 24302/2021. Corregido en el Excel del repo |
 | Costa Rica | Ley 7600 | Confirmado | Sí |
-| Costa Rica | Ley 2160 | No se pudo abrir la fuente oficial | **No publicado** |
+| Costa Rica | Ley 2160 | Confirmado: Ley Fundamental de Educación de 25-09-1957, La Gaceta 223 (texto de la Asamblea Legislativa actualizado a 2021 y ficha del SCIJ) | Sí |
 | Costa Rica | Decreto Ejecutivo 36967-MEP | **No localizado** como decreto de equiparación | No publicado. Corregido en el Excel del repo |
 
 **Aviso importante sobre Costa Rica.** Los lineamientos del MEP sobre reconocimiento de títulos excluyen expresamente los
@@ -83,7 +83,7 @@ instituciones no acreditadas por el MEP. El resumen público se ha redactado con
 antes de ofrecer la modalidad allí.
 
 Se modificaron tres celdas de la hoja `Normativa_datos` en la copia del repo
-(`assets/descargas/Calculadora-Presupuesto-Microschool-Chanak-ES.xlsx`): España, Colombia y Costa Rica. El original de Mariela no se tocó.
+(`assets/descargas/Calculadora-Presupuesto-Microschool-Chanak-ES.xlsx`): España, Colombia y Costa Rica; en la segunda verificación, también Panamá, El Salvador y Ecuador. El original de Mariela no se tocó.
 
 ## 3. Rutas ESA protegidas (Parte 6)
 
@@ -110,7 +110,7 @@ No se ha modificado ningún archivo de estas rutas (`git diff main` vacío para 
 5. Microschool: mínimo de familias (5 o unas 10).
 6. Microschool España: orientación «desde unos 400 €/mes» **[CONFIRMAR]** (no se publicó la cifra) y titularidad por Asociación EducaFe **[CONFIRMAR]**.
 7. EE. UU.: «las instalaciones se verifican antes de abrir» **[CONFIRMAR]** el procedimiento exacto en Florida.
-8. Normas no publicadas (Panamá, Guatemala, El Salvador, Costa Rica 2160, acuerdo de Ecuador) y revisión de la hoja por un asesor.
+8. Acuerdo vigente de educación en casa en Ecuador (sin publicar) y revisión de la hoja por un asesor.
 9. URL exacta usada como «enlace especial» en las solicitudes ESA.
 10. Versión en inglés del previo normativo (hoy el detalle por país se muestra en español en EN/CA/FR).
 11. Texto Core en la portada: propuesta (sin aplicar) de sustituir la frase del bloque «Método» por el párrafo síntesis.
