@@ -18,8 +18,8 @@ e = next(i for i in range(s, len(L)) if L[i].strip() == "</section>")
 L[s:e + 1] = ['''<section id="inicio" style="background:linear-gradient(160deg,#072238,#0c2d48 60%,#1a5f8a);color:#fff;padding:64px 0 48px"><div class="wrap">
 <p style="font-size:.82rem;color:#b9d0df;margin-bottom:12px"><a href="/" style="color:#fff;text-decoration:underline">Chanak</a> › <span data-i18n="cf_crumb">Cómo funciona</span></p>
 <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4.4vw,3rem);line-height:1.2;margin-bottom:.6rem" data-i18n="cf_h1">Cómo funciona Chanak</h1>
-<p style="max-width:720px;color:#c8dcea;font-size:1.05rem" data-i18n="cf_lead">Método, currículos, plataforma, admisión, identidad institucional y preguntas frecuentes. Para elegir programa, vuelve a las tres rutas.</p>
-<p style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-t" href="/#rutas" data-i18n="cf_routes">Ver las tres rutas →</a><a class="btn btn-out" href="/tarifas/" style="color:#fff;border-color:rgba(255,255,255,.7)" data-i18n="cf_fees">Ver tarifas →</a></p>
+<p style="max-width:720px;color:#c8dcea;font-size:1.05rem" data-i18n="cf_lead">Método, currículos, plataforma, admisión, identidad institucional y preguntas frecuentes. Para elegir programa, vuelve a las modalidades.</p>
+<p style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-t" href="/#modalidades" data-i18n="cf_routes">Ver las modalidades →</a><a class="btn btn-out" href="/tarifas/" style="color:#fff;border-color:rgba(255,255,255,.7)" data-i18n="cf_fees">Ver tarifas →</a></p>
 </div></section>''']
 # 2) Bloque "Elige el camino" (ahora vive en la portada)
 s = next(i for i, l in enumerate(L) if '<section class="home-section" id="objetivo">' in l)
@@ -43,7 +43,7 @@ h = re.sub(r'<script type="application/ld\+json">\s*\{\s*"@context": "https://sc
 # 5) Rutas relativas y enlaces a anclas que ya no están aquí
 h = re.sub(r'(src|href|poster)="assets/', r'\1="/assets/', h)
 h = h.replace("url(assets/", "url(/assets/").replace("url('assets/", "url('/assets/")
-for a, b in [('href="#homeschool"', 'href="/#hs"'), ('href="#dual-diploma"', 'href="/#dd"'), ('href="#objetivo"', 'href="/#rutas"'),
+for a, b in [('href="#homeschool"', 'href="/#hs"'), ('href="#dual-diploma"', 'href="/#dd"'), ('href="#objetivo"', 'href="/#modalidades"'),
              ('href="/?country=ES#tarifas"', 'href="/tarifas/"'), ('href="/?country=CO#tarifas"', 'href="/tarifas/"'), ('href="/?country=US#tarifas"', 'href="/tarifas/"'),
              ('href="/?country=GLOBAL#tarifas"', 'href="/tarifas/"'), ('href="#tarifas"', 'href="/tarifas/"'), ('href="#inicio"', 'href="/"'), ('href="/tuition/"', 'href="/tarifas/"')]:
     h = h.replace(a, b)

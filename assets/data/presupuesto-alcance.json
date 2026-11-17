@@ -1,0 +1,514 @@
+{
+ "fuente": "assets/descargas/Calculadora-Presupuesto-Microschool-Chanak-ES.xlsx · hojas Parametros_alcance y Cuotas_Chanak",
+ "revision": "2026-11-17",
+ "alcances": [
+  {
+   "id": "alcance1",
+   "name": "Kinder y lectura inicial",
+   "flags": [
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": "alcance2",
+   "name": "Elementary (K–5)",
+   "flags": [
+    1,
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": "alcance3",
+   "name": "Middle (6–8)",
+   "flags": [
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": "alcance4",
+   "name": "High School (9–12)",
+   "flags": [
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "alcance5",
+   "name": "Escuela completa (K–12)",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ]
+  }
+ ],
+ "tramos": [
+  {
+   "id": "tramo1",
+   "name": "K–2 · Kinder y lectura inicial",
+   "ratio": 8,
+   "aula": 12,
+   "m2": 3,
+   "coste_guia": null,
+   "mat_inicial": null,
+   "tec_inicial": null,
+   "mat_mensual": null,
+   "nota": "Manipulativos y lectoescritura. Alcance «Kinder» = K–2 por defecto: confirmar con dirección.",
+   "etapa": 1
+  },
+  {
+   "id": "tramo2",
+   "name": "3–5 · Resto de Elementary",
+   "ratio": 10,
+   "aula": 15,
+   "m2": 2.5,
+   "coste_guia": null,
+   "mat_inicial": null,
+   "tec_inicial": null,
+   "mat_mensual": null,
+   "nota": "Lectura, matemáticas y proyectos.",
+   "etapa": 1
+  },
+  {
+   "id": "tramo3",
+   "name": "6–8 · Middle",
+   "ratio": 12,
+   "aula": 18,
+   "m2": 2.5,
+   "coste_guia": null,
+   "mat_inicial": null,
+   "tec_inicial": null,
+   "mat_mensual": null,
+   "nota": "Más autonomía guiada.",
+   "etapa": 2
+  },
+  {
+   "id": "tramo4",
+   "name": "9–12 · High School",
+   "ratio": 15,
+   "aula": 20,
+   "m2": 2.5,
+   "coste_guia": null,
+   "mat_inicial": null,
+   "tec_inicial": null,
+   "mat_mensual": null,
+   "nota": "Laboratorio, Dual Diploma y exámenes.",
+   "etapa": 3
+  }
+ ],
+ "coordinador": {
+  "coste": null,
+  "min_etapas": 2,
+  "numero": 1
+ },
+ "inversion": [
+  {
+   "id": "curriculo_propio",
+   "name_es": "Currículo complementario propio (si lo mantienes)",
+   "pilar_es": "A · Plan de estudios",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "material_inicial",
+   "name_es": "Material didáctico inicial",
+   "pilar_es": "A · Plan de estudios",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "formacion_guias",
+   "name_es": "Formación y certificación de guías y coordinadores",
+   "pilar_es": "C · Personal docente",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "antecedentes",
+   "name_es": "Verificación de antecedentes del personal",
+   "pilar_es": "C · Personal docente",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "adecuacion",
+   "name_es": "Adecuación del local (reformas menores, pintura)",
+   "pilar_es": "B · Instalaciones",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "mobiliario",
+   "name_es": "Mobiliario de aula y almacenaje",
+   "pilar_es": "B · Instalaciones",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "incendios",
+   "name_es": "Seguridad contra incendios y evacuación",
+   "pilar_es": "B · Instalaciones",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "accesibilidad",
+   "name_es": "Accesibilidad (rampas, baños adaptados)",
+   "pilar_es": "B · Instalaciones",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "licencias",
+   "name_es": "Licencias, permisos y trámites locales",
+   "pilar_es": "B · Instalaciones",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "legal",
+   "name_es": "Constitución de la entidad legal y asesoría",
+   "pilar_es": "Legal",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "seguros",
+   "name_es": "Seguros iniciales",
+   "pilar_es": "Legal",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "tecnologia",
+   "name_es": "Tecnología (equipos y red)",
+   "pilar_es": "Tecnología",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "marketing",
+   "name_es": "Marketing de lanzamiento",
+   "pilar_es": "Marketing",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "imprevistos",
+   "name_es": "Fondo de imprevistos",
+   "pilar_es": "Reserva",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "manipulativos",
+   "name_es": "Manipulativos y material de lectoescritura inicial",
+   "pilar_es": "A · Plan de estudios",
+   "flags": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "custom": false
+  },
+  {
+   "id": "mobiliario_infantil",
+   "name_es": "Mobiliario y zona de juego para primeros grados",
+   "pilar_es": "B · Instalaciones",
+   "flags": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "custom": false
+  },
+  {
+   "id": "laboratorio",
+   "name_es": "Laboratorio y material de ciencias",
+   "pilar_es": "A · Plan de estudios",
+   "flags": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "dual_examenes",
+   "name_es": "Dual Diploma, exámenes y orientación universitaria",
+   "pilar_es": "A · Plan de estudios",
+   "flags": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "custom": false
+  },
+  {
+   "id": "otra_1",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": true
+  },
+  {
+   "id": "otra_2",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": true
+  },
+  {
+   "id": "otra_3",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": true
+  },
+  {
+   "id": "otra_4",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": true
+  },
+  {
+   "id": "otra_5",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": true
+  },
+  {
+   "id": "otra_6",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "flags": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "custom": true
+  }
+ ],
+ "gasto": [
+  {
+   "id": "alquiler",
+   "name_es": "Alquiler o cesión del espacio y suministros",
+   "pilar_es": "B · Instalaciones",
+   "custom": false
+  },
+  {
+   "id": "limpieza",
+   "name_es": "Limpieza y mantenimiento",
+   "pilar_es": "B · Instalaciones",
+   "custom": false
+  },
+  {
+   "id": "docentes_locales",
+   "name_es": "Docentes con habilitación local (materias nacionales)",
+   "pilar_es": "C · Personal docente",
+   "custom": false
+  },
+  {
+   "id": "administracion",
+   "name_es": "Administración y gestión interna",
+   "pilar_es": "C · Personal docente",
+   "custom": false
+  },
+  {
+   "id": "plataforma",
+   "name_es": "Plataforma, SIS y licencias",
+   "pilar_es": "A · Plan de estudios",
+   "custom": false
+  },
+  {
+   "id": "cuota_alianza",
+   "name_es": "Cuota de alianza con Chanak",
+   "pilar_es": "A · Plan de estudios",
+   "custom": false
+  },
+  {
+   "id": "materiales",
+   "name_es": "Material y suministros",
+   "pilar_es": "Operación",
+   "custom": false
+  },
+  {
+   "id": "seguros_mes",
+   "name_es": "Seguros",
+   "pilar_es": "Legal",
+   "custom": false
+  },
+  {
+   "id": "contabilidad",
+   "name_es": "Contabilidad y gestoría",
+   "pilar_es": "Legal",
+   "custom": false
+  },
+  {
+   "id": "marketing_mes",
+   "name_es": "Marketing y comunidad",
+   "pilar_es": "Marketing",
+   "custom": false
+  },
+  {
+   "id": "reserva_mes",
+   "name_es": "Reserva mensual",
+   "pilar_es": "Reserva",
+   "custom": false
+  },
+  {
+   "id": "otra_mes_1",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "custom": true
+  },
+  {
+   "id": "otra_mes_2",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "custom": true
+  },
+  {
+   "id": "otra_mes_3",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "custom": true
+  },
+  {
+   "id": "otra_mes_4",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "custom": true
+  },
+  {
+   "id": "otra_mes_5",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "custom": true
+  },
+  {
+   "id": "otra_mes_6",
+   "name_es": "(otra partida)",
+   "pilar_es": "",
+   "custom": true
+  }
+ ],
+ "cuotas_chanak": {
+  "incorporacion": null,
+  "fija_mensual": null,
+  "por_alumno": null
+ }
+}

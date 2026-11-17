@@ -32,7 +32,7 @@
 
 ### 3. YouTube (`@ChanakAcademy`)
 - **Canal oficial:** `https://www.youtube.com/@ChanakAcademy`
-- **Cabecera (Banner):** Propuesta de valor: *Educación americana K-12 con mentoría personalizada y ruta clara hacia la graduación.* FLDOE #134620 · MSA-CESS Candidate.
+- **Cabecera (Banner):** Propuesta de valor: *Educación americana K-12 con mentoría personalizada y ruta clara hacia la graduación.* FLDOE #134620 · Acreditada por MSA-CESS.
 - **Contenido prioritario:** Vídeos institucionales del equipo directivo explicando el proyecto educativo, tutoriales del Campus Digital y conferencias pedagógicas. Cero menores sin consentimiento explícito.
 
 ### 4. TikTok (`@chanakacademy7`)
@@ -264,7 +264,7 @@
     5. `Mentoría Semanal Incluida` (25)
   - **Descripciones (90 caracteres máx. cada una):**
     1. `Obtén el American High School Diploma sin cambiar de colegio. Solo 5 horas a la semana.` (88)
-    2. `Candidato oficial MSA-CESS. Precios transparentes y asesoría académica gratuita. Infórmate.` (90)
+    2. `Acreditada por MSA-CESS. Precios transparentes y asesoría académica gratuita. Infórmate.` (90)
   - **URL Final:** `https://www.chanakacademy.org/dual-diploma/?utm_source=google_ads&utm_medium=cpc&utm_campaign=dual_diploma_2026&utm_term={keyword}`
 
 ---

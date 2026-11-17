@@ -210,14 +210,14 @@ window.CHANAK_PRICING = {
         assessmentLabel: 'Evaluación académica',
         enrollmentFee: '$4,300 MXN',
         installments: '10 mensualidades',
-        includes: '1 hora semanal de Inglés académico en vivo · 1 hora semanal de Life Skills & Leadership en vivo · 3 horas de trabajo individual en plataforma o módulos a elección · Plan de Ruta · SIS · LMS · mentoría personalizada',
+        includes: '1 hora semanal de Inglés académico en vivo · 1 hora semanal de Life Skills & Leadership en vivo · 3 horas de trabajo individual en plataforma o módulos a elección · Plan de Estudio · SIS · LMS · mentoría personalizada',
         routes: [
           { key: 'r4', title: 'Ruta 4 años', level: '3.º Secundaria · Grade 9', hours: '3-4 h/sem', monthly: '$3,400 MXN', totalYear: '$34,000 MXN' },
           { key: 'r3', title: 'Ruta 3 años', level: 'Inicio Prepa · Grade 10', hours: '4-5 h/sem', monthly: '$4,100 MXN', totalYear: '$41,000 MXN' },
           { key: 'r2', title: 'Ruta 2 años', level: 'Etapa avanzada · Grade 11', hours: '5-6 h/sem + Summer', monthly: '$5,800 MXN', totalYear: '$58,000 MXN' },
           { key: 'r1', title: 'Ruta acelerada', level: 'Último ciclo · Grade 12', hours: 'Plan modular + Summer', monthly: '$6,500 MXN', totalYear: '$65,000 MXN' }
         ],
-        footnote: 'Tarifa México del ciclo 2026-2027 en pesos mexicanos. El total anual se calcula a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Ruta y la inversión correspondiente por escrito antes de formalizar.'
+        footnote: 'Tarifa México del ciclo 2026-2027 en pesos mexicanos. El total anual se calcula a 10 mensualidades; la matrícula y la evaluación académica se abonan aparte. La familia recibe el Plan de Estudio y la inversión correspondiente por escrito antes de formalizar.'
       }
     },
 
@@ -255,11 +255,11 @@ window.CHANAK_PRICING = {
         assessmentLabel: 'Evaluación académica inicial',
         enrollmentFee: 'US$250',
         installments: '10 mensualidades',
-        includes: '1 hora semanal de Inglés académico en vivo · 1 hora semanal de Life Skills & Leadership en vivo · 3 horas de trabajo individual en plataforma o módulos a elección · Plan de Ruta · SIS · LMS · mentoría',
+        includes: '1 hora semanal de Inglés académico en vivo · 1 hora semanal de Life Skills & Leadership en vivo · 3 horas de trabajo individual en plataforma o módulos a elección · Plan de Estudio · SIS · LMS · mentoría',
         routes: [
           { key: 'from', title: 'Según grado de entrada', level: 'Grade 9 a Grade 12', hours: '3-6 h/sem', monthly: 'US$140', totalYear: 'desde US$1,400 al año' }
         ],
-        footnote: 'Inversión anual desde US$1,400 según el grado de entrada. La tabla completa por ruta se entrega con el Plan de Ruta personalizado, antes de formalizar la matrícula.'
+        footnote: 'Inversión anual desde US$1,400 según el grado de entrada. La tabla completa por ruta se entrega con el Plan de Estudio personalizado, antes de formalizar la matrícula.'
       }
     },
 

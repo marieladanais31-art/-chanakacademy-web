@@ -1,4 +1,4 @@
-# Rediseño noviembre 2026 — portada de 3 rutas, tarifas únicas, landings completas y SEO/IA
+# Rediseño noviembre 2026 — portada de tres modalidades, tarifas únicas, landings completas y SEO/IA
 
 Rama: `claude/web-3-rutas` · **No está en producción.** `main` publica solo en Hostinger: revisar antes de fusionar.
 
@@ -6,7 +6,7 @@ Rama: `claude/web-3-rutas` · **No está en producción.** `main` publica solo e
 
 | Zona | Antes | Ahora |
 |---|---|---|
-| Portada `/` | 480 KB, 21 secciones, precios de todos los países, idiomas por JavaScript, error JS «Maximum call stack size exceeded» | 33 KB, HTML estático: hero (vídeo intacto), credenciales, 3 rutas, convicción, respaldo, 4 pasos, método, ESA, servicios, FAQ y formulario |
+| Portada `/` | 480 KB, 21 secciones, precios de todos los países, idiomas por JavaScript, error JS «Maximum call stack size exceeded» | 33 KB, HTML estático: hero (vídeo intacto), credenciales, tres modalidades, convicción, respaldo, 4 pasos, método, ESA, servicios, FAQ y formulario |
 | Idiomas de la portada | Un solo URL; Google y las IA solo leían el español | URLs reales: `/`, `/en/`, `/ca/`, `/fr/` con `hreflang` |
 | Tarifas | Repartidas en portada, `/tuition/` (render por JS) y landings | `/tarifas/` y `/en/tuition/` en HTML estático; `/tuition/` redirige (301) |
 | Contenido de la portada antigua | — | Conservado en `/como-funciona/` (método, currículos, portales, identidad, FAQ, formulario) |
@@ -60,7 +60,7 @@ Son imágenes generadas con IA (sin personas reales). El pie de la web indica «
 3. **Full Enrollment en `/matricula/` y en el SIS**: la web ya lo ofrece en todos los países; el formulario de matrícula y el cobro aún no.
 4. **Equivalencias en moneda local** de Full Enrollment (EUR, MXN, COP): no publicadas hasta que se aprueben.
 5. **Landings EN de Off-Campus y Dual Diploma**: son bundles React con error de hidratación previo; recompilar desde `chanak-landing` con los bloques nuevos y borrar `cx-en-blocks.js`.
-6. **Dossiers privados de UAE/Dubái** (`_private/dossier-templates/`) aún dicen «candidate status»; y los PDF de `assets/dossiers/` son de octubre.
+6. **Dossiers privados de UAE/Dubái** (`_private/dossier-templates/`) tenían la fórmula anterior de MSA (ya alineadas); y los PDF de `assets/dossiers/` son de octubre.
 7. **Dos frases con «Chanak Foundation»** (ayuda financiera) en `/mx/` o `/pa/` y `/us/florida/`: son contenido, decidir redacción.
 8. **Uso de logotipos**: DBU (añadido por indicación de dirección) y MSA: confirmar normas de marca de cada entidad.
 9. `tests/*.cjs` auditan la portada antigua: actualizar selectores.
@@ -69,3 +69,33 @@ Son imágenes generadas con IA (sin personas reales). El pie de la web indica «
 ## Pruebas hechas
 
 Enlaces internos y anclas de las 11 páginas tocadas, JSON-LD válido, sin errores JS en portada/tarifas/como-funciona/landings ES, sin desbordamiento horizontal a 360, 390, 1250, 1280 y 1366 px. **No probado**: envío real del formulario (necesita PHP de Hostinger).
+
+## Retoques finales (rama `claude/web-retoques-finales`, 2026-11-17)
+
+Orden de reconstrucción (todos idempotentes):
+
+```bash
+python3 tools/build_site.py          # portada (4 idiomas) y tarifas
+python3 tools/build_acreditacion.py  # páginas de acreditación MSA-CESS (4 idiomas)
+python3 tools/patch_landings.py      # bloques de off-campus, dual-diploma y microschools + bloque Core
+python3 tools/build_microschool.py   # normativa (JSON), pilares, tabla por país, marco legal, 7 pasos, kit, FAQ
+python3 tools/build_pages.py         # presupuesto, 7 errores, colabora (mentores, embajadores)
+python3 tools/unify_headers.py       # cabecera única + barra secundaria en las landings hechas a mano
+python3 tools/check_forbidden.py     # debe dar 0 resultados
+python3 tools/check_links.py         # enlaces, anclas y JSON-LD
+```
+
+- Mensaje: un solo camino, tres modalidades. `#rutas` pasa a ser `#modalidades`.
+- Textos: `tools/site_i18n.py` (portada), `tools/ms_content.py` (Microschool), `tools/core_content.py` (Plan de Estudios Core),
+  `tools/budget_content.py`, `tools/errores_content.py`, `tools/unete_content.py`.
+- Normativa por país: `tools/build_normativa.py` lee la hoja `Normativa_datos` del Excel y solo publica las normas de `VERIFIED`.
+- Hallazgos y decisiones pendientes: `docs/AUDITORIA-INCOHERENCIAS.md`.
+
+Hoja de presupuesto (requiere `python3 -m venv .venv && .venv/bin/pip install openpyxl formulas`, solo para regenerarla y probarla):
+
+```bash
+.venv/bin/python tools/build_hoja_presupuesto.py    # regenera el .xlsx (conserva Normativa_datos)
+python3 tools/build_presupuesto_json.py             # xlsx → assets/data/presupuesto-alcance.json (lo ejecuta también build_microschool.py)
+.venv/bin/python tools/test_hoja_presupuesto.py     # evalúa las fórmulas y guarda tests/fixtures/budget_expected.json
+node tests/budget_scope.cjs                         # web ↔ hoja
+```

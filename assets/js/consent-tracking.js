@@ -84,16 +84,17 @@
       if (document.getElementById('chanak-tracking-consent')) return;
       var box = document.createElement('div'); box.id = 'chanak-tracking-consent'; box.setAttribute('role', 'region');
       box.setAttribute('aria-label', en ? 'Cookie preferences' : 'Preferencias de cookies');
-      box.style.cssText = 'position:fixed;bottom:40px;left:16px;right:16px;max-width:620px;z-index:2000;background:#fff;color:#0c2d48;border:1px solid #d8e6ee;border-radius:12px;padding:20px;box-shadow:0 4px 24px #0002;font:15px/1.5 sans-serif';
-      var text = document.createElement('p'); text.textContent = en ? 'With your permission, Google, Meta and Metricool help us measure visits, inquiries and advertising. You can decline and still use the website and enrollment form.' : 'Con tu permiso, Google, Meta y Metricool nos ayudan a medir visitas, consultas y publicidad. Puedes rechazarlas y seguir usando la web y la matrícula.';
+      box.style.cssText = 'position:fixed;bottom:40px;left:12px;width:360px;max-width:calc(100vw - 24px);box-sizing:border-box;z-index:2000;background:#fff;color:#0c2d48;border:1px solid #d8e6ee;border-radius:12px;padding:12px 14px;box-shadow:0 4px 24px #0002;font:13px/1.4 sans-serif';
+      var text = document.createElement('p'); text.style.cssText = 'margin:0 0 8px'; text.textContent = en ? 'With your permission, Google, Meta and Metricool help us measure visits, inquiries and advertising. You can decline and still use the website and enrollment form.' : 'Con tu permiso, Google, Meta y Metricool nos ayudan a medir visitas, consultas y publicidad. Puedes rechazarlas y seguir usando la web y la matrícula.';
       box.appendChild(text);
+      var row = document.createElement('div'); row.style.cssText = 'display:flex;gap:8px;align-items:center;flex-wrap:wrap'; box.appendChild(row);
       ['none', 'all'].forEach(function (value) {
         var btn = document.createElement('button'); btn.type = 'button';
         btn.textContent = value === 'all' ? (en ? 'Accept' : 'Aceptar') : (en ? 'Reject' : 'Rechazar');
-        btn.style.cssText = 'margin:10px 10px 0 0;padding:10px 18px;border:1px solid #0c2d48;border-radius:8px;background:#fff;color:#0c2d48;font:inherit;cursor:pointer';
-        btn.addEventListener('click', function () { remember(value); }); box.appendChild(btn);
+        btn.style.cssText = 'flex:1 1 0;min-width:96px;padding:8px 12px;border:1px solid #0c2d48;border-radius:8px;background:#fff;color:#0c2d48;font:inherit;font-weight:700;cursor:pointer';
+        btn.addEventListener('click', function () { remember(value); }); row.appendChild(btn);
       });
-      var policy = document.createElement('a'); policy.href = '/cookies/'; policy.textContent = en ? 'Cookie policy' : 'Política de cookies'; box.appendChild(policy);
+      var policy = document.createElement('a'); policy.href = '/cookies/'; policy.textContent = en ? 'Cookie policy' : 'Política de cookies'; policy.style.cssText = 'display:inline-block;margin-top:8px;font-size:12px;color:#0c2d48'; box.appendChild(policy);
       document.body.appendChild(box);
     }
     control.addEventListener('click', show); document.body.appendChild(control); if (!saved) show();

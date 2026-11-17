@@ -7,10 +7,11 @@ Textos: tools/site_i18n.py · Precios: PRICING (abajo) — mantener igual que js
 import json, os, sys, html
 sys.path.insert(0, os.path.dirname(__file__))
 from site_i18n import T, LINKS, FAQ
+import notice_content
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = 'https://www.chanakacademy.org'
-V = '20261116'
+V = '20261117'
 LANGS = ['es', 'en', 'ca', 'fr']
 STATES = [('Florida', '/florida-home-education/'), ('Arizona', '/arizona/'), ('Utah', '/utah/'), ('Wyoming', '/wyoming/'),
           ('Alabama', '/alabama/'), ('South Carolina', '/south-carolina/'), ('New Hampshire', '/new-hampshire/')]
@@ -40,20 +41,20 @@ ORG_LD = {
     "logo": BASE + "/assets/chanak-logo.png",
     "image": BASE + "/assets/og-image.jpg",
     "description": "Christian American K-12 school, accredited by MSA-CESS and registered in Florida (FLDOE #134620), offering Guided Homeschool and Full Enrollment (Off-Campus K-12), U.S. Dual Diploma and Microschool partnerships for families in the United States, Spain, Mexico, Panama and internationally.",
-    "slogan": "One faith, different paths, one commitment to excellence",
+    "slogan": "One way, three approaches, one commitment to excellence",
     "nonprofitStatus": "https://schema.org/Nonprofit501c3",
     "identifier": [{"@type": "PropertyValue", "propertyID": "FLDOE School Number", "value": "134620"}],
     "address": {"@type": "PostalAddress", "streetAddress": "7901 4th St N Ste 300", "addressLocality": "St. Petersburg", "addressRegion": "FL", "postalCode": "33702", "addressCountry": "US"},
     "areaServed": ["US", "ES", "MX", "PA", "CO", "AE", "Worldwide"],
     "knowsLanguage": ["en", "es", "ca", "fr"],
-    "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "Accreditation", "name": "MSA-CESS Accreditation",
+    "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "Accreditation", "name": "MSA-CESS Accreditation, Kindergarten–Grade 12", "identifier": "FL175", "dateCreated": "2026-11-06", "expires": "2034-01-01", "url": BASE + "/acreditacion/",
                       "recognizedBy": {"@type": "Organization", "name": "Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS)", "url": "https://www.msa-cess.org/"}},
     "memberOf": {"@type": "Organization", "name": "Dallas Baptist University Global Community", "url": "https://www.dbu.edu/international/global-community/"},
     "contactPoint": [
         {"@type": "ContactPoint", "contactType": "admissions", "email": "offcampus@chanakacademy.org", "availableLanguage": ["es", "en"]},
         {"@type": "ContactPoint", "contactType": "Dual Diploma admissions", "email": "dualdiploma@chanakacademy.org", "availableLanguage": ["es", "en"]}],
     "sameAs": ["https://www.instagram.com/chanakinternationalacademy/", "https://www.facebook.com/profile.php?id=61585911365975", "https://www.youtube.com/@ChanakAcademy", "https://www.tiktok.com/@chanakacademy7"],
-    "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Programs", "itemListElement": [
+    "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Three approaches, one accredited standard", "itemListElement": [
         {"@type": "Offer", "itemOffered": {"@type": "EducationalOccupationalProgram", "name": "Off-Campus K-12 (Guided Homeschool / Full Enrollment)", "url": BASE + "/off-campus/"}},
         {"@type": "Offer", "itemOffered": {"@type": "EducationalOccupationalProgram", "name": "U.S. Dual Diploma (grades 9-12)", "url": BASE + "/dual-diploma/"}},
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Microschool & Academic Partnerships", "url": BASE + "/microschools/"}}]},
@@ -125,20 +126,23 @@ def footer(lang):
 <div class="cx-foot-g">
 <div><img src="/assets/chanak-logo.png" alt="Chanak" width="65" height="42" loading="lazy" decoding="async" style="background:#fff;border-radius:8px;padding:4px">
 <div class="brand">Chanak International Academy</div>
-<p>{t('ft_op', lang)}<br>FLDOE #134620 · MSA-CESS<br>7901 4th St N Ste 300, St. Petersburg, FL 33702</p>
+<p>{t('ft_op', lang)}<br>{t('t_msa', lang)} · FLDOE #134620<br>7901 4th St N Ste 300, St. Petersburg, FL 33702</p>
 <p><a href="https://www.instagram.com/chanakinternationalacademy/" rel="noopener" style="display:inline">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61585911365975" rel="noopener" style="display:inline">Facebook</a> · <a href="https://www.youtube.com/@ChanakAcademy" rel="noopener" style="display:inline">YouTube</a> · <a href="https://www.tiktok.com/@chanakacademy7" rel="noopener" style="display:inline">TikTok</a></p></div>
 <div><h4>{t('ft_prog', lang)}</h4>
 <a href="{L['hs']}">{t('n_hs', lang)}</a><a href="{L['dd']}">{t('n_dd', lang)}</a><a href="{L['ms']}">{t('n_ms', lang)}</a><a href="{L['open']}">{t('ms_cta', lang).replace(' →', '')}</a><a href="{L['diag']}">{t('sv1_h', lang)}</a><a href="{L['uni']}">{t('sv2_h', lang)}</a><a href="{L['fees']}">{t('n_fees', lang)}</a></div>
 <div><h4>{t('ft_inst', lang)}</h4>
-<a href="{L['how']}">{t('n_how', lang)}</a><a href="/school-leadership/">{t('ft_lead', lang)}</a><a href="/student-support/">{t('ft_support', lang)}</a><a href="/alianzas/">{t('ft_ally', lang)}</a><a href="/scholarships/">{t('n_esa', lang)}</a><a href="https://www.asociacioneducafe.org" rel="noopener">Asociación EducaFe ↗</a></div>
+<a href="{L['how']}">{t('n_how', lang)}</a><a href="/school-leadership/">{t('ft_lead', lang)}</a><a href="/student-support/">{t('ft_support', lang)}</a><a href="/alianzas/">{t('ft_ally', lang)}</a><a href="/scholarships/">{t('n_esa', lang)}</a></div>
 <div><h4>{t('ft_legal', lang)}</h4>
 <a href="{L['priv']}">{t('ft_priv', lang)}</a><a href="{L['cook']}">{t('ft_cook', lang)}</a><a href="{L['legal']}">{t('ft_aviso', lang)}</a><a href="{L['terms']}">{t('ft_terms', lang)}</a><a href="mailto:offcampus@chanakacademy.org">offcampus@chanakacademy.org</a><a href="mailto:dualdiploma@chanakacademy.org">dualdiploma@chanakacademy.org</a></div>
+<div><h4>{t('ft_colab', lang)}</h4>
+<a href="{L['mentors']}">{t('ft_mentors', lang)}</a><a href="{L['amb']}">{t('ft_amb', lang)}</a><a href="{L['open']}">{t('ft_msally', lang)}</a></div>
 </div>
 <div class="discl"><p>{t('ft_d1', lang)}</p><p>{t('ft_d2', lang)} {t('img_note', lang)}</p></div>
 <div class="bot"><span>{t('ft_copy', lang)}</span><span><a href="{L['priv']}">{t('ft_priv', lang)}</a><a href="{L['legal']}">{t('ft_aviso', lang)}</a><a href="{L['cook']}">{t('ft_cook', lang)}</a></span></div>
 </div></footer>
 <script>
 (function(){{var b=document.querySelector('.cx-burger'),n=document.getElementById('cx-nav');if(b&&n)b.addEventListener('click',function(){{var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)}});
+document.querySelectorAll('.cx-langs a').forEach(function(a){{a.addEventListener('click',function(){{try{{localStorage.setItem('chanak_lang',a.getAttribute('hreflang'))}}catch(e){{}}}})}});
 try{{var q=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){{if(q.get(k))sessionStorage.setItem('chanak_'+k,q.get(k))}});if(!sessionStorage.getItem('chanak_utm_landing'))sessionStorage.setItem('chanak_utm_landing',location.pathname)}}catch(e){{}}
 }})();
 </script>
@@ -187,6 +191,7 @@ def home(lang):
     alternates = [('es', '/'), ('en', '/en/'), ('ca', '/ca/'), ('fr', '/fr/'), ('x-default', '/')]
     site_ld = {"@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": "Chanak International Academy", "inLanguage": LANGS, "publisher": {"@id": BASE + "/#school"}}
     out = head(lang, t('title', lang), t('desc', lang), L['home'], alternates, ld(ORG_LD, site_ld, faq_ld(faq)))
+    out += f'<div role="note" style="padding:14px 22px;text-align:center;background:#eaf5f1;color:#103d4b;font:600 14px system-ui,sans-serif">{t("acc_note", lang, u=L["acc"])}</div>\n'
     out += header(lang, {l: LINKS[l]['home'] for l in LANGS})
     pills = ''.join(f'<a href="{u}">{n}</a>' for n, u in STATES)
     faq_html = ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in faq)
@@ -205,17 +210,17 @@ def home(lang):
 <p class="tag">{t('h_tag', lang)}</p>
 <p class="sub">{t('h_sub', lang)}</p>
 <div class="cx-btns"><a class="cx-btn cx-btn-t" href="/matricula/?utm_source=web&amp;utm_medium=hero&amp;utm_campaign=conversion_2026&amp;src=home-hero">{t('enroll', lang)}</a><a class="cx-btn cx-btn-w" href="#orientacion">{t('guide', lang)}</a></div>
-<div class="cx-hero-routes"><a href="#hs">{t('n_hs', lang)} ↓</a><a href="#dd">{t('n_dd', lang)} ↓</a><a href="#ms">{t('n_ms', lang)} ↓</a></div>
+<div class="cx-hero-routes" aria-label="{t('n_modes', lang)}"><span class="lbl">{t('n_modes', lang)}</span><a href="#hs">{t('n_hs', lang)} ↓</a><a href="#dd">{t('n_dd', lang)} ↓</a><a href="#ms">{t('n_ms', lang)} ↓</a></div>
 </div></div></section>
 
 <div class="cx-trust" aria-label="Credentials"><div class="cx-wrap cx-trust-in">
 <div class="cx-trust-it"><img src="/assets/img/fldoe-logo-clean.png" alt="Florida Department of Education" width="160" height="44" loading="lazy" decoding="async"><b>FLDOE #134620</b><span>{t('t_fl', lang)}</span></div>
 <div class="cx-trust-it"><img src="/assets/img/msa-logo-clean.png" alt="Middle States Association (MSA-CESS)" width="160" height="40" loading="lazy" decoding="async"><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div>
-<div class="cx-trust-it"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University" width="130" height="48" loading="lazy" decoding="async"><b>Dallas Baptist University</b><span>{t('t_dbu', lang)}</span></div>
-<div class="cx-trust-it"><img src="/assets/img/chanak-trainup-logo.png" alt="Chanak TrainUp Education" width="140" height="48" loading="lazy" decoding="async"><b>Chanak TrainUp Education</b><span>{t('t_irs', lang)}</span></div>
+<div class="cx-trust-it"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University · Global Community" width="130" height="48" loading="lazy" decoding="async"><b>Dallas Baptist University</b><span>{t('t_dbu', lang)}</span></div>
+<div class="cx-trust-it"><img src="/assets/img/chanak-trainup-logo.webp" alt="Chanak TrainUp Education Inc." width="140" height="48" loading="lazy" decoding="async"><b>Chanak TrainUp Education Inc.</b><span>{t('t_irs', lang)}</span></div>
 </div></div>
 
-<section class="cx-sec" id="rutas"><div class="cx-wrap">
+<section class="cx-sec" id="modalidades"><div class="cx-wrap">
 <div class="cx-center"><div class="cx-eyebrow">{t('r_eye', lang)}</div><h2>{t('r_h2', lang)}</h2><p class="cx-lead">{t('r_lead', lang)}</p></div>
 <div class="cx-routes">
 {route('hs', 'hs-mesa-familia', L['hs'])}
@@ -234,7 +239,7 @@ def home(lang):
 <div><div class="cx-eyebrow">{t('tr_eye', lang)}</div><h2>{t('tr_h2', lang)}</h2>
 <h3>{t('tr1_h', lang)}</h3><p>{t('tr1_p', lang)}</p>
 <h3>{t('tr2_h', lang)}</h3><p>{t('tr2_p', lang)}</p></div></div>
-<div class="cx-grid cx-g2"><div class="cx-card"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University" width="130" height="65" loading="lazy" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr3_h', lang)}</h3><p>{t('tr3_p', lang)}</p></div><div class="cx-card"><img src="/assets/img/chanak-trainup-logo.png" alt="Chanak Trainup Education" width="140" height="60" loading="lazy" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr4_h', lang)}</h3><p>{t('tr4_p', lang)}</p></div></div>
+<div class="cx-grid cx-g2"><div class="cx-card"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University" width="130" height="65" loading="lazy" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr3_h', lang)}</h3><p>{t('tr3_p', lang)}</p></div><div class="cx-card"><img src="/assets/img/chanak-trainup-logo.webp" alt="Chanak TrainUp Education Inc." width="140" height="60" loading="lazy" decoding="async" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr4_h', lang)}</h3><p>{t('tr4_p', lang)}</p></div></div>
 </div></section>
 
 <section class="cx-sec cx-soft" id="como"><div class="cx-wrap">
@@ -262,10 +267,10 @@ def home(lang):
 <section class="cx-sec" id="servicios"><div class="cx-wrap">
 <div class="cx-center"><div class="cx-eyebrow">{t('sv_eye', lang)}</div><h2>{t('sv_h2', lang)}</h2></div>
 <div class="cx-grid cx-g4">
-<a class="cx-card photo" href="{L['diag']}" style="text-decoration:none"><img src="{IMG}diagnostico-tablet.webp" alt="" width="1200" height="800" loading="lazy" decoding="async"><div><h3>{t('sv1_h', lang)}</h3><p>{t('sv1_p', lang)}</p></div></a>
-<a class="cx-card photo" href="{L['uni']}" style="text-decoration:none"><img src="{IMG}universidad-campus.webp" alt="" width="1200" height="800" loading="lazy" decoding="async"><div><h3>{t('sv2_h', lang)}</h3><p>{t('sv2_p', lang)}</p></div></a>
-<a class="cx-card photo" href="{L['how']}#enriquecimiento" style="text-decoration:none"><img src="{IMG}life-skills-cocina.webp" alt="" width="1200" height="800" loading="lazy" decoding="async"><div><h3>{t('sv3_h', lang)}</h3><p>{t('sv3_p', lang)}</p></div></a>
-<a class="cx-card photo" href="https://sis.chanakacademy.org/matricula?program=adult_high_school&amp;country=US&amp;currency=USD" style="text-decoration:none"><img src="{IMG}hs-mentoria.webp" alt="" width="1200" height="800" loading="lazy" decoding="async"><div><h3>{t('sv4_h', lang)}</h3><p>{t('sv4_p', lang)}</p></div></a>
+<a class="cx-card photo" href="{L['diag']}" style="text-decoration:none"><img src="{IMG}diagnostico-tablet.webp" alt="{html.escape(t('sv1_alt', lang))}" width="1200" height="800" loading="lazy" decoding="async"><div><h3>{t('sv1_h', lang)}</h3><p>{t('sv1_p', lang)}</p></div></a>
+<a class="cx-card photo" href="{L['uni']}" style="text-decoration:none"><img src="{IMG}universidad-campus.webp" alt="{html.escape(t('sv2_alt', lang))}" width="1200" height="800" loading="lazy" decoding="async"><div><h3>{t('sv2_h', lang)}</h3><p>{t('sv2_p', lang)}</p></div></a>
+<a class="cx-card photo" href="{L['how']}#enriquecimiento" style="text-decoration:none"><img src="{IMG}life-skills-cocina.webp" alt="{html.escape(t('sv3_alt', lang))}" width="1200" height="800" loading="lazy" decoding="async"><div><h3>{t('sv3_h', lang)}</h3><p>{t('sv3_p', lang)}</p></div></a>
+<a class="cx-card photo" href="https://sis.chanakacademy.org/matricula?program=adult_high_school&amp;country=US&amp;currency=USD" style="text-decoration:none"><img src="{IMG}hs-mentoria.webp" alt="{html.escape(t('sv4_alt', lang))}" width="1200" height="800" loading="lazy" decoding="async"><div><h3>{t('sv4_h', lang)}</h3><p>{t('sv4_p', lang)}</p></div></a>
 </div></div></section>
 
 <section class="cx-sec cx-soft" id="faq"><div class="cx-wrap">
@@ -273,17 +278,19 @@ def home(lang):
 <div class="cx-faq">{faq_html}</div>
 </div></section>
 
+{notice_content.section() if lang == 'en' else ''}
 <section class="cx-sec cx-navy" id="orientacion"><div class="cx-wrap cx-split">
 <div><div class="cx-eyebrow">{t('c_eye', lang)}</div><h2>{t('c_h2', lang)}</h2><p class="cx-lead">{t('c_p', lang)}</p>
 <ul class="cx-list" style="margin-top:18px"><li>{t('c_b1', lang)}</li><li>{t('c_b2', lang)}</li><li>{t('c_b3', lang)}</li></ul>
 <p class="cx-note">{t('c_ms', lang, ms=L['ms'])}</p></div>
 <div id="dossier">{form(lang)}</div>
 </div></section>
+<p class="cx-join">{t('join_line', lang, u=L['unete'])}</p>
 </main>
 '''
     out += footer(lang)
     # Los enlaces antiguos a anclas de la portada (#tarifas, #curriculos…) siguen funcionando.
-    out += '''<script>(function(){var m={tarifas:'%s',curriculos:'%s',portales:'%s',quien:'%s',enriquecimiento:'%s','student-support':'/student-support/',microschool:'#ms',homeschool:'#hs','dual-diploma':'#dd',solicitud:'#orientacion'};var h=location.hash.replace('#','');if(new URLSearchParams(location.search).get('country')&&h==='tarifas'){location.replace('%s'+location.search);return}if(m[h]){if(m[h].charAt(0)==='#'){var e=document.querySelector(m[h]);if(e)e.scrollIntoView()}else location.replace(m[h])}})();</script>
+    out += '''<script>(function(){var m={tarifas:'%s',curriculos:'%s',portales:'%s',quien:'%s',enriquecimiento:'%s','student-support':'/student-support/',microschool:'#ms',rutas:'#modalidades',objetivo:'#modalidades',homeschool:'#hs','dual-diploma':'#dd',solicitud:'#orientacion'};var h=location.hash.replace('#','');if(new URLSearchParams(location.search).get('country')&&h==='tarifas'){location.replace('%s'+location.search);return}if(m[h]){if(m[h].charAt(0)==='#'){var e=document.querySelector(m[h]);if(e)e.scrollIntoView()}else location.replace(m[h])}})();</script>
 </body></html>''' % (L['fees'], '/como-funciona/#curriculos', '/como-funciona/#portales', '/como-funciona/#quien', '/como-funciona/#enriquecimiento', L['fees'])
     path = 'index.html' if lang == 'es' else f'{lang}/index.html'
     write(path, out)
@@ -303,8 +310,8 @@ PRICING = {
         ('Colombia', 'Colombia', '$225.000 COP/mes', 'COP 225,000/mo', '$575.000 COP', 'co'),
         ('Internacional', 'International', 'US$80/mes', 'US$80/mo', 'US$180', 'global')],
     'dual': [
-        ('España', 'Spain', '110 € · 129 € · 148 € · 167 €/mes <small>rutas de 4, 3 y 2 años e intensiva</small>', '€110 · €129 · €148 · €167/mo <small>4-, 3-, 2-year and intensive routes</small>', '210 €', '35 €'),
-        ('México', 'Mexico', 'desde $3,400 MXN/mes <small>$4,100 · $5,800 · $6,500 según la ruta</small>', 'from MXN 3,400/mo <small>3,400 · 4,100 · 5,800 · 6,500 by route</small>', '$4,300 MXN', '$850 MXN'),
+        ('España', 'Spain', '110 € · 129 € · 148 € · 167 €/mes <small>itinerarios de 4, 3 y 2 años e intensivo</small>', '€110 · €129 · €148 · €167/mo <small>4-, 3-, 2-year and intensive tracks</small>', '210 €', '35 €'),
+        ('México', 'Mexico', 'desde $3,400 MXN/mes <small>$4,100 · $5,800 · $6,500 según el itinerario</small>', 'from MXN 3,400/mo <small>3,400 · 4,100 · 5,800 · 6,500 by track</small>', '$4,300 MXN', '$850 MXN'),
         ('Panamá e Internacional', 'Panama & International', 'desde US$140/mes', 'from US$140/mo', 'US$250', 'US$50'),
         ('Colombia', 'Colombia', 'Cotización individual', 'Individual quote', '—', '—')],
 }
@@ -319,9 +326,9 @@ def tarifas(lang):
     L = LINKS[lang]
     url = L['fees']
     tx = (lambda a, b: a) if es else (lambda a, b: b)
-    title = tx('Tarifas 2026–2027: Homeschool, Full Enrollment y Dual Diploma · Chanak', 'Tuition 2026–2027: Homeschool, Full Enrollment & Dual Diploma · Chanak')
-    desc = tx('Precios de Chanak International Academy por programa y país: Homeschool Guiado, Full Enrollment K-12 y Dual Diploma. Matrícula anual, mensualidades y qué incluye.',
-              'Chanak International Academy fees by program and country: Guided Homeschool, K-12 Full Enrollment and Dual Diploma. Annual enrollment fee, monthly payments and what is included.')
+    title = tx('Tarifas 2026–2027: Homeschool y Dual Diploma · Chanak', 'Tuition 2026–2027: Homeschool & Dual Diploma · Chanak')
+    desc = tx('Precios de Chanak por programa y país: Homeschool Guiado, Full Enrollment K-12 y Dual Diploma. Matrícula anual, mensualidades y qué incluye.',
+              'Chanak fees by program and country: Guided Homeschool, K-12 Full Enrollment and Dual Diploma. Annual enrollment fee, monthly payments and what is included.')
     policy = tx('La matrícula anual incluye el diagnóstico académico inicial, la elaboración del Plan Educativo Individualizado (PEI) y la inducción de incorporación. Una vez abonada, no se devuelve, salvo los derechos de desistimiento, cancelación, reembolso u otros derechos irrenunciables que establezca la legislación aplicable.',
                 'The annual enrollment fee includes the initial academic assessment, the Individualized Education Plan (IEP/PEI), and student/family onboarding. Once paid, the fee is non-refundable, except where applicable law grants mandatory withdrawal, cancellation, refund, or other non-waivable rights.')
     fe_rows = ''.join(f"<tr><td><b>{tx('Grados', 'Grades')} {r['g']}</b></td><td>US${money(r['m'])}<small>{tx('10 mensualidades', '10 monthly payments')}</small></td><td>US${money(r['q'])}<small>{tx('4 cuotas trimestrales', '4 quarterly payments')}</small></td><td>US${money(r['y'] - r['fee'])}<small>{tx('pago único de colegiatura', 'single tuition payment')}</small></td><td>US${r['fee']}</td><td><b>US${money(r['y'])}</b></td></tr>" for r in PRICING['full_enrollment'])
@@ -338,7 +345,7 @@ def tarifas(lang):
     offers = {"@type": "OfferCatalog", "name": title, "url": BASE + url, "itemListElement": [
         {"@type": "Offer", "name": f"Full Enrollment · Grades {r['g']}", "price": str(r['m']), "priceCurrency": "USD", "description": "Monthly tuition, 10 payments per academic year; US$295 annual enrollment fee", "seller": {"@id": BASE + "/#school"}} for r in PRICING['full_enrollment']] + [
         {"@type": "Offer", "name": "Guided Homeschool · Spain", "price": "70", "priceCurrency": "EUR", "description": "Monthly fee; €180 annual enrollment fee", "seller": {"@id": BASE + "/#school"}},
-        {"@type": "Offer", "name": "Dual Diploma · Spain (4-year route)", "price": "110", "priceCurrency": "EUR", "description": "Monthly fee, 10 payments; €210 enrollment", "seller": {"@id": BASE + "/#school"}}]}
+        {"@type": "Offer", "name": "Dual Diploma · Spain (4-year track)", "price": "110", "priceCurrency": "EUR", "description": "Monthly fee, 10 payments; €210 enrollment", "seller": {"@id": BASE + "/#school"}}]}
     out = head(lang, title, desc, url, alternates, ld(ORG_LD, crumbs, offers, faq_ld(faq)))
     out += header(lang, {'es': '/tarifas/', 'en': '/en/tuition/'})
     faq_html = ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in faq)
@@ -347,7 +354,7 @@ def tarifas(lang):
 <nav class="cx-crumbs" aria-label="Breadcrumb"><a href="{L['home']}">Chanak</a> › {tx('Tarifas', 'Tuition')}</nav>
 <h1>{tx('Tarifas del curso 2026–2027', 'Tuition for the 2026–2027 school year')}</h1>
 <p class="cx-lead">{tx('Precios claros por programa y país. Recibes el importe exacto por escrito antes de pagar.', 'Clear fees by program and country. You receive the exact amount in writing before you pay.')}</p>
-<div class="cx-tabs"><a href="#homeschool">Homeschool K–12</a><a href="#dual">Dual Diploma</a><a href="#microschool">Microschools</a><a href="#matricula">{tx('Matrícula anual', 'Annual enrollment fee')}</a></div>
+<div class="cx-tabs"><a href="#homeschool">Off Campus K–12</a><a href="#dual">Dual Diploma</a><a href="#microschool">Microschools</a><a href="#matricula">{tx('Matrícula anual', 'Annual enrollment fee')}</a></div>
 </div></section>
 
 <section class="cx-sec" id="homeschool"><div class="cx-wrap">
@@ -377,7 +384,7 @@ def tarifas(lang):
 <p class="cx-lead">{tx('La mensualidad depende del curso en que empieza el estudiante: cuanto antes, más repartida. No se ofrece en Estados Unidos.', 'The monthly fee depends on the grade in which the student starts: the earlier, the more spread out. Not offered in the United States.')}</p>
 <div class="cx-table-w"><table class="cx-table"><thead><tr><th>{tx('País', 'Country')}</th><th>{tx('Mensualidad (10 al año)', 'Monthly fee (10 per year)')}</th><th>{tx('Matrícula', 'Enrollment')}</th><th>{tx('Diagnóstico y auditoría de créditos', 'Diagnostic and credit audit')}</th></tr></thead><tbody>{d_rows}</tbody></table></div>
 <div class="cx-grid cx-g2">
-<div class="cx-card"><h3>1 · {tx('Matrícula + diagnóstico + auditoría de créditos', 'Enrollment + diagnostic + transfer credit evaluation')}</h3><p>{tx('La vía habitual: te matriculas y recibes el Plan de Ruta con los créditos reconocidos y los pendientes.', 'The usual route: you enroll and receive the Route Plan with recognized and pending credits.')}</p></div>
+<div class="cx-card"><h3>1 · {tx('Matrícula + diagnóstico + auditoría de créditos', 'Enrollment + diagnostic + transfer credit evaluation')}</h3><p>{tx('La vía habitual: te matriculas y recibes el Plan de Estudio con los créditos reconocidos y los pendientes.', 'The usual way: you enroll and receive the Study Plan with recognized and pending credits.')}</p></div>
 <div class="cx-card"><h3>2 · {tx('Solo diagnóstico + auditoría de créditos', 'Diagnostic + transfer credit evaluation only')}</h3><p>{tx('Para decidir con datos antes de matricularte. Es un servicio independiente; te confirmamos por escrito su alcance y si se descuenta de la matrícula.', 'To decide with data before enrolling. It is a separate service; we confirm in writing its scope and whether it is credited toward enrollment.')}</p></div>
 </div>
 <div class="cx-btns" style="margin-top:24px"><a class="cx-btn cx-btn-n" href="{L['dd']}">{tx('Conocer Dual Diploma →', 'Explore Dual Diploma →')}</a></div>
@@ -395,6 +402,7 @@ def tarifas(lang):
 <div class="cx-faq" style="margin-left:0">{faq_html}</div>
 <div class="cx-btns" style="margin-top:24px"><a class="cx-btn cx-btn-t" href="/matricula/?utm_source=web&amp;utm_medium=tarifas">{t('enroll', lang)}</a><a class="cx-btn cx-btn-o" href="{L['home']}#orientacion">{t('guide', lang)}</a></div>
 </div></section>
+{notice_content.section(False) if not es else ''}
 </main>
 '''
     out += footer(lang) + '</body></html>'

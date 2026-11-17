@@ -26,6 +26,11 @@ function chanak_resolve_route(array $data, string $referer): string {
     $state = (string)($data['state_program'] ?? $data['programa_estatal'] ?? $data['state'] ?? '');
     $stateRoute=chanak_route_from_value($state);
     if (in_array($stateRoute,['florida_pep_ema','alabama_choose','classwallet'],true)) return $stateRoute;
+    // 2b. Formularios de colaboración y de socios: solo por el valor EXACTO de 'necesidad' o 'producto'
+    //     (no por coincidencia de texto, para no capturar «mentoría» de otros programas).
+    $explicit=chanak_normalize((string)($data['necesidad'] ?? ''));
+    if (in_array($explicit,['embajador','mentor','microschool'],true)) return $explicit;
+    if (chanak_normalize((string)($data['producto'] ?? ''))==='microschool') return 'microschool';
     $need=chanak_route_from_value((string)($data['necesidad'] ?? ''));
     if (in_array($need,['florida_pep_ema','alabama_choose','classwallet'],true)) return $need;
     foreach (['program','programa','service','servicio','programa_ema','programa_interes','funding','funding_source'] as $key) {
@@ -41,7 +46,11 @@ function chanak_route_recipients(string $route): array {
         return ['scholarships@chanakacademy.org'];
     }
     if ($route === 'dual') return ['dualdiploma@chanakacademy.org'];
-    if ($route === 'hub') return ['rededucativa@asociacioneducafe.org'];
+    // Alianzas institucionales: contratación directa con Chanak (sin intermediarios).
+    if ($route === 'hub') return ['administration@chanakacademy.org'];
+    // Alianzas Microschool, embajadores y mentores: buzón institucional.
+    // Correo oficial del programa de Embajadores y de Mentores: administration@chanakacademy.org (decisión institucional).
+    if (in_array($route, ['microschool', 'embajador', 'mentor'], true)) return ['administration@chanakacademy.org'];
     return ['offcampus@chanakacademy.org'];
 }
 function chanak_information_pack(string $route, array $data, string $referer, string $site): ?array {

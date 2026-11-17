@@ -63,7 +63,7 @@ pages.append(page(f"""
   <div class="cover-quote">&ldquo;A complementary U.S. high school pathway for international students in {p['name']}, alongside their current education, when applicable.&rdquo;</div>
   <div class="badge-row">
     <div class="badge"><strong>FLDOE #134620</strong>Florida Registered Private School</div>
-    <div class="badge"><strong>MSA-CESS</strong>Official Candidate for Accreditation</div>
+    <div class="badge"><strong>MSA-CESS</strong>Accredited</div>
     <div class="badge"><strong>Nonprofit 501(c)(3)</strong>Florida, USA</div>
   </div>
   <div class="footer"><span><strong>Chanak International Academy</strong> &middot; Dual Diploma 2026&ndash;27</span><span>{p['name']} Edition</span></div>
@@ -86,7 +86,7 @@ pages.append(page(f"""
     <div class="check-item">Academic mentoring</div>
     <div class="check-item">Exposure to a different education system</div>
   </div>
-  <p class="disclaimer">Chanak International Academy &middot; FLDOE #134620 &middot; MSA-CESS Official Candidate for Accreditation</p>
+  <p class="disclaimer">Chanak International Academy &middot; FLDOE #134620 &middot; Accredited by MSA-CESS</p>
   <div class="pagenum">2</div>
 """))
 
@@ -111,7 +111,7 @@ pages.append(page("""
       </div>
     </div>
   </div>
-  <p class="disclaimer">Chanak International Academy &middot; FLDOE #134620 &middot; MSA-CESS Official Candidate for Accreditation</p>
+  <p class="disclaimer">Chanak International Academy &middot; FLDOE #134620 &middot; Accredited by MSA-CESS</p>
   <div class="pagenum">3</div>
 """))
 
@@ -121,13 +121,13 @@ pages.append(page("""
   <h2>Academic support system</h2>
   <div class="card-grid">
     <div class="card"><h3>Initial academic review</h3><p>Review of the student's academic profile and entry level.</p></div>
-    <div class="card"><h3>Personalized route plan</h3><p>Which requirements to complete, over what timeframe, at an estimated weekly workload.</p></div>
+    <div class="card"><h3>Personalized study plan</h3><p>Which requirements to complete, over what timeframe, at an estimated weekly workload.</p></div>
     <div class="card"><h3>Student Information System (SIS)</h3><p>Family access to progress, records, reports and communication with Chanak.</p></div>
     <div class="card"><h3>LMS-organized resources</h3><p>Academic materials and activities organized by course and level.</p></div>
     <div class="card"><h3>Weekly academic mentoring</h3><p>Regular check-ins with an academic mentor on goals, questions and pace.</p></div>
     <div class="card"><h3>Official transcript &amp; diploma</h3><p>An official American-format transcript, and a High School Diploma upon successful completion of program requirements.</p></div>
   </div>
-  <p class="disclaimer">Chanak International Academy &middot; FLDOE #134620 &middot; MSA-CESS Official Candidate for Accreditation</p>
+  <p class="disclaimer">Chanak International Academy &middot; FLDOE #134620 &middot; Accredited by MSA-CESS</p>
   <div class="pagenum">4</div>
 """))
 
@@ -152,11 +152,11 @@ pages.append(page("""
   <h2>What families usually ask</h2>
   <div class="card-grid">
     <div class="card"><h3>Does it guarantee university admission?</h3><p>No. It provides academic documentation that may be considered as part of admission processes. Requirements vary by university, country and program; the final decision is always made by the receiving institution.</p></div>
-    <div class="card"><h3>Is Chanak accredited?</h3><p>Chanak is registered with the Florida Department of Education (FLDOE #134620) and is currently a Candidate for Accreditation with MSA-CESS. Candidate status does not constitute accreditation.</p></div>
+    <div class="card"><h3>Is Chanak accredited?</h3><p>Chanak is registered with the Florida Department of Education (FLDOE #134620) and is accredited by MSA-CESS (Middle States Association Commissions on Elementary and Secondary Schools) for Kindergarten–Grade 12; the decision was made on November 6, 2026 and is valid through January 1, 2034. Accreditation does not replace local authorizations or guarantee admission or recognition in any education system.</p></div>
     <div class="card"><h3>How many hours per week?</h3><p>Approximately 5 hours per week on average, confirmed for each student during the admissions process.</p></div>
     <div class="card"><h3>Can my child keep their current school?</h3><p>Yes. The Dual Diploma is designed to run alongside the student's current education, when applicable.</p></div>
   </div>
-  <p class="disclaimer">Chanak International Academy &middot; FLDOE #134620 &middot; MSA-CESS Official Candidate for Accreditation</p>
+  <p class="disclaimer">Chanak International Academy &middot; FLDOE #134620 &middot; Accredited by MSA-CESS</p>
   <div class="pagenum">6</div>
 """))
 
@@ -176,7 +176,7 @@ pages.append(page(f"""
     <p style="margin-top:10px">dualdiploma@chanakacademy.org &middot; www.chanakacademy.org/dual-diploma-uae/</p>
   </div>
   <p class="disclaimer">The Chanak U.S. Dual Diploma provides academic documentation that may be considered as part of admission processes. Admission, recognition, equivalency and eligibility requirements vary by university, country and program. Final decisions are made by the receiving institution. Students and families should verify specific admission and recognition requirements directly with their intended university or institution.<br>
-  FLDOE #134620 (publicly verifiable) &middot; MSA-CESS Official Candidate for Accreditation &mdash; candidate status does not constitute accreditation &middot; Chanak Foundation &middot; Nonprofit 501(c)(3).</p>
+  FLDOE #134620 (publicly verifiable) &middot; Accredited by MSA-CESS &middot; Chanak TrainUp Education, Inc. &middot; Nonprofit 501(c)(3).</p>
   <div class="pagenum">7</div>
 """))
 

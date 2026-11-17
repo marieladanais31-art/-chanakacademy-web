@@ -3,7 +3,10 @@
 """Añade a las landings existentes (sin quitar nada) los bloques nuevos: planes, fotos, DBU,
 política de matrícula y pasos para fundadores. Idempotente: cada bloque lleva un marcador <!-- cx:… -->.
 Uso: python3 tools/patch_landings.py"""
-import os, re, json
+import os, re, json, sys
+sys.path.insert(0, os.path.dirname(__file__))
+import core_content
+import notice_content
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V = '20261116'
 IMG = '/assets/img/gen/'
@@ -31,7 +34,7 @@ def offcampus(es):
 <p class="amount">US$80<small style="font-size:1rem">/{x('mes', 'mo')}</small></p><p class="eq">{x('70 €/mes en España · matrícula anual 180 €', '€70/mo in Spain · €180 annual enrollment fee')}</p>
 <ul class="cx-list"><li>{x('Tú diriges el día a día; nosotros te damos el plan y la guía', 'You run the day-to-day; we give you the plan and the guidance')}</li><li>{x('Diagnóstico académico y Plan Educativo Individualizado (PEI)', 'Academic diagnostic and Individualized Education Plan')}</li><li>{x('Mentoría familiar mensual', 'Monthly family mentoring')}</li><li>{x('Plataforma, seguimiento e informes', 'Platform, tracking and reports')}</li></ul>
 <div class="cx-btns"><a class="cx-btn cx-btn-o" href="/matricula/?utm_source=web&amp;utm_medium=offcampus&amp;plan=guided">{x('Empezar con Homeschool Guiado →', 'Start Guided Homeschool →')}</a></div></div>
-<div class="cx-plan feat">{img('hs-mentoria', x('Estudiante en una sesión de mentoría por videollamada con su cuaderno', 'Student in a video mentoring session with a notebook'))}
+<div class="cx-plan feat" id="full-enrollment">{img('hs-mentoria', x('Estudiante en una sesión de mentoría por videollamada con su cuaderno', 'Student in a video mentoring session with a notebook'))}
 <div class="tagline" style="margin-top:18px">{x('Matrícula escolar completa', 'Full school enrollment')}</div><h3>Full Enrollment · Guided Virtual School</h3>
 <p class="amount">{x('desde', 'from')} US$275<small style="font-size:1rem">/{x('mes', 'mo')}</small></p><p class="eq">{x('K–5 US$275 · 6–8 US$320 · 9–12 US$365 · 10 mensualidades · matrícula anual US$295', 'K–5 US$275 · 6–8 US$320 · 9–12 US$365 · 10 monthly payments · US$295 annual enrollment fee')}</p>
 <ul class="cx-list"><li>{x('Chanak es su colegio: matrícula escolar a tiempo completo', 'Chanak is their school: full-time school enrollment')}</li><li>{x('Tres clases en vivo de inglés (ELA) por semana', 'Three live English (ELA) classes per week')}</li><li>{x('Mentoría individual semanal y Life Skills en vivo', 'Weekly one-to-one mentoring and live Life Skills')}</li><li>{x('Evaluación, boletines, expediente y diploma al cumplir los requisitos', 'Assessment, report cards, transcript and diploma once requirements are met')}</li></ul>
@@ -82,7 +85,7 @@ def dual(es):
     C = f'''<!-- cx:opciones --><div class="cx"><section class="cx-sec cx-soft" id="opciones-matricula"><div class="cx-wrap">
 <div class="cx-eyebrow">{x('Cómo empezar', 'How to start')}</div><h2>{x('Dos formas de dar el primer paso', 'Two ways to take the first step')}</h2>
 <div class="cx-grid cx-g2">
-<div class="cx-card"><h3>1 · {x('Matrícula + diagnóstico + auditoría de créditos', 'Enrollment + diagnostic + transfer credit evaluation')}</h3><p>{x('La vía habitual. Te matriculas y recibes el Plan de Ruta: créditos reconocidos, cursos pendientes y dedicación semanal.', 'The usual route. You enroll and receive the Route Plan: recognized credits, pending courses and weekly workload.')}</p></div>
+<div class="cx-card"><h3>1 · {x('Matrícula + diagnóstico + auditoría de créditos', 'Enrollment + diagnostic + transfer credit evaluation')}</h3><p>{x('La vía habitual. Te matriculas y recibes el Plan de Estudio: créditos reconocidos, cursos pendientes y dedicación semanal.', 'The usual way. You enroll and receive the Study Plan: recognized credits, pending courses and weekly workload.')}</p></div>
 <div class="cx-card"><h3>2 · {x('Solo diagnóstico + auditoría de créditos', 'Diagnostic + transfer credit evaluation only')}</h3><p>{x('Para decidir con datos antes de matricular. Servicio independiente: te confirmamos por escrito su alcance y si se descuenta de la matrícula.', 'To decide with data before enrolling. A separate service: we confirm in writing its scope and whether it is credited toward enrollment.')}</p></div>
 </div>
 <div class="cx-btns" style="margin-top:22px"><a class="cx-btn cx-btn-t" href="/matricula/?utm_source=web&amp;utm_medium=dual">{x('Iniciar matrícula →', 'Start enrollment →')}</a><a class="cx-btn cx-btn-o" href="{fees}">{x('Ver tarifas por país →', 'See fees by country →')}</a></div>
@@ -94,7 +97,7 @@ def micro(es):
     x = (lambda a, b: a) if es else (lambda a, b: b)
     A = f'''<!-- cx:puntomedio --><div class="cx"><section class="cx-sec cx-soft" id="punto-medio"><div class="cx-wrap cx-split">
 <div><div class="cx-eyebrow">{x('El punto medio', 'The middle ground')}</div><h2>{x('Ni educar solos en casa, ni un colegio grande', 'Neither alone at home nor a large school')}</h2>
-<p>{x('Chanak acompaña tres caminos con el mismo estándar: el homeschool, el colegio local con Dual Diploma y, en el medio, la Microschool: una comunidad pequeña que aprende junta, con estructura y con atención personalizada.', 'Chanak supports three paths with the same standard: homeschool, the local school with Dual Diploma and, in between, the Microschool: a small community learning together, with structure and personal attention.')}</p>
+<p>{x('Chanak acompaña a cada familia en tres modalidades con el mismo estándar: el homeschool, el colegio local con Dual Diploma y, en el medio, la Microschool: una comunidad pequeña que aprende junta, con estructura y atención personalizada.', 'Chanak comes alongside each family in three approaches with the same standard: homeschool, the local school with Dual Diploma and, in between, the Microschool: a small community learning together, with structure and personal attention.')}</p>
 <ul class="cx-list"><li>{x('Tu comunidad pone las familias, el espacio y su identidad', 'Your community brings the families, the space and its identity')}</li><li>{x('Chanak pone el marco académico, la plataforma, la formación y los expedientes', 'Chanak brings the academic framework, platform, training and records')}</li><li>{x('Los socios pueden usar materiales compatibles con su estilo', 'Partners may use materials compatible with their approach')}</li></ul></div>
 {img('microschool-sala', x('Sala de aprendizaje con un grupo pequeño alrededor de una mesa y una coordinadora', 'Learning room with a small group around a table and a coordinator'))}
 </div></section></div><!-- /cx:puntomedio -->'''
@@ -129,6 +132,24 @@ def micro(es):
     return A, B
 
 
+def core(lang):
+    return f'<!-- cx:core --><div class="cx">{core_content.section(lang)}</div><!-- /cx:core -->'
+
+
+def en_blocks():
+    """Las landings EN compiladas reciben el bloque Core a través de assets/js/cx-en-blocks.js."""
+    p = os.path.join(ROOT, 'assets/js/cx-en-blocks.js')
+    js = open(p, encoding='utf-8').read()
+    i = js.index('var B=') + 6
+    B, n = json.JSONDecoder().raw_decode(js[i:])
+    for k in B:
+        B[k] = re.sub(r'<!-- cx:core -->.*?<!-- /cx:core -->', '', B[k], flags=re.S) + core('en')
+        B[k] = B[k].replace('<div class="cx-plan feat"><img', '<div class="cx-plan feat" id="full-enrollment"><img')
+        B[k] = re.sub(r'<!-- cx:aviso -->.*?<!-- /cx:aviso -->', '', B[k], flags=re.S) + notice_content.section()
+    open(p, 'w', encoding='utf-8').write(js[:i] + json.dumps(B, ensure_ascii=False) + js[i + n:])
+    print('  · assets/js/cx-en-blocks.js (Core EN)')
+
+
 def insert_before(h, marker, block, tag):
     if f'<!-- cx:{tag} -->' in h:
         h = re.sub(rf'<!-- cx:{tag} -->.*?<!-- /cx:{tag} -->', lambda m: block, h, flags=re.S)
@@ -158,11 +179,12 @@ def last(h, s):
 
 if __name__ == '__main__':
     A, B, C = offcampus(True)
-    patch('off-campus/index.html', [('<section class="section soft" id="incluye">', A, 'planes'), ('<section class="section" id="inversion">', B, 'obtiene'), ('<section class="final">', C, 'matricula')])
+    patch('off-campus/index.html', [('<section class="section soft" id="incluye">', A, 'planes'), ('<section class="section" id="inversion">', B, 'obtiene'), ('<section class="final">', C, 'matricula'), ('<section class="section" id="inversion">', core('es'), 'core')])
     A, B, C = dual(True)
-    patch('dual-diploma/index.html', [('<section class="section soft">', A, 'semana'), ('<section class="section" id="inversion">', B, 'pathways'), ('<section class="final">', C, 'opciones')])
+    patch('dual-diploma/index.html', [('<section class="section soft">', A, 'semana'), ('<section class="section" id="inversion">', B, 'pathways'), ('<section class="final">', C, 'opciones'), ('<section class="section" id="inversion">', core('es'), 'core')])
     # Las landings EN de off-campus y dual-diploma son bundles React: sus bloques van en assets/js/cx-en-blocks.js
     A, B = micro(True)
     patch('microschools/index.html', [('<section class="content-sec bg-slate" id="como-aprende">', A, 'puntomedio'), ('<section class="content-sec bg-white" id="registro-grupo">', B, 'fundadores')])
     A, B = micro(False)
     patch('microschools/en/index.html', [('<section class="content-sec bg-slate" id="how-it-works">', A, 'puntomedio'), ('<section class="content-sec bg-white" id="register-group">', B, 'fundadores')])
+    en_blocks()

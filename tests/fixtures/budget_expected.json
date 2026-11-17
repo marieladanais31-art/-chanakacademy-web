@@ -1,0 +1,539 @@
+{
+ "referencia": {
+  "input": {
+   "fee": 400,
+   "students": [
+    10,
+    0,
+    0,
+    0
+   ],
+   "other": 0,
+   "grants": 0,
+   "mon": {
+    "alquiler": 900,
+    "limpieza": 150,
+    "docentes_locales": 2600,
+    "administracion": 800,
+    "materiales": 200,
+    "seguros_mes": 150,
+    "contabilidad": 150,
+    "marketing_mes": 150,
+    "reserva_mes": 100
+   },
+   "inv": {},
+   "params": {}
+  },
+  "expected": {
+   "Kinder y lectura inicial": {
+    "compare": {
+     "total": 10.0,
+     "guias": [
+      2.0,
+      0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 0.0,
+     "mat": 0.0,
+     "gasto": 5200.0,
+     "ingresos": 4000.0,
+     "neto": -1200.0,
+     "equil": 13.0,
+     "inv": 0.0,
+     "payback": "No se recupera"
+    },
+    "selected": {
+     "total": 10.0,
+     "gasto": 5200.0,
+     "neto": -1200.0,
+     "equil": 13.0,
+     "inv": 0.0
+    }
+   },
+   "Elementary (K–5)": {
+    "compare": {
+     "total": 10.0,
+     "guias": [
+      2.0,
+      0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 0.0,
+     "mat": 0.0,
+     "gasto": 5200.0,
+     "ingresos": 4000.0,
+     "neto": -1200.0,
+     "equil": 13.0,
+     "inv": 0.0,
+     "payback": "No se recupera"
+    },
+    "selected": {
+     "total": 10.0,
+     "gasto": 5200.0,
+     "neto": -1200.0,
+     "equil": 13.0,
+     "inv": 0.0
+    }
+   },
+   "Middle (6–8)": {
+    "compare": {
+     "total": 0.0,
+     "guias": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 0.0,
+     "mat": 0.0,
+     "gasto": 5200.0,
+     "ingresos": 0.0,
+     "neto": -5200.0,
+     "equil": 13.0,
+     "inv": 0.0,
+     "payback": "No se recupera"
+    },
+    "selected": {
+     "total": 0.0,
+     "gasto": 5200.0,
+     "neto": -5200.0,
+     "equil": 13.0,
+     "inv": 0.0
+    }
+   },
+   "High School (9–12)": {
+    "compare": {
+     "total": 0.0,
+     "guias": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 0.0,
+     "mat": 0.0,
+     "gasto": 5200.0,
+     "ingresos": 0.0,
+     "neto": -5200.0,
+     "equil": 13.0,
+     "inv": 0.0,
+     "payback": "No se recupera"
+    },
+    "selected": {
+     "total": 0.0,
+     "gasto": 5200.0,
+     "neto": -5200.0,
+     "equil": 13.0,
+     "inv": 0.0
+    }
+   },
+   "Escuela completa (K–12)": {
+    "compare": {
+     "total": 10.0,
+     "guias": [
+      2.0,
+      0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 0.0,
+     "mat": 0.0,
+     "gasto": 5200.0,
+     "ingresos": 4000.0,
+     "neto": -1200.0,
+     "equil": 13.0,
+     "inv": 0.0,
+     "payback": "No se recupera"
+    },
+    "selected": {
+     "total": 10.0,
+     "gasto": 5200.0,
+     "neto": -1200.0,
+     "equil": 13.0,
+     "inv": 0.0
+    }
+   }
+  }
+ },
+ "multitramo": {
+  "input": {
+   "fee": 450,
+   "students": [
+    12,
+    15,
+    20,
+    25
+   ],
+   "other": 300,
+   "grants": 150,
+   "mon": {
+    "alquiler": 2000,
+    "plataforma": 300,
+    "seguros_mes": 120
+   },
+   "inv": {
+    "manipulativos": 800,
+    "laboratorio": 3000,
+    "dual_examenes": 1500,
+    "mobiliario": 2000,
+    "tecnologia": 2400,
+    "mobiliario_infantil": 600
+   },
+   "params": {
+    "coste_guia": [
+     1800,
+     1700,
+     1900,
+     2200
+    ],
+    "coord": 2500,
+    "mat_inicial": [
+     100,
+     50,
+     60,
+     200
+    ],
+    "tec_inicial": [
+     30,
+     30,
+     40,
+     60
+    ],
+    "mat_mensual": [
+     10,
+     8,
+     8,
+     12
+    ]
+   }
+  },
+  "expected": {
+   "Kinder y lectura inicial": {
+    "compare": {
+     "total": 12.0,
+     "guias": [
+      2.0,
+      0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 3600.0,
+     "mat": 120.0,
+     "gasto": 6140.0,
+     "ingresos": 5550.0,
+     "neto": -590.0,
+     "equil": 14.0,
+     "inv": 7360.0,
+     "payback": "No se recupera"
+    },
+    "selected": {
+     "total": 12.0,
+     "gasto": 6140.0,
+     "neto": -590.0,
+     "equil": 14.0,
+     "inv": 7360.0
+    }
+   },
+   "Elementary (K–5)": {
+    "compare": {
+     "total": 27.0,
+     "guias": [
+      2.0,
+      2.0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 7000.0,
+     "mat": 240.0,
+     "gasto": 9660.0,
+     "ingresos": 12300.0,
+     "neto": 2640.0,
+     "equil": 22.0,
+     "inv": 8560.0,
+     "payback": 4.0
+    },
+    "selected": {
+     "total": 27.0,
+     "gasto": 9660.0,
+     "neto": 2640.0,
+     "equil": 22.0,
+     "inv": 8560.0
+    }
+   },
+   "Middle (6–8)": {
+    "compare": {
+     "total": 20.0,
+     "guias": [
+      0,
+      0,
+      2.0,
+      0
+     ],
+     "coord": 0,
+     "staff": 3800.0,
+     "mat": 160.0,
+     "gasto": 6380.0,
+     "ingresos": 9150.0,
+     "neto": 2770.0,
+     "equil": 14.0,
+     "inv": 9400.0,
+     "payback": 4.0
+    },
+    "selected": {
+     "total": 20.0,
+     "gasto": 6380.0,
+     "neto": 2770.0,
+     "equil": 14.0,
+     "inv": 9400.0
+    }
+   },
+   "High School (9–12)": {
+    "compare": {
+     "total": 25.0,
+     "guias": [
+      0,
+      0,
+      0,
+      2.0
+     ],
+     "coord": 0,
+     "staff": 4400.0,
+     "mat": 300.0,
+     "gasto": 7120.0,
+     "ingresos": 11400.0,
+     "neto": 4280.0,
+     "equil": 16.0,
+     "inv": 15400.0,
+     "payback": 4.0
+    },
+    "selected": {
+     "total": 25.0,
+     "gasto": 7120.0,
+     "neto": 4280.0,
+     "equil": 16.0,
+     "inv": 15400.0
+    }
+   },
+   "Escuela completa (K–12)": {
+    "compare": {
+     "total": 72.0,
+     "guias": [
+      2.0,
+      2.0,
+      2.0,
+      2.0
+     ],
+     "coord": 1,
+     "staff": 17700.0,
+     "mat": 700.0,
+     "gasto": 20820.0,
+     "ingresos": 32550.0,
+     "neto": 11730.0,
+     "equil": 46.0,
+     "inv": 21560.0,
+     "payback": 2.0
+    },
+    "selected": {
+     "total": 72.0,
+     "gasto": 20820.0,
+     "neto": 11730.0,
+     "equil": 46.0,
+     "inv": 21560.0
+    }
+   }
+  }
+ },
+ "primaria_media": {
+  "input": {
+   "fee": 380,
+   "students": [
+    8,
+    14,
+    18,
+    0
+   ],
+   "other": 0,
+   "grants": 0,
+   "mon": {
+    "alquiler": 1500
+   },
+   "inv": {
+    "adecuacion": 1000,
+    "laboratorio": 500
+   },
+   "params": {
+    "coste_guia": [
+     1500,
+     1500,
+     1600,
+     1800
+    ],
+    "coord": 2000,
+    "mat_inicial": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "tec_inicial": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "mat_mensual": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "expected": {
+   "Kinder y lectura inicial": {
+    "compare": {
+     "total": 8.0,
+     "guias": [
+      1.0,
+      0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 1500.0,
+     "mat": 0.0,
+     "gasto": 3000.0,
+     "ingresos": 3040.0,
+     "neto": 40.0,
+     "equil": 8.0,
+     "inv": 1000.0,
+     "payback": 25.0
+    },
+    "selected": {
+     "total": 8.0,
+     "gasto": 3000.0,
+     "neto": 40.0,
+     "equil": 8.0,
+     "inv": 1000.0
+    }
+   },
+   "Elementary (K–5)": {
+    "compare": {
+     "total": 22.0,
+     "guias": [
+      1.0,
+      2.0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 4500.0,
+     "mat": 0.0,
+     "gasto": 6000.0,
+     "ingresos": 8360.0,
+     "neto": 2360.0,
+     "equil": 16.0,
+     "inv": 1000.0,
+     "payback": 1.0
+    },
+    "selected": {
+     "total": 22.0,
+     "gasto": 6000.0,
+     "neto": 2360.0,
+     "equil": 16.0,
+     "inv": 1000.0
+    }
+   },
+   "Middle (6–8)": {
+    "compare": {
+     "total": 18.0,
+     "guias": [
+      0,
+      0,
+      2.0,
+      0
+     ],
+     "coord": 0,
+     "staff": 3200.0,
+     "mat": 0.0,
+     "gasto": 4700.0,
+     "ingresos": 6840.0,
+     "neto": 2140.0,
+     "equil": 13.0,
+     "inv": 1500.0,
+     "payback": 1.0
+    },
+    "selected": {
+     "total": 18.0,
+     "gasto": 4700.0,
+     "neto": 2140.0,
+     "equil": 13.0,
+     "inv": 1500.0
+    }
+   },
+   "High School (9–12)": {
+    "compare": {
+     "total": 0.0,
+     "guias": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "coord": 0,
+     "staff": 0.0,
+     "mat": 0.0,
+     "gasto": 1500.0,
+     "ingresos": 0.0,
+     "neto": -1500.0,
+     "equil": 4.0,
+     "inv": 1500.0,
+     "payback": "No se recupera"
+    },
+    "selected": {
+     "total": 0.0,
+     "gasto": 1500.0,
+     "neto": -1500.0,
+     "equil": 4.0,
+     "inv": 1500.0
+    }
+   },
+   "Escuela completa (K–12)": {
+    "compare": {
+     "total": 40.0,
+     "guias": [
+      1.0,
+      2.0,
+      2.0,
+      0
+     ],
+     "coord": 1,
+     "staff": 9700.0,
+     "mat": 0.0,
+     "gasto": 11200.0,
+     "ingresos": 15200.0,
+     "neto": 4000.0,
+     "equil": 30.0,
+     "inv": 1500.0,
+     "payback": 1.0
+    },
+    "selected": {
+     "total": 40.0,
+     "gasto": 11200.0,
+     "neto": 4000.0,
+     "equil": 30.0,
+     "inv": 1500.0
+    }
+   }
+  }
+ }
+}
