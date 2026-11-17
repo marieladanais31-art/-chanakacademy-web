@@ -368,12 +368,16 @@ window.CHANAK_PRICING = {
       },
 
       off_campus: {
-        status: 'on_request',
-        title: 'Off-Campus · Full distance school',
-        enrollmentFee: null,
+        status: 'published',
+        title: 'Full Enrollment · Guided Virtual School (International)',
+        enrollmentFee: 'US$295',
+        installments: '10 monthly / 4 quarterly / 1 annual tuition',
+        includes: '3 live ELA/English sessions weekly · 1 live Life Skills session weekly · Weekly student mentoring · Approved curriculum and digital platforms · SIS records, evaluation and official transcripts',
+        footnote: 'Prices in USD, the same in all countries. Annual enrollment US$295 once per student; quarterly or annual tuition alternatives available. Personalized written confirmation before payment. Guided Homeschool is a separate plan from US$80/month.',
         tiers: [
-          { key: 'elementary', title: 'International Primary (K-5)', description: 'U.S. curriculum with individualized learning plan and SIS tracking.' },
-          { key: 'middle_high', title: 'International Secondary (6-12)', description: 'Official High School credits and transcript issued by Chanak.' }
+          { key: 'elementary', title: 'Full Enrollment K–5', monthly: 'US$275', quarterly: 'US$687.50', totalYear: 'US$3,045' },
+          { key: 'middle', title: 'Full Enrollment 6–8', monthly: 'US$320', quarterly: 'US$800', totalYear: 'US$3,495' },
+          { key: 'high', title: 'Full Enrollment 9–12', monthly: 'US$365', quarterly: 'US$912.50', totalYear: 'US$3,945' }
         ]
       },
 
