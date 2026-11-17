@@ -46,9 +46,10 @@ function chanak_route_recipients(string $route): array {
         return ['scholarships@chanakacademy.org'];
     }
     if ($route === 'dual') return ['dualdiploma@chanakacademy.org'];
-    if ($route === 'hub') return ['rededucativa@asociacioneducafe.org'];
+    // Alianzas institucionales: contratación directa con Chanak (sin intermediarios).
+    if ($route === 'hub') return ['administration@chanakacademy.org'];
     // Alianzas Microschool, embajadores y mentores: buzón institucional.
-    // PENDIENTE_MARIELA: confirmar el correo propio del programa de Embajadores y el de Mentores.
+    // Correo oficial del programa de Embajadores y de Mentores: administration@chanakacademy.org (decisión institucional).
     if (in_array($route, ['microschool', 'embajador', 'mentor'], true)) return ['administration@chanakacademy.org'];
     return ['offcampus@chanakacademy.org'];
 }

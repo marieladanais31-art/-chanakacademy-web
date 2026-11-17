@@ -131,10 +131,10 @@ def mentors(lang):
 <section class="cx-sec"><div class="cx-wrap cx-split"><div><h2>{M['does_h'][lang]}</h2><ul class="cx-list">{does}</ul></div>
 <img src="/assets/img/gen/hs-mentoria.webp" alt="{html.escape(dict(es='Sesión de mentoría por videollamada vista desde atrás, con un cuaderno abierto', en='Video mentoring session seen from behind, with an open notebook')[lang])}" width="1200" height="800" decoding="async"></div></section>
 <section class="cx-sec cx-soft"><div class="cx-wrap"><div class="cx-grid cx-g3" style="margin-top:0">
-<div class="cx-card"><h3>{M['req_h'][lang]}</h3><p>{M['req_p'][lang]}</p></div>
+<div class="cx-card"><h3>{M['req_h'][lang]}</h3><p>{M['req_p'][lang]}</p><ul class="cx-list">{''.join('<li>'+x[lang]+'</li>' for x in M['req'])}</ul></div>
 <div class="cx-card"><h3>{M['train_h'][lang]}</h3><p>{M['train_p'][lang]} <a href="https://training.chanakacademy.org" target="_blank" rel="noopener">Chanak TrainUp ↗</a></p></div>
 <div class="cx-card"><h3>{M['diff_h'][lang]}</h3><p>{M['diff_p'][lang]}</p></div></div></div></section>
-<section class="cx-sec cx-navy" id="formulario"><div class="cx-wrap cx-split"><div><h2>{M['form_h'][lang]}</h2><p class="cx-lead">{M['diff_p'][lang].split('. ')[-1]}</p></div>
+<section class="cx-sec cx-navy" id="formulario"><div class="cx-wrap cx-split"><div><h2>{M['form_h'][lang]}</h2><p class="cx-lead">{M['train_p'][lang].split('. ')[-1]}</p></div>
 <div><form class="cx-form" {form_attrs(lang)}>
 <input type="hidden" name="necesidad" value="mentor"><input type="hidden" name="origen" value="unete-mentores">
 <div class="cx-f2"><div><label class="l" for="mt-n">{A['f_name'][lang]}</label><input class="cx-inp" id="mt-n" name="nombre" autocomplete="name" required></div>

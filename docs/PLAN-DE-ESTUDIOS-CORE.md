@@ -25,11 +25,28 @@ Skills y cosmovisión bíblica.
 | «eficacia comprobada del Mastery Learning» | «la eficacia del Mastery Learning» (sin «comprobada», salvo fuente citada) |
 | “ensuring seamless credit transferability and college readiness” | “supporting credit transfer and college readiness” |
 
-## Versión institucional (ES)
+## Opción institucional (ES) · aprobada e implementada en la web
 
-> **PENDIENTE:** el texto de la «Opción 1 (institucional)» no venía incluido en el encargo; solo se recibieron la
-> Opción 2 (web y familias), la Opción 3 (síntesis) y la versión web en inglés. Mientras Mariela aporta la Opción 1,
-> se deja aquí la base aprobada (Opción 2 + Opción 3) con los ajustes anteriores.
+> Texto institucional aprobado. En la web se publica adaptado al diseño y al idioma de cada página (ES/EN/CA/FR) en
+> `/como-funciona/#core`, `/off-campus/#core` y `/dual-diploma/#core` (fuente: `tools/core_content.py`).
+
+**Core Académico Estadounidense**
+
+Chanak International Academy ofrece una educación estadounidense K–12 basada en Mastery Learning, con un Plan Educativo
+Individualizado (PEI) para cada estudiante.
+
+Nuestro modelo educativo 60/20/20 integra el Core Académico Estadounidense (60 %), la Extensión Local (20 %) y Life Skills
+& Purpose (20 %), combinando excelencia académica, identidad cultural, formación cristiana y habilidades para la vida.
+
+Los estudiantes pueden utilizar opciones curriculares aprobadas por Chanak, entre ellas A.C.E., LIFEPAC, Christian Light y
+Chanak Flex, según su programa académico.
+
+Chanak gestiona los procesos institucionales de seguimiento, evaluación y documentación académica correspondientes a la
+modalidad de matrícula contratada.
+
+*Los currículos externos no se presentan como instituciones responsables de emitir los diplomas de Chanak.*
+
+## Versión web y familias (Opción 2) y síntesis (Opción 3)
 
 **Nuestro modelo académico Core: rigor, dominio y propósito**
 

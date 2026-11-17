@@ -36,6 +36,7 @@ foreach(['microschool','embajador','mentor'] as $r){
  check(chanak_route_recipients($r)===['administration@chanakacademy.org'],'recipient '.$r);
 }
 check(chanak_resolve_route(['producto'=>'microschool','origen'=>'kit-fundador'],'')==='microschool','producto microschool');
+check(chanak_route_recipients('hub')===['administration@chanakacademy.org'],'alianzas directas con Chanak');
 check(chanak_resolve_route(['necesidad'=>'offcampus','programa'=>'Off-Campus con mentoría'],'')==='offcampus','mentoría no es mentor');
 check(chanak_resolve_route([], 'https://www.chanakacademy.org/dual-diploma/en/')==='dual','referer fallback');
 echo count($cases)." contextual routing/dossier/recipient cases passed.\n";

@@ -6,6 +6,7 @@ Uso: python3 tools/patch_landings.py"""
 import os, re, json, sys
 sys.path.insert(0, os.path.dirname(__file__))
 import core_content
+import notice_content
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V = '20261116'
 IMG = '/assets/img/gen/'
@@ -144,6 +145,7 @@ def en_blocks():
     for k in B:
         B[k] = re.sub(r'<!-- cx:core -->.*?<!-- /cx:core -->', '', B[k], flags=re.S) + core('en')
         B[k] = B[k].replace('<div class="cx-plan feat"><img', '<div class="cx-plan feat" id="full-enrollment"><img')
+        B[k] = re.sub(r'<!-- cx:aviso -->.*?<!-- /cx:aviso -->', '', B[k], flags=re.S) + notice_content.section()
     open(p, 'w', encoding='utf-8').write(js[:i] + json.dumps(B, ensure_ascii=False) + js[i + n:])
     print('  · assets/js/cx-en-blocks.js (Core EN)')
 

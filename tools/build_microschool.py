@@ -9,6 +9,7 @@ from build_site import ROOT, BASE, V, ld, faq_ld
 from site_i18n import LINKS
 import ms_content as C
 import build_normativa
+import notice_content
 
 MS = {'es': 'microschools/index.html', 'en': 'microschools/en/index.html', 'ca': 'microschools/ca/index.html', 'fr': 'microschools/fr/index.html'}
 OPEN = {'es': 'open-a-microschool/index.html', 'en': 'open-a-microschool/en/index.html', 'ca': 'open-a-microschool/ca/index.html', 'fr': 'open-a-microschool/fr/index.html'}
@@ -41,6 +42,13 @@ def pilares(lang, with_why=False):
 <p class="cx-policy">{C.PIL_LEGAL[lang]}</p>
 <p class="cx-note cx-center">{C.PIL_FAMILIES[lang].format(hs=L['hs'], dd=L['dd'])}</p>
 </div></section>''')
+
+
+def condiciones(lang):
+    li = ''.join(f'<div class="cx-card"><h3>{a[lang]}</h3><p>{b[lang]}</p></div>' for a, b in C.COND)
+    return wrap('condiciones', f'''<section class="cx-sec" id="alianza-directa"><div class="cx-wrap">
+<div class="cx-center"><div class="cx-eyebrow">{C.COND_EYE[lang]}</div><h2>{C.COND_H2[lang]}</h2><p class="cx-lead">{C.COND_LEAD[lang]}</p></div>
+<div class="cx-grid cx-g3">{li}</div></div></section>''')
 
 
 def geo_legal(lang, data):
@@ -158,6 +166,9 @@ def microschools(lang, data):
     h = meta(h, C.MS_TITLE[lang], C.MS_DESC[lang])
     h = xdefault(h, '/microschools/')
     h = put(h, 'pilares', pilares(lang), nth_section(1))
+    h = put(h, 'condiciones', condiciones(lang), lambda s: s.find('<!-- cx:porpais -->') if '<!-- cx:porpais -->' in s else [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
+    if lang == 'en':
+        h = put(h, 'aviso', notice_content.section(), lambda s: s.find('<!-- cx:herramientas -->') if '<!-- cx:herramientas -->' in s else [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
     last = lambda s: (s.find('<!-- cx:fundadores -->') if '<!-- cx:fundadores -->' in s else [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
     h = put(h, 'porpais', geo_legal(lang, data), last)
     h = put(h, 'herramientas', tools(lang), lambda s: [x.start() for x in re.finditer(r'<section class="content-sec', s)][-1])
@@ -186,8 +197,11 @@ def open_page(lang, data):
         h = h[:m.start()] + steps(lang) + h[e:]
     h = put(h, 'kit', kit(lang), lambda s: re.search(r'<section class="content-sec[^"]*" id="recursos">', s).start())
     pf = lambda s: re.search(r'<section class="content-sec[^"]*" id="partner-form">', s).start()
+    h = put(h, 'condiciones', condiciones(lang), lambda s: s.find('<!-- cx:pasos -->'))
     h = put(h, 'porpais', geo_legal(lang, data), pf)
     h = put(h, 'faq', faq_block(lang), pf)
+    if lang == 'en':
+        h = put(h, 'aviso', notice_content.section(), pf)
     h = put(h, 'herramientas', tools(lang, skip=('open',)), pf)
     howto = {"@type": "HowTo", "name": C.STEPS_H2[lang], "inLanguage": lang, "step": [{"@type": "HowToStep", "position": i, "name": a[lang], "text": b[lang]} for i, (a, b) in enumerate(C.STEPS, 1)]}
     h = head_ld(h, ld(crumbs(lang, [(C.CRUMB_MS[lang], MS_URL[lang]), (C.CRUMB_OPEN[lang], OPEN_URL[lang])]), howto, faq_ld([(q[lang], a[lang]) for q, a in C.FAQ])))

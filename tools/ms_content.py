@@ -12,10 +12,10 @@ def d(es, en, ca, fr):
 PIL_EYE = d('Los tres pilares', 'The three pillars', 'Els tres pilars', 'Les trois piliers')
 PIL_H2 = d('Lo que hace posible una Microschool Chanak', 'What makes a Chanak Microschool possible', 'El que fa possible una Microschool Chanak', 'Ce qui rend possible une Microschool Chanak')
 PIL_LEAD = d(
-    'Una Microschool es una alianza con una comunidad de familias que ya existe (a partir de unas 10 familias), en Estados Unidos y en otros países. Toda sede se apoya en los mismos tres pilares.',
-    'A Microschool is a partnership with a community of families that already exists (from about 10 families), in the United States and in other countries. Every site rests on the same three pillars.',
-    'Una Microschool és una aliança amb una comunitat de famílies que ja existeix (a partir d’unes 10 famílies), als Estats Units i en altres països. Tota seu es recolza en els mateixos tres pilars.',
-    'Une Microschool est un partenariat avec une communauté de familles qui existe déjà (à partir d’une dizaine de familles), aux États-Unis et dans d’autres pays. Chaque site repose sur les mêmes trois piliers.')
+    'Una Microschool es una alianza con una comunidad de familias que ya existe (mínimo de lanzamiento: 10 familias), en Estados Unidos y en otros países. Toda sede se apoya en los mismos tres pilares.',
+    'A Microschool is a partnership with a community of families that already exists (launch minimum: 10 families), in the United States and in other countries. Every site rests on the same three pillars.',
+    'Una Microschool és una aliança amb una comunitat de famílies que ja existeix (mínim de llançament: 10 famílies), als Estats Units i en altres països. Tota seu es recolza en els mateixos tres pilars.',
+    'Une Microschool est un partenariat avec une communauté de familles qui existe déjà (minimum de lancement : 10 familles), aux États-Unis et dans d’autres pays. Chaque site repose sur les mêmes trois piliers.')
 PILLARS = [
     (d('A · Plan de estudios americano acreditado por MSA-CESS, proporcionado por Chanak',
        'A · American curriculum accredited by MSA-CESS, provided by Chanak',
@@ -58,21 +58,21 @@ GEO_EYE = d('Estados Unidos e internacional', 'United States and international',
 GEO_H2 = d('Cómo funciona según dónde estés', 'How it works depending on where you are', 'Com funciona segons on siguis', 'Comment cela fonctionne selon votre pays')
 GEO_TH = d(('Dónde', 'Cómo opera la Microschool'), ('Where', 'How the Microschool operates'), ('On', 'Com opera la Microschool'), ('Où', 'Fonctionnement de la Microschool'))
 GEO_ROWS = [
-    (d('Estados Unidos', 'United States', 'Estats Units', 'États-Unis'),
-     d('La Microschool opera bajo la acreditación y las aprobaciones ESA de Chanak, sin código escolar propio. Los fondos ESA aplican solo en los estados donde Chanak es proveedor aprobado y solo a los servicios aprobados en cada programa; la elegibilidad depende de cada estado. Las instalaciones se verifican antes de abrir. Entrada del estudiante: apoyo homeschool o Programa Completo.',
-       'The Microschool operates under Chanak’s accreditation and ESA approvals, without its own school code. ESA funds apply only in states where Chanak is an approved provider and only to the services approved in each program; eligibility depends on each state. Facilities are verified before opening. Student entry: homeschool support or Full Program.',
-       'La Microschool opera sota l’acreditació i les aprovacions ESA de Chanak, sense codi escolar propi. Els fons ESA s’apliquen només als estats on Chanak és proveïdor aprovat i només als serveis aprovats en cada programa; l’elegibilitat depèn de cada estat. Les instal·lacions es verifiquen abans d’obrir. Entrada de l’estudiant: suport homeschool o Programa Complet.',
-       'La Microschool fonctionne sous l’accréditation et les agréments ESA de Chanak, sans code scolaire propre. Les fonds ESA ne s’appliquent que dans les États où Chanak est prestataire agréé et uniquement aux services approuvés dans chaque programme ; l’éligibilité dépend de chaque État. Les locaux sont vérifiés avant l’ouverture. Entrée de l’élève : soutien homeschool ou Programme complet.')),
-    (d('España', 'Spain', 'Espanya', 'Espagne'),
-     d('Centro extranjero reglado (Real Decreto 806/1993), cuya titularidad puede asumir Asociación EducaFe o la entidad legal propia del socio. El socio paga a sus docentes y su local, y fija la cuota de sus familias según su realidad (no es el precio de Off-Campus). La autorización depende de cada comunidad autónoma.',
-       'A regulated foreign school (Royal Decree 806/1993), which may be held by Asociación EducaFe or by the partner’s own legal entity. The partner pays its teachers and premises and sets its families’ tuition according to its own reality (it is not the Off-Campus price). Authorization depends on each autonomous community.',
-       'Centre estranger reglat (Reial decret 806/1993), la titularitat del qual pot assumir l’Asociación EducaFe o l’entitat legal pròpia del soci. El soci paga els seus docents i el seu local, i fixa la quota de les seves famílies segons la seva realitat (no és el preu d’Off-Campus). L’autorització depèn de cada comunitat autònoma.',
-       'Établissement étranger réglementé (décret royal 806/1993), dont la titularité peut être assumée par l’Asociación EducaFe ou par l’entité juridique du partenaire. Le partenaire paie ses enseignants et son local, et fixe la contribution de ses familles selon sa réalité (ce n’est pas le tarif Off-Campus). L’autorisation dépend de chaque communauté autonome.')),
-    (d('México, Panamá y otros países', 'Mexico, Panama and other countries', 'Mèxic, Panamà i altres països', 'Mexique, Panama et autres pays'),
-     d('Requiere el código o la autorización de la autoridad educativa local; los requisitos son propios de cada país. Se evalúa caso por caso.',
-       'Requires the code or authorization of the local education authority; requirements are specific to each country. Each case is reviewed individually.',
-       'Requereix el codi o l’autorització de l’autoritat educativa local; els requisits són propis de cada país. S’avalua cas per cas.',
-       'Nécessite le code ou l’autorisation de l’autorité éducative locale ; les exigences sont propres à chaque pays. Chaque cas est étudié individuellement.')),
+    (d('Microschools USA', 'Microschools USA', 'Microschools USA', 'Microschools USA'),
+     d('Alianza contratada directamente con Chanak. La Microschool opera bajo la acreditación y las aprobaciones ESA de Chanak, sin código escolar propio. Los fondos ESA aplican solo en los estados donde Chanak es proveedor aprobado y solo a los servicios aprobados en cada programa; la elegibilidad depende de cada estado. Las instalaciones se verifican antes de abrir. Entrada del estudiante: apoyo homeschool o Programa Completo.',
+       'Partnership contracted directly with Chanak. The Microschool operates under Chanak’s accreditation and ESA approvals, without its own school code. ESA funds apply only in states where Chanak is an approved provider and only to the services approved in each program; eligibility depends on each state. Facilities are verified before opening. Student entry: homeschool support or Full Program.',
+       'Aliança contractada directament amb Chanak. La Microschool opera sota l’acreditació i les aprovacions ESA de Chanak, sense codi escolar propi. Els fons ESA s’apliquen només als estats on Chanak és proveïdor aprovat i només als serveis aprovats en cada programa; l’elegibilitat depèn de cada estat. Les instal·lacions es verifiquen abans d’obrir. Entrada de l’estudiant: suport homeschool o Programa Complet.',
+       'Partenariat contracté directement avec Chanak. La Microschool fonctionne sous l’accréditation et les agréments ESA de Chanak, sans code scolaire propre. Les fonds ESA ne s’appliquent que dans les États où Chanak est prestataire agréé et uniquement aux services approuvés dans chaque programme ; l’éligibilité dépend de chaque État. Les locaux sont vérifiés avant l’ouverture. Entrée de l’élève : soutien homeschool ou Programme complet.')),
+    (d('International Microschools · España', 'International Microschools · Spain', 'International Microschools · Espanya', 'International Microschools · Espagne'),
+     d('Alianza contratada directamente con Chanak. Centro extranjero reglado (Real Decreto 806/1993): el operador local solicita y obtiene las autorizaciones, asume sus instalaciones y su personal presencial, y fija la cuota de sus familias según su realidad. La autorización depende de cada comunidad autónoma.',
+       'Partnership contracted directly with Chanak. A regulated foreign school (Royal Decree 806/1993): the local operator applies for and obtains the authorizations, takes responsibility for its facilities and in-person staff, and sets its families’ tuition according to its own reality. Authorization depends on each autonomous community.',
+       'Aliança contractada directament amb Chanak. Centre estranger reglat (Reial decret 806/1993): l’operador local sol·licita i obté les autoritzacions, assumeix les seves instal·lacions i el seu personal presencial, i fixa la quota de les seves famílies segons la seva realitat. L’autorització depèn de cada comunitat autònoma.',
+       'Partenariat contracté directement avec Chanak. Établissement étranger réglementé (décret royal 806/1993) : l’opérateur local demande et obtient les autorisations, assume ses locaux et son personnel en présentiel, et fixe la contribution de ses familles selon sa réalité. L’autorisation dépend de chaque communauté autonome.')),
+    (d('International Microschools · México, Panamá y otros países', 'International Microschools · Mexico, Panama and other countries', 'International Microschools · Mèxic, Panamà i altres països', 'International Microschools · Mexique, Panama et autres pays'),
+     d('Alianza contratada directamente con Chanak. Requiere el código o la autorización de la autoridad educativa local, que obtiene el operador local; los requisitos son propios de cada país. Se evalúa caso por caso.',
+       'Partnership contracted directly with Chanak. Requires the code or authorization of the local education authority, which the local operator obtains; requirements are specific to each country. Each case is reviewed individually.',
+       'Aliança contractada directament amb Chanak. Requereix el codi o l’autorització de l’autoritat educativa local, que obté l’operador local; els requisits són propis de cada país. S’avalua cas per cas.',
+       'Partenariat contracté directement avec Chanak. Nécessite le code ou l’autorisation de l’autorité éducative locale, que l’opérateur local obtient ; les exigences sont propres à chaque pays. Chaque cas est étudié individuellement.')),
 ]
 
 LEGAL_EYE = d('Referencia', 'Reference', 'Referència', 'Référence')
@@ -105,10 +105,10 @@ OPEN_DESC = d(
     'Ouvrez une Chanak Microschool (Partner Learning Center) : vous apportez lieu et communauté ; Chanak, l’accréditation MSA-CESS et la formation.')
 MS_TITLE = d('Microschool cristiana: aprender en comunidad · Chanak', 'Christian Microschool: Learning in Community · Chanak', 'Microschool cristiana: aprendre en comunitat · Chanak', 'Microschool chrétienne : apprendre en communauté · Chanak')
 MS_DESC = d(
-    'Grupos pequeños y presenciales con plan de estudios americano acreditado por MSA-CESS. Alianza para comunidades de unas 10 familias o más.',
-    'Small in-person groups with an American curriculum accredited by MSA-CESS. A partnership for communities of about 10 or more families.',
-    'Grups petits i presencials amb pla d’estudis americà acreditat per MSA-CESS. Aliança per a comunitats d’unes 10 famílies o més.',
-    'Petits groupes en présentiel avec un programme américain accrédité MSA-CESS. Un partenariat pour des communautés d’une dizaine de familles.')
+    'Grupos pequeños y presenciales con plan de estudios americano acreditado por MSA-CESS. Alianza para comunidades de 10 familias o más.',
+    'Small in-person groups with an American curriculum accredited by MSA-CESS. A partnership for communities of 10 or more families.',
+    'Grups petits i presencials amb pla d’estudis americà acreditat per MSA-CESS. Aliança per a comunitats d’10 famílies o més.',
+    'Petits groupes en présentiel avec un programme américain accrédité MSA-CESS. Un partenariat pour des communautés de 10 familles ou plus.')
 HERO_H1 = d('Abre una Chanak Microschool <em>(Partner Learning Center)</em> en tu ciudad', 'Open a Chanak Microschool <em>(Partner Learning Center)</em> in your city',
             'Obre una Chanak Microschool <em>(Partner Learning Center)</em> a la teva ciutat', 'Ouvrez une Chanak Microschool <em>(Partner Learning Center)</em> dans votre ville')
 HERO_LEAD = d(
@@ -147,7 +147,7 @@ STEPS = [
     (d('Trámites, licencias e inspecciones locales', 'Local procedures, licences and inspections', 'Tràmits, llicències i inspeccions locals', 'Démarches, licences et inspections locales'),
      d('Por ejemplo, la autorización como centro extranjero (RD 806/1993) en España, o los permisos municipales y de seguridad contra incendios en Latinoamérica.', 'For example, authorization as a foreign school (RD 806/1993) in Spain, or municipal and fire-safety permits in Latin America.', 'Per exemple, l’autorització com a centre estranger (RD 806/1993) a Espanya, o els permisos municipals i de seguretat contra incendis a Llatinoamèrica.', 'Par exemple, l’autorisation comme établissement étranger (RD 806/1993) en Espagne, ou les permis municipaux et de sécurité incendie en Amérique latine.')),
     (d('Apertura oficial', 'Official opening', 'Obertura oficial', 'Ouverture officielle'),
-     d('Con tu comunidad de familias comprometidas (unas 10 o más) y la visita de validación de Chanak.', 'With your community of committed families (about 10 or more) and Chanak’s validation visit.', 'Amb la teva comunitat de famílies compromeses (unes 10 o més) i la visita de validació de Chanak.', 'Avec votre communauté de familles engagées (une dizaine ou plus) et la visite de validation de Chanak.')),
+     d('Con tu comunidad de familias comprometidas (10 o más) y la visita de validación de Chanak.', 'With your community of committed families (10 or more) and Chanak’s validation visit.', 'Amb la teva comunitat de famílies compromeses (10 o més) i la visita de validació de Chanak.', 'Avec votre communauté de familles engagées (10 ou plus) et la visite de validation de Chanak.')),
 ]
 
 KIT_EYE = d('Descarga gratuita', 'Free download', 'Descàrrega gratuïta', 'Téléchargement gratuit')
@@ -171,10 +171,10 @@ KIT_F = dict(
 FAQ_H2 = d('Preguntas frecuentes de socios', 'Partner FAQ', 'Preguntes freqüents de socis', 'Questions fréquentes des partenaires')
 FAQ = [
     (d('¿Quién puede abrir una Chanak Microschool?', 'Who can open a Chanak Microschool?', 'Qui pot obrir una Chanak Microschool?', 'Qui peut ouvrir une Chanak Microschool ?'),
-     d('Iglesias, cooperativas, educadores y organizaciones con entidad legal que ya reúnen a una comunidad de familias (unas 10 o más), en Estados Unidos o en otros países. Las familias individuales entran por Homeschool Guiado o Dual Diploma.',
-       'Churches, co-ops, educators and organizations with a legal entity that already gather a community of families (about 10 or more), in the United States or in other countries. Individual families join through Guided Homeschool or Dual Diploma.',
-       'Esglésies, cooperatives, educadors i organitzacions amb entitat legal que ja reuneixen una comunitat de famílies (unes 10 o més), als Estats Units o en altres països. Les famílies individuals entren per Homeschool Guiat o Dual Diploma.',
-       'Les églises, coopératives, éducateurs et organisations dotés d’une entité juridique qui réunissent déjà une communauté de familles (une dizaine ou plus), aux États-Unis ou ailleurs. Les familles individuelles passent par Homeschool guidé ou Dual Diploma.')),
+     d('Iglesias, cooperativas, educadores y organizaciones con entidad legal que ya reúnen a una comunidad de familias (10 o más), en Estados Unidos o en otros países. Las familias individuales entran por Homeschool Guiado o Dual Diploma.',
+       'Churches, co-ops, educators and organizations with a legal entity that already gather a community of families (10 or more), in the United States or in other countries. Individual families join through Guided Homeschool or Dual Diploma.',
+       'Esglésies, cooperatives, educadors i organitzacions amb entitat legal que ja reuneixen una comunitat de famílies (10 o més), als Estats Units o en altres països. Les famílies individuals entren per Homeschool Guiat o Dual Diploma.',
+       'Les églises, coopératives, éducateurs et organisations dotés d’une entité juridique qui réunissent déjà une communauté de familles (10 ou plus), aux États-Unis ou ailleurs. Les familles individuelles passent par Homeschool guidé ou Dual Diploma.')),
     (d('¿La Microschool queda acreditada?', 'Is the Microschool itself accredited?', 'La Microschool queda acreditada?', 'La Microschool est-elle elle-même accréditée ?'),
      d('No de forma independiente. La acreditación MSA-CESS es de Chanak International Academy y respalda los expedientes y diplomas que emite la escuela. Cada sede es un Microschool asociado (Partner Learning Center) que se valida y supervisa.',
        'Not independently. MSA-CESS accreditation belongs to Chanak International Academy and backs the records and diplomas issued by the school. Each site is a partner Microschool (Partner Learning Center) that is validated and supervised.',
@@ -202,3 +202,28 @@ FORM_MSG = dict(sending=d('Enviando…', 'Sending…', 'Enviant…', 'Envoi…')
                 err=d('No se pudo enviar. Escríbenos a administration@chanakacademy.org.', 'Could not send. Please email administration@chanakacademy.org.', 'No s’ha pogut enviar. Escriu-nos a administration@chanakacademy.org.', 'Envoi impossible. Écrivez-nous à administration@chanakacademy.org.'))
 CRUMB_MS = d('Microschools', 'Microschools', 'Microschools', 'Microschools')
 CRUMB_OPEN = d('Abre una Microschool', 'Open a Microschool', 'Obre una Microschool', 'Ouvrir une Microschool')
+
+
+# ── Condiciones de la alianza (decisión institucional: contratación directa con Chanak) ──
+COND_EYE = d('Contratación directa', 'Direct contracting', 'Contractació directa', 'Contractualisation directe')
+COND_H2 = d('Una alianza directa con Chanak', 'A partnership directly with Chanak', 'Una aliança directa amb Chanak', 'Un partenariat direct avec Chanak')
+COND_LEAD = d('Todas las alianzas comerciales y académicas se firman directamente con Chanak International Academy, operada por Chanak TrainUp Education, Inc., tanto en Microschools USA como en International Microschools.',
+              'All commercial and academic partnerships are signed directly with Chanak International Academy, operated by Chanak TrainUp Education, Inc., both for Microschools USA and for International Microschools.',
+              'Totes les aliances comercials i acadèmiques se signen directament amb Chanak International Academy, operada per Chanak TrainUp Education, Inc., tant a Microschools USA com a International Microschools.',
+              'Tous les partenariats commerciaux et académiques sont signés directement avec Chanak International Academy, gérée par Chanak TrainUp Education, Inc., aussi bien pour Microschools USA que pour International Microschools.')
+COND = [
+    (d('Mínimo de lanzamiento', 'Launch minimum', 'Mínim de llançament', 'Minimum de lancement'),
+     d('10 familias comprometidas.', '10 committed families.', '10 famílies compromeses.', '10 familles engagées.')),
+    (d('Contrato de alianza', 'Partnership agreement', 'Contracte d’aliança', 'Contrat de partenariat'),
+     d('Por escrito y directamente con Chanak.', 'In writing and directly with Chanak.', 'Per escrit i directament amb Chanak.', 'Par écrit et directement avec Chanak.')),
+    (d('Responsabilidad del operador local', 'Local operator’s responsibility', 'Responsabilitat de l’operador local', 'Responsabilité de l’opérateur local'),
+     d('Instalaciones, personal presencial y autorizaciones locales.', 'Facilities, in-person staff and local authorizations.', 'Instal·lacions, personal presencial i autoritzacions locals.', 'Locaux, personnel en présentiel et autorisations locales.')),
+    (d('Qué aporta Chanak', 'What Chanak provides', 'Què aporta Chanak', 'Ce qu’apporte Chanak'),
+     d('Los servicios académicos y tecnológicos establecidos en el acuerdo.', 'The academic and technology services set out in the agreement.', 'Els serveis acadèmics i tecnològics establerts a l’acord.', 'Les services académiques et technologiques prévus dans l’accord.')),
+    (d('Certificación de Guías', 'Guide certification', 'Certificació de Guies', 'Certification des Guides'),
+     d('Formación inicial obligatoria; la certificación exige completarla y superar la evaluación. La duración se confirma en el acuerdo.', 'Mandatory initial training; certification requires completing it and passing the assessment. Its length is confirmed in the agreement.', 'Formació inicial obligatòria; la certificació exigeix completar-la i superar l’avaluació. La durada es confirma a l’acord.', 'Formation initiale obligatoire ; la certification exige de la suivre et de réussir l’évaluation. Sa durée est confirmée dans l’accord.')),
+    (d('Condiciones económicas', 'Financial terms', 'Condicions econòmiques', 'Conditions financières'),
+     d('Se determinan según el país, el programa y los servicios contratados, y se entregan por escrito en la propuesta de alianza.', 'They are set according to the country, the program and the services contracted, and delivered in writing in the partnership proposal.', 'Es determinen segons el país, el programa i els serveis contractats, i es lliuren per escrit a la proposta d’aliança.', 'Elles sont fixées selon le pays, le programme et les services contractés, et remises par écrit dans la proposition de partenariat.')),
+    (d('Acreditación', 'Accreditation', 'Acreditació', 'Accréditation'),
+     d('La acreditación MSA-CESS es de Chanak International Academy y respalda los expedientes y diplomas que emite Chanak. No se extiende automáticamente a centros independientes: cada implementación se valida y supervisa.', 'MSA-CESS accreditation belongs to Chanak International Academy and backs the records and diplomas issued by Chanak. It does not automatically extend to independent centers: each implementation is validated and supervised.', 'L’acreditació MSA-CESS és de Chanak International Academy i avala els expedients i diplomes que emet Chanak. No s’estén automàticament a centres independents: cada implementació es valida i se supervisa.', 'L’accréditation MSA-CESS appartient à Chanak International Academy et couvre les dossiers et diplômes délivrés par Chanak. Elle ne s’étend pas automatiquement aux centres indépendants : chaque mise en œuvre est validée et supervisée.')),
+]

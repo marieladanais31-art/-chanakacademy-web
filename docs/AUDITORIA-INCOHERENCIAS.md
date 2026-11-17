@@ -30,7 +30,7 @@ documentado para Mariela. Comprobaciones reproducibles: `python3 tools/check_for
 | `/open-a-microschool/` (4 idiomas) | «Cobro ESA centralizado… gestionamos la facturación» ; «llave en mano»; «validez internacional» | Alta | Sí (redacción aprobada: solo estados y servicios aprobados) | EN conserva «turnkey» y FR «clé en main» en un párrafo secundario: revisar |
 | `/alianzas/en/` | «learning pods» | Media | Sí → «Microschools» | — |
 | `/microschools/*` | «Otros estados con fondos ESA: fase de análisis en Utah, Arizona, New Hampshire y Wyoming» | Media | No | Confirmar si puede citarse cada estado mientras la oferta está en revisión |
-| Microschool | Tamaño de grupo «5 a 30 estudiantes» y mínimo «unas 10 familias» coherentes en ES/EN/CA/FR; el borrador del paso 7 decía 5 familias | Media | No se publica un número nuevo (se mantiene «unas 10») | **Decidir mínimo: 5 o unas 10** |
+| Microschool | Tamaño de grupo «5 a 30 estudiantes» y mínimo «unas 10 familias» coherentes en ES/EN/CA/FR; el borrador del paso 7 decía 5 familias | Media | No se publica un número nuevo (se mantiene «unas 10») | Resuelto: mínimo de 10 familias (decisión institucional) |
 | `dossier-iglesias.html` | «pueden comenzar acompañando a 5 familias» | Baja | No | Coherencia con el mínimo anterior |
 | `_private/dossier-templates/*uae*`, `*dubai*`, `build_dossier.py` | «Official Candidate for Accreditation», «candidate status does not constitute accreditation», «Chanak Foundation» | Alta | Sí en las plantillas → «Accredited by MSA-CESS · Chanak TrainUp Education, Inc.» | **Regenerar los PDF** `assets/dossiers/Chanak_Dual_Diploma_UAE/Dubai_2026-2027.pdf` (no se han tocado) |
 | `dual-diploma-uae/index.php` | Pie: «Chanak Foundation / Nonprofit 501(c)(3)» | Alta | Sí → «Chanak TrainUp Education, Inc.» | — |
@@ -107,8 +107,8 @@ No se ha modificado ningún archivo de estas rutas (`git diff main` vacío para 
 2. Embajadores: términos legales y divulgación de compensación (borradores `noindex`).
 3. Mentores: requisitos, formación y compensación.
 4. Microschool: condiciones económicas de alianza por país; importe de la cuota de incorporación; horas de certificación de Guías.
-5. Microschool: mínimo de familias (5 o unas 10).
-6. Microschool España: orientación «desde unos 400 €/mes» **[CONFIRMAR]** (no se publicó la cifra) y titularidad por Asociación EducaFe **[CONFIRMAR]**.
+5. ~~Mínimo de familias~~: resuelto, 10.
+6. ~~Microschool España~~: resuelto por decisión institucional (alianza directa con Chanak, sin EducaFe; sin cifra de cuota).
 7. EE. UU.: «las instalaciones se verifican antes de abrir» **[CONFIRMAR]** el procedimiento exacto en Florida.
 8. Acuerdo vigente de educación en casa en Ecuador (sin publicar) y revisión de la hoja por un asesor.
 9. URL exacta usada como «enlace especial» en las solicitudes ESA.

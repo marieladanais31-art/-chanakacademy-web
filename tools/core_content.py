@@ -35,11 +35,24 @@ ITEMS = [
           ca='Eduquem la ment i el cor. Integrem els principis bíblics de manera transversal per cultivar el caràcter, l’ètica i el pensament crític, preparant els nostres joves no només per aprovar exàmens, sinó per viure amb propòsit.',
           fr='Nous éduquons l’esprit et le cœur. Nous intégrons les principes bibliques de manière transversale pour cultiver le caractère, l’éthique et la pensée critique, en préparant nos jeunes non seulement à réussir des examens, mais à vivre avec un but.')),
 ]
-CTX = dict(
-    es='Dentro del modelo 60/20/20: 60 % núcleo académico americano (Core), 20 % extensión local y 20 % Life Skills y cosmovisión bíblica.',
-    en='Within the 60/20/20 model: 60% American academic core (Core), 20% local extension and 20% Life Skills and biblical worldview.',
-    ca='Dins del model 60/20/20: 60 % nucli acadèmic americà (Core), 20 % extensió local i 20 % Life Skills i cosmovisió bíblica.',
-    fr='Dans le modèle 60/20/20 : 60 % de tronc académique américain (Core), 20 % d’extension locale et 20 % de Life Skills et de vision biblique du monde.')
+INST_H = dict(es='Core Académico Estadounidense', en='American Academic Core', ca='Core Acadèmic Nord-americà', fr='Core académique américain')
+INST = dict(
+    es=['Chanak International Academy ofrece una educación estadounidense K–12 basada en Mastery Learning, con un Plan Educativo Individualizado (PEI) para cada estudiante.',
+        'Nuestro modelo educativo 60/20/20 integra el Core Académico Estadounidense (60 %), la Extensión Local (20 %) y Life Skills & Purpose (20 %), combinando excelencia académica, identidad cultural, formación cristiana y habilidades para la vida.',
+        'Los estudiantes pueden utilizar opciones curriculares aprobadas por Chanak, entre ellas A.C.E., LIFEPAC, Christian Light y Chanak Flex, según su programa académico.',
+        'Chanak gestiona los procesos institucionales de seguimiento, evaluación y documentación académica correspondientes a la modalidad de matrícula contratada.'],
+    en=['Chanak International Academy offers a U.S. K–12 education based on Mastery Learning, with an Individualized Education Plan (IEP/PEI) for every student.',
+        'Our 60/20/20 educational model integrates the American Academic Core (60%), the Local Extension (20%) and Life Skills & Purpose (20%), combining academic excellence, cultural identity, Christian formation and life skills.',
+        'Students may use curriculum options approved by Chanak, including A.C.E., LIFEPAC, Christian Light and Chanak Flex, according to their academic program.',
+        'Chanak manages the institutional processes of follow-up, assessment and academic documentation that correspond to the contracted enrollment type.'],
+    ca=['Chanak International Academy ofereix una educació nord-americana K–12 basada en Mastery Learning, amb un Pla Educatiu Individualitzat (PEI) per a cada estudiant.',
+        'El nostre model educatiu 60/20/20 integra el Core Acadèmic Nord-americà (60 %), l’Extensió Local (20 %) i Life Skills & Purpose (20 %), combinant excel·lència acadèmica, identitat cultural, formació cristiana i habilitats per a la vida.',
+        'Els estudiants poden utilitzar opcions curriculars aprovades per Chanak, entre elles A.C.E., LIFEPAC, Christian Light i Chanak Flex, segons el seu programa acadèmic.',
+        'Chanak gestiona els processos institucionals de seguiment, avaluació i documentació acadèmica corresponents a la modalitat de matrícula contractada.'],
+    fr=['Chanak International Academy propose une éducation américaine K–12 fondée sur le Mastery Learning, avec un Plan éducatif individualisé (PEI) pour chaque élève.',
+        'Notre modèle éducatif 60/20/20 intègre le Core académique américain (60 %), l’Extension locale (20 %) et Life Skills & Purpose (20 %), alliant excellence académique, identité culturelle, formation chrétienne et compétences de vie.',
+        'Les élèves peuvent utiliser des options de programme approuvées par Chanak, dont A.C.E., LIFEPAC, Christian Light et Chanak Flex, selon leur programme académique.',
+        'Chanak gère les processus institutionnels de suivi, d’évaluation et de documentation académique correspondant au type d’inscription contracté.'])
 
 
 def section(lang, soft=True):
@@ -48,5 +61,5 @@ def section(lang, soft=True):
 <div class="cx-center"><div class="cx-eyebrow">{EYE[lang]}</div><h2>{H2[lang]}</h2><p class="cx-lead" style="max-width:860px">{SYN[lang]}</p></div>
 <p style="max-width:860px;margin:22px auto 0;text-align:center">{INTRO[lang]}</p>
 <div class="cx-grid cx-g3">{cards}</div>
-<p class="cx-note cx-center">{CTX[lang]}</p>
+<div class="cx-inst"><h3>{INST_H[lang]}</h3>{''.join('<p>' + x + '</p>' for x in INST[lang])}</div>
 </div></section>'''

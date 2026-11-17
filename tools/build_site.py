@@ -7,6 +7,7 @@ Textos: tools/site_i18n.py · Precios: PRICING (abajo) — mantener igual que js
 import json, os, sys, html
 sys.path.insert(0, os.path.dirname(__file__))
 from site_i18n import T, LINKS, FAQ
+import notice_content
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = 'https://www.chanakacademy.org'
@@ -130,7 +131,7 @@ def footer(lang):
 <div><h4>{t('ft_prog', lang)}</h4>
 <a href="{L['hs']}">{t('n_hs', lang)}</a><a href="{L['dd']}">{t('n_dd', lang)}</a><a href="{L['ms']}">{t('n_ms', lang)}</a><a href="{L['open']}">{t('ms_cta', lang).replace(' →', '')}</a><a href="{L['diag']}">{t('sv1_h', lang)}</a><a href="{L['uni']}">{t('sv2_h', lang)}</a><a href="{L['fees']}">{t('n_fees', lang)}</a></div>
 <div><h4>{t('ft_inst', lang)}</h4>
-<a href="{L['how']}">{t('n_how', lang)}</a><a href="/school-leadership/">{t('ft_lead', lang)}</a><a href="/student-support/">{t('ft_support', lang)}</a><a href="/alianzas/">{t('ft_ally', lang)}</a><a href="/scholarships/">{t('n_esa', lang)}</a><a href="https://www.asociacioneducafe.org" rel="noopener">Asociación EducaFe ↗</a></div>
+<a href="{L['how']}">{t('n_how', lang)}</a><a href="/school-leadership/">{t('ft_lead', lang)}</a><a href="/student-support/">{t('ft_support', lang)}</a><a href="/alianzas/">{t('ft_ally', lang)}</a><a href="/scholarships/">{t('n_esa', lang)}</a></div>
 <div><h4>{t('ft_legal', lang)}</h4>
 <a href="{L['priv']}">{t('ft_priv', lang)}</a><a href="{L['cook']}">{t('ft_cook', lang)}</a><a href="{L['legal']}">{t('ft_aviso', lang)}</a><a href="{L['terms']}">{t('ft_terms', lang)}</a><a href="mailto:offcampus@chanakacademy.org">offcampus@chanakacademy.org</a><a href="mailto:dualdiploma@chanakacademy.org">dualdiploma@chanakacademy.org</a></div>
 <div><h4>{t('ft_colab', lang)}</h4>
@@ -276,6 +277,7 @@ def home(lang):
 <div class="cx-faq">{faq_html}</div>
 </div></section>
 
+{notice_content.section() if lang == 'en' else ''}
 <section class="cx-sec cx-navy" id="orientacion"><div class="cx-wrap cx-split">
 <div><div class="cx-eyebrow">{t('c_eye', lang)}</div><h2>{t('c_h2', lang)}</h2><p class="cx-lead">{t('c_p', lang)}</p>
 <ul class="cx-list" style="margin-top:18px"><li>{t('c_b1', lang)}</li><li>{t('c_b2', lang)}</li><li>{t('c_b3', lang)}</li></ul>
@@ -351,7 +353,7 @@ def tarifas(lang):
 <nav class="cx-crumbs" aria-label="Breadcrumb"><a href="{L['home']}">Chanak</a> › {tx('Tarifas', 'Tuition')}</nav>
 <h1>{tx('Tarifas del curso 2026–2027', 'Tuition for the 2026–2027 school year')}</h1>
 <p class="cx-lead">{tx('Precios claros por programa y país. Recibes el importe exacto por escrito antes de pagar.', 'Clear fees by program and country. You receive the exact amount in writing before you pay.')}</p>
-<div class="cx-tabs"><a href="#homeschool">Homeschool K–12</a><a href="#dual">Dual Diploma</a><a href="#microschool">Microschools</a><a href="#matricula">{tx('Matrícula anual', 'Annual enrollment fee')}</a></div>
+<div class="cx-tabs"><a href="#homeschool">Off Campus K–12</a><a href="#dual">Dual Diploma</a><a href="#microschool">Microschools</a><a href="#matricula">{tx('Matrícula anual', 'Annual enrollment fee')}</a></div>
 </div></section>
 
 <section class="cx-sec" id="homeschool"><div class="cx-wrap">
@@ -399,6 +401,7 @@ def tarifas(lang):
 <div class="cx-faq" style="margin-left:0">{faq_html}</div>
 <div class="cx-btns" style="margin-top:24px"><a class="cx-btn cx-btn-t" href="/matricula/?utm_source=web&amp;utm_medium=tarifas">{t('enroll', lang)}</a><a class="cx-btn cx-btn-o" href="{L['home']}#orientacion">{t('guide', lang)}</a></div>
 </div></section>
+{notice_content.section(False) if not es else ''}
 </main>
 '''
     out += footer(lang) + '</body></html>'

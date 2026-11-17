@@ -48,7 +48,7 @@ $CONFIG = [
         'mentor'      => ['to' => ['administration@chanakacademy.org'], 'label' => 'MENTORES', 'landing' => '/unete/mentores/', 'brevo_list' => 6],
         // Ruta heredada por si llega tráfico antiguo de alianzas/iglesias.
         // Sin lista propia en Brevo: va a la lista General (6).
-        'hub'         => ['to' => ['rededucativa@asociacioneducafe.org'], 'label' => 'ALIANZAS 2027', 'landing' => '/alianzas/', 'brevo_list' => 6],
+        'hub'         => ['to' => ['administration@chanakacademy.org'], 'label' => 'ALIANZAS 2027', 'landing' => '/alianzas/', 'brevo_list' => 6],
     ],
     // Lista Brevo "Chanak | Newsletter": se añade ADEMÁS de la lista del
     // producto cuando el formulario trae opt-in de newsletter.

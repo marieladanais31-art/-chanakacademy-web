@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from build_site import header, V, ROOT
 from site_i18n import T
 import core_content
+import notice_content
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">')
@@ -99,7 +100,7 @@ def como_funciona():
             'ca': [('Mètode', '#modelo'), ('Pla d’Estudis Core', '#core'), ('Currículums', '#curriculos'), ('Portals', '#portales'), ('Identitat', '#quien'), ('Preguntes', '#faq'), ('Tarifes', '/tarifas/')],
             'fr': [('Méthode', '#modelo'), ('Programme Core', '#core'), ('Programmes', '#curriculos'), ('Portails', '#portales'), ('Identité', '#quien'), ('Questions', '#faq'), ('Tarifs', '/en/tuition/')]}
     parts = ''.join(f'<div class="cx cx-hdr" data-cxl="{l}"{"" if l == "es" else " hidden"}>{header(l, urls)}{subnav(l, subs[l])}</div>' for l in ('es', 'en', 'ca', 'fr'))
-    sync = ("<script>(function(){function s(){var l=(document.documentElement.getAttribute('data-lang')||document.documentElement.lang||'es').slice(0,2);"
+    sync = ("<script>(function(){function s(){var l=(document.documentElement.lang||document.documentElement.getAttribute('data-lang')||'es').slice(0,2);"
             "var q=document.querySelectorAll('[data-cxl]'),ok=false;q.forEach(function(e){if(e.dataset.cxl===l)ok=true});if(!ok)l='es';"
             "q.forEach(function(e){e.hidden=e.dataset.cxl!==l})}s();new MutationObserver(s).observe(document.documentElement,{attributes:true,attributeFilter:['lang','data-lang']});"
             "document.addEventListener('click',function(e){var a=e.target.closest('.cx-langs a');if(a&&typeof setLang==='function'){e.preventDefault();setLang(a.getAttribute('hreflang'));history.replaceState(null,'',a.getAttribute('href'))}})})();</script>")
@@ -119,6 +120,10 @@ def como_funciona():
     else:
         k = h.index('<section id="tarifas"')
         h = h[:k] + core + h[k:]
+    nt = '<!-- cx:aviso -->' + notice_content.section(extra_attr=' data-cxl="en" hidden').replace('<!-- cx:aviso -->', '').replace('<!-- /cx:aviso -->', '') + '<!-- /cx:aviso -->'
+    h = re.sub(r'<!-- cx:aviso -->.*?<!-- /cx:aviso -->', '', h, flags=re.S)
+    k = h.index('<section id="tarifas"')
+    h = h[:k] + nt + h[k:]
     desc = 'Currículo Core de Chanak: Estándares B.E.S.T. de Florida, Mastery Learning y cosmovisión cristiana. Modelo 60/20/20, currículos, portales y preguntas.'
     h = re.sub(r'<meta content="[^"]*" name="description"/>', f'<meta content="{desc}" name="description"/>', h, 1)
     h = re.sub(r'<title>.*?</title>', '<title>Cómo funciona Chanak: método, currículo Core y portales</title>', h, 1)

@@ -295,3 +295,7 @@ p.cx-policy{margin:26px 0 0}
 @media(max-width:400px){.cx-wrap{padding:0 16px}.cx-brand img{height:36px}.cx-brand b{font-size:.82rem}.cx-burger{padding:7px 9px;font-size:.88rem}.cx-plan{padding:20px}.cx-btn{padding:.8rem 1.1rem}}
 .cx-btns .cx-btn{max-width:100%;text-align:center}
 .test-opt{min-width:0;overflow-wrap:anywhere;white-space:normal}
+
+.cx-inst{max-width:860px;margin:36px auto 0;background:#fff;border:1px solid var(--border);border-left:4px solid var(--teal-d);border-radius:var(--r);padding:24px 28px}
+.cx-inst h3{margin-top:0}.cx-inst p:last-child{margin-bottom:0}
+.cx-soft .cx-inst{background:#fff}
