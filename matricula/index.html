@@ -30,7 +30,7 @@
       }
       if (prog) out.set('program', prog);
       if (q.get('country') && !hub) out.set('country', q.get('country').toUpperCase());
-      ['src', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'beca'].forEach(function (k) { if (q.get(k)) out.set(k, q.get(k)); });
+      ['src', 'plan', 'scope', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'beca'].forEach(function (k) { if (q.get(k)) out.set(k, q.get(k)); });
       window.location.replace('https://sis.chanakacademy.org/matricula' + (out.toString() ? '?' + out.toString() : ''));
     } catch (e) { /* si falla, se queda la página */ }
   })();
