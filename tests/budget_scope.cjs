@@ -52,10 +52,10 @@ test('el coordinador académico aparece con alumnos en 2 o más etapas, no con u
   assert.strictEqual(B.compute(P, { ...S, students: [10, 0, 10, 0] }, 'alcance5').coord, 1);
   assert.strictEqual(B.compute(P, { ...S, students: [10, 10, 10, 10] }, 'alcance5').coord, 1);
 });
-test('con las cuotas Chanak vacías no hay ningún importe de Chanak', () => {
-  assert(Object.values(P.cuotas_chanak).every((v) => v === null), 'cuotas_chanak debe estar vacío en la versión pública');
+test('versión pública: solo la inversión de incorporación (3.500); cuota mensual y por alumno vacías', () => {
+  assert.strictEqual(P.cuotas_chanak.incorporacion, 3500); assert.strictEqual(P.cuotas_chanak.fija_mensual, null); assert.strictEqual(P.cuotas_chanak.por_alumno, null);
   const r = B.compute(P, { ...S, students: [10, 10, 10, 10] }, 'alcance5');
-  assert.strictEqual(r.chanak, 0); assert.strictEqual(r.invCuota, 0);
+  assert.strictEqual(r.chanak, 0); assert.strictEqual(r.invCuota, 3500);
 });
 test('con cuotas Chanak precargadas (versión de propuesta) se aplican solo a los alumnos de los tramos activos', () => {
   const X = JSON.parse(JSON.stringify(P)); X.cuotas_chanak = { incorporacion: 500, fija_mensual: 100, por_alumno: 10 };

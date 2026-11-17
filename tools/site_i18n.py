@@ -28,7 +28,7 @@ T = {
     en='<strong>Accredited by MSA-CESS</strong> · Member of Dallas Baptist University’s Global Community',
     ca='<strong>Acreditada per MSA-CESS</strong> · Membre de la Global Community de Dallas Baptist University',
     fr='<strong>Accréditée par MSA-CESS</strong> · Membre de la Global Community de Dallas Baptist University'),
- 'brand_sub': dict(es='K-12 · FLDOE #134620 · Acreditada por MSA-CESS', en='K-12 · FLDOE #134620 · Accredited by MSA-CESS', ca='K-12 · FLDOE #134620 · Acreditada per MSA-CESS', fr='K-12 · FLDOE #134620 · Accréditée par MSA-CESS'),
+ 'brand_sub': dict(es='Colegio cristiano K-12', en='Christian K-12 school', ca='Col·legi cristià K-12', fr='École chrétienne K-12'),
  'n_hs': dict(es='Off Campus K–12', en='Off Campus K–12', ca='Off Campus K–12', fr='Off Campus K–12'),
  'm_opt_guiado': dict(es='Homeschool Guiado', en='Guided Homeschool', ca='Homeschool Guiat', fr='Homeschool guidé'),
  'm_opt_full': dict(es='Full Enrollment · Guided Virtual School', en='Full Enrollment · Guided Virtual School', ca='Full Enrollment · Guided Virtual School', fr='Full Enrollment · Guided Virtual School'),
@@ -52,12 +52,13 @@ T = {
     ca='Educació americana K-12 amb mentoria personalitzada, expedient acadèmic i una ruta clara cap a la graduació.',
     fr='Éducation américaine K-12 avec mentorat personnalisé, dossier scolaire officiel et un parcours clair vers le diplôme.'),
  'h_sub': dict(
-    es='Colegio privado registrado en Florida (FLDOE #134620) · Acreditada por MSA-CESS',
-    en='Florida-registered private school (FLDOE #134620) · Accredited by MSA-CESS',
-    ca='Col·legi privat registrat a Florida (FLDOE #134620) · Acreditada per MSA-CESS',
-    fr='École privée enregistrée en Floride (FLDOE #134620) · Accréditée par MSA-CESS'),
+    es='Colegio cristiano estadounidense K-12 · Mastery Learning · Acompañamiento a la familia',
+    en='American Christian K-12 school · Mastery Learning · Family support',
+    ca='Col·legi cristià nord-americà K-12 · Mastery Learning · Acompanyament a la família',
+    fr='École chrétienne américaine K-12 · Mastery Learning · Accompagnement des familles'),
  't_fl': dict(es='Colegio registrado en Florida', en='Florida-registered school', ca='Col·legi registrat a Florida', fr='École enregistrée en Floride'),
  't_msa': dict(es='Acreditada por MSA-CESS', en='Accredited by MSA-CESS', ca='Acreditada per MSA-CESS', fr='Accréditée par MSA-CESS'),
+ 't_acr': dict(es='Acreditado', en='Accredited', ca='Acreditat', fr='Accrédité'),
  't_dbu': dict(es='Miembro · Global Community', en='Member · Global Community', ca='Membre · Global Community', fr='Membre · Global Community'),
  't_irs': dict(es='Entidad sin ánimo de lucro 501(c)(3)', en='501(c)(3) nonprofit organization', ca='Entitat sense ànim de lucre 501(c)(3)', fr='Organisme sans but lucratif 501(c)(3)'),
  'r_eye': dict(
@@ -193,12 +194,16 @@ T = {
     en='Private K-12 school listed with the Florida Department of Education. The registration is public and verifiable.',
     ca='Col·legi privat K-12 inscrit al Departament d’Educació de Florida. El registre és públic i verificable.',
     fr='École privée K-12 inscrite auprès du Département de l’Éducation de Floride. L’enregistrement est public et vérifiable.'),
- 'tr3_h': dict(es='Miembro de la Global Community de Dallas Baptist University', en='Dallas Baptist University Global Community Member', ca='Membre de la Global Community de Dallas Baptist University', fr='Membre de la Global Community de Dallas Baptist University'),
+ 'tr3_h': dict(
+    es='Acreditación MSA-CESS: escuelas reconocidas por muchas universidades en todo el mundo',
+    en='MSA-CESS accreditation: schools recognized by many universities worldwide',
+    ca='Acreditació MSA-CESS: escoles reconegudes per moltes universitats arreu del món',
+    fr='Accréditation MSA-CESS : des écoles reconnues par de nombreuses universités dans le monde'),
  'tr3_p': dict(
-    es='Chanak es miembro de una red de más de 280 escuelas en 50 países, con formación docente, programas de inglés y becas de DBU según cada programa. DBU no acredita a Chanak ni garantiza admisión.',
-    en='Chanak is a member of a network of 280+ schools in 50 countries, with teacher training, English programs and DBU scholarships by program. DBU does not accredit Chanak or guarantee admission.',
-    ca='Chanak és membre d’una xarxa de més de 280 escoles a 50 països, amb formació docent, programes d’anglès i beques de DBU segons cada programa. DBU no acredita Chanak ni garanteix l’admissió.',
-    fr='Chanak est membre d’un réseau de plus de 280 écoles dans 50 pays, avec formation des enseignants, programmes d’anglais et bourses DBU selon chaque programme. DBU n’accrédite pas Chanak et ne garantit pas l’admission.'),
+    es='Las escuelas con acreditación MSA-CESS son reconocidas por muchas universidades a nivel mundial. Además, somos miembros de la Global Community de Dallas Baptist University. La admisión y las becas dependen siempre de los requisitos de cada universidad.',
+    en='MSA-CESS accredited schools are recognized by many universities worldwide. We are also members of Dallas Baptist University’s Global Community. Admission and scholarships always depend on each university’s own requirements.',
+    ca='Les escoles amb acreditació MSA-CESS són reconegudes per moltes universitats a tot el món. A més, som membres de la Global Community de Dallas Baptist University. L’admissió i les beques depenen sempre dels requisits de cada universitat.',
+    fr='Les écoles accréditées MSA-CESS sont reconnues par de nombreuses universités dans le monde. Nous sommes aussi membres de la Global Community de Dallas Baptist University. L’admission et les bourses dépendent toujours des exigences de chaque université.'),
  'tr4_h': dict(
     es='Chanak TrainUp Education Inc. · Entidad sin ánimo de lucro 501(c)(3)',
     en='Chanak TrainUp Education Inc. · 501(c)(3) nonprofit organization',
@@ -389,3 +394,11 @@ FAQ = {
   ('Quel est le lien entre Chanak et Dallas Baptist University ?', 'Chanak est membre de la Global Community de Dallas Baptist University (DBU), un réseau de plus de 280 écoles dans 50 pays. DBU n’accrédite pas Chanak et l’adhésion ne garantit ni admission ni bourse.'),
  ],
 }
+
+
+# ── Português (tools/pt_i18n.py) ─────────────────────────────────────────────
+import pt_i18n as _pt
+for _k, _v in T.items():
+    _v['pt'] = _pt.PT.get(_k, _v['es'])
+LINKS['pt'] = _pt.LINKS_PT
+FAQ['pt'] = _pt.FAQ_PT

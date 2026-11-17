@@ -12,7 +12,7 @@ import notice_content
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = 'https://www.chanakacademy.org'
 V = '20261117'
-LANGS = ['es', 'en', 'ca', 'fr']
+LANGS = ['es', 'en', 'ca', 'fr', 'pt']
 STATES = [('Florida', '/florida-home-education/'), ('Arizona', '/arizona/'), ('Utah', '/utah/'), ('Wyoming', '/wyoming/'),
           ('Alabama', '/alabama/'), ('South Carolina', '/south-carolina/'), ('New Hampshire', '/new-hampshire/')]
 IMG = '/assets/img/gen/'
@@ -46,7 +46,7 @@ ORG_LD = {
     "identifier": [{"@type": "PropertyValue", "propertyID": "FLDOE School Number", "value": "134620"}],
     "address": {"@type": "PostalAddress", "streetAddress": "7901 4th St N Ste 300", "addressLocality": "St. Petersburg", "addressRegion": "FL", "postalCode": "33702", "addressCountry": "US"},
     "areaServed": ["US", "ES", "MX", "PA", "CO", "AE", "Worldwide"],
-    "knowsLanguage": ["en", "es", "ca", "fr"],
+    "knowsLanguage": ["en", "es", "ca", "fr", "pt"],
     "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "Accreditation", "name": "MSA-CESS Accreditation, Kindergarten–Grade 12", "identifier": "FL175", "dateCreated": "2026-11-06", "expires": "2034-01-01", "url": BASE + "/acreditacion/",
                       "recognizedBy": {"@type": "Organization", "name": "Middle States Association Commissions on Elementary and Secondary Schools (MSA-CESS)", "url": "https://www.msa-cess.org/"}},
     "memberOf": {"@type": "Organization", "name": "Dallas Baptist University Global Community", "url": "https://www.dbu.edu/international/global-community/"},
@@ -188,7 +188,7 @@ catch(e){{b.disabled=false;b.textContent=o;er.textContent=M.fm_err;er.hidden=fal
 def home(lang):
     L = LINKS[lang]
     faq = FAQ[lang]
-    alternates = [('es', '/'), ('en', '/en/'), ('ca', '/ca/'), ('fr', '/fr/'), ('x-default', '/')]
+    alternates = [('es', '/'), ('en', '/en/'), ('ca', '/ca/'), ('fr', '/fr/'), ('pt', '/pt/'), ('x-default', '/')]
     site_ld = {"@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": "Chanak International Academy", "inLanguage": LANGS, "publisher": {"@id": BASE + "/#school"}}
     out = head(lang, t('title', lang), t('desc', lang), L['home'], alternates, ld(ORG_LD, site_ld, faq_ld(faq)))
     out += f'<div role="note" style="padding:14px 22px;text-align:center;background:#eaf5f1;color:#103d4b;font:600 14px system-ui,sans-serif">{t("acc_note", lang, u=L["acc"])}</div>\n'
@@ -215,7 +215,7 @@ def home(lang):
 
 <div class="cx-trust" aria-label="Credentials"><div class="cx-wrap cx-trust-in">
 <div class="cx-trust-it"><img src="/assets/img/fldoe-logo-clean.png" alt="Florida Department of Education" width="160" height="44" loading="lazy" decoding="async"><b>FLDOE #134620</b><span>{t('t_fl', lang)}</span></div>
-<div class="cx-trust-it"><img src="/assets/img/msa-logo-clean.png" alt="Middle States Association (MSA-CESS)" width="160" height="40" loading="lazy" decoding="async"><b>MSA-CESS</b><span>{t('t_msa', lang)}</span></div>
+<div class="cx-trust-it"><img src="/assets/img/msa-logo-clean.png" alt="Middle States Association (MSA-CESS)" width="160" height="40" loading="lazy" decoding="async"><b>{t('t_acr', lang)}</b></div>
 <div class="cx-trust-it"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University · Global Community" width="130" height="48" loading="lazy" decoding="async"><b>Dallas Baptist University</b><span>{t('t_dbu', lang)}</span></div>
 <div class="cx-trust-it"><img src="/assets/img/chanak-trainup-logo.webp" alt="Chanak TrainUp Education Inc." width="140" height="48" loading="lazy" decoding="async"><b>Chanak TrainUp Education Inc.</b><span>{t('t_irs', lang)}</span></div>
 </div></div>
@@ -239,7 +239,7 @@ def home(lang):
 <div><div class="cx-eyebrow">{t('tr_eye', lang)}</div><h2>{t('tr_h2', lang)}</h2>
 <h3>{t('tr1_h', lang)}</h3><p>{t('tr1_p', lang)}</p>
 <h3>{t('tr2_h', lang)}</h3><p>{t('tr2_p', lang)}</p></div></div>
-<div class="cx-grid cx-g2"><div class="cx-card"><img src="/assets/img/dbu-logo-horizontal.png" alt="Dallas Baptist University" width="130" height="65" loading="lazy" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr3_h', lang)}</h3><p>{t('tr3_p', lang)}</p></div><div class="cx-card"><img src="/assets/img/chanak-trainup-logo.webp" alt="Chanak TrainUp Education Inc." width="140" height="60" loading="lazy" decoding="async" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr4_h', lang)}</h3><p>{t('tr4_p', lang)}</p></div></div>
+<div class="cx-grid cx-g2"><div class="cx-card"><img src="/assets/img/msa-logo-clean.png" alt="Middle States Association (MSA-CESS)" width="130" height="33" loading="lazy" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr3_h', lang)}</h3><p>{t('tr3_p', lang)}</p></div><div class="cx-card"><img src="/assets/img/chanak-trainup-logo.webp" alt="Chanak TrainUp Education Inc." width="140" height="60" loading="lazy" decoding="async" style="max-height:38px;width:auto;margin-bottom:12px;object-fit:contain"><h3>{t('tr4_h', lang)}</h3><p>{t('tr4_p', lang)}</p></div></div>
 </div></section>
 
 <section class="cx-sec cx-soft" id="como"><div class="cx-wrap">
@@ -337,7 +337,7 @@ def tarifas(lang):
     faq = [
         (tx('¿La matrícula anual se paga una sola vez?', 'Is the annual enrollment fee paid only once?'), tx('Sí. Es una cuota por estudiante y por curso académico, independiente de que elijas pago mensual, trimestral o anual. Se renueva al empezar cada nuevo curso y te lo comunicamos antes.', 'Yes. It is one fee per student per academic year, regardless of whether you pay monthly, quarterly or annually. It renews at the start of each new academic year and we tell you beforehand.')),
         (tx('¿Qué incluye la matrícula anual?', 'What does the annual enrollment fee include?'), tx('El diagnóstico académico inicial, la elaboración del Plan Educativo Individualizado (PEI) y la inducción de incorporación del estudiante y la familia.', 'The initial academic diagnostic, the Individualized Education Plan (IEP/PEI) and student and family onboarding.')),
-        (tx('¿Los materiales están incluidos?', 'Are materials included?'), tx('Depende del plan y del currículo elegido (A.C.E., LIFEPAC, Christian Light o Chanak Flex). Te indicamos por escrito qué materiales necesitas y su coste antes de formalizar.', 'It depends on the plan and curriculum chosen (A.C.E., LIFEPAC, Christian Light or Chanak Flex). We tell you in writing which materials you need and their cost before you enroll.')),
+        (tx('¿Los materiales están incluidos?', 'Are materials included?'), tx('Depende del plan y del currículo elegido (A.C.E., LIFEPAC, Christian Light o Chanak Flex, que también se puede imprimir). Te indicamos por escrito qué materiales necesitas y su coste antes de formalizar.', 'It depends on the plan and curriculum chosen (A.C.E., LIFEPAC, Christian Light or Chanak Flex, which can also be printed). We tell you in writing which materials you need and their cost before you enroll.')),
         (tx('¿Puedo pagar con fondos ESA en Estados Unidos?', 'Can I pay with ESA funds in the United States?'), tx('En los estados donde Chanak es proveedor aprobado puedes solicitar el pago con tus fondos estatales. La elegibilidad y cada autorización las decide el programa de tu estado.', 'In states where Chanak is an approved provider you can request payment with your state funds. Eligibility and each authorization are decided by your state’s program.')),
     ]
     alternates = [('es', '/tarifas/'), ('en', '/en/tuition/'), ('x-default', '/tarifas/')]

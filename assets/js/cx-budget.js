@@ -122,6 +122,7 @@
     out.replaceChildren(
       card(T.r_students, String(r.total)), card(T.r_inv, money(r.inv)), card(T.r_mon, money(r.gasto)), card(T.r_inc, money(r.ingresos)),
       card(T.r_be, r.equil === null ? T.na : String(r.equil), 'be'), card(T.r_net, money(r.neto)), card(T.r_year, money(r.anual)), card(T.r_pay, r.payback === null ? T.no_pay : String(r.payback)),
+      r.invCuota > 0 ? el('p', { cls: 'cx-b-read', text: T.chanak_inv.replace('{x}', money(r.invCuota)) }) : null,
       el('p', { cls: 'cx-b-read', text: num(st.fee) === 0 ? T.read0 : (r.equil !== null && r.total >= r.equil ? T.read_ok : T.read_no) }));
     renderCompare();
     return r;
