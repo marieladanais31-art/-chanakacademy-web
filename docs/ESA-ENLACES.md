@@ -90,14 +90,13 @@ Cada enlace lleva a `/matricula/` con `country`, `state`, `hub`, `service` y `gr
 ## 3. Enlaces históricos que ya no están y por qué no se restauran
 
 Se comparó cada URL de las páginas ESA, del hub `/scholarships/`, de `chanak-hubs.js`, de `hubs-catalog.json` y de `/matricula/` en
-los 40 commits que las tocaron frente a la versión actual. Resultado: **no hay ningún enlace de solicitud o pago vigente y
-comprobable que se haya perdido**; las diferencias son cambios de producto deliberados.
+los 40 commits que las tocaron frente a la versión actual. Resultado: **no hay ningún enlace de solicitud o pago comprobable que se haya perdido por error**; las diferencias son cambios de producto deliberados, salvo un caso abierto (las tres clases en vivo de Utah y Wyoming, abajo).
 
 | Enlace histórico | Dónde y cuándo | Por qué no se restaura |
 |---|---|---|
 | `service=support`, `service=lifeskills` (sin grado), `service=support-k5&grade=K-5` | Alabama, Carolina del Sur, New Hampshire, Utah, Wyoming (commits f6a407c a 5d4425c, 18-20 oct) | Formatos superados. `matricula/index.html` sigue interpretando `support-k5` y los traduce a `support-15` fuera de Florida; los enlaces actuales usan el servicio por tramo de grado |
 | Life Skills independiente (US$120/mes) con enlace directo de matrícula en Alabama, Carolina del Sur y New Hampshire | Existió del 18 al 20 de oct. | El commit 247d26a («surgical update… compliance») lo sustituyó a propósito por «Request Schedule → #formulario» y por el texto «Use 'Request Schedule / Confirm Availability' to secure placement». El catálogo del SIS conserva `AL/SC/NH-LS-120`, pero no hay un flujo web que lo exija; en Utah y Wyoming el enlace directo sigue activo |
-| `bundle-live`, `english-live`, `spanish-live` en Utah y Wyoming | Hasta 434a48d (25 oct) | Retirados en la limpieza «parent-first»; las 11 ofertas Odyssey se validan con `tests/odyssey_offerings_audit.cjs` (esa prueba ya fallaba en `main`) |
+| `bundle-live`, `english-live`, `spanish-live` en Utah y Wyoming (clases en vivo: US$520, US$240 y US$240 al mes) | Tarjetas con enlace directo desde d8656cb (19 oct) hasta 434a48d («parent-first», 25 oct) | **Caso abierto.** Hoy las tres ofertas siguen como opciones del formulario de contacto, pero sin tarjeta ni enlace de matrícula. `/matricula/` sí reconoce los tres servicios (19 referencias), pero el catálogo del SIS (`UT-UFA-ODY`, `WY-ESA-ODY`) solo lista 5 servicios y no incluye ninguno de ellos. `tests/odyssey_offerings_audit.cjs` espera las 11 ofertas y ya falla en `main`. No se restauran sin saber cuáles de las 11 están aprobadas hoy en Odyssey |
 | Servicios sueltos de Arizona (`abc-reading`, `classes-bundle`, `english-live`, `spanish-live`, `lifeskills`, `support*`) | Hasta 247d26a / fe6f85b (20 oct) | Arizona pasó a presentar solo la escuela a tiempo completo con precio trimestral. **Arizona Premium / Full-Time Online está fuera del alcance de este encargo** |
 | `sis.chanakacademy.org/matricula?program=alabama-homeschool` y `?program=ar-interest` en Florida | Commits 1a8fdf0 y 0768791 | Programas que no existen hoy (no hay página de Arkansas) |
 | `https://www.chanakacademy.org/hogar/` | Enlaces de pie de varias páginas | La carpeta `hogar/` nunca existió en el repositorio; el commit 0184b47 corrigió esos enlaces hacia la página de cada estado |
@@ -113,3 +112,11 @@ comprobable que se haya perdido**; las diferencias son cambios de producto delib
   `odyssey_offerings_audit` marca 3 fallos que ya existen en `main`.
 - No se ha simulado ninguna integración: la facturación por ClassWallet, Odyssey y Step Up ocurre en esas plataformas, y el SIS
   recibe los datos solo por el flujo de `/matricula/` descrito arriba.
+
+## 5. Ramas revisadas
+
+Además de la rama de trabajo se revisaron las puntas de las 17 ramas con enlaces SIS/ESA que `main` no tiene (`codex/*-20261008`,
+`feat/regional-sis-enrollment`, `feat/chanak-flex-scholarships-primary-20261023`, `feat/enrollment-ctas-state-programs-20261023`,
+`scholarship-state-pages-update`, entre otras). Todas contienen versiones anteriores de los mismos enlaces (programas `ar-interest`,
+`az-interest`, `alabama-homeschool` de Florida; servicios en vivo de Utah y Wyoming); ninguna aporta un enlace de solicitud nuevo.
+También se integró `origin/main` del 17 de nov. (acreditación oficial MSA ONOA y dossiers 2026–27) en esta rama.
