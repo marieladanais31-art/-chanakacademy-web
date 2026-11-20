@@ -1,59 +1,59 @@
 {
-  "version": "2026.11.17-programs-bilingual",
+  "version": "2026.11.20-programs-bilingual",
   "routes": {
     "offcampus": {
       "countries": {
         "ES": {
-          "es": "https://drive.google.com/file/d/1DoygClK-C02tnlInKokJelK64j38J5lp/view",
-          "en": "https://drive.google.com/file/d/1I4camNE5nlLMgij2-cqIWEMc370SzV_a/view"
+          "es": "https://drive.google.com/file/d/1v2I1MIHqZSqToofcTdoTnsx5i3H2XfLn/view",
+          "en": "https://drive.google.com/file/d/1Hy2z93TBsKJ-h3PLQ8wA2WrhPrGbJkn5/view"
         },
         "MX": {
-          "es": "https://drive.google.com/file/d/1DoygClK-C02tnlInKokJelK64j38J5lp/view",
-          "en": "https://drive.google.com/file/d/1I4camNE5nlLMgij2-cqIWEMc370SzV_a/view"
+          "es": "https://drive.google.com/file/d/1v2I1MIHqZSqToofcTdoTnsx5i3H2XfLn/view",
+          "en": "https://drive.google.com/file/d/1Hy2z93TBsKJ-h3PLQ8wA2WrhPrGbJkn5/view"
         },
         "PA": {
-          "es": "https://drive.google.com/file/d/1DoygClK-C02tnlInKokJelK64j38J5lp/view",
-          "en": "https://drive.google.com/file/d/1I4camNE5nlLMgij2-cqIWEMc370SzV_a/view"
+          "es": "https://drive.google.com/file/d/1v2I1MIHqZSqToofcTdoTnsx5i3H2XfLn/view",
+          "en": "https://drive.google.com/file/d/1Hy2z93TBsKJ-h3PLQ8wA2WrhPrGbJkn5/view"
         },
         "CO": {
-          "es": "https://drive.google.com/file/d/1DoygClK-C02tnlInKokJelK64j38J5lp/view",
-          "en": "https://drive.google.com/file/d/1I4camNE5nlLMgij2-cqIWEMc370SzV_a/view"
+          "es": "https://drive.google.com/file/d/1v2I1MIHqZSqToofcTdoTnsx5i3H2XfLn/view",
+          "en": "https://drive.google.com/file/d/1Hy2z93TBsKJ-h3PLQ8wA2WrhPrGbJkn5/view"
         },
         "US": {
-          "es": "https://drive.google.com/file/d/1DoygClK-C02tnlInKokJelK64j38J5lp/view",
-          "en": "https://drive.google.com/file/d/1I4camNE5nlLMgij2-cqIWEMc370SzV_a/view"
+          "es": "https://drive.google.com/file/d/1v2I1MIHqZSqToofcTdoTnsx5i3H2XfLn/view",
+          "en": "https://drive.google.com/file/d/1Hy2z93TBsKJ-h3PLQ8wA2WrhPrGbJkn5/view"
         },
         "GLOBAL": {
-          "es": "https://drive.google.com/file/d/1DoygClK-C02tnlInKokJelK64j38J5lp/view",
-          "en": "https://drive.google.com/file/d/1I4camNE5nlLMgij2-cqIWEMc370SzV_a/view"
+          "es": "https://drive.google.com/file/d/1v2I1MIHqZSqToofcTdoTnsx5i3H2XfLn/view",
+          "en": "https://drive.google.com/file/d/1Hy2z93TBsKJ-h3PLQ8wA2WrhPrGbJkn5/view"
         }
       }
     },
     "dual": {
       "countries": {
         "ES": {
-          "es": "https://drive.google.com/file/d/1AuAE7TXFTx2TuboCtgr3fAqcEstSwnwa/view",
-          "en": "https://drive.google.com/file/d/1Z1Frfo5ZEcga_KUF0YUg9eHpz1L6B2n9/view"
+          "es": "https://drive.google.com/file/d/1gzyYL1Eflu4mrgAlfAzUXmXvFRBfbonc/view",
+          "en": "https://drive.google.com/file/d/1Q7QucYO9qq5UccXtQ-SpgzDfxKw10dVI/view"
         },
         "MX": {
-          "es": "https://drive.google.com/file/d/1AuAE7TXFTx2TuboCtgr3fAqcEstSwnwa/view",
-          "en": "https://drive.google.com/file/d/1Z1Frfo5ZEcga_KUF0YUg9eHpz1L6B2n9/view"
+          "es": "https://drive.google.com/file/d/1gzyYL1Eflu4mrgAlfAzUXmXvFRBfbonc/view",
+          "en": "https://drive.google.com/file/d/1Q7QucYO9qq5UccXtQ-SpgzDfxKw10dVI/view"
         },
         "PA": {
-          "es": "https://drive.google.com/file/d/1AuAE7TXFTx2TuboCtgr3fAqcEstSwnwa/view",
-          "en": "https://drive.google.com/file/d/1Z1Frfo5ZEcga_KUF0YUg9eHpz1L6B2n9/view"
+          "es": "https://drive.google.com/file/d/1gzyYL1Eflu4mrgAlfAzUXmXvFRBfbonc/view",
+          "en": "https://drive.google.com/file/d/1Q7QucYO9qq5UccXtQ-SpgzDfxKw10dVI/view"
         },
         "CO": {
-          "es": "https://drive.google.com/file/d/1AuAE7TXFTx2TuboCtgr3fAqcEstSwnwa/view",
-          "en": "https://drive.google.com/file/d/1Z1Frfo5ZEcga_KUF0YUg9eHpz1L6B2n9/view"
+          "es": "https://drive.google.com/file/d/1gzyYL1Eflu4mrgAlfAzUXmXvFRBfbonc/view",
+          "en": "https://drive.google.com/file/d/1Q7QucYO9qq5UccXtQ-SpgzDfxKw10dVI/view"
         },
         "US": {
-          "es": "https://drive.google.com/file/d/1AuAE7TXFTx2TuboCtgr3fAqcEstSwnwa/view",
-          "en": "https://drive.google.com/file/d/1Z1Frfo5ZEcga_KUF0YUg9eHpz1L6B2n9/view"
+          "es": "https://drive.google.com/file/d/1gzyYL1Eflu4mrgAlfAzUXmXvFRBfbonc/view",
+          "en": "https://drive.google.com/file/d/1Q7QucYO9qq5UccXtQ-SpgzDfxKw10dVI/view"
         },
         "GLOBAL": {
-          "es": "https://drive.google.com/file/d/1AuAE7TXFTx2TuboCtgr3fAqcEstSwnwa/view",
-          "en": "https://drive.google.com/file/d/1Z1Frfo5ZEcga_KUF0YUg9eHpz1L6B2n9/view"
+          "es": "https://drive.google.com/file/d/1gzyYL1Eflu4mrgAlfAzUXmXvFRBfbonc/view",
+          "en": "https://drive.google.com/file/d/1Q7QucYO9qq5UccXtQ-SpgzDfxKw10dVI/view"
         }
       }
     },
